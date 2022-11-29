@@ -5,7 +5,7 @@ library(prism)
 # Load data ---------------------------------------------------------------
 
 subplot.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllSubplotData")
-
+species <- 
 
 # Data wrangling ----------------------------------------------------------
 
