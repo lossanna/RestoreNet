@@ -1,4 +1,6 @@
-# manual edits made to fill in lifeform information
+# Manual edits (reload new file) made to fill in lifeform information, and add codes missing from species list
+  # Files start with "output" are ones written from R
+  # Files that start with "edited" are manually edited and read back in
 
 library(readxl)
 library(tidyverse)
@@ -85,11 +87,13 @@ lifeform.na <- species.unique %>%
   arrange(Code)
 
 write_csv(lifeform.na,
-          file = "data/raw/lifeform-na_output.csv")
+          file = "data/raw/output_lifeform-na.csv")
+
 
 #### edited new file manually to add lifeform ####
 
-lifeform.na.edit <- read_csv("data/raw/lifeform-na_edited.csv")
+lifeform.na.edit <- read_csv("data/raw/edited_lifeform-na.csv")
+
 
 # Add manually edited lifeforms to species list
 species.lifeform <- species.unique %>% 
@@ -109,13 +113,19 @@ species.unique <- bind_rows(species.lifeform, species.lifeform.na) %>%
 unique(species.unique$Lifeform) # lifeform has been standardized
 
 write_csv(species.unique,
-          file = "data/raw/species-unique_native-lifeform_output.csv")
+          file = "data/raw/output_species-unique_native-lifeform.csv")
+
+
+# Add codes from data not included in species list ------------------------
 
 # Codes that were observed and recorded in subplot data but not species list
 codes.missing <- data.frame(Code = sort(setdiff(unique(subplot.raw$Species_Code), unique(species.unique$Code))))
+codes.missing$Name <- rep(NA, nrow(codes.missing))
+codes.missing$Native <- rep(NA, nrow(codes.missing))
+codes.missing$Lifeform <- rep(NA, nrow(codes.missing))
 
-
-
+write_csv(codes.missing,
+          file = "data/raw/output_codes-missing.csv")
 
 
 save.image("RData/curate-species-list.RData")
