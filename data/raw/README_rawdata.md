@@ -4,7 +4,7 @@ Last updated: 2022-11-29
 Notes about raw data for RAMPS RestoreNet project:
 
 # Directory
-`edited_codes-missing.csv`
+`edited_codes-missing-subplot.csv`
 - List of codes that were present on subplot data sheets but were not included in origina species list from `Master.xlsx`.
 - Manually edited to add native status, lifeform, and duration.  
 
@@ -12,14 +12,15 @@ Notes about raw data for RAMPS RestoreNet project:
 - Manually edited version of `output_lifeform-na.csv`, created to assign lifeform (functional group) to plant species based on existing labels from subplot data from `Master.xlsx`.
 - Lifeform according to USDA Plants.
 
-`edited_species-unique_native-lifeform-duration.csv`
-- Manually edited list to resolve conflicting lifeform assignments, and added plant duration based on USDA Plants.
+`edited_species-unique-subplot_known-code_native-lifeform-duration.csv`
+- Manually edited to add plant duration, based on USDA Plants.
+- Manually edited to resolve conflicting lifeform assignments or misspelled names to remove duplicates.  Codes are not changed, and different codes for the same species are maintained because they connect to the subplot data.
 
 `Master Germination Data 2022.xlsx`
 - Received from Hannah Farrell via email. I believe this is what she used to write her paper, which is currently in review.
 - File will not be modified in any way.  
 
-`output_codes-missing/csv`
+`output_codes-missing-subplot.csv`
 - List of codes that were included in the subplot data (`AllSubplotData` tab of `Master.xlsx`) but not included in the original species list (plant-species_native status, adapted from `Species_Definitions` tab of `Master.xlsx`).
 - Output written directly from R and edited in a new file.
 
@@ -27,10 +28,9 @@ Notes about raw data for RAMPS RestoreNet project:
 - List of species without lifeform (functional group) assignment from the species mix data (`seed-mix.xlsx`) or fromthe subplot data from `Master.xlsx`.
 - Output written directly from R and edited in a new file.
 
-`output_species-unique_native-lifeform.csv`
+`output_species-unique-subplot_known-code_native-lifeform.csv`
 - List of unique species codes (although there are some duplicates when there are conflicting lifeforms or names for the same code).
 - Output written directly from R and edited in a new file.
-
 
 `plant-species_native-status.xlsx`
 - Adapted from the `Species_Definitions` tab of `Master.xlsx`.

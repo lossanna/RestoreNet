@@ -1,0 +1,49 @@
+Code,Name,Native,Duration,Lifeform
+0,0,0,0,0
+AmaranthusSpp,Amaranthus spp.,Unknown,Unknown,Forb
+ATCA,ATCA (but not Atriplex?),Unknown,Unknown,Grass
+BAHI,Balsamorhiza hookeri,Native,Perennial,Forb
+DeadStem,Dead stem,Unknown,Unknown,Forb
+ERDI2,Eriastrum diffusum,Native,Annual,Forb
+ERIGSPP,ERIG (?) spp.,Unknown,Unknown,Forb
+Eriogonum sp.,Erigonum spp.,Native,Unknown,Forb
+ERISPP,Eriastrum or Erigonum spp. (?),Native,Unknown,Forb
+FESSPP,FES (fescue?) spp.,Unknown,Unknown,Grass
+LILE,Leptosiphon lemmonii,Native,Annual,Forb
+LUSP,Lupinus sparsiflorus (?),Native,Annual,Forb
+NA,0,0,0,0
+PAHI7,Oplismenus hirtellus (Panicum hirtellum),Introduced,Perennial,Grass
+PHNE3,Phacelia neomexicana,Native,Annual,Forb
+S-HEBO,Hedysarum boreale,Native,Perennial,Forb
+S-PASM,Pascopyrum smithii,Native,Perennial,Grass
+S-UNFO2,Seeded unknown forb 2,Native,Perennial,Forb
+S-UNGR1,Seeded unknown grass 1,Native,Perennial,Grass
+S-UNGR2,Seeded unknown grass 2,Native,Perennial,Grass
+S-UNGR3,Seeded unknown grass 3,Native,Perennial,Grass
+S-UNGR4,Seeded unknown grass 4,Native,Perennial,Grass
+S-UNGR5,Seeded unknown grass 5,Native,Perennial,Grass
+SEBA2,Senna bacillaris,Native,Perennial,Shrub
+SUNGR,Seeded unknown grass (?),Native,Perennial,Shrub
+Trifolium,Trifolium spp.,Unknown,Unknown,Forb
+UCHEN1,UCHEN1 (?),Unknown,Unknown,Unknown
+UCHEN2,UCHEN2 (?),Unknown,Unknown,Unknown
+UNFO,Unknown forb,Unknown,Unknown,Forb
+UNFO10,Unknown forb 10,Unknown,Unknown,Forb
+UNFO11,Unknown forb 11,Unknown,Unknown,Forb
+UNFO12,Unknown forb 12,Unknown,Unknown,Forb
+UNFO13,Unknown forb 13,Unknown,Unknown,Forb
+UNFO14,Unknown forb 14,Unknown,Unknown,Forb
+UNFO16,Unknown forb 16,Unknown,Unknown,Forb
+UNFO2A,Unknown forb 2A,Unknown,Unknown,Forb
+UNFO7,Unknown forb 7,Unknown,Unknown,Forb
+UNFO8,Unknown forb 8,Unknown,Unknown,Forb
+UNFO9,Unknown forb 9,Unknown,Unknown,Forb
+UNGR,Unknown grass,Unknown,Unknown,Grass
+UNGR2,Unknown grass 2,Unknown,Unknown,Grass
+UNGR3,Unknown grass 3,Unknown,Unknown,Grass
+UNGR4,Unknown grass 4,Unknown,Unknown,Grass
+UNGR5,Unknown grass 5,Unknown,Unknown,Grass
+UNK Fuzzy astr,Unknown fuzzy aster,Unknown,Unknown,Forb
+Unkaster,Unknown aster,Unknown,Unknown,Forb
+UnkForb,Unknown forb,Unknown,Unknown,Forb
+UnkForb1,Unknown forb 1,Unknown,Unknown,Forb
