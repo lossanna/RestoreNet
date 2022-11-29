@@ -28,9 +28,9 @@ seeded.subplot <- seeded.subplot %>%
     str_detect(seeded.subplot$Site, c("Creosote|Mesquite")) ~ "Chihuahuan",
     str_detect(seeded.subplot$Site, c("SRER|Patagonia")) ~ "Sonoran SE",
     str_detect(seeded.subplot$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central",
-    TRUE ~ "idk")) %>% 
+    TRUE ~ "unk")) %>% 
   rename(Code = Species_Code)
-filter(seeded.subplot, Region == "idk")
+filter(seeded.subplot, Region == "unk")
 
 species <- left_join(species, seeded.subplot)
 species <- species %>% 
@@ -126,6 +126,12 @@ codes.missing$Lifeform <- rep(NA, nrow(codes.missing))
 
 write_csv(codes.missing,
           file = "data/raw/output_codes-missing.csv")
+
+codes.missing.subplot <- subplot.raw %>% 
+  filter(Species_Code %in% codes.missing$Code) %>% 
+  select(Species_Code, Functional_Group, `Certainty_of_ID(1-3)`) %>% 
+  distinct(.keep_all = TRUE) %>% 
+  arrange(Species_Code)
 
 
 save.image("RData/curate-species-list.RData")

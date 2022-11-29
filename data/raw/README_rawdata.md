@@ -39,6 +39,7 @@ Notes about raw data for RAMPS RestoreNet project:
 
 `seed-mix.xlsx`
 - Adapted from the `Seed Mixes` tab of `Master.xlsx`.
+- Added native status column (all seeded species were native).
 
 
 
