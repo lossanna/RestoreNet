@@ -1,5 +1,5 @@
 Created: 2022-11-28  
-Last updated: 2022-11-29  
+Last updated: 2022-11-30  
   
 Notes about raw data for RAMPS RestoreNet project.
 
@@ -15,14 +15,18 @@ File naming notes:
 - `_native-lifeform-duration` indicates if the respective columns are present in the species list.
 
 # Directory
-`edited-species1_xlsx_lifeform-na.csv`
+`edited-species1_subplot-codes-missing.csv`
+- List of codes included in the subplot data (`AllSubplotData` tab of `Master.xlsx`), but are missing from the the original master species list (`master-species_native.xlsx`).
+- Manually added name, native status, duration, and lifeform.
+- 
+`edited-species2_xlsx_lifeform-na.csv`
 - List of species originally without lifeform information. Subset of codes is taken only codes from the `master-species_native.xlsx`
 	- Lifeform information would have come from `AllSubplotData` tab from `Master.xlsx`.
 - Manually edited to assign missing lifeform (functional group) information.
 - Lifeform according to USDA Plants.
 - Not a complete species list.
 
-`edited-species2_xlsx_native-lifeform-duration.csv`
+`edited-species3_xlsx_native-lifeform-duration.csv`
 - List of codes taken from `master-species_native.xlsx`. Not yet a complete species list.
 - Manually edited to add plant duration, based on USDA Plants.
 - Manually edited to resolve conflicting lifeform assignments or misspelled names to remove duplicates.  Codes are not changed, and different codes for the same species are maintained because they connect to the subplot data.
@@ -50,16 +54,16 @@ File naming notes:
 - Manually added the `Native` column based on USDA Plants databse, and did small corrections to spelling of scientific names.
 - I did not change any species codes, as they relate directly to the `Master` data.
 
-`output-species_final.csv`
-- Final curated list of species from the `master-species_native.xlsx` list, and the species recorded in subplot data (`AllSubplotData` in `Master.xlsx`).
-- This final version is put in the `data/raw/` folder because no species codes are changed. However, species codes will be standardized during data wrangling, and codes in the subplot data will be overwritten. The list of standardized codes will be saved to `data/cleaned/`.
+`output-species1_subplot-codes-missing.csv`
+- List of codes included in the subplot data (`AllSubplotData` tab of `Master.xlsx`), but are missing from the the original master species list (`master-species_native.xlsx`).
+- Output written directly from R and edited in a new file.
 
-`output-species1_xlsx_lifeform-na.csv`
+`output-species2_xlsx_lifeform-na.csv`
 - List of species without lifeform information. Subset of codes is taken only codes from the `master-species_native.xlsx`.
  	- Lifeform information would have come from `AllSubplotData` tab from `Master.xlsx`.
 - Output written directly from R and edited in a new file.
 
-`output-species2_xlsx_native-lifeform.csv`
+`output-species3_xlsx_native-lifeform.csv`
 - List of unique species codes (although there are some duplicates when there are conflicting lifeforms or names for the same code).
 - Output written directly from R and edited in a new file.
 

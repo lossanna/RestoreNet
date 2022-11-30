@@ -60,101 +60,94 @@ sub.missing.edit <- read_csv("data/raw/edited-species1_subplot-codes-missing_nat
 
 # Unknowns (location-dependent)
 species.m.unk <- species.raw %>% # from original master list
-  filter(str_detect(species.raw$Name, "Unk|unk|spp.")) %>% 
+  filter(str_detect(species.raw$Name, "Unk|unk|spp.|Could be")) %>% 
   arrange(Region) %>% 
   arrange(Code)
 
 sub.missing.unk <- sub.missing.edit %>% # ones missing from original master list
-  filter(str_detect(sub.missing.edit$Name, "Unk|unk|spp.")) %>% 
+  filter(str_detect(sub.missing.edit$Name, "Unk|unk|spp.|Could be")) %>% 
   arrange(Region) %>% 
   arrange(Code)
 
-# Knowns (location-independent), to be added at the end
-sub.missing.known <- sub.missing.edit %>% 
-  filter(!str_detect(sub.missing.edit$Name, "Unk|unk|spp.")) %>% 
+# Knowns (location-independent)
+species.m.known <- species.raw %>% # from original master list
+  filter(!str_detect(species.raw$Name, "Unk|unk|spp.|Could be")) %>% 
+  select(-Region) %>% 
+  arrange(Code)
+
+sub.missing.known <- sub.missing.edit %>% # ones missing from original master list
+  filter(!str_detect(sub.missing.edit$Name, "Unk|unk|spp.|Could be")) %>% 
   select(-Region, -Site) %>% 
   arrange(Code)
   # although there are a couple names with ?s, the names and codes are unique 
       # and not repeated across sites to refer to different plants,
       # and therefore location-independent
-  
+  # combine dfs after doing left_join() assignment of lifeform
+
 
 
 #### Location-independent species (known genus & species) ###############
 
 # Add lifeform information to species list --------------------------------
 
-# First work only with subset of original master list
-species.m <- species.raw %>% 
-  filter(!str_detect(species.raw$Name, "Unk|unk|spp.")) %>% 
-  select(-Region) %>% 
-  arrange(Code)
-
 # Extract lifeform information from subplot.raw data for knowns from master
 subplot.in.lifeform <- subplot.raw %>% 
-  filter(Code %in% m.species.known$Code) %>% 
   select(Code, Functional_Group) %>% 
   distinct(.keep_all = TRUE) %>% 
   filter(Code != "0") %>% 
   rename(Lifeform = Functional_Group)
 
 # Add subplot lifeform information to location-independent species list
-species.in <- left_join(species.in, subplot.in.lifeform)
+species.m.known <- left_join(species.m.known, subplot.in.lifeform)
 
 # Standardize lifeform names to Grass/Forb/Shrub
-unique(species$Lifeform)
+unique(species.m.known$Lifeform)
 
-species <- species %>% 
+species.m.known <- species.m.known %>% 
   mutate(Lifeform = case_when(
-    str_detect(species$Name, "forb") ~ "Forb",
-    str_detect(species$Name, "grass") ~ "Grass",
-    str_detect(species$Name, "shrub") ~ "Shrub",
-    TRUE ~ species$Lifeform))
+    str_detect(species.m.known$Name, "forb") ~ "Forb",
+    str_detect(species.m.known$Name, "grass") ~ "Grass",
+    str_detect(species.m.known$Name, "shrub") ~ "Shrub",
+    TRUE ~ species.m.known$Lifeform))
 
-species <- species %>% 
+species.m.known <- species.m.known %>% 
   mutate(Lifeform = case_when(
-    str_detect(species$Lifeform, "Shrub/subshrub") ~ "Shrub", # standardize to grass/forb/shrub
-    str_detect(species$Lifeform, "shrub") ~ "Shrub",
-    str_detect(species$Lifeform, "C3 grass") ~ "Grass",
-    TRUE ~ species$Lifeform)) %>% 
+    str_detect(species.m.known$Lifeform, "Shrub/subshrub") ~ "Shrub", # standardize to grass/forb/shrub
+    str_detect(species.m.known$Lifeform, "shrub") ~ "Shrub",
+    str_detect(species.m.known$Lifeform, "C3 grass") ~ "Grass",
+    TRUE ~ species.m.known$Lifeform)) %>% 
   distinct(.keep_all = TRUE) %>% 
-  arrange(Code) # >345 because some don't have lifeform assigned
+  arrange(Code) 
 
-unique(species$Lifeform) # lifeform names have been standardized, with NAs
-species$Lifeform[species$Lifeform == "NA"] <- NA # convert to real (logical) NA
-unique(species$Lifeform)
-
-
-# Check number of unique codes
-length(unique(species.raw$Code)) # should be 345 unique codes from original table
-length(species.raw$Code) # original species list had duplicate codes because of Species at multiple locations, as well as unknowns
-length(unique(species$Code)) # 345 unique codes in working species list
+unique(species.m.known$Lifeform) # lifeform names have been standardized, with NAs
+species.m.known$Lifeform[species.m.known$Lifeform == "NA"] <- NA # convert to real (logical) NA
+unique(species.m.known$Lifeform)
 
 
 # Find species without lifeform information and write to csv, to manually add information
-lifeform.na <- species %>% 
+lifeform.na <- species.m.known %>% 
   filter(is.na(Lifeform)) %>% 
-  select(Region, Code, Name, Lifeform) %>% 
+  select(Code, Name, Lifeform) %>% 
   distinct(.keep_all = TRUE) %>% 
   arrange(Code)
 
 write_csv(lifeform.na,
-          file = "data/raw/output-species1_xlsx_lifeform-na.csv")
+          file = "data/raw/output-species2_xlsx_lifeform-na.csv")
 
 
 #### edit new file manually to add lifeform ######
 
-lifeform.na.edit <- read_csv("data/raw/edited-species1_xlsx_lifeform-na.csv")
+lifeform.na.edit <- read_csv("data/raw/edited-species2_xlsx_lifeform-na.csv")
 
 
 # Add manually-edited lifeform information to working species list 
   # split up species because left_join() will not override and will create duplicates,
     # and information from edited version is definitely correct (information from subplot.raw could be wrong)
 
-species.lifeform <- species %>%  # known lifeform species
+species.lifeform <- species.m.known %>%  # known lifeform species
   filter(!Code %in% lifeform.na.edit$Code) 
 
-species.lifeform.na <- species %>%  # unknown lifeform species
+species.lifeform.na <- species.m.known %>%  # unknown lifeform species
   filter(Code %in% lifeform.na.edit$Code) %>% 
   select(-Lifeform) %>% 
   distinct(.keep_all = TRUE) %>%
@@ -162,11 +155,10 @@ species.lifeform.na <- species %>%  # unknown lifeform species
 species.lifeform.na <- left_join(species.lifeform.na, lifeform.na.edit) %>% 
   distinct(.keep_all = TRUE)
 
-species <- bind_rows(species.lifeform, species.lifeform.na) %>% # combine known & unknown 
-  arrange(Code) # some duplicates removed, but not yet to 345 unique codes
+species.m.known <- bind_rows(species.lifeform, species.lifeform.na) %>% 
+  arrange(Code)
   
-unique(species$Lifeform) # lifeform has been standardized, with NAs as "Unknown"
-
+unique(species.m.known$Lifeform) # lifeform has been standardized
 
 
 
@@ -176,44 +168,25 @@ unique(species$Lifeform) # lifeform has been standardized, with NAs as "Unknown"
   # Multiple lifeforms for same species are also corrected (wrong ones deleted)
 
 # Write output with native status and lifeform columns
-write_csv(species,
-          file = "data/raw/output-species2_xlsx_native-lifeform.csv")
+write_csv(species.m.known,
+          file = "data/raw/output-species3_xlsx_native-lifeform.csv")
 
 
 #### edit new file manually to add duration and check lifeform ####
 
-species <- read_csv("data/raw/edited-species2_xlsx_native-lifeform-duration.csv")
+species.m.known <- read_csv("data/raw/edited-species3_xlsx_native-lifeform-duration.csv")
 
 
 
 
 # Add codes from data not included in species list ------------------------
 
-# Codes that were observed and recorded in subplot data but not Excel master-species list
-codes.missing.sub.out <- data.frame(Code = sort(setdiff(unique(subplot.raw$Code), unique(species$Code))))
-codes.missing.sub.out$Name <- rep(NA, nrow(codes.missing.sub.out))
-codes.missing.sub.out$Native <- rep(NA, nrow(codes.missing.sub.out))
-codes.missing.sub.out$Lifeform <- rep(NA, nrow(codes.missing.sub.out))
-
-write_csv(codes.missing.sub.out,
-          file = "data/raw/output-species3_codes-missing-subplot.csv")
-
-codes.missing.subplot <- subplot.raw %>% # look at subplot data for comparison and ID certainty
-  filter(Code %in% codes.missing.sub.out$Code) %>% 
-  select(Code, Functional_Group, `Certainty_of_ID(1-3)`) %>% 
-  distinct(.keep_all = TRUE) %>% 
+# Combine species.m.known and sub.missing.known
+species.in <- bind_rows(species.m.known, sub.missing.known) %>% 
   arrange(Code)
 
-
-#### edited new file manually to add native status, lifeform, and duration ####
-
-codes.missing.sub.edit <- read_csv("data/raw/edited-species3_codes-missing-subplot.csv")
-
-
-# Add manually-edited unknown codes to working species list
-species <- bind_rows(species, codes.missing.sub.edit) %>% 
-  arrange(Code) %>% 
-  distinct(.keep_all = TRUE) # 407 rows
+# Check for missing information
+apply(species.in, 2, anyNA)
 
 
 
