@@ -33,6 +33,10 @@ File naming notes:
 - Manually edited to add native status, lifeform, and duration, as according to USDA Plants.
 - Not a complete list of species.
 
+`edited-species4_codes-missing-2x2plot.csv`
+- List of codes that were in the 2x2 plot data (`AllPlotData` tab in `Master.xlsx`), but not yet in species list.
+- Most of the codes are unknowns or descriptions.
+
 `Master Germination Data 2022.xlsx`
 - Received from Hannah Farrell via email. I believe this is what she used to write her paper, which is currently in review.
 - File will not be modified in any way.  
@@ -45,6 +49,10 @@ File naming notes:
 - Adapted from the `Species_Definitions` tab of `Master.xlsx`.
 - Manually added the `Native` column based on USDA Plants databse, and did small corrections to spelling of scientific names.
 - I did not change any species codes, as they relate directly to the `Master` data.
+
+`output-species_final.csv`
+- Final curated list of species from the `master-species_native.xlsx` list, and the species recorded in subplot data (`AllSubplotData` in `Master.xlsx`).
+- This final version is put in the `data/raw/` folder because no species codes are changed. However, species codes will be standardized during data wrangling, and codes in the subplot data will be overwritten. The list of standardized codes will be saved to `data/cleaned/`.
 
 `output-species1_xlsx_lifeform-na.csv`
 - List of species without lifeform information. Subset of codes is taken only codes from the `master-species_native.xlsx`.
@@ -59,6 +67,9 @@ File naming notes:
 - List of codes that were included in the subplot data (`AllSubplotData` tab of `Master.xlsx`) but not included in `master-species_native.xlsx`.
 - Output written directly from R and edited in a new file.
 
+`output-species4_codes-missing-2x2plot.csv`
+- List of codes that were in the 2x2 plot data (`AllPlotData` tab in `Master.xlsx`), but not yet in species list.
+- Most of the codes are unknowns or descriptions.
 
 
 

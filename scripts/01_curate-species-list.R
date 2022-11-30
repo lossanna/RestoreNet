@@ -163,7 +163,7 @@ unique(species$Lifeform)
 
 # Write to csv
 write_csv(species,
-          file = "data/cleaned/species_clean.csv")
+          file = "data/raw/output-species_final.csv")
 
 
 # Codes from AllPlotData (2x2 plots) --------------------------------------
