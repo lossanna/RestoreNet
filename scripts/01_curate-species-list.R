@@ -150,23 +150,41 @@ codes.missing.sub.edit <- read_csv("data/raw/edited-species3_codes-missing-subpl
 # Add manually-edited unknown codes to working species list
 species <- bind_rows(species, codes.missing.sub.edit) %>% 
   arrange(Code) %>% 
-  distinct(.keep_all = TRUE)
+  distinct(.keep_all = TRUE) # 407 rows
 
 
+
+# Write clean species list to CSV -----------------------------------------
+
+# Check for missing information
+unique(species$Native)
+unique(species$Duration)
+unique(species$Lifeform)
+
+# Write to csv
+write_csv(species,
+          file = "data/cleaned/species_clean.csv")
+
+
+# Codes from AllPlotData (2x2 plots) --------------------------------------
+
+# Codes from these plots are really different and usually long descriptions
+  # so they get their own separate list
 
 # Codes from AllPlotData (2 x 2 m plots)
 codes.missing.2x2 <- plot.2x2.raw %>% 
-  select(starts_with("Additional"))
-codes.missing.2x2 <- codes.missing.2x2 %>% 
+  select(starts_with("Additional")) %>% 
   mutate(across(everything(), as.character)) %>% 
   pivot_longer(everything(), names_to = "drop", values_to = "Code") %>% 
   select(Code) %>% 
   distinct(.keep_all = TRUE) %>% 
-  arrange(Code)
+  arrange(Code) %>% # 382 codes
+  filter(!Code %in% species$Code)
+
+write_csv(codes.missing.2x2,
+          file = "data/raw/output-species4_codes-missing-2x2plot.csv")
 
 
 
 
-
-
-save.image("RData/curate-species-list.RData")
+save.image("RData/01_curate-species-list.RData")

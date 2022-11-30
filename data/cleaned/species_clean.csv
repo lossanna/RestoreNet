@@ -1,0 +1,408 @@
+Code,Name,Native,Duration,Lifeform
+0,0,0,0,0
+ABPA3,Abutilon parvulum,Native,Perennial,Forb
+ACASPP,Acalypha spp.,Native/Unknown,Unknown,Forb
+ACHY,Achnatherum hymenoides,Native,Perennial,Grass
+ACMI2,Achillea millefolium,Native/Unknown,Perennial,Forb
+ACMIS,Acmispon (Lotus),Native,Unknown,Forb
+ACNA2,Acourtia nana,Native,Perennial,Forb
+ALIN,Allionia incarnata,Native,Unknown,Forb
+AmaranthusSpp,Amaranthus spp.,Unknown,Unknown,Forb
+AMASPP,Amaranthus spp.,Native/Unknown,Unknown,Forb
+AMBSPP,Ambrosia spp.,Native/Unknown,Unknown,Forb
+AMCH3,Ammocodon chenopodioides,Native,Perennial,Forb
+AMCO3,Ambrosia confertiflora,Native,Perennial,Forb
+AMDE4,Ambrosia deltoidea,Native,Perennial,Shrub
+AMDU2,Ambrosia dumosa,Native,Perennial,Shrub
+AMMEI2,Amsinckia menziesii,Native,Annual,Forb
+AMPA,Amaranthus palmeri,Native,Annual,Forb
+AMSIN,Amsinckia,Native,Annual,Forb
+AMTE3,Amsinckia tessellata,Native,Annual,Forb
+AMTO3,Ambrosia tomentosa,Native,Perennial,Forb
+ANCR2,Anoda cristata,Native,Annual,Forb
+ANOSPP,Anoda spp.,Native,Unknown,Forb
+ARAD,Aristida adscensionis,Native,Annual,Grass
+ARFR4,Artemisia frigida,Native,Perennial,Shrub
+ARISPP,Aristida spp.,Native,Unknown,Grass
+ARNE2,Argythamnia neomexicana,Native,Unknown,Forb
+ARPU9,Aristida purpurea,Native,Perennial,Grass
+ARPUP6,Aristida purpurea,Native,Perennial,Grass
+ARSPP,Artemisia spp.,Native/Unknown,Unknown,Shrub
+ARTE3,Aristida ternipes,Native,Perennial,Grass
+ARWA,Aristolochia watsonii,Native,Perennial,Forb
+ASNU4,Astragalus nuttallianus,Native,Unknown,Forb
+ASNU5,Astragalus nuttallii,Introduced,Perennial,Forb
+ASTRAG,Astragalus spp.,Native/Unknown,Unknown,Forb
+ASTSPP,Astragalus spp.,Native/Unknown,Unknown,Forb
+ASTU,Asclepias tuberosa,Native,Perennial,Forb
+ATCA,ATCA (but not Atriplex?),Unknown,Unknown,Grass
+ATCA2,Atriplex canescens,Native,Perennial,Shrub
+ATCO,Atriplex confertifolia,Native,Perennial,Shrub
+ATSP,Atriplex spp.,Native/Unknown,Perennial,Shrub
+AVFA,Avena fatua,Introduced,Annual,Grass
+BAAB,Bahia absinthifolia,Native,Perennial,Forb
+BAHI,Balsamorhiza hookeri,Native,Perennial,Forb
+BAMU,Baileya multiradiata,Native,Unknown,Forb
+BOAR,Bouteloua aristidoides,Native,Annual,Grass
+BOBA2,Bouteloua barbata,Native,Annual,Grass
+BOBAB3,Bouteloua barbata v. barbata,Native,Annual,Grass
+BOCO,Boerhavia coccinea,Native,Perennial,Forb
+BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+BOER,Bouteloua eriopoda,Native,Perennial,Grass
+BOER4,Bouteloua eriopoda,Native,Perennial,Grass
+BOERH2,Boerhavia,Native,Unknown,Forb
+BOGR2,Bouteloua gracilis,Native,Perennial,Grass
+BOIN,Boerhavia intermedia,Native,Annual,Forb
+BOIN3,Bowlesia incana,Native,Annual,Forb
+BORA,Bouteloua radicosa,Native,Perennial,Grass
+BORO2,Bouteloua rothrockii,Native,Perennial,Grass
+BOSI2,Bouteloua simplex,Native,Annual,Grass
+BOSPP,local Bouteloua species,Native,Unknown,Grass
+BOUSPP,Bouteloua spp.,Native,Unknown,Grass
+BRASPP,Brassica spp. (likely DEPI),Native/Unknown,Unknown,Forb
+BRDI3,Bromus diandrus,Introduced,Unknown,Grass
+BRNI,Brassica nigra,Introduced,Annual,Forb
+BRRU2,Bromus rubens,Introduced,Annual,Grass
+BRTE,Bromus tectorum,Introduced,Annual,Grass
+CACI2,Calandrinia ciliata,Native,Annual,Forb
+CACLL,Camissonia claviformis,Native,Annual,Forb
+CAEXE,Castilleja exserta,Native,Annual,Forb
+CALSPP,Calandrinia spp.,Native,Unknown,Forb
+CANU3,Calochortus nuttallii,Native,Perennial,Forb
+CEME2,Centaurea melitensis,Introduced,Annual,Forb
+CETE5,Ceratocephala testiculata,Introduced,Annual,Forb
+CHAL11,Chamaesyce albomarginata,Native,Perennial,Forb
+CHAMA,Chamaesyce spp.,Native,Unknown,Forb
+CHASPP,Chaenactis spp.,Native,Unknown,Forb
+CHBR,Chorizanthe brevicornu,Native,Annual,Forb
+CHCO2,Chamaesaracha coronopus,Native,Perennial,Forb
+CHEN,Unknown chenopod,Native/Unknown,Unknown,Forb
+CHER2,Chaetopappa ericoides,Native,Perennial,Forb
+CHESPP,Chenopodium spp.,Unknown,Unknown,Forb
+CHFR3,Chenopodium fremontii,Native,Annual,Forb
+CHHY3,Chamaesyce hyssopifolia,Native,Unknown,Forb
+CHIN2,Chenopodium incanum,Native,Annual,Forb
+CHPO12,Chamaesyce polycarpa,Native,Unknown,Forb
+CHTE2,Chorispora tenella,Introduced,Annual,Forb
+CHVI4,Chloris virgata,Native,Annual,Grass
+CHWA,Chenopodium watsonii,Native,Annual,Forb
+CLESP,Cleome spp.,Native/Unknown,Unknown,Forb
+CLLU2,Cleome lutea,Native,Annual,Forb
+COAU2,Corydalis aurea,Native,Annual,Forb
+COCA5,Conyza canadensis,Native,Annual,Forb
+COCA8,Coreopsis califonica,Native,Annual,Forb
+COEQ,Convolvulus equitans,Native,Unknown,Forb
+CRAN4,Cryptantha angustifolia,Native,Annual,Forb
+CRBA5,Cryptantha barbigera,Native,Annual,Forb
+CRCO34,Crassula connata,Native,Annual,Forb
+CRCR3,Cryptantha crassisepala,Native,Annual,Forb
+CRPO5,Croton pottsii,Native,Perennial,Forb
+CRSE11,Croton setigerus,Native,Annual,Forb
+CRYPT,Cryptantha spp.,Native,Unknown,Forb
+CRYSPP,Cryptantha spp.,Native,Unknown,Forb
+CYAC,Cymopterus acaulis,Native,Perennial,Forb
+DACA7,Dalea candida,Native,Perennial,Forb
+DAPU3,Daucus pusillus,Native,Annual,Forb
+DAPU7,Dasyochloa pulchella,Native,Perennial,Grass
+DeadStem,Dead stem,Unknown,Unknown,Forb
+DEPI,Descurainia pinnata,Native,Unknown,Forb
+DESO2,Descurainia sophia,Introduced,Annual,Forb
+DICA14,Dichelostemma capitatum,Native,Perennial,Forb
+DICA8,Digitaria californica,Native,Perennial,Grass
+DRABA,Draba spp.,Native/Unknown,Unknown,Forb
+DRCU,Draba cuneifolia,Native,Annual,Forb
+DRCUI,Draba cuneifolia,Native,Annual,Forb
+ELEL5,Elymus elymoides,Native,Perennial,Grass
+ELSPP,Elymus spp.,Native/Unknown,Unknown,Grass
+ELTR7,Elymus trachycaulus,Native,Perennial,Grass
+ELWA2,Elymus wawawaiensis,Native,Perennial,Grass
+ENDE,Enneapogon desvauxii,Native,Perennial,Grass
+ENFA,Encelia farinosa,Native,Perennial,Shrub
+ERAB2,Eriogonum abertianum,Native,Annual,Forb
+ERASPP,"Eragrostis spp., ERCU or ERLE",Unknown,Unknown,Grass
+ERCI,Eragrostis cilianensis,Introduced,Annual,Grass
+ERCI,Eragrostis ciliaris,Introduced,Annual,Grass
+ERCI6,Erodium cicutarium,Introduced,Annual,Forb
+ERCU2,Eragrostis curvula,Introduced,Perennial,Grass
+ERDI2,Eriastrum diffusum,Native,Annual,Forb
+ERER2,Eriastrum eremicum,Native,Annual,Forb
+ERFA2,Eriogonum fasciculatum,Native,Perennial,Forb
+ERIAS,Eriastrum,Native,Unknown,Forb
+ERIGSPP,ERIG (?) spp.,Unknown,Unknown,Forb
+ERIN4,Eriogonum inflatum,Native,Unknown,Forb
+Eriogonum,Eriogonum spp.,Native,Unknown,Forb
+Eriogonum sp.,Erigonum spp.,Native,Unknown,Forb
+ERISP,Eriogonum spp.,Native,Unknown,Forb
+ERISPP,Eriastrum or Erigonum spp. (?),Native,Unknown,Forb
+ERLA12,Ericameria laricifolia,Native,Perennial,Shrub
+ERLE,Eragrostis lehmanniana,Introduced,Perennial,Grass
+ERPA11,Eriogonum palmerianum,Native,Annual,Forb
+ERPO4,Eriogonum polycladon,Native,Annual,Forb
+ERRA3,Eriogonum racemosum,Native,Perennial,Forb
+ERSU,Eragrostis superba,Introduced,Perennial,Grass
+ERTR8,Eriogonum trichopes,Native,Annual,Forb
+ERVE5,Eruca vesicaria,Introduced,Annual,Forb
+ESCA2,Eschscholzia californica,Native,Unknown,Forb
+ESCAM,Eschscholzia californica,Native,Unknown,Forb
+EUAB,Chamaesyce abramsiana,Native,Annual,Forb
+EUME3,Chamaesyce melanadenia,Native,Perennial,Forb
+EUPO3,Chamaesyce polycarpa,Native,Unknown,Forb
+EUPSPP,Euphorbia spp.,Native/Unknown,Unknown,Forb
+EVAR,Evolvulus arizonicus,Native,Perennial,Forb
+FESSPP,FES (fescue?) spp.,Unknown,Unknown,Grass
+GILSPP,Gilia spp.,Native,Unknown,Forb
+GIST,Gilia stellata,Native,Annual,Forb
+GLGO,Glandularia gooddingii,Native,Perennial,Forb
+GNPA,Gnaphalium palustre,Native,Annual,Forb
+GUSA2,Gutierrezia sarothrae,Native,Perennial,Shrub
+HAGL,Halogeton glomeratus,Introduced,Annual,Forb
+HAPAA,Harpagonella palmeri,Native,Annual,Forb
+HEBO,Hedysarum boreale,Native,Perennial,Forb
+HECI,Helianthus ciliaris,Native,Perennial,Forb
+HECO26,Hesperostipa comata,Native,Perennial,Grass
+HEHIC,Herniaria hirsuta,Introduced,Annual,Forb
+HEMU3,Heliomeris multiflora,Native,Perennial,Forb
+HESP,Heliomeris spp.,Native,Unknown,Forb
+HIIN3,Hirschfeldia incana,Introduced,Unknown,Forb
+HOGL2,Hoffmannseggia glauca,Native,Perennial,Forb
+HOMU,Hordeum murinum,Introduced,Annual,Grass
+HOPU,Hordeum pusillum,Native,Annual,Grass
+IPLO2,Ipomopsis longiflora,Native,Annual,Forb
+KAGR,Kallstroemia grandiflora,Native,Annual,Forb
+KAHI,Kallstroemia hirsutissima,Native,Annual,Forb
+KRLA2,Krascheninnikovia lanata,Native,Perennial,Shrub
+LACA7,Lasthenia californica,Native,Unknown,Forb
+LAGL5,Layia glandulosa,Native,Annual,Forb
+LAGR10,Lasthenia gracilis,Native,Annual,Forb
+LATR2,Larrea tridentata,Native,Perennial,Shrub
+LEAU16,Leptosiphon aureus,Native,Annual,Forb
+LECI4,Leymus cinereus,Native,Perennial,Grass
+LEFR2,Lepidium fremontii,Native,Perennial,Shrub
+LELA,Lepidium lasiocarpum,Native,Annual,Forb
+LEPA6,Leptochloa panicea,Native,Unknown,Grass
+LEPSPP,Lepidium spp.,Native/Unknown,Unknown,Forb
+LETH2,Lepidium thurberi,Native,Annual,Forb
+LIBI2,Linanthus bigelovii,Native,Annual,Forb
+LILE,Leptosiphon lemmonii,Native,Annual,Forb
+LILE3,Linum lewisii,Native,Perennial,Forb
+LOAR12,Logfia arizonica,Native,Annual,Forb
+LOESE2,Loeseliastrum franciscanum,Native,Annual,Forb
+LOHU2,Lotus humistratus,Native,Annual,Forb
+LOSA,Lotus salsuginosus,Native,Annual,Forb
+LOSQ,Loeflingia squarrosa,Native,Annual,Forb
+LOSTT,Lotus strigosus,Native,Annual,Forb
+LUCO,Lupinus concinnus,Native,Annual,Forb
+LUPSPP,Lupinus spp.,Unknown,Unknown,Forb
+LUSP,Lupinus sparsiflorus (?),Native,Annual,Forb
+LUSP2,Lupinus sparsiflorus,Native,Annual,Forb
+LUSPP,Lupinus spp.,Native/Unknown,Unknown,Forb
+MACSPP,Machaeranthera spp.,Native,Unknown,Forb
+MADI6,Matricaria discoidea,Introduced,Annual,Forb
+MAGL3,Malacothrix glabrata,Native,Annual,Forb
+MAGR10,Machaeranthera gracilis,Native,Annual,Forb
+MAPA5,Malva parviflora,Introduced,Unknown,Forb
+MATA2,Machaeranthera tanacetifolia,Native,Annual,Forb
+MEAL6,Mentzelia albicaulis,Native,Annual,Forb
+MEIN2,Melilotus indicus,Introduced,Annual,Forb
+MEMO4,Mentzelia montana,Native,Annual,Forb
+MENSPP,Mentzelia spp.,Native,Unknown,Forb
+MEOF,Melilotus officinalis,Introduced,Unknown,Forb
+MIGR,Microsteris gracilis,Native,Annual,Forb
+MILA6,Mirabilis laevis,Native,Perennial,Forb
+MOCE,Mollugo cerviana,Introduced,Annual,Forb
+MONU,Monolepis nuttalliana,Native,Annual,Forb
+MOVE,Mollugo verticillata,Native,Annual,Forb
+MUPO2,Muhlenbergia porteri,Native,Perennial,Grass
+NAHI,Nama hispidum,Native,Annual,Forb
+OESP,Oenothera spp.,Native/Unknown,Unknown,Forb
+ONPI,Oncosiphon piluliferum,Introduced,Annual,Forb
+PACA6,Panicum capillare,Native,Annual,Grass
+PAHI5,Panicum hirticaule,Native,Annual,Grass
+PAHI7,Oplismenus hirtellus (Panicum hirtellum),Introduced,Perennial,Grass
+PAMI5,Parkinsonia microphylla,Native,Perennial,Shrub
+PANSPP,Panicum spp.,Native,Unknown,Grass
+PASM,Pascopyrum smithii,Native,Perennial,Grass
+PECSPP,Pectocarya spp.,Native,Unknown,Forb
+PECTO,Pectocarya,Native,Annual,Forb
+PEHE,Pectocarya heterocarpa,Native,Annual,Forb
+PEPA2,Pectis papposa,Native,Annual,Forb
+PEPA8,Penstemon palmeri,Native,Perennial,Forb
+PEPL,Pectocarya platycarpa,Native,Annual,Forb
+PERE,Pectocarya recurvata,Native,Annual,Forb
+PHDI,Phacelia distans,Native,Unknown,Forb
+PHLO2,Phlox longifolia,Native,Perennial,Forb
+PHNE3,Phacelia neomexicana,Native,Annual,Forb
+PHSPP,Phacelia spp.,Native,Unknown,Forb
+PHYSA,Physalis,Unknown,Unknown,Forb
+PLANT,Plantago,Unknown,Unknown,Forb
+PLAR,Plagiobothrys arizonicus,Native,Annual,Forb
+PLASPP,Plantago spp.,Unknown,Unknown,Forb
+PLJA,Pleuraphis jamesii,Native,Perennial,Grass
+PLMU3,Pleuraphis mutica,Native,Perennial,Grass
+PLOV,Plantago ovata,Native,Annual,Forb
+PLPA2,Plantago patagonica,Native,Annual,Forb
+PLPR3,Plagiobothrys pringlei,Native,Annual,Forb
+POBI,Poa bigelovii,Native,Annual,Grass
+POOL,Portulaca oleracea,Unknown,Annual,Forb
+POPI3,Portulaca pilosa,Native,Unknown,Forb
+PORSPP,Portulaca spp.,Native,Unknown,Forb
+POSE,Poa secunda,Native,Perennial,Grass
+POUM,Portulaca umbraticola,Native,Annual,Forb
+PRGL2,Prosopis glandulosa,Native,Perennial,Shrub
+PROACASPP,Mesquite/Acacia species,Native/Unknown,Perennial,Shrub
+PROBO,Proboscidea spp.,Native,Unknown,Forb
+PRVE,Prosopis velutina,Native,Perennial,Shrub
+PSCA11,Pseudognaphalium canescens,Native,Unknown,Forb
+PSSP6,Pseudoroegneria spicata,Native,Perennial,Grass
+S-HEBO,Hedysarum boreale,Native,Perennial,Forb
+S-PASM,Pascopyrum smithii,Native,Perennial,Grass
+S-UNFO2,Seeded unknown forb 2,Native,Perennial,Forb
+S-UNGR1,Seeded unknown grass 1,Native,Perennial,Grass
+S-UNGR2,Seeded unknown grass 2,Native,Perennial,Grass
+S-UNGR3,Seeded unknown grass 3,Native,Perennial,Grass
+S-UNGR4,Seeded unknown grass 4,Native,Perennial,Grass
+S-UNGR5,Seeded unknown grass 5,Native,Perennial,Grass
+SAAB,Sanvitalia abertii,Native,Annual,Forb
+SACO6,Salvia columbariae,Native,Annual,Forb
+SARE3,Salvia reflexa,Native,Annual,Forb
+SATR12,Salsola tragus,Introduced,Annual,Forb
+SCBA,Schismus barbatus,Introduced,Annual,Grass
+SCMU6,Schkuhria multiflora,Native,Annual,Forb
+SCPI3,Schkuhria pinnata,Unknown,Annual,Forb
+SEBA2,Senna bacillaris,Native,Perennial,Shrub
+SEBA3,Senna bauhinioides,Native,Perennial,Forb
+SECO10,Senna covesii,Native,Perennial,Forb
+SIAB,Sida abutifolia,Introduced,Unknown,Forb
+SIAL,Sisymbrium altissimum,Introduced,Annual,Forb
+SIAL2,Sisymbrium altissimum,Introduced,Annual,Forb
+SIAN2,Silene antirrhina,Native,Annual,Forb
+SIDSPP,Sida spp.,Native/Unknown,Unknown,Forb
+SIIR,Sisymbrium irio,Introduced,Annual,Forb
+SINE,Sida neomexicana,Native,Perennial,Forb
+SOEL,Solanum elaeagnifolium,Native,Perennial,Forb
+SOOL,Sonchus oleraceus,Introduced,Annual,Forb
+SORO,Solanum rostratum,Native,Annual,Forb
+SOSP,Solanum spp.,Native/Unknown,Unknown,Forb
+SPAI,Sporobolus airoides,Native,Perennial,Grass
+SPAM2,Sphaeralcea ambigua,Native,Perennial,Forb
+SPAMA,Sphaeralcea ambigua,Native,Perennial,Forb
+SPCO,Sphaeralcea coccinea,Native,Perennial,Forb
+SPCR,Sporobolus cryptandrus,Native,Perennial,Grass
+SPEC2,Spermolepis echinata,Native,Annual,Forb
+SPGR2,Sphaeralcea grossulariifolia,Native,Perennial,Forb
+SPSP,Sphaeralcea spp.,Native/Unknown,Unknown,Forb
+STGN,Stylocline gnaphalioides,Native,Annual,Forb
+STISPP,Stipa spp.,Native/Unknown,Unknown,Grass
+SUNGR,Seeded unknown grass (?),Native,Perennial,Shrub
+TAPO5,Talinum polygaloides,Native,Perennial,Forb
+TILA2,Tidestromia lanuginosa,Native,Annual,Forb
+TOIN,Townsendia incana,Native,Unknown,Forb
+Trifolium,Trifolium spp.,Unknown,Unknown,Forb
+TRMU,Tridens muticus,Native,Perennial,Grass
+TRPI,Tradescantia pinetorum,Native,Perennial,Forb
+TRTE,Tribulus terrestris,Introduced,Annual,Forb
+UCHEN1,UCHEN1 (?),Unknown,Unknown,Unknown
+UCHEN2,UCHEN2 (?),Unknown,Unknown,Unknown
+UNDPF,Unknown dead pod forb,Unknown,Unknown,Forb
+UNDSF,Unknown dead spikey forb,Unknown,Unknown,Forb
+UNFO,Unknown forb,Unknown,Unknown,Forb
+UNFO_P_1,Unknown forb; small reddish purple rosette with ovate leaves (Spring 2021),Unknown,Unknown,Forb
+UNFO_P_2,"Unknown forb; Pinated leaves, upright rosette, lighter green, Ambrosia?  (Spring 2021)",Unknown,Unknown,Forb
+UNFO_P_3,"Unknown forb; Fabeacea (pea), long and spindly (Spring 2021)",Unknown,Unknown,Forb
+UNFO_P_4,"Unkown forb; Unknown Fabeacea (Pea), short and fuzzy, chunky, Acmispon Brachycarpus? (Spring 2021)",Unknown,Unknown,Forb
+UNFO_P_5,"Unknown forb; Prominent mid-vein, leaf doesn't completely surround/there's good amount of petiole, ovate leaves that're slightly speckled, oenothera? (Spring 2021)",Unknown,Unknown,Forb
+UNFO_P_6,"Unknown forb; Super tiny, red thin stem like SAIB but the top leaves are compounded with 3 leaflets, Amaranthaceae? (Spring 2021)",Unknown,Unknown,Forb
+UNFO_P_7,"Unknown forb; Rosette leaves slightly fuzzy and silvery light green. simple leaves, smells like bandaids (Spring 2021)",Unknown,Unknown,Forb
+UNFO_S_1,"Unknown forb; Purple vine, sagitate leaves (Spring 2021)",Unknown,Unknown,Forb
+UNFO_S_3,"Unknown forb; Fuzzy green penately arranged leaflets, partially pinated lobes ""thick poppy"" possibly an ambrosia (Spring 2021)",Unknown,Unknown,Forb
+UNFO_S_4,"Unknown forb; Super tiny, very spikey, pinately lobed, possible cryptantha or plagiobothrys (Spring 2021)",Unknown,Unknown,Forb
+UNFO_S_5,"Unknown forb; Silky hairy fuzzy, straight leaves, no prominent veination, pseudognaphalium? (Spring 2021)",Unknown,Unknown,Forb
+UNFO_S_7,"Unknown forb; ""artichoke head"", stem leaves alternate, basal rosette, possibly cryptantha? (Spring 2021)",Unknown,Unknown,Forb
+UNFO1,Unknown forb (Patagonia and SRER are same); upright mustard with tiny blueish flower,Unknown,Unknown,Forb
+UNFO1,"Unknown forb (SRER) - Tiny yellow flowers, forked leaves",Unknown,Unknown,Forb
+UNFO10,Unknown forb 10,Unknown,Unknown,Forb
+UNFO11,Unknown forb 11,Unknown,Unknown,Forb
+UNFO12,Unknown forb 12,Unknown,Unknown,Forb
+UNFO13,Unknown forb 13,Unknown,Unknown,Forb
+UNFO14,Unknown forb 14,Unknown,Unknown,Forb
+UNFO16,Unknown forb 16,Unknown,Unknown,Forb
+UNFO1A,"Unknown forb (Patagonia, Nov 2019) = Darker Green, 5 petals radiating out",Unknown,Unknown,Forb
+UNFO2,"Unknown forb (Patagonia); low to ground, succulenty, tiny white flowers, similar to purslane",Unknown,Unknown,Forb
+UNFO2A,Unknown forb 2A,Unknown,Unknown,Forb
+UNFO3,Unknown forb (Patagonia); upright mustard with small pods and tiny yellow flowers,Unknown,Unknown,Forb
+UNFO3,"Unknown forb (SRER); tiny reddish basal leaves, star-like petals",Unknown,Unknown,Forb
+UNFO4,"Unknown forb (SRER); very hairy radiating out/up, fuzzy rosettes",Unknown,Unknown,Forb
+UNFO5,"Unknown forb (Patagonia); Similar to dandelion, yellow closed flowers",Unknown,Unknown,Forb
+UNFO5,Unknown forb (SRER); Little carrot with tiny white flowers and thin leaves,Unknown,Unknown,Forb
+UNFO6,"Unknown forb; green, young, radiating basal leaves; slightly fuzzy; Patagonia",Unknown,Unknown,Forb
+UNFO6,"Unknown forb (SRER); Very small, long slender leaves, fuzzy, leaf toothed around margins. Possibly Heterotheca grandiflora",Unknown,Unknown,Forb
+UNFO7,Unknown forb 7,Unknown,Unknown,Forb
+UNFO8,Unknown forb 8,Unknown,Unknown,Forb
+UNFO9,Unknown forb 9,Unknown,Unknown,Forb
+UNFS,Unknown forb seedling,Unknown,Unknown,Forb
+UNGR,Unknown grass,Unknown,Unknown,Grass
+UNGR_P_1,Unknown grass; Possibly small ARIsp. (Spring 2021),Unknown,Unknown,Grass
+UNGR_S_1,Unknown grass; Grass seedling short erose ligule slight chance ARPU because of 45 degree leaf or possibly a Vulpia sp. like VUOC (Spring 2021),Unknown,Unknown,Grass
+UNGR_S_2,Unknown grass; Possibly a BOCU or another Bouteloua (Spring 2021),Native,Unknown,Grass
+UNGR1,Unknown grass (SantaRita); Possibly BOER or Aristida spp (so likely unseeded),Native,Unknown,Grass
+UNGR2,Unknown grass 2,Unknown,Unknown,Grass
+UNGR3,Unknown grass 3,Unknown,Unknown,Grass
+UNGR4,Unknown grass 4,Unknown,Unknown,Grass
+UNGR5,Unknown grass 5,Unknown,Unknown,Grass
+UNGRS1,"Unknown grass (Patagonia);Unk. grass seedling, bunchy, possible lovegrass?",Unknown,Unknown,Grass
+UNGRS1,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes",Unknown,Unknown,Grass
+UNGRS2,"Unknown grass (Patagonia); Unk grass seedling, leaf divided early like BOGR, possible lovegrass?",Unknown,Unknown,Grass
+UNGRS3,"Unknown grass (Patagonia); Lighter green, thin leaves, possible threeawn?",Unknown,Unknown,Grass
+UNK brown,Unknown brown,Unknown,Unknown,Forb
+Unk bunchGrass #1,Could be BOCU,Unknown,Unknown,Grass
+Unk dark,Unknown with dark hairy leaf and dark margin; resembles BAMU,Unknown,Unknown,Forb
+unk forb,Unknown forb,Unknown,Unknown,Forb
+Unk forb,Unknown forb,Unknown,Unknown,Forb
+UNK Fuzzy astr,Unknown fuzzy aster,Unknown,Unknown,Forb
+unk grass,Unknown grass,Unknown,Unknown,Grass
+Unk grass,Unknown likely associated with warm seed mix,Unknown,Unknown,Grass
+unk grass 1,Unknown grass 1,Unknown,Unknown,Grass
+Unk grass 1,Unknown grass 1,Unknown,Unknown,Grass
+unk grass 2,Unknown grass 2,Unknown,Unknown,Grass
+Unk heart,Unknown forb with heart-shaped cotyledon; possibly MAPA5 (although that species not seen growing there),Unknown,Unknown,Forb
+UNK heart,Unknown forb with heart-shaped cotyledon; possibly MAPA5 (although that species not seen growing there),Unknown,Unknown,Forb
+Unk sp.,Unknown species,Unknown,Unknown,Unknown
+Unkaster,Unknown aster,Unknown,Unknown,Forb
+Unkastr2,Unknown aster,Unknown,Unknown,Forb
+UnkATCA,Unknown shrub; Possible Atriplex canescens,Native/Unknown,Unknown,Shrub
+Unkcrypt,"Unknown forb; Tiniest of forbs that while can distinguish from other species, cannot ID bc no distinguishing characteristics. Looks like it could turn into a cryptantha? But maybe not.",Unknown,Unknown,Forb
+Unkcrypt,Cryptantha spp.,Native,Unknown,Forb
+Unkfabaceae,Unknown fabaceae,Unknown,Unknown,Forb
+Unkforb,"Unknown forb; Like the generic ""Unkgrass"" unkforb is an unknown forb that has no distinguishing characteristics other than being a forb, thus a few are lumped into this category.",Unknown,Unknown,Forb
+Unkforb,Unknown forb,Unknown,Unknown,Forb
+UnkForb,Unknown forb,Unknown,Unknown,Forb
+Unkforb1,Unknown forb,Unknown,Unknown,Forb
+UnkForb1,Unknown forb 1,Unknown,Unknown,Forb
+Unkforb3,"Unknown forb;  Looks like annual poppy from genus Eschscholzia, but so super tiny can't quite tell. Only one observed in all plots.",Unknown,Unknown,Forb
+Unkforb3,Unknown forb,Unknown,Unknown,Forb
+Unkforbgreen,Unknown forb;  A non descript forb (photo available) that is only found one time for one plant (MESQ-201),Unknown,Unknown,Forb
+Unkforbgreen,Unknown forb,Unknown,Unknown,Forb
+Unkforbwavy,"Unknown forb; A distinctly different plant with pale, hairy, wavy leaves. Different than other species, photo to be submitted to botanist.",Unknown,Unknown,Forb
+Unkforbwavy,Unknown forb,Unknown,Unknown,Forb
+Unkfuzzyaster,Unknown aster,Unknown,Unknown,Forb
+Unkgrass,Unknown grass; A small unknown grass that has no disstinguishing characteristics and cannot be parsed out from other Unkgrass species.,Unknown,Unknown,Grass
+Unkgrass,Unknown grass,Unknown,Unknown,Grass
+Unkgrass1,Unknown grass,Unknown,Unknown,Grass
+Unkgrass2,Unknown grass,Unknown,Unknown,Grass
+Unkgrass4,Unknown grass,Unknown,Unknown,Grass
+Unkhairygrass,Unknown grass,Unknown,Unknown,Grass
+Unkperennial grass,Unknown grass,Unknown,Perennial,Grass
+Unksalsola,Unknown forb; A very small (tiny really) forb germinant that has linear leaves like a small Salsola would. Unlikely to be salsola but best way to distinguish it from other unks.,Unknown,Unknown,Forb
+Unksalsola,Unknown forb,Unknown,Unknown,Forb
+Unksporo,Unknown grass; Sporobolus and Eragrostis,Unknown,Unknown,Grass
+Unksporob,Unknown grass; Unknown (Seeed plants) that look like they are in the Sporobolus genus (with distinct first cotyledons). So small cannot be sure but only way to distinguish between other grasses at this tiny stage.,Unknown,Unknown,Grass
+Unksporob,Sporobolus spp.,Unknown,Unknown,Grass
+UNSFF,"Unknown shrubby fuzzy forb, munched down",Unknown,Unknown,Forb
+UNSH,Unknown shrub,Unknown,Perennial,Shrub
+URLI5,Microseris lindleyi,Native,Annual,Forb
+VEEN,Verbesina encelioides,Native,Annual,Forb
+VEPEX2,Veronica peregrina ssp. xalapensis,Native,Annual,Forb
+VUOC,Vulpia octoflora,Native,Annual,Grass
+YUEL,Yucca elata,Native,Perennial,Shrub
+ZIGR,Zinnia grandiflora,Native,Perennial,Forb
+NA,0,0,0,0
