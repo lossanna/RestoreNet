@@ -18,7 +18,8 @@ subplot <- subplot.raw %>%
   mutate(raw.row = 1:nrow(subplot.raw)) %>% # row number is to be able to easily refer back to the raw data and excluded columns if needed
   rename(Count = Seedling_Count,
          Height = Average_Height_mm,
-         Seeded = `Seeded(Yes/No)`)
+         Seeded = `Seeded(Yes/No)`,
+         PlotMix = Seed_Mix)
 
 # Add Region
 subplot <- subplot %>% 
@@ -61,6 +62,25 @@ subplot$Code[subplot$Code == "EUPO3"] <- "CHPO12"
 setdiff(unique(subplot$Code), unique(species$Code))
 
 
+# Add native, duration, and lifeform information --------------------------
+
+subplot <- left_join(subplot, species) %>% 
+  select(raw.row, Region, Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix,
+         Code, Name, Native, Duration, Lifeform, Seeded, Count, Height) %>% 
+  arrange(raw.row)
+
+# Extract rows with multiple raw.row
+raw.row.multiple <- subplot %>% 
+  filter(raw.row %in% filter(subplot, duplicated(raw.row))$raw.row)
+
+nrow(raw.row.multiple) / 2 # there are 657 rows with a duplicate raw.row (all have just 1 additional duplicate)
+(nrow(subplot) - nrow(raw.row.multiple) / 2) == nrow(subplot.raw) # confirms duplicates are all in pairs
+
+# All the duplicates are from unknown species or plants only defined to genus level
+filter(raw.row.multiple, !str_detect(raw.row.multiple$Name, "Unk"))$Name
+
+
+
 # Write clean subplot data to csv -----------------------------------------
 
 write_csv(subplot,
@@ -72,6 +92,8 @@ write_csv(subplot,
 subplot.seeded <- subplot %>% 
   filter(Seeded == "Yes")
 
+subplot.seeded <- left_join(subplot.seeded, mix) %>% 
+  select(-Family, -Scientific, -Common)
 
 
 save.image("RData/02_data-wrangling.RData")

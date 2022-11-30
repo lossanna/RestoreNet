@@ -1,4 +1,4 @@
-Site,Date_Seeded,Date_Monitored,Plot,Treatment,Seed_Mix,Code,Count,Height,Seeded,raw.row,Region
+Site,Date_Seeded,Date_Monitored,Plot,Treatment,PlotMix,Code,Count,Height,Seeded,raw.row,Region
 AguaFria,2018-09-05,2018-09-25,1,Mulch,Med-Warm,0,0,0,NA,1,Colorado Plateau
 AguaFria,2018-09-05,2018-09-25,2,Seed,Med-Warm,0,0,0,NA,2,Colorado Plateau
 AguaFria,2018-09-05,2018-09-25,3,Control,None,0,0,0,NA,3,Colorado Plateau
