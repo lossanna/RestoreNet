@@ -6,7 +6,7 @@ library(tidyverse)
 subplot.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllSubplotData") %>% 
   rename(Code = Species_Code) # rename to standardize 
 plot.2x2.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllPlotData")
-species <- read_csv("data/raw/output-species_final.csv")
+species <- read_csv("data/cleaned/species_cleaned.csv")
 mix <- read_xlsx("data/raw/master-seed-mix.xlsx")
 
 
@@ -45,12 +45,33 @@ subplot <- subplot %>% # convert to date
          Date_Monitored = as.Date(Date_Monitored))
 
 
+# Replace codes with standardized ones ------------------------------------
+
+# Extract incorrect codes
+setdiff(unique(subplot$Code), unique(species$Code))
+
+# Replace codes
+subplot$Code[subplot$Code == "S-PASM"] <- "PASM"
+subplot$Code[subplot$Code == "S-HEBO"] <- "HEBO"
+subplot$Code[subplot$Code == "SPAMA"] <- "SPAM2"
+subplot$Code[subplot$Code == "ARPUP6"] <- "ARPU9"
+subplot$Code[subplot$Code == "EUPO3"] <- "CHPO12"
+
+# Check codes
+setdiff(unique(subplot$Code), unique(species$Code))
 
 
+# Write clean subplot data to csv -----------------------------------------
 
+write_csv(subplot,
+          file = "data/cleaned/subplot-data_clean.csv")
 
 
 # Subplot data for seeded species only ------------------------------------
 
 subplot.seeded <- subplot %>% 
   filter(Seeded == "Yes")
+
+
+
+save.image("RData/02_data-wrangling.RData")

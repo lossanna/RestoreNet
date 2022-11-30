@@ -204,6 +204,11 @@ filter(species, Code == "ERCI2") # correct code is missing
 species$Code[species$Name == "Eragrostis ciliaris"] <- "ERCI2"
 
 
+# Unique codes
+length(unique(species$Code))
+nrow(species) # the duplicates are due to unknowns
+
+
 
 # Write clean species list to CSV -----------------------------------------
 
