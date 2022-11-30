@@ -20,22 +20,86 @@ mix <- read_xlsx("data/raw/master-seed-mix.xlsx")
   # but then usually used to alter existing objects
 
 
+
+# Assign names to codes in subplot data but not species list --------------
+
+# Extract missing codes
+codes.missing.sub <- setdiff(subplot.raw$Code, species.raw$Code)
+
+# Add Region to subplot data for missing codes
+subplot.missing <- subplot.raw %>%
+  filter(Code %in% codes.missing.sub) 
+subplot.missing <- subplot.missing %>% 
+  mutate(Region = case_when(
+    str_detect(subplot.missing$Site, c("AguaFria|BabbittPJ|MOWE|Spiderweb|BarTBar|FlyingM|PEFO|TLE")) ~ "Colorado Plateau",
+    str_detect(subplot.missing$Site, c("CRC|UtahPJ|Salt_Desert")) ~ "Utah",
+    str_detect(subplot.missing$Site, c("29_Palms|AVRCD")) ~ "Mojave",
+    str_detect(subplot.missing$Site, c("Creosote|Mesquite")) ~ "Chihuahuan",
+    str_detect(subplot.missing$Site, c("SRER|Patagonia")) ~ "Sonoran SE",
+    str_detect(subplot.missing$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central",
+    TRUE ~ "unk")) %>% 
+  select(Region, Site, Code) %>% 
+  distinct(.keep_all = TRUE) %>% 
+  arrange(Code)
+
+# Write to csv to manually fill in information
+write_csv(subplot.missing,
+          file = "data/raw/output-species1_subplot-codes-missing.csv")
+
+
+#### manually edit new file to add name, native status, lifeform, and duration ####
+
+sub.missing.edit <- read_csv("data/raw/edited-species1_subplot-codes-missing_native-duration-lifeform.csv")
+
+
+
+# Separate location-dependent species (unknowns) --------------------------
+
+# Knowns and unknowns must be separated; 
+  # plants not defined to species level are location-specific and Site must be retained
+
+# Unknowns (location-dependent)
+species.m.unk <- species.raw %>% # from original master list
+  filter(str_detect(species.raw$Name, "Unk|unk|spp.")) %>% 
+  arrange(Region) %>% 
+  arrange(Code)
+
+sub.missing.unk <- sub.missing.edit %>% # ones missing from original master list
+  filter(str_detect(sub.missing.edit$Name, "Unk|unk|spp.")) %>% 
+  arrange(Region) %>% 
+  arrange(Code)
+
+# Knowns (location-independent), to be added at the end
+sub.missing.known <- sub.missing.edit %>% 
+  filter(!str_detect(sub.missing.edit$Name, "Unk|unk|spp.")) %>% 
+  select(-Region, -Site) %>% 
+  arrange(Code)
+  # although there are a couple names with ?s, the names and codes are unique 
+      # and not repeated across sites to refer to different plants,
+      # and therefore location-independent
+  
+
+
+#### Location-independent species (known genus & species) ###############
+
 # Add lifeform information to species list --------------------------------
 
-# Remove location data from working species list
-species <- species.raw %>% 
-  select(-Region)
+# First work only with subset of original master list
+species.m <- species.raw %>% 
+  filter(!str_detect(species.raw$Name, "Unk|unk|spp.")) %>% 
+  select(-Region) %>% 
+  arrange(Code)
 
-# Extract lifeform (functional group) information from subplot.raw data
-subplot.lifeform <- subplot.raw %>% 
+# Extract lifeform information from subplot.raw data for knowns from master
+subplot.in.lifeform <- subplot.raw %>% 
+  filter(Code %in% m.species.known$Code) %>% 
   select(Code, Functional_Group) %>% 
   distinct(.keep_all = TRUE) %>% 
   filter(Code != "0") %>% 
-  rename(Code = Code,
-         Lifeform = Functional_Group)
+  rename(Lifeform = Functional_Group)
 
-# Add subplot lifeform information to working species list
-species <- left_join(species, subplot.lifeform)
+# Add subplot lifeform information to location-independent species list
+species.in <- left_join(species.in, subplot.in.lifeform)
 
 # Standardize lifeform names to Grass/Forb/Shrub
 unique(species$Lifeform)
@@ -48,7 +112,6 @@ species <- species %>%
     TRUE ~ species$Lifeform))
 
 species <- species %>% 
-  select(Code, Name, Native, Lifeform) %>% 
   mutate(Lifeform = case_when(
     str_detect(species$Lifeform, "Shrub/subshrub") ~ "Shrub", # standardize to grass/forb/shrub
     str_detect(species$Lifeform, "shrub") ~ "Shrub",
@@ -58,21 +121,20 @@ species <- species %>%
   arrange(Code) # >345 because some don't have lifeform assigned
 
 unique(species$Lifeform) # lifeform names have been standardized, with NAs
+species$Lifeform[species$Lifeform == "NA"] <- NA # convert to real (logical) NA
+unique(species$Lifeform)
 
 
 # Check number of unique codes
 length(unique(species.raw$Code)) # should be 345 unique codes from original table
-length(species.raw$Code) # Species at multiple locations create duplicate codes
+length(species.raw$Code) # original species list had duplicate codes because of Species at multiple locations, as well as unknowns
 length(unique(species$Code)) # 345 unique codes in working species list
 
 
 # Find species without lifeform information and write to csv, to manually add information
-unique(species$Lifeform) 
-
 lifeform.na <- species %>% 
-  filter(is.na(Lifeform) |
-         Lifeform == "NA") %>% 
-  select(Code, Name, Lifeform) %>% 
+  filter(is.na(Lifeform)) %>% 
+  select(Region, Code, Name, Lifeform) %>% 
   distinct(.keep_all = TRUE) %>% 
   arrange(Code)
 

@@ -1,0 +1,107 @@
+Region,Site,Code
+Colorado Plateau,AguaFria,0
+Colorado Plateau,BabbittPJ,0
+Colorado Plateau,BarTBar,0
+Colorado Plateau,FlyingM,0
+Colorado Plateau,MOWE,0
+Colorado Plateau,PEFO,0
+Colorado Plateau,Spiderweb,0
+Colorado Plateau,TLE,0
+Mojave,29_Palms,0
+Mojave,AVRCD,0
+Utah,CRC,0
+Utah,UtahPJ,0
+Utah,Salt_Desert,0
+Sonoran SE,SRER,0
+Sonoran SE,Patagonia,0
+Sonoran Central,Pleasant,0
+Sonoran Central,Preserve,0
+Sonoran Central,Roosevelt,0
+Sonoran Central,SCC,0
+Chihuahuan,Creosote,0
+Chihuahuan,Mesquite,0
+Colorado Plateau,FlyingM,AmaranthusSpp
+Chihuahuan,Mesquite,ATCA
+Chihuahuan,Mesquite,BAHI
+Sonoran SE,SRER,DeadStem
+Sonoran Central,Preserve,ERDI2
+Utah,UtahPJ,ERIGSPP
+Utah,UtahPJ,Eriogonum sp.
+Sonoran SE,Patagonia,ERISPP
+Sonoran SE,SRER,FESSPP
+Utah,CRC,LILE
+Colorado Plateau,AguaFria,LUSP
+Colorado Plateau,Spiderweb,NA
+Chihuahuan,Mesquite,PAHI7
+Colorado Plateau,BabbittPJ,PHNE3
+Utah,UtahPJ,S-HEBO
+Utah,Salt_Desert,S-PASM
+Utah,CRC,S-PASM
+Utah,UtahPJ,S-PASM
+Utah,CRC,S-UNFO2
+Utah,Salt_Desert,S-UNFO2
+Utah,CRC,S-UNGR1
+Utah,Salt_Desert,S-UNGR1
+Utah,CRC,S-UNGR2
+Utah,Salt_Desert,S-UNGR2
+Utah,UtahPJ,S-UNGR2
+Utah,CRC,S-UNGR3
+Utah,Salt_Desert,S-UNGR3
+Utah,UtahPJ,S-UNGR3
+Utah,CRC,S-UNGR4
+Utah,UtahPJ,S-UNGR4
+Utah,UtahPJ,S-UNGR5
+Chihuahuan,Mesquite,SEBA2
+Colorado Plateau,TLE,SUNGR
+Colorado Plateau,BabbittPJ,SUNGR
+Chihuahuan,Mesquite,Trifolium
+Colorado Plateau,PEFO,UCHEN1
+Colorado Plateau,PEFO,UCHEN2
+Colorado Plateau,FlyingM,UNFO
+Colorado Plateau,Spiderweb,UNFO
+Utah,UtahPJ,UNFO10
+Utah,UtahPJ,UNFO11
+Colorado Plateau,BarTBar,UNFO12
+Colorado Plateau,BarTBar,UNFO13
+Colorado Plateau,BarTBar,UNFO14
+Colorado Plateau,BarTBar,UNFO16
+Mojave,AVRCD,UNFO2A
+Colorado Plateau,AguaFria,UNFO7
+Colorado Plateau,BarTBar,UNFO7
+Colorado Plateau,FlyingM,UNFO7
+Colorado Plateau,Spiderweb,UNFO7
+Utah,UtahPJ,UNFO7
+Colorado Plateau,AguaFria,UNFO8
+Colorado Plateau,BarTBar,UNFO8
+Colorado Plateau,Spiderweb,UNFO8
+Utah,UtahPJ,UNFO8
+Colorado Plateau,BarTBar,UNFO9
+Utah,UtahPJ,UNFO9
+Colorado Plateau,AguaFria,UNGR
+Colorado Plateau,BabbittPJ,UNGR
+Colorado Plateau,BarTBar,UNGR
+Colorado Plateau,FlyingM,UNGR
+Colorado Plateau,MOWE,UNGR
+Colorado Plateau,PEFO,UNGR
+Colorado Plateau,Spiderweb,UNGR
+Colorado Plateau,TLE,UNGR
+Utah,UtahPJ,UNGR
+Colorado Plateau,AguaFria,UNGR2
+Colorado Plateau,MOWE,UNGR2
+Colorado Plateau,PEFO,UNGR2
+Utah,UtahPJ,UNGR2
+Colorado Plateau,AguaFria,UNGR3
+Colorado Plateau,MOWE,UNGR3
+Colorado Plateau,PEFO,UNGR3
+Utah,UtahPJ,UNGR3
+Colorado Plateau,AguaFria,UNGR4
+Colorado Plateau,MOWE,UNGR4
+Utah,Salt_Desert,UNGR4
+Utah,UtahPJ,UNGR4
+Colorado Plateau,AguaFria,UNGR5
+Chihuahuan,Mesquite,UNK Fuzzy astr
+Chihuahuan,Mesquite,Unkaster
+Chihuahuan,Mesquite,UnkForb
+Chihuahuan,Creosote,UnkForb1
+Utah,UtahPJ,NA
+Utah,Salt_Desert,NA

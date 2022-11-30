@@ -1,59 +1,59 @@
-Code,Name,Lifeform
-AMDU2,Ambrosia dumosa,NA
-AMSIN,Amsinckia,NA
-ARNE2,Argythamnia neomexicana,NA
-ASTRAG,Astragalus spp.,NA
-BOBAB3,Bouteloua barbata v. barbata,NA
-BOER,Bouteloua eriopoda,NA
-BOIN3,Bowlesia incana,NA
-BRDI3,Bromus diandrus,NA
-CACLL,Camissonia claviformis,NA
-CAEXE,Castilleja exserta,NA
-CEME2,Centaurea melitensis,NA
-CHEN,Unknown chenopod,NA
-CLESP,Cleome spp.,NA
-COAU2,Corydalis aurea,NA
-COEQ,Convolvulus equitans,NA
-DESO2,Descurainia sophia,NA
-DRCU,Draba cuneifolia,NA
-DRCUI,Draba cuneifolia,NA
-ENDE,Enneapogon desvauxii,NA
-ENFA,Encelia farinosa,NA
-ERAB2,Eriogonum abertianum,NA
-ERCI,Eragrostis cilianensis,NA
-ERCI,Eragrostis ciliaris,NA
-ERER2,Eriastrum eremicum,NA
-ERLA12,Ericameria laricifolia,NA
-ERTR8,Eriogonum trichopes,NA
-ERVE5,Eruca vesicaria,NA
-ESCAM,Eschscholzia californica,NA
-EUME3,Chamaesyce melanadenia,NA
-EUPSPP,Euphorbia spp.,NA
-GNPA,Gnaphalium palustre,NA
-HAGL,Halogeton glomeratus,NA
-HAGL,Halogeton glomeratus,NA
-IPLO2,Ipomopsis longiflora,NA
-LIBI2,Linanthus bigelovii,NA
-LUSPP,Lupinus spp.,NA
-MAGR10,Machaeranthera gracilis,NA
-MILA6,Mirabilis laevis,NA
-MUPO2,Muhlenbergia porteri,NA
-NAHI,Nama hispidum,NA
-PAMI5,Parkinsonia microphylla,NA
-PHYSA,Physalis,NA
-PLMU3,Pleuraphis mutica,NA
-PROBO,Proboscidea spp.,NA
-PRVE,Prosopis velutina,NA
-PSSP6,Pseudoroegneria spicata,NA
-SATR12,Salsola tragus,NA
-SATR12,Salsola iberica,NA
-SEBA3,Senna bauhinioides,NA
-SIAL,Sisymbrium altissimum,NA
-SPAI,Sporobolus airoides,NA
-SPSP,Sphaeralcea spp.,NA
-Unk dark,Unknown with dark hairy leaf and dark margin; resembles BAMU,NA
-Unk sp.,Unknown species,NA
-Unkastr2,Unknown aster,NA
-Unkfuzzyaster,Unknown aster,NA
-URLI5,Microseris lindleyi,NA
-YUEL,Yucca elata,NA
+Region,Code,Name,Lifeform
+NA,AMDU2,Ambrosia dumosa,NA
+NA,AMSIN,Amsinckia,NA
+NA,ARNE2,Argythamnia neomexicana,NA
+Chihuahuan,ASTRAG,Astragalus spp.,NA
+NA,BOBAB3,Bouteloua barbata v. barbata,NA
+NA,BOER,Bouteloua eriopoda,NA
+NA,BOIN3,Bowlesia incana,NA
+NA,BRDI3,Bromus diandrus,NA
+NA,CACLL,Camissonia claviformis,NA
+NA,CAEXE,Castilleja exserta,NA
+NA,CEME2,Centaurea melitensis,NA
+Colorado Plateau,CHEN,Unknown chenopod,NA
+Colorado Plateau,CLESP,Cleome spp.,NA
+NA,COAU2,Corydalis aurea,NA
+NA,COEQ,Convolvulus equitans,NA
+Colorado Plateau,CRYSPP,Cryptantha spp.,NA
+NA,DESO2,Descurainia sophia,NA
+NA,DRCU,Draba cuneifolia,NA
+NA,DRCUI,Draba cuneifolia,NA
+NA,ENDE,Enneapogon desvauxii,NA
+NA,ENFA,Encelia farinosa,NA
+NA,ERAB2,Eriogonum abertianum,NA
+NA,ERCI,Eragrostis cilianensis,NA
+NA,ERCI,Eragrostis ciliaris,NA
+NA,ERER2,Eriastrum eremicum,NA
+NA,ERLA12,Ericameria laricifolia,NA
+NA,ERTR8,Eriogonum trichopes,NA
+NA,ERVE5,Eruca vesicaria,NA
+NA,ESCAM,Eschscholzia californica,NA
+NA,EUME3,Chamaesyce melanadenia,NA
+Mojave,EUPSPP,Euphorbia spp.,NA
+NA,GNPA,Gnaphalium palustre,NA
+NA,HAGL,Halogeton glomeratus,NA
+NA,IPLO2,Ipomopsis longiflora,NA
+NA,LIBI2,Linanthus bigelovii,NA
+Colorado Plateau,LUSPP,Lupinus spp.,NA
+NA,MAGR10,Machaeranthera gracilis,NA
+NA,MILA6,Mirabilis laevis,NA
+NA,MUPO2,Muhlenbergia porteri,NA
+NA,NAHI,Nama hispidum,NA
+NA,PAMI5,Parkinsonia microphylla,NA
+NA,PHYSA,Physalis,NA
+NA,PLMU3,Pleuraphis mutica,NA
+Chihuahuan,PROBO,Proboscidea spp.,NA
+NA,PRVE,Prosopis velutina,NA
+NA,PSSP6,Pseudoroegneria spicata,NA
+NA,SATR12,Salsola tragus,NA
+NA,SATR12,Salsola iberica,NA
+NA,SEBA3,Senna bauhinioides,NA
+NA,SIAL,Sisymbrium altissimum,NA
+NA,SPAI,Sporobolus airoides,NA
+Colorado Plateau,SPSP,Sphaeralcea spp.,NA
+Sonoran Central,Unk dark,Unknown with dark hairy leaf and dark margin; resembles BAMU,NA
+Sonoran Central,Unk sp.,Unknown species,NA
+Chihuahuan,Unkastr2,Unknown aster,NA
+Chihuahuan,Unkfuzzyaster,Unknown aster,NA
+NA,URLI5,Microseris lindleyi,NA
+NA,YUEL,Yucca elata,NA
