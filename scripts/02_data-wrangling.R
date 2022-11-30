@@ -10,7 +10,7 @@ species <- read_csv("data/raw/output-species_final.csv")
 mix <- read_xlsx("data/raw/master-seed-mix.xlsx")
 
 
-# All subplot data --------------------------------------------------------
+# Organize columns --------------------------------------------------------
 
 # Narrow down subplot.raw columns
 subplot <- subplot.raw %>% 
@@ -45,27 +45,8 @@ subplot <- subplot %>% # convert to date
          Date_Monitored = as.Date(Date_Monitored))
 
 
-# Standardize codes for known species -------------------------------------
 
-# Extract species with multiple codes for the same name, retaining all codes
-codes.multiple <- species %>% 
-  filter(Name %in% filter(species, duplicated(Name))$Name) %>% 
-  arrange(Name) 
 
-# Examine exact species only
-codes.fix <- codes.multiple %>% 
-  filter(!str_detect(Name, "spp.|Unk|0"))
-
-# Compare codes with those from species list
-species %>% 
-  filter(Name %in% codes.fix$Name) # both versions are in species list, also
-
-# Compare codes with those from seed mix
-mix.codes <- mix %>% 
-  filter(Code %in% codes.fix$Code) %>% 
-  select(Scientific, Code) %>% 
-  distinct(.keep_all = TRUE) %>% 
-  arrange(Code)
 
 
 

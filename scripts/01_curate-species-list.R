@@ -7,6 +7,7 @@ subplot.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "
   rename(Code = Species_Code) # rename to standardize 
 plot.2x2.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllPlotData")
 species.raw <- read_xlsx("data/raw/master-species_native.xlsx")
+mix <- read_xlsx("data/raw/master-seed-mix.xlsx")
 
 
 # Notes about manual edits ------------------------------------------------
@@ -154,6 +155,56 @@ species <- bind_rows(species, codes.missing.sub.edit) %>%
 
 
 
+# Standardize codes for known species -------------------------------------
+
+# Extract species with multiple codes for the same name, retaining all codes
+codes.multiple <- species %>% 
+  filter(Name %in% filter(species, duplicated(Name))$Name) %>% 
+  arrange(Name) 
+
+# Examine exact species only
+codes.fix <- codes.multiple %>% 
+  filter(!str_detect(Name, "spp.|Unk|0"))
+
+# Compare codes with those from seed mix
+mix.codes <- mix %>% 
+  filter(Code %in% codes.fix$Code) %>% 
+  select(Scientific, Code) %>% 
+  distinct(.keep_all = TRUE) %>% 
+  arrange(Code)
+
+# Gather standardized codes based on USDA Plants
+codes.standardized <- codes.fix %>% 
+  filter(Code %in% c(mix.codes$Code, "CHPO12", "SIAL2")) %>% 
+  mutate(Old_Code = c("ARPUP6", "BOER", "EUPO3", "S-HEBO", "S-PASM", "SIAL", "SPAMA")) %>% 
+  select(Old_Code, Code, Name)
+# DRCU/DRCUI and ESCA/ESCAM refer to different varieties, so specificity is retained
+
+# Remove wrong codes from species list
+species <- species %>% 
+  filter(!Code %in% codes.standardized$Old_Code) %>% 
+  arrange(Code)
+
+species %>% 
+  filter(Code %in% codes.standardized$Old_Code) # no old codes show up
+species %>% 
+  filter(Code %in% codes.standardized$Code) # all codes have been correctly replaced
+
+
+# Find codes with multiple species
+names.multiple <- species %>% 
+  filter(Code %in% filter(species, duplicated(Code))$Code) %>% 
+  filter(!str_detect(Name, "spp.|Unk|0")) %>% 
+  filter(!Code %in% codes.standardized$Code) %>% 
+  arrange(Code) 
+filter(species, Name == "Eragrostis ciliaris") # name only occurs once
+filter(species, Code == "ERCI2") # correct code is missing
+
+# Fix code for ERCI
+species$Code[species$Name == "Eragrostis ciliaris"] <- "ERCI2"
+
+
+
 # Write clean species list to CSV -----------------------------------------
 
 # Check for missing information
@@ -163,7 +214,7 @@ unique(species$Lifeform)
 
 # Write to csv
 write_csv(species,
-          file = "data/raw/output-species_final.csv")
+          file = "data/cleaned/species_cleaned.csv")
 
 
 # Codes from AllPlotData (2x2 plots) --------------------------------------

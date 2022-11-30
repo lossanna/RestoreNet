@@ -26,7 +26,6 @@ ARFR4,Artemisia frigida,Native,Perennial,Shrub
 ARISPP,Aristida spp.,Native,Unknown,Grass
 ARNE2,Argythamnia neomexicana,Native,Unknown,Forb
 ARPU9,Aristida purpurea,Native,Perennial,Grass
-ARPUP6,Aristida purpurea,Native,Perennial,Grass
 ARSPP,Artemisia spp.,Native/Unknown,Unknown,Shrub
 ARTE3,Aristida ternipes,Native,Perennial,Grass
 ARWA,Aristolochia watsonii,Native,Perennial,Forb
@@ -48,7 +47,6 @@ BOBA2,Bouteloua barbata,Native,Annual,Grass
 BOBAB3,Bouteloua barbata v. barbata,Native,Annual,Grass
 BOCO,Boerhavia coccinea,Native,Perennial,Forb
 BOCU,Bouteloua curtipendula,Native,Perennial,Grass
-BOER,Bouteloua eriopoda,Native,Perennial,Grass
 BOER4,Bouteloua eriopoda,Native,Perennial,Grass
 BOERH2,Boerhavia,Native,Unknown,Forb
 BOGR2,Bouteloua gracilis,Native,Perennial,Grass
@@ -121,7 +119,7 @@ ENFA,Encelia farinosa,Native,Perennial,Shrub
 ERAB2,Eriogonum abertianum,Native,Annual,Forb
 ERASPP,"Eragrostis spp., ERCU or ERLE",Unknown,Unknown,Grass
 ERCI,Eragrostis cilianensis,Introduced,Annual,Grass
-ERCI,Eragrostis ciliaris,Introduced,Annual,Grass
+ERCI2,Eragrostis ciliaris,Introduced,Annual,Grass
 ERCI6,Erodium cicutarium,Introduced,Annual,Forb
 ERCU2,Eragrostis curvula,Introduced,Perennial,Grass
 ERDI2,Eriastrum diffusum,Native,Annual,Forb
@@ -146,7 +144,6 @@ ESCA2,Eschscholzia californica,Native,Unknown,Forb
 ESCAM,Eschscholzia californica,Native,Unknown,Forb
 EUAB,Chamaesyce abramsiana,Native,Annual,Forb
 EUME3,Chamaesyce melanadenia,Native,Perennial,Forb
-EUPO3,Chamaesyce polycarpa,Native,Unknown,Forb
 EUPSPP,Euphorbia spp.,Native/Unknown,Unknown,Forb
 EVAR,Evolvulus arizonicus,Native,Perennial,Forb
 FESSPP,FES (fescue?) spp.,Unknown,Unknown,Grass
@@ -254,8 +251,6 @@ PROBO,Proboscidea spp.,Native,Unknown,Forb
 PRVE,Prosopis velutina,Native,Perennial,Shrub
 PSCA11,Pseudognaphalium canescens,Native,Unknown,Forb
 PSSP6,Pseudoroegneria spicata,Native,Perennial,Grass
-S-HEBO,Hedysarum boreale,Native,Perennial,Forb
-S-PASM,Pascopyrum smithii,Native,Perennial,Grass
 S-UNFO2,Seeded unknown forb 2,Native,Perennial,Forb
 S-UNGR1,Seeded unknown grass 1,Native,Perennial,Grass
 S-UNGR2,Seeded unknown grass 2,Native,Perennial,Grass
@@ -273,7 +268,6 @@ SEBA2,Senna bacillaris,Native,Perennial,Shrub
 SEBA3,Senna bauhinioides,Native,Perennial,Forb
 SECO10,Senna covesii,Native,Perennial,Forb
 SIAB,Sida abutifolia,Introduced,Unknown,Forb
-SIAL,Sisymbrium altissimum,Introduced,Annual,Forb
 SIAL2,Sisymbrium altissimum,Introduced,Annual,Forb
 SIAN2,Silene antirrhina,Native,Annual,Forb
 SIDSPP,Sida spp.,Native/Unknown,Unknown,Forb
@@ -285,7 +279,6 @@ SORO,Solanum rostratum,Native,Annual,Forb
 SOSP,Solanum spp.,Native/Unknown,Unknown,Forb
 SPAI,Sporobolus airoides,Native,Perennial,Grass
 SPAM2,Sphaeralcea ambigua,Native,Perennial,Forb
-SPAMA,Sphaeralcea ambigua,Native,Perennial,Forb
 SPCO,Sphaeralcea coccinea,Native,Perennial,Forb
 SPCR,Sporobolus cryptandrus,Native,Perennial,Grass
 SPEC2,Spermolepis echinata,Native,Annual,Forb
