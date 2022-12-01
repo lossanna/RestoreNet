@@ -190,71 +190,80 @@ apply(species.in, 2, anyNA)
 
 
 
-# Standardize codes for known species -------------------------------------
+# Standardize codes for location-independent species ----------------------
 
 # Extract species with multiple codes for the same name, retaining all codes
-codes.multiple <- species %>% 
-  filter(Name %in% filter(species, duplicated(Name))$Name) %>% 
+codes.fix.in <- species.in %>% 
+  filter(Name %in% filter(species.in, duplicated(Name))$Name) %>% 
+  distinct(.keep_all = TRUE) %>% 
   arrange(Name) 
-
-# Examine exact species only
-codes.fix <- codes.multiple %>% 
-  filter(!str_detect(Name, "spp.|Unk|0"))
 
 # Compare codes with those from seed mix
 mix.codes <- mix %>% 
-  filter(Code %in% codes.fix$Code) %>% 
+  filter(Code %in% codes.fix.in$Code) %>% 
   select(Scientific, Code) %>% 
   distinct(.keep_all = TRUE) %>% 
-  arrange(Code)
+  arrange(Code) # codes need to match ones from seed mix
 
 # Gather standardized codes based on USDA Plants
-codes.standardized <- codes.fix %>% 
+codes.standardized.in <- codes.fix.in %>% 
   filter(Code %in% c(mix.codes$Code, "CHPO12", "SIAL2")) %>% 
   mutate(Old_Code = c("ARPUP6", "BOER", "EUPO3", "S-HEBO", "S-PASM", "SIAL", "SPAMA")) %>% 
   select(Old_Code, Code, Name)
-# DRCU/DRCUI and ESCA/ESCAM refer to different varieties, so specificity is retained
+  # DRCU/DRCUI and ESCA/ESCAM refer to different varieties, so specificity is retained
 
 # Remove wrong codes from species list
-species <- species %>% 
-  filter(!Code %in% codes.standardized$Old_Code) %>% 
+species.in <- species.in %>% 
+  filter(!Code %in% codes.standardized.in$Old_Code) %>% 
   arrange(Code)
 
-species %>% 
-  filter(Code %in% codes.standardized$Old_Code) # no old codes show up
-species %>% 
-  filter(Code %in% codes.standardized$Code) # all codes have been correctly replaced
+species.in %>% 
+  filter(Code %in% codes.standardized.in$Old_Code) # no old codes show up
+species.in %>% 
+  filter(Code %in% codes.standardized.in$Code) # all codes have been correctly replaced
 
 
 # Find codes with multiple species
-names.multiple <- species %>% 
-  filter(Code %in% filter(species, duplicated(Code))$Code) %>% 
-  filter(!str_detect(Name, "spp.|Unk|0")) %>% 
-  filter(!Code %in% codes.standardized$Code) %>% 
+names.fix.in <- species.in %>% 
+  filter(Code %in% filter(species.in, duplicated(Code))$Code) %>% 
   arrange(Code) 
-filter(species, Name == "Eragrostis ciliaris") # name only occurs once
-filter(species, Code == "ERCI2") # correct code is missing
+filter(species.in, Name == "Eragrostis ciliaris") # name only occurs once
+filter(species.in, Code == "ERCI2") # correct code is missing
 
 # Fix code for ERCI
-species$Code[species$Name == "Eragrostis ciliaris"] <- "ERCI2"
+species.in$Code[species.in$Name == "Eragrostis ciliaris"] <- "ERCI2"
 
 
 # Unique codes
-length(unique(species$Code))
-nrow(species) # the duplicates are due to unknowns
+length(unique(species.in$Code)) == nrow(species.in) # all codes in species list are unique
 
 
 
-# Write clean species list to CSV -----------------------------------------
+# Write clean species.in list to CSV -----------------------------------------
 
 # Check for missing information
-unique(species$Native)
-unique(species$Duration)
-unique(species$Lifeform)
+unique(species.in$Native)
+unique(species.in$Duration)
+unique(species.in$Lifeform)
 
 # Write to csv
-write_csv(species,
-          file = "data/cleaned/species_cleaned.csv")
+write_csv(species.in,
+          file = "data/cleaned/location-independent-species_clean.csv")
+
+
+
+# Location-dependent species (unknowns) -----------------------------------
+
+species.de <- bind_rows(species.m.unk, sub.missing.unk)
+
+# Write to CSV to fill in information for species.m.unk
+write_csv(species.de,
+          file = "data/raw/output-species4_location-dependent.csv")
+
+# Extract Site information for species.m.unk
+
+
+
 
 
 # Codes from AllPlotData (2x2 plots) --------------------------------------
@@ -273,7 +282,7 @@ codes.missing.2x2 <- plot.2x2.raw %>%
   filter(!Code %in% species$Code)
 
 write_csv(codes.missing.2x2,
-          file = "data/raw/output-species4_codes-missing-2x2plot.csv")
+          file = "data/raw/output-species5_codes-missing-2x2plot.csv")
 
 
 

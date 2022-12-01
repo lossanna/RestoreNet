@@ -11,14 +11,15 @@ File naming notes:
 - `-species#` indicates the CSV is an intermediate step in curating a complete species list. Numbers correspond to edited files
 - `output-` indicates the CSV was written from R. Numbers correspond to edited files, and sequentially mark workflow.
 - `edited-` indicates the corresponding CSV written from R was manually edited.
-- `xlsx_` indicates the species list includes only codes from  `master-species_native.xlsx`.
+- `xlsx_` indicates the species list includes only codes from  `master-species_native.xlsx`, with unknowns removed.
 - `_native-lifeform-duration` indicates if the respective columns are present in the species list.
 
 # Directory
 `edited-species1_subplot-codes-missing.csv`
 - List of codes included in the subplot data (`AllSubplotData` tab of `Master.xlsx`), but are missing from the the original master species list (`master-species_native.xlsx`).
-- Manually added name, native status, duration, and lifeform.
-- 
+- Manually edited to add plant name, duration, and lifeform based on USDA Plants.
+- Not divided by location dependence, but ones that will be location-dependent (unknowns) have sites added to the name.
+
 `edited-species2_xlsx_lifeform-na.csv`
 - List of species originally without lifeform information. Subset of codes is taken only codes from the `master-species_native.xlsx`
 	- Lifeform information would have come from `AllSubplotData` tab from `Master.xlsx`.
@@ -31,11 +32,6 @@ File naming notes:
 - Manually edited to add plant duration, based on USDA Plants.
 - Manually edited to resolve conflicting lifeform assignments or misspelled names to remove duplicates.  Codes are not changed, and different codes for the same species are maintained because they connect to the subplot data.
 - Not yet a complete species list.
-
-`edited-species3_codes-missing-subplot.csv`
-- List of codes that were included in the subplot data (`AllSubplotData` tab of `Master.xlsx`) but not included in `master-species_native.xlsx`.
-- Manually edited to add native status, lifeform, and duration, as according to USDA Plants.
-- Not a complete list of species.
 
 `edited-species4_codes-missing-2x2plot.csv`
 - List of codes that were in the 2x2 plot data (`AllPlotData` tab in `Master.xlsx`), but not yet in species list.
@@ -65,10 +61,6 @@ File naming notes:
 
 `output-species3_xlsx_native-lifeform.csv`
 - List of unique species codes (although there are some duplicates when there are conflicting lifeforms or names for the same code).
-- Output written directly from R and edited in a new file.
-
-`output-species3_codes-missing-subplot.csv`
-- List of codes that were included in the subplot data (`AllSubplotData` tab of `Master.xlsx`) but not included in `master-species_native.xlsx`.
 - Output written directly from R and edited in a new file.
 
 `output-species4_codes-missing-2x2plot.csv`
