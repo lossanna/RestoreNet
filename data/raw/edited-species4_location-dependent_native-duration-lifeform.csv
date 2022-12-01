@@ -1,52 +1,5 @@
 Code,Name,Native,Region,Site,Duration,Lifeform
-ACASPP,Acalypha spp.,Native/Unknown,,,Unknown,Forb
-AMASPP,Amaranthus spp.,Native/Unknown,,,Unknown,Forb
-AMBSPP,Ambrosia spp.,Native/Unknown,,,Unknown,Forb
-ANOSPP,Anoda spp.,Native,,,Unknown,Forb
-ARISPP,Aristida spp.,Native,,,Unknown,Grass
-ARSPP,Artemisia spp.,Native/Unknown,,,Unknown,Shrub
-ASTRAG,Astragalus spp.,Native/Unknown,,,Unknown,Forb
-ASTSPP,Astragalus spp.,Native/Unknown,,,Unknown,Forb
-ATSP,Atriplex spp.,Native/Unknown,,,Perennial,Shrub
-BOUSPP,Bouteloua spp.,Native,,,Unknown,Grass
-BRASPP,Brassica spp. (likely DEPI),Native/Unknown,,,Unknown,Forb
-CALSPP,Calandrinia spp.,Native,,,Unknown,Forb
-CHAMA,Chamaesyce spp.,Native,,,Unknown,Forb
-CHASPP,Chaenactis spp.,Native,,,Unknown,Forb
 CHEN,Unknown chenopod,Native/Unknown,,,Unknown,Forb
-CHESPP,Chenopodium spp.,Unknown,,,Unknown,Forb
-CLESP,Cleome spp.,Native/Unknown,,,Unknown,Forb
-CRYPT,Cryptantha spp.,Native,,,Unknown,Forb
-CRYSPP,Cryptantha spp.,Native,,,Unknown,Forb
-CRYSPP,Cryptantha spp.,Native,,,Unknown,Forb
-CRYSPP,Cryptantha spp.,Native,,,Unknown,Forb
-DRABA,Draba spp.,Native/Unknown,,,Unknown,Forb
-ELSPP,Elymus spp.,Native/Unknown,,,Unknown,Grass
-ERASPP,"Eragrostis spp., ERCU or ERLE",Unknown,,,Unknown,Grass
-Eriogonum,Eriogonum spp.,Native,,,Unknown,Forb
-ERISP,Eriogonum spp.,Native,,,Unknown,Forb
-EUPSPP,Euphorbia spp.,Native/Unknown,,,Unknown,Forb
-GILSPP,Gilia spp.,Native,,,Unknown,Forb
-GILSPP,Gilia spp.,Native,,,Unknown,Forb
-HESP,Heliomeris spp.,Native,,,Unknown,Forb
-LEPSPP,Lepidium spp.,Native/Unknown,,,Unknown,Forb
-LUPSPP,Lupinus spp.,Unknown,,,Unknown,Forb
-LUSPP,Lupinus spp.,Native/Unknown,,,Unknown,Forb
-MACSPP,Machaeranthera spp.,Native,,,Unknown,Forb
-MENSPP,Mentzelia spp.,Native,,,Unknown,Forb
-MENSPP,Mentzelia spp.,Native,,,Unknown,Forb
-OESP,Oenothera spp.,Native/Unknown,,,Unknown,Forb
-PANSPP,Panicum spp.,Native,,,Unknown,Grass
-PECSPP,Pectocarya spp.,Native,,,Unknown,Forb
-PHSPP,Phacelia spp.,Native,,,Unknown,Forb
-PLASPP,Plantago spp.,Unknown,,,Unknown,Forb
-PORSPP,Portulaca spp.,Native,,,Unknown,Forb
-PROBO,Proboscidea spp.,Native,,,Unknown,Forb
-SIDSPP,Sida spp.,Native/Unknown,,,Unknown,Forb
-SOSP,Solanum spp.,Native/Unknown,,,Unknown,Forb
-SPSP,Sphaeralcea spp.,Native/Unknown,,,Unknown,Forb
-STISPP,Stipa spp.,Native/Unknown,,,Unknown,Grass
-STISPP,Stipa spp.,Native/Unknown,,,Unknown,Grass
 UNDPF,Unknown dead pod forb,Unknown,Sonoran SE,,Unknown,Forb
 UNDSF,Unknown dead spikey forb,Unknown,Sonoran SE,,Unknown,Forb
 UNFO_P_1,Unknown forb; small reddish purple rosette with ovate leaves (Spring 2021),Unknown,Sonoran SE,,Unknown,Forb
@@ -82,7 +35,6 @@ UNGRS1,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as 
 UNGRS2,"Unknown grass (Patagonia); Unk grass seedling, leaf divided early like BOGR, possible lovegrass?",Unknown,Sonoran SE,,Unknown,Grass
 UNGRS3,"Unknown grass (Patagonia); Lighter green, thin leaves, possible threeawn?",Unknown,Sonoran SE,,Unknown,Grass
 UNK brown,Unknown brown,Unknown,Sonoran Central,,Unknown,Unknown
-Unk bunchGrass #1,Could be BOCU,Unknown,Sonoran Central,,Unknown,Grass
 Unk dark,Unknown with dark hairy leaf and dark margin; resembles BAMU,Unknown,Sonoran Central,,Unknown,Forb
 unk forb,Unknown forb,Unknown,Sonoran Central,,Unknown,Forb
 Unk forb,Unknown forb,Unknown,Sonoran Central,,Unknown,Forb
@@ -97,7 +49,6 @@ Unk sp.,Unknown species,Unknown,Sonoran Central,,Unknown,Unknown
 Unkastr2,Unknown aster,Unknown,Chihuahuan,,Unknown,Forb
 UnkATCA,Unknown shrub; Possible Atriplex canescens,Native/Unknown,Chihuahuan,,Unknown,Shrub
 Unkcrypt,"Unknown forb; Tiniest of forbs that while can distinguish from other species, cannot ID bc no distinguishing characteristics. Looks like it could turn into a cryptantha? But maybe not.",Unknown,Chihuahuan,,Unknown,Forb
-Unkcrypt,Cryptantha spp.,Native,Chihuahuan,,Unknown,Forb
 Unkfabaceae,Unknown fabaceae,Unknown,Chihuahuan,,Unknown,Forb
 Unkforb,"Unknown forb; Like the generic ""Unkgrass"" unkforb is an unknown forb that has no distinguishing characteristics other than being a forb, thus a few are lumped into this category.",Unknown,Chihuahuan,,Unknown,Forb
 Unkforb,Unknown forb,Unknown,Chihuahuan,,Unknown,Forb
@@ -120,10 +71,8 @@ Unksalsola,Unknown forb; A very small (tiny really) forb germinant that has line
 Unksalsola,Unknown forb,Unknown,Chihuahuan,,Unknown,Forb
 Unksporo,Unknown grass; Sporobolus and Eragrostis,Unknown,Chihuahuan,,Unknown,Grass
 Unksporob,Unknown grass; Unknown (Seeed plants) that look like they are in the Sporobolus genus (with distinct first cotyledons). So small cannot be sure but only way to distinguish between other grasses at this tiny stage.,Unknown,Chihuahuan,,Perennial,Grass
-Unksporob,Sporobolus spp.,Unknown,Chihuahuan,,Unknown,Grass
 UNSFF,"Unknown shrubby fuzzy forb, munched down",Unknown,Sonoran SE,,Unknown,Grass
 UNSH,Unknown shrub,Unknown,Colorado Plateau,,Unknown,Shrub
-AmaranthusSpp,"Amaranthus spp., FlyingM",Unknown,Colorado Plateau,FlyingM,Unknown,Forb
 ERIGSPP,"Unknown ERIG (?), UtahPJ",Unknown,Utah,UtahPJ,Unknown,Unknown
 Eriogonum sp.,"Erigonum spp., UtahPJ",Native,Utah,UtahPJ,Unknown,Forb
 ERISPP,"Eriastrum or Erigonum spp. (?), Patagonia",Native,Sonoran SE,Patagonia,Unknown,Forb
@@ -143,7 +92,6 @@ S-UNGR4,"Seeded unknown grass 4, UtahPJ",Native,Utah,UtahPJ,Perennial,Grass
 S-UNGR5,"Seeded unknown grass 5, UtahPJ",Native,Utah,UtahPJ,Perennial,Grass
 SUNGR,"Seeded unknown grass (?), TLE",Native,Colorado Plateau,TLE,Perennial,Shrub
 SUNGR,"Seeded unknown grass (?), BabbittPJ",Native,Colorado Plateau,BabbittPJ,Perennial,Shrub
-Trifolium,"Trifolium spp., Mesquite",Unknown,Chihuahuan,Mesquite,Unknown,Forb
 UNFO,"Unknown forb, FlyingM",Unknown,Colorado Plateau,FlyingM,Unknown,Forb
 UNFO,"Unknown forb, Spiderweb",Unknown,Colorado Plateau,Spiderweb,Unknown,Forb
 UNFO10,"Unknown forb 10, UtahPJ",Unknown,Utah,UtahPJ,Unknown,Forb

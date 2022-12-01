@@ -60,23 +60,23 @@ sub.missing.edit <- read_csv("data/raw/edited-species1_subplot-codes-missing_nat
 
 # Unknowns (location-dependent)
 species.m.unk <- species.raw %>% # from original master list
-  filter(str_detect(species.raw$Name, "Unk|unk|spp.|Could be")) %>% 
+  filter(str_detect(species.raw$Name, "Unk|unk")) %>% 
   arrange(Region) %>% 
   arrange(Code)
 
 sub.missing.unk <- sub.missing.edit %>% # ones missing from original master list
-  filter(str_detect(sub.missing.edit$Name, "Unk|unk|spp.|Could be")) %>% 
+  filter(str_detect(sub.missing.edit$Name, "Unk|unk")) %>% 
   arrange(Region) %>% 
   arrange(Code)
 
 # Knowns (location-independent)
 species.m.known <- species.raw %>% # from original master list
-  filter(!str_detect(species.raw$Name, "Unk|unk|spp.|Could be")) %>% 
+  filter(!str_detect(species.raw$Name, "Unk|unk")) %>% 
   select(-Region) %>% 
   arrange(Code)
 
 sub.missing.known <- sub.missing.edit %>% # ones missing from original master list
-  filter(!str_detect(sub.missing.edit$Name, "Unk|unk|spp.|Could be")) %>% 
+  filter(!str_detect(sub.missing.edit$Name, "Unk|unk")) %>% 
   select(-Region, -Site) %>% 
   arrange(Code)
   # although there are a couple names with ?s, the names and codes are unique 
@@ -210,7 +210,8 @@ codes.standardized.in <- codes.fix.in %>%
   filter(Code %in% c(mix.codes$Code, "CHPO12", "SIAL2")) %>% 
   mutate(Old_Code = c("ARPUP6", "BOER", "EUPO3", "S-HEBO", "S-PASM", "SIAL", "SPAMA")) %>% 
   select(Old_Code, Code, Name)
-  # DRCU/DRCUI and ESCA/ESCAM refer to different varieties, so specificity is retained
+  # DRCU/DRCUI and ESCA/ESCAM refer to different varieties, so specificity is retained,
+      # and "spp." are unknown species, so they can have different codes
 
 # Remove wrong codes from species list
 species.in <- species.in %>% 
