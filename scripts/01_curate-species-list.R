@@ -281,11 +281,6 @@ write_csv(species.in,
 
 
 
-mix.duration <- left_join(mix, species.in)
-
-
-
-
 
 # Location-dependent species (unknowns) -----------------------------------
 
@@ -369,20 +364,42 @@ write_csv(species.de,
 
 
 
+# Write complete list of codes for subplot data ---------------------------
+
+# Location-independent codes
+subplot.codes.de <- species.de %>% 
+  select(Code, Code.Site, Name) %>% 
+  rename(CodeOriginal = Code,
+         Code = Code.Site)
+
+# Location-dependent codes
+subplot.codes.in <- species.in %>% 
+  select(Code, Name) %>% 
+  mutate(CodeOriginal = Code)
+
+# Combine
+subplot.codes <- bind_rows(subplot.codes.de, subplot.codes.in) %>% 
+  filter(CodeOriginal %in% subplot.raw$Species_Code) %>% 
+  arrange(Name)
+
+# Write to CSV
+write_csv(subplot.codes,
+          file = "data/cleaned/subplot-codes_clean.csv")
+
 
 # Codes from AllPlotData (2x2 plots) --------------------------------------
 
 # Codes from these plots are really different and usually long descriptions
   # so they get their own separate list
 
-# Location-independent codes from AllPlotData (2 x 2 m plots) missing from master
+# Location-independent codes from AllPlotData (2 x 2 m plots) missing from location-independent list
 codes.missing.2x2 <- plot.2x2.raw %>% 
   select(starts_with("Additional")) %>% 
   mutate(across(everything(), as.character)) %>% 
   pivot_longer(everything(), names_to = "drop", values_to = "Code") %>% 
   select(Code) %>% 
   distinct(.keep_all = TRUE) %>% 
-  arrange(Code) %>% # 382 codes
+  arrange(Code) %>% # 176 codes
   filter(!Code %in% species.in$Code)
 
 write_csv(codes.missing.2x2,
