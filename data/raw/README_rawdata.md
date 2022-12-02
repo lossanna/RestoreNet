@@ -2,6 +2,11 @@ Created: 2022-11-28
 Last updated: 2022-11-30  
   
 Notes about raw data for RAMPS RestoreNet project.
+- Intermediate CSVs required to curate species lists are saved here.
+- Subplot species lists are separate from 2x2m plot species lists, and location-independent lists are separate from location-dependent ones.
+- Curated species lists:
+	+ Location-dependent (unknowns) codes/species for the subplot data, with name, native status, duration, lifeform, and Site (plus Region).
+	+ Location-independent codes/species for the subplot data with name, native status, duration, and  lifeform.
 
 Abbreviations:
 - `Master Germination Data 2022.xlsx` is abbreviated as `Master.xlsx` and is never directly edited.
@@ -33,7 +38,12 @@ File naming notes:
 - Manually edited to resolve conflicting lifeform assignments or misspelled names to remove duplicates.  Codes are not changed, and different codes for the same species are maintained because they connect to the subplot data.
 - Not yet a complete species list.
 
-`edited-species4_codes-missing-2x2plot.csv`
+`edited-species4_location-dependent_native-duration-lifeform.csv`
+- List of location-dependent species (unknows), listed first by the ones from `master-species_native.unk` that lack site data, and then by location-dependent codes from the subplot data (`AllSubplotData` tab from `Master.xlsx`), whose site information was already manually added in `edited-species1_subplot-codes-missing_native-duration-lifeform`.
+- Manually added site information for the unknowns from the master list (first section) based on site information in the subplot data, which sometimes included adding multiple rows because the same code occured at different sites. Codes have not been changed, and will be changed in the cleaned subplot data through data wrangling (`02_data-wrangling.R`).
+	+ Sometimes codes were listed in the master species list that didn't occur in the subplot data, and therefore didn't have any site information. These codes were removed because they will serve no purpose, anyway.
+
+`edited-species5_codes-missing-2x2plot.csv`
 - List of codes that were in the 2x2 plot data (`AllPlotData` tab in `Master.xlsx`), but not yet in species list.
 - Most of the codes are unknowns or descriptions.
 

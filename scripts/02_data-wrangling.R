@@ -3,8 +3,7 @@ library(tidyverse)
 
 # Load data ---------------------------------------------------------------
 
-subplot.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllSubplotData") %>% 
-  rename(Code = Species_Code) # rename to standardize 
+subplot.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllSubplotData")
 plot.2x2.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllPlotData")
 species <- read_csv("data/cleaned/species_cleaned.csv")
 mix <- read_xlsx("data/raw/master-seed-mix.xlsx")
@@ -16,7 +15,8 @@ mix <- read_xlsx("data/raw/master-seed-mix.xlsx")
 subplot <- subplot.raw %>% 
   select(-Recorder_Initials, -Functional_Group, -`Certainty_of_ID(1-3)`, -Notes) %>% 
   mutate(raw.row = 1:nrow(subplot.raw)) %>% # row number is to be able to easily refer back to the raw data and excluded columns if needed
-  rename(Count = Seedling_Count,
+  rename(Code = Species_Code,
+         Count = Seedling_Count,
          Height = Average_Height_mm,
          Seeded = `Seeded(Yes/No)`,
          PlotMix = Seed_Mix)

@@ -1,10 +1,10 @@
 Region,Site,Code,Name,Native,Duration,Lifeform
-Colorado Plateau,FlyingM,AmaranthusSpp,"Amaranthus spp., FlyingM",Unknown,Unknown,Forb
-Chihuahuan,Mesquite,ATCA,"ATCA (but not Atriplex?), Mesquite",Unknown,Unknown,Grass
+Colorado Plateau,FlyingM,AmaranthusSpp,Amaranthus spp.,Unknown,Unknown,Forb
+Chihuahuan,Mesquite,ATCA,ATCA (but not Atriplex?),Unknown,Unknown,Grass
 Chihuahuan,Mesquite,BAHI,Balsamorhiza hookeri,Native,Perennial,Forb
 Sonoran SE,SRER,DeadStem,Dead stem,Unknown,Unknown,Forb
 Sonoran Central,Preserve,ERDI2,Eriastrum diffusum,Native,Annual,Forb
-Utah,UtahPJ,ERIGSPP,"Uknown ERIG (?), UtahPJ",Unknown,Unknown,Forb
+Utah,UtahPJ,ERIGSPP,Unknown ERIG (?),Unknown,Unknown,Forb
 Utah,UtahPJ,Eriogonum sp.,Erigonum spp.,Native,Unknown,Forb
 Sonoran SE,Patagonia,ERISPP,Eriastrum or Erigonum spp. (?),Native,Unknown,Forb
 Sonoran SE,SRER,FESSPP,FES (fescue?) spp.,Unknown,Unknown,Grass
@@ -16,68 +16,68 @@ Utah,UtahPJ,S-HEBO,Hedysarum boreale,Native,Perennial,Forb
 Utah,Salt_Desert,S-PASM,Pascopyrum smithii,Native,Perennial,Grass
 Utah,CRC,S-PASM,Pascopyrum smithii,Native,Perennial,Grass
 Utah,UtahPJ,S-PASM,Pascopyrum smithii,Native,Perennial,Grass
-Utah,CRC,S-UNFO2,"Seeded unknown forb 2, CRC",Native,Perennial,Forb
-Utah,Salt_Desert,S-UNFO2,"Seeded unknown forb 2, Salt Desert",Native,Perennial,Forb
-Utah,CRC,S-UNGR1,"Seeded unknown grass 1, CRC",Native,Perennial,Grass
-Utah,Salt_Desert,S-UNGR1,"Seeded unknown grass 1, Salt Desert",Native,Perennial,Grass
-Utah,CRC,S-UNGR2,"Seeded unknown grass 2, CRC",Native,Perennial,Grass
-Utah,Salt_Desert,S-UNGR2,"Seeded unknown grass 2, CRC",Native,Perennial,Grass
-Utah,UtahPJ,S-UNGR2,"Seeded unknown grass 2, UtahPJ",Native,Perennial,Grass
-Utah,CRC,S-UNGR3,"Seeded unknown grass 3, CRC",Native,Perennial,Grass
-Utah,Salt_Desert,S-UNGR3,"Seeded unknown grass 3, Salt Desert",Native,Perennial,Grass
-Utah,UtahPJ,S-UNGR3,"Seeded unknown grass 3, UtahPJ",Native,Perennial,Grass
-Utah,CRC,S-UNGR4,"Seeded unknown grass 4, CRC",Native,Perennial,Grass
-Utah,UtahPJ,S-UNGR4,"Seeded unknown grass 4, UtahPJ",Native,Perennial,Grass
-Utah,UtahPJ,S-UNGR5,"Seeded unknown grass 5, UtahPJ",Native,Perennial,Grass
+Utah,CRC,S-UNFO2,Seeded unknown forb 2,Native,Perennial,Forb
+Utah,Salt_Desert,S-UNFO2,Seeded unknown forb 2,Native,Perennial,Forb
+Utah,CRC,S-UNGR1,Seeded unknown grass 1,Native,Perennial,Grass
+Utah,Salt_Desert,S-UNGR1,Seeded unknown grass 1,Native,Perennial,Grass
+Utah,CRC,S-UNGR2,Seeded unknown grass 2,Native,Perennial,Grass
+Utah,Salt_Desert,S-UNGR2,Seeded unknown grass 2,Native,Perennial,Grass
+Utah,UtahPJ,S-UNGR2,Seeded unknown grass 2,Native,Perennial,Grass
+Utah,CRC,S-UNGR3,Seeded unknown grass 3,Native,Perennial,Grass
+Utah,Salt_Desert,S-UNGR3,Seeded unknown grass 3,Native,Perennial,Grass
+Utah,UtahPJ,S-UNGR3,Seeded unknown grass 3,Native,Perennial,Grass
+Utah,CRC,S-UNGR4,Seeded unknown grass 4,Native,Perennial,Grass
+Utah,UtahPJ,S-UNGR4,Seeded unknown grass 4,Native,Perennial,Grass
+Utah,UtahPJ,S-UNGR5,Seeded unknown grass 5,Native,Perennial,Grass
 Chihuahuan,Mesquite,SEBA2,Senna bacillaris,Native,Perennial,Shrub
-Colorado Plateau,TLE,SUNGR,"Seeded unknown grass (?), TLE",Native,Perennial,Shrub
-Colorado Plateau,BabbittPJ,SUNGR,"Seeded unknown grass (?), BabbittPJ",Native,Perennial,Shrub
+Colorado Plateau,TLE,SUNGR,Seeded unknown grass (?),Native,Perennial,Shrub
+Colorado Plateau,BabbittPJ,SUNGR,Seeded unknown grass (?),Native,Perennial,Shrub
 Chihuahuan,Mesquite,Trifolium,Trifolium spp.,Unknown,Unknown,Forb
-Colorado Plateau,PEFO,UCHEN1,"Unknown UCHEN1 (?), PEFO",Unknown,Unknown,Unknown
-Colorado Plateau,PEFO,UCHEN2,"Unknown UCHEN2 (?), PEFO",Unknown,Unknown,Unknown
-Colorado Plateau,FlyingM,UNFO,"Unknown forb, FlyingM",Unknown,Unknown,Forb
-Colorado Plateau,Spiderweb,UNFO,"Unknown forb, Spiderweb",Unknown,Unknown,Forb
-Utah,UtahPJ,UNFO10,"Unknown forb 10, UtahPJ",Unknown,Unknown,Forb
-Utah,UtahPJ,UNFO11,"Unknown forb 11, UtahPJ",Unknown,Unknown,Forb
-Colorado Plateau,BarTBar,UNFO12,"Unknown forb 12, BarTBar",Unknown,Unknown,Forb
-Colorado Plateau,BarTBar,UNFO13,"Unknown forb 13, BarTBar",Unknown,Unknown,Forb
-Colorado Plateau,BarTBar,UNFO14,"Unknown forb 14, BarTBar",Unknown,Unknown,Forb
-Colorado Plateau,BarTBar,UNFO16,"Unknown forb 16, BarTBar",Unknown,Unknown,Forb
-Mojave,AVRCD,UNFO2A,"Unknown forb 2A, AVRCD",Unknown,Unknown,Forb
-Colorado Plateau,AguaFria,UNFO7,"Unknown forb 7, Agua Fria",Unknown,Unknown,Forb
-Colorado Plateau,BarTBar,UNFO7,"Unknown forb 7, BarTBar",Unknown,Unknown,Forb
-Colorado Plateau,FlyingM,UNFO7,"Unknown forb 7, FlyingM",Unknown,Unknown,Forb
-Colorado Plateau,Spiderweb,UNFO7,"Unknown forb 7, Spiderweb",Unknown,Unknown,Forb
-Utah,UtahPJ,UNFO7,"Unknown forb 7, UtahPJ",Unknown,Unknown,Forb
-Colorado Plateau,AguaFria,UNFO8,"Unknown forb 8, Agua Fria",Unknown,Unknown,Forb
-Colorado Plateau,BarTBar,UNFO8,"Unknown forb 8, BarTBar",Unknown,Unknown,Forb
-Colorado Plateau,Spiderweb,UNFO8,"Unknown forb 8, Spiderweb",Unknown,Unknown,Forb
-Utah,UtahPJ,UNFO8,"Unknown forb 8, UtahPJ",Unknown,Unknown,Forb
-Colorado Plateau,BarTBar,UNFO9,"Unknown forb 9, BarTBar",Unknown,Unknown,Forb
-Utah,UtahPJ,UNFO9,"Unknown forb 9, UtahPJ",Unknown,Unknown,Forb
-Colorado Plateau,AguaFria,UNGR,"Unknown grass, AguaFria",Unknown,Unknown,Grass
-Colorado Plateau,BabbittPJ,UNGR,"Unknown grass, BabbittPJ",Unknown,Unknown,Grass
-Colorado Plateau,BarTBar,UNGR,"Unknown grass, BarTBar",Unknown,Unknown,Grass
-Colorado Plateau,FlyingM,UNGR,"Unknown grass, FlyingM",Unknown,Unknown,Grass
-Colorado Plateau,MOWE,UNGR,"Unknown grass, MOWE",Unknown,Unknown,Grass
-Colorado Plateau,PEFO,UNGR,"Unknown grass, PEFO",Unknown,Unknown,Grass
-Colorado Plateau,Spiderweb,UNGR,"Unknown grass, Spiderweb",Unknown,Unknown,Grass
-Colorado Plateau,TLE,UNGR,"Unknown grass, TLE",Unknown,Unknown,Grass
-Utah,UtahPJ,UNGR,"Unknown grass, UtahPJ",Unknown,Unknown,Grass
-Colorado Plateau,AguaFria,UNGR2,"Unknown grass 2, AguaFria",Unknown,Unknown,Grass
-Colorado Plateau,MOWE,UNGR2,"Unknown grass 2, MOWE",Unknown,Unknown,Grass
-Colorado Plateau,PEFO,UNGR2,"Unknown grass 2, PEFO",Unknown,Unknown,Grass
-Utah,UtahPJ,UNGR2,"Unknown grass 2, UtahPJ",Unknown,Unknown,Grass
-Colorado Plateau,AguaFria,UNGR3,"Unknown grass 3, AguaFria",Unknown,Unknown,Grass
-Colorado Plateau,MOWE,UNGR3,"Unknown grass 3, MOWE",Unknown,Unknown,Grass
-Colorado Plateau,PEFO,UNGR3,"Unknown grass 3, PEFO",Unknown,Unknown,Grass
-Utah,UtahPJ,UNGR3,"Unknown grass 3, UtahPJ",Unknown,Unknown,Grass
-Colorado Plateau,AguaFria,UNGR4,"Unknown grass 4, AguaFria",Unknown,Unknown,Grass
-Colorado Plateau,MOWE,UNGR4,"Unknown grass 4, MOWE",Unknown,Unknown,Grass
-Utah,Salt_Desert,UNGR4,"Unknown grass 4, Salt_Desert",Unknown,Unknown,Grass
-Utah,UtahPJ,UNGR4,"Unknown grass 4, UtahPJ",Unknown,Unknown,Grass
-Colorado Plateau,AguaFria,UNGR5,"Unknown grass 5, AguaFria",Unknown,Unknown,Grass
-Chihuahuan,Mesquite,UNK Fuzzy astr,"Unknown fuzzy aster, Mesquite",Unknown,Unknown,Forb
-Chihuahuan,Mesquite,Unkaster,"Unknown aster, Mesquite",Unknown,Unknown,Forb
-Chihuahuan,Mesquite,UnkForb,"Unknown forb, Mesquite",Unknown,Unknown,Forb
-Chihuahuan,Creosote,UnkForb1,"Unknown forb 1, Creosote",Unknown,Unknown,Forb
+Colorado Plateau,PEFO,UCHEN1,Unknown UCHEN1 (?),Unknown,Unknown,Unknown
+Colorado Plateau,PEFO,UCHEN2,Unknown UCHEN2 (?),Unknown,Unknown,Unknown
+Colorado Plateau,FlyingM,UNFO,Unknown forb,Unknown,Unknown,Forb
+Colorado Plateau,Spiderweb,UNFO,Unknown forb,Unknown,Unknown,Forb
+Utah,UtahPJ,UNFO10,Unknown forb 10,Unknown,Unknown,Forb
+Utah,UtahPJ,UNFO11,Unknown forb 11,Unknown,Unknown,Forb
+Colorado Plateau,BarTBar,UNFO12,Unknown forb 12,Unknown,Unknown,Forb
+Colorado Plateau,BarTBar,UNFO13,Unknown forb 13,Unknown,Unknown,Forb
+Colorado Plateau,BarTBar,UNFO14,Unknown forb 14,Unknown,Unknown,Forb
+Colorado Plateau,BarTBar,UNFO16,Unknown forb 16,Unknown,Unknown,Forb
+Mojave,AVRCD,UNFO2A,Unknown forb 2A,Unknown,Unknown,Forb
+Colorado Plateau,AguaFria,UNFO7,Unknown forb 7,Unknown,Unknown,Forb
+Colorado Plateau,BarTBar,UNFO7,Unknown forb 7,Unknown,Unknown,Forb
+Colorado Plateau,FlyingM,UNFO7,Unknown forb 7,Unknown,Unknown,Forb
+Colorado Plateau,Spiderweb,UNFO7,Unknown forb 7,Unknown,Unknown,Forb
+Utah,UtahPJ,UNFO7,Unknown forb 7,Unknown,Unknown,Forb
+Colorado Plateau,AguaFria,UNFO8,Unknown forb 8,Unknown,Unknown,Forb
+Colorado Plateau,BarTBar,UNFO8,Unknown forb 8,Unknown,Unknown,Forb
+Colorado Plateau,Spiderweb,UNFO8,Unknown forb 8,Unknown,Unknown,Forb
+Utah,UtahPJ,UNFO8,Unknown forb 8,Unknown,Unknown,Forb
+Colorado Plateau,BarTBar,UNFO9,Unknown forb 9,Unknown,Unknown,Forb
+Utah,UtahPJ,UNFO9,Unknown forb 9,Unknown,Unknown,Forb
+Colorado Plateau,AguaFria,UNGR,Unknown grass,Unknown,Unknown,Grass
+Colorado Plateau,BabbittPJ,UNGR,Unknown grass,Unknown,Unknown,Grass
+Colorado Plateau,BarTBar,UNGR,Unknown grass,Unknown,Unknown,Grass
+Colorado Plateau,FlyingM,UNGR,Unknown grass,Unknown,Unknown,Grass
+Colorado Plateau,MOWE,UNGR,Unknown grass,Unknown,Unknown,Grass
+Colorado Plateau,PEFO,UNGR,Unknown grass,Unknown,Unknown,Grass
+Colorado Plateau,Spiderweb,UNGR,Unknown grass,Unknown,Unknown,Grass
+Colorado Plateau,TLE,UNGR,Unknown grass,Unknown,Unknown,Grass
+Utah,UtahPJ,UNGR,Unknown grass,Unknown,Unknown,Grass
+Colorado Plateau,AguaFria,UNGR2,Unknown grass 2,Unknown,Unknown,Grass
+Colorado Plateau,MOWE,UNGR2,Unknown grass 2,Unknown,Unknown,Grass
+Colorado Plateau,PEFO,UNGR2,Unknown grass 2,Unknown,Unknown,Grass
+Utah,UtahPJ,UNGR2,Unknown grass 2,Unknown,Unknown,Grass
+Colorado Plateau,AguaFria,UNGR3,Unknown grass 3,Unknown,Unknown,Grass
+Colorado Plateau,MOWE,UNGR3,Unknown grass 3,Unknown,Unknown,Grass
+Colorado Plateau,PEFO,UNGR3,Unknown grass 3,Unknown,Unknown,Grass
+Utah,UtahPJ,UNGR3,Unknown grass 3,Unknown,Unknown,Grass
+Colorado Plateau,AguaFria,UNGR4,Unknown grass 4,Unknown,Unknown,Grass
+Colorado Plateau,MOWE,UNGR4,Unknown grass 4,Unknown,Unknown,Grass
+Utah,Salt_Desert,UNGR4,Unknown grass 4,Unknown,Unknown,Grass
+Utah,UtahPJ,UNGR4,Unknown grass 4,Unknown,Unknown,Grass
+Colorado Plateau,AguaFria,UNGR5,Unknown grass 5,Unknown,Unknown,Grass
+Chihuahuan,Mesquite,UNK Fuzzy astr,Unknown fuzzy aster,Unknown,Unknown,Forb
+Chihuahuan,Mesquite,Unkaster,Unknown aster,Unknown,Unknown,Forb
+Chihuahuan,Mesquite,UnkForb,Unknown forb,Unknown,Unknown,Forb
+Chihuahuan,Creosote,UnkForb1,Unknown forb 1,Unknown,Unknown,Forb

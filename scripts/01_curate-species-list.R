@@ -3,8 +3,7 @@ library(tidyverse)
 
 # Load data ---------------------------------------------------------------
 
-subplot.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllSubplotData") %>% 
-  rename(Code = Species_Code) # rename to standardize 
+subplot.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllSubplotData")
 plot.2x2.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllPlotData")
 species.raw <- read_xlsx("data/raw/master-species_native.xlsx")
 mix <- read_xlsx("data/raw/master-seed-mix.xlsx")
@@ -21,23 +20,30 @@ mix <- read_xlsx("data/raw/master-seed-mix.xlsx")
 
 
 
+# Add Region and row numbers to subplot data ------------------------------
+
+subplot <- subplot.raw %>% 
+  mutate(Region = case_when(
+    str_detect(subplot.raw$Site, c("AguaFria|BabbittPJ|MOWE|Spiderweb|BarTBar|FlyingM|PEFO|TLE")) ~ "Colorado Plateau",
+    str_detect(subplot.raw$Site, c("CRC|UtahPJ|Salt_Desert")) ~ "Utah",
+    str_detect(subplot.raw$Site, c("29_Palms|AVRCD")) ~ "Mojave",
+    str_detect(subplot.raw$Site, c("Creosote|Mesquite")) ~ "Chihuahuan",
+    str_detect(subplot.raw$Site, c("SRER|Patagonia")) ~ "Sonoran SE",
+    str_detect(subplot.raw$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central",
+    TRUE ~ "unk"),
+    raw.row = 1:nrow(subplot.raw)) %>% 
+  rename(Code = Species_Code)
+
+
+
 # Assign names to codes in subplot data but not species list --------------
 
 # Extract missing codes
 codes.missing.sub <- setdiff(subplot.raw$Code, species.raw$Code)
 
-# Add Region to subplot data for missing codes
-subplot.missing <- subplot.raw %>%
-  filter(Code %in% codes.missing.sub) 
-subplot.missing <- subplot.missing %>% 
-  mutate(Region = case_when(
-    str_detect(subplot.missing$Site, c("AguaFria|BabbittPJ|MOWE|Spiderweb|BarTBar|FlyingM|PEFO|TLE")) ~ "Colorado Plateau",
-    str_detect(subplot.missing$Site, c("CRC|UtahPJ|Salt_Desert")) ~ "Utah",
-    str_detect(subplot.missing$Site, c("29_Palms|AVRCD")) ~ "Mojave",
-    str_detect(subplot.missing$Site, c("Creosote|Mesquite")) ~ "Chihuahuan",
-    str_detect(subplot.missing$Site, c("SRER|Patagonia")) ~ "Sonoran SE",
-    str_detect(subplot.missing$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central",
-    TRUE ~ "unk")) %>% 
+# Narrow columns and remove duplicates for missing subplot data
+subplot.missing <- subplot %>%
+  filter(Code %in% codes.missing.sub) %>% 
   select(Region, Site, Code) %>% 
   distinct(.keep_all = TRUE) %>% 
   arrange(Code)
@@ -253,15 +259,39 @@ write_csv(species.in,
 
 
 
+
+
+
 # Location-dependent species (unknowns) -----------------------------------
 
+# Combine all location-dependent species (ones from master species list and from subplot data)
 species.de <- bind_rows(species.m.unk, sub.missing.unk)
 
 # Write to CSV to fill in information for species.m.unk
 write_csv(species.de,
-          file = "data/raw/output-species4_location-dependent.csv")
+          file = "data/raw/output-species4.1_location-dependent.csv")
 
-# Extract Site information for species.m.unk
+
+# Extract Site information for species.m.unk to add to location-dependent list
+  # and write to CSV
+sites.m.unk <- subplot %>% 
+  filter(Code %in% species.m.unk$Code) %>% 
+  select(Code, Region, Site) %>% 
+  distinct(.keep_all = TRUE) %>% 
+  arrange(Region) %>% 
+  arrange(Code)
+write_csv(sites.m.unk,
+          file = "data/raw/output-species4.2_location-dependent_xlsx_sites.csv")
+
+#### edit new file manually ####
+  # make sure all have site, native, duration, lifeform information #####
+species.de <- read_csv("data/raw/edited-species4_location-dependent_native-duration-lifeform.csv")
+
+
+
+# add comma to species.m
+
+# add row of new codes (location-specific)
 
 
 
