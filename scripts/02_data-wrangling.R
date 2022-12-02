@@ -136,6 +136,7 @@ subplot.inva <- subplot %>%
   filter(Native == "Introduced") %>% 
   select(Code, Seeded, Name, Native) %>% 
   distinct(.keep_all = TRUE)
+unique(subplot.inva$Seeded) # no "Yes"
 
 
 # Write clean subplot data to csv -----------------------------------------
@@ -149,6 +150,7 @@ write_csv(subplot,
 
 
 #### This chunk relates to 01_curate-species-list.R ###################
+#### do not need to run again #####
 
 
 # Address native status for unknown seeded species ------------------------
@@ -171,8 +173,12 @@ seeded.notnative.names <- data.frame(V1 = unique(seeded.notnative$Name))
 
 # Extract Genus spp. observations to check location dependence
 seeded.spp <- subplot.seeded %>% 
-  filter(str_detect(subplot.seeded$Name, "spp."))
+  filter(str_detect(subplot.seeded$Name, "spp.|local"))
 unique(seeded.spp$Name)
+
+bout.spp <- subplot.seeded %>% 
+  filter(Name == "local Bouteloua species")
+unique(bout.spp$Site) # location-dependent!
 
 elymus.spp <- subplot.seeded %>% 
   filter(Name == "Elymus spp.")
@@ -204,7 +210,6 @@ rm(seeded.notnative, seeded.notnative.names, seeded.spp, elymus.spp, solanum.spp
 # Check if it worked after fixing 01_curate-species-list.R and writing new CSVs
 unique(subplot.seeded$Native) # only option should be "Native"
 
-
 ########### Chunk related to 01_curate-species-list.R complete ############
 
 
@@ -225,7 +230,7 @@ seed.rate.na <- subplot.seeded %>%
   distinct(.keep_all = TRUE) 
 
 seed.rate.na.known <- seed.rate.na %>% 
-  filter(!str_detect(seed.rate.na$Name, "Unk|unk|spp.|Local|ATCA"))
+  filter(!str_detect(seed.rate.na$Name, "Unk|unk|spp."))
 
 
 save.image("RData/02_data-wrangling.RData")

@@ -1,6 +1,6 @@
 Region,Site,Code,Name,Native,Duration,Lifeform
 Colorado Plateau,FlyingM,AmaranthusSpp,Amaranthus spp.,Unknown,Unknown,Forb
-Chihuahuan,Mesquite,ATCA,ATCA (but not Atriplex?),Unknown,Unknown,Grass
+Chihuahuan,Mesquite,ATCA,"Unknown ATCA (but not Atriplex, a grass?)",Unknown,Unknown,Grass
 Chihuahuan,Mesquite,BAHI,Balsamorhiza hookeri,Native,Perennial,Forb
 Sonoran SE,SRER,DeadStem,Dead stem,Unknown,Unknown,Forb
 Sonoran Central,Preserve,ERDI2,Eriastrum diffusum,Native,Annual,Forb
@@ -16,22 +16,22 @@ Utah,UtahPJ,S-HEBO,Hedysarum boreale,Native,Perennial,Forb
 Utah,Salt_Desert,S-PASM,Pascopyrum smithii,Native,Perennial,Grass
 Utah,CRC,S-PASM,Pascopyrum smithii,Native,Perennial,Grass
 Utah,UtahPJ,S-PASM,Pascopyrum smithii,Native,Perennial,Grass
-Utah,CRC,S-UNFO2,Seeded unknown forb 2,Native,Perennial,Forb
-Utah,Salt_Desert,S-UNFO2,Seeded unknown forb 2,Native,Perennial,Forb
-Utah,CRC,S-UNGR1,Seeded unknown grass 1,Native,Perennial,Grass
-Utah,Salt_Desert,S-UNGR1,Seeded unknown grass 1,Native,Perennial,Grass
-Utah,CRC,S-UNGR2,Seeded unknown grass 2,Native,Perennial,Grass
-Utah,Salt_Desert,S-UNGR2,Seeded unknown grass 2,Native,Perennial,Grass
-Utah,UtahPJ,S-UNGR2,Seeded unknown grass 2,Native,Perennial,Grass
-Utah,CRC,S-UNGR3,Seeded unknown grass 3,Native,Perennial,Grass
-Utah,Salt_Desert,S-UNGR3,Seeded unknown grass 3,Native,Perennial,Grass
-Utah,UtahPJ,S-UNGR3,Seeded unknown grass 3,Native,Perennial,Grass
-Utah,CRC,S-UNGR4,Seeded unknown grass 4,Native,Perennial,Grass
-Utah,UtahPJ,S-UNGR4,Seeded unknown grass 4,Native,Perennial,Grass
-Utah,UtahPJ,S-UNGR5,Seeded unknown grass 5,Native,Perennial,Grass
+Utah,CRC,S-UNFO2,Seeded unknown forb 2,Native,Unknown,Forb
+Utah,Salt_Desert,S-UNFO2,Seeded unknown forb 2,Native,Unknown,Forb
+Utah,CRC,S-UNGR1,Seeded unknown grass 1,Native,Unknown,Grass
+Utah,Salt_Desert,S-UNGR1,Seeded unknown grass 1,Native,Unknown,Grass
+Utah,CRC,S-UNGR2,Seeded unknown grass 2,Native,Unknown,Grass
+Utah,Salt_Desert,S-UNGR2,Seeded unknown grass 2,Native,Unknown,Grass
+Utah,UtahPJ,S-UNGR2,Seeded unknown grass 2,Native,Unknown,Grass
+Utah,CRC,S-UNGR3,Seeded unknown grass 3,Native,Unknown,Grass
+Utah,Salt_Desert,S-UNGR3,Seeded unknown grass 3,Native,Unknown,Grass
+Utah,UtahPJ,S-UNGR3,Seeded unknown grass 3,Native,Unknown,Grass
+Utah,CRC,S-UNGR4,Seeded unknown grass 4,Native,Unknown,Grass
+Utah,UtahPJ,S-UNGR4,Seeded unknown grass 4,Native,Unknown,Grass
+Utah,UtahPJ,S-UNGR5,Seeded unknown grass 5,Native,Unknown,Grass
 Chihuahuan,Mesquite,SEBA2,Senna bacillaris,Native,Perennial,Shrub
-Colorado Plateau,TLE,SUNGR,Seeded unknown grass (?),Native,Perennial,Shrub
-Colorado Plateau,BabbittPJ,SUNGR,Seeded unknown grass (?),Native,Perennial,Shrub
+Colorado Plateau,TLE,SUNGR,Seeded unknown grass (?),Native,Unknown,Shrub
+Colorado Plateau,BabbittPJ,SUNGR,Seeded unknown grass (?),Native,Unknown,Shrub
 Chihuahuan,Mesquite,Trifolium,Trifolium spp.,Unknown,Unknown,Forb
 Colorado Plateau,PEFO,UCHEN1,Unknown UCHEN1 (?),Unknown,Unknown,Unknown
 Colorado Plateau,PEFO,UCHEN2,Unknown UCHEN2 (?),Unknown,Unknown,Unknown

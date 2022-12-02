@@ -281,6 +281,10 @@ write_csv(species.in,
 
 
 
+mix.duration <- left_join(mix, species.in)
+
+
+
 
 
 # Location-dependent species (unknowns) -----------------------------------
