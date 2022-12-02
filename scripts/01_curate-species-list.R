@@ -282,8 +282,8 @@ sites.m.unk <- subplot %>%
 write_csv(sites.m.unk,
           file = "data/raw/output-species4.2_location-dependent_xlsx_sites.csv")
 
-#### edit new file manually ####
-  # make sure all have site, native, duration, lifeform information #####
+#### edit new file manually #########
+  # make sure all have site, native, duration, lifeform information
 species.de <- read_csv("data/raw/edited-species4_location-dependent_native-duration-lifeform.csv")
 
 
@@ -303,6 +303,10 @@ species.de <- species.de %>%
   filter(!Code %in% c("Unkcrypt", "Unksporob"))
   
 
+# Check for unique codes
+length(unique(species.de$Code.Site)) == nrow(species.de) # all codes in species list are unique
+
+
 
 
 # Write cleaned location-dependent species list to CSV --------------------
@@ -313,7 +317,6 @@ unique(species.de$Duration)
 unique(species.de$Lifeform)
 
 # Write to csv
-
 write_csv(species.de,
           file = "data/cleaned/species-list_subplot_location-dependent_clean.csv")
 

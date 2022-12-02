@@ -24,9 +24,8 @@ UNFO1,Unknown forb 1,Unknown,Colorado Plateau,PEFO,Unknown,Forb
 UNFO1,Unknown forb 1,Unknown,Mojave,29_Palms,Unknown,Forb
 UNFO1,Unknown forb (Patagonia and SRER are same); upright mustard with tiny blueish flower,Unknown,Sonoran SE,Patagonia,Unknown,Forb
 UNFO1,Unknown forb (Patagonia and SRER are same); upright mustard with tiny blueish flower,Unknown,Sonoran SE,SRER,Unknown,Forb
-UNFO1,"Unknown forb (SRER) - Tiny yellow flowers, forked leaves",Unknown,Sonoran SE,SRER,Unknown,Forb
 UNFO1A,"Unknown forb (Patagonia, Nov 2019) = Darker Green, 5 petals radiating out",Unknown,Sonoran SE,Patagonia,Unknown,Forb
-UNFO2,"Unknown forb (Patagonia); low to ground, succulenty, tiny white flowers, similar to purslane",Unknown,Sonoran SE,AguaFria,Unknown,Forb
+UNFO2,"Unknown forb (Patagonia); low to ground, succulenty, tiny white flowers, similar to purslane",Unknown,Sonoran SE,Patagonia,Unknown,Forb
 UNFO2,Unknown forb 2,Unknown,Colorado Plateau,AguaFria,Unknown,Forb
 UNFO2,Unknown forb 2,Unknown,Colorado Plateau,FlyingM,Unknown,Forb
 UNFO2,Unknown forb 2,Unknown,Colorado Plateau,MOWE,Unknown,Forb
@@ -166,3 +165,4 @@ UNK Fuzzy astr,Unknown fuzzy aster,Unknown,Chihuahuan,Mesquite,Unknown,Forb
 Unkaster,Unknown aster,Unknown,Chihuahuan,Mesquite,Unknown,Forb
 UnkForb,Unknown forb,Unknown,Chihuahuan,Mesquite,Unknown,Forb
 UnkForb1,Unknown forb 1,Unknown,Chihuahuan,Creosote,Unknown,Forb
+UNFO.12166.assigned,"Unknown forb, code assigned because it was missing from the subplot data ",Unknown,Utah,Salt_Desert,Unknown,Forb

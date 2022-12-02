@@ -10,7 +10,11 @@ species.sub.de <- read_csv("data/cleaned/species-list_subplot_location-dependent
 mix <- read_xlsx("data/raw/master-seed-mix.xlsx")
 
 
-# Organize columns --------------------------------------------------------
+
+############################ SUBPLOT DATA ##########################
+
+
+# Organize subplot data columns -------------------------------------------
 
 # Narrow down subplot.raw columns
 subplot <- subplot.raw %>% 
@@ -47,7 +51,35 @@ subplot <- subplot %>% # convert to date
          Date_Monitored = as.Date(Date_Monitored))
 
 
-# Replace codes with standardized ones ------------------------------------
+
+
+# Subplot codes -----------------------------------------------------------
+
+
+# Handle missing codes for subplot data -----------------------------------
+
+# Extract missing codes
+filter(subplot, is.na(Code)) # rows 8610, 9318, 12166
+
+# Rows 8610 and 9318 are observations for empty plots; Code should be 0
+subplot$Code[subplot$raw.row == 8610] <- "0"
+subplot$Code[subplot$raw.row == 9318] <- "0"
+
+
+# Examine non-empty subplots
+subplot.raw[12166, ]
+subplot.raw[12166, c("Species_Code", "Functional_Group", "Seeded(Yes/No)", "Notes")]
+  # No notes for 12166, but a functional group was listed; not seeded, and probably an unknown
+
+# Assign location-dependent code for 12166
+subplot$Code[subplot$raw.row == 12166] <- "UNFO.12166.assigned"
+
+# Check again for missing codes
+filter(subplot, is.na(Code))
+
+
+
+# Standardize incorrect codes for subplot data ----------------------------
 
 # Extract incorrect codes
 setdiff(unique(subplot$Code), unique(c(species.sub.de$Code, species.sub.in$Code)))
@@ -60,7 +92,16 @@ subplot$Code[subplot$Code == "ARPUP6"] <- "ARPU9"
 subplot$Code[subplot$Code == "EUPO3"] <- "CHPO12"
 
 # Check codes
-setdiff(unique(subplot$Code), unique(species$Code))
+setdiff(unique(subplot$Code), unique(c(species.sub.de$Code, species.sub.in$Code)))
+
+
+# Replace location-dependent codes with Code.Site -------------------------
+
+# Separate out location-dependent observations
+subplot.de <-subplot %>% 
+  
+
+
 
 
 # Add native, duration, and lifeform information --------------------------
