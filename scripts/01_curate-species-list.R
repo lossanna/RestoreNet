@@ -39,7 +39,7 @@ subplot <- subplot.raw %>%
 # Assign names to codes in subplot data but not species list --------------
 
 # Extract missing codes
-codes.missing.sub <- setdiff(subplot.raw$Code, species.raw$Code)
+codes.missing.sub <- setdiff(subplot$Code, species.raw$Code)
 
 # Narrow columns and remove duplicates for missing subplot data
 subplot.missing <- subplot %>%
@@ -97,7 +97,7 @@ sub.missing.known <- sub.missing.edit %>% # ones missing from original master li
 # Add lifeform information to species list --------------------------------
 
 # Extract lifeform information from subplot.raw data for knowns from master
-subplot.in.lifeform <- subplot.raw %>% 
+subplot.in.lifeform <- subplot %>% 
   select(Code, Functional_Group) %>% 
   distinct(.keep_all = TRUE) %>% 
   filter(Code != "0") %>% 
@@ -246,7 +246,8 @@ length(unique(species.in$Code)) == nrow(species.in) # all codes in species list 
 
 
 
-# Write clean species.in list to CSV -----------------------------------------
+
+# Write clean location-independent species list to CSV --------------------
 
 # Check for missing information
 unique(species.in$Native)
@@ -255,7 +256,7 @@ unique(species.in$Lifeform)
 
 # Write to csv
 write_csv(species.in,
-          file = "data/cleaned/location-independent-species_clean.csv")
+          file = "data/cleaned/species-list_subplot_location-independent_clean.csv")
 
 
 
@@ -270,7 +271,6 @@ species.de <- bind_rows(species.m.unk, sub.missing.unk)
 # Write to CSV to fill in information for species.m.unk
 write_csv(species.de,
           file = "data/raw/output-species4.1_location-dependent.csv")
-
 
 # Extract Site information for species.m.unk to add to location-dependent list
   # and write to CSV
@@ -289,10 +289,34 @@ species.de <- read_csv("data/raw/edited-species4_location-dependent_native-durat
 
 
 
-# add comma to species.m
+# Add Site to name for location-dependent
+species.de$Name <- apply(species.de[ , c("Name", "Site")], 1, paste, collapse = ", ")
+  
 
-# add row of new codes (location-specific)
+# Create column of Code.Site
+species.de$Code.Site <- apply(species.de[ , c("Code", "Site")], 1, paste, collapse = ".")
 
+# Look for overlapping codes between location-dependent and independent 
+intersect(species.de$Code, species.in$Code) # "Unkcrypt"  "Unksporob"
+
+# "Unkcrypt"  "Unksporob" are not location dependent; remove from list
+species.de <- species.de %>% 
+  filter(!Code %in% c("Unkcrypt", "Unksporob"))
+  
+
+
+
+# Write cleaned location-dependent species list to CSV --------------------
+
+# Check for missing information
+unique(species.de$Native)
+unique(species.de$Duration)
+unique(species.de$Lifeform)
+
+# Write to csv
+
+write_csv(species.de,
+          file = "data/cleaned/species-list_subplot_location-dependent_clean.csv")
 
 
 
