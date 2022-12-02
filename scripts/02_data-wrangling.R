@@ -173,12 +173,8 @@ seeded.notnative.names <- data.frame(V1 = unique(seeded.notnative$Name))
 
 # Extract Genus spp. observations to check location dependence
 seeded.spp <- subplot.seeded %>% 
-  filter(str_detect(subplot.seeded$Name, "spp.|local"))
+  filter(str_detect(subplot.seeded$Name, "spp."))
 unique(seeded.spp$Name)
-
-bout.spp <- subplot.seeded %>% 
-  filter(Name == "local Bouteloua species")
-unique(bout.spp$Site) # location-dependent!
 
 elymus.spp <- subplot.seeded %>% 
   filter(Name == "Elymus spp.")
@@ -199,6 +195,7 @@ unique(sporobolus.spp$Site) # not location-dependent
 # Write list of names to CSV for 01_curate-species-list.R
   # The "spp." ones are not location-dependent, and the unknowns have location-specific names now
     # so they do not need to be separated
+### DO NOT OVERWRITE CSV!!! DO NOT RUN #####
 write_csv(seeded.notnative.names,
           file = "data/raw/output-wrangling_seeded-species-to-be-marked-native.csv")
 

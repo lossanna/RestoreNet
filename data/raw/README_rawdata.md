@@ -40,7 +40,7 @@ File naming notes:
 - Not yet a complete species list.
 
 `edited-species4_location-dependent_native-duration-lifeform.csv`
-- List of location-dependent species (unknowns), listed first by the ones from `master-species_native.unk` that lack site data, and then by location-dependent codes from the subplot data (`AllSubplotData` tab from `Master.xlsx`), whose native/duration/lifeforn information was already manually added in `edited-species1_subplot-codes-missing_native-duration-lifeform`.
+- List of location-dependent species (unknowns), listed first by the ones from `master-species_native.unk` that lack site data, and then by location-dependent codes from the subplot data (`AllSubplotData` tab from `Master.xlsx`), whose native/duration/lifeform information was already manually added in `edited-species1_subplot-codes-missing_native-duration-lifeform`.
 - Manually added site information for the unknowns from the master list (first section) based on site information in the subplot data, which sometimes included adding multiple rows because the same code occured at different sites. Codes have not been changed, and will be changed in the cleaned subplot data through data wrangling (`02_data-wrangling.R`).
 	+ Sometimes codes were listed in the master species list that didn't occur in the subplot data, and therefore didn't have any site information. These codes were removed because they will serve no purpose, anyway.
 - Manually added assigned codes for subplot observations that were missing codes, as noted in `02_data-wrangling.R` (there is just one in row 12166).
@@ -78,11 +78,3 @@ File naming notes:
 `output-species4_codes-missing-2x2plot.csv`
 - List of codes that were in the 2x2 plot data (`AllPlotData` tab in `Master.xlsx`), but not yet in species list.
 - Most of the codes are unknowns or descriptions.
-
-
-
-
-
-
-
-

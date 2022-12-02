@@ -1,4 +1,9 @@
 Code,Name,Region,Site,Duration,Lifeform,Code.Site,Native
+BOSPP,"local Bouteloua species (unknown), AguaFria",Colorado Plateau,AguaFria,Unknown,Grass,BOSPP.AguaFria,Native
+BOSPP,"local Bouteloua species (unknown), BarTBar",Colorado Plateau,BarTBar,Unknown,Grass,BOSPP.BarTBar,Native
+BOSPP,"local Bouteloua species (unknown), FlyingM",Colorado Plateau,FlyingM,Unknown,Grass,BOSPP.FlyingM,Native
+BOSPP,"local Bouteloua species (unknown), PEFO",Colorado Plateau,PEFO,Unknown,Grass,BOSPP.PEFO,Native
+BOSPP,"local Bouteloua species (unknown), Spiderweb",Colorado Plateau,Spiderweb,Unknown,Grass,BOSPP.Spiderweb,Native
 CHEN,"Unknown chenopod, BabbittPJ",Colorado Plateau,BabbittPJ,Unknown,Forb,CHEN.BabbittPJ,Native/Unknown
 CHEN,"Unknown chenopod, TLE",Colorado Plateau,TLE,Unknown,Forb,CHEN.TLE,Native/Unknown
 CHEN,"Unknown chenopod, MOWE",Colorado Plateau,MOWE,Unknown,Forb,CHEN.MOWE,Native/Unknown
