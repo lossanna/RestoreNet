@@ -99,32 +99,35 @@ setdiff(subplot$Code, sub.codes)
 
 
 
-
-# Replace location-dependent codes with Code.Site -------------------------
+# Replace location-dependent codes with Code.Site and add species info -----
 
 # Separate out location-dependent observations
 subplot.de <-subplot %>% 
-  
+  filter(Code %in% species.de$Code)
+subplot.de <- left_join(subplot.de, species.de)
+
+# Remove old Code column with Code.Site and rename to match location-independent col
+subplot.de <- subplot.de %>% 
+  select(-Code) %>% 
+  rename(Code = Code.Site)
 
 
 
+# Add species info for location-independent codes -------------------------
 
-# Add native, duration, and lifeform information --------------------------
+subplot.in <- subplot %>% 
+  filter(Code %in% species.in$Code)
 
-subplot <- left_join(subplot, species) %>% 
-  select(raw.row, Region, Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix,
-         Code, Name, Native, Duration, Lifeform, Seeded, Count, Height) %>% 
+subplot.in <- left_join(subplot.in, species.in) 
+
+
+# Combine location in/de for subplot --------------------------------------
+
+subplot <- bind_rows(subplot.in, subplot.de) %>% 
   arrange(raw.row)
 
-# Extract rows with multiple raw.row
-raw.row.multiple <- subplot %>% 
-  filter(raw.row %in% filter(subplot, duplicated(raw.row))$raw.row)
-
-nrow(raw.row.multiple) / 2 # there are 657 rows with a duplicate raw.row (all have just 1 additional duplicate)
-(nrow(subplot) - nrow(raw.row.multiple) / 2) == nrow(subplot.raw) # confirms duplicates are all in pairs
-
-# All the duplicates are from unknown species or plants only defined to genus level
-filter(raw.row.multiple, !str_detect(raw.row.multiple$Name, "Unk"))$Name
+# Check that there the same number of observations as the original subplot data
+nrow(subplot) == nrow(subplot.raw)
 
 
 

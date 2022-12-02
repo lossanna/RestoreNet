@@ -305,6 +305,7 @@ species.de <- species.de %>%
 
 # Check for unique codes
 length(unique(species.de$Code.Site)) == nrow(species.de) # all codes in species list are unique
+intersect(species.de$Code, species.in$Code) # location-dependent codes are also unique from location-dependent ones
 
 
 
