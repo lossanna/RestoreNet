@@ -5,7 +5,8 @@ library(tidyverse)
 
 subplot.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllSubplotData")
 plot.2x2.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllPlotData")
-species <- read_csv("data/cleaned/species_cleaned.csv")
+species.sub.in <- read_csv("data/cleaned/species-list_subplot_location-independent_clean.csv")
+species.sub.de <- read_csv("data/cleaned/species-list_subplot_location-dependent_clean.csv")
 mix <- read_xlsx("data/raw/master-seed-mix.xlsx")
 
 
@@ -49,7 +50,7 @@ subplot <- subplot %>% # convert to date
 # Replace codes with standardized ones ------------------------------------
 
 # Extract incorrect codes
-setdiff(unique(subplot$Code), unique(species$Code))
+setdiff(unique(subplot$Code), unique(c(species.sub.de$Code, species.sub.in$Code)))
 
 # Replace codes
 subplot$Code[subplot$Code == "S-PASM"] <- "PASM"

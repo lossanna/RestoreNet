@@ -100,7 +100,6 @@ sub.missing.known <- sub.missing.edit %>% # ones missing from original master li
 subplot.in.lifeform <- subplot %>% 
   select(Code, Functional_Group) %>% 
   distinct(.keep_all = TRUE) %>% 
-  filter(Code != "0") %>% 
   rename(Lifeform = Functional_Group)
 
 # Add subplot lifeform information to location-independent species list
@@ -326,7 +325,7 @@ write_csv(species.de,
 # Codes from these plots are really different and usually long descriptions
   # so they get their own separate list
 
-# Codes from AllPlotData (2 x 2 m plots)
+# Location-independent codes from AllPlotData (2 x 2 m plots) missing from master
 codes.missing.2x2 <- plot.2x2.raw %>% 
   select(starts_with("Additional")) %>% 
   mutate(across(everything(), as.character)) %>% 
@@ -334,7 +333,7 @@ codes.missing.2x2 <- plot.2x2.raw %>%
   select(Code) %>% 
   distinct(.keep_all = TRUE) %>% 
   arrange(Code) %>% # 382 codes
-  filter(!Code %in% species$Code)
+  filter(!Code %in% species.in$Code)
 
 write_csv(codes.missing.2x2,
           file = "data/raw/output-species5_codes-missing-2x2plot.csv")

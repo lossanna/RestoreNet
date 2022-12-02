@@ -36,6 +36,7 @@ File naming notes:
 - List of codes taken from `master-species_native.xlsx`. Not yet a complete species list.
 - Manually edited to add plant duration, based on USDA Plants.
 - Manually edited to resolve conflicting lifeform assignments or misspelled names to remove duplicates.  Codes are not changed, and different codes for the same species are maintained because they connect to the subplot data.
+- Manually add a row of all 0s to mark observations of plots that had no plants.
 - Not yet a complete species list.
 
 `edited-species4_location-dependent_native-duration-lifeform.csv`
