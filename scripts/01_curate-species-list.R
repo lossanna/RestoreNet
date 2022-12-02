@@ -253,15 +253,16 @@ length(unique(species.in$Code)) == nrow(species.in) # all codes in species list 
   # so although the analysis is not in this script to identify which species need to be changed, it is documented
   # in the 02_data-wrangling.R script.
 
-spp.seeded <- read_csv("data/raw/output-wrangling_genusspp.-seeded-species.csv")
+native.fix <- read_csv("data/raw/output-wrangling_seeded-species-to-be-marked-native.csv")
   # CSV generated from 02_data-wrangling.R script
-spp.seeded
 
 species.in <- species.in %>% 
-  mutate(Native = case_when(
-    str_detect(species.in$Name, "Elymus spp.|Solanum spp.|Stipa spp.|Sporobolus spp.") ~ "Native",
-    TRUE ~ Native
-  ))
+  mutate(Native.new = if_else(Name %in% native.fix$V1, "Native", Native))
+
+# Visually inspect to make sure things changed, then keep fixed column
+species.in <- species.in %>% 
+  select(-Native) %>% 
+  rename(Native = Native.new)
 
 
 
@@ -338,12 +339,16 @@ intersect(species.de$Code, species.in$Code) # location-dependent codes are also 
   # so although the analysis is not in this script to identify which species need to be changed, it is documented
   # in the 02_data-wrangling.R script.
 
-unk.seeded <- read_csv("data/raw/output-wrangling_unknown-seeded-species.csv")
+native.fix <- read_csv("data/raw/output-wrangling_seeded-species-to-be-marked-native.csv")
   # CSV generated from 02_data-wrangling.R script
 
 species.de <- species.de %>% 
-  mutate(Native = if_else(Name %in% unk.seeded$V1, "Native", Native))
+  mutate(Native.test = if_else(Name %in% native.fix$V1, "Native", Native))
 
+# Visually inspect to make sure things changed, then keep fixed column
+species.de <- species.de %>% 
+  select(-Native) %>% 
+  rename(Native = Native.test)
 
 
 

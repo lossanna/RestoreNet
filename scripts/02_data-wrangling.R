@@ -130,6 +130,12 @@ subplot <- bind_rows(subplot.in, subplot.de) %>%
 nrow(subplot) == nrow(subplot.raw)
 
 
+# Check if Introduced plants were marked as Seeded ------------------------
+
+subplot.inva <- subplot %>% 
+  filter(Native == "Introduced") %>% 
+  select(Code, Seeded, Name, Native) %>% 
+  distinct(.keep_all = TRUE)
 
 
 # Write clean subplot data to csv -----------------------------------------
@@ -158,13 +164,16 @@ subplot.seeded <- subplot %>%
 subplot.seeded <- left_join(subplot.seeded, mix) %>% 
   select(-Family, -Scientific, -Common)
 
-# Extract Genus spp. observations
+# Extract names that were seeded but not marked Native
+seeded.notnative <- subplot.seeded %>% 
+  filter(Native != "Native")
+seeded.notnative.names <- data.frame(V1 = unique(seeded.notnative$Name))
+
+# Extract Genus spp. observations to check location dependence
 seeded.spp <- subplot.seeded %>% 
   filter(str_detect(subplot.seeded$Name, "spp."))
 unique(seeded.spp$Name)
 
-
-# Check if they are location-dependent
 elymus.spp <- subplot.seeded %>% 
   filter(Name == "Elymus spp.")
 unique(elymus.spp$Site) # not location-dependent
@@ -181,35 +190,19 @@ sporobolus.spp <- subplot.seeded %>%
   filter(Name == "Sporobolus spp.")
 unique(sporobolus.spp$Site) # not location-dependent
 
-# Write "Genus spp." names to CSV because they are not location-dependent and existing list can be altered
-seeded.spp.names <- data.frame(V1 = unique(seeded.spp$Name)) 
+# Write list of names to CSV for 01_curate-species-list.R
+  # The "spp." ones are not location-dependent, and the unknowns have location-specific names now
+    # so they do not need to be separated
+write_csv(seeded.notnative.names,
+          file = "data/raw/output-wrangling_seeded-species-to-be-marked-native.csv")
 
-write_csv(seeded.spp.names,
-          file = "data/raw/output-wrangling_genusspp.-seeded-species.csv")
+# Remove unnecessary objects
+rm(seeded.notnative, seeded.notnative.names, seeded.spp, elymus.spp, solanum.spp,
+   stipa.spp, sporobolus.spp)
 
-
-# Extract "unk" unknown species
-seeded.unk <- subplot.seeded %>% 
-  filter(str_detect(subplot.seeded$Name, "Unk|unk"))
-unique(seeded.unk$Name)
-seeded.unk.names <- data.frame(V1 = unique(seeded.unk$Name)) 
-
-write_csv(seeded.unk.names,
-          file = "data/raw/output-wrangling_unknown-seeded-species.csv")
-
-
-# Check observations of known species
 
 # Check if it worked after fixing 01_curate-species-list.R and writing new CSVs
-unique(subplot.seeded$Native)
-subplot.seeded %>% 
-  filter(Native == "Introduced")
-
-whyisthishappening <- subplot.seeded %>% 
-  filter(Native == "Native/Unknown")
-
-reallywhy <- subplot.seeded %>% 
-  filter(Native == "Unknown")
+unique(subplot.seeded$Native) # only option should be "Native"
 
 
 ########### Chunk related to 01_curate-species-list.R complete ############
@@ -224,6 +217,15 @@ subplot.seeded <- subplot %>%
 
 subplot.seeded <- left_join(subplot.seeded, mix) %>% 
   select(-Family, -Scientific, -Common)
+
+# Check which ones are missing seeding rate data
+seed.rate.na <- subplot.seeded %>% 
+  filter(is.na(SeedingRate)) %>% 
+  select(Code, Name, Mix, SeedingRate, NicheValue) %>% 
+  distinct(.keep_all = TRUE) 
+
+seed.rate.na.known <- seed.rate.na %>% 
+  filter(!str_detect(seed.rate.na$Name, "Unk|unk|spp.|Local|ATCA"))
 
 
 save.image("RData/02_data-wrangling.RData")
