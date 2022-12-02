@@ -5,8 +5,8 @@ library(tidyverse)
 
 subplot.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllSubplotData")
 plot.2x2.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllPlotData")
-species.sub.in <- read_csv("data/cleaned/species-list_subplot_location-independent_clean.csv")
-species.sub.de <- read_csv("data/cleaned/species-list_subplot_location-dependent_clean.csv")
+species.in <- read_csv("data/cleaned/species-list_subplot_location-independent_clean.csv")
+species.de <- read_csv("data/cleaned/species-list_subplot_location-dependent_clean.csv")
 mix <- read_xlsx("data/raw/master-seed-mix.xlsx")
 
 
@@ -56,9 +56,9 @@ subplot <- subplot %>% # convert to date
 # Subplot codes -----------------------------------------------------------
 
 
-# Handle missing codes for subplot data -----------------------------------
+# Handle NA codes for subplot data ----------------------------------------
 
-# Extract missing codes
+# Extract NA codes
 filter(subplot, is.na(Code)) # rows 8610, 9318, 12166
 
 # Rows 8610 and 9318 are observations for empty plots; Code should be 0
@@ -74,15 +74,15 @@ subplot.raw[12166, c("Species_Code", "Functional_Group", "Seeded(Yes/No)", "Note
 # Assign location-dependent code for 12166
 subplot$Code[subplot$raw.row == 12166] <- "UNFO.12166.assigned"
 
-# Check again for missing codes
-filter(subplot, is.na(Code))
+# Check again for NA codes
+filter(subplot, is.na(Code)) # no NAs
 
 
 
 # Standardize incorrect codes for subplot data ----------------------------
 
 # Extract incorrect codes
-setdiff(unique(subplot$Code), unique(c(species.sub.de$Code, species.sub.in$Code)))
+setdiff(unique(subplot$Code), unique(c(species.de$Code, species.in$Code)))
 
 # Replace codes
 subplot$Code[subplot$Code == "S-PASM"] <- "PASM"
@@ -91,8 +91,13 @@ subplot$Code[subplot$Code == "SPAMA"] <- "SPAM2"
 subplot$Code[subplot$Code == "ARPUP6"] <- "ARPU9"
 subplot$Code[subplot$Code == "EUPO3"] <- "CHPO12"
 
-# Check codes
-setdiff(unique(subplot$Code), unique(c(species.sub.de$Code, species.sub.in$Code)))
+
+# Check for missing codes by comparing subplot data to both species lists
+sub.codes <- c(species.de$Code, species.in$Code)
+setdiff(subplot$Code, sub.codes) 
+
+
+
 
 
 # Replace location-dependent codes with Code.Site -------------------------

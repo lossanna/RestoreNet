@@ -190,7 +190,7 @@ species.m.known <- read_csv("data/raw/edited-species3_xlsx_native-lifeform-durat
 species.in <- bind_rows(species.m.known, sub.missing.known) %>% 
   arrange(Code)
 
-# Check for missing information
+# Check for absent information (NAs)
 apply(species.in, 2, anyNA)
 
 
@@ -234,7 +234,7 @@ names.fix.in <- species.in %>%
   filter(Code %in% filter(species.in, duplicated(Code))$Code) %>% 
   arrange(Code) 
 filter(species.in, Name == "Eragrostis ciliaris") # name only occurs once
-filter(species.in, Code == "ERCI2") # correct code is missing
+filter(species.in, Code == "ERCI2") # correct code is not present in species list
 
 # Fix code for ERCI
 species.in$Code[species.in$Name == "Eragrostis ciliaris"] <- "ERCI2"
@@ -248,7 +248,7 @@ length(unique(species.in$Code)) == nrow(species.in) # all codes in species list 
 
 # Write clean location-independent species list to CSV --------------------
 
-# Check for missing information
+# Check for absent information (NAs)
 unique(species.in$Native)
 unique(species.in$Duration)
 unique(species.in$Lifeform)
@@ -311,7 +311,7 @@ length(unique(species.de$Code.Site)) == nrow(species.de) # all codes in species 
 
 # Write cleaned location-dependent species list to CSV --------------------
 
-# Check for missing information
+# Check for absent information (NAs)
 unique(species.de$Native)
 unique(species.de$Duration)
 unique(species.de$Lifeform)
