@@ -245,6 +245,26 @@ length(unique(species.in$Code)) == nrow(species.in) # all codes in species list 
 
 
 
+# Fix native status for select seeded species -----------------------------
+
+# In merging the species data with the subplot data (actual observations), we see that some unknown
+  # species were seeded, and therefore native, but it is impossible to know this without first producing
+  # a species list. However, the cleaned species list should be final and generated all from one script,
+  # so although the analysis is not in this script to identify which species need to be changed, it is documented
+  # in the 02_data-wrangling.R script.
+
+spp.seeded <- read_csv("data/raw/output-wrangling_genusspp.-seeded-species.csv")
+  # CSV generated from 02_data-wrangling.R script
+spp.seeded
+
+species.in <- species.in %>% 
+  mutate(Native = case_when(
+    str_detect(species.in$Name, "Elymus spp.|Solanum spp.|Stipa spp.|Sporobolus spp.") ~ "Native",
+    TRUE ~ Native
+  ))
+
+
+
 
 # Write clean location-independent species list to CSV --------------------
 
@@ -306,6 +326,23 @@ species.de <- species.de %>%
 # Check for unique codes
 length(unique(species.de$Code.Site)) == nrow(species.de) # all codes in species list are unique
 intersect(species.de$Code, species.in$Code) # location-dependent codes are also unique from location-dependent ones
+
+
+
+
+# Fix native status for select seeded species (again) ---------------------
+
+# In merging the species data with the subplot data (actual observations), we see that some unknown
+  # species were seeded, and therefore native, but it is impossible to know this without first producing
+  # a species list. However, the cleaned species list should be final and generated all from one script,
+  # so although the analysis is not in this script to identify which species need to be changed, it is documented
+  # in the 02_data-wrangling.R script.
+
+unk.seeded <- read_csv("data/raw/output-wrangling_unknown-seeded-species.csv")
+  # CSV generated from 02_data-wrangling.R script
+
+species.de <- species.de %>% 
+  mutate(Native = if_else(Name %in% unk.seeded$V1, "Native", Native))
 
 
 

@@ -131,10 +131,90 @@ nrow(subplot) == nrow(subplot.raw)
 
 
 
+
 # Write clean subplot data to csv -----------------------------------------
 
 write_csv(subplot,
           file = "data/cleaned/subplot-data_clean.csv")
+
+
+
+
+
+
+#### This chunk relates to 01_curate-species-list.R ###################
+
+
+# Address native status for unknown seeded species ------------------------
+
+# After making a species list and combining that with the subplot data, we see that some unknown species
+  # were actually seeded, and therefore native. The native status is fixed in the 01_curate-species-list.R
+  # script (they do not need to be fixed here), but this section shows how I determined which species to address
+  # in the 01_curate-species-list.R script.
+
+subplot.seeded <- subplot %>% 
+  filter(Seeded == "Yes")
+
+subplot.seeded <- left_join(subplot.seeded, mix) %>% 
+  select(-Family, -Scientific, -Common)
+
+# Extract Genus spp. observations
+seeded.spp <- subplot.seeded %>% 
+  filter(str_detect(subplot.seeded$Name, "spp."))
+unique(seeded.spp$Name)
+
+
+# Check if they are location-dependent
+elymus.spp <- subplot.seeded %>% 
+  filter(Name == "Elymus spp.")
+unique(elymus.spp$Site) # not location-dependent
+
+solanum.spp <- subplot.seeded %>% 
+  filter(Name == "Solanum spp.")
+unique(solanum.spp$Site) # not location-dependent
+
+stipa.spp <- subplot.seeded %>% 
+  filter(Name == "Stipa spp.")
+unique(stipa.spp$Site) # not location-dependent
+
+sporobolus.spp <- subplot.seeded %>% 
+  filter(Name == "Sporobolus spp.")
+unique(sporobolus.spp$Site) # not location-dependent
+
+# Write "Genus spp." names to CSV because they are not location-dependent and existing list can be altered
+seeded.spp.names <- data.frame(V1 = unique(seeded.spp$Name)) 
+
+write_csv(seeded.spp.names,
+          file = "data/raw/output-wrangling_genusspp.-seeded-species.csv")
+
+
+# Extract "unk" unknown species
+seeded.unk <- subplot.seeded %>% 
+  filter(str_detect(subplot.seeded$Name, "Unk|unk"))
+unique(seeded.unk$Name)
+seeded.unk.names <- data.frame(V1 = unique(seeded.unk$Name)) 
+
+write_csv(seeded.unk.names,
+          file = "data/raw/output-wrangling_unknown-seeded-species.csv")
+
+
+# Check observations of known species
+
+# Check if it worked after fixing 01_curate-species-list.R and writing new CSVs
+unique(subplot.seeded$Native)
+subplot.seeded %>% 
+  filter(Native == "Introduced")
+
+whyisthishappening <- subplot.seeded %>% 
+  filter(Native == "Native/Unknown")
+
+reallywhy <- subplot.seeded %>% 
+  filter(Native == "Unknown")
+
+
+########### Chunk related to 01_curate-species-list.R complete ############
+
+
 
 
 # Subplot data for seeded species only ------------------------------------
