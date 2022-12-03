@@ -46,8 +46,9 @@ File naming notes:
 - Manually added assigned codes for subplot observations that were missing codes, as noted in `02_data-wrangling.R` (there is just one in row 12166).
 
 `edited-species5_codes-missing-2x2plot.csv`
-- List of codes that were in the 2x2 plot data (`AllPlotData` tab in `Master.xlsx`), but not yet in species list.
-- Most of the codes are unknowns or descriptions.
+- List of codes that were in the 2x2 plot data (`AllPlotData` tab in `Master.xlsx`), but not yet in the species lists for the subplot data, which have already been generated.
+- Most of the codes are unknowns or descriptions; long codes that are basically descriptions and mention multiple species have multiple rows for the same code, and a column marks if there is a duplicate that is needed. All of these codes came from the Sonoran SE sites. Most other sites had a standard USDA code marked in multiple columns all named `Additional_Species_In_Plot` in the originalraw 2x2 plot data.
+	+ The Sonoran SE plots were difficult to identify, so longer explanations were needed.
 
 `Master Germination Data 2022.xlsx`
 - Received from Hannah Farrell via email. I believe this is what she used to write her paper, which is currently in review.
@@ -75,6 +76,16 @@ File naming notes:
 - List of unique species codes (although there are some duplicates when there are conflicting lifeforms or names for the same code).
 - Output written directly from R and edited in a new file.
 
-`output-species4_codes-missing-2x2plot.csv`
-- List of codes that were in the 2x2 plot data (`AllPlotData` tab in `Master.xlsx`), but not yet in species list.
+`output-species4.1_location-dependent.csv`
+- List of codes for location-dependent species in subplot data. Site, Duration, and Lifeform information is filled out for the second part of the list, which came from codes missing from the `master-species_native.xlsx` list, and had been manually input into `edited-species1_subplot-codes-missing_native-duration-lifeform.csv`.
+- Site, Duration, and Lifeform information is not yet entered for codes that were included in the `master-species_native.xlsx` list.
+- Output written directly from R and edited in a new file, in combination with `output-species4.2.csv`.
+
+`output-species4.2_location-dependent_xlsx_sites`
+- List of codes from the `master-species_native.xlsx` list, with their Site and Region information.
+- Output written directly from R and edited in a new file, in combination with `output-species4.1.csv`.
+
+`output-species5_codes-missing-2x2plot.csv`
+- List of codes that were in the 2x2 plot data (`AllPlotData` tab in `Master.xlsx`), but not yet in the species lists for the subplot data, which have already been generated.
 - Most of the codes are unknowns or descriptions.
+- Output written directly from R and edited in a new file.
