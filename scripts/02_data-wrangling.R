@@ -118,8 +118,8 @@ subplot.de <- subplot.de %>%
 subplot.de <- left_join(subplot.de, species.de)
 
 # Check for NA codes
-subplot.de %>% 
-  filter(is.na(Code))
+filter(subplot.de, is.na(Code))
+
 
 
 
@@ -134,10 +134,6 @@ subplot.in <- left_join(subplot.in, species.in)
 
 
 # Combine location in/de for subplot --------------------------------------
-
-# Add CodeOriginal col to location-independent
-subplot.in <- subplot.in %>% 
-  mutate(CodeOriginal = Code)
 
 # Combine
 subplot <- bind_rows(subplot.in, subplot.de) %>% 
