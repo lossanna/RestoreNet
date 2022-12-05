@@ -308,7 +308,7 @@ species.de <- read_csv("data/raw/edited-species4_location-dependent_native-durat
 
 
 
-# Add Site to name for location-dependent
+# Add Site to Name col for location-dependent
 species.de$Name <- apply(species.de[ , c("Name", "Site")], 1, paste, collapse = ", ")
   
 
@@ -318,7 +318,8 @@ species.de$Code.Site <- apply(species.de[ , c("Code", "Site")], 1, paste, collap
 # Look for overlapping codes between location-dependent and independent 
 intersect(species.de$Code, species.in$Code) # "Unkcrypt"  "Unksporob"
 
-# "Unkcrypt"  "Unksporob" are not location dependent; remove from list
+# "Unkcrypt"  "Unksporob" are not location dependent and in location-independent list already; 
+    # remove from location-dependent list
 species.de <- species.de %>% 
   filter(!Code %in% c("Unkcrypt", "Unksporob"))
   

@@ -106,9 +106,9 @@ subplot.de <-subplot %>%
   filter(Code %in% species.de$Code)
 subplot.de <- left_join(subplot.de, species.de)
 
-# Remove old Code column with Code.Site and rename to match location-independent col
+# Rename code columns so Code.Site is Code
 subplot.de <- subplot.de %>% 
-  select(-Code) %>% 
+  rename(OriginalCode = Code) %>% 
   rename(Code = Code.Site)
 
 
@@ -123,6 +123,11 @@ subplot.in <- left_join(subplot.in, species.in)
 
 # Combine location in/de for subplot --------------------------------------
 
+# Add OriginalCode col to location-independent
+subplot.in <- subplot.in %>% 
+  mutate(CodeOriginal = Code)
+
+# Combine
 subplot <- bind_rows(subplot.in, subplot.de) %>% 
   arrange(raw.row)
 
@@ -136,8 +141,21 @@ subplot.inva <- subplot %>%
   filter(Native == "Introduced") %>% 
   select(Code, Seeded, Name, Native) %>% 
   distinct(.keep_all = TRUE)
-unique(subplot.inva$Seeded) # no "Yes"
+unique(subplot.inva$Seeded) # something is mislabeled; no introduced species were seeded
+subplot.inva %>% 
+  filter(Seeded == "Yes") # Eragrostis curvula was not seeded
 
+# Fix Eragrostis curvula - mark all observations as "No" for Seeded col
+subplot$Seeded[subplot$Name == "Eragrostis curvula"] <- "No"
+
+
+
+# Check again for NA codes ------------------------------------------------
+
+
+
+subplot.name.na <- subplot %>% 
+  filter(is.na(Name))
 
 # Write clean subplot data to csv -----------------------------------------
 
