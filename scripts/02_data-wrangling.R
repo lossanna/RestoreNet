@@ -109,18 +109,18 @@ filter(subplot, is.na(Code)) # no NAs
 # Separate out location-dependent observations
 subplot.de <-subplot %>% 
   filter(Code %in% species.de$Code)
+
+# Rename code columns so Code is CodeOriginal (matches species list)
+subplot.de <- subplot.de %>% 
+  rename(CodeOriginal = Code)
+
+# Add species info
 subplot.de <- left_join(subplot.de, species.de)
 
-# Rename code columns so Code.Site is Code
-subplot.de <- subplot.de %>% 
-  rename(CodeOriginal = Code) %>% 
-  rename(Code = Code.Site)
-
 # Check for NA codes
-de.na.codes <- subplot.de %>% 
-  filter(is.na(Code)) # left_join() created 
+subplot.de %>% 
+  filter(is.na(Code))
 
-raw.de.na.codes <- subplot.raw[de.na.codes$raw.row, ]
 
 
 

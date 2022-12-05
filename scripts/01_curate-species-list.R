@@ -241,7 +241,7 @@ species.in$Code[species.in$Name == "Eragrostis ciliaris"] <- "ERCI2"
 
 
 # Unique codes
-length(unique(species.in$Code)) == nrow(species.in) # all codes in species list are unique
+length(unique(species.in$Code)) == nrow(species.in) # TRUE, all codes in species list are unique
 
 
 
