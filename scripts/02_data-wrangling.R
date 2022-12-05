@@ -7,6 +7,7 @@ subplot.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "
 plot.2x2.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllPlotData")
 species.in <- read_csv("data/cleaned/species-list_subplot_location-independent_clean.csv")
 species.de <- read_csv("data/cleaned/species-list_subplot_location-dependent_clean.csv")
+subplot.codes <- read_csv("data/cleaned/subplot-codes_clean.csv")
 mix <- read_xlsx("data/raw/master-seed-mix.xlsx")
 
 
@@ -26,7 +27,7 @@ subplot <- subplot.raw %>%
          Seeded = `Seeded(Yes/No)`,
          PlotMix = Seed_Mix)
 
-# Add Region
+# Add Region col
 subplot <- subplot %>% 
   mutate(Region = case_when(
     str_detect(subplot$Site, c("AguaFria|BabbittPJ|MOWE|Spiderweb|BarTBar|FlyingM|PEFO|TLE")) ~ "Colorado Plateau",
@@ -38,7 +39,7 @@ subplot <- subplot %>%
     TRUE ~ "unk")) 
 filter(subplot, Region == "unk") # all have been assigned a Region
 
-# Convert character NAs
+# Convert character "NA" to logical NA
 sapply(subplot, class) # temporarily convert date columns to character to replace NAs
 subplot <- subplot %>% 
   mutate(Date_Seeded = as.character(Date_Seeded),
@@ -59,7 +60,7 @@ subplot <- subplot %>% # convert to date
 # Handle NA codes for subplot data ----------------------------------------
 
 # Extract NA codes
-filter(subplot, is.na(Code)) # rows 8610, 9318, 12166
+filter(subplot, is.na(Code)) # raw.row 8610, 9318, 12166
 
 # Rows 8610 and 9318 are observations for empty plots; Code should be 0
 subplot$Code[subplot$raw.row == 8610] <- "0"
