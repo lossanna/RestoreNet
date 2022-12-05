@@ -274,6 +274,10 @@ unique(species.in$Native)
 unique(species.in$Duration)
 unique(species.in$Lifeform)
 
+# Add LocationDependence col
+species.in <- species.in %>% 
+  mutate(LocationDependence = rep("location-independent", nrow(species.in)))
+
 # Write to csv
 write_csv(species.in,
           file = "data/cleaned/species-list_subplot_location-independent_clean.csv")
@@ -359,6 +363,10 @@ unique(species.de$Native)
 unique(species.de$Duration)
 unique(species.de$Lifeform)
 
+# Add LocationDependence col
+species.de <- species.de %>% 
+  mutate(LocationDependence = rep("location-dependent", nrow(species.de)))
+
 # Write to csv
 write_csv(species.de,
           file = "data/cleaned/species-list_subplot_location-dependent_clean.csv")
@@ -369,13 +377,13 @@ write_csv(species.de,
 
 # Location-independent codes
 subplot.codes.de <- species.de %>% 
-  select(Code, Code.Site, Name) %>% 
+  select(Code, Code.Site, Name, LocationDependence) %>% 
   rename(CodeOriginal = Code,
          Code = Code.Site)
 
 # Location-dependent codes
 subplot.codes.in <- species.in %>% 
-  select(Code, Name) %>% 
+  select(Code, Name, LocationDependence) %>% 
   mutate(CodeOriginal = Code)
 
 # Combine

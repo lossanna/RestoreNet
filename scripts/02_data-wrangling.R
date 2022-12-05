@@ -97,6 +97,10 @@ sub.codes <- c(species.de$Code, species.in$Code)
 setdiff(subplot$Code, sub.codes) 
 
 
+# Check again for NA codes
+filter(subplot, is.na(Code)) # no NAs
+
+
 
 
 # Replace location-dependent codes with Code.Site and add species info -----
@@ -110,6 +114,13 @@ subplot.de <- left_join(subplot.de, species.de)
 subplot.de <- subplot.de %>% 
   rename(OriginalCode = Code) %>% 
   rename(Code = Code.Site)
+
+# Check for NA codes
+de.na.codes <- subplot.de %>% 
+  filter(is.na(Code)) # left_join() created 
+
+raw.de.na.codes <- subplot.raw[de.na.codes$raw.row, ]
+
 
 
 
