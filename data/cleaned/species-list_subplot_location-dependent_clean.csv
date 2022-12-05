@@ -1,4 +1,4 @@
-Code,Name,Region,Site,Duration,Lifeform,Code.Site,Native,LocationDependence
+CodeOriginal,Name,Region,Site,Duration,Lifeform,Code,Native,LocationDependence
 BOSPP,"local Bouteloua species (unknown), AguaFria",Colorado Plateau,AguaFria,Unknown,Grass,BOSPP.AguaFria,Native,location-dependent
 BOSPP,"local Bouteloua species (unknown), BarTBar",Colorado Plateau,BarTBar,Unknown,Grass,BOSPP.BarTBar,Native,location-dependent
 BOSPP,"local Bouteloua species (unknown), FlyingM",Colorado Plateau,FlyingM,Unknown,Grass,BOSPP.FlyingM,Native,location-dependent

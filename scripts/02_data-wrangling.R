@@ -112,7 +112,7 @@ subplot.de <- left_join(subplot.de, species.de)
 
 # Rename code columns so Code.Site is Code
 subplot.de <- subplot.de %>% 
-  rename(OriginalCode = Code) %>% 
+  rename(CodeOriginal = Code) %>% 
   rename(Code = Code.Site)
 
 # Check for NA codes
@@ -134,7 +134,7 @@ subplot.in <- left_join(subplot.in, species.in)
 
 # Combine location in/de for subplot --------------------------------------
 
-# Add OriginalCode col to location-independent
+# Add CodeOriginal col to location-independent
 subplot.in <- subplot.in %>% 
   mutate(CodeOriginal = Code)
 
