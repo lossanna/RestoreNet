@@ -47,7 +47,7 @@ File naming notes:
 
 `edited-species5_codes-missing-2x2plot.csv`
 - List of codes that were in the 2x2 plot data (`AllPlotData` tab in `Master.xlsx`), but not yet in the species lists for the subplot data, which have already been generated.
-- Most of the codes are unknowns or descriptions; long codes that are basically descriptions and mention multiple species have multiple rows for the same code, and a column marks if there is a duplicate that is needed. All of these codes came from the Sonoran SE sites. Most other sites had a standard USDA code marked in multiple columns all named `Additional_Species_In_Plot` in the originalraw 2x2 plot data.
+- Most of the codes are unknowns or descriptions; long codes that are basically descriptions and mention multiple species have multiple rows for the same code, and a column marks if there is a duplicate that is needed. All of these codes came from the Sonoran SE sites. Most other sites had a standard USDA code marked in multiple columns all named `Additional_Species_In_Plot` in the original raw 2x2 plot data.
 	+ The Sonoran SE plots were difficult to identify, so longer explanations were needed.
 	
 `Farrell_2020_EcologicalApplications_table1.xlsx`

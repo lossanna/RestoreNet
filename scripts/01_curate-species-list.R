@@ -401,13 +401,15 @@ write_csv(subplot.codes,
 
 # Location-independent codes from AllPlotData (2 x 2 m plots) missing from location-independent list
 codes.missing.2x2 <- plot.2x2.raw %>% 
-  select(starts_with("Additional")) %>% 
+  select(Site, starts_with("Additional")) %>% 
   mutate(across(everything(), as.character)) %>% 
-  pivot_longer(everything(), names_to = "drop", values_to = "Code") %>% 
-  select(Code) %>% 
+  pivot_longer(!Site, names_to = "drop", values_to = "Code") %>% 
+  select(-drop) %>% 
   distinct(.keep_all = TRUE) %>% 
   arrange(Code) %>% # 176 codes
-  filter(!Code %in% species.in$Code)
+  filter(!Code %in% species.in$Code) %>% 
+  filter(!is.na(Code),
+         Code != "O")
 
 write_csv(codes.missing.2x2,
           file = "data/raw/output-species5_codes-missing-2x2plot.csv")
