@@ -1,15 +1,11 @@
 Code,Name,Duration,Lifeform,Native,CodeOriginal
 0,0,0,0,0,0
 ABPA3,Abutilon parvulum,Perennial,Forb,Native,ABPA3
-ACASPP,Acalypha spp.,Unknown,Forb,Native/Unknown,ACASPP
 ACHY,Achnatherum hymenoides,Perennial,Grass,Native,ACHY
 ACMI2,Achillea millefolium,Perennial,Forb,Native/Unknown,ACMI2
 ACMIS,Acmispon (Lotus),Unknown,Forb,Native,ACMIS
 ACNA2,Acourtia nana,Perennial,Forb,Native,ACNA2
 ALIN,Allionia incarnata,Unknown,Forb,Native,ALIN
-AmaranthusSpp,Amaranthus spp.,Unknown,Forb,Unknown,AmaranthusSpp
-AMASPP,Amaranthus spp.,Unknown,Forb,Native/Unknown,AMASPP
-AMBSPP,Ambrosia spp.,Unknown,Forb,Native/Unknown,AMBSPP
 AMCH3,Ammocodon chenopodioides,Perennial,Forb,Native,AMCH3
 AMCO3,Ambrosia confertiflora,Perennial,Forb,Native,AMCO3
 AMDE4,Ambrosia deltoidea,Perennial,Shrub,Native,AMDE4
@@ -20,23 +16,17 @@ AMSIN,Amsinckia,Annual,Forb,Native,AMSIN
 AMTE3,Amsinckia tessellata,Annual,Forb,Native,AMTE3
 AMTO3,Ambrosia tomentosa,Perennial,Forb,Native,AMTO3
 ANCR2,Anoda cristata,Annual,Forb,Native,ANCR2
-ANOSPP,Anoda spp.,Unknown,Forb,Native,ANOSPP
 ARAD,Aristida adscensionis,Annual,Grass,Native,ARAD
 ARFR4,Artemisia frigida,Perennial,Shrub,Native,ARFR4
-ARISPP,Aristida spp.,Unknown,Grass,Native,ARISPP
 ARNE2,Argythamnia neomexicana,Unknown,Forb,Native,ARNE2
 ARPU9,Aristida purpurea,Perennial,Grass,Native,ARPU9
-ARSPP,Artemisia spp.,Perennial,Shrub,Native/Unknown,ARSPP
 ARTE3,Aristida ternipes,Perennial,Grass,Native,ARTE3
 ARWA,Aristolochia watsonii,Perennial,Forb,Native,ARWA
 ASNU4,Astragalus nuttallianus,Unknown,Forb,Native,ASNU4
 ASNU5,Astragalus nuttallii,Perennial,Forb,Introduced,ASNU5
-ASTRAG,Astragalus spp.,Unknown,Forb,Native/Unknown,ASTRAG
-ASTSPP,Astragalus spp.,Unknown,Forb,Native/Unknown,ASTSPP
 ASTU,Asclepias tuberosa,Perennial,Forb,Native,ASTU
 ATCA2,Atriplex canescens,Perennial,Shrub,Native,ATCA2
 ATCO,Atriplex confertifolia,Perennial,Shrub,Native,ATCO
-ATSP,Atriplex spp.,Perennial,Shrub,Native/Unknown,ATSP
 AVFA,Avena fatua,Annual,Grass,Introduced,AVFA
 BAAB,Bahia absinthifolia,Perennial,Forb,Native,BAAB
 BAHI,Balsamorhiza hookeri,Perennial,Forb,Native,BAHI
@@ -54,8 +44,6 @@ BOIN3,Bowlesia incana,Annual,Forb,Native,BOIN3
 BORA,Bouteloua radicosa,Perennial,Grass,Native,BORA
 BORO2,Bouteloua rothrockii,Perennial,Grass,Native,BORO2
 BOSI2,Bouteloua simplex,Annual,Grass,Native,BOSI2
-BOUSPP,Bouteloua spp.,Unknown,Grass,Native,BOUSPP
-BRASPP,Brassica spp. (likely DEPI),Unknown,Forb,Native/Unknown,BRASPP
 BRDI3,Bromus diandrus,Unknown,Grass,Introduced,BRDI3
 BRNI,Brassica nigra,Annual,Forb,Introduced,BRNI
 BRRU2,Bromus rubens,Annual,Grass,Introduced,BRRU2
@@ -63,17 +51,13 @@ BRTE,Bromus tectorum,Annual,Grass,Introduced,BRTE
 CACI2,Calandrinia ciliata,Annual,Forb,Native,CACI2
 CACLL,Camissonia claviformis,Annual,Forb,Native,CACLL
 CAEXE,Castilleja exserta,Annual,Forb,Native,CAEXE
-CALSPP,Calandrinia spp.,Unknown,Forb,Native,CALSPP
 CANU3,Calochortus nuttallii,Perennial,Forb,Native,CANU3
 CEME2,Centaurea melitensis,Annual,Forb,Introduced,CEME2
 CETE5,Ceratocephala testiculata,Annual,Forb,Introduced,CETE5
 CHAL11,Chamaesyce albomarginata,Perennial,Forb,Native,CHAL11
-CHAMA,Chamaesyce spp.,Unknown,Forb,Native,CHAMA
-CHASPP,Chaenactis spp.,Unknown,Forb,Native,CHASPP
 CHBR,Chorizanthe brevicornu,Annual,Forb,Native,CHBR
 CHCO2,Chamaesaracha coronopus,Perennial,Forb,Native,CHCO2
 CHER2,Chaetopappa ericoides,Perennial,Forb,Native,CHER2
-CHESPP,Chenopodium spp.,Unknown,Forb,Unknown,CHESPP
 CHFR3,Chenopodium fremontii,Annual,Forb,Native,CHFR3
 CHHY3,Chamaesyce hyssopifolia,Unknown,Forb,Native,CHHY3
 CHIN2,Chenopodium incanum,Annual,Forb,Native,CHIN2
@@ -81,7 +65,6 @@ CHPO12,Chamaesyce polycarpa,Unknown,Forb,Native,CHPO12
 CHTE2,Chorispora tenella,Annual,Forb,Introduced,CHTE2
 CHVI4,Chloris virgata,Annual,Grass,Native,CHVI4
 CHWA,Chenopodium watsonii,Annual,Forb,Native,CHWA
-CLESP,Cleome spp.,Unknown,Forb,Native/Unknown,CLESP
 CLLU2,Cleome lutea,Annual,Forb,Native,CLLU2
 COAU2,Corydalis aurea,Annual,Forb,Native,COAU2
 COCA5,Conyza canadensis,Annual,Forb,Native,COCA5
@@ -93,8 +76,6 @@ CRCO34,Crassula connata,Annual,Forb,Native,CRCO34
 CRCR3,Cryptantha crassisepala,Annual,Forb,Native,CRCR3
 CRPO5,Croton pottsii,Perennial,Forb,Native,CRPO5
 CRSE11,Croton setigerus,Annual,Forb,Native,CRSE11
-CRYPT,Cryptantha spp.,Unknown,Forb,Native,CRYPT
-CRYSPP,Cryptantha spp.,Unknown,Forb,Native,CRYSPP
 CYAC,Cymopterus acaulis,Perennial,Forb,Native,CYAC
 DACA7,Dalea candida,Perennial,Forb,Native,DACA7
 DAPU3,Daucus pusillus,Annual,Forb,Native,DAPU3
@@ -104,17 +85,14 @@ DEPI,Descurainia pinnata,Unknown,Forb,Native,DEPI
 DESO2,Descurainia sophia,Annual,Forb,Introduced,DESO2
 DICA14,Dichelostemma capitatum,Perennial,Forb,Native,DICA14
 DICA8,Digitaria californica,Perennial,Grass,Native,DICA8
-DRABA,Draba spp.,Unknown,Forb,Native/Unknown,DRABA
 DRCU,Draba cuneifolia,Annual,Forb,Native,DRCU
 DRCUI,Draba cuneifolia,Annual,Forb,Native,DRCUI
 ELEL5,Elymus elymoides,Perennial,Grass,Native,ELEL5
-ELSPP,Elymus spp.,Unknown,Grass,Native/Unknown,ELSPP
 ELTR7,Elymus trachycaulus,Perennial,Grass,Native,ELTR7
 ELWA2,Elymus wawawaiensis,Perennial,Grass,Native,ELWA2
 ENDE,Enneapogon desvauxii,Perennial,Grass,Native,ENDE
 ENFA,Encelia farinosa,Perennial,Shrub,Native,ENFA
 ERAB2,Eriogonum abertianum,Annual,Forb,Native,ERAB2
-ERASPP,"Eragrostis spp., ERCU or ERLE",Unknown,Grass,Unknown,ERASPP
 ERCI,Eragrostis cilianensis,Annual,Grass,Introduced,ERCI
 ERCI2,Eragrostis ciliaris,Annual,Grass,Introduced,ERCI2
 ERCI6,Erodium cicutarium,Annual,Forb,Introduced,ERCI6
@@ -124,10 +102,6 @@ ERER2,Eriastrum eremicum,Annual,Forb,Native,ERER2
 ERFA2,Eriogonum fasciculatum,Perennial,Forb,Native,ERFA2
 ERIAS,Eriastrum,Unknown,Forb,Native,ERIAS
 ERIN4,Eriogonum inflatum,Unknown,Forb,Native,ERIN4
-Eriogonum,Eriogonum spp.,Unknown,Forb,Native,Eriogonum
-Eriogonum sp.,Erigonum spp.,Unknown,Forb,Native,Eriogonum sp.
-ERISP,Eriogonum spp.,Unknown,Forb,Native,ERISP
-ERISPP,Eriastrum or Erigonum spp. (?),Unknown,Forb,Native,ERISPP
 ERLA12,Ericameria laricifolia,Perennial,Shrub,Native,ERLA12
 ERLE,Eragrostis lehmanniana,Perennial,Grass,Introduced,ERLE
 ERPA11,Eriogonum palmerianum,Annual,Forb,Native,ERPA11
@@ -140,10 +114,7 @@ ESCA2,Eschscholzia californica,Unknown,Forb,Native,ESCA2
 ESCAM,Eschscholzia californica,Unknown,Forb,Native,ESCAM
 EUAB,Chamaesyce abramsiana,Annual,Forb,Native,EUAB
 EUME3,Chamaesyce melanadenia,Perennial,Forb,Native,EUME3
-EUPSPP,Euphorbia spp.,Unknown,Forb,Native/Unknown,EUPSPP
 EVAR,Evolvulus arizonicus,Perennial,Forb,Native,EVAR
-FESSPP,FES (fescue?) spp.,Unknown,Grass,Unknown,FESSPP
-GILSPP,Gilia spp.,Unknown,Forb,Native,GILSPP
 GIST,Gilia stellata,Annual,Forb,Native,GIST
 GLGO,Glandularia gooddingii,Perennial,Forb,Native,GLGO
 GNPA,Gnaphalium palustre,Annual,Forb,Native,GNPA
@@ -155,7 +126,6 @@ HECI,Helianthus ciliaris,Perennial,Forb,Native,HECI
 HECO26,Hesperostipa comata,Perennial,Grass,Native,HECO26
 HEHIC,Herniaria hirsuta,Annual,Forb,Introduced,HEHIC
 HEMU3,Heliomeris multiflora,Perennial,Forb,Native,HEMU3
-HESP,Heliomeris spp.,Unknown,Forb,Native,HESP
 HIIN3,Hirschfeldia incana,Unknown,Forb,Introduced,HIIN3
 HOGL2,Hoffmannseggia glauca,Perennial,Forb,Native,HOGL2
 HOMU,Hordeum murinum,Annual,Grass,Introduced,HOMU
@@ -173,7 +143,6 @@ LECI4,Leymus cinereus,Perennial,Grass,Native,LECI4
 LEFR2,Lepidium fremontii,Perennial,Shrub,Native,LEFR2
 LELA,Lepidium lasiocarpum,Annual,Forb,Native,LELA
 LEPA6,Leptochloa panicea,Unknown,Grass,Native,LEPA6
-LEPSPP,Lepidium spp.,Unknown,Forb,Native/Unknown,LEPSPP
 LETH2,Lepidium thurberi,Annual,Forb,Native,LETH2
 LIBI2,Linanthus bigelovii,Annual,Forb,Native,LIBI2
 LILE,Leptosiphon lemmonii,Annual,Forb,Native,LILE
@@ -185,11 +154,8 @@ LOSA,Lotus salsuginosus,Annual,Forb,Native,LOSA
 LOSQ,Loeflingia squarrosa,Annual,Forb,Native,LOSQ
 LOSTT,Lotus strigosus,Annual,Forb,Native,LOSTT
 LUCO,Lupinus concinnus,Annual,Forb,Native,LUCO
-LUPSPP,Lupinus spp.,Unknown,Forb,Unknown,LUPSPP
 LUSP,Lupinus sparsiflorus (?),Annual,Forb,Native,LUSP
 LUSP2,Lupinus sparsiflorus,Annual,Forb,Native,LUSP2
-LUSPP,Lupinus spp.,Unknown,Forb,Native/Unknown,LUSPP
-MACSPP,Machaeranthera spp.,Unknown,Forb,Native,MACSPP
 MADI6,Matricaria discoidea,Annual,Forb,Introduced,MADI6
 MAGL3,Malacothrix glabrata,Annual,Forb,Native,MAGL3
 MAGR10,Machaeranthera gracilis,Annual,Forb,Native,MAGR10
@@ -198,7 +164,6 @@ MATA2,Machaeranthera tanacetifolia,Annual,Forb,Native,MATA2
 MEAL6,Mentzelia albicaulis,Annual,Forb,Native,MEAL6
 MEIN2,Melilotus indicus,Annual,Forb,Introduced,MEIN2
 MEMO4,Mentzelia montana,Annual,Forb,Native,MEMO4
-MENSPP,Mentzelia spp.,Unknown,Forb,Native,MENSPP
 MEOF,Melilotus officinalis,Unknown,Forb,Introduced,MEOF
 MIGR,Microsteris gracilis,Annual,Forb,Native,MIGR
 MILA6,Mirabilis laevis,Perennial,Forb,Native,MILA6
@@ -207,15 +172,12 @@ MONU,Monolepis nuttalliana,Annual,Forb,Native,MONU
 MOVE,Mollugo verticillata,Annual,Forb,Native,MOVE
 MUPO2,Muhlenbergia porteri,Perennial,Grass,Native,MUPO2
 NAHI,Nama hispidum,Annual,Forb,Native,NAHI
-OESP,Oenothera spp.,Unknown,Forb,Native/Unknown,OESP
 ONPI,Oncosiphon piluliferum,Annual,Forb,Introduced,ONPI
 PACA6,Panicum capillare,Annual,Grass,Native,PACA6
 PAHI5,Panicum hirticaule,Annual,Grass,Native,PAHI5
 PAHI7,Oplismenus hirtellus (Panicum hirtellum),Perennial,Grass,Introduced,PAHI7
 PAMI5,Parkinsonia microphylla,Perennial,Shrub,Native,PAMI5
-PANSPP,Panicum spp.,Unknown,Grass,Native,PANSPP
 PASM,Pascopyrum smithii,Perennial,Grass,Native,PASM
-PECSPP,Pectocarya spp.,Unknown,Forb,Native,PECSPP
 PECTO,Pectocarya,Annual,Forb,Native,PECTO
 PEHE,Pectocarya heterocarpa,Annual,Forb,Native,PEHE
 PEPA2,Pectis papposa,Annual,Forb,Native,PEPA2
@@ -225,11 +187,9 @@ PERE,Pectocarya recurvata,Annual,Forb,Native,PERE
 PHDI,Phacelia distans,Unknown,Forb,Native,PHDI
 PHLO2,Phlox longifolia,Perennial,Forb,Native,PHLO2
 PHNE3,Phacelia neomexicana,Annual,Forb,Native,PHNE3
-PHSPP,Phacelia spp.,Unknown,Forb,Native,PHSPP
 PHYSA,Physalis,Unknown,Forb,Unknown,PHYSA
 PLANT,Plantago,Unknown,Forb,Unknown,PLANT
 PLAR,Plagiobothrys arizonicus,Annual,Forb,Native,PLAR
-PLASPP,Plantago spp.,Unknown,Forb,Unknown,PLASPP
 PLJA,Pleuraphis jamesii,Perennial,Grass,Native,PLJA
 PLMU3,Pleuraphis mutica,Perennial,Grass,Native,PLMU3
 PLOV,Plantago ovata,Annual,Forb,Native,PLOV
@@ -238,12 +198,10 @@ PLPR3,Plagiobothrys pringlei,Annual,Forb,Native,PLPR3
 POBI,Poa bigelovii,Annual,Grass,Native,POBI
 POOL,Portulaca oleracea,Annual,Forb,Unknown,POOL
 POPI3,Portulaca pilosa,Unknown,Forb,Native,POPI3
-PORSPP,Portulaca spp.,Unknown,Forb,Native,PORSPP
 POSE,Poa secunda,Perennial,Grass,Native,POSE
 POUM,Portulaca umbraticola,Annual,Forb,Native,POUM
 PRGL2,Prosopis glandulosa,Perennial,Shrub,Native,PRGL2
 PROACASPP,Mesquite/Acacia species,Perennial,Shrub,Native/Unknown,PROACASPP
-PROBO,Proboscidea spp.,Unknown,Forb,Native,PROBO
 PRVE,Prosopis velutina,Perennial,Shrub,Native,PRVE
 PSCA11,Pseudognaphalium canescens,Unknown,Forb,Native,PSCA11
 PSSP6,Pseudoroegneria spicata,Perennial,Grass,Native,PSSP6
@@ -260,32 +218,25 @@ SECO10,Senna covesii,Perennial,Forb,Native,SECO10
 SIAB,Sida abutifolia,Unknown,Forb,Introduced,SIAB
 SIAL2,Sisymbrium altissimum,Annual,Forb,Introduced,SIAL2
 SIAN2,Silene antirrhina,Annual,Forb,Native,SIAN2
-SIDSPP,Sida spp.,Unknown,Forb,Native/Unknown,SIDSPP
 SIIR,Sisymbrium irio,Annual,Forb,Introduced,SIIR
 SINE,Sida neomexicana,Perennial,Forb,Native,SINE
 SOEL,Solanum elaeagnifolium,Perennial,Forb,Native,SOEL
 SOOL,Sonchus oleraceus,Annual,Forb,Introduced,SOOL
 SORO,Solanum rostratum,Annual,Forb,Native,SORO
-SOSP,Solanum spp.,Unknown,Forb,Native/Unknown,SOSP
 SPAI,Sporobolus airoides,Perennial,Grass,Native,SPAI
 SPAM2,Sphaeralcea ambigua,Perennial,Forb,Native,SPAM2
 SPCO,Sphaeralcea coccinea,Perennial,Forb,Native,SPCO
 SPCR,Sporobolus cryptandrus,Perennial,Grass,Native,SPCR
 SPEC2,Spermolepis echinata,Annual,Forb,Native,SPEC2
 SPGR2,Sphaeralcea grossulariifolia,Perennial,Forb,Native,SPGR2
-SPSP,Sphaeralcea spp.,Unknown,Forb,Native/Unknown,SPSP
 STGN,Stylocline gnaphalioides,Annual,Forb,Native,STGN
-STISPP,Stipa spp.,Unknown,Grass,Native/Unknown,STISPP
 TAPO5,Talinum polygaloides,Perennial,Forb,Native,TAPO5
 TILA2,Tidestromia lanuginosa,Annual,Forb,Native,TILA2
 TOIN,Townsendia incana,Unknown,Forb,Native,TOIN
-Trifolium,Trifolium spp.,Unknown,Forb,Unknown,Trifolium
 TRMU,Tridens muticus,Perennial,Grass,Native,TRMU
 TRPI,Tradescantia pinetorum,Perennial,Forb,Native,TRPI
 TRTE,Tribulus terrestris,Annual,Forb,Introduced,TRTE
 Unk bunchGrass #1,Could be BOCU,Unknown,Grass,Unknown,Unk bunchGrass #1
-Unkcrypt,Cryptantha spp.,Unknown,Forb,Native,Unkcrypt
-Unksporob,Sporobolus spp.,Unknown,Grass,Unknown,Unksporob
 URLI5,Microseris lindleyi,Annual,Forb,Native,URLI5
 VEEN,Verbesina encelioides,Annual,Forb,Native,VEEN
 VEPEX2,Veronica peregrina ssp. xalapensis,Annual,Forb,Native,VEPEX2

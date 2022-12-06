@@ -24,6 +24,7 @@ File naming notes:
 - List of codes included in the subplot data (`AllSubplotData` tab of `Master.xlsx`), but are missing from the the original master species list (`master-species_native.xlsx`).
 - Manually edited to add plant name, duration, and lifeform based on USDA Plants.
 - Not divided by location dependence, but ones that will be location-dependent (unknowns) have sites added to the name.
+- Edited list is the same length as output list.
 
 `edited-species2_xlsx_lifeform-na.csv`
 - List of species originally without lifeform information. Subset of codes is taken only codes from the `master-species_native.xlsx`
@@ -31,6 +32,7 @@ File naming notes:
 - Manually edited to assign missing lifeform (functional group) information.
 - Lifeform according to USDA Plants.
 - Not a complete species list.
+- Edited list is the same length as output list.
 
 `edited-species3_xlsx_native-lifeform-duration.csv`
 - List of codes taken from `master-species_native.xlsx`. Not yet a complete species list.
@@ -38,17 +40,21 @@ File naming notes:
 - Manually edited to resolve conflicting lifeform assignments or misspelled names to remove duplicates.  Codes are not changed, and different codes for the same species are maintained because they connect to the subplot data.
 - Manually add a row of all 0s to mark observations of plots that had no plants.
 - Not yet a complete species list.
+- Edited list is not the same length as output list (rows deleted to resolve conflicts, so edited < output).
 
 `edited-species4_location-dependent_native-duration-lifeform.csv`
 - List of location-dependent species (unknowns), listed first by the ones from `master-species_native.unk` that lack site data, and then by location-dependent codes from the subplot data (`AllSubplotData` tab from `Master.xlsx`), whose native/duration/lifeform information was already manually added in `edited-species1_subplot-codes-missing_native-duration-lifeform`.
 - Manually added site information for the unknowns from the master list (first section) based on site information in the subplot data, which sometimes included adding multiple rows because the same code occured at different sites. Codes have not been changed, and will be changed in the cleaned subplot data through data wrangling (`02_data-wrangling.R`).
-	+ Sometimes codes were listed in the master species list that didn't occur in the subplot data, and therefore didn't have any site information. These codes were removed because they will serve no purpose, anyway.
+	+ Sometimes codes were listed in the master species list that didn't occur in the subplot data, and therefore didn't have any site information. They will be included in the 2x2m plot species lists.
 - Manually added assigned codes for subplot observations that were missing codes, as noted in `02_data-wrangling.R` (there is just one in row 12166).
+- Edited list is not the same length as either output list, because some codes in `4.1.csv` weren't in the subplot data, so they weren't included, and some codes had multiple locations according to `4.2.csv`.
 
 `edited-species5_codes-missing-2x2plot.csv`
 - List of codes that were in the 2x2 plot data (`AllPlotData` tab in `Master.xlsx`), but not yet in the species lists for the subplot data, which have already been generated.
 - Most of the codes are unknowns or descriptions; long codes that are basically descriptions and mention multiple species have multiple rows for the same code, and a column marks if there is a duplicate that is needed. All of these codes came from the Sonoran SE sites. Most other sites had a standard USDA code marked in multiple columns all named `Additional_Species_In_Plot` in the original raw 2x2 plot data.
 	+ The Sonoran SE plots were difficult to identify, so longer explanations were needed.
+	+ `NeedsItsDuplicate` = `Yes`: more than one species mentioned in a single code, so the same code has multiple lines with different species.
+	+ `LocationDependence` = `dependent`: Site needs to be added to code to make `Code.Site` column. Unknowns are location-dependent.
 	
 `Farrell_2020_EcologicalApplications_table1.xlsx`
 - Adapted from Table 1 of H. Farrell's manuscript (in review), with coordinates taken from the `Site_Information` tab of `Master.xlsx`

@@ -4,8 +4,9 @@ SRER,1 full BOCU (3) in the northwest corner. A couple potentially smaller graze
 SRER,1 full BOCU (3) in the northwest corner. A couple potentially smaller grazed down ones throughout as well as a couple potential ARPUs (2),Yes,ARPU,Aristida spp.,Native,Unknown,Grass,dependent
 SRER,1 Possible PLJA (1 out of 3 on certainty) on south border as well as some BOCUs (might be BOER but probably BOCU or other BOsp.) Mostly grazed,Yes,PLJAspp,Possibly Pleuraphis jamesii,,,,dependent
 SRER,1 Possible PLJA (1 out of 3 on certainty) on south border as well as some BOCUs (might be BOER but probably BOCU or other BOsp.) Mostly grazed,Yes,PLJAspp,"BOCUs, or might be BOER",,,,dependent
-Patagonia,3 individual ARPUs  and a BOCU,,,,,,,
-Patagonia,3 small ARPUs 1 on north border of subplot and other 2 in southwest section of plot,,,,,,,
+Patagonia,3 individual ARPUs  and a BOCU,Yes,ARPU,Aristida spp.,Native,Unknown,Grass,dependent
+Patagonia,3 individual ARPUs  and a BOCU,Yes,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,dependent
+Patagonia,3 small ARPUs 1 on north border of subplot and other 2 in southwest section of plot,No,ARPU,Aristida spp.,Native,Unknown,Grass,independent
 SRER,A couple BOCUs and a couple potential BOCU nubs and a possible ARPU,,,,,,,
 SRER,"A couple small SECOs mostly near conmods and possiblya young POSE near SE conmod, Also decent size patch (~1% cover) of SECO just near/outside N edge",,,,,,,
 Patagonia,A few ARPUs and young BOCUs mostly near/in the south half except for a smaller ARPU in the northwest and a BAMU just north of subplot,,,,,,,

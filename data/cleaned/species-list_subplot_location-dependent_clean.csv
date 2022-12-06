@@ -1,14 +1,99 @@
 CodeOriginal,Name,Region,Site,Duration,Lifeform,Code,Native
+ACASPP,"Acalypha spp., SRER",Sonoran SE,SRER,Unknown,Forb,ACASPP.SRER,Native/Unknown
+AmaranthusSpp,"Amaranthus spp., FlyingM",Colorado Plateau,FlyingM,Unknown,Forb,AmaranthusSpp.FlyingM,Unknown
+AMASPP,"Amaranthus spp., BarTBar",Colorado Plateau,BarTBar,Unknown,Forb,AMASPP.BarTBar,Native/Unknown
+AMBSPP,"Ambrosia spp., BabbittPJ",Colorado Plateau,BabbittPJ,Unknown,Forb,AMBSPP.BabbittPJ,Native/Unknown
+ANOSPP,"Anoda spp., SRER",Sonoran SE,SRER,Unknown,Forb,ANOSPP.SRER,Native
+ARISPP,"Aristida spp., SRER",Sonoran SE,SRER,Unknown,Grass,ARISPP.SRER,Native
+ARISPP,"Aristida spp., Patagonia",Sonoran SE,Patagonia,Unknown,Grass,ARISPP.Patagonia,Native
+ARSPP,"Artemisia spp., BarTBar",Colorado Plateau,BarTBar,Perennial,Shrub,ARSPP.BarTBar,Native/Unknown
+ASTSPP,"Astragalus spp., SRER",Sonoran SE,SRER,Unknown,Forb,ASTSPP.SRER,Native/Unknown
+ATCA,"Unknown ATCA (but not Atriplex, a grass?), Mesquite",Chihuahuan,Mesquite,Unknown,Grass,ATCA.Mesquite,Native
+ATSP,"Atriplex spp., PEFO",Colorado Plateau,PEFO,Perennial,Shrub,ATSP.PEFO,Native/Unknown
 BOSPP,"local Bouteloua species (unknown), AguaFria",Colorado Plateau,AguaFria,Unknown,Grass,BOSPP.AguaFria,Native
 BOSPP,"local Bouteloua species (unknown), BarTBar",Colorado Plateau,BarTBar,Unknown,Grass,BOSPP.BarTBar,Native
 BOSPP,"local Bouteloua species (unknown), FlyingM",Colorado Plateau,FlyingM,Unknown,Grass,BOSPP.FlyingM,Native
 BOSPP,"local Bouteloua species (unknown), PEFO",Colorado Plateau,PEFO,Unknown,Grass,BOSPP.PEFO,Native
 BOSPP,"local Bouteloua species (unknown), Spiderweb",Colorado Plateau,Spiderweb,Unknown,Grass,BOSPP.Spiderweb,Native
+BOUSPP,"Bouteloua spp., SRER",Sonoran SE,SRER,Unknown,Grass,BOUSPP.SRER,Native
+BRASPP,"Brassica spp. (likely DEPI), SRER",Sonoran SE,SRER,Unknown,Forb,BRASPP.SRER,Native/Unknown
+CALSPP,"Calandrinia spp., Patagonia",Sonoran SE,Patagonia,Unknown,Forb,CALSPP.Patagonia,Native
+CHAMA,"Chamaesyce spp., Creosote",Chihuahuan,Creosote,Unknown,Forb,CHAMA.Creosote,Native
+CHAMA,"Chamaesyce spp., Mesquite",Chihuahuan,Mesquite,Unknown,Forb,CHAMA.Mesquite,Native
+CHASPP,"Chaenactis spp., 29_Palms",Mojave,29_Palms,Unknown,Forb,CHASPP.29_Palms,Native
 CHEN,"Unknown chenopod, BabbittPJ",Colorado Plateau,BabbittPJ,Unknown,Forb,CHEN.BabbittPJ,Native/Unknown
 CHEN,"Unknown chenopod, TLE",Colorado Plateau,TLE,Unknown,Forb,CHEN.TLE,Native/Unknown
 CHEN,"Unknown chenopod, MOWE",Colorado Plateau,MOWE,Unknown,Forb,CHEN.MOWE,Native/Unknown
+CHESPP,"Chenopodium spp., Patagonia",Sonoran SE,Patagonia,Unknown,Forb,CHESPP.Patagonia,Unknown
+CRYPT,"Cryptantha spp., Roosevelt",Sonoran Central,Roosevelt,Unknown,Forb,CRYPT.Roosevelt,Native
+CRYSPP,"Cryptantha spp., 29_Palms",Mojave,29_Palms,Unknown,Forb,CRYSPP.29_Palms,Native
+CRYSPP,"Cryptantha spp., AVRCD",Mojave,AVRCD,Unknown,Forb,CRYSPP.AVRCD,Native
+CRYSPP,"Cryptantha spp., SRER",Sonoran SE,SRER,Unknown,Forb,CRYSPP.SRER,Native
+DRABA,"Draba spp., UtahPJ",Utah,UtahPJ,Unknown,Forb,DRABA.UtahPJ,Native/Unknown
+ELSPP,"Elymus spp., AguaFria",Colorado Plateau,AguaFria,Unknown,Grass,ELSPP.AguaFria,Native/Unknown
+ELSPP,"Elymus spp., BabbittPJ",Colorado Plateau,BabbittPJ,Unknown,Grass,ELSPP.BabbittPJ,Native/Unknown
+ELSPP,"Elymus spp., FlyingM",Colorado Plateau,FlyingM,Unknown,Grass,ELSPP.FlyingM,Native/Unknown
+ERASPP,"Eragrostis spp., ERCU or ERLE, Patagonia",Sonoran SE,Patagonia,Unknown,Grass,ERASPP.Patagonia,Unknown
+ERIGSPP,"Unknown ERIG (?), UtahPJ",Utah,UtahPJ,Unknown,Unknown,ERIGSPP.UtahPJ,Unknown
+Eriogonum,"Eriogonum spp., Creosote",Chihuahuan,Creosote,Unknown,Forb,Eriogonum.Creosote,Native
+Eriogonum sp.,"Erigonum spp., UtahPJ",Utah,UtahPJ,Unknown,Forb,Eriogonum sp..UtahPJ,Native
+ERISP,"Eriogonum spp., BarTBar",Colorado Plateau,BarTBar,Unknown,Forb,ERISP.BarTBar,Native
+ERISP,"Eriogonum spp., PEFO",Colorado Plateau,PEFO,Unknown,Forb,ERISP.PEFO,Native
+ERISPP,"Eriastrum or Erigonum spp. (?), Patagonia",Sonoran SE,Patagonia,Unknown,Forb,ERISPP.Patagonia,Native
+ERISPP,"Eriastrum or Erigonum spp. (?), SRER",Sonoran SE,SRER,Unknown,Forb,ERISPP.SRER,Native
+FESSPP,"FES (fescue?) spp., SRER",Sonoran SE,SRER,Unknown,Grass,FESSPP.SRER,Unknown
+GILSPP,"Gilia spp., Spiderweb",Colorado Plateau,Spiderweb,Unknown,Forb,GILSPP.Spiderweb,Native
+GILSPP,"Gilia spp., 29_Palms",Mojave,29_Palms,Unknown,Forb,GILSPP.29_Palms,Native
+HESP,"Heliomeris spp., BabbittPJ",Colorado Plateau,BabbittPJ,Unknown,Forb,HESP.BabbittPJ,Native
+HESP,"Heliomeris spp., FlyingM",Colorado Plateau,FlyingM,Unknown,Forb,HESP.FlyingM,Native
+LEPSPP,"Lepidium spp., 29_Palms",Mojave,29_Palms,Unknown,Forb,LEPSPP.29_Palms,Native/Unknown
+LUPSPP,"Lupinus spp., SRER",Sonoran SE,SRER,Unknown,Forb,LUPSPP.SRER,Unknown
+LUSPP,"Lupinus spp., AguaFria",Colorado Plateau,AguaFria,Unknown,Forb,LUSPP.AguaFria,Native/Unknown
+MACSPP,"Machaeranthera spp., TLE",Colorado Plateau,TLE,Unknown,Forb,MACSPP.TLE,Native
+MENSPP,"Mentzelia spp., PEFO",Colorado Plateau,PEFO,Unknown,Forb,MENSPP.PEFO,Native
+MENSPP,"Mentzelia spp., 29_Palms",Mojave,29_Palms,Unknown,Forb,MENSPP.29_Palms,Native
+MENSPP,"Mentzelia spp., SRER",Sonoran SE,SRER,Unknown,Forb,MENSPP.SRER,Native
+MENSPP,"Mentzelia spp., Patagonia",Sonoran SE,Patagonia,Unknown,Forb,MENSPP.Patagonia,Native
+OESP,"Oenothera spp., BarTBar",Colorado Plateau,BarTBar,Unknown,Forb,OESP.BarTBar,Native/Unknown
+PANSPP,"Panicum spp., SRER",Sonoran SE,SRER,Unknown,Grass,PANSPP.SRER,Native
+PECSPP,"Pectocarya spp., 29_Palms",Mojave,29_Palms,Unknown,Forb,PECSPP.29_Palms,Native
+PHSPP,"Phacelia spp., BabbittPJ",Colorado Plateau,BabbittPJ,Unknown,Forb,PHSPP.BabbittPJ,Native
+PLASPP,"Plantago spp., SRER",Sonoran SE,SRER,Unknown,Forb,PLASPP.SRER,Unknown
+PORSPP,"Portulaca spp., BarTBar",Colorado Plateau,BarTBar,Unknown,Forb,PORSPP.BarTBar,Native
+PORSPP,"Portulaca spp., FlyingM",Colorado Plateau,FlyingM,Unknown,Forb,PORSPP.FlyingM,Native
+PORSPP,"Portulaca spp., PEFO",Colorado Plateau,PEFO,Unknown,Forb,PORSPP.PEFO,Native
+PORSPP,"Portulaca spp., Patagonia",Sonoran SE,Patagonia,Unknown,Forb,PORSPP.Patagonia,Native
+S-UNFO2,"Seeded unknown forb 2, CRC",Utah,CRC,Unknown,Forb,S-UNFO2.CRC,Native
+S-UNFO2,"Seeded unknown forb 2, Salt_Desert",Utah,Salt_Desert,Unknown,Forb,S-UNFO2.Salt_Desert,Native
+S-UNGR1,"Seeded unknown grass 1, CRC",Utah,CRC,Unknown,Grass,S-UNGR1.CRC,Native
+S-UNGR1,"Seeded unknown grass 1, Salt_Desert",Utah,Salt_Desert,Unknown,Grass,S-UNGR1.Salt_Desert,Native
+S-UNGR2,"Seeded unknown grass 2, CRC",Utah,CRC,Unknown,Grass,S-UNGR2.CRC,Native
+S-UNGR2,"Seeded unknown grass 2, Salt_Desert",Utah,Salt_Desert,Unknown,Grass,S-UNGR2.Salt_Desert,Native
+S-UNGR2,"Seeded unknown grass 2, UtahPJ",Utah,UtahPJ,Unknown,Grass,S-UNGR2.UtahPJ,Native
+S-UNGR3,"Seeded unknown grass 3, CRC",Utah,CRC,Unknown,Grass,S-UNGR3.CRC,Native
+S-UNGR3,"Seeded unknown grass 3, Salt_Desert",Utah,Salt_Desert,Unknown,Grass,S-UNGR3.Salt_Desert,Native
+S-UNGR3,"Seeded unknown grass 3, UtahPJ",Utah,UtahPJ,Unknown,Grass,S-UNGR3.UtahPJ,Native
+S-UNGR4,"Seeded unknown grass 4, CRC",Utah,CRC,Unknown,Grass,S-UNGR4.CRC,Native
+S-UNGR4,"Seeded unknown grass 4, UtahPJ",Utah,UtahPJ,Unknown,Grass,S-UNGR4.UtahPJ,Native
+S-UNGR5,"Seeded unknown grass 5, UtahPJ",Utah,UtahPJ,Unknown,Grass,S-UNGR5.UtahPJ,Native
+SIDSPP,"Sida spp., SRER",Sonoran SE,SRER,Unknown,Forb,SIDSPP.SRER,Native/Unknown
+SOSP,"Solanum spp., FlyingM",Colorado Plateau,FlyingM,Unknown,Forb,SOSP.FlyingM,Native/Unknown
+SPSP,"Sphaeralcea spp., AguaFria",Colorado Plateau,AguaFria,Unknown,Forb,SPSP.AguaFria,Native/Unknown
+SPSP,"Sphaeralcea spp., BarTBar",Colorado Plateau,BarTBar,Unknown,Forb,SPSP.BarTBar,Native/Unknown
+SPSP,"Sphaeralcea spp., FlyingM",Colorado Plateau,FlyingM,Unknown,Forb,SPSP.FlyingM,Native/Unknown
+SPSP,"Sphaeralcea spp., TLE",Colorado Plateau,TLE,Unknown,Forb,SPSP.TLE,Native/Unknown
+SPSP,"Sphaeralcea spp., UtahPJ",Utah,UtahPJ,Unknown,Forb,SPSP.UtahPJ,Native/Unknown
+STISPP,"Stipa spp., 29_Palms",Mojave,29_Palms,Unknown,Grass,STISPP.29_Palms,Native/Unknown
+SUNGR,"Seeded unknown grass (?), TLE",Colorado Plateau,TLE,Unknown,Shrub,SUNGR.TLE,Native
+SUNGR,"Seeded unknown grass (?), BabbittPJ",Colorado Plateau,BabbittPJ,Unknown,Shrub,SUNGR.BabbittPJ,Native
+Trifolium,"Trifolium spp., Mesquite",Chihuahuan,Mesquite,Unknown,Forb,Trifolium.Mesquite,Unknown
+UCHEN1,"Unknown UCHEN1 (?), PEFO",Colorado Plateau,PEFO,Unknown,Unknown,UCHEN1.PEFO,Unknown
+UCHEN2,"Unknown UCHEN2 (?), PEFO",Colorado Plateau,PEFO,Unknown,Unknown,UCHEN2.PEFO,Unknown
 UNDPF,"Unknown dead pod forb, SRER",Sonoran SE,SRER,Unknown,Forb,UNDPF.SRER,Unknown
 UNDSF,"Unknown dead spikey forb, SRER",Sonoran SE,SRER,Unknown,Forb,UNDSF.SRER,Unknown
+UNFO,"Unknown forb, FlyingM",Colorado Plateau,FlyingM,Unknown,Forb,UNFO.FlyingM,Native
+UNFO,"Unknown forb, Spiderweb",Colorado Plateau,Spiderweb,Unknown,Forb,UNFO.Spiderweb,Native
+UNFO.12166.assigned,"Unknown forb, code assigned because it was missing from the subplot data, Salt_Desert",Utah,Salt_Desert,Unknown,Forb,UNFO.12166.assigned.Salt_Desert,Unknown
 UNFO_P_1,"Unknown forb; small reddish purple rosette with ovate leaves (Spring 2021), Patagonia",Sonoran SE,Patagonia,Unknown,Forb,UNFO_P_1.Patagonia,Unknown
 UNFO_P_2,"Unknown forb; Pinated leaves, upright rosette, lighter green, Ambrosia?  (Spring 2021), Patagonia",Sonoran SE,Patagonia,Unknown,Forb,UNFO_P_2.Patagonia,Unknown
 UNFO_P_3,"Unknown forb; Fabeacea (pea), long and spindly (Spring 2021), Patagonia",Sonoran SE,Patagonia,Unknown,Forb,UNFO_P_3.Patagonia,Unknown
@@ -29,16 +114,23 @@ UNFO1,"Unknown forb 1, PEFO",Colorado Plateau,PEFO,Unknown,Forb,UNFO1.PEFO,Unkno
 UNFO1,"Unknown forb 1, 29_Palms",Mojave,29_Palms,Unknown,Forb,UNFO1.29_Palms,Unknown
 UNFO1,"Unknown forb (Patagonia and SRER are same); upright mustard with tiny blueish flower, Patagonia",Sonoran SE,Patagonia,Unknown,Forb,UNFO1.Patagonia,Unknown
 UNFO1,"Unknown forb (Patagonia and SRER are same); upright mustard with tiny blueish flower, SRER",Sonoran SE,SRER,Unknown,Forb,UNFO1.SRER,Unknown
+UNFO10,"Unknown forb 10, UtahPJ",Utah,UtahPJ,Unknown,Forb,UNFO10.UtahPJ,Unknown
+UNFO11,"Unknown forb 11, UtahPJ",Utah,UtahPJ,Unknown,Forb,UNFO11.UtahPJ,Unknown
+UNFO12,"Unknown forb 12, BarTBar",Colorado Plateau,BarTBar,Unknown,Forb,UNFO12.BarTBar,Unknown
+UNFO13,"Unknown forb 13, BarTBar",Colorado Plateau,BarTBar,Unknown,Forb,UNFO13.BarTBar,Unknown
+UNFO14,"Unknown forb 14, BarTBar",Colorado Plateau,BarTBar,Unknown,Forb,UNFO14.BarTBar,Unknown
+UNFO16,"Unknown forb 16, BarTBar",Colorado Plateau,BarTBar,Unknown,Forb,UNFO16.BarTBar,Unknown
 UNFO1A,"Unknown forb (Patagonia, Nov 2019) = Darker Green, 5 petals radiating out, Patagonia",Sonoran SE,Patagonia,Unknown,Forb,UNFO1A.Patagonia,Unknown
-UNFO2,"Unknown forb (Patagonia); low to ground, succulenty, tiny white flowers, similar to purslane, Patagonia",Sonoran SE,Patagonia,Unknown,Forb,UNFO2.Patagonia,Unknown
 UNFO2,"Unknown forb 2, AguaFria",Colorado Plateau,AguaFria,Unknown,Forb,UNFO2.AguaFria,Unknown
 UNFO2,"Unknown forb 2, FlyingM",Colorado Plateau,FlyingM,Unknown,Forb,UNFO2.FlyingM,Unknown
 UNFO2,"Unknown forb 2, MOWE",Colorado Plateau,MOWE,Unknown,Forb,UNFO2.MOWE,Unknown
 UNFO2,"Unknown forb 2, Spiderweb",Colorado Plateau,Spiderweb,Unknown,Forb,UNFO2.Spiderweb,Native
 UNFO2,"Unknown forb 2, TLE",Colorado Plateau,TLE,Unknown,Forb,UNFO2.TLE,Unknown
 UNFO2,"Unknown forb 2, 29_Palms",Mojave,29_Palms,Unknown,Forb,UNFO2.29_Palms,Unknown
+UNFO2,"Unknown forb (Patagonia); low to ground, succulenty, tiny white flowers, similar to purslane, Patagonia",Sonoran SE,Patagonia,Unknown,Forb,UNFO2.Patagonia,Unknown
 UNFO2,"Unknown forb 2, CRC",Utah,CRC,Unknown,Forb,UNFO2.CRC,Unknown
 UNFO2,"Unknown forb 2, UtahPJ",Utah,UtahPJ,Unknown,Forb,UNFO2.UtahPJ,Unknown
+UNFO2A,"Unknown forb 2A, AVRCD",Mojave,AVRCD,Unknown,Forb,UNFO2A.AVRCD,Unknown
 UNFO3,"Unknown forb 3, AguaFria",Colorado Plateau,AguaFria,Unknown,Forb,UNFO3.AguaFria,Unknown
 UNFO3,"Unknown forb 3, BarTBar",Colorado Plateau,BarTBar,Unknown,Forb,UNFO3.BarTBar,Unknown
 UNFO3,"Unknown forb 3, FlyingM",Colorado Plateau,FlyingM,Unknown,Forb,UNFO3.FlyingM,Unknown
@@ -67,7 +159,27 @@ UNFO6,"Unknown forb 6, Spiderweb",Colorado Plateau,Spiderweb,Unknown,Forb,UNFO6.
 UNFO6,"Unknown forb; green, young, radiating basal leaves; slightly fuzzy; Patagonia, Patagonia",Sonoran SE,Patagonia,Unknown,Forb,UNFO6.Patagonia,Unknown
 UNFO6,"Unknown forb (SRER); Very small, long slender leaves, fuzzy, leaf toothed around margins. Possibly Heterotheca grandiflora, SRER",Sonoran SE,SRER,Unknown,Forb,UNFO6.SRER,Unknown
 UNFO6,"Unknown forb 6, UtahPJ",Utah,UtahPJ,Unknown,Forb,UNFO6.UtahPJ,Unknown
+UNFO7,"Unknown forb 7, AguaFria",Colorado Plateau,AguaFria,Unknown,Forb,UNFO7.AguaFria,Unknown
+UNFO7,"Unknown forb 7, BarTBar",Colorado Plateau,BarTBar,Unknown,Forb,UNFO7.BarTBar,Unknown
+UNFO7,"Unknown forb 7, FlyingM",Colorado Plateau,FlyingM,Unknown,Forb,UNFO7.FlyingM,Unknown
+UNFO7,"Unknown forb 7, Spiderweb",Colorado Plateau,Spiderweb,Unknown,Forb,UNFO7.Spiderweb,Unknown
+UNFO7,"Unknown forb 7, UtahPJ",Utah,UtahPJ,Unknown,Forb,UNFO7.UtahPJ,Unknown
+UNFO8,"Unknown forb 8, AguaFria",Colorado Plateau,AguaFria,Unknown,Forb,UNFO8.AguaFria,Unknown
+UNFO8,"Unknown forb 8, BarTBar",Colorado Plateau,BarTBar,Unknown,Forb,UNFO8.BarTBar,Unknown
+UNFO8,"Unknown forb 8, Spiderweb",Colorado Plateau,Spiderweb,Unknown,Forb,UNFO8.Spiderweb,Unknown
+UNFO8,"Unknown forb 8, UtahPJ",Utah,UtahPJ,Unknown,Forb,UNFO8.UtahPJ,Unknown
+UNFO9,"Unknown forb 9, BarTBar",Colorado Plateau,BarTBar,Unknown,Forb,UNFO9.BarTBar,Native
+UNFO9,"Unknown forb 9, UtahPJ",Utah,UtahPJ,Unknown,Forb,UNFO9.UtahPJ,Unknown
 UNFS,"Unknown forb seedling, Patagonia",Sonoran SE,Patagonia,Unknown,Forb,UNFS.Patagonia,Unknown
+UNGR,"Unknown grass, AguaFria",Colorado Plateau,AguaFria,Unknown,Grass,UNGR.AguaFria,Native
+UNGR,"Unknown grass, BabbittPJ",Colorado Plateau,BabbittPJ,Unknown,Grass,UNGR.BabbittPJ,Native
+UNGR,"Unknown grass, BarTBar",Colorado Plateau,BarTBar,Unknown,Grass,UNGR.BarTBar,Native
+UNGR,"Unknown grass, FlyingM",Colorado Plateau,FlyingM,Unknown,Grass,UNGR.FlyingM,Native
+UNGR,"Unknown grass, MOWE",Colorado Plateau,MOWE,Unknown,Grass,UNGR.MOWE,Native
+UNGR,"Unknown grass, PEFO",Colorado Plateau,PEFO,Unknown,Grass,UNGR.PEFO,Native
+UNGR,"Unknown grass, Spiderweb",Colorado Plateau,Spiderweb,Unknown,Grass,UNGR.Spiderweb,Native
+UNGR,"Unknown grass, TLE",Colorado Plateau,TLE,Unknown,Grass,UNGR.TLE,Native
+UNGR,"Unknown grass, UtahPJ",Utah,UtahPJ,Unknown,Grass,UNGR.UtahPJ,Unknown
 UNGR_P_1,"Unknown grass; Possibly small ARIsp. (Spring 2021), Patagonia",Sonoran SE,Patagonia,Unknown,Grass,UNGR_P_1.Patagonia,Unknown
 UNGR_S_1,"Unknown grass; Grass seedling short erose ligule slight chance ARPU because of 45 degree leaf or possibly a Vulpia sp. like VUOC (Spring 2021), SRER",Sonoran SE,SRER,Unknown,Grass,UNGR_S_1.SRER,Unknown
 UNGR_S_2,"Unknown grass; Possibly a BOCU or another Bouteloua (Spring 2021), SRER",Sonoran SE,SRER,Unknown,Grass,UNGR_S_2.SRER,Native
@@ -80,79 +192,6 @@ UNGR1,"Unknown grass 1, Patagonia",Sonoran SE,Patagonia,Unknown,Grass,UNGR1.Pata
 UNGR1,"Unknown grass (SantaRita); Possibly BOER or Aristida spp (so likely unseeded), SRER",Sonoran SE,SRER,Unknown,Grass,UNGR1.SRER,Unknown
 UNGR1,"Unknown grass 1, UtahPJ",Utah,UtahPJ,Unknown,Grass,UNGR1.UtahPJ,Unknown
 UNGR1,"Unknown grass 1, Salt_Desert",Utah,Salt_Desert,Unknown,Grass,UNGR1.Salt_Desert,Unknown
-UNGRS1,"Unknown grass (Patagonia);Unk. grass seedling, bunchy, possible lovegrass?, SRER",Sonoran SE,SRER,Unknown,Grass,UNGRS1.SRER,Unknown
-UNGRS1,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes, Patagonia",Sonoran SE,Patagonia,Unknown,Grass,UNGRS1.Patagonia,Unknown
-UNGRS2,"Unknown grass (Patagonia); Unk grass seedling, leaf divided early like BOGR, possible lovegrass?, Patagonia",Sonoran SE,Patagonia,Unknown,Grass,UNGRS2.Patagonia,Unknown
-UNGRS3,"Unknown grass (Patagonia); Lighter green, thin leaves, possible threeawn?, Patagonia",Sonoran SE,Patagonia,Unknown,Grass,UNGRS3.Patagonia,Unknown
-UNK brown,"Unknown brown, SCC",Sonoran Central,SCC,Unknown,Unknown,UNK brown.SCC,Unknown
-Unk dark,"Unknown with dark hairy leaf and dark margin; resembles BAMU, SCC",Sonoran Central,SCC,Unknown,Forb,Unk dark.SCC,Unknown
-Unk grass,"Unknown likely associated with warm seed mix, SCC",Sonoran Central,SCC,Unknown,Grass,Unk grass.SCC,Unknown
-unk grass 2,"Unknown grass 2, Roosevelt",Sonoran Central,Roosevelt,Unknown,Grass,unk grass 2.Roosevelt,Unknown
-Unk heart,"Unknown forb with heart-shaped cotyledon; possibly MAPA5 (although that species not seen growing there), Preserve",Sonoran Central,Preserve,Unknown,Forb,Unk heart.Preserve,Unknown
-UNK heart,"Unknown forb with heart-shaped cotyledon; possibly MAPA5 (although that species not seen growing there), Preserve",Sonoran Central,Preserve,Unknown,Forb,UNK heart.Preserve,Unknown
-Unk sp.,"Unknown species, Pleasant",Sonoran Central,Pleasant,Unknown,Unknown,Unk sp..Pleasant,Unknown
-Unk sp.,"Unknown species, SCC",Sonoran Central,SCC,Unknown,Unknown,Unk sp..SCC,Unknown
-UnkATCA,"Unknown shrub; Possible Atriplex canescens, Mesquite",Chihuahuan,Mesquite,Unknown,Shrub,UnkATCA.Mesquite,Native
-Unkfabaceae,"Unknown fabaceae, Creosote",Chihuahuan,Creosote,Unknown,Forb,Unkfabaceae.Creosote,Unknown
-Unkforb,"Unknown forb, Creosote",Chihuahuan,Creosote,Unknown,Forb,Unkforb.Creosote,Unknown
-Unkforb,"Unknown forb, Mesquite",Chihuahuan,Mesquite,Unknown,Forb,Unkforb.Mesquite,Native
-Unkforb1,"Unknown forb, Creosote",Chihuahuan,Creosote,Unknown,Forb,Unkforb1.Creosote,Unknown
-Unkgrass,"Unknown grass, Creosote",Chihuahuan,Creosote,Unknown,Grass,Unkgrass.Creosote,Unknown
-Unkgrass,"Unknown grass, Mesquite",Chihuahuan,Mesquite,Unknown,Grass,Unkgrass.Mesquite,Native
-Unkgrass2,"Unknown grass, Creosote",Chihuahuan,Creosote,Unknown,Grass,Unkgrass2.Creosote,Unknown
-Unksalsola,"Unknown forb; A very small (tiny really) forb germinant that has linear leaves like a small Salsola would. Unlikely to be salsola but best way to distinguish it from other unks., Creosote",Chihuahuan,Creosote,Unknown,Forb,Unksalsola.Creosote,Unknown
-Unksporo,"Unknown grass; Sporobolus and Eragrostis, Creosote",Chihuahuan,Creosote,Unknown,Grass,Unksporo.Creosote,Unknown
-Unksporo,"Unknown grass; Sporobolus and Eragrostis, Mesquite",Chihuahuan,Mesquite,Unknown,Grass,Unksporo.Mesquite,Unknown
-UNSFF,"Unknown shrubby fuzzy forb, munched down, SRER",Sonoran SE,SRER,Unknown,Grass,UNSFF.SRER,Unknown
-UNSH,"Unknown shrub, BarTBar",Colorado Plateau,BarTBar,Unknown,Shrub,UNSH.BarTBar,Unknown
-ATCA,"Unknown ATCA (but not Atriplex, a grass?), Mesquite",Chihuahuan,Mesquite,Unknown,Grass,ATCA.Mesquite,Native
-ERIGSPP,"Unknown ERIG (?), UtahPJ",Utah,UtahPJ,Unknown,Unknown,ERIGSPP.UtahPJ,Unknown
-S-UNFO2,"Seeded unknown forb 2, CRC",Utah,CRC,Unknown,Forb,S-UNFO2.CRC,Native
-S-UNFO2,"Seeded unknown forb 2, Salt_Desert",Utah,Salt_Desert,Unknown,Forb,S-UNFO2.Salt_Desert,Native
-S-UNGR1,"Seeded unknown grass 1, CRC",Utah,CRC,Unknown,Grass,S-UNGR1.CRC,Native
-S-UNGR1,"Seeded unknown grass 1, Salt_Desert",Utah,Salt_Desert,Unknown,Grass,S-UNGR1.Salt_Desert,Native
-S-UNGR2,"Seeded unknown grass 2, CRC",Utah,CRC,Unknown,Grass,S-UNGR2.CRC,Native
-S-UNGR2,"Seeded unknown grass 2, Salt_Desert",Utah,Salt_Desert,Unknown,Grass,S-UNGR2.Salt_Desert,Native
-S-UNGR2,"Seeded unknown grass 2, UtahPJ",Utah,UtahPJ,Unknown,Grass,S-UNGR2.UtahPJ,Native
-S-UNGR3,"Seeded unknown grass 3, CRC",Utah,CRC,Unknown,Grass,S-UNGR3.CRC,Native
-S-UNGR3,"Seeded unknown grass 3, Salt_Desert",Utah,Salt_Desert,Unknown,Grass,S-UNGR3.Salt_Desert,Native
-S-UNGR3,"Seeded unknown grass 3, UtahPJ",Utah,UtahPJ,Unknown,Grass,S-UNGR3.UtahPJ,Native
-S-UNGR4,"Seeded unknown grass 4, CRC",Utah,CRC,Unknown,Grass,S-UNGR4.CRC,Native
-S-UNGR4,"Seeded unknown grass 4, UtahPJ",Utah,UtahPJ,Unknown,Grass,S-UNGR4.UtahPJ,Native
-S-UNGR5,"Seeded unknown grass 5, UtahPJ",Utah,UtahPJ,Unknown,Grass,S-UNGR5.UtahPJ,Native
-SUNGR,"Seeded unknown grass (?), TLE",Colorado Plateau,TLE,Unknown,Shrub,SUNGR.TLE,Native
-SUNGR,"Seeded unknown grass (?), BabbittPJ",Colorado Plateau,BabbittPJ,Unknown,Shrub,SUNGR.BabbittPJ,Native
-UCHEN1,"Unknown UCHEN1 (?), PEFO",Colorado Plateau,PEFO,Unknown,Unknown,UCHEN1.PEFO,Unknown
-UCHEN2,"Unknown UCHEN2 (?), PEFO",Colorado Plateau,PEFO,Unknown,Unknown,UCHEN2.PEFO,Unknown
-UNFO,"Unknown forb, FlyingM",Colorado Plateau,FlyingM,Unknown,Forb,UNFO.FlyingM,Native
-UNFO,"Unknown forb, Spiderweb",Colorado Plateau,Spiderweb,Unknown,Forb,UNFO.Spiderweb,Native
-UNFO10,"Unknown forb 10, UtahPJ",Utah,UtahPJ,Unknown,Forb,UNFO10.UtahPJ,Unknown
-UNFO11,"Unknown forb 11, UtahPJ",Utah,UtahPJ,Unknown,Forb,UNFO11.UtahPJ,Unknown
-UNFO12,"Unknown forb 12, BarTBar",Colorado Plateau,BarTBar,Unknown,Forb,UNFO12.BarTBar,Unknown
-UNFO13,"Unknown forb 13, BarTBar",Colorado Plateau,BarTBar,Unknown,Forb,UNFO13.BarTBar,Unknown
-UNFO14,"Unknown forb 14, BarTBar",Colorado Plateau,BarTBar,Unknown,Forb,UNFO14.BarTBar,Unknown
-UNFO16,"Unknown forb 16, BarTBar",Colorado Plateau,BarTBar,Unknown,Forb,UNFO16.BarTBar,Unknown
-UNFO2A,"Unknown forb 2A, AVRCD",Mojave,AVRCD,Unknown,Forb,UNFO2A.AVRCD,Unknown
-UNFO7,"Unknown forb 7, AguaFria",Colorado Plateau,AguaFria,Unknown,Forb,UNFO7.AguaFria,Unknown
-UNFO7,"Unknown forb 7, BarTBar",Colorado Plateau,BarTBar,Unknown,Forb,UNFO7.BarTBar,Unknown
-UNFO7,"Unknown forb 7, FlyingM",Colorado Plateau,FlyingM,Unknown,Forb,UNFO7.FlyingM,Unknown
-UNFO7,"Unknown forb 7, Spiderweb",Colorado Plateau,Spiderweb,Unknown,Forb,UNFO7.Spiderweb,Unknown
-UNFO7,"Unknown forb 7, UtahPJ",Utah,UtahPJ,Unknown,Forb,UNFO7.UtahPJ,Unknown
-UNFO8,"Unknown forb 8, AguaFria",Colorado Plateau,AguaFria,Unknown,Forb,UNFO8.AguaFria,Unknown
-UNFO8,"Unknown forb 8, BarTBar",Colorado Plateau,BarTBar,Unknown,Forb,UNFO8.BarTBar,Unknown
-UNFO8,"Unknown forb 8, Spiderweb",Colorado Plateau,Spiderweb,Unknown,Forb,UNFO8.Spiderweb,Unknown
-UNFO8,"Unknown forb 8, UtahPJ",Utah,UtahPJ,Unknown,Forb,UNFO8.UtahPJ,Unknown
-UNFO9,"Unknown forb 9, BarTBar",Colorado Plateau,BarTBar,Unknown,Forb,UNFO9.BarTBar,Native
-UNFO9,"Unknown forb 9, UtahPJ",Utah,UtahPJ,Unknown,Forb,UNFO9.UtahPJ,Unknown
-UNGR,"Unknown grass, AguaFria",Colorado Plateau,AguaFria,Unknown,Grass,UNGR.AguaFria,Native
-UNGR,"Unknown grass, BabbittPJ",Colorado Plateau,BabbittPJ,Unknown,Grass,UNGR.BabbittPJ,Native
-UNGR,"Unknown grass, BarTBar",Colorado Plateau,BarTBar,Unknown,Grass,UNGR.BarTBar,Native
-UNGR,"Unknown grass, FlyingM",Colorado Plateau,FlyingM,Unknown,Grass,UNGR.FlyingM,Native
-UNGR,"Unknown grass, MOWE",Colorado Plateau,MOWE,Unknown,Grass,UNGR.MOWE,Native
-UNGR,"Unknown grass, PEFO",Colorado Plateau,PEFO,Unknown,Grass,UNGR.PEFO,Native
-UNGR,"Unknown grass, Spiderweb",Colorado Plateau,Spiderweb,Unknown,Grass,UNGR.Spiderweb,Native
-UNGR,"Unknown grass, TLE",Colorado Plateau,TLE,Unknown,Grass,UNGR.TLE,Native
-UNGR,"Unknown grass, UtahPJ",Utah,UtahPJ,Unknown,Grass,UNGR.UtahPJ,Unknown
 UNGR2,"Unknown grass 2, AguaFria",Colorado Plateau,AguaFria,Unknown,Grass,UNGR2.AguaFria,Native
 UNGR2,"Unknown grass 2, MOWE",Colorado Plateau,MOWE,Unknown,Grass,UNGR2.MOWE,Native
 UNGR2,"Unknown grass 2, PEFO",Colorado Plateau,PEFO,Unknown,Grass,UNGR2.PEFO,Native
@@ -166,8 +205,32 @@ UNGR4,"Unknown grass 4, MOWE",Colorado Plateau,MOWE,Unknown,Grass,UNGR4.MOWE,Unk
 UNGR4,"Unknown grass 4, Salt_Desert",Utah,Salt_Desert,Unknown,Grass,UNGR4.Salt_Desert,Unknown
 UNGR4,"Unknown grass 4, UtahPJ",Utah,UtahPJ,Unknown,Grass,UNGR4.UtahPJ,Unknown
 UNGR5,"Unknown grass 5, AguaFria",Colorado Plateau,AguaFria,Unknown,Grass,UNGR5.AguaFria,Unknown
+UNGRS1,"Unknown grass (Patagonia);Unk. grass seedling, bunchy, possible lovegrass?, SRER",Sonoran SE,SRER,Unknown,Grass,UNGRS1.SRER,Unknown
+UNGRS1,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes, Patagonia",Sonoran SE,Patagonia,Unknown,Grass,UNGRS1.Patagonia,Unknown
+UNGRS2,"Unknown grass (Patagonia); Unk grass seedling, leaf divided early like BOGR, possible lovegrass?, Patagonia",Sonoran SE,Patagonia,Unknown,Grass,UNGRS2.Patagonia,Unknown
+UNGRS3,"Unknown grass (Patagonia); Lighter green, thin leaves, possible threeawn?, Patagonia",Sonoran SE,Patagonia,Unknown,Grass,UNGRS3.Patagonia,Unknown
+UNK brown,"Unknown brown, SCC",Sonoran Central,SCC,Unknown,Unknown,UNK brown.SCC,Unknown
+Unk dark,"Unknown with dark hairy leaf and dark margin; resembles BAMU, SCC",Sonoran Central,SCC,Unknown,Forb,Unk dark.SCC,Unknown
 UNK Fuzzy astr,"Unknown fuzzy aster, Mesquite",Chihuahuan,Mesquite,Unknown,Forb,UNK Fuzzy astr.Mesquite,Unknown
+Unk grass,"Unknown likely associated with warm seed mix, SCC",Sonoran Central,SCC,Unknown,Grass,Unk grass.SCC,Unknown
+unk grass 2,"Unknown grass 2, Roosevelt",Sonoran Central,Roosevelt,Unknown,Grass,unk grass 2.Roosevelt,Unknown
+Unk heart,"Unknown forb with heart-shaped cotyledon; possibly MAPA5 (although that species not seen growing there), Preserve",Sonoran Central,Preserve,Unknown,Forb,Unk heart.Preserve,Unknown
+UNK heart,"Unknown forb with heart-shaped cotyledon; possibly MAPA5 (although that species not seen growing there), Preserve",Sonoran Central,Preserve,Unknown,Forb,UNK heart.Preserve,Unknown
+Unk sp.,"Unknown species, Pleasant",Sonoran Central,Pleasant,Unknown,Unknown,Unk sp..Pleasant,Unknown
+Unk sp.,"Unknown species, SCC",Sonoran Central,SCC,Unknown,Unknown,Unk sp..SCC,Unknown
 Unkaster,"Unknown aster, Mesquite",Chihuahuan,Mesquite,Unknown,Forb,Unkaster.Mesquite,Unknown
+UnkATCA,"Unknown shrub; Possible Atriplex canescens, Mesquite",Chihuahuan,Mesquite,Unknown,Shrub,UnkATCA.Mesquite,Native
+Unkfabaceae,"Unknown fabaceae, Creosote",Chihuahuan,Creosote,Unknown,Forb,Unkfabaceae.Creosote,Unknown
+Unkforb,"Unknown forb, Creosote",Chihuahuan,Creosote,Unknown,Forb,Unkforb.Creosote,Unknown
+Unkforb,"Unknown forb, Mesquite",Chihuahuan,Mesquite,Unknown,Forb,Unkforb.Mesquite,Native
 UnkForb,"Unknown forb, Mesquite",Chihuahuan,Mesquite,Unknown,Forb,UnkForb.Mesquite,Native
+Unkforb1,"Unknown forb, Creosote",Chihuahuan,Creosote,Unknown,Forb,Unkforb1.Creosote,Unknown
 UnkForb1,"Unknown forb 1, Creosote",Chihuahuan,Creosote,Unknown,Forb,UnkForb1.Creosote,Unknown
-UNFO.12166.assigned,"Unknown forb, code assigned because it was missing from the subplot data, Salt_Desert",Utah,Salt_Desert,Unknown,Forb,UNFO.12166.assigned.Salt_Desert,Unknown
+Unkgrass,"Unknown grass, Creosote",Chihuahuan,Creosote,Unknown,Grass,Unkgrass.Creosote,Unknown
+Unkgrass,"Unknown grass, Mesquite",Chihuahuan,Mesquite,Unknown,Grass,Unkgrass.Mesquite,Native
+Unkgrass2,"Unknown grass, Creosote",Chihuahuan,Creosote,Unknown,Grass,Unkgrass2.Creosote,Unknown
+Unksalsola,"Unknown forb; A very small (tiny really) forb germinant that has linear leaves like a small Salsola would. Unlikely to be salsola but best way to distinguish it from other unks., Creosote",Chihuahuan,Creosote,Unknown,Forb,Unksalsola.Creosote,Unknown
+Unksporo,"Unknown grass; Sporobolus and Eragrostis, Creosote",Chihuahuan,Creosote,Unknown,Grass,Unksporo.Creosote,Unknown
+Unksporo,"Unknown grass; Sporobolus and Eragrostis, Mesquite",Chihuahuan,Mesquite,Unknown,Grass,Unksporo.Mesquite,Unknown
+UNSFF,"Unknown shrubby fuzzy forb, munched down, SRER",Sonoran SE,SRER,Unknown,Grass,UNSFF.SRER,Unknown
+UNSH,"Unknown shrub, BarTBar",Colorado Plateau,BarTBar,Unknown,Shrub,UNSH.BarTBar,Unknown

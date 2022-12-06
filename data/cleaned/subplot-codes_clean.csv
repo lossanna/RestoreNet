@@ -1,38 +1,39 @@
 CodeOriginal,Code,Name
 0,0,0
 ABPA3,ABPA3,Abutilon parvulum
-ACASPP,ACASPP,Acalypha spp.
+ACASPP,ACASPP.SRER,"Acalypha spp., SRER"
 ACMI2,ACMI2,Achillea millefolium
 ACHY,ACHY,Achnatherum hymenoides
 ACMIS,ACMIS,Acmispon (Lotus)
 ACNA2,ACNA2,Acourtia nana
 ALIN,ALIN,Allionia incarnata
 AMPA,AMPA,Amaranthus palmeri
-AmaranthusSpp,AmaranthusSpp,Amaranthus spp.
-AMASPP,AMASPP,Amaranthus spp.
+AMASPP,AMASPP.BarTBar,"Amaranthus spp., BarTBar"
+AmaranthusSpp,AmaranthusSpp.FlyingM,"Amaranthus spp., FlyingM"
 AMCO3,AMCO3,Ambrosia confertiflora
 AMDE4,AMDE4,Ambrosia deltoidea
-AMBSPP,AMBSPP,Ambrosia spp.
+AMBSPP,AMBSPP.BabbittPJ,"Ambrosia spp., BabbittPJ"
 AMTO3,AMTO3,Ambrosia tomentosa
 AMCH3,AMCH3,Ammocodon chenopodioides
 AMMEI2,AMMEI2,Amsinckia menziesii
 AMTE3,AMTE3,Amsinckia tessellata
 ANCR2,ANCR2,Anoda cristata
-ANOSPP,ANOSPP,Anoda spp.
+ANOSPP,ANOSPP.SRER,"Anoda spp., SRER"
 ARAD,ARAD,Aristida adscensionis
 ARPU9,ARPU9,Aristida purpurea
-ARISPP,ARISPP,Aristida spp.
+ARISPP,ARISPP.Patagonia,"Aristida spp., Patagonia"
+ARISPP,ARISPP.SRER,"Aristida spp., SRER"
 ARTE3,ARTE3,Aristida ternipes
 ARWA,ARWA,Aristolochia watsonii
 ARFR4,ARFR4,Artemisia frigida
-ARSPP,ARSPP,Artemisia spp.
+ARSPP,ARSPP.BarTBar,"Artemisia spp., BarTBar"
 ASTU,ASTU,Asclepias tuberosa
 ASNU4,ASNU4,Astragalus nuttallianus
 ASNU5,ASNU5,Astragalus nuttallii
-ASTSPP,ASTSPP,Astragalus spp.
+ASTSPP,ASTSPP.SRER,"Astragalus spp., SRER"
 ATCA2,ATCA2,Atriplex canescens
 ATCO,ATCO,Atriplex confertifolia
-ATSP,ATSP,Atriplex spp.
+ATSP,ATSP.PEFO,"Atriplex spp., PEFO"
 AVFA,AVFA,Avena fatua
 BAAB,BAAB,Bahia absinthifolia
 BAMU,BAMU,Baileya multiradiata
@@ -48,26 +49,27 @@ BOGR2,BOGR2,Bouteloua gracilis
 BORA,BORA,Bouteloua radicosa
 BORO2,BORO2,Bouteloua rothrockii
 BOSI2,BOSI2,Bouteloua simplex
-BOUSPP,BOUSPP,Bouteloua spp.
+BOUSPP,BOUSPP.SRER,"Bouteloua spp., SRER"
 BRNI,BRNI,Brassica nigra
-BRASPP,BRASPP,Brassica spp. (likely DEPI)
+BRASPP,BRASPP.SRER,"Brassica spp. (likely DEPI), SRER"
 BRRU2,BRRU2,Bromus rubens
 BRTE,BRTE,Bromus tectorum
 CACI2,CACI2,Calandrinia ciliata
-CALSPP,CALSPP,Calandrinia spp.
+CALSPP,CALSPP.Patagonia,"Calandrinia spp., Patagonia"
 CANU3,CANU3,Calochortus nuttallii
 CETE5,CETE5,Ceratocephala testiculata
-CHASPP,CHASPP,Chaenactis spp.
+CHASPP,CHASPP.29_Palms,"Chaenactis spp., 29_Palms"
 CHER2,CHER2,Chaetopappa ericoides
 CHCO2,CHCO2,Chamaesaracha coronopus
 EUAB,EUAB,Chamaesyce abramsiana
 CHAL11,CHAL11,Chamaesyce albomarginata
 CHHY3,CHHY3,Chamaesyce hyssopifolia
 CHPO12,CHPO12,Chamaesyce polycarpa
-CHAMA,CHAMA,Chamaesyce spp.
+CHAMA,CHAMA.Creosote,"Chamaesyce spp., Creosote"
+CHAMA,CHAMA.Mesquite,"Chamaesyce spp., Mesquite"
 CHFR3,CHFR3,Chenopodium fremontii
 CHIN2,CHIN2,Chenopodium incanum
-CHESPP,CHESPP,Chenopodium spp.
+CHESPP,CHESPP.Patagonia,"Chenopodium spp., Patagonia"
 CHWA,CHWA,Chenopodium watsonii
 CHVI4,CHVI4,Chloris virgata
 CHTE2,CHTE2,Chorispora tenella
@@ -82,9 +84,10 @@ CRSE11,CRSE11,Croton setigerus
 CRAN4,CRAN4,Cryptantha angustifolia
 CRBA5,CRBA5,Cryptantha barbigera
 CRCR3,CRCR3,Cryptantha crassisepala
-CRYPT,CRYPT,Cryptantha spp.
-CRYSPP,CRYSPP,Cryptantha spp.
-Unkcrypt,Unkcrypt,Cryptantha spp.
+CRYSPP,CRYSPP.29_Palms,"Cryptantha spp., 29_Palms"
+CRYSPP,CRYSPP.AVRCD,"Cryptantha spp., AVRCD"
+CRYPT,CRYPT.Roosevelt,"Cryptantha spp., Roosevelt"
+CRYSPP,CRYSPP.SRER,"Cryptantha spp., SRER"
 CYAC,CYAC,Cymopterus acaulis
 DACA7,DACA7,Dalea candida
 DAPU7,DAPU7,Dasyochloa pulchella
@@ -94,31 +97,36 @@ DEPI,DEPI,Descurainia pinnata
 DICA14,DICA14,Dichelostemma capitatum
 DICA8,DICA8,Digitaria californica
 DRCU,DRCU,Draba cuneifolia
-DRABA,DRABA,Draba spp.
+DRABA,DRABA.UtahPJ,"Draba spp., UtahPJ"
 ELEL5,ELEL5,Elymus elymoides
-ELSPP,ELSPP,Elymus spp.
+ELSPP,ELSPP.AguaFria,"Elymus spp., AguaFria"
+ELSPP,ELSPP.BabbittPJ,"Elymus spp., BabbittPJ"
+ELSPP,ELSPP.FlyingM,"Elymus spp., FlyingM"
 ELTR7,ELTR7,Elymus trachycaulus
 ELWA2,ELWA2,Elymus wawawaiensis
 ERCU2,ERCU2,Eragrostis curvula
 ERLE,ERLE,Eragrostis lehmanniana
-ERASPP,ERASPP,"Eragrostis spp., ERCU or ERLE"
+ERASPP,ERASPP.Patagonia,"Eragrostis spp., ERCU or ERLE, Patagonia"
 ERSU,ERSU,Eragrostis superba
 ERIAS,ERIAS,Eriastrum
 ERDI2,ERDI2,Eriastrum diffusum
-ERISPP,ERISPP,Eriastrum or Erigonum spp. (?)
-Eriogonum sp.,Eriogonum sp.,Erigonum spp.
+ERISPP,ERISPP.Patagonia,"Eriastrum or Erigonum spp. (?), Patagonia"
+ERISPP,ERISPP.SRER,"Eriastrum or Erigonum spp. (?), SRER"
+Eriogonum sp.,Eriogonum sp..UtahPJ,"Erigonum spp., UtahPJ"
 ERFA2,ERFA2,Eriogonum fasciculatum
 ERIN4,ERIN4,Eriogonum inflatum
 ERPA11,ERPA11,Eriogonum palmerianum
 ERPO4,ERPO4,Eriogonum polycladon
 ERRA3,ERRA3,Eriogonum racemosum
-Eriogonum,Eriogonum,Eriogonum spp.
-ERISP,ERISP,Eriogonum spp.
+ERISP,ERISP.BarTBar,"Eriogonum spp., BarTBar"
+Eriogonum,Eriogonum.Creosote,"Eriogonum spp., Creosote"
+ERISP,ERISP.PEFO,"Eriogonum spp., PEFO"
 ERCI6,ERCI6,Erodium cicutarium
 ESCA2,ESCA2,Eschscholzia californica
 EVAR,EVAR,Evolvulus arizonicus
-FESSPP,FESSPP,FES (fescue?) spp.
-GILSPP,GILSPP,Gilia spp.
+FESSPP,FESSPP.SRER,"FES (fescue?) spp., SRER"
+GILSPP,GILSPP.29_Palms,"Gilia spp., 29_Palms"
+GILSPP,GILSPP.Spiderweb,"Gilia spp., Spiderweb"
 GIST,GIST,Gilia stellata
 GLGO,GLGO,Glandularia gooddingii
 GUSA2,GUSA2,Gutierrezia sarothrae
@@ -127,7 +135,8 @@ HAPAA,HAPAA,Harpagonella palmeri
 HEBO,HEBO,Hedysarum boreale
 HECI,HECI,Helianthus ciliaris
 HEMU3,HEMU3,Heliomeris multiflora
-HESP,HESP,Heliomeris spp.
+HESP,HESP.BabbittPJ,"Heliomeris spp., BabbittPJ"
+HESP,HESP.FlyingM,"Heliomeris spp., FlyingM"
 HEHIC,HEHIC,Herniaria hirsuta
 HECO26,HECO26,Hesperostipa comata
 HIIN3,HIIN3,Hirschfeldia incana
@@ -143,7 +152,7 @@ LAGR10,LAGR10,Lasthenia gracilis
 LAGL5,LAGL5,Layia glandulosa
 LEFR2,LEFR2,Lepidium fremontii
 LELA,LELA,Lepidium lasiocarpum
-LEPSPP,LEPSPP,Lepidium spp.
+LEPSPP,LEPSPP.29_Palms,"Lepidium spp., 29_Palms"
 LETH2,LETH2,Lepidium thurberi
 LEPA6,LEPA6,Leptochloa panicea
 LEAU16,LEAU16,Leptosiphon aureus
@@ -164,10 +173,10 @@ LOSTT,LOSTT,Lotus strigosus
 LUCO,LUCO,Lupinus concinnus
 LUSP2,LUSP2,Lupinus sparsiflorus
 LUSP,LUSP,Lupinus sparsiflorus (?)
-LUPSPP,LUPSPP,Lupinus spp.
-LUSPP,LUSPP,Lupinus spp.
+LUSPP,LUSPP.AguaFria,"Lupinus spp., AguaFria"
+LUPSPP,LUPSPP.SRER,"Lupinus spp., SRER"
 MAGR10,MAGR10,Machaeranthera gracilis
-MACSPP,MACSPP,Machaeranthera spp.
+MACSPP,MACSPP.TLE,"Machaeranthera spp., TLE"
 MATA2,MATA2,Machaeranthera tanacetifolia
 MAGL3,MAGL3,Malacothrix glabrata
 MAPA5,MAPA5,Malva parviflora
@@ -176,42 +185,48 @@ MEIN2,MEIN2,Melilotus indicus
 MEOF,MEOF,Melilotus officinalis
 MEAL6,MEAL6,Mentzelia albicaulis
 MEMO4,MEMO4,Mentzelia montana
-MENSPP,MENSPP,Mentzelia spp.
+MENSPP,MENSPP.29_Palms,"Mentzelia spp., 29_Palms"
+MENSPP,MENSPP.Patagonia,"Mentzelia spp., Patagonia"
+MENSPP,MENSPP.PEFO,"Mentzelia spp., PEFO"
+MENSPP,MENSPP.SRER,"Mentzelia spp., SRER"
 PROACASPP,PROACASPP,Mesquite/Acacia species
 MIGR,MIGR,Microsteris gracilis
 MOCE,MOCE,Mollugo cerviana
 MOVE,MOVE,Mollugo verticillata
 MONU,MONU,Monolepis nuttalliana
-OESP,OESP,Oenothera spp.
+OESP,OESP.BarTBar,"Oenothera spp., BarTBar"
 ONPI,ONPI,Oncosiphon piluliferum
 PAHI7,PAHI7,Oplismenus hirtellus (Panicum hirtellum)
 PACA6,PACA6,Panicum capillare
 PAHI5,PAHI5,Panicum hirticaule
-PANSPP,PANSPP,Panicum spp.
+PANSPP,PANSPP.SRER,"Panicum spp., SRER"
 PASM,PASM,Pascopyrum smithii
 PEPA2,PEPA2,Pectis papposa
 PECTO,PECTO,Pectocarya
 PEHE,PEHE,Pectocarya heterocarpa
 PEPL,PEPL,Pectocarya platycarpa
 PERE,PERE,Pectocarya recurvata
-PECSPP,PECSPP,Pectocarya spp.
+PECSPP,PECSPP.29_Palms,"Pectocarya spp., 29_Palms"
 PEPA8,PEPA8,Penstemon palmeri
 PHDI,PHDI,Phacelia distans
 PHNE3,PHNE3,Phacelia neomexicana
-PHSPP,PHSPP,Phacelia spp.
+PHSPP,PHSPP.BabbittPJ,"Phacelia spp., BabbittPJ"
 PHLO2,PHLO2,Phlox longifolia
 PLAR,PLAR,Plagiobothrys arizonicus
 PLPR3,PLPR3,Plagiobothrys pringlei
 PLANT,PLANT,Plantago
 PLOV,PLOV,Plantago ovata
 PLPA2,PLPA2,Plantago patagonica
-PLASPP,PLASPP,Plantago spp.
+PLASPP,PLASPP.SRER,"Plantago spp., SRER"
 PLJA,PLJA,Pleuraphis jamesii
 POBI,POBI,Poa bigelovii
 POSE,POSE,Poa secunda
 POOL,POOL,Portulaca oleracea
 POPI3,POPI3,Portulaca pilosa
-PORSPP,PORSPP,Portulaca spp.
+PORSPP,PORSPP.BarTBar,"Portulaca spp., BarTBar"
+PORSPP,PORSPP.FlyingM,"Portulaca spp., FlyingM"
+PORSPP,PORSPP.Patagonia,"Portulaca spp., Patagonia"
+PORSPP,PORSPP.PEFO,"Portulaca spp., PEFO"
 POUM,POUM,Portulaca umbraticola
 PRGL2,PRGL2,Prosopis glandulosa
 PSCA11,PSCA11,Pseudognaphalium canescens
@@ -241,22 +256,25 @@ SEBA2,SEBA2,Senna bacillaris
 SECO10,SECO10,Senna covesii
 SIAB,SIAB,Sida abutifolia
 SINE,SINE,Sida neomexicana
-SIDSPP,SIDSPP,Sida spp.
+SIDSPP,SIDSPP.SRER,"Sida spp., SRER"
 SIAN2,SIAN2,Silene antirrhina
 SIAL2,SIAL2,Sisymbrium altissimum
 SIIR,SIIR,Sisymbrium irio
 SOEL,SOEL,Solanum elaeagnifolium
 SORO,SORO,Solanum rostratum
-SOSP,SOSP,Solanum spp.
+SOSP,SOSP.FlyingM,"Solanum spp., FlyingM"
 SOOL,SOOL,Sonchus oleraceus
 SPEC2,SPEC2,Spermolepis echinata
 SPAM2,SPAM2,Sphaeralcea ambigua
 SPCO,SPCO,Sphaeralcea coccinea
 SPGR2,SPGR2,Sphaeralcea grossulariifolia
-SPSP,SPSP,Sphaeralcea spp.
+SPSP,SPSP.AguaFria,"Sphaeralcea spp., AguaFria"
+SPSP,SPSP.BarTBar,"Sphaeralcea spp., BarTBar"
+SPSP,SPSP.FlyingM,"Sphaeralcea spp., FlyingM"
+SPSP,SPSP.TLE,"Sphaeralcea spp., TLE"
+SPSP,SPSP.UtahPJ,"Sphaeralcea spp., UtahPJ"
 SPCR,SPCR,Sporobolus cryptandrus
-Unksporob,Unksporob,Sporobolus spp.
-STISPP,STISPP,Stipa spp.
+STISPP,STISPP.29_Palms,"Stipa spp., 29_Palms"
 STGN,STGN,Stylocline gnaphalioides
 TAPO5,TAPO5,Talinum polygaloides
 TILA2,TILA2,Tidestromia lanuginosa
@@ -264,7 +282,7 @@ TOIN,TOIN,Townsendia incana
 TRPI,TRPI,Tradescantia pinetorum
 TRTE,TRTE,Tribulus terrestris
 TRMU,TRMU,Tridens muticus
-Trifolium,Trifolium,Trifolium spp.
+Trifolium,Trifolium.Mesquite,"Trifolium spp., Mesquite"
 Unkaster,Unkaster.Mesquite,"Unknown aster, Mesquite"
 ATCA,ATCA.Mesquite,"Unknown ATCA (but not Atriplex, a grass?), Mesquite"
 UNK brown,UNK brown.SCC,"Unknown brown, SCC"

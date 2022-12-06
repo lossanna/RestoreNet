@@ -46,7 +46,9 @@ subplot.missing <- subplot %>%
   filter(Code %in% codes.missing.sub) %>% 
   select(Region, Site, Code) %>% 
   distinct(.keep_all = TRUE) %>% 
-  arrange(Code)
+  arrange(Code) %>% 
+  filter(!Code %in% c("0", "NA"),
+         !is.na(Code))
 
 # Write to csv to manually fill in information
 write_csv(subplot.missing,
@@ -66,23 +68,23 @@ sub.missing.edit <- read_csv("data/raw/edited-species1_subplot-codes-missing_nat
 
 # Unknowns (location-dependent)
 species.m.unk <- species.raw %>% # from original master list
-  filter(str_detect(species.raw$Name, "Unk|unk")) %>% 
+  filter(str_detect(species.raw$Name, "Unk|unk|spp.")) %>% 
   arrange(Region) %>% 
   arrange(Code)
 
 sub.missing.unk <- sub.missing.edit %>% # ones missing from original master list
-  filter(str_detect(sub.missing.edit$Name, "Unk|unk")) %>% 
+  filter(str_detect(sub.missing.edit$Name, "Unk|unk|spp.")) %>% 
   arrange(Region) %>% 
   arrange(Code)
 
 # Knowns (location-independent)
 species.m.known <- species.raw %>% # from original master list
-  filter(!str_detect(species.raw$Name, "Unk|unk")) %>% 
+  filter(!str_detect(species.raw$Name, "Unk|unk|spp.")) %>% 
   select(-Region) %>% 
   arrange(Code)
 
 sub.missing.known <- sub.missing.edit %>% # ones missing from original master list
-  filter(!str_detect(sub.missing.edit$Name, "Unk|unk")) %>% 
+  filter(!str_detect(sub.missing.edit$Name, "Unk|unk|spp.")) %>% 
   select(-Region, -Site) %>% 
   arrange(Code)
   # although there are a couple names with ?s, the names and codes are unique 
@@ -161,8 +163,8 @@ species.lifeform.na <- left_join(species.lifeform.na, lifeform.na.edit) %>%
   distinct(.keep_all = TRUE)
 
 species.m.known <- bind_rows(species.lifeform, species.lifeform.na) %>% 
-  arrange(Code)
-  
+  arrange(Code) 
+
 unique(species.m.known$Lifeform) # lifeform has been standardized
 
 

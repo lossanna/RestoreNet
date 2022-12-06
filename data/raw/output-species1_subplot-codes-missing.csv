@@ -1,25 +1,4 @@
 Region,Site,Code
-Colorado Plateau,AguaFria,0
-Colorado Plateau,BabbittPJ,0
-Colorado Plateau,BarTBar,0
-Colorado Plateau,FlyingM,0
-Colorado Plateau,MOWE,0
-Colorado Plateau,PEFO,0
-Colorado Plateau,Spiderweb,0
-Colorado Plateau,TLE,0
-Mojave,29_Palms,0
-Mojave,AVRCD,0
-Utah,CRC,0
-Utah,UtahPJ,0
-Utah,Salt_Desert,0
-Sonoran SE,SRER,0
-Sonoran SE,Patagonia,0
-Sonoran Central,Pleasant,0
-Sonoran Central,Preserve,0
-Sonoran Central,Roosevelt,0
-Sonoran Central,SCC,0
-Chihuahuan,Creosote,0
-Chihuahuan,Mesquite,0
 Colorado Plateau,FlyingM,AmaranthusSpp
 Chihuahuan,Mesquite,ATCA
 Chihuahuan,Mesquite,BAHI
@@ -31,7 +10,6 @@ Sonoran SE,Patagonia,ERISPP
 Sonoran SE,SRER,FESSPP
 Utah,CRC,LILE
 Colorado Plateau,AguaFria,LUSP
-Colorado Plateau,Spiderweb,NA
 Chihuahuan,Mesquite,PAHI7
 Colorado Plateau,BabbittPJ,PHNE3
 Utah,UtahPJ,S-HEBO
@@ -103,5 +81,3 @@ Chihuahuan,Mesquite,UNK Fuzzy astr
 Chihuahuan,Mesquite,Unkaster
 Chihuahuan,Mesquite,UnkForb
 Chihuahuan,Creosote,UnkForb1
-Utah,UtahPJ,NA
-Utah,Salt_Desert,NA
