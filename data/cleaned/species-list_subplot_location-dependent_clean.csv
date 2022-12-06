@@ -93,7 +93,6 @@ UNDPF,"Unknown dead pod forb, SRER",Sonoran SE,SRER,Unknown,Forb,UNDPF.SRER,Unkn
 UNDSF,"Unknown dead spikey forb, SRER",Sonoran SE,SRER,Unknown,Forb,UNDSF.SRER,Unknown
 UNFO,"Unknown forb, FlyingM",Colorado Plateau,FlyingM,Unknown,Forb,UNFO.FlyingM,Native
 UNFO,"Unknown forb, Spiderweb",Colorado Plateau,Spiderweb,Unknown,Forb,UNFO.Spiderweb,Native
-UNFO.12166.assigned,"Unknown forb, code assigned because it was missing from the subplot data, Salt_Desert",Utah,Salt_Desert,Unknown,Forb,UNFO.12166.assigned.Salt_Desert,Unknown
 UNFO_P_1,"Unknown forb; small reddish purple rosette with ovate leaves (Spring 2021), Patagonia",Sonoran SE,Patagonia,Unknown,Forb,UNFO_P_1.Patagonia,Unknown
 UNFO_P_2,"Unknown forb; Pinated leaves, upright rosette, lighter green, Ambrosia?  (Spring 2021), Patagonia",Sonoran SE,Patagonia,Unknown,Forb,UNFO_P_2.Patagonia,Unknown
 UNFO_P_3,"Unknown forb; Fabeacea (pea), long and spindly (Spring 2021), Patagonia",Sonoran SE,Patagonia,Unknown,Forb,UNFO_P_3.Patagonia,Unknown
@@ -220,6 +219,7 @@ Unk sp.,"Unknown species, Pleasant",Sonoran Central,Pleasant,Unknown,Unknown,Unk
 Unk sp.,"Unknown species, SCC",Sonoran Central,SCC,Unknown,Unknown,Unk sp..SCC,Unknown
 Unkaster,"Unknown aster, Mesquite",Chihuahuan,Mesquite,Unknown,Forb,Unkaster.Mesquite,Unknown
 UnkATCA,"Unknown shrub; Possible Atriplex canescens, Mesquite",Chihuahuan,Mesquite,Unknown,Shrub,UnkATCA.Mesquite,Native
+Unkcrypt,"Cryptantha spp., Creosote",Chihuahuan,Creosote,Unknown,Forb,Unkcrypt.Creosote,Native
 Unkfabaceae,"Unknown fabaceae, Creosote",Chihuahuan,Creosote,Unknown,Forb,Unkfabaceae.Creosote,Unknown
 Unkforb,"Unknown forb, Creosote",Chihuahuan,Creosote,Unknown,Forb,Unkforb.Creosote,Unknown
 Unkforb,"Unknown forb, Mesquite",Chihuahuan,Mesquite,Unknown,Forb,Unkforb.Mesquite,Native
@@ -232,5 +232,7 @@ Unkgrass2,"Unknown grass, Creosote",Chihuahuan,Creosote,Unknown,Grass,Unkgrass2.
 Unksalsola,"Unknown forb; A very small (tiny really) forb germinant that has linear leaves like a small Salsola would. Unlikely to be salsola but best way to distinguish it from other unks., Creosote",Chihuahuan,Creosote,Unknown,Forb,Unksalsola.Creosote,Unknown
 Unksporo,"Unknown grass; Sporobolus and Eragrostis, Creosote",Chihuahuan,Creosote,Unknown,Grass,Unksporo.Creosote,Unknown
 Unksporo,"Unknown grass; Sporobolus and Eragrostis, Mesquite",Chihuahuan,Mesquite,Unknown,Grass,Unksporo.Mesquite,Unknown
+Unksporob,"Sporobolus spp., Mesquite",Chihuahuan,Mesquite,Unknown,Grass,Unksporob.Mesquite,Unknown
 UNSFF,"Unknown shrubby fuzzy forb, munched down, SRER",Sonoran SE,SRER,Unknown,Grass,UNSFF.SRER,Unknown
 UNSH,"Unknown shrub, BarTBar",Colorado Plateau,BarTBar,Unknown,Shrub,UNSH.BarTBar,Unknown
+UNFO.12166.assigned,"Unknown forb with assigned code, and manually entered, Salt_Desert",Utah,Salt_Desert,Unknown,Forb,UNFO.12166.assigned.Salt_Desert,Unknown

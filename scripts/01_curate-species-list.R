@@ -322,12 +322,7 @@ species.de$Name <- apply(species.de[ , c("Name", "Site")], 1, paste, collapse = 
 species.de$Code.Site <- apply(species.de[ , c("Code", "Site")], 1, paste, collapse = ".")
 
 # Look for overlapping codes between location-dependent and independent 
-intersect(species.de$Code, species.in$Code) # "Unkcrypt"  "Unksporob"
-
-# "Unkcrypt"  "Unksporob" are not location dependent and in location-independent list already; 
-    # remove from location-dependent list
-species.de <- species.de %>% 
-  filter(!Code %in% c("Unkcrypt", "Unksporob"))
+intersect(species.de$Code, species.in$Code)
   
 
 # Check for unique codes

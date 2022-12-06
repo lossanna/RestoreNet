@@ -86,6 +86,7 @@ CRBA5,CRBA5,Cryptantha barbigera
 CRCR3,CRCR3,Cryptantha crassisepala
 CRYSPP,CRYSPP.29_Palms,"Cryptantha spp., 29_Palms"
 CRYSPP,CRYSPP.AVRCD,"Cryptantha spp., AVRCD"
+Unkcrypt,Unkcrypt.Creosote,"Cryptantha spp., Creosote"
 CRYPT,CRYPT.Roosevelt,"Cryptantha spp., Roosevelt"
 CRYSPP,CRYSPP.SRER,"Cryptantha spp., SRER"
 CYAC,CYAC,Cymopterus acaulis
@@ -274,6 +275,7 @@ SPSP,SPSP.FlyingM,"Sphaeralcea spp., FlyingM"
 SPSP,SPSP.TLE,"Sphaeralcea spp., TLE"
 SPSP,SPSP.UtahPJ,"Sphaeralcea spp., UtahPJ"
 SPCR,SPCR,Sporobolus cryptandrus
+Unksporob,Unksporob.Mesquite,"Sporobolus spp., Mesquite"
 STISPP,STISPP.29_Palms,"Stipa spp., 29_Palms"
 STGN,STGN,Stylocline gnaphalioides
 TAPO5,TAPO5,Talinum polygaloides
