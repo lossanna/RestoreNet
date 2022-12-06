@@ -119,10 +119,7 @@ subplot.de <- left_join(subplot.de, species.de)
 
 
 # Check for NA codes
-de.na <- filter(subplot.de, is.na(Code))
-  # Unksporo is not matching
-
-filter(species.de, CodeOriginal == "Unksporo")
+filter(subplot.de, is.na(Code))
 
 
 
@@ -163,10 +160,9 @@ subplot$Seeded[subplot$Name == "Eragrostis curvula"] <- "No"
 
 # Check again for NA codes ------------------------------------------------
 
+filter(subplot, is.na(Code)) # no NA codes
+filter(subplot, is.na(Name)) # no NA names
 
-
-subplot.name.na <- subplot %>% 
-  filter(is.na(Name))
 
 # Write clean subplot data to csv -----------------------------------------
 
