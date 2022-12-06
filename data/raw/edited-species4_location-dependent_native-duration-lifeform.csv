@@ -93,7 +93,6 @@ UNDPF,Unknown dead pod forb,Unknown,Sonoran SE,SRER,Unknown,Forb
 UNDSF,Unknown dead spikey forb,Unknown,Sonoran SE,SRER,Unknown,Forb
 UNFO,Unknown forb,Unknown,Colorado Plateau,FlyingM,Unknown,Forb
 UNFO,Unknown forb,Unknown,Colorado Plateau,Spiderweb,Unknown,Forb
-UNFO.12166.assigned,"Unknown forb, code assigned because it was missing from the subplot data",Unknown,Utah,Salt_Desert,Unknown,Forb
 UNFO_P_1,Unknown forb; small reddish purple rosette with ovate leaves (Spring 2021),Unknown,Sonoran SE,Patagonia,Unknown,Forb
 UNFO_P_2,"Unknown forb; Pinated leaves, upright rosette, lighter green, Ambrosia?  (Spring 2021)",Unknown,Sonoran SE,Patagonia,Unknown,Forb
 UNFO_P_3,"Unknown forb; Fabeacea (pea), long and spindly (Spring 2021)",Unknown,Sonoran SE,Patagonia,Unknown,Forb
@@ -238,3 +237,4 @@ Unksporob,Unknown grass; Unknown (Seeed plants) that look like they are in the S
 Unksporob,Sporobolus spp.,Unknown,Chihuahuan,Mesquite,Unknown,Grass
 UNSFF,"Unknown shrubby fuzzy forb, munched down",Unknown,Sonoran SE,SRER,Unknown,Grass
 UNSH,Unknown shrub,Unknown,Colorado Plateau,BarTBar,Unknown,Shrub
+UNFO.12166.assigned,"Unknown forb with assigned code, and manually entered",Unknown,Utah,Salt_Desert,Unknown,Forb

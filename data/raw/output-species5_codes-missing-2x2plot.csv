@@ -11,6 +11,10 @@ SRER,A few possible ARPUs (2 certainty) or other ARsp. (ARTE)
 Patagonia,A few possible small SPCR in/around some of the pits
 Creosote,ACCH
 Spiderweb,ALNI
+FlyingM,AmaranthusSpp
+BarTBar,AMASPP
+FlyingM,AMASPP
+SRER,ARISPP
 Patagonia,ARPU a few individuals
 Patagonia,ARPU a few small tufts and 1 taller
 Patagonia,ARPU about 5 individuals and an individual BAMU resprouting at base
@@ -21,7 +25,13 @@ Patagonia,ARPU numerous individuals
 Patagonia,ARPU small tufts and a tall individual
 SCC,ARPUP6
 Pleasant,ARPUP6
+BarTBar,ARSPP
+Creosote,ASTRAG
+Mesquite,ASTRAG
 Patagonia,At least 10 ARPUs throughout small to large in size
+BarTBar,ATSP
+FlyingM,ATSP
+TLE,ATSP
 FlyingM,ATSPP
 Patagonia,Blue grama BOGR in the S half of the plot don't confuse with black grama BOER
 SRER,BOCUs up to this point could also possibly be slender grama BORE or purple BORA
@@ -36,43 +46,71 @@ MOWE,BOSPP
 PEFO,BOSPP
 Spiderweb,BOSPP
 Spiderweb,BOUBAR
+SRER,BOUSPP
 Patagonia,Bouteloua on W edge but almost positive it's BOGR (blue gramma) not BOER (black gramma)
+Creosote,CHAMA
+Mesquite,CHAMA
+29_Palms,CHASPP
 BabbittPJ,CHEN
 PEFO,CHEN
 MOWE,CHEN
+Spiderweb,CLESP
 Patagonia,Couple big ARPUs and a few small ones throughout
 SRER,Couple extra large BOCUs
 SRER,Couple medium sized ARPUs (not completely sure 2/3 on certainty of ID) and a large BOCU right next to the NW plot marker rooted just outside of the plot but some overhangs into the plot
 Patagonia,Couple small to medium ARPUs throughout and a couple small SECOs in N half of the plot typically hidden under/using ERCU as a shade plant
 AVRCD,CRSE1
+Roosevelt,CRYPT
+Preserve,CRYPT
+BarTBar,CRYSPP
+PEFO,CRYSPP
+29_Palms,CRYSPP
+AVRCD,CRYSPP
 Spiderweb,DASPUL
 UtahPJ,Dormant shrubs
 BabbittPJ,ELEL5 (seeded)
 BabbittPJ,ELEL5 (unseeded)
 BabbittPJ,ELSP
 BabbittPJ,ELSP (seeded)
+AguaFria,ELSPP
+BabbittPJ,ELSPP
+FlyingM,ELSPP
+PEFO,ELSPP
 BabbittPJ,ELTR7 (seeded)
 BabbittPJ,ELWA
 BabbittPJ,ELWA2 (seeded)
 UtahPJ,ERIGSPP
+Creosote,Eriogonum
+PEFO,ERISP
+BarTBar,ERISP
+BarTBar,ERISPP
 Preserve,EUPO3
+AVRCD,EUPSPP
 SRER,Extra large BOCU
 SRER,Extra large BOER in S half and medium sized one next to NE plot  corner that partially hangs in and at least 2 small ones within the plot as well
 SRER,Extra large to medium large BOCUs throughout and at least 2 tiny SECO near/in SE pit and NE/subplot pit
+29_Palms,GILSPP
 BabbittPJ,HCI
 SRER,HEMU
+BabbittPJ,HESP
+FlyingM,HESP
 PEFO,HOIN
 MOWE,HYVE
 SRER,Large and medium BOCUs in plot
 Patagonia,Large BOCU in the southeast with a few small ones throughout and about 5 ARPUs small to large in size that're mostly near the conmods
+29_Palms,LEPSPP
 Creosote,Lesquerella sp.
 CRC,"Lots of unknown grasses, potentially S-PASM"
+AguaFria,LUSPP
+PEFO,LUSPP
+TLE,MACSPP
 Patagonia,MATA is the SW corner
 Patagonia,MATA seedling in southwest section
 SRER,Medium BOCU mostly rooted outside of the SW side of the plot butr partially in with some overhang
 Patagonia,"Medium SECO in/near NW pit with a couple tiny seedlings scattered throughout, medium BAMU in the middle, a few small to medium/large ARPUs sprinkled throughout, possibly a small ACHY in SE section (wirey leaf blades that clasp the stem, hairs at the node, only one seed head but similar to examples)"
 SRER,Medium sized BOCU and ARPU
 Patagonia,Medium to large ARPUs throughout and a couple small and medium BOCUs near the N conmods and a few teeny tiny SECOs near conmods as well
+29_Palms,MENSPP
 Patagonia,Might possibly be a small POSE
 Patagonia,More Blue grama Don't confuse with Black
 SRER,More of what we called BOCU in last plot
@@ -90,7 +128,11 @@ CRC,Not recorded
 UtahPJ,Not recorded
 Salt_Desert,Not recorded
 BabbittPJ,PASM (maybe)
+29_Palms,PECSPP
 SRER,PEPA (possibly)
+BabbittPJ,PHSPP
+BarTBar,PORSPP
+PEFO,PORSPP
 Patagonia,Possible ACHY near southwest corner (2 certainty) and about 10 ARPU small to medium in size with 2 of them next to the subplot but not quite in
 SRER,"Possible ARPUs, SECO seedling in subplot"
 SRER,Possible BOCUs but not in this mix
@@ -133,6 +175,12 @@ Roosevelt,SPAMA
 Pleasant,SPAMA
 SCC,SPAMA
 Spiderweb,Sporobolus
+BabbittPJ,SPSP
+BarTBar,SPSP
+FlyingM,SPSP
+PEFO,SPSP
+TLE,SPSP
+29_Palms,STISPP
 Spiderweb,SUNFO
 PEFO,SUNGR
 Spiderweb,SUNGR
@@ -141,6 +189,7 @@ BabbittPJ,SUNGR
 MOWE,SUNGR
 PEFO,SUNGR1
 Patagonia,SW conmod is overgrown with Blue grama but NO black grama but thee's a possible young PEPA by the NW conmod
+Mesquite,Trifolium
 BabbittPJ,UNAM
 SRER,UNDPF
 Spiderweb,UNFO
@@ -201,6 +250,7 @@ Spiderweb,UNK_AMARANTH
 PEFO,Unkaster
 BabbittPJ,UnkAster
 Creosote,Unkastr2
+Creosote,Unkcrypt
 Creosote,Unkfabaceae
 Creosote,Unkforb
 Creosote,Unkforb1

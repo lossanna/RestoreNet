@@ -97,6 +97,9 @@ subplot$Code[subplot$Code == "EUPO3"] <- "CHPO12"
 sub.codes <- c(species.de$CodeOriginal, species.in$CodeOriginal)
 setdiff(subplot$Code, sub.codes) 
 
+x <- subplot %>% 
+  filter(Code %in% c( "Unkcrypt",  "Unksporob"))
+
 
 # Check again for NA codes
 filter(subplot, is.na(Code)) # no NAs
