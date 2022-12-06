@@ -1,420 +1,420 @@
-CodeOriginal,Code,Name,LocationDependence
-0,0,0,location-independent
-ABPA3,ABPA3,Abutilon parvulum,location-independent
-ACASPP,ACASPP,Acalypha spp.,location-independent
-ACMI2,ACMI2,Achillea millefolium,location-independent
-ACHY,ACHY,Achnatherum hymenoides,location-independent
-ACMIS,ACMIS,Acmispon (Lotus),location-independent
-ACNA2,ACNA2,Acourtia nana,location-independent
-ALIN,ALIN,Allionia incarnata,location-independent
-AMPA,AMPA,Amaranthus palmeri,location-independent
-AmaranthusSpp,AmaranthusSpp,Amaranthus spp.,location-independent
-AMASPP,AMASPP,Amaranthus spp.,location-independent
-AMCO3,AMCO3,Ambrosia confertiflora,location-independent
-AMDE4,AMDE4,Ambrosia deltoidea,location-independent
-AMBSPP,AMBSPP,Ambrosia spp.,location-independent
-AMTO3,AMTO3,Ambrosia tomentosa,location-independent
-AMCH3,AMCH3,Ammocodon chenopodioides,location-independent
-AMMEI2,AMMEI2,Amsinckia menziesii,location-independent
-AMTE3,AMTE3,Amsinckia tessellata,location-independent
-ANCR2,ANCR2,Anoda cristata,location-independent
-ANOSPP,ANOSPP,Anoda spp.,location-independent
-ARAD,ARAD,Aristida adscensionis,location-independent
-ARPU9,ARPU9,Aristida purpurea,location-independent
-ARISPP,ARISPP,Aristida spp.,location-independent
-ARTE3,ARTE3,Aristida ternipes,location-independent
-ARWA,ARWA,Aristolochia watsonii,location-independent
-ARFR4,ARFR4,Artemisia frigida,location-independent
-ARSPP,ARSPP,Artemisia spp.,location-independent
-ASTU,ASTU,Asclepias tuberosa,location-independent
-ASNU4,ASNU4,Astragalus nuttallianus,location-independent
-ASNU5,ASNU5,Astragalus nuttallii,location-independent
-ASTSPP,ASTSPP,Astragalus spp.,location-independent
-ATCA2,ATCA2,Atriplex canescens,location-independent
-ATCO,ATCO,Atriplex confertifolia,location-independent
-ATSP,ATSP,Atriplex spp.,location-independent
-AVFA,AVFA,Avena fatua,location-independent
-BAAB,BAAB,Bahia absinthifolia,location-independent
-BAMU,BAMU,Baileya multiradiata,location-independent
-BAHI,BAHI,Balsamorhiza hookeri,location-independent
-BOERH2,BOERH2,Boerhavia,location-independent
-BOCO,BOCO,Boerhavia coccinea,location-independent
-BOIN,BOIN,Boerhavia intermedia,location-independent
-BOAR,BOAR,Bouteloua aristidoides,location-independent
-BOBA2,BOBA2,Bouteloua barbata,location-independent
-BOCU,BOCU,Bouteloua curtipendula,location-independent
-BOER4,BOER4,Bouteloua eriopoda,location-independent
-BOGR2,BOGR2,Bouteloua gracilis,location-independent
-BORA,BORA,Bouteloua radicosa,location-independent
-BORO2,BORO2,Bouteloua rothrockii,location-independent
-BOSI2,BOSI2,Bouteloua simplex,location-independent
-BOUSPP,BOUSPP,Bouteloua spp.,location-independent
-BRNI,BRNI,Brassica nigra,location-independent
-BRASPP,BRASPP,Brassica spp. (likely DEPI),location-independent
-BRRU2,BRRU2,Bromus rubens,location-independent
-BRTE,BRTE,Bromus tectorum,location-independent
-CACI2,CACI2,Calandrinia ciliata,location-independent
-CALSPP,CALSPP,Calandrinia spp.,location-independent
-CANU3,CANU3,Calochortus nuttallii,location-independent
-CETE5,CETE5,Ceratocephala testiculata,location-independent
-CHASPP,CHASPP,Chaenactis spp.,location-independent
-CHER2,CHER2,Chaetopappa ericoides,location-independent
-CHCO2,CHCO2,Chamaesaracha coronopus,location-independent
-EUAB,EUAB,Chamaesyce abramsiana,location-independent
-CHAL11,CHAL11,Chamaesyce albomarginata,location-independent
-CHHY3,CHHY3,Chamaesyce hyssopifolia,location-independent
-CHPO12,CHPO12,Chamaesyce polycarpa,location-independent
-CHAMA,CHAMA,Chamaesyce spp.,location-independent
-CHFR3,CHFR3,Chenopodium fremontii,location-independent
-CHIN2,CHIN2,Chenopodium incanum,location-independent
-CHESPP,CHESPP,Chenopodium spp.,location-independent
-CHWA,CHWA,Chenopodium watsonii,location-independent
-CHVI4,CHVI4,Chloris virgata,location-independent
-CHTE2,CHTE2,Chorispora tenella,location-independent
-CHBR,CHBR,Chorizanthe brevicornu,location-independent
-CLLU2,CLLU2,Cleome lutea,location-independent
-COCA5,COCA5,Conyza canadensis,location-independent
-COCA8,COCA8,Coreopsis califonica,location-independent
-Unk bunchGrass #1,Unk bunchGrass #1,Could be BOCU,location-independent
-CRCO34,CRCO34,Crassula connata,location-independent
-CRPO5,CRPO5,Croton pottsii,location-independent
-CRSE11,CRSE11,Croton setigerus,location-independent
-CRAN4,CRAN4,Cryptantha angustifolia,location-independent
-CRBA5,CRBA5,Cryptantha barbigera,location-independent
-CRCR3,CRCR3,Cryptantha crassisepala,location-independent
-CRYPT,CRYPT,Cryptantha spp.,location-independent
-CRYSPP,CRYSPP,Cryptantha spp.,location-independent
-Unkcrypt,Unkcrypt,Cryptantha spp.,location-independent
-CYAC,CYAC,Cymopterus acaulis,location-independent
-DACA7,DACA7,Dalea candida,location-independent
-DAPU7,DAPU7,Dasyochloa pulchella,location-independent
-DAPU3,DAPU3,Daucus pusillus,location-independent
-DeadStem,DeadStem,Dead stem,location-independent
-DEPI,DEPI,Descurainia pinnata,location-independent
-DICA14,DICA14,Dichelostemma capitatum,location-independent
-DICA8,DICA8,Digitaria californica,location-independent
-DRCU,DRCU,Draba cuneifolia,location-independent
-DRABA,DRABA,Draba spp.,location-independent
-ELEL5,ELEL5,Elymus elymoides,location-independent
-ELSPP,ELSPP,Elymus spp.,location-independent
-ELTR7,ELTR7,Elymus trachycaulus,location-independent
-ELWA2,ELWA2,Elymus wawawaiensis,location-independent
-ERCU2,ERCU2,Eragrostis curvula,location-independent
-ERLE,ERLE,Eragrostis lehmanniana,location-independent
-ERASPP,ERASPP,"Eragrostis spp., ERCU or ERLE",location-independent
-ERSU,ERSU,Eragrostis superba,location-independent
-ERIAS,ERIAS,Eriastrum,location-independent
-ERDI2,ERDI2,Eriastrum diffusum,location-independent
-ERISPP,ERISPP,Eriastrum or Erigonum spp. (?),location-independent
-Eriogonum sp.,Eriogonum sp.,Erigonum spp.,location-independent
-ERFA2,ERFA2,Eriogonum fasciculatum,location-independent
-ERIN4,ERIN4,Eriogonum inflatum,location-independent
-ERPA11,ERPA11,Eriogonum palmerianum,location-independent
-ERPO4,ERPO4,Eriogonum polycladon,location-independent
-ERRA3,ERRA3,Eriogonum racemosum,location-independent
-Eriogonum,Eriogonum,Eriogonum spp.,location-independent
-ERISP,ERISP,Eriogonum spp.,location-independent
-ERCI6,ERCI6,Erodium cicutarium,location-independent
-ESCA2,ESCA2,Eschscholzia californica,location-independent
-EVAR,EVAR,Evolvulus arizonicus,location-independent
-FESSPP,FESSPP,FES (fescue?) spp.,location-independent
-GILSPP,GILSPP,Gilia spp.,location-independent
-GIST,GIST,Gilia stellata,location-independent
-GLGO,GLGO,Glandularia gooddingii,location-independent
-GUSA2,GUSA2,Gutierrezia sarothrae,location-independent
-HAGL,HAGL,Halogeton glomeratus,location-independent
-HAPAA,HAPAA,Harpagonella palmeri,location-independent
-HEBO,HEBO,Hedysarum boreale,location-independent
-HECI,HECI,Helianthus ciliaris,location-independent
-HEMU3,HEMU3,Heliomeris multiflora,location-independent
-HESP,HESP,Heliomeris spp.,location-independent
-HEHIC,HEHIC,Herniaria hirsuta,location-independent
-HECO26,HECO26,Hesperostipa comata,location-independent
-HIIN3,HIIN3,Hirschfeldia incana,location-independent
-HOGL2,HOGL2,Hoffmannseggia glauca,location-independent
-HOMU,HOMU,Hordeum murinum,location-independent
-HOPU,HOPU,Hordeum pusillum,location-independent
-KAGR,KAGR,Kallstroemia grandiflora,location-independent
-KAHI,KAHI,Kallstroemia hirsutissima,location-independent
-KRLA2,KRLA2,Krascheninnikovia lanata,location-independent
-LATR2,LATR2,Larrea tridentata,location-independent
-LACA7,LACA7,Lasthenia californica,location-independent
-LAGR10,LAGR10,Lasthenia gracilis,location-independent
-LAGL5,LAGL5,Layia glandulosa,location-independent
-LEFR2,LEFR2,Lepidium fremontii,location-independent
-LELA,LELA,Lepidium lasiocarpum,location-independent
-LEPSPP,LEPSPP,Lepidium spp.,location-independent
-LETH2,LETH2,Lepidium thurberi,location-independent
-LEPA6,LEPA6,Leptochloa panicea,location-independent
-LEAU16,LEAU16,Leptosiphon aureus,location-independent
-LILE,LILE,Leptosiphon lemmonii,location-independent
-LECI4,LECI4,Leymus cinereus,location-independent
-LILE3,LILE3,Linum lewisii,location-independent
-BOSPP,BOSPP.AguaFria,"local Bouteloua species (unknown), AguaFria",location-dependent
-BOSPP,BOSPP.BarTBar,"local Bouteloua species (unknown), BarTBar",location-dependent
-BOSPP,BOSPP.FlyingM,"local Bouteloua species (unknown), FlyingM",location-dependent
-BOSPP,BOSPP.PEFO,"local Bouteloua species (unknown), PEFO",location-dependent
-BOSPP,BOSPP.Spiderweb,"local Bouteloua species (unknown), Spiderweb",location-dependent
-LOSQ,LOSQ,Loeflingia squarrosa,location-independent
-LOESE2,LOESE2,Loeseliastrum franciscanum,location-independent
-LOAR12,LOAR12,Logfia arizonica,location-independent
-LOHU2,LOHU2,Lotus humistratus,location-independent
-LOSA,LOSA,Lotus salsuginosus,location-independent
-LOSTT,LOSTT,Lotus strigosus,location-independent
-LUCO,LUCO,Lupinus concinnus,location-independent
-LUSP2,LUSP2,Lupinus sparsiflorus,location-independent
-LUSP,LUSP,Lupinus sparsiflorus (?),location-independent
-LUPSPP,LUPSPP,Lupinus spp.,location-independent
-LUSPP,LUSPP,Lupinus spp.,location-independent
-MAGR10,MAGR10,Machaeranthera gracilis,location-independent
-MACSPP,MACSPP,Machaeranthera spp.,location-independent
-MATA2,MATA2,Machaeranthera tanacetifolia,location-independent
-MAGL3,MAGL3,Malacothrix glabrata,location-independent
-MAPA5,MAPA5,Malva parviflora,location-independent
-MADI6,MADI6,Matricaria discoidea,location-independent
-MEIN2,MEIN2,Melilotus indicus,location-independent
-MEOF,MEOF,Melilotus officinalis,location-independent
-MEAL6,MEAL6,Mentzelia albicaulis,location-independent
-MEMO4,MEMO4,Mentzelia montana,location-independent
-MENSPP,MENSPP,Mentzelia spp.,location-independent
-PROACASPP,PROACASPP,Mesquite/Acacia species,location-independent
-MIGR,MIGR,Microsteris gracilis,location-independent
-MOCE,MOCE,Mollugo cerviana,location-independent
-MOVE,MOVE,Mollugo verticillata,location-independent
-MONU,MONU,Monolepis nuttalliana,location-independent
-OESP,OESP,Oenothera spp.,location-independent
-ONPI,ONPI,Oncosiphon piluliferum,location-independent
-PAHI7,PAHI7,Oplismenus hirtellus (Panicum hirtellum),location-independent
-PACA6,PACA6,Panicum capillare,location-independent
-PAHI5,PAHI5,Panicum hirticaule,location-independent
-PANSPP,PANSPP,Panicum spp.,location-independent
-PASM,PASM,Pascopyrum smithii,location-independent
-PEPA2,PEPA2,Pectis papposa,location-independent
-PECTO,PECTO,Pectocarya,location-independent
-PEHE,PEHE,Pectocarya heterocarpa,location-independent
-PEPL,PEPL,Pectocarya platycarpa,location-independent
-PERE,PERE,Pectocarya recurvata,location-independent
-PECSPP,PECSPP,Pectocarya spp.,location-independent
-PEPA8,PEPA8,Penstemon palmeri,location-independent
-PHDI,PHDI,Phacelia distans,location-independent
-PHNE3,PHNE3,Phacelia neomexicana,location-independent
-PHSPP,PHSPP,Phacelia spp.,location-independent
-PHLO2,PHLO2,Phlox longifolia,location-independent
-PLAR,PLAR,Plagiobothrys arizonicus,location-independent
-PLPR3,PLPR3,Plagiobothrys pringlei,location-independent
-PLANT,PLANT,Plantago,location-independent
-PLOV,PLOV,Plantago ovata,location-independent
-PLPA2,PLPA2,Plantago patagonica,location-independent
-PLASPP,PLASPP,Plantago spp.,location-independent
-PLJA,PLJA,Pleuraphis jamesii,location-independent
-POBI,POBI,Poa bigelovii,location-independent
-POSE,POSE,Poa secunda,location-independent
-POOL,POOL,Portulaca oleracea,location-independent
-POPI3,POPI3,Portulaca pilosa,location-independent
-PORSPP,PORSPP,Portulaca spp.,location-independent
-POUM,POUM,Portulaca umbraticola,location-independent
-PRGL2,PRGL2,Prosopis glandulosa,location-independent
-PSCA11,PSCA11,Pseudognaphalium canescens,location-independent
-SATR12,SATR12,Salsola tragus,location-independent
-SACO6,SACO6,Salvia columbariae,location-independent
-SARE3,SARE3,Salvia reflexa,location-independent
-SAAB,SAAB,Sanvitalia abertii,location-independent
-SCBA,SCBA,Schismus barbatus,location-independent
-SCMU6,SCMU6,Schkuhria multiflora,location-independent
-SCPI3,SCPI3,Schkuhria pinnata,location-independent
-S-UNFO2,S-UNFO2.CRC,"Seeded unknown forb 2, CRC",location-dependent
-S-UNFO2,S-UNFO2.Salt_Desert,"Seeded unknown forb 2, Salt_Desert",location-dependent
-SUNGR,SUNGR.BabbittPJ,"Seeded unknown grass (?), BabbittPJ",location-dependent
-SUNGR,SUNGR.TLE,"Seeded unknown grass (?), TLE",location-dependent
-S-UNGR1,S-UNGR1.CRC,"Seeded unknown grass 1, CRC",location-dependent
-S-UNGR1,S-UNGR1.Salt_Desert,"Seeded unknown grass 1, Salt_Desert",location-dependent
-S-UNGR2,S-UNGR2.CRC,"Seeded unknown grass 2, CRC",location-dependent
-S-UNGR2,S-UNGR2.Salt_Desert,"Seeded unknown grass 2, Salt_Desert",location-dependent
-S-UNGR2,S-UNGR2.UtahPJ,"Seeded unknown grass 2, UtahPJ",location-dependent
-S-UNGR3,S-UNGR3.CRC,"Seeded unknown grass 3, CRC",location-dependent
-S-UNGR3,S-UNGR3.Salt_Desert,"Seeded unknown grass 3, Salt_Desert",location-dependent
-S-UNGR3,S-UNGR3.UtahPJ,"Seeded unknown grass 3, UtahPJ",location-dependent
-S-UNGR4,S-UNGR4.CRC,"Seeded unknown grass 4, CRC",location-dependent
-S-UNGR4,S-UNGR4.UtahPJ,"Seeded unknown grass 4, UtahPJ",location-dependent
-S-UNGR5,S-UNGR5.UtahPJ,"Seeded unknown grass 5, UtahPJ",location-dependent
-SEBA2,SEBA2,Senna bacillaris,location-independent
-SECO10,SECO10,Senna covesii,location-independent
-SIAB,SIAB,Sida abutifolia,location-independent
-SINE,SINE,Sida neomexicana,location-independent
-SIDSPP,SIDSPP,Sida spp.,location-independent
-SIAN2,SIAN2,Silene antirrhina,location-independent
-SIAL2,SIAL2,Sisymbrium altissimum,location-independent
-SIIR,SIIR,Sisymbrium irio,location-independent
-SOEL,SOEL,Solanum elaeagnifolium,location-independent
-SORO,SORO,Solanum rostratum,location-independent
-SOSP,SOSP,Solanum spp.,location-independent
-SOOL,SOOL,Sonchus oleraceus,location-independent
-SPEC2,SPEC2,Spermolepis echinata,location-independent
-SPAM2,SPAM2,Sphaeralcea ambigua,location-independent
-SPCO,SPCO,Sphaeralcea coccinea,location-independent
-SPGR2,SPGR2,Sphaeralcea grossulariifolia,location-independent
-SPSP,SPSP,Sphaeralcea spp.,location-independent
-SPCR,SPCR,Sporobolus cryptandrus,location-independent
-Unksporob,Unksporob,Sporobolus spp.,location-independent
-STISPP,STISPP,Stipa spp.,location-independent
-STGN,STGN,Stylocline gnaphalioides,location-independent
-TAPO5,TAPO5,Talinum polygaloides,location-independent
-TILA2,TILA2,Tidestromia lanuginosa,location-independent
-TOIN,TOIN,Townsendia incana,location-independent
-TRPI,TRPI,Tradescantia pinetorum,location-independent
-TRTE,TRTE,Tribulus terrestris,location-independent
-TRMU,TRMU,Tridens muticus,location-independent
-Trifolium,Trifolium,Trifolium spp.,location-independent
-Unkaster,Unkaster.Mesquite,"Unknown aster, Mesquite",location-dependent
-ATCA,ATCA.Mesquite,"Unknown ATCA (but not Atriplex, a grass?), Mesquite",location-dependent
-UNK brown,UNK brown.SCC,"Unknown brown, SCC",location-dependent
-CHEN,CHEN.BabbittPJ,"Unknown chenopod, BabbittPJ",location-dependent
-CHEN,CHEN.MOWE,"Unknown chenopod, MOWE",location-dependent
-CHEN,CHEN.TLE,"Unknown chenopod, TLE",location-dependent
-UNDPF,UNDPF.SRER,"Unknown dead pod forb, SRER",location-dependent
-UNDSF,UNDSF.SRER,"Unknown dead spikey forb, SRER",location-dependent
-ERIGSPP,ERIGSPP.UtahPJ,"Unknown ERIG (?), UtahPJ",location-dependent
-Unkfabaceae,Unkfabaceae.Creosote,"Unknown fabaceae, Creosote",location-dependent
-UNFO1,UNFO1.Patagonia,"Unknown forb (Patagonia and SRER are same); upright mustard with tiny blueish flower, Patagonia",location-dependent
-UNFO1,UNFO1.SRER,"Unknown forb (Patagonia and SRER are same); upright mustard with tiny blueish flower, SRER",location-dependent
-UNFO2,UNFO2.Patagonia,"Unknown forb (Patagonia); low to ground, succulenty, tiny white flowers, similar to purslane, Patagonia",location-dependent
-UNFO5,UNFO5.Patagonia,"Unknown forb (Patagonia); Similar to dandelion, yellow closed flowers, Patagonia",location-dependent
-UNFO3,UNFO3.Patagonia,"Unknown forb (Patagonia); upright mustard with small pods and tiny yellow flowers, Patagonia",location-dependent
-UNFO1A,UNFO1A.Patagonia,"Unknown forb (Patagonia, Nov 2019) = Darker Green, 5 petals radiating out, Patagonia",location-dependent
-UNFO5,UNFO5.SRER,"Unknown forb (SRER); Little carrot with tiny white flowers and thin leaves, SRER",location-dependent
-UNFO3,UNFO3.SRER,"Unknown forb (SRER); tiny reddish basal leaves, star-like petals, SRER",location-dependent
-UNFO4,UNFO4.SRER,"Unknown forb (SRER); very hairy radiating out/up, fuzzy rosettes, SRER",location-dependent
-UNFO6,UNFO6.SRER,"Unknown forb (SRER); Very small, long slender leaves, fuzzy, leaf toothed around margins. Possibly Heterotheca grandiflora, SRER",location-dependent
-UNFO1,UNFO1.29_Palms,"Unknown forb 1, 29_Palms",location-dependent
-UNFO1,UNFO1.AguaFria,"Unknown forb 1, AguaFria",location-dependent
-UNFO1,UNFO1.BabbittPJ,"Unknown forb 1, BabbittPJ",location-dependent
-UnkForb1,UnkForb1.Creosote,"Unknown forb 1, Creosote",location-dependent
-UNFO1,UNFO1.FlyingM,"Unknown forb 1, FlyingM",location-dependent
-UNFO1,UNFO1.MOWE,"Unknown forb 1, MOWE",location-dependent
-UNFO1,UNFO1.PEFO,"Unknown forb 1, PEFO",location-dependent
-UNFO10,UNFO10.UtahPJ,"Unknown forb 10, UtahPJ",location-dependent
-UNFO11,UNFO11.UtahPJ,"Unknown forb 11, UtahPJ",location-dependent
-UNFO12,UNFO12.BarTBar,"Unknown forb 12, BarTBar",location-dependent
-UNFO13,UNFO13.BarTBar,"Unknown forb 13, BarTBar",location-dependent
-UNFO14,UNFO14.BarTBar,"Unknown forb 14, BarTBar",location-dependent
-UNFO16,UNFO16.BarTBar,"Unknown forb 16, BarTBar",location-dependent
-UNFO2,UNFO2.29_Palms,"Unknown forb 2, 29_Palms",location-dependent
-UNFO2,UNFO2.AguaFria,"Unknown forb 2, AguaFria",location-dependent
-UNFO2,UNFO2.CRC,"Unknown forb 2, CRC",location-dependent
-UNFO2,UNFO2.FlyingM,"Unknown forb 2, FlyingM",location-dependent
-UNFO2,UNFO2.MOWE,"Unknown forb 2, MOWE",location-dependent
-UNFO2,UNFO2.Spiderweb,"Unknown forb 2, Spiderweb",location-dependent
-UNFO2,UNFO2.TLE,"Unknown forb 2, TLE",location-dependent
-UNFO2,UNFO2.UtahPJ,"Unknown forb 2, UtahPJ",location-dependent
-UNFO2A,UNFO2A.AVRCD,"Unknown forb 2A, AVRCD",location-dependent
-UNFO3,UNFO3.AguaFria,"Unknown forb 3, AguaFria",location-dependent
-UNFO3,UNFO3.BarTBar,"Unknown forb 3, BarTBar",location-dependent
-UNFO3,UNFO3.CRC,"Unknown forb 3, CRC",location-dependent
-UNFO3,UNFO3.FlyingM,"Unknown forb 3, FlyingM",location-dependent
-UNFO3,UNFO3.Spiderweb,"Unknown forb 3, Spiderweb",location-dependent
-UNFO3,UNFO3.UtahPJ,"Unknown forb 3, UtahPJ",location-dependent
-UNFO4,UNFO4.AguaFria,"Unknown forb 4, AguaFria",location-dependent
-UNFO4,UNFO4.BarTBar,"Unknown forb 4, BarTBar",location-dependent
-UNFO4,UNFO4.FlyingM,"Unknown forb 4, FlyingM",location-dependent
-UNFO4,UNFO4.MOWE,"Unknown forb 4, MOWE",location-dependent
-UNFO4,UNFO4.Salt_Desert,"Unknown forb 4, Salt_Desert",location-dependent
-UNFO4,UNFO4.UtahPJ,"Unknown forb 4, UtahPJ",location-dependent
-UNFO5,UNFO5.AguaFria,"Unknown forb 5, AguaFria",location-dependent
-UNFO5,UNFO5.FlyingM,"Unknown forb 5, FlyingM",location-dependent
-UNFO5,UNFO5.MOWE,"Unknown forb 5, MOWE",location-dependent
-UNFO5,UNFO5.Spiderweb,"Unknown forb 5, Spiderweb",location-dependent
-UNFO5,UNFO5.UtahPJ,"Unknown forb 5, UtahPJ",location-dependent
-UNFO6,UNFO6.AguaFria,"Unknown forb 6, AguaFria",location-dependent
-UNFO6,UNFO6.FlyingM,"Unknown forb 6, FlyingM",location-dependent
-UNFO6,UNFO6.Spiderweb,"Unknown forb 6, Spiderweb",location-dependent
-UNFO6,UNFO6.UtahPJ,"Unknown forb 6, UtahPJ",location-dependent
-UNFO7,UNFO7.AguaFria,"Unknown forb 7, AguaFria",location-dependent
-UNFO7,UNFO7.BarTBar,"Unknown forb 7, BarTBar",location-dependent
-UNFO7,UNFO7.FlyingM,"Unknown forb 7, FlyingM",location-dependent
-UNFO7,UNFO7.Spiderweb,"Unknown forb 7, Spiderweb",location-dependent
-UNFO7,UNFO7.UtahPJ,"Unknown forb 7, UtahPJ",location-dependent
-UNFO8,UNFO8.AguaFria,"Unknown forb 8, AguaFria",location-dependent
-UNFO8,UNFO8.BarTBar,"Unknown forb 8, BarTBar",location-dependent
-UNFO8,UNFO8.Spiderweb,"Unknown forb 8, Spiderweb",location-dependent
-UNFO8,UNFO8.UtahPJ,"Unknown forb 8, UtahPJ",location-dependent
-UNFO9,UNFO9.BarTBar,"Unknown forb 9, BarTBar",location-dependent
-UNFO9,UNFO9.UtahPJ,"Unknown forb 9, UtahPJ",location-dependent
-UNFS,UNFS.Patagonia,"Unknown forb seedling, Patagonia",location-dependent
-Unk heart,Unk heart.Preserve,"Unknown forb with heart-shaped cotyledon; possibly MAPA5 (although that species not seen growing there), Preserve",location-dependent
-UNK heart,UNK heart.Preserve,"Unknown forb with heart-shaped cotyledon; possibly MAPA5 (although that species not seen growing there), Preserve",location-dependent
-Unkforb,Unkforb.Creosote,"Unknown forb, Creosote",location-dependent
-Unkforb1,Unkforb1.Creosote,"Unknown forb, Creosote",location-dependent
-UNFO,UNFO.FlyingM,"Unknown forb, FlyingM",location-dependent
-Unkforb,Unkforb.Mesquite,"Unknown forb, Mesquite",location-dependent
-UnkForb,UnkForb.Mesquite,"Unknown forb, Mesquite",location-dependent
-UNFO,UNFO.Spiderweb,"Unknown forb, Spiderweb",location-dependent
-UNFO_S_7,UNFO_S_7.SRER,"Unknown forb; ""artichoke head"", stem leaves alternate, basal rosette, possibly cryptantha? (Spring 2021), SRER",location-dependent
-Unksalsola,Unksalsola.Creosote,"Unknown forb; A very small (tiny really) forb germinant that has linear leaves like a small Salsola would. Unlikely to be salsola but best way to distinguish it from other unks., Creosote",location-dependent
-UNFO_P_3,UNFO_P_3.Patagonia,"Unknown forb; Fabeacea (pea), long and spindly (Spring 2021), Patagonia",location-dependent
-UNFO_S_3,UNFO_S_3.SRER,"Unknown forb; Fuzzy green penately arranged leaflets, partially pinated lobes ""thick poppy"" possibly an ambrosia (Spring 2021), SRER",location-dependent
-UNFO6,UNFO6.Patagonia,"Unknown forb; green, young, radiating basal leaves; slightly fuzzy; Patagonia, Patagonia",location-dependent
-UNFO_P_2,UNFO_P_2.Patagonia,"Unknown forb; Pinated leaves, upright rosette, lighter green, Ambrosia?  (Spring 2021), Patagonia",location-dependent
-UNFO_P_5,UNFO_P_5.Patagonia,"Unknown forb; Prominent mid-vein, leaf doesn't completely surround/there's good amount of petiole, ovate leaves that're slightly speckled, oenothera? (Spring 2021), Patagonia",location-dependent
-UNFO_S_1,UNFO_S_1.SRER,"Unknown forb; Purple vine, sagitate leaves (Spring 2021), SRER",location-dependent
-UNFO_P_7,UNFO_P_7.Patagonia,"Unknown forb; Rosette leaves slightly fuzzy and silvery light green. simple leaves, smells like bandaids (Spring 2021), Patagonia",location-dependent
-UNFO_S_5,UNFO_S_5.SRER,"Unknown forb; Silky hairy fuzzy, straight leaves, no prominent veination, pseudognaphalium? (Spring 2021), SRER",location-dependent
-UNFO_P_1,UNFO_P_1.Patagonia,"Unknown forb; small reddish purple rosette with ovate leaves (Spring 2021), Patagonia",location-dependent
-UNFO_P_6,UNFO_P_6.Patagonia,"Unknown forb; Super tiny, red thin stem like SAIB but the top leaves are compounded with 3 leaflets, Amaranthaceae? (Spring 2021), Patagonia",location-dependent
-UNFO_S_4,UNFO_S_4.SRER,"Unknown forb; Super tiny, very spikey, pinately lobed, possible cryptantha or plagiobothrys (Spring 2021), SRER",location-dependent
-UNK Fuzzy astr,UNK Fuzzy astr.Mesquite,"Unknown fuzzy aster, Mesquite",location-dependent
-UNGRS3,UNGRS3.Patagonia,"Unknown grass (Patagonia); Lighter green, thin leaves, possible threeawn?, Patagonia",location-dependent
-UNGRS2,UNGRS2.Patagonia,"Unknown grass (Patagonia); Unk grass seedling, leaf divided early like BOGR, possible lovegrass?, Patagonia",location-dependent
-UNGRS1,UNGRS1.SRER,"Unknown grass (Patagonia);Unk. grass seedling, bunchy, possible lovegrass?, SRER",location-dependent
-UNGR1,UNGR1.SRER,"Unknown grass (SantaRita); Possibly BOER or Aristida spp (so likely unseeded), SRER",location-dependent
-UNGRS1,UNGRS1.Patagonia,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes, Patagonia",location-dependent
-UNGR1,UNGR1.AguaFria,"Unknown grass 1, AguaFria",location-dependent
-UNGR1,UNGR1.BabbittPJ,"Unknown grass 1, BabbittPJ",location-dependent
-UNGR1,UNGR1.FlyingM,"Unknown grass 1, FlyingM",location-dependent
-UNGR1,UNGR1.MOWE,"Unknown grass 1, MOWE",location-dependent
-UNGR1,UNGR1.Patagonia,"Unknown grass 1, Patagonia",location-dependent
-UNGR1,UNGR1.PEFO,"Unknown grass 1, PEFO",location-dependent
-UNGR1,UNGR1.Salt_Desert,"Unknown grass 1, Salt_Desert",location-dependent
-UNGR1,UNGR1.UtahPJ,"Unknown grass 1, UtahPJ",location-dependent
-UNGR2,UNGR2.AguaFria,"Unknown grass 2, AguaFria",location-dependent
-UNGR2,UNGR2.MOWE,"Unknown grass 2, MOWE",location-dependent
-UNGR2,UNGR2.PEFO,"Unknown grass 2, PEFO",location-dependent
-unk grass 2,unk grass 2.Roosevelt,"Unknown grass 2, Roosevelt",location-dependent
-UNGR2,UNGR2.UtahPJ,"Unknown grass 2, UtahPJ",location-dependent
-UNGR3,UNGR3.AguaFria,"Unknown grass 3, AguaFria",location-dependent
-UNGR3,UNGR3.MOWE,"Unknown grass 3, MOWE",location-dependent
-UNGR3,UNGR3.PEFO,"Unknown grass 3, PEFO",location-dependent
-UNGR3,UNGR3.UtahPJ,"Unknown grass 3, UtahPJ",location-dependent
-UNGR4,UNGR4.AguaFria,"Unknown grass 4, AguaFria",location-dependent
-UNGR4,UNGR4.MOWE,"Unknown grass 4, MOWE",location-dependent
-UNGR4,UNGR4.Salt_Desert,"Unknown grass 4, Salt_Desert",location-dependent
-UNGR4,UNGR4.UtahPJ,"Unknown grass 4, UtahPJ",location-dependent
-UNGR5,UNGR5.AguaFria,"Unknown grass 5, AguaFria",location-dependent
-UNGR,UNGR.AguaFria,"Unknown grass, AguaFria",location-dependent
-UNGR,UNGR.BabbittPJ,"Unknown grass, BabbittPJ",location-dependent
-UNGR,UNGR.BarTBar,"Unknown grass, BarTBar",location-dependent
-Unkgrass,Unkgrass.Creosote,"Unknown grass, Creosote",location-dependent
-Unkgrass2,Unkgrass2.Creosote,"Unknown grass, Creosote",location-dependent
-UNGR,UNGR.FlyingM,"Unknown grass, FlyingM",location-dependent
-Unkgrass,Unkgrass.Mesquite,"Unknown grass, Mesquite",location-dependent
-UNGR,UNGR.MOWE,"Unknown grass, MOWE",location-dependent
-UNGR,UNGR.PEFO,"Unknown grass, PEFO",location-dependent
-UNGR,UNGR.Spiderweb,"Unknown grass, Spiderweb",location-dependent
-UNGR,UNGR.TLE,"Unknown grass, TLE",location-dependent
-UNGR,UNGR.UtahPJ,"Unknown grass, UtahPJ",location-dependent
-UNGR_S_1,UNGR_S_1.SRER,"Unknown grass; Grass seedling short erose ligule slight chance ARPU because of 45 degree leaf or possibly a Vulpia sp. like VUOC (Spring 2021), SRER",location-dependent
-UNGR_S_2,UNGR_S_2.SRER,"Unknown grass; Possibly a BOCU or another Bouteloua (Spring 2021), SRER",location-dependent
-UNGR_P_1,UNGR_P_1.Patagonia,"Unknown grass; Possibly small ARIsp. (Spring 2021), Patagonia",location-dependent
-Unksporo,Unksporo.Mesquite,"Unknown grass; Sporobolus and Eragrostis, Mesquite",location-dependent
-Unk grass,Unk grass.SCC,"Unknown likely associated with warm seed mix, SCC",location-dependent
-UNSH,UNSH.BarTBar,"Unknown shrub, BarTBar",location-dependent
-UnkATCA,UnkATCA.Mesquite,"Unknown shrub; Possible Atriplex canescens, Mesquite",location-dependent
-UNSFF,UNSFF.SRER,"Unknown shrubby fuzzy forb, munched down, SRER",location-dependent
-Unk sp.,Unk sp..Pleasant,"Unknown species, Pleasant",location-dependent
-Unk sp.,Unk sp..SCC,"Unknown species, SCC",location-dependent
-UCHEN1,UCHEN1.PEFO,"Unknown UCHEN1 (?), PEFO",location-dependent
-UCHEN2,UCHEN2.PEFO,"Unknown UCHEN2 (?), PEFO",location-dependent
-UNFO_P_4,UNFO_P_4.Patagonia,"Unkown forb; Unknown Fabeacea (Pea), short and fuzzy, chunky, Acmispon Brachycarpus? (Spring 2021), Patagonia",location-dependent
-VEEN,VEEN,Verbesina encelioides,location-independent
-VEPEX2,VEPEX2,Veronica peregrina ssp. xalapensis,location-independent
-VUOC,VUOC,Vulpia octoflora,location-independent
-ZIGR,ZIGR,Zinnia grandiflora,location-independent
+CodeOriginal,Code,Name
+0,0,0
+ABPA3,ABPA3,Abutilon parvulum
+ACASPP,ACASPP,Acalypha spp.
+ACMI2,ACMI2,Achillea millefolium
+ACHY,ACHY,Achnatherum hymenoides
+ACMIS,ACMIS,Acmispon (Lotus)
+ACNA2,ACNA2,Acourtia nana
+ALIN,ALIN,Allionia incarnata
+AMPA,AMPA,Amaranthus palmeri
+AmaranthusSpp,AmaranthusSpp,Amaranthus spp.
+AMASPP,AMASPP,Amaranthus spp.
+AMCO3,AMCO3,Ambrosia confertiflora
+AMDE4,AMDE4,Ambrosia deltoidea
+AMBSPP,AMBSPP,Ambrosia spp.
+AMTO3,AMTO3,Ambrosia tomentosa
+AMCH3,AMCH3,Ammocodon chenopodioides
+AMMEI2,AMMEI2,Amsinckia menziesii
+AMTE3,AMTE3,Amsinckia tessellata
+ANCR2,ANCR2,Anoda cristata
+ANOSPP,ANOSPP,Anoda spp.
+ARAD,ARAD,Aristida adscensionis
+ARPU9,ARPU9,Aristida purpurea
+ARISPP,ARISPP,Aristida spp.
+ARTE3,ARTE3,Aristida ternipes
+ARWA,ARWA,Aristolochia watsonii
+ARFR4,ARFR4,Artemisia frigida
+ARSPP,ARSPP,Artemisia spp.
+ASTU,ASTU,Asclepias tuberosa
+ASNU4,ASNU4,Astragalus nuttallianus
+ASNU5,ASNU5,Astragalus nuttallii
+ASTSPP,ASTSPP,Astragalus spp.
+ATCA2,ATCA2,Atriplex canescens
+ATCO,ATCO,Atriplex confertifolia
+ATSP,ATSP,Atriplex spp.
+AVFA,AVFA,Avena fatua
+BAAB,BAAB,Bahia absinthifolia
+BAMU,BAMU,Baileya multiradiata
+BAHI,BAHI,Balsamorhiza hookeri
+BOERH2,BOERH2,Boerhavia
+BOCO,BOCO,Boerhavia coccinea
+BOIN,BOIN,Boerhavia intermedia
+BOAR,BOAR,Bouteloua aristidoides
+BOBA2,BOBA2,Bouteloua barbata
+BOCU,BOCU,Bouteloua curtipendula
+BOER4,BOER4,Bouteloua eriopoda
+BOGR2,BOGR2,Bouteloua gracilis
+BORA,BORA,Bouteloua radicosa
+BORO2,BORO2,Bouteloua rothrockii
+BOSI2,BOSI2,Bouteloua simplex
+BOUSPP,BOUSPP,Bouteloua spp.
+BRNI,BRNI,Brassica nigra
+BRASPP,BRASPP,Brassica spp. (likely DEPI)
+BRRU2,BRRU2,Bromus rubens
+BRTE,BRTE,Bromus tectorum
+CACI2,CACI2,Calandrinia ciliata
+CALSPP,CALSPP,Calandrinia spp.
+CANU3,CANU3,Calochortus nuttallii
+CETE5,CETE5,Ceratocephala testiculata
+CHASPP,CHASPP,Chaenactis spp.
+CHER2,CHER2,Chaetopappa ericoides
+CHCO2,CHCO2,Chamaesaracha coronopus
+EUAB,EUAB,Chamaesyce abramsiana
+CHAL11,CHAL11,Chamaesyce albomarginata
+CHHY3,CHHY3,Chamaesyce hyssopifolia
+CHPO12,CHPO12,Chamaesyce polycarpa
+CHAMA,CHAMA,Chamaesyce spp.
+CHFR3,CHFR3,Chenopodium fremontii
+CHIN2,CHIN2,Chenopodium incanum
+CHESPP,CHESPP,Chenopodium spp.
+CHWA,CHWA,Chenopodium watsonii
+CHVI4,CHVI4,Chloris virgata
+CHTE2,CHTE2,Chorispora tenella
+CHBR,CHBR,Chorizanthe brevicornu
+CLLU2,CLLU2,Cleome lutea
+COCA5,COCA5,Conyza canadensis
+COCA8,COCA8,Coreopsis califonica
+Unk bunchGrass #1,Unk bunchGrass #1,Could be BOCU
+CRCO34,CRCO34,Crassula connata
+CRPO5,CRPO5,Croton pottsii
+CRSE11,CRSE11,Croton setigerus
+CRAN4,CRAN4,Cryptantha angustifolia
+CRBA5,CRBA5,Cryptantha barbigera
+CRCR3,CRCR3,Cryptantha crassisepala
+CRYPT,CRYPT,Cryptantha spp.
+CRYSPP,CRYSPP,Cryptantha spp.
+Unkcrypt,Unkcrypt,Cryptantha spp.
+CYAC,CYAC,Cymopterus acaulis
+DACA7,DACA7,Dalea candida
+DAPU7,DAPU7,Dasyochloa pulchella
+DAPU3,DAPU3,Daucus pusillus
+DeadStem,DeadStem,Dead stem
+DEPI,DEPI,Descurainia pinnata
+DICA14,DICA14,Dichelostemma capitatum
+DICA8,DICA8,Digitaria californica
+DRCU,DRCU,Draba cuneifolia
+DRABA,DRABA,Draba spp.
+ELEL5,ELEL5,Elymus elymoides
+ELSPP,ELSPP,Elymus spp.
+ELTR7,ELTR7,Elymus trachycaulus
+ELWA2,ELWA2,Elymus wawawaiensis
+ERCU2,ERCU2,Eragrostis curvula
+ERLE,ERLE,Eragrostis lehmanniana
+ERASPP,ERASPP,"Eragrostis spp., ERCU or ERLE"
+ERSU,ERSU,Eragrostis superba
+ERIAS,ERIAS,Eriastrum
+ERDI2,ERDI2,Eriastrum diffusum
+ERISPP,ERISPP,Eriastrum or Erigonum spp. (?)
+Eriogonum sp.,Eriogonum sp.,Erigonum spp.
+ERFA2,ERFA2,Eriogonum fasciculatum
+ERIN4,ERIN4,Eriogonum inflatum
+ERPA11,ERPA11,Eriogonum palmerianum
+ERPO4,ERPO4,Eriogonum polycladon
+ERRA3,ERRA3,Eriogonum racemosum
+Eriogonum,Eriogonum,Eriogonum spp.
+ERISP,ERISP,Eriogonum spp.
+ERCI6,ERCI6,Erodium cicutarium
+ESCA2,ESCA2,Eschscholzia californica
+EVAR,EVAR,Evolvulus arizonicus
+FESSPP,FESSPP,FES (fescue?) spp.
+GILSPP,GILSPP,Gilia spp.
+GIST,GIST,Gilia stellata
+GLGO,GLGO,Glandularia gooddingii
+GUSA2,GUSA2,Gutierrezia sarothrae
+HAGL,HAGL,Halogeton glomeratus
+HAPAA,HAPAA,Harpagonella palmeri
+HEBO,HEBO,Hedysarum boreale
+HECI,HECI,Helianthus ciliaris
+HEMU3,HEMU3,Heliomeris multiflora
+HESP,HESP,Heliomeris spp.
+HEHIC,HEHIC,Herniaria hirsuta
+HECO26,HECO26,Hesperostipa comata
+HIIN3,HIIN3,Hirschfeldia incana
+HOGL2,HOGL2,Hoffmannseggia glauca
+HOMU,HOMU,Hordeum murinum
+HOPU,HOPU,Hordeum pusillum
+KAGR,KAGR,Kallstroemia grandiflora
+KAHI,KAHI,Kallstroemia hirsutissima
+KRLA2,KRLA2,Krascheninnikovia lanata
+LATR2,LATR2,Larrea tridentata
+LACA7,LACA7,Lasthenia californica
+LAGR10,LAGR10,Lasthenia gracilis
+LAGL5,LAGL5,Layia glandulosa
+LEFR2,LEFR2,Lepidium fremontii
+LELA,LELA,Lepidium lasiocarpum
+LEPSPP,LEPSPP,Lepidium spp.
+LETH2,LETH2,Lepidium thurberi
+LEPA6,LEPA6,Leptochloa panicea
+LEAU16,LEAU16,Leptosiphon aureus
+LILE,LILE,Leptosiphon lemmonii
+LECI4,LECI4,Leymus cinereus
+LILE3,LILE3,Linum lewisii
+BOSPP,BOSPP.AguaFria,"local Bouteloua species (unknown), AguaFria"
+BOSPP,BOSPP.BarTBar,"local Bouteloua species (unknown), BarTBar"
+BOSPP,BOSPP.FlyingM,"local Bouteloua species (unknown), FlyingM"
+BOSPP,BOSPP.PEFO,"local Bouteloua species (unknown), PEFO"
+BOSPP,BOSPP.Spiderweb,"local Bouteloua species (unknown), Spiderweb"
+LOSQ,LOSQ,Loeflingia squarrosa
+LOESE2,LOESE2,Loeseliastrum franciscanum
+LOAR12,LOAR12,Logfia arizonica
+LOHU2,LOHU2,Lotus humistratus
+LOSA,LOSA,Lotus salsuginosus
+LOSTT,LOSTT,Lotus strigosus
+LUCO,LUCO,Lupinus concinnus
+LUSP2,LUSP2,Lupinus sparsiflorus
+LUSP,LUSP,Lupinus sparsiflorus (?)
+LUPSPP,LUPSPP,Lupinus spp.
+LUSPP,LUSPP,Lupinus spp.
+MAGR10,MAGR10,Machaeranthera gracilis
+MACSPP,MACSPP,Machaeranthera spp.
+MATA2,MATA2,Machaeranthera tanacetifolia
+MAGL3,MAGL3,Malacothrix glabrata
+MAPA5,MAPA5,Malva parviflora
+MADI6,MADI6,Matricaria discoidea
+MEIN2,MEIN2,Melilotus indicus
+MEOF,MEOF,Melilotus officinalis
+MEAL6,MEAL6,Mentzelia albicaulis
+MEMO4,MEMO4,Mentzelia montana
+MENSPP,MENSPP,Mentzelia spp.
+PROACASPP,PROACASPP,Mesquite/Acacia species
+MIGR,MIGR,Microsteris gracilis
+MOCE,MOCE,Mollugo cerviana
+MOVE,MOVE,Mollugo verticillata
+MONU,MONU,Monolepis nuttalliana
+OESP,OESP,Oenothera spp.
+ONPI,ONPI,Oncosiphon piluliferum
+PAHI7,PAHI7,Oplismenus hirtellus (Panicum hirtellum)
+PACA6,PACA6,Panicum capillare
+PAHI5,PAHI5,Panicum hirticaule
+PANSPP,PANSPP,Panicum spp.
+PASM,PASM,Pascopyrum smithii
+PEPA2,PEPA2,Pectis papposa
+PECTO,PECTO,Pectocarya
+PEHE,PEHE,Pectocarya heterocarpa
+PEPL,PEPL,Pectocarya platycarpa
+PERE,PERE,Pectocarya recurvata
+PECSPP,PECSPP,Pectocarya spp.
+PEPA8,PEPA8,Penstemon palmeri
+PHDI,PHDI,Phacelia distans
+PHNE3,PHNE3,Phacelia neomexicana
+PHSPP,PHSPP,Phacelia spp.
+PHLO2,PHLO2,Phlox longifolia
+PLAR,PLAR,Plagiobothrys arizonicus
+PLPR3,PLPR3,Plagiobothrys pringlei
+PLANT,PLANT,Plantago
+PLOV,PLOV,Plantago ovata
+PLPA2,PLPA2,Plantago patagonica
+PLASPP,PLASPP,Plantago spp.
+PLJA,PLJA,Pleuraphis jamesii
+POBI,POBI,Poa bigelovii
+POSE,POSE,Poa secunda
+POOL,POOL,Portulaca oleracea
+POPI3,POPI3,Portulaca pilosa
+PORSPP,PORSPP,Portulaca spp.
+POUM,POUM,Portulaca umbraticola
+PRGL2,PRGL2,Prosopis glandulosa
+PSCA11,PSCA11,Pseudognaphalium canescens
+SATR12,SATR12,Salsola tragus
+SACO6,SACO6,Salvia columbariae
+SARE3,SARE3,Salvia reflexa
+SAAB,SAAB,Sanvitalia abertii
+SCBA,SCBA,Schismus barbatus
+SCMU6,SCMU6,Schkuhria multiflora
+SCPI3,SCPI3,Schkuhria pinnata
+S-UNFO2,S-UNFO2.CRC,"Seeded unknown forb 2, CRC"
+S-UNFO2,S-UNFO2.Salt_Desert,"Seeded unknown forb 2, Salt_Desert"
+SUNGR,SUNGR.BabbittPJ,"Seeded unknown grass (?), BabbittPJ"
+SUNGR,SUNGR.TLE,"Seeded unknown grass (?), TLE"
+S-UNGR1,S-UNGR1.CRC,"Seeded unknown grass 1, CRC"
+S-UNGR1,S-UNGR1.Salt_Desert,"Seeded unknown grass 1, Salt_Desert"
+S-UNGR2,S-UNGR2.CRC,"Seeded unknown grass 2, CRC"
+S-UNGR2,S-UNGR2.Salt_Desert,"Seeded unknown grass 2, Salt_Desert"
+S-UNGR2,S-UNGR2.UtahPJ,"Seeded unknown grass 2, UtahPJ"
+S-UNGR3,S-UNGR3.CRC,"Seeded unknown grass 3, CRC"
+S-UNGR3,S-UNGR3.Salt_Desert,"Seeded unknown grass 3, Salt_Desert"
+S-UNGR3,S-UNGR3.UtahPJ,"Seeded unknown grass 3, UtahPJ"
+S-UNGR4,S-UNGR4.CRC,"Seeded unknown grass 4, CRC"
+S-UNGR4,S-UNGR4.UtahPJ,"Seeded unknown grass 4, UtahPJ"
+S-UNGR5,S-UNGR5.UtahPJ,"Seeded unknown grass 5, UtahPJ"
+SEBA2,SEBA2,Senna bacillaris
+SECO10,SECO10,Senna covesii
+SIAB,SIAB,Sida abutifolia
+SINE,SINE,Sida neomexicana
+SIDSPP,SIDSPP,Sida spp.
+SIAN2,SIAN2,Silene antirrhina
+SIAL2,SIAL2,Sisymbrium altissimum
+SIIR,SIIR,Sisymbrium irio
+SOEL,SOEL,Solanum elaeagnifolium
+SORO,SORO,Solanum rostratum
+SOSP,SOSP,Solanum spp.
+SOOL,SOOL,Sonchus oleraceus
+SPEC2,SPEC2,Spermolepis echinata
+SPAM2,SPAM2,Sphaeralcea ambigua
+SPCO,SPCO,Sphaeralcea coccinea
+SPGR2,SPGR2,Sphaeralcea grossulariifolia
+SPSP,SPSP,Sphaeralcea spp.
+SPCR,SPCR,Sporobolus cryptandrus
+Unksporob,Unksporob,Sporobolus spp.
+STISPP,STISPP,Stipa spp.
+STGN,STGN,Stylocline gnaphalioides
+TAPO5,TAPO5,Talinum polygaloides
+TILA2,TILA2,Tidestromia lanuginosa
+TOIN,TOIN,Townsendia incana
+TRPI,TRPI,Tradescantia pinetorum
+TRTE,TRTE,Tribulus terrestris
+TRMU,TRMU,Tridens muticus
+Trifolium,Trifolium,Trifolium spp.
+Unkaster,Unkaster.Mesquite,"Unknown aster, Mesquite"
+ATCA,ATCA.Mesquite,"Unknown ATCA (but not Atriplex, a grass?), Mesquite"
+UNK brown,UNK brown.SCC,"Unknown brown, SCC"
+CHEN,CHEN.BabbittPJ,"Unknown chenopod, BabbittPJ"
+CHEN,CHEN.MOWE,"Unknown chenopod, MOWE"
+CHEN,CHEN.TLE,"Unknown chenopod, TLE"
+UNDPF,UNDPF.SRER,"Unknown dead pod forb, SRER"
+UNDSF,UNDSF.SRER,"Unknown dead spikey forb, SRER"
+ERIGSPP,ERIGSPP.UtahPJ,"Unknown ERIG (?), UtahPJ"
+Unkfabaceae,Unkfabaceae.Creosote,"Unknown fabaceae, Creosote"
+UNFO1,UNFO1.Patagonia,"Unknown forb (Patagonia and SRER are same); upright mustard with tiny blueish flower, Patagonia"
+UNFO1,UNFO1.SRER,"Unknown forb (Patagonia and SRER are same); upright mustard with tiny blueish flower, SRER"
+UNFO2,UNFO2.Patagonia,"Unknown forb (Patagonia); low to ground, succulenty, tiny white flowers, similar to purslane, Patagonia"
+UNFO5,UNFO5.Patagonia,"Unknown forb (Patagonia); Similar to dandelion, yellow closed flowers, Patagonia"
+UNFO3,UNFO3.Patagonia,"Unknown forb (Patagonia); upright mustard with small pods and tiny yellow flowers, Patagonia"
+UNFO1A,UNFO1A.Patagonia,"Unknown forb (Patagonia, Nov 2019) = Darker Green, 5 petals radiating out, Patagonia"
+UNFO5,UNFO5.SRER,"Unknown forb (SRER); Little carrot with tiny white flowers and thin leaves, SRER"
+UNFO3,UNFO3.SRER,"Unknown forb (SRER); tiny reddish basal leaves, star-like petals, SRER"
+UNFO4,UNFO4.SRER,"Unknown forb (SRER); very hairy radiating out/up, fuzzy rosettes, SRER"
+UNFO6,UNFO6.SRER,"Unknown forb (SRER); Very small, long slender leaves, fuzzy, leaf toothed around margins. Possibly Heterotheca grandiflora, SRER"
+UNFO1,UNFO1.29_Palms,"Unknown forb 1, 29_Palms"
+UNFO1,UNFO1.AguaFria,"Unknown forb 1, AguaFria"
+UNFO1,UNFO1.BabbittPJ,"Unknown forb 1, BabbittPJ"
+UnkForb1,UnkForb1.Creosote,"Unknown forb 1, Creosote"
+UNFO1,UNFO1.FlyingM,"Unknown forb 1, FlyingM"
+UNFO1,UNFO1.MOWE,"Unknown forb 1, MOWE"
+UNFO1,UNFO1.PEFO,"Unknown forb 1, PEFO"
+UNFO10,UNFO10.UtahPJ,"Unknown forb 10, UtahPJ"
+UNFO11,UNFO11.UtahPJ,"Unknown forb 11, UtahPJ"
+UNFO12,UNFO12.BarTBar,"Unknown forb 12, BarTBar"
+UNFO13,UNFO13.BarTBar,"Unknown forb 13, BarTBar"
+UNFO14,UNFO14.BarTBar,"Unknown forb 14, BarTBar"
+UNFO16,UNFO16.BarTBar,"Unknown forb 16, BarTBar"
+UNFO2,UNFO2.29_Palms,"Unknown forb 2, 29_Palms"
+UNFO2,UNFO2.AguaFria,"Unknown forb 2, AguaFria"
+UNFO2,UNFO2.CRC,"Unknown forb 2, CRC"
+UNFO2,UNFO2.FlyingM,"Unknown forb 2, FlyingM"
+UNFO2,UNFO2.MOWE,"Unknown forb 2, MOWE"
+UNFO2,UNFO2.Spiderweb,"Unknown forb 2, Spiderweb"
+UNFO2,UNFO2.TLE,"Unknown forb 2, TLE"
+UNFO2,UNFO2.UtahPJ,"Unknown forb 2, UtahPJ"
+UNFO2A,UNFO2A.AVRCD,"Unknown forb 2A, AVRCD"
+UNFO3,UNFO3.AguaFria,"Unknown forb 3, AguaFria"
+UNFO3,UNFO3.BarTBar,"Unknown forb 3, BarTBar"
+UNFO3,UNFO3.CRC,"Unknown forb 3, CRC"
+UNFO3,UNFO3.FlyingM,"Unknown forb 3, FlyingM"
+UNFO3,UNFO3.Spiderweb,"Unknown forb 3, Spiderweb"
+UNFO3,UNFO3.UtahPJ,"Unknown forb 3, UtahPJ"
+UNFO4,UNFO4.AguaFria,"Unknown forb 4, AguaFria"
+UNFO4,UNFO4.BarTBar,"Unknown forb 4, BarTBar"
+UNFO4,UNFO4.FlyingM,"Unknown forb 4, FlyingM"
+UNFO4,UNFO4.MOWE,"Unknown forb 4, MOWE"
+UNFO4,UNFO4.Salt_Desert,"Unknown forb 4, Salt_Desert"
+UNFO4,UNFO4.UtahPJ,"Unknown forb 4, UtahPJ"
+UNFO5,UNFO5.AguaFria,"Unknown forb 5, AguaFria"
+UNFO5,UNFO5.FlyingM,"Unknown forb 5, FlyingM"
+UNFO5,UNFO5.MOWE,"Unknown forb 5, MOWE"
+UNFO5,UNFO5.Spiderweb,"Unknown forb 5, Spiderweb"
+UNFO5,UNFO5.UtahPJ,"Unknown forb 5, UtahPJ"
+UNFO6,UNFO6.AguaFria,"Unknown forb 6, AguaFria"
+UNFO6,UNFO6.FlyingM,"Unknown forb 6, FlyingM"
+UNFO6,UNFO6.Spiderweb,"Unknown forb 6, Spiderweb"
+UNFO6,UNFO6.UtahPJ,"Unknown forb 6, UtahPJ"
+UNFO7,UNFO7.AguaFria,"Unknown forb 7, AguaFria"
+UNFO7,UNFO7.BarTBar,"Unknown forb 7, BarTBar"
+UNFO7,UNFO7.FlyingM,"Unknown forb 7, FlyingM"
+UNFO7,UNFO7.Spiderweb,"Unknown forb 7, Spiderweb"
+UNFO7,UNFO7.UtahPJ,"Unknown forb 7, UtahPJ"
+UNFO8,UNFO8.AguaFria,"Unknown forb 8, AguaFria"
+UNFO8,UNFO8.BarTBar,"Unknown forb 8, BarTBar"
+UNFO8,UNFO8.Spiderweb,"Unknown forb 8, Spiderweb"
+UNFO8,UNFO8.UtahPJ,"Unknown forb 8, UtahPJ"
+UNFO9,UNFO9.BarTBar,"Unknown forb 9, BarTBar"
+UNFO9,UNFO9.UtahPJ,"Unknown forb 9, UtahPJ"
+UNFS,UNFS.Patagonia,"Unknown forb seedling, Patagonia"
+Unk heart,Unk heart.Preserve,"Unknown forb with heart-shaped cotyledon; possibly MAPA5 (although that species not seen growing there), Preserve"
+UNK heart,UNK heart.Preserve,"Unknown forb with heart-shaped cotyledon; possibly MAPA5 (although that species not seen growing there), Preserve"
+Unkforb,Unkforb.Creosote,"Unknown forb, Creosote"
+Unkforb1,Unkforb1.Creosote,"Unknown forb, Creosote"
+UNFO,UNFO.FlyingM,"Unknown forb, FlyingM"
+Unkforb,Unkforb.Mesquite,"Unknown forb, Mesquite"
+UnkForb,UnkForb.Mesquite,"Unknown forb, Mesquite"
+UNFO,UNFO.Spiderweb,"Unknown forb, Spiderweb"
+UNFO_S_7,UNFO_S_7.SRER,"Unknown forb; ""artichoke head"", stem leaves alternate, basal rosette, possibly cryptantha? (Spring 2021), SRER"
+Unksalsola,Unksalsola.Creosote,"Unknown forb; A very small (tiny really) forb germinant that has linear leaves like a small Salsola would. Unlikely to be salsola but best way to distinguish it from other unks., Creosote"
+UNFO_P_3,UNFO_P_3.Patagonia,"Unknown forb; Fabeacea (pea), long and spindly (Spring 2021), Patagonia"
+UNFO_S_3,UNFO_S_3.SRER,"Unknown forb; Fuzzy green penately arranged leaflets, partially pinated lobes ""thick poppy"" possibly an ambrosia (Spring 2021), SRER"
+UNFO6,UNFO6.Patagonia,"Unknown forb; green, young, radiating basal leaves; slightly fuzzy; Patagonia, Patagonia"
+UNFO_P_2,UNFO_P_2.Patagonia,"Unknown forb; Pinated leaves, upright rosette, lighter green, Ambrosia?  (Spring 2021), Patagonia"
+UNFO_P_5,UNFO_P_5.Patagonia,"Unknown forb; Prominent mid-vein, leaf doesn't completely surround/there's good amount of petiole, ovate leaves that're slightly speckled, oenothera? (Spring 2021), Patagonia"
+UNFO_S_1,UNFO_S_1.SRER,"Unknown forb; Purple vine, sagitate leaves (Spring 2021), SRER"
+UNFO_P_7,UNFO_P_7.Patagonia,"Unknown forb; Rosette leaves slightly fuzzy and silvery light green. simple leaves, smells like bandaids (Spring 2021), Patagonia"
+UNFO_S_5,UNFO_S_5.SRER,"Unknown forb; Silky hairy fuzzy, straight leaves, no prominent veination, pseudognaphalium? (Spring 2021), SRER"
+UNFO_P_1,UNFO_P_1.Patagonia,"Unknown forb; small reddish purple rosette with ovate leaves (Spring 2021), Patagonia"
+UNFO_P_6,UNFO_P_6.Patagonia,"Unknown forb; Super tiny, red thin stem like SAIB but the top leaves are compounded with 3 leaflets, Amaranthaceae? (Spring 2021), Patagonia"
+UNFO_S_4,UNFO_S_4.SRER,"Unknown forb; Super tiny, very spikey, pinately lobed, possible cryptantha or plagiobothrys (Spring 2021), SRER"
+UNK Fuzzy astr,UNK Fuzzy astr.Mesquite,"Unknown fuzzy aster, Mesquite"
+UNGRS3,UNGRS3.Patagonia,"Unknown grass (Patagonia); Lighter green, thin leaves, possible threeawn?, Patagonia"
+UNGRS2,UNGRS2.Patagonia,"Unknown grass (Patagonia); Unk grass seedling, leaf divided early like BOGR, possible lovegrass?, Patagonia"
+UNGRS1,UNGRS1.SRER,"Unknown grass (Patagonia);Unk. grass seedling, bunchy, possible lovegrass?, SRER"
+UNGR1,UNGR1.SRER,"Unknown grass (SantaRita); Possibly BOER or Aristida spp (so likely unseeded), SRER"
+UNGRS1,UNGRS1.Patagonia,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes, Patagonia"
+UNGR1,UNGR1.AguaFria,"Unknown grass 1, AguaFria"
+UNGR1,UNGR1.BabbittPJ,"Unknown grass 1, BabbittPJ"
+UNGR1,UNGR1.FlyingM,"Unknown grass 1, FlyingM"
+UNGR1,UNGR1.MOWE,"Unknown grass 1, MOWE"
+UNGR1,UNGR1.Patagonia,"Unknown grass 1, Patagonia"
+UNGR1,UNGR1.PEFO,"Unknown grass 1, PEFO"
+UNGR1,UNGR1.Salt_Desert,"Unknown grass 1, Salt_Desert"
+UNGR1,UNGR1.UtahPJ,"Unknown grass 1, UtahPJ"
+UNGR2,UNGR2.AguaFria,"Unknown grass 2, AguaFria"
+UNGR2,UNGR2.MOWE,"Unknown grass 2, MOWE"
+UNGR2,UNGR2.PEFO,"Unknown grass 2, PEFO"
+unk grass 2,unk grass 2.Roosevelt,"Unknown grass 2, Roosevelt"
+UNGR2,UNGR2.UtahPJ,"Unknown grass 2, UtahPJ"
+UNGR3,UNGR3.AguaFria,"Unknown grass 3, AguaFria"
+UNGR3,UNGR3.MOWE,"Unknown grass 3, MOWE"
+UNGR3,UNGR3.PEFO,"Unknown grass 3, PEFO"
+UNGR3,UNGR3.UtahPJ,"Unknown grass 3, UtahPJ"
+UNGR4,UNGR4.AguaFria,"Unknown grass 4, AguaFria"
+UNGR4,UNGR4.MOWE,"Unknown grass 4, MOWE"
+UNGR4,UNGR4.Salt_Desert,"Unknown grass 4, Salt_Desert"
+UNGR4,UNGR4.UtahPJ,"Unknown grass 4, UtahPJ"
+UNGR5,UNGR5.AguaFria,"Unknown grass 5, AguaFria"
+UNGR,UNGR.AguaFria,"Unknown grass, AguaFria"
+UNGR,UNGR.BabbittPJ,"Unknown grass, BabbittPJ"
+UNGR,UNGR.BarTBar,"Unknown grass, BarTBar"
+Unkgrass,Unkgrass.Creosote,"Unknown grass, Creosote"
+Unkgrass2,Unkgrass2.Creosote,"Unknown grass, Creosote"
+UNGR,UNGR.FlyingM,"Unknown grass, FlyingM"
+Unkgrass,Unkgrass.Mesquite,"Unknown grass, Mesquite"
+UNGR,UNGR.MOWE,"Unknown grass, MOWE"
+UNGR,UNGR.PEFO,"Unknown grass, PEFO"
+UNGR,UNGR.Spiderweb,"Unknown grass, Spiderweb"
+UNGR,UNGR.TLE,"Unknown grass, TLE"
+UNGR,UNGR.UtahPJ,"Unknown grass, UtahPJ"
+UNGR_S_1,UNGR_S_1.SRER,"Unknown grass; Grass seedling short erose ligule slight chance ARPU because of 45 degree leaf or possibly a Vulpia sp. like VUOC (Spring 2021), SRER"
+UNGR_S_2,UNGR_S_2.SRER,"Unknown grass; Possibly a BOCU or another Bouteloua (Spring 2021), SRER"
+UNGR_P_1,UNGR_P_1.Patagonia,"Unknown grass; Possibly small ARIsp. (Spring 2021), Patagonia"
+Unksporo,Unksporo.Creosote,"Unknown grass; Sporobolus and Eragrostis, Creosote"
+Unk grass,Unk grass.SCC,"Unknown likely associated with warm seed mix, SCC"
+UNSH,UNSH.BarTBar,"Unknown shrub, BarTBar"
+UnkATCA,UnkATCA.Mesquite,"Unknown shrub; Possible Atriplex canescens, Mesquite"
+UNSFF,UNSFF.SRER,"Unknown shrubby fuzzy forb, munched down, SRER"
+Unk sp.,Unk sp..Pleasant,"Unknown species, Pleasant"
+Unk sp.,Unk sp..SCC,"Unknown species, SCC"
+UCHEN1,UCHEN1.PEFO,"Unknown UCHEN1 (?), PEFO"
+UCHEN2,UCHEN2.PEFO,"Unknown UCHEN2 (?), PEFO"
+UNFO_P_4,UNFO_P_4.Patagonia,"Unkown forb; Unknown Fabeacea (Pea), short and fuzzy, chunky, Acmispon Brachycarpus? (Spring 2021), Patagonia"
+VEEN,VEEN,Verbesina encelioides
+VEPEX2,VEPEX2,Veronica peregrina ssp. xalapensis
+VUOC,VUOC,Vulpia octoflora
+ZIGR,ZIGR,Zinnia grandiflora

@@ -83,7 +83,7 @@ filter(subplot, is.na(Code)) # no NAs
 # Standardize incorrect codes for subplot data ----------------------------
 
 # Extract incorrect codes
-setdiff(unique(subplot$Code), unique(c(species.de$Code, species.in$Code)))
+setdiff(unique(subplot$Code), unique(c(species.de$CodeOriginal, species.in$CodeOriginal)))
 
 # Replace codes
 subplot$Code[subplot$Code == "S-PASM"] <- "PASM"
@@ -104,7 +104,7 @@ filter(subplot, is.na(Code)) # no NAs
 
 
 
-# Replace location-dependent codes with Code.Site and add species info -----
+# Add species info and change location-dependent code name ----------------
 
 # Separate out location-dependent observations
 subplot.de <-subplot %>% 
@@ -117,8 +117,9 @@ subplot.de <- subplot.de %>%
 # Add species info
 subplot.de <- left_join(subplot.de, species.de)
 
+
 # Check for NA codes
-filter(subplot.de, is.na(Code))
+de.na <- filter(subplot.de, is.na(Code))
   # Unksporo is not matching
 
 filter(species.de, CodeOriginal == "Unksporo")
