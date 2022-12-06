@@ -97,9 +97,6 @@ subplot$Code[subplot$Code == "EUPO3"] <- "CHPO12"
 sub.codes <- c(species.de$CodeOriginal, species.in$CodeOriginal)
 setdiff(subplot$Code, sub.codes) 
 
-x <- subplot %>% 
-  filter(Code %in% c( "Unkcrypt",  "Unksporob"))
-
 
 # Check again for NA codes
 filter(subplot, is.na(Code)) # no NAs
@@ -199,27 +196,6 @@ seeded.notnative <- subplot.seeded %>%
   filter(Native != "Native")
 seeded.notnative.names <- data.frame(V1 = unique(seeded.notnative$Name))
 
-# Extract Genus spp. observations to check location dependence
-seeded.spp <- subplot.seeded %>% 
-  filter(str_detect(subplot.seeded$Name, "spp."))
-unique(seeded.spp$Name)
-
-elymus.spp <- subplot.seeded %>% 
-  filter(Name == "Elymus spp.")
-unique(elymus.spp$Site) # not location-dependent
-
-solanum.spp <- subplot.seeded %>% 
-  filter(Name == "Solanum spp.")
-unique(solanum.spp$Site) # not location-dependent
-
-stipa.spp <- subplot.seeded %>% 
-  filter(Name == "Stipa spp.")
-unique(stipa.spp$Site) # not location-dependent
-
-sporobolus.spp <- subplot.seeded %>% 
-  filter(Name == "Sporobolus spp.")
-unique(sporobolus.spp$Site) # not location-dependent
-
 # Write list of names to CSV for 01_curate-species-list.R
   # The "spp." ones are not location-dependent, and the unknowns have location-specific names now
     # so they do not need to be separated
@@ -228,8 +204,7 @@ write_csv(seeded.notnative.names,
           file = "data/raw/output-wrangling_seeded-species-to-be-marked-native.csv")
 
 # Remove unnecessary objects
-rm(seeded.notnative, seeded.notnative.names, seeded.spp, elymus.spp, solanum.spp,
-   stipa.spp, sporobolus.spp)
+rm(seeded.notnative, seeded.notnative.names)
 
 
 # Check if it worked after fixing 01_curate-species-list.R and writing new CSVs
