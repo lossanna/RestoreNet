@@ -57,13 +57,15 @@ intro.density.seed$Native <- rep("introduced", nrow(intro.density.seed))
 density.seed <- bind_rows(native.density.seed, intro.density.seed) 
 density.seed$seed.native <- apply(density.seed[ , c("plotmix.seed", "Native")], 1, paste, collapse = ", ")
 
-# All sites
+
+# Plot all sites
 density.seed %>% 
   ggplot(aes(x = Date_Monitored, y = avg, group = seed.native,
              color = seed.native)) +
   geom_line() +
   geom_point() +
-  facet_wrap(~Site)
+  facet_wrap(~Site) +
+  scale_color_brewer(palette = "Paired")
 
 # All sites, minus Roosevelt
 density.seed %>% 
@@ -72,7 +74,8 @@ density.seed %>%
              color = seed.native)) +
   geom_line() +
   geom_point(aes(shape = Native)) +
-  facet_wrap(~Site)
+  facet_wrap(~Site) +
+  scale_color_brewer(palette = "Paired")
   
 # Single site
 density.seed %>% 
@@ -80,22 +83,32 @@ density.seed %>%
   ggplot(aes(x = Date_Monitored, y = avg, group = seed.native,
              color = seed.native)) + 
   geom_point(aes(shape = Native)) +
-  geom_line() 
-
+  geom_line() +
+  scale_color_brewer(palette = "Paired")
 
 density.seed %>% 
   filter(Site == "BarTBar") %>% 
   ggplot(aes(x = Date_Monitored, y = avg, group = seed.native,
              color = seed.native)) + 
   geom_point(aes(shape = Native)) +
-  geom_line() 
+  geom_line() +
+  scale_color_brewer(palette = "Paired")
 
 density.seed %>% 
   filter(Site == "SRER") %>% 
   ggplot(aes(x = Date_Monitored, y = avg, group = seed.native,
              color = seed.native)) +
   geom_point(aes(shape = Native)) +
-  geom_line() 
+  geom_line() +
+  scale_color_brewer(palette = "Paired")
+
+density.seed %>% 
+  filter(Site == "Patagonia") %>% 
+  ggplot(aes(x = Date_Monitored, y = avg, group = seed.native,
+             color = seed.native)) +
+  geom_point(aes(shape = Native)) +
+  geom_line() +
+  scale_color_brewer(palette = "Paired")
 
 
 
