@@ -102,10 +102,27 @@ density.seed %>%
 
 # PRISM data --------------------------------------------------------------
 
-prism_set_dl_dir("prism-dat")
+prism_set_dl_dir("data/prism-dat")
 
+min(subplot$Date_Seeded)
+max(subplot$Date_Monitored)
 
+# Downloaded the following data from PRISM, but used FTP, as that is much faster
+  # actually running this code would take forever
 
+# get_prism_dailys(
+#   type = "ppt",
+#   minDate = "2018-01-01",
+#   maxDate = "2021-12-31",
+#   keepZip = FALSE
+# )
+
+# get_prism_normals(
+#   type = "ppt",
+#   resolution = "4km",
+#   annual = TRUE,
+#   keepZip = FALSE
+# )
 
 
 
