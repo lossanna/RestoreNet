@@ -4,18 +4,13 @@ library(tidyverse)
 # Load data ---------------------------------------------------------------
 
 subplot.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllSubplotData")
-plot.2x2.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllPlotData")
-species.in <- read_csv("data/cleaned/species-list_subplot_location-independent_clean.csv")
-species.de <- read_csv("data/cleaned/species-list_subplot_location-dependent_clean.csv")
+species.all.in <- read_csv("data/cleaned/species-list_all_location-independent.csv")
+species.all.de <- read_csv("data/cleaned/species-list_all_location-dependent.csv")
 subplot.codes <- read_csv("data/cleaned/subplot-codes_clean.csv")
 mix <- read_xlsx("data/raw/master-seed-mix.xlsx")
 
 
-
-############################ SUBPLOT DATA ##########################
-
-
-# Organize subplot data columns -------------------------------------------
+# Organize columns --------------------------------------------------------
 
 # Narrow down subplot.raw columns
 subplot <- subplot.raw %>% 
@@ -53,11 +48,7 @@ subplot <- subplot %>% # convert to date
 
 
 
-
-# Subplot codes -----------------------------------------------------------
-
-
-# Handle NA codes for subplot data ----------------------------------------
+# Handle NA codes ---------------------------------------------------------
 
 # Extract NA codes
 filter(subplot, is.na(Code)) # raw.row 8610, 9318, 12166
@@ -80,7 +71,7 @@ filter(subplot, is.na(Code)) # no NAs
 
 
 
-# Standardize incorrect codes for subplot data ----------------------------
+# Standardize incorrect codes ---------------------------------------------
 
 # Extract incorrect codes
 setdiff(unique(subplot$Code), unique(c(species.de$CodeOriginal, species.in$CodeOriginal)))
@@ -96,7 +87,6 @@ subplot$Code[subplot$Code == "EUPO3"] <- "CHPO12"
 # Check for missing codes by comparing subplot data to both species lists
 sub.codes <- c(species.de$CodeOriginal, species.in$CodeOriginal)
 setdiff(subplot$Code, sub.codes) 
-
 
 # Check again for NA codes
 filter(subplot, is.na(Code)) # no NAs
@@ -117,11 +107,8 @@ subplot.de <- subplot.de %>%
 # Add species info
 subplot.de <- left_join(subplot.de, species.de)
 
-
 # Check for NA codes
 filter(subplot.de, is.na(Code))
-
-
 
 
 
@@ -133,14 +120,14 @@ subplot.in <- subplot %>%
 subplot.in <- left_join(subplot.in, species.in) 
 
 
-# Combine location in/de for subplot --------------------------------------
+# Combine location-dependent and independent ------------------------------
 
-# Combine
 subplot <- bind_rows(subplot.in, subplot.de) %>% 
   arrange(raw.row)
 
 # Check that there the same number of observations as the original subplot data
 nrow(subplot) == nrow(subplot.raw)
+
 
 
 # Check if Introduced plants were marked as Seeded ------------------------
@@ -175,7 +162,7 @@ write_csv(subplot,
 
 
 #### This chunk relates to 01_curate-species-list.R ###################
-#### do not need to run again #####
+#### do not run again #####
 
 
 # Address native status for unknown seeded species ------------------------
@@ -215,6 +202,10 @@ unique(subplot.seeded$Native) # only option should be "Native"
 
 
 
+
+
+
+
 # Subplot data for seeded species only ------------------------------------
 
 subplot.seeded <- subplot %>% 
@@ -233,4 +224,4 @@ seed.rate.na.known <- seed.rate.na %>%
   filter(!str_detect(seed.rate.na$Name, "Unk|unk|spp."))
 
 
-save.image("RData/02_data-wrangling.RData")
+save.image("RData/02_data-wrangling_subplot.RData")
