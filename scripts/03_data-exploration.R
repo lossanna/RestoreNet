@@ -4,6 +4,8 @@ library(prism)
 # Load data ---------------------------------------------------------------
 
 subplot <- read_csv("data/cleaned/subplot-data_clean.csv") 
+trsp <- read_csv("data/raw/TRY-database_traits.csv")
+try2 <- read_csv("data/raw/try2.csv")
 
 
 # Monitoring dates --------------------------------------------------------
@@ -111,6 +113,16 @@ density.seed %>%
   scale_color_brewer(palette = "Paired")
 
 
+# Highest density invasive species
+intro.den.species <- subplot %>% 
+  filter(Native == "Introduced") %>% 
+  group_by(Site) %>% 
+  arrange(Count, .by_group = TRUE) %>% 
+  top_n(10) %>% 
+  select(Code, CodeOriginal, Site, Region, Name, Duration, Lifeform) %>% 
+  distinct(.keep_all = TRUE)
+
+
 
 
 # PRISM data --------------------------------------------------------------
@@ -138,6 +150,21 @@ max(subplot$Date_Monitored)
 # )
 
 
+# TRY trait database ------------------------------------------------------
 
+# List of traits available
+trsp.id.top20 <- trsp %>% 
+  filter(TraitID %in% 1:20) %>% 
+  arrange(TraitID)
 
+trsp.obs.top20 <- trsp %>% 
+  arrange(desc(AccSpecNum))
+  
+  filter(ObsNum %in% 1:20) %>% 
+  arrange(ObsNum)
+
+try2 %>% 
+  filter(AccSpeciesName %in% intro.den.species$Name)
+  
+  
 save.image("RData/03_data-exploration.RData")
