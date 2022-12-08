@@ -224,4 +224,4 @@ seed.rate.na.known <- seed.rate.na %>%
   filter(!str_detect(seed.rate.na$Name, "Unk|unk|spp."))
 
 
-save.image("RData/02_data-wrangling_subplot.RData")
+save.image("RData/02.1_data-wrangling_subplot.RData")
