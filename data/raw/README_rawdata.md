@@ -54,6 +54,7 @@ File naming notes:
 - Most of the codes are unknowns or descriptions; long codes that are basically descriptions and mention multiple species have multiple rows for the same code, and a column marks if there is a duplicate that is needed. All of these codes came from the Sonoran SE sites. Most other sites had a standard USDA code marked in multiple columns all named `Additional_Species_In_Plot` in the original raw 2x2 plot data.
 	+ The Sonoran SE plots were difficult to identify, so longer explanations were needed.
 	+ `NeedsItsDuplicate` = `Yes`: more than one species mentioned in a single code, so the same code has multiple lines with different species.
+	+ `DuplicateNum` = `1`, `2`, `3`, etc.: row number for duplicate rows when more than one species is mentioned in a single code. Left blank when `NeedsItsDuplicate` = `No`.
 	+ `LocationDependence` = `dependent`: Site needs to be added to code to make `Code.Site` column. Unknowns are location-dependent.
 	
 `Farrell_2020_EcologicalApplications_table1.xlsx`

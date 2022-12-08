@@ -4,7 +4,7 @@ library(tidyverse)
 # Load data ---------------------------------------------------------------
 
 p2x2.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllPlotData")
-subplot <- read_csv("data/cleaned/subplot-data_clean.csv")
+subplot.clean <- read_csv("data/cleaned/subplot-data_clean.csv")
 species.all.in <- read_csv("data/cleaned/species-list_all_location-independent.csv")
 species.all.de <- read_csv("data/cleaned/species-list_all_location-dependent.csv")
 p2x2.codes.dup <- read_csv("data/raw/2x2-codes_need-duplicate-rows.csv")
@@ -12,7 +12,7 @@ p2x2.codes.dup.count <- read_csv("data/raw/2x2-codes_need-duplicate-rows_count.c
 mix <- read_xlsx("data/raw/master-seed-mix.xlsx")
 
 
-# Organize columns --------------------------------------------------------
+# Organize columns and pivot to longer ------------------------------------
 
 # Add raw.row and Region cols
 p2x2.wide <- p2x2.raw %>% 
@@ -40,15 +40,14 @@ p2x2.wide <- p2x2.wide %>%
          -Additional_Species_In_Plot...20)
 
 # Add subplot species observations
-subplot <- subplot %>% 
+subplot <- subplot.clean %>% 
   select(Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix, Code) %>% 
   rename(subplot = Code)
 
 p2x2.wide <- left_join(p2x2.wide, subplot) 
 
-
 # Pivot species columns
-p2x2 <- p2x2.wide %>% 
+p2x2.long <- p2x2.wide %>% 
   mutate(across(everything(), as.character)) %>% 
   pivot_longer(c(starts_with("Additional"), subplot), names_to = "source", values_to = "Code") %>% 
   distinct(.keep_all = TRUE) %>% 
@@ -63,15 +62,67 @@ p2x2 <- p2x2.wide %>%
     source == "Additional_Species_In_Plot...19" ~ "add8",
     TRUE ~ source))
 
-# Remove "0"s from additional cols
-p2x2.subplot <- p2x2 %>% 
-  filter(source == "subplot")
+# Check for NA codes
+filter(p2x2.long, is.na(Code))
 
-p2x2 <- p2x2 %>% 
+# Monitoring events
+monitor.sub <- subplot.clean %>% 
+  select(Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix) %>% 
+  distinct(.keep_all = TRUE) 
+monitor.sub <- monitor.sub %>% 
+  mutate(MonitorID = 1:nrow(monitor.sub))
+monitor.sub.plots <- count(monitor.sub, Plot)
+
+monitor.2x2 <- p2x2.wide %>% 
+  select(Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix) %>% 
+  distinct(.keep_all = TRUE) %>% 
+  left_join(monitor.sub)
+monitor.2x2.plots <- count(monitor.2x2, Plot)
+
+# Examine differences
+monitor.diff <- monitor.2x2 %>% 
+  filter(is.na(MonitorID)) %>% 
+  arrange(Site) %>% 
+  mutate(across(everything(), as.character))
+
+# AVRCD
+monitor.sub.AVRCD <- monitor.sub %>% 
+  filter(Site == "AVRCD")
+
+# FlyingM
+monitor.sub.FlyingM <- monitor.sub %>% 
+  filter(Site == "FlyingM") %>% 
+  filter(Treatment == "Pits") %>% 
+  filter(PlotMix == "Med-Warm") %>% 
+  filter(Plot == "36")
+  
+  
+
+
+
+
+# Handle additional species cols first ------------------------------------
+
+# Remove "0"s from additional cols
+p2x2.add <- p2x2.long %>% 
   filter(source != "subplot") %>% 
   filter(Code != "0")
 
-p2x2 <- bind_rows(p2x2, p2x2.subplot)
+# Remove codes that need duplicate rows, to add duplicates manually
+p2x2.add.dup <- p2x2.add %>% 
+  filter(Code %in% p2x2.codes.dup.count$CodeOriginal)
 
+write_csv(p2x2.add.dup,
+          file = "data/raw/output-wrangling-2x2_need-duplicate-rows.csv")
+
+
+
+
+# Handle subplot species obs ----------------------------------------------
+
+p2x2.subplot <- p2x2.long %>% 
+  filter(source == "subplot")
+
+# Codes are Code.Site, not CodeOriginal
 
 save.image("RData/02.2_data-wrangling_2x2.RData")

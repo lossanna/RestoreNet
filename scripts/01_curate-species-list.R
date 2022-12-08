@@ -391,6 +391,7 @@ write_csv(subplot.codes,
           file = "data/cleaned/subplot-codes_clean.csv")
 
 
+
 # Codes from AllPlotData (2x2 plots) --------------------------------------
 
 # Codes from these plots are really different and usually long descriptions
@@ -417,7 +418,7 @@ write_csv(p2x2.codes.missing,
 p2x2.codes.missing <- read_csv("data/raw/edited-species5_codes-missing-2x2plot.csv")
 
 # Check for absent information (NAs)
-apply(p2x2.codes.missing, 2, anyNA)
+apply(p2x2.codes.missing, 2, anyNA) # okay that DuplicateNum has NAs
 
 
 # Add site to code and name for location-dependent species

@@ -1,0 +1,40 @@
+Site,Date_Seeded,Date_Monitored,Plot,Treatment,PlotMix,Seeded_Cover,Total_Veg_Cover,raw.row,Region,source,Code
+SRER,2019-08-09,2021-03-10,10,ConMod,Warm,TR,6,4686,Sonoran SE,add1,Some type of Aristida possibly and ARPU and maybe 1 small maybe BOCU near subplot that's been grazed down
+SRER,2019-08-09,2021-03-11,19,Mulch,Warm,TR,3,4695,Sonoran SE,add1,Possibly a BOCU but has been grazed down completely and hard to confirm
+SRER,2019-08-09,2021-03-11,23,Pits,Warm,1,4,4699,Sonoran SE,add1,A couple BOCUs and a couple potential BOCU nubs and a possible ARPU
+SRER,2019-08-09,2021-03-11,24,Seed,Medium,TR,3,4700,Sonoran SE,add1,1 Possible PLJA (1 out of 3 on certainty) on south border as well as some BOCUs (might be BOER but probably BOCU or other BOsp.) Mostly grazed
+SRER,2019-08-09,2021-03-11,31,Mulch,Warm,1,3,4707,Sonoran SE,add1,1 full BOCU (3) in the northwest corner. A couple potentially smaller grazed down ones throughout as well as a couple potential ARPUs (2)
+Patagonia,2019-08-09,2021-03-12,2,ConMod,Warm,3,4,4714,Sonoran SE,add1,Large BOCU in the southeast with a few small ones throughout and about 5 ARPUs small to large in size that're mostly near the conmods
+Patagonia,2019-08-09,2021-03-12,3,Pits,Warm,4,8,4715,Sonoran SE,add1,A few ARPUs and young BOCUs mostly near/in the south half except for a smaller ARPU in the northwest and a BAMU just north of subplot
+Patagonia,2019-08-09,2021-03-12,4,Mulch,Warm,2,3,4716,Sonoran SE,add1,3 individual ARPUs  and a BOCU
+Patagonia,2019-08-09,2021-03-12,15,Mulch,Warm,2,6,4727,Sonoran SE,add1,ARPU about 5 individuals and an individual BAMU resprouting at base
+Patagonia,2019-08-09,2021-03-12,16,Pits,Warm,2,13,4728,Sonoran SE,add1,Southwest pit has 1 BAMU and 4 small ARPUs. Northwest pit has 2 medium and 2 small ARPUs and 1 dreid up SECO. There are a few more small to medium sized ARPUs throughout
+Patagonia,2019-08-09,2021-03-12,31,Mulch,Warm,2,20,4743,Sonoran SE,add1,Possible ACHY near southwest corner (2 certainty) and about 10 ARPU small to medium in size with 2 of them next to the subplot but not quite in
+Patagonia,2019-08-09,2021-03-12,32,Pits,Warm,2,4,4744,Sonoran SE,add1,"ARPU many individuals, BAMU 1 individual, PLMU (2) 1 individual, ACHY (2) 1 individual"
+SRER,2019-08-09,2021-10-06,1,ConMod,Warm,4,88,4749,Sonoran SE,add1,Multiple BOCU's medium-large and a possible medium sized ARPU
+SRER,2019-08-09,2021-10-06,2,Seed,Warm,1,96,4750,Sonoran SE,add1,Couple medium sized ARPUs (not completely sure 2/3 on certainty of ID) and a large BOCU right next to the NW plot marker rooted just outside of the plot but some overhangs into the plot
+SRER,2019-08-09,2021-10-06,3,Pits,Warm,TR,98,4751,Sonoran SE,add1,"Possible ARPUs, SECO seedling in subplot"
+SRER,2019-08-09,2021-10-07,11,Pits,Warm,TR,95,4759,Sonoran SE,add1,Possible young BOCU and ARPU but no seed heads yet therfor unsure ifit is than seeded species cover is 1% but if not it's trace amount because of a few SECOs all found in or near pits
+SRER,2019-08-09,2021-10-08,20,ConMod,Warm,1,99,4768,Sonoran SE,add1,"A couple small SECOs mostly near conmods and possiblya young POSE near SE conmod, Also decent size patch (~1% cover) of SECO just near/outside N edge"
+SRER,2019-08-09,2021-10-08,23,Pits,Warm,10,99,4771,Sonoran SE,add1,Extra large to medium large BOCUs throughout and at least 2 tiny SECO near/in SE pit and NE/subplot pit
+SRER,2019-08-09,2021-10-09,25,ConMod,Warm,3,90,4773,Sonoran SE,add1,Medium sized BOCU and ARPU
+SRER,2019-08-09,2021-10-09,30,Seed,Warm,13,80,4778,Sonoran SE,add1,Multiple med to extra large BOCUs and a few small to large ARPUs
+SRER,2019-08-09,2021-10-09,31,Mulch,Warm,11,82,4779,Sonoran SE,add1,Quite a few small tp extra large BOCUs throughout along with a possible ASTU
+Patagonia,2019-08-09,2021-10-13,1,Seed,Warm,7,60,4785,Sonoran SE,add1,Multiple medium to large ARPU and small/medium BOCU near the NE corner and a couple tiny SECOs
+Patagonia,2019-08-09,2021-10-13,2,ConMod,Warm,12,80,4786,Sonoran SE,add1,Small/medium to large ARPUs and small to large BOCU throughout
+Patagonia,2019-08-09,2021-10-13,3,Pits,Warm,13,85,4787,Sonoran SE,add1,Multiple small to medium ARPUs and BOCUs along with a possible PLMU (rough feeling leaves and similar seeds) with a couple small/medium BAMU that are in or near the N half of the pits and a couple small SECO seedlings sprinkled throughout
+Patagonia,2019-08-09,2021-10-13,4,Mulch,Warm,10,82,4788,Sonoran SE,add1,Small to large ARPUs and BOCUs along with a couple small SECOs as well as a possible PLMU in the middle (rough feeling and membranous ligule but no seed heads)
+Patagonia,2019-08-09,2021-10-13,10,Seed,Warm,3,75,4794,Sonoran SE,add1,Couple small to medium ARPUs throughout and a couple small SECOs in N half of the plot typically hidden under/using ERCU as a shade plant
+Patagonia,2019-08-09,2021-10-13,11,ConMod,Warm,8,93,4795,Sonoran SE,add1,Medium to large ARPUs throughout and a couple small and medium BOCUs near the N conmods and a few teeny tiny SECOs near conmods as well
+Patagonia,2019-08-09,2021-10-13,15,Mulch,Warm,11,45,4799,Sonoran SE,add1,Multiple small to large ARPUs throughout along with a large BAMU in center and a medium sized BOCU in the NW section
+Patagonia,2019-08-09,2021-10-13,16,Pits,Warm,7,70,4800,Sonoran SE,add1,"Medium SECO in/near NW pit with a couple tiny seedlings scattered throughout, medium BAMU in the middle, a few small to medium/large ARPUs sprinkled throughout, possibly a small ACHY in SE section (wirey leaf blades that clasp the stem, hairs at the node, only one seed head but similar to examples)"
+Patagonia,2019-08-09,2021-10-14,19,Seed,Warm,5,78,4803,Sonoran SE,add1,Small to medium ARPUs throughout and small/medium BAMU near the NE edge
+Patagonia,2019-08-09,2021-10-14,20,Pits,Medium,TR,73,4804,Sonoran SE,add1,"Possibly small POSE and SPCR in the S half of the plot, BLUE grama not BLACK"
+Patagonia,2019-08-09,2021-10-14,21,Seed,Medium,TR,94,4805,Sonoran SE,add1,"Possible SPCR in subplot, Blue not Black grama"
+Patagonia,2019-08-09,2021-10-14,22,ConMod,Warm,15,97,4806,Sonoran SE,add1,Small to large ARPUs throughout and a couple of small SECOs
+Patagonia,2019-08-09,2021-10-14,23,Mulch,Warm,17,67,4807,Sonoran SE,add1,Small to large ARPUs throughout along with a tiny baby SECO seedling in SE section
+Patagonia,2019-08-09,2021-10-14,25,Pits,Warm,9,70,4809,Sonoran SE,add1,"Multiple ARPUs small to large sized throughout, possible ACHY in the SE pit, and a couple teeny tiny SECOs in/around some of the pits"
+Patagonia,2019-08-09,2021-10-14,30,ConMod,Warm,11,75,4814,Sonoran SE,add1,Small to medium ARPUs throughout and a few tiny to small SECOs mostly near the conmods
+Patagonia,2019-08-09,2021-10-14,31,Mulch,Warm,15,99,4815,Sonoran SE,add1,"Possible couple small ASTUs along with multiple medium to extra large ARPUs, possibly a few BAMU seedlings as well as a couple tiny to small SECOs throughout"
+Patagonia,2019-08-09,2021-10-14,32,Pits,Warm,10,97,4816,Sonoran SE,add1,Multiple medium to extra large ARPUs and large BAMU along the N edge of the plot along with possible tiny seedlings in same pits
+Patagonia,2019-08-09,2021-10-14,33,ConMod,Medium,TR,95,4817,Sonoran SE,add1,SW conmod is overgrown with Blue grama but NO black grama but thee's a possible young PEPA by the NW conmod
