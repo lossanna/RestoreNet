@@ -1,5 +1,5 @@
 Created: 2022-11-28  
-Last updated: 2022-12-02  
+Last updated: 2022-12-09  
   
 Notes about raw data for RAMPS RestoreNet project.
 - Intermediate CSVs required to curate species lists are saved here.
@@ -13,10 +13,12 @@ Abbreviations:
 
 File naming notes:
 - `master-` indicates the spreadsheet was adapted from a tab in `Master.xlsx`.
-- `-species#` indicates the CSV is an intermediate step in curating a complete species list. Numbers correspond to edited files
-- `output-` indicates the CSV was written from R. Numbers correspond to edited files, and sequentially mark workflow.
-- `edited-` indicates the corresponding CSV written from R was manually edited.
-- `xlsx_` indicates the species list includes only codes from  `master-species_native.xlsx`, with unknowns removed.
+- `output-` indicates the CSV was written from R.
+- `edited-` indicates the corresponding CSV written from R was then manually edited, and then read back into script.
+- `-species#-` indicates the CSV is an intermediate step in curating a complete species list, from `01_curate-species-list.R`. Numbers correspond between output and edited files, and sequentially mark workflow.
+- `-wrangling-` indicates the CSV is an intermediate step in data wrangling for `subplot` data, from `02.1_data-wrangling_subplot`.
+- `-wrangling-2x2-` indicates the CSV is an intermediate step in data wrangling for `2x2` m plot data, from `02.2_data-wrangling_2x2`.
+- `_xlsx_` indicates the species list includes only codes from  `master-species_native.xlsx`, with unknowns removed.
 - `_native-lifeform-duration` indicates if the respective columns are present in the species list.
 
 # Directory
@@ -56,6 +58,10 @@ File naming notes:
 	+ `NeedsItsDuplicate` = `Yes`: more than one species mentioned in a single code, so the same code has multiple lines with different species.
 	+ `DuplicateNum` = `1`, `2`, `3`, etc.: row number for duplicate rows when more than one species is mentioned in a single code. Left blank when `NeedsItsDuplicate` = `No`.
 	+ `LocationDependence` = `dependent`: Site needs to be added to code to make `Code.Site` column. Unknowns are location-dependent.
+	
+`edited-wrangling-2x2_1conflicting-monitoring-info-resolved.xlsx`
+- List of codes with conflicting monitoring information between the `subplot` and `2x2` data. Monitoring information refers to the columns `Site`, `Date_Seeded`, `Date_Monitored`, `Plot`, `Treatment`, and `PlotMix`. Each monitoring event is given an ID, unrelated to the data actually collected from the subplot or 2x2 m plot.
+- Converted to an Excel file to work with and manually edit because it was easier to see differences when I was able to highlight them. Contains two tabs, one with the comparison and explanation of why correct values were correct, and one tab with only correct monitoring info to read back in.
 	
 `Farrell_2020_EcologicalApplications_table1.xlsx`
 - Adapted from Table 1 of H. Farrell's manuscript (in review), with coordinates taken from the `Site_Information` tab of `Master.xlsx`
@@ -98,4 +104,14 @@ File naming notes:
 `output-species5_codes-missing-2x2plot.csv`
 - List of codes that were in the 2x2 plot data (`AllPlotData` tab in `Master.xlsx`), but not yet in the species lists for the subplot data, which have already been generated.
 - Most of the codes are unknowns or descriptions.
+- Output written directly from R and edited in a new file.
+
+`output-wrangling_seeded-species-to-be-marked-native.csv`
+- Code is in `02.1_data-wrangling_subplot.R`, but should not be run again.
+- List of codes with seeding information attached to certain codes. If they were seeded, they are native, so they had to be marked as such in the `01_curate-species-list.R` script. This has already been done, and this file will be overwritten with different (incorrect) information.
+- Although this doesn't follow the principle of having scripts that can be run sequentially and not break each other, it was impossible to know the native status of these codes until I started looking at the `subplot` data, so this anachronistic workaround was needed.
+- There is no "edited" version of this file.
+
+`output-wrangling-2x2_1conflicting-monitoring-info.csv`
+- List of codes with conflicting monitoring information between the `subplot` and `2x2` data. Monitoring information refers to the columns `Site`, `Date_Seeded`, `Date_Monitored`, `Plot`, `Treatment`, and `PlotMix`. Each monitoring event (for each plot) is given an ID number (`MonitorID`), unrelated to the data actually collected from the subplot or 2x2 m plot.
 - Output written directly from R and edited in a new file.

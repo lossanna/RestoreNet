@@ -46,6 +46,16 @@ subplot <- subplot.clean %>%
 
 p2x2.wide <- left_join(p2x2.wide, subplot) 
 
+# Check for all cols for NAs
+apply(p2x2.wide, 2, anyNA)
+to.drop <- p2x2.wide %>% # extract completely empty rows (not counting raw.row, Region, or subplot)
+  filter(is.na(Site) & is.na(Date_Seeded) & is.na(Date_Monitored) & is.na(Plot) &
+         is.na(Treatment) & is.na(PlotMix))
+p2x2.wide <- p2x2.wide %>% 
+  filter(!raw.row %in% to.drop$raw.row)
+rm(to.drop)
+
+
 # Pivot species columns
 p2x2.long <- p2x2.wide %>% 
   mutate(across(everything(), as.character)) %>% 
@@ -62,41 +72,163 @@ p2x2.long <- p2x2.wide %>%
     source == "Additional_Species_In_Plot...19" ~ "add8",
     TRUE ~ source))
 
+# Check for rows of NAs
+apply(p2x2.long, 2, anyNA)
+
+
+# Resolve differences in monitoring info between 2x2 and subplot ----------
+
+# "Monitoring info" refers to columns Site, Date_Seeded, Date_Monitored, 
+    # Plot, Treatment, PlotMix
+  # A unique ID for each plot monitored at each time point, without taking into account
+    # any actual data collection (species present, species measurements)
+
 # Check for NA codes
+  # NA are due to differences in monitoring info between 2x2 and subplot,
+    # which is why no code was created after left_join()
 filter(p2x2.long, is.na(Code))
 
-# Monitoring events
+# Assign monitoring events an ID based on subplot monitoring info
 monitor.sub <- subplot.clean %>% 
   select(Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix) %>% 
   distinct(.keep_all = TRUE) 
 monitor.sub <- monitor.sub %>% 
+  mutate(across(everything(), as.character)) %>% 
   mutate(MonitorID = 1:nrow(monitor.sub))
 monitor.sub.plots <- count(monitor.sub, Plot)
 
+# Add monitoring IDs to 2x2 plot monitoring information
 monitor.2x2 <- p2x2.wide %>% 
+  mutate(across(everything(), as.character)) %>% 
   select(Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix) %>% 
   distinct(.keep_all = TRUE) %>% 
   left_join(monitor.sub)
-monitor.2x2.plots <- count(monitor.2x2, Plot)
 
-# Examine differences
+# Examine differences by looking at NAs
 monitor.diff <- monitor.2x2 %>% 
   filter(is.na(MonitorID)) %>% 
-  arrange(Site) %>% 
-  mutate(across(everything(), as.character))
+  arrange(Site) 
 
-# AVRCD
+
+# Manually inspect differences by site
+  # and write df of corresponding rows using subplot monitoring info
+# AVRCD 
 monitor.sub.AVRCD <- monitor.sub %>% 
-  filter(Site == "AVRCD")
+  filter(Site == "AVRCD") %>% 
+  filter(Date_Monitored == "2021-04-06")
+monitor.sub.AVRCD <- monitor.sub %>% 
+  filter(Site == "AVRCD", Date_Monitored == "2020-04-30", Plot == "14") %>% 
+  bind_rows(monitor.sub.AVRCD)
 
 # FlyingM
 monitor.sub.FlyingM <- monitor.sub %>% 
   filter(Site == "FlyingM") %>% 
   filter(Treatment == "Pits") %>% 
   filter(PlotMix == "Med-Warm") %>% 
-  filter(Plot == "36")
-  
-  
+  filter(Plot == "36") %>% 
+  filter(Date_Monitored == "2019-06-12")
+
+# Mesquite
+monitor.sub.Mesquite <- monitor.sub %>% 
+  filter(Site == "Mesquite") %>% 
+  filter(Date_Monitored == "2020-12-12") %>% 
+  bind_rows(filter(monitor.sub,
+                   Site == "Mesquite",
+                   Date_Monitored == "2021-10-10",
+                   Plot %in% c("233", "234", "235")))
+
+# Patagonia
+monitor.sub.Patagonia <- monitor.sub %>% 
+  filter(Site == "Patagonia") %>% 
+  filter(Date_Monitored == "2021-03-12") %>% 
+  filter(Plot == "33")  
+
+# Pleasant  
+monitor.sub.Pleasant <- monitor.sub %>% 
+  filter(Site == "Pleasant") %>% 
+  filter(Date_Monitored %in% c("2021-04-02", "2021-10-04")) %>% 
+  filter(Plot %in% c("4", "8", "12", "15", "22", "23", "30", "32"))
+
+# Preserve
+monitor.sub.Preserve <- monitor.sub %>% 
+  filter(Site == "Preserve") %>% 
+  filter(Date_Monitored == "2020-03-26") %>% 
+  bind_rows(filter(monitor.sub,
+                   Site == "Preserve",
+                   Date_Monitored == "2021-03-30",
+                   Plot %in% c("2", "6", "10", "11", "15", "21", "23", "32"))) %>% 
+  bind_rows(filter(monitor.sub,
+                   Site == "Preserve",
+                   Date_Monitored == "2021-10-06",
+                   Plot == "11"))
+
+# Roosevelt
+monitor.sub.Roosevelt <- monitor.sub %>% 
+  filter(Site == "Roosevelt") %>% 
+  filter(Date_Monitored %in% c("2020-03-25")) %>% 
+  bind_rows(filter(monitor.sub,
+                   Site == "Roosevelt",
+                   Date_Monitored == "2021-04-01",
+                   Plot %in% c("2", "7", "11", "16", "20", "30", "34", "36"))) %>% 
+  bind_rows(filter(monitor.sub,
+                   Site == "Roosevelt",
+                   Date_Monitored == "2021-10-08",
+                   Plot %in% c("2", "16", "30", "34")))
+
+# Salt Desert
+monitor.sub.SaltDesert <- monitor.sub %>% 
+  filter(Site == "Salt_Desert") %>% 
+  filter(Date_Monitored == "2019-03-29") %>% 
+  filter(Plot == "32") %>% 
+  filter(Treatment == "Pits")
+
+# SCC
+monitor.sub.SCC <- monitor.sub %>% 
+  filter(Site == "SCC") %>% 
+  filter(Date_Monitored == "2020-03-27") %>% 
+  bind_rows(filter(monitor.sub,
+                   Site == "SCC",
+                   Date_Monitored == "2021-03-31",
+                   Plot %in% c("4", "8", "13", "16", "22", "25", "32", "35"))) %>% 
+  bind_rows(filter(monitor.sub,
+                   Site == "SCC",
+                   Date_Monitored == "2021-10-13",
+                   Plot %in% c("16", "25", "35")))
+
+# Combing monitoring info for all sites
+monitor.sub.all <- bind_rows(monitor.sub.AVRCD,
+                             monitor.sub.FlyingM,
+                             monitor.sub.Mesquite,
+                             monitor.sub.Patagonia,
+                             monitor.sub.Pleasant,
+                             monitor.sub.Preserve,
+                             monitor.sub.Roosevelt,
+                             monitor.sub.SaltDesert,
+                             monitor.sub.SCC)
+
+nrow(monitor.sub.all) == nrow(monitor.diff)
+
+# Combine subplot codes and 2x2 codes for comparison
+monitor.diff <- monitor.diff %>% 
+  select(-Site, -MonitorID) %>% 
+  rename(Date_Seeded_2x2 = Date_Seeded,
+         Date_Monitored_2x2 = Date_Monitored,
+         Plot_2x2 = Plot,
+         Treatment_2x2 = Treatment,
+         PlotMix_2x2 = PlotMix)
+monitor.fix <- bind_cols(monitor.sub.all, monitor.diff)
+monitor.fix <- monitor.fix %>% 
+  select(Site, Date_Seeded, Date_Seeded_2x2, Date_Monitored, Date_Monitored_2x2,
+         Plot, Plot_2x2, Treatment, Treatment_2x2, PlotMix, PlotMix_2x2, MonitorID)
+
+# Write to csv
+write_csv(monitor.fix,
+          file = "data/raw/output-wrangling-2x2_1conflicting-monitoring-info.csv")
+
+
+#### edited manually to include correct monitoring info only #########
+monitor.fix <- read_xlsx("data/raw/edited-wrangling-2x2_1conflicting-monitoring-info-resolved.xlsx",
+                         sheet = "corrected")
 
 
 
@@ -124,5 +256,8 @@ p2x2.subplot <- p2x2.long %>%
   filter(source == "subplot")
 
 # Codes are Code.Site, not CodeOriginal
+
+
+
 
 save.image("RData/02.2_data-wrangling_2x2.RData")
