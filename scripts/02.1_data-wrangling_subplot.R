@@ -193,54 +193,6 @@ write_csv(subplot,
 
 
 
-
-
-
-#### This chunk relates to 01_curate-species-list.R ###################
-#### do not run again #####
-
-
-# Address native status for unknown seeded species ------------------------
-
-# After making a species list and combining that with the subplot data, we see that some unknown species
-  # were actually seeded, and therefore native. The native status is fixed in the 01_curate-species-list.R
-  # script (they do not need to be fixed here), but this section shows how I determined which species to address
-  # in the 01_curate-species-list.R script.
-
-subplot.seeded <- subplot %>% 
-  filter(Seeded == "Yes")
-
-subplot.seeded <- left_join(subplot.seeded, mix) %>% 
-  select(-Family, -Scientific, -Common)
-
-# Extract names that were seeded but not marked Native
-seeded.notnative <- subplot.seeded %>% 
-  filter(Native != "Native")
-seeded.notnative.names <- data.frame(V1 = unique(seeded.notnative$Name))
-
-# Write list of names to CSV for 01_curate-species-list.R
-  # The "spp." ones are not location-dependent, and the unknowns have location-specific names now
-    # so they do not need to be separated
-### DO NOT OVERWRITE CSV!!! DO NOT RUN #####
-write_csv(seeded.notnative.names,
-          file = "data/raw/output-wrangling_seeded-species-to-be-marked-native.csv")
-
-# Remove unnecessary objects
-rm(seeded.notnative, seeded.notnative.names)
-
-
-# Check if it worked after fixing 01_curate-species-list.R and writing new CSVs
-unique(subplot.seeded$Native) # only option should be "Native"
-
-########### Chunk related to 01_curate-species-list.R complete ############
-
-
-
-
-
-
-
-
 # Subplot data for seeded species only ------------------------------------
 
 subplot.seeded <- subplot %>% 
