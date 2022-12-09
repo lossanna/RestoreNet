@@ -437,12 +437,8 @@ p2x2.codes.missing <- p2x2.codes.missing %>%
 p2x2.codes.dup <- p2x2.codes.missing %>% 
   filter(NeedsItsDuplicate == "Yes")
 write_csv(p2x2.codes.dup,
-          file = "data/raw/2x2-codes_need-duplicate-rows.csv")
+          file = "data/raw/output-species6_2x2-codes_need-duplicate-rows.csv")
 
-
-p2x2.codes.dup.count <- count(p2x2.codes.dup, CodeOriginal)
-write_csv(p2x2.codes.dup.count,
-          file = "data/raw/2x2-codes_need-duplicate-rows_count.csv")
 
 
 

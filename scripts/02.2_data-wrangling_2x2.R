@@ -289,12 +289,12 @@ p2x2.add <- p2x2.long %>%
   filter(source != "subplot") %>% 
   filter(Code != "0")
 
-# Remove codes that need duplicate rows, to add duplicates manually
+# Extract codes that need duplicate rows, to add duplicates manually
 p2x2.add.dup <- p2x2.add %>% 
   filter(Code %in% p2x2.codes.dup.count$CodeOriginal)
 
 write_csv(p2x2.add.dup,
-          file = "data/raw/output-wrangling-2x2_need-duplicate-rows.csv")
+          file = "data/raw/output-wrangling-2x2_2need-duplicate-rows.csv")
 
 
 
