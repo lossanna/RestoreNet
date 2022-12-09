@@ -5,8 +5,8 @@ library(tidyverse)
 
 p2x2.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllPlotData")
 subplot.original.monitor.info <- read_csv("data/raw/subplot-data_original-monitoring-info.csv")
-species.all.in <- read_csv("data/cleaned/species-list_all_location-independent_clean.csv")
-species.all.de <- read_csv("data/cleaned/species-list_all_location-dependent_clean.csv")
+species.in <- read_csv("data/cleaned/species-list_all_location-independent_clean.csv")
+species.de <- read_csv("data/cleaned/species-list_all_location-dependent_clean.csv")
 p2x2.codes.dup <- read_csv("data/raw/output-species6_2x2-codes_need-duplicate-rows.csv")
 mix <- read_xlsx("data/raw/master-seed-mix.xlsx")
 
