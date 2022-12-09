@@ -4,8 +4,8 @@ library(tidyverse)
 # Load data ---------------------------------------------------------------
 
 subplot.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllSubplotData")
-species.in <- read_csv("data/cleaned/species-list_subplot_location-independent_clean.csv")
-species.de <- read_csv("data/cleaned/species-list_subplot_location-dependent_clean.csv")
+species.in <- read_csv("data/cleaned/species-list_all_location-independent_clean.csv")
+species.de <- read_csv("data/cleaned/species-list_all_location-dependent_clean.csv")
 subplot.codes <- read_csv("data/cleaned/subplot-codes_clean.csv")
 mix <- read_xlsx("data/raw/master-seed-mix.xlsx")
 monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
@@ -152,12 +152,6 @@ filter(subplot, is.na(Code)) # no NA codes
 filter(subplot, is.na(Name)) # no NA names
 
 
-# Write csv with original monitoring info ---------------------------------
-
-write_csv(subplot,
-          file = "data/raw/subplot-data_original-monitoring-info.csv")
-  # this intermediate csv is needed for 02.2_data-wrangling_2x2.R script
-      # to correct monitoring info
 
 
 # Correct monitoring info -------------------------------------------------

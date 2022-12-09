@@ -246,43 +246,25 @@ species.in$Code[species.in$Name == "Eragrostis ciliaris"] <- "ERCI2"
 length(unique(species.in$Code)) == nrow(species.in) # TRUE, all codes in species list are unique
 
 
-
-# Fix native status for select seeded species -----------------------------
-
-# In merging the species data with the subplot data (actual observations), we see that some unknown
-  # species were seeded, and therefore native, but it is impossible to know this without first producing
-  # a species list. However, the cleaned species list should be final and generated all from one script,
-  # so although the analysis is not in this script to identify which species need to be changed, it is documented
-  # in the 02_data-wrangling.R script.
-
-native.fix <- read_csv("data/raw/output-wrangling_seeded-species-to-be-marked-native.csv")
-  # CSV generated from 02_data-wrangling.R script
-
-species.in <- species.in %>% 
-  mutate(Native.new = if_else(Name %in% native.fix$V1, "Native", Native))
-
-# Visually inspect to make sure things changed, then keep fixed column
-species.in <- species.in %>% 
-  select(-Native) %>% 
-  rename(Native = Native.new)
-
-
-
-
-# Write clean location-independent species list to CSV --------------------
-
 # Check for absent information (NAs)
 unique(species.in$Native)
 unique(species.in$Duration)
 unique(species.in$Lifeform)
 
-# Add LocationDependence and CodeOriginal col
+
+# Add CodeOriginal col
 species.in <- species.in %>% 
   mutate(CodeOriginal = Code)
 
-# Write to csv
+
+
+# Write intermediate to CSV -----------------------------------------------
+
+# This is an intermediate because it does not yet have fixed native status for species that
+  # were marked as seeded in the subplot data, used in 01.1-dependency_assign-seeded-species-native-status.R
+
 write_csv(species.in,
-          file = "data/cleaned/species-list_subplot_location-independent_clean.csv")
+          file = "data/raw/intermediate-dependency1.1_species-list_location-independent.csv")
 
 
 
@@ -330,31 +312,6 @@ length(unique(species.de$Code.Site)) == nrow(species.de) # all codes in species 
 intersect(species.de$Code, species.in$Code) # location-dependent codes are also unique from location-dependent ones
 
 
-
-
-# Fix native status for select seeded species (again) ---------------------
-
-# In merging the species data with the subplot data (actual observations), we see that some unknown
-  # species were seeded, and therefore native, but it is impossible to know this without first producing
-  # a species list. However, the cleaned species list should be final and generated all from one script,
-  # so although the analysis is not in this script to identify which species need to be changed, it is documented
-  # in the 02_data-wrangling.R script.
-
-native.fix <- read_csv("data/raw/output-wrangling_seeded-species-to-be-marked-native.csv")
-  # CSV generated from 02_data-wrangling.R script
-
-species.de <- species.de %>% 
-  mutate(Native.test = if_else(Name %in% native.fix$V1, "Native", Native))
-
-# Visually inspect to make sure things changed, then keep fixed column
-species.de <- species.de %>% 
-  select(-Native) %>% 
-  rename(Native = Native.test)
-
-
-
-# Write cleaned location-dependent species list to CSV --------------------
-
 # Check for absent information (NAs)
 unique(species.de$Native)
 unique(species.de$Duration)
@@ -365,9 +322,39 @@ species.de <- species.de %>%
   rename(CodeOriginal = Code,
          Code = Code.Site)
 
-# Write to csv
+
+# Write intermediate to CSV -----------------------------------------------
+
+# This is an intermediate because it does not yet have fixed native status for species that
+  # were marked as seeded in the subplot data, used in 01.1-dependency_assign-seeded-species-native-status.R
 write_csv(species.de,
-          file = "data/cleaned/species-list_subplot_location-dependent_clean.csv")
+          file = "data/raw/intermediate-dependency1.1_species-list_location-dependent.csv")
+
+
+# Fix native status for select seeded species -----------------------------
+
+# Load dependency list created in 01.1-dependency_assign-seeded-species-native-status.R
+native.fix <- read_csv("data/raw/intermediate-dependency1.1_seeded-species-to-be-marked-native.csv")
+
+
+# Fix location independent
+species.in <- species.in %>% 
+  mutate(Native.new = if_else(Name %in% native.fix$Name, "Native", Native))
+
+# Visually inspect to make sure things changed, then keep fixed column
+species.in <- species.in %>% 
+  select(-Native) %>% 
+  rename(Native = Native.new)
+
+
+# Fix location dependent
+species.de <- species.de %>% 
+  mutate(Native.test = if_else(Name %in% native.fix$Name, "Native", Native))
+
+# Visually inspect to make sure things changed, then keep fixed column
+species.de <- species.de %>% 
+  select(-Native) %>% 
+  rename(Native = Native.test)
 
 
 
