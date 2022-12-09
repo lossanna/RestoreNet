@@ -4,7 +4,7 @@ library(tidyverse)
 # Load data ---------------------------------------------------------------
 
 p2x2.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllPlotData")
-subplot.clean <- read_csv("data/cleaned/subplot-data_clean.csv")
+subplot.original.monitor.info <- read_csv("data/raw/subplot-data_original-monitoring-info.csv")
 species.all.in <- read_csv("data/cleaned/species-list_all_location-independent.csv")
 species.all.de <- read_csv("data/cleaned/species-list_all_location-dependent.csv")
 p2x2.codes.dup <- read_csv("data/raw/2x2-codes_need-duplicate-rows.csv")
@@ -40,7 +40,7 @@ p2x2.wide <- p2x2.wide %>%
          -Additional_Species_In_Plot...20)
 
 # Add subplot species observations
-subplot <- subplot.clean %>% 
+subplot <- subplot.original.monitor.info %>% 
   select(Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix, Code) %>% 
   rename(subplot = Code)
 
@@ -243,6 +243,10 @@ monitor.info <- monitor.sub %>%
   filter(!MonitorID %in% monitor.fix$MonitorID) %>% 
   bind_rows(monitor.fix) %>% 
   arrange(MonitorID)
+
+# Write to CSV
+write_csv(monitor.info,
+          file = "data/cleaned/corrected-monitoring-info_clean.csv")
 
 
 # Add MonitorID to monitor.diff to match with original (incorrect) values in 2x2 data

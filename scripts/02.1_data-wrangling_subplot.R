@@ -8,6 +8,7 @@ species.in <- read_csv("data/cleaned/species-list_subplot_location-independent_c
 species.de <- read_csv("data/cleaned/species-list_subplot_location-dependent_clean.csv")
 subplot.codes <- read_csv("data/cleaned/subplot-codes_clean.csv")
 mix <- read_xlsx("data/raw/master-seed-mix.xlsx")
+monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
 
 
 # Organize columns --------------------------------------------------------
@@ -149,6 +150,46 @@ subplot$Seeded[subplot$Name == "Eragrostis curvula"] <- "No"
 
 filter(subplot, is.na(Code)) # no NA codes
 filter(subplot, is.na(Name)) # no NA names
+
+
+# Write csv with original monitoring info ---------------------------------
+
+write_csv(subplot,
+          file = "data/raw/subplot-data_original-monitoring-info.csv")
+  # this intermediate csv is needed for 02.2_data-wrangling_2x2.R script
+      # to correct monitoring info
+
+
+# Correct monitoring info -------------------------------------------------
+
+# Complete corrected monitoring info was derived from 02.2_data-wrangling_2x2.R script
+monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
+
+# Create df of original (incorrect) monitoring data to match MonitorID to subplot data
+  # with left_join()
+monitor.assign <- subplot %>% 
+  select(Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix) %>% 
+  distinct(.keep_all = TRUE) 
+monitor.assign <- monitor.assign %>% 
+  mutate(MonitorID = 1:nrow(monitor.assign))
+
+# Add MonitorID to subplot data
+subplot <- left_join(subplot, monitor.assign)
+
+# Remove monitoring info from subplot data because some of it is wrong
+subplot <- subplot %>% 
+  select(-Date_Seeded, -Date_Monitored, -Plot, -Treatment, -PlotMix)
+
+# Add corrected monitoring info with left_join()
+subplot <- left_join(subplot, monitor.info)
+subplot <- subplot %>% 
+  select(Site, Region, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix,
+         CodeOriginal, Code, Name, Native, Duration, Lifeform, Count, Height,
+         Seeded, raw.row, MonitorID) # reorder cols
+
+# Check all cols for NAs
+apply(subplot, 2, anyNA) 
+
 
 
 # Write clean subplot data to csv -----------------------------------------
