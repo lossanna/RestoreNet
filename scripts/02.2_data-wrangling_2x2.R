@@ -4,10 +4,13 @@ library(tidyverse)
 # Load data ---------------------------------------------------------------
 
 p2x2.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllPlotData")
+subplot.clean <- read_csv("data/cleaned/subplot-data_clean.csv")
+subo <- read_csv("data/raw/intermediate-dependency2_subplot-data_original-monitoring-info.csv")
 species.in <- read_csv("data/cleaned/species-list_all_location-independent_clean.csv")
 species.de <- read_csv("data/cleaned/species-list_all_location-dependent_clean.csv")
 p2x2.codes.dup <- read_csv("data/raw/output-species6_2x2-codes_need-duplicate-rows.csv")
 mix <- read_xlsx("data/raw/master-seed-mix.xlsx")
+monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
 
 
 # Organize columns and pivot to longer ------------------------------------
@@ -38,11 +41,11 @@ p2x2.wide <- p2x2.wide %>%
          -Additional_Species_In_Plot...20)
 
 # Add subplot species observations
-subplot <- subplot.original.monitor.info %>% 
-  select(Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix, Code) %>% 
+subplot <- subplot.clean %>% 
+  select(Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix, Code, MonitorID) %>% 
   rename(subplot = Code)
 
-p2x2.wide <- left_join(p2x2.wide, subplot) 
+p2x2.wide <- left_join(p2x2.wide, subplot) # NA codes (subplot col) created because of conflicts between subplot and 2x2 monitoring info
 
 # Check for all cols for NAs
 apply(p2x2.wide, 2, anyNA)
@@ -71,31 +74,90 @@ p2x2.long.intermediate <- p2x2.wide %>%
     TRUE ~ source))
 
 # Check all cols for NAs
-apply(p2x2.long.intermediate, 2, anyNA)
+apply(p2x2.long.intermediate, 2, anyNA) 
+  # NA codes and MonitorID created because of conflicts between subplot and 2x2 monitoring info
 
 
 
 # Correct monitoring info -------------------------------------------------
 
-# "Monitoring info" refers to columns Site, Date_Seeded, Date_Monitored, 
-    # Plot, Treatment, PlotMix
-  # A unique ID for each plot monitored at each time point, without taking into account
-    # any actual data collection (species present, species measurements)
+# Complete corrected monitoring info was derived from 02.2_data-wrangling_2x2.R script
+monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
 
-# There are conflicts in monitoring info between 2x2 and subplot data, but one version is
-  # not completely right, so we must compare differences and figure out the correct values
-
-
-# Check for NA codes
+# Check NA codes and MonitorID
   # NA are due to differences in monitoring info between 2x2 and subplot,
     # which is why no code was created after left_join()
-p2x2.long.na.code <- p2x2.long.intermediate %>% 
-  filter(is.na(Code))
+p2x2.monitorid.na <- p2x2.long.intermediate %>% 
+  filter(is.na(MonitorID))
+
+# Extract distinct monitoring events without MonitorID
+monitor.diff <-p2x2.monitorid.na %>% 
+  select(Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix) %>% 
+  distinct(.keep_all = TRUE) %>% 
+  arrange(Site)
+
+# Write to CSV to correct manually
+write_csv(monitor.diff,
+          file = "data/raw/output-wrangling-2x2_monitor-info-to-be-fixed.csv")
+
+
+##### edited manually to correct monitoring info ############################
+  # similar to intermediate-dependency2-edited1_conflicting-monitoring-info-resolved.xlsx,
+    # but only the ones where 2x2 was wrong
+monitor.fix <- read_xlsx("data/raw/edited-wrangling-2x2_monitor-info-fixed.xlsx")
+
+
+
+
+
+
+
+
+# Add MonitorID to monitor.diff to match with original (incorrect) values in 2x2 data
+monitor.diff$MonitorID <- monitor.fix$MonitorID
+
+# Add original values with MonitorID to already correct values with MonitorID for full list
+# needed for a succesful left_join()
+monitor.assign <- monitor.2x2 %>% 
+  filter(!is.na(MonitorID)) %>% 
+  bind_rows(monitor.diff)
+
+# Add MonitorID to 2x2 data
+p2x2.long.intermediate <- left_join(p2x2.long.intermediate, monitor.assign)
+
+# Remove monitoring info from 2x2 data because some of it is wrong
+p2x2.long.intermediate <- p2x2.long.intermediate %>% 
+  select(-Date_Seeded, -Date_Monitored, -Plot, -Treatment, -PlotMix)
+
+# Add corrected monitoring info with left_join()
+p2x2.long.intermediate <- left_join(p2x2.long.intermediate, monitor.info)
+p2x2.long.intermediate <- p2x2.long.intermediate %>% 
+  select(Site, Region, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix,
+         Code, Seeded_Cover, Total_Veg_Cover, raw.row, source, MonitorID) %>% # reorder cols
+  mutate(raw.row = as.numeric(p2x2.long.intermediate$raw.row)) # convert raw.row back to numeric so all cols are of correct class
+
+# Check all cols for NAs
+apply(p2x2.long.intermediate, 2, anyNA) 
+# monitoring info is correct now, but codes still need to be corrected
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # Assign monitoring events an ID based on subplot monitoring info
   # use subplot monitoring info because some monitoring events were not recorded in 2x2 data
-monitor.sub <- subplot %>% 
+monitor.sub <- subo %>% 
   select(Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix) %>% 
   distinct(.keep_all = TRUE) 
 monitor.sub <- monitor.sub %>% 
