@@ -153,6 +153,16 @@ filter(subplot, is.na(Name)) # no NA names
 
 
 
+# Write intermediate to CSV -----------------------------------------------
+
+# This is an intermediate because it does not yet have correct monitoring info, but the
+  # original subplot monitoring info is needed,
+  # Used in 02-dependency_correct-monitoring-info.R
+
+write_csv(subplot,
+          file = "data/raw/intermediate-dependency2_subplot-data_original-monitoring-info.csv")
+
+
 
 # Correct monitoring info -------------------------------------------------
 

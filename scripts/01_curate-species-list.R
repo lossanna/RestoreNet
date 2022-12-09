@@ -7,6 +7,9 @@ subplot.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "
 plot.2x2.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllPlotData")
 species.raw <- read_xlsx("data/raw/master-species_native.xlsx")
 mix <- read_xlsx("data/raw/master-seed-mix.xlsx")
+native.fix <- read_csv("data/raw/intermediate-dependency1_seeded-species-to-be-marked-native.csv") 
+  # native.fix dependency created in 01-dependency_assign-seeded-species-native-status.R
+
 
 
 # Notes about manual edits ------------------------------------------------
@@ -264,7 +267,7 @@ species.in <- species.in %>%
   # were marked as seeded in the subplot data, used in 01.1-dependency_assign-seeded-species-native-status.R
 
 write_csv(species.in,
-          file = "data/raw/intermediate-dependency1.1_species-list_location-independent.csv")
+          file = "data/raw/intermediate-dependency1_species-list_location-independent.csv")
 
 
 
@@ -328,13 +331,14 @@ species.de <- species.de %>%
 # This is an intermediate because it does not yet have fixed native status for species that
   # were marked as seeded in the subplot data, used in 01.1-dependency_assign-seeded-species-native-status.R
 write_csv(species.de,
-          file = "data/raw/intermediate-dependency1.1_species-list_location-dependent.csv")
+          file = "data/raw/intermediate-dependency1_species-list_location-dependent.csv")
+
 
 
 # Fix native status for select seeded species -----------------------------
 
 # Load dependency list created in 01.1-dependency_assign-seeded-species-native-status.R
-native.fix <- read_csv("data/raw/intermediate-dependency1.1_seeded-species-to-be-marked-native.csv")
+native.fix <- read_csv("data/raw/intermediate-dependency1_seeded-species-to-be-marked-native.csv")
 
 
 # Fix location independent
