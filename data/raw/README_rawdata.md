@@ -62,6 +62,10 @@ File naming notes:
 `edited-wrangling-2x2_1conflicting-monitoring-info-resolved.xlsx`
 - List of codes with conflicting monitoring information between the `subplot` and `2x2` data. Monitoring information refers to the columns `Site`, `Date_Seeded`, `Date_Monitored`, `Plot`, `Treatment`, and `PlotMix`. Each monitoring event is given an ID, unrelated to the data actually collected from the subplot or 2x2 m plot.
 - Converted to an Excel file to work with and manually edit because it was easier to see differences when I was able to highlight them. Contains two tabs, one with the comparison and explanation of why correct values were correct, and one tab with only correct monitoring info to read back in.
+
+`edited-wrangling-2x2_2duplicate-rows-added.csv`
+- A subset of the `2x2` data for original codes that need duplicate rows because the code refers to more than one species.
+- Manually added extra rows based on what was needed, and added a new Code that connects to species lists, based on definitions and species information listed in `output-species6_2x2-codes_need-duplicate-rows.csv`.
 	
 `Farrell_2020_EcologicalApplications_table1.xlsx`
 - Adapted from Table 1 of H. Farrell's manuscript (in review), with coordinates taken from the `Site_Information` tab of `Master.xlsx`
@@ -106,6 +110,14 @@ File naming notes:
 - Most of the codes are unknowns or descriptions.
 - Output written directly from R and edited in a new file.
 
+`output-species6_2x2-codes_need-duplicate-rows.csv`
+- List of codes from `2x2` data that need duplicate rows because a single original code mentions multiple species; hence, the same code will need multiple rows to describe all the information. All duplicate rows needed are included in this table.
+- Codes from `edited-species5_codes-missing-2x2plot.csv` that did not need duplicate rows were added to comprehensive location-dependent/location-indendent species lists that include `subplot` and `2x2` codes:
+	+ `data/cleaned/species-list_all_location-dependent_clean.csv`
+	+ `data/cleaned/species-list_all_location-independent_clean.csv`
+- Codes that need duplicate rows must be dealt with separate in the `2x2` data and species information cannot be added with just a `left_join()`.
+- There is no "edited" version of this file.
+
 `output-wrangling_seeded-species-to-be-marked-native.csv`
 - Code is in `02.1_data-wrangling_subplot.R`, but should not be run again.
 - List of codes with seeding information attached to certain codes. If they were seeded, they are native, so they had to be marked as such in the `01_curate-species-list.R` script. This has already been done, and this file will be overwritten with different (incorrect) information.
@@ -113,5 +125,9 @@ File naming notes:
 - There is no "edited" version of this file.
 
 `output-wrangling-2x2_1conflicting-monitoring-info.csv`
-- List of codes with conflicting monitoring information between the `subplot` and `2x2` data. Monitoring information refers to the columns `Site`, `Date_Seeded`, `Date_Monitored`, `Plot`, `Treatment`, and `PlotMix`. Each monitoring event (for each plot) is given an ID number (`MonitorID`), unrelated to the data actually collected from the subplot or 2x2 m plot.
+- List of monitoring events with conflicting monitoring information between the `subplot` and `2x2` data. Monitoring information refers to the columns `Site`, `Date_Seeded`, `Date_Monitored`, `Plot`, `Treatment`, and `PlotMix`. Each monitoring event (for each plot) is given an ID number (`MonitorID`), unrelated to the data actually collected from the subplot or 2x2 m plot.
+- Output written directly from R and edited in a new file.
+
+`output-wrangling-2x2_2need-duplicate-rows.csv`
+- A subset of the `2x2` data for codes that need duplicate rows because the code refers to more than one species.
 - Output written directly from R and edited in a new file.

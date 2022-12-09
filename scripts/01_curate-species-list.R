@@ -435,7 +435,8 @@ p2x2.codes.missing <- p2x2.codes.missing %>%
 
 # Extract codes that need duplicates (same code refers to multiple species) and write to csv
 p2x2.codes.dup <- p2x2.codes.missing %>% 
-  filter(NeedsItsDuplicate == "Yes")
+  filter(NeedsItsDuplicate == "Yes") %>% 
+  arrange(CodeOriginal)
 write_csv(p2x2.codes.dup,
           file = "data/raw/output-species6_2x2-codes_need-duplicate-rows.csv")
 
@@ -457,7 +458,7 @@ species.all.in <- p2x2.codes.missing %>%
 
 # Write to csv
 write_csv(species.all.in,
-          file = "data/cleaned/species-list_all_location-independent.csv")
+          file = "data/cleaned/species-list_all_location-independent_clean.csv")
 
 
 
@@ -485,7 +486,7 @@ species.all.de <- p2x2.codes.missing %>%
 
 # Write to csv
 write_csv(species.all.de,
-          file = "data/cleaned/species-list_all_location-dependent.csv")
+          file = "data/cleaned/species-list_all_location-dependent_clean.csv")
 
 
 

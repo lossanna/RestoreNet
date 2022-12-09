@@ -7,8 +7,7 @@ p2x2.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "All
 subplot.original.monitor.info <- read_csv("data/raw/subplot-data_original-monitoring-info.csv")
 species.all.in <- read_csv("data/cleaned/species-list_all_location-independent.csv")
 species.all.de <- read_csv("data/cleaned/species-list_all_location-dependent.csv")
-p2x2.codes.dup <- read_csv("data/raw/2x2-codes_need-duplicate-rows.csv")
-p2x2.codes.dup.count <- read_csv("data/raw/2x2-codes_need-duplicate-rows_count.csv")
+p2x2.codes.dup <- read_csv("data/raw/output-species6_2x2-codes_need-duplicate-rows.csv")
 mix <- read_xlsx("data/raw/master-seed-mix.xlsx")
 
 
@@ -291,7 +290,8 @@ p2x2.add <- p2x2.long %>%
 
 # Extract codes that need duplicate rows, to add duplicates manually
 p2x2.add.dup <- p2x2.add %>% 
-  filter(Code %in% p2x2.codes.dup.count$CodeOriginal)
+  filter(Code %in% unique(p2x2.codes.dup$CodeOriginal)) %>% 
+  arrange(Code)
 
 write_csv(p2x2.add.dup,
           file = "data/raw/output-wrangling-2x2_2need-duplicate-rows.csv")
