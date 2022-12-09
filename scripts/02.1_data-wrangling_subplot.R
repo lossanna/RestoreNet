@@ -9,6 +9,7 @@ species.de <- read_csv("data/cleaned/species-list_all_location-dependent_clean.c
 subplot.codes <- read_csv("data/cleaned/subplot-codes_clean.csv")
 mix <- read_xlsx("data/raw/master-seed-mix.xlsx")
 monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
+  # intermediate dependency created from 02-dependency_correct-monitoring-info.R
 
 
 # Organize columns --------------------------------------------------------
