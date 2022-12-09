@@ -72,16 +72,21 @@ p2x2.long <- p2x2.wide %>%
     source == "Additional_Species_In_Plot...19" ~ "add8",
     TRUE ~ source))
 
-# Check for rows of NAs
+# Check all cols for NAs
 apply(p2x2.long, 2, anyNA)
 
 
-# Resolve differences in monitoring info between 2x2 and subplot ----------
+
+# Correct monitoring info -------------------------------------------------
 
 # "Monitoring info" refers to columns Site, Date_Seeded, Date_Monitored, 
     # Plot, Treatment, PlotMix
   # A unique ID for each plot monitored at each time point, without taking into account
     # any actual data collection (species present, species measurements)
+
+# There are conflicts in monitoring info between 2x2 and subplot data, but one version is
+  # not completely right, so we must compare differences and figure out the correct values
+
 
 # Check for NA codes
   # NA are due to differences in monitoring info between 2x2 and subplot,
@@ -89,13 +94,13 @@ apply(p2x2.long, 2, anyNA)
 filter(p2x2.long, is.na(Code))
 
 # Assign monitoring events an ID based on subplot monitoring info
+  # use subplot monitoring info because some monitoring events were not recorded in 2x2 data
 monitor.sub <- subplot.clean %>% 
   select(Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix) %>% 
   distinct(.keep_all = TRUE) 
 monitor.sub <- monitor.sub %>% 
   mutate(across(everything(), as.character)) %>% 
   mutate(MonitorID = 1:nrow(monitor.sub))
-monitor.sub.plots <- count(monitor.sub, Plot)
 
 # Add monitoring IDs to 2x2 plot monitoring information
 monitor.2x2 <- p2x2.wide %>% 
@@ -209,14 +214,14 @@ monitor.sub.all <- bind_rows(monitor.sub.AVRCD,
 nrow(monitor.sub.all) == nrow(monitor.diff)
 
 # Combine subplot codes and 2x2 codes for comparison
-monitor.diff <- monitor.diff %>% 
+monitor.fix <- monitor.diff %>% 
   select(-Site, -MonitorID) %>% 
   rename(Date_Seeded_2x2 = Date_Seeded,
          Date_Monitored_2x2 = Date_Monitored,
          Plot_2x2 = Plot,
          Treatment_2x2 = Treatment,
          PlotMix_2x2 = PlotMix)
-monitor.fix <- bind_cols(monitor.sub.all, monitor.diff)
+monitor.fix <- bind_cols(monitor.sub.all, monitor.fix)
 monitor.fix <- monitor.fix %>% 
   select(Site, Date_Seeded, Date_Seeded_2x2, Date_Monitored, Date_Monitored_2x2,
          Plot, Plot_2x2, Treatment, Treatment_2x2, PlotMix, PlotMix_2x2, MonitorID)
@@ -230,7 +235,47 @@ write_csv(monitor.fix,
 monitor.fix <- read_xlsx("data/raw/edited-wrangling-2x2_1conflicting-monitoring-info-resolved.xlsx",
                          sheet = "corrected")
 
+# Compile a complete corrected list of monitoring info
+monitor.info <- monitor.sub %>% 
+  mutate(Date_Seeded = as.Date(monitor.sub$Date_Seeded),
+         Date_Monitored = as.Date(monitor.sub$Date_Monitored),
+         Plot = as.numeric(monitor.sub$Plot)) %>% 
+  filter(!MonitorID %in% monitor.fix$MonitorID) %>% 
+  bind_rows(monitor.fix) %>% 
+  arrange(MonitorID)
 
+
+# Add MonitorID to monitor.diff to match with original (incorrect) values in 2x2 data
+monitor.diff$MonitorID <- monitor.fix$MonitorID
+
+# Add original values with MonitorID to already correct values with MonitorID for full list
+  # needed for a succesful left_join()
+monitor.assign <- monitor.2x2 %>% 
+  filter(!is.na(MonitorID)) %>% 
+  bind_rows(monitor.diff)
+
+# Add MonitorID to 2x2 data
+p2x2.long <- left_join(p2x2.long, monitor.assign)
+
+# Remove monitoring info from 2x2 data because some of it is wrong
+p2x2.long <- p2x2.long %>% 
+  select(-Date_Seeded, -Date_Monitored, -Plot, -Treatment, -PlotMix)
+
+# Add corrected monitoring info with left_join()
+p2x2.long <- left_join(p2x2.long, monitor.info)
+p2x2.long <- p2x2.long %>% 
+  select(Site, Region, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix,
+         Code, Seeded_Cover, Total_Veg_Cover, raw.row, source, MonitorID) # reorder cols
+
+# Check all cols for NAs
+apply(p2x2.long, 2, anyNA) 
+  # monitoring info is correct now, but codes still need to be corrected
+
+
+
+
+
+# Correct codes -----------------------------------------------------------
 
 
 # Handle additional species cols first ------------------------------------
@@ -246,6 +291,8 @@ p2x2.add.dup <- p2x2.add %>%
 
 write_csv(p2x2.add.dup,
           file = "data/raw/output-wrangling-2x2_need-duplicate-rows.csv")
+
+
 
 
 
