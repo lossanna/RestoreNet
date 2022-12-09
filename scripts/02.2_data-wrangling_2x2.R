@@ -47,7 +47,7 @@ p2x2.wide <- left_join(p2x2.wide, subplot)
 
 # Check for all cols for NAs
 apply(p2x2.wide, 2, anyNA)
-to.drop <- p2x2.wide %>% # extract completely empty rows (not counting raw.row, Region, or subplot)
+to.drop <- p2x2.wide %>% # remove completely empty rows (not counting raw.row, Region, or subplot cols)
   filter(is.na(Site) & is.na(Date_Seeded) & is.na(Date_Monitored) & is.na(Plot) &
          is.na(Treatment) & is.na(PlotMix))
 p2x2.wide <- p2x2.wide %>% 
@@ -268,7 +268,8 @@ p2x2.long <- p2x2.long %>%
 p2x2.long <- left_join(p2x2.long, monitor.info)
 p2x2.long <- p2x2.long %>% 
   select(Site, Region, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix,
-         Code, Seeded_Cover, Total_Veg_Cover, raw.row, source, MonitorID) # reorder cols
+         Code, Seeded_Cover, Total_Veg_Cover, raw.row, source, MonitorID) %>% # reorder cols
+  mutate(raw.row = as.numeric(p2x2.long$raw.row)) # convert raw.row back to numeric so all cols are of correct class
 
 # Check all cols for NAs
 apply(p2x2.long, 2, anyNA) 
@@ -277,26 +278,64 @@ apply(p2x2.long, 2, anyNA)
 
 
 
-
 # Correct codes -----------------------------------------------------------
 
 
-# Handle additional species cols first ------------------------------------
+# Handle additional species obs first -------------------------------------
 
 # Remove "0"s from additional cols
 p2x2.add <- p2x2.long %>% 
   filter(source != "subplot") %>% 
-  filter(Code != "0")
+  filter(Code != "0") %>% 
+  rename(CodeOriginal = Code)
 
 # Extract codes that need duplicate rows, to add duplicates manually
 p2x2.add.dup <- p2x2.add %>% 
-  filter(Code %in% unique(p2x2.codes.dup$CodeOriginal)) %>% 
-  arrange(Code)
+  filter(CodeOriginal %in% p2x2.codes.dup$CodeOriginal) %>% 
+  arrange(CodeOriginal)
 
 write_csv(p2x2.add.dup,
           file = "data/raw/output-wrangling-2x2_2need-duplicate-rows.csv")
 
+#### edited manually to add correct duplicate rows #################
+p2x2.add.dup <- read_csv("data/raw/edited-wrangling-2x2_2duplicate-rows-added.csv")
 
+p2x2.add.dup <- p2x2.add.dup %>% 
+  mutate(Total_Veg_Cover = as.character(p2x2.add.dup$Total_Veg_Cover)) # correct the col class to match p2x2.long
+
+
+
+# Standard Code and CodeOriginal cols for non-duplicates 
+
+# Add Code.Site to location-dependent non-duplicate rows
+  # obs that need duplicate rows already have Code.Site as Code, because it was manually entered
+# Remove codes for duplicate rows that were fixed separately
+p2x2.add.single <- p2x2.add %>% 
+  filter(!CodeOriginal %in% p2x2.add.dup$CodeOriginal) 
+
+# Separate out location-dependent
+p2x2.add.single.de <- p2x2.add.single %>% 
+  filter(CodeOriginal %in% species.all.de$CodeOriginal)
+
+# Add Code col (Code.Site) to location-dependent
+p2x2.add.single.de$Code <- apply(p2x2.add.single.de[ , c("CodeOriginal", "Site")], 1, paste, collapse = ".")
+
+
+# Add Code col to location-independent and combine with location-dependent
+p2x2.add.single <- p2x2.add.single %>% 
+  mutate(Code = p2x2.add.single$CodeOriginal) %>% # add Code col
+  filter(!CodeOriginal %in% species.all.de$CodeOriginal) %>% # remove location-dependent because they have incorrect Codes
+  bind_rows(p2x2.add.single.de) %>% # add location-dependent with correct codes
+  select(Site, Region, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix,
+         CodeOriginal, Code, Seeded_Cover, Total_Veg_Cover, raw.row, source, MonitorID) # reorder cols
+
+
+# Combine all additional species obs
+p2x2.add <- bind_rows(p2x2.add.dup, p2x2.add.single) %>% 
+  arrange(MonitorID)
+
+# p2x2.add is 2x2 plot data with correct monitoring info and codes for all observations of
+  # additional species (not subplot obs) 
 
 
 
@@ -306,7 +345,6 @@ write_csv(p2x2.add.dup,
 p2x2.subplot <- p2x2.long %>% 
   filter(source == "subplot")
 
-# Codes are Code.Site, not CodeOriginal
 
 
 
