@@ -192,6 +192,8 @@ subplot <- subplot %>%
          CodeOriginal, Code, Name, Native, Duration, Lifeform, Count, Height,
          Seeded, raw.row, MonitorID) # reorder cols
 
+# Change Date_Seeded to 7/18 for all of FlyingM
+
 # Check all cols for NAs
 apply(subplot, 2, anyNA) 
 

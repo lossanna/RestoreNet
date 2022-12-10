@@ -1,0 +1,158 @@
+Site,Date_Seeded,Date_Monitored,Plot,Treatment,PlotMix
+FlyingM,7/25/2018,6/13/2019,36,Pits,Med-Warm
+Pleasant,12/19/2019,4/2/2021,4,Seed only,Warm
+Pleasant,12/19/2019,4/2/2021,8,Seed only,Cool
+Pleasant,12/19/2019,4/2/2021,12,Seed only,Warm
+Pleasant,12/19/2019,4/2/2021,15,Seed only,Cool
+Pleasant,12/19/2019,4/2/2021,22,Seed only,Warm
+Pleasant,12/19/2019,4/2/2021,23,Seed only,Cool
+Pleasant,12/19/2019,4/2/2021,30,Seed only,Warm
+Pleasant,12/19/2019,4/2/2021,32,Seed only,Cool
+Pleasant,12/19/2019,10/4/2021,4,Seed only,Warm
+Pleasant,12/19/2019,10/4/2021,8,Seed only,Cool
+Pleasant,12/19/2019,10/4/2021,12,Seed only,Warm
+Pleasant,12/19/2019,10/4/2021,15,Seed only,Cool
+Pleasant,12/19/2019,10/4/2021,22,Seed only,Warm
+Pleasant,12/19/2019,10/4/2021,23,Seed only,Cool
+Pleasant,12/19/2019,10/4/2021,30,Seed only,Warm
+Pleasant,12/19/2019,10/4/2021,32,Seed only,Cool
+Preserve,9/25/2019,3/26/2020,1,Mulch,Cool
+Preserve,9/25/2019,3/26/2020,2,Seed,Cool
+Preserve,9/25/2019,3/26/2020,3,Pits,Cool
+Preserve,9/25/2019,3/26/2020,4,ConMod,Cool
+Preserve,9/25/2019,3/26/2020,5,Control,None
+Preserve,9/25/2019,3/26/2020,6,Seed,Warm
+Preserve,9/25/2019,3/26/2020,7,Pits,Warm
+Preserve,9/25/2019,3/26/2020,8,Control,None
+Preserve,9/25/2019,3/26/2020,9,Mulch,Warm
+Preserve,9/25/2019,3/26/2020,10,Seed,Cool
+Preserve,9/25/2019,3/26/2020,11,Seed,Warm
+Preserve,9/25/2019,3/26/2020,12,ConMod,Warm
+Preserve,9/25/2019,3/26/2020,13,Mulch,Cool
+Preserve,9/25/2019,3/26/2020,14,ConMod,Cool
+Preserve,9/25/2019,3/26/2020,15,Seed,Cool
+Preserve,9/25/2019,3/26/2020,16,Pits,Cool
+Preserve,9/25/2019,3/26/2020,17,ConMod,Warm
+Preserve,9/25/2019,3/26/2020,18,Pits,Warm
+Preserve,9/25/2019,3/26/2020,19,Mulch,Warm
+Preserve,9/25/2019,3/26/2020,20,ConMod,Cool
+Preserve,9/25/2019,3/26/2020,21,Seed,Warm
+Preserve,9/25/2019,3/26/2020,22,Pits,Cool
+Preserve,9/25/2019,3/26/2020,23,Seed,Cool
+Preserve,9/25/2019,3/26/2020,24,ConMod,Warm
+Preserve,9/25/2019,3/26/2020,25,Mulch,Cool
+Preserve,9/25/2019,3/26/2020,26,ConMod,Cool
+Preserve,9/25/2019,3/26/2020,27,Pits,Warm
+Preserve,9/25/2019,3/26/2020,28,Mulch,Warm
+Preserve,9/25/2019,3/26/2020,29,Control,None
+Preserve,9/25/2019,3/26/2020,30,Pits,Cool
+Preserve,9/25/2019,3/26/2020,31,Mulch,Cool
+Preserve,9/25/2019,3/26/2020,32,Seed,Warm
+Preserve,9/25/2019,3/26/2020,33,Mulch,Warm
+Preserve,9/25/2019,3/26/2020,34,ConMod,Warm
+Preserve,9/25/2019,3/26/2020,35,Control,None
+Preserve,9/25/2019,3/26/2020,36,Pits,Warm
+Preserve,11/25/2019,3/30/2021,2,Seed only,Cool
+Preserve,11/25/2019,3/30/2021,6,Seed only,Warm
+Preserve,11/25/2019,3/30/2021,10,Seed only,Cool
+Preserve,11/25/2019,3/30/2021,11,Seed only,Warm
+Preserve,11/25/2019,3/30/2021,15,Seed only,Cool
+Preserve,11/25/2019,3/30/2021,21,Seed only,Warm
+Preserve,11/25/2019,3/30/2021,23,Seed only,Cool
+Preserve,11/25/2019,3/30/2021,32,Seed only,Warm
+Preserve,11/25/2019,10/6/2021,11,Seed only,Warm
+Roosevelt,9/22/2019,3/25/2020,1,Pits,Cool
+Roosevelt,9/22/2019,3/25/2020,2,Seed,Cool
+Roosevelt,9/22/2019,3/25/2020,3,ConMod,Cool
+Roosevelt,9/22/2019,3/25/2020,4,Mulch,Cool
+Roosevelt,9/22/2019,3/25/2020,5,Pits,Warm
+Roosevelt,9/22/2019,3/25/2020,6,ConMod,Warm
+Roosevelt,9/22/2019,3/25/2020,7,Seed,Warm
+Roosevelt,9/22/2019,3/25/2020,8,Pits,Cool
+Roosevelt,9/22/2019,3/25/2020,9,Control,None
+Roosevelt,9/22/2019,3/25/2020,10,ConMod,Warm
+Roosevelt,9/22/2019,3/25/2020,11,Seed,Cool
+Roosevelt,9/22/2019,3/25/2020,12,Control,None
+Roosevelt,9/22/2019,3/25/2020,13,Pits,Warm
+Roosevelt,9/22/2019,3/25/2020,14,Mulch,Warm
+Roosevelt,9/22/2019,3/25/2020,15,ConMod,Cool
+Roosevelt,9/22/2019,3/25/2020,16,Seed,Warm
+Roosevelt,9/22/2019,3/25/2020,17,Pits,Cool
+Roosevelt,9/22/2019,3/25/2020,18,Mulch,Cool
+Roosevelt,9/22/2019,3/25/2020,19,ConMod,Cool
+Roosevelt,9/22/2019,3/25/2020,20,Seed,Cool
+Roosevelt,9/22/2019,3/25/2020,21,Pits,Warm
+Roosevelt,9/22/2019,3/25/2020,22,Mulch,Warm
+Roosevelt,9/22/2019,3/25/2020,23,Mulch,Cool
+Roosevelt,9/22/2019,3/25/2020,24,ConMod,Warm
+Roosevelt,9/22/2019,3/25/2020,25,Control,None
+Roosevelt,9/22/2019,3/25/2020,26,Mulch,Warm
+Roosevelt,9/22/2019,3/25/2020,27,Pits,Cool
+Roosevelt,9/22/2019,3/25/2020,28,ConMod,Cool
+Roosevelt,9/22/2019,3/25/2020,29,Mulch,Cool
+Roosevelt,9/22/2019,3/25/2020,30,Seed,Warm
+Roosevelt,9/22/2019,3/25/2020,31,Mulch,Warm
+Roosevelt,9/22/2019,3/25/2020,32,ConMod,Warm
+Roosevelt,9/22/2019,3/25/2020,33,Pits,Warm
+Roosevelt,9/22/2019,3/25/2020,34,Seed,Cool
+Roosevelt,9/22/2019,3/25/2020,35,Control,None
+Roosevelt,9/22/2019,3/25/2020,36,Seed,Warm
+Roosevelt,11/22/2019,4/1/2021,2,Seed only,Cool
+Roosevelt,11/22/2019,4/1/2021,7,Seed only,Warm
+Roosevelt,11/22/2019,4/1/2021,11,Seed only,Cool
+Roosevelt,11/22/2019,4/1/2021,16,Seed only,Warm
+Roosevelt,11/22/2019,4/1/2021,20,Seed only,Cool
+Roosevelt,11/22/2019,4/1/2021,30,Seed only,Warm
+Roosevelt,11/22/2019,4/1/2021,34,Seed only,Cool
+Roosevelt,11/22/2019,4/1/2021,36,Seed only,Warm
+Roosevelt,11/22/2019,10/8/2021,2,Seed only,Cool
+Roosevelt,11/22/2019,10/8/2021,16,Seed only,Warm
+Roosevelt,11/22/2019,10/8/2021,30,Seed only,Warm
+Roosevelt,11/22/2019,10/8/2021,34,Seed only,Cool
+SCC,9/21/2019,3/27/2020,1,Mulch,Cool
+SCC,9/21/2019,3/27/2020,2,ConMod,Cool
+SCC,9/21/2019,3/27/2020,3,Control,None
+SCC,9/21/2019,3/27/2020,4,Seed,Cool
+SCC,9/21/2019,3/27/2020,5,Pits,Cool
+SCC,9/21/2019,3/27/2020,6,ConMod,Warm
+SCC,9/21/2019,3/27/2020,7,Mulch,Warm
+SCC,9/21/2019,3/27/2020,8,Seed,Warm
+SCC,9/21/2019,3/27/2020,9,Mulch,Cool
+SCC,9/21/2019,3/27/2020,10,Pits,Warm
+SCC,9/21/2019,3/27/2020,11,ConMod,Cool
+SCC,9/21/2019,3/27/2020,12,Control,None
+SCC,9/21/2019,3/27/2020,13,Seed,Cool
+SCC,9/21/2019,3/27/2020,14,ConMod,Warm
+SCC,9/21/2019,3/27/2020,15,Control,None
+SCC,9/21/2019,3/27/2020,16,Seed,Warm
+SCC,9/21/2019,3/27/2020,17,Mulch,Warm
+SCC,9/21/2019,3/27/2020,18,Pits,Cool
+SCC,9/21/2019,3/27/2020,19,Mulch,Cool
+SCC,9/21/2019,3/27/2020,20,ConMod,Cool
+SCC,9/21/2019,3/27/2020,21,Pits,Warm
+SCC,9/21/2019,3/27/2020,22,Seed,Cool
+SCC,9/21/2019,3/27/2020,23,ConMod,Warm
+SCC,9/21/2019,3/27/2020,24,Pits,Cool
+SCC,9/21/2019,3/27/2020,25,Seed,Warm
+SCC,9/21/2019,3/27/2020,26,ConMod,Cool
+SCC,9/21/2019,3/27/2020,27,Mulch,Warm
+SCC,9/21/2019,3/27/2020,28,Pits,Warm
+SCC,9/21/2019,3/27/2020,29,Control,None
+SCC,9/21/2019,3/27/2020,30,Mulch,Cool
+SCC,9/21/2019,3/27/2020,31,Pits,Cool
+SCC,9/21/2019,3/27/2020,32,Seed,Cool
+SCC,9/21/2019,3/27/2020,33,ConMod,Warm
+SCC,9/21/2019,3/27/2020,34,Mulch,Warm
+SCC,9/21/2019,3/27/2020,35,Seed,Warm
+SCC,9/21/2019,3/27/2020,36,Pits,Warm
+SCC,11/21/2019,3/31/2021,4,Seed only,Cool
+SCC,11/21/2019,3/31/2021,8,Seed only,Warm
+SCC,11/21/2019,3/31/2021,13,Seed only,Cool
+SCC,11/21/2019,3/31/2021,16,Seed only,Warm
+SCC,11/21/2019,3/31/2021,22,Seed only,Cool
+SCC,11/21/2019,3/31/2021,25,Seed only,Warm
+SCC,11/21/2019,3/31/2021,32,Seed only,Cool
+SCC,11/21/2019,3/31/2021,35,Seed only,Warm
+SCC,11/21/2019,10/13/2021,16,Seed only,Warm
+SCC,11/21/2019,10/13/2021,25,Seed only,Warm
+SCC,11/21/2019,10/13/2021,35,Seed only,Warm

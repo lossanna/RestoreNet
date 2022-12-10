@@ -112,15 +112,28 @@ monitor.diff <- monitor.2x2 %>%
   arrange(Site) 
 
 
-# Manually inspect differences by site
-  # and write df of corresponding rows using subplot monitoring info
-# AVRCD 
-monitor.sub.AVRCD <- monitor.sub %>% 
+# Manually inspect monitor.diff for differences by site, then write df of 
+  # corresponding rows using subplot monitoring info
+# Use temporary object "x" to compare monitor.diff (2x2 monitoring info) values 
+    # with relevant obs from subplot monitoring info to determine correct value
+
+# AVRCD: 2 issues
+monitor.sub.AVRCD1 <- monitor.sub %>% 
+  filter(Site == "AVRCD", Date_Monitored == "2020-04-30", Plot == "14") # PlotMix conflicting
+x <- monitor.sub %>% 
+  filter(Site == "AVRCD", Date_Monitored == "2020-04-30",
+         Treatment == "Seed")
+count(x, PlotMix) # there should be 4 Warm and 4 Cool
+  
+monitor.sub.AVRCD2 <- monitor.sub %>% 
   filter(Site == "AVRCD") %>% 
-  filter(Date_Monitored == "2021-04-06")
-monitor.sub.AVRCD <- monitor.sub %>% 
-  filter(Site == "AVRCD", Date_Monitored == "2020-04-30", Plot == "14") %>% 
-  bind_rows(monitor.sub.AVRCD)
+  filter(Date_Monitored == "2021-04-06") # Date_Seeded conflicting
+x <- monitor.sub %>% 
+  filter(Site == "AVRCD")
+count(x, Date_Seeded) # impossible that it was seeded in 2021, because monitoring occured in 2020
+
+monitor.sub.AVRCD <- bind_rows(monitor.sub.AVRCD1, monitor.sub.AVRCD2)
+
 
 # FlyingM
 monitor.sub.FlyingM <- monitor.sub %>% 
@@ -128,7 +141,19 @@ monitor.sub.FlyingM <- monitor.sub %>%
   filter(Treatment == "Pits") %>% 
   filter(PlotMix == "Med-Warm") %>% 
   filter(Plot == "36") %>% 
-  filter(Date_Monitored == "2019-06-12")
+  filter(Date_Monitored == "2019-06-12") # Date_Seeded and Date_Monitored have conflicts
+
+count(filter(monitor.sub, Site == "FlyingM"), Date_Seeded)
+count(filter(monitor.2x2, Site == "FlyingM"), Date_Seeded) # 7/25 date is wrong
+  # Even though this isn't a conflict between subplot and 2x2 data, It does not make sense 
+      # that there would be two seeding dates, and it's not like some plots 
+      # were seeded on 7/17 and others were seeded on 7/18. There are monitoring days 
+      # that have all plots marked as 7/17, and other monitoring days that have all plots 
+      # marked as 7/18. The majority say 7/18, so I will change all of the subplot data  
+      # and 2x2 data Date_Seeded values in a separate line of code.
+
+count(filter(monitor.2x2, Site == "FlyingM"), Date_Monitored) # 6/13 is wrong, all others are 6/12
+
 
 # Mesquite
 monitor.sub.Mesquite <- monitor.sub %>% 
@@ -225,11 +250,11 @@ monitor.fix <- monitor.fix %>%
 
 # Write to csv
 write_csv(monitor.fix,
-          file = "data/raw/intermediate-dependency2-output1_conflicting-monitoring-info.csv")
+          file = "data/raw/intermediate-dependency2-output_conflicting-monitoring-info.csv")
 
 
 #### edited manually to include correct monitoring info only #########
-monitor.fix <- read_xlsx("data/raw/intermediate-dependency2-edited1_conflicting-monitoring-info-resolved.xlsx",
+monitor.fix <- read_xlsx("data/raw/intermediate-dependency2-edited_conflicting-monitoring-info-resolved.xlsx",
                          sheet = "corrected")
 
 # Compile a complete corrected list of monitoring info
