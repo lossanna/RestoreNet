@@ -78,7 +78,8 @@ p2x2.long.intermediate <- p2x2.wide %>%
     TRUE ~ source))
 
 # Check all cols for NAs
-apply(p2x2.long.intermediate, 2, anyNA)
+apply(p2x2.long.intermediate, 2, anyNA) 
+  # NA codes due to conflicting monitoring info between subplot and 2x2 data
 
 
 
@@ -88,7 +89,8 @@ apply(p2x2.long.intermediate, 2, anyNA)
   # NA are due to differences in monitoring info between 2x2 and subplot,
   # which is why no code was created after left_join()
 p2x2.long.na.code <- p2x2.long.intermediate %>% 
-  filter(is.na(Code))
+  filter(is.na(Code)) %>% 
+  filter(source == "subplot") # ones from other sources will just be duplicates
 
 
 # Assign monitoring events an ID based on subplot monitoring info
