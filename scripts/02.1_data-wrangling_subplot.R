@@ -193,6 +193,9 @@ subplot <- subplot %>%
          Seeded, raw.row, MonitorID) # reorder cols
 
 # Change Date_Seeded to 7/18 for all of FlyingM
+subplot <- subplot %>% 
+  mutate(Date_Seeded = as.Date(Date_Seeded)) %>% 
+  mutate(Date_Seeded = if_else(Site == "FlyingM", as.Date("2018-07-18"), Date_Seeded))
 
 # Check all cols for NAs
 apply(subplot, 2, anyNA) 
