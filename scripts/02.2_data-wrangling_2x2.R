@@ -83,7 +83,7 @@ p2x2.long.intermediate <- p2x2.wide %>%
 
 # Check all cols for NAs
 apply(p2x2.long.intermediate, 2, anyNA) 
-  # NA codes and MonitorID created because of conflicts between subplot and 2x2 monitoring info
+  # NA MonitorID created because of conflicts between subplot and 2x2 monitoring info
 
 # Status: p2x2.long.intermediate has MonitorID applied to observations with correct monitoring info,
   # and empty Additional_Species observations created from pivot_longer() have been removed,
