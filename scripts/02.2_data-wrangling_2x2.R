@@ -95,7 +95,7 @@ p2x2.monitorid.na <- p2x2.long.intermediate %>%
   filter(is.na(MonitorID))
 
 # Extract distinct monitoring events without MonitorID
-monitor.diff <-p2x2.monitorid.na %>% 
+monitor.diff <- p2x2.monitorid.na %>% 
   select(Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix) %>% 
   distinct(.keep_all = TRUE) %>% 
   arrange(Site)
@@ -114,233 +114,45 @@ monitor.fix <- read_xlsx("data/raw/edited-wrangling-2x2_1monitor-info-fixed.xlsx
 monitor.fix <- left_join(monitor.fix, monitor.info)
 filter(monitor.fix, is.na(MonitorID)) # all assigned MonitorID
 
-
-
-
-
 # Add MonitorID to monitor.diff to match with original (incorrect) values in 2x2 data
 monitor.diff$MonitorID <- monitor.fix$MonitorID
 
-# Add original values with MonitorID to already correct values with MonitorID for full list
-# needed for a succesful left_join()
-monitor.assign <- monitor.2x2 %>% 
-  filter(!is.na(MonitorID)) %>% 
-  bind_rows(monitor.diff)
+# Convert monitor.diff cols to character, to be able to left_join()
+monitor.diff <- monitor.diff %>% 
+  mutate(across(everything(), as.character))
 
-# Add MonitorID to 2x2 data
-p2x2.long.intermediate <- left_join(p2x2.long.intermediate, monitor.assign)
+# Add MonitorID to p2x2 data that was missing MonitorID
+p2x2.monitor.fix <- p2x2.monitorid.na %>% 
+  select(-MonitorID) %>% 
+  left_join(monitor.diff)
+filter(p2x2.monitor.fix, is.na(MonitorID)) # all assigned MonitorID
 
-# Remove monitoring info from 2x2 data because some of it is wrong
-p2x2.long.intermediate <- p2x2.long.intermediate %>% 
-  select(-Date_Seeded, -Date_Monitored, -Plot, -Treatment, -PlotMix)
-
-# Add corrected monitoring info with left_join()
-p2x2.long.intermediate <- left_join(p2x2.long.intermediate, monitor.info)
-p2x2.long.intermediate <- p2x2.long.intermediate %>% 
-  select(Site, Region, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix,
-         Code, Seeded_Cover, Total_Veg_Cover, raw.row, source, MonitorID) %>% # reorder cols
-  mutate(raw.row = as.numeric(p2x2.long.intermediate$raw.row)) # convert raw.row back to numeric so all cols are of correct class
-
-# Check all cols for NAs
-apply(p2x2.long.intermediate, 2, anyNA) 
-# monitoring info is correct now, but codes still need to be corrected
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Assign monitoring events an ID based on subplot monitoring info
-  # use subplot monitoring info because some monitoring events were not recorded in 2x2 data
-monitor.sub <- subo %>% 
-  select(Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix) %>% 
-  distinct(.keep_all = TRUE) 
-monitor.sub <- monitor.sub %>% 
-  mutate(across(everything(), as.character)) %>% 
-  mutate(MonitorID = 1:nrow(monitor.sub))
-
-# Add monitoring IDs to 2x2 plot monitoring information
-monitor.2x2 <- p2x2.wide %>% 
-  mutate(across(everything(), as.character)) %>% 
-  select(Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix) %>% 
-  distinct(.keep_all = TRUE) %>% 
-  left_join(monitor.sub)
-
-# Examine differences by looking at NAs
-monitor.diff <- monitor.2x2 %>% 
-  filter(is.na(MonitorID)) %>% 
-  arrange(Site) 
-
-
-# Manually inspect differences by site
-  # and write df of corresponding rows using subplot monitoring info
-# AVRCD 
-monitor.sub.AVRCD <- monitor.sub %>% 
-  filter(Site == "AVRCD") %>% 
-  filter(Date_Monitored == "2021-04-06")
-monitor.sub.AVRCD <- monitor.sub %>% 
-  filter(Site == "AVRCD", Date_Monitored == "2020-04-30", Plot == "14") %>% 
-  bind_rows(monitor.sub.AVRCD)
-
-# FlyingM
-monitor.sub.FlyingM <- monitor.sub %>% 
-  filter(Site == "FlyingM") %>% 
-  filter(Treatment == "Pits") %>% 
-  filter(PlotMix == "Med-Warm") %>% 
-  filter(Plot == "36") %>% 
-  filter(Date_Monitored == "2019-06-12")
-
-# Mesquite
-monitor.sub.Mesquite <- monitor.sub %>% 
-  filter(Site == "Mesquite") %>% 
-  filter(Date_Monitored == "2020-12-12") %>% 
-  bind_rows(filter(monitor.sub,
-                   Site == "Mesquite",
-                   Date_Monitored == "2021-10-10",
-                   Plot %in% c("233", "234", "235")))
-
-# Patagonia
-monitor.sub.Patagonia <- monitor.sub %>% 
-  filter(Site == "Patagonia") %>% 
-  filter(Date_Monitored == "2021-03-12") %>% 
-  filter(Plot == "33")  
-
-# Pleasant  
-monitor.sub.Pleasant <- monitor.sub %>% 
-  filter(Site == "Pleasant") %>% 
-  filter(Date_Monitored %in% c("2021-04-02", "2021-10-04")) %>% 
-  filter(Plot %in% c("4", "8", "12", "15", "22", "23", "30", "32"))
-
-# Preserve
-monitor.sub.Preserve <- monitor.sub %>% 
-  filter(Site == "Preserve") %>% 
-  filter(Date_Monitored == "2020-03-26") %>% 
-  bind_rows(filter(monitor.sub,
-                   Site == "Preserve",
-                   Date_Monitored == "2021-03-30",
-                   Plot %in% c("2", "6", "10", "11", "15", "21", "23", "32"))) %>% 
-  bind_rows(filter(monitor.sub,
-                   Site == "Preserve",
-                   Date_Monitored == "2021-10-06",
-                   Plot == "11"))
-
-# Roosevelt
-monitor.sub.Roosevelt <- monitor.sub %>% 
-  filter(Site == "Roosevelt") %>% 
-  filter(Date_Monitored %in% c("2020-03-25")) %>% 
-  bind_rows(filter(monitor.sub,
-                   Site == "Roosevelt",
-                   Date_Monitored == "2021-04-01",
-                   Plot %in% c("2", "7", "11", "16", "20", "30", "34", "36"))) %>% 
-  bind_rows(filter(monitor.sub,
-                   Site == "Roosevelt",
-                   Date_Monitored == "2021-10-08",
-                   Plot %in% c("2", "16", "30", "34")))
-
-# Salt Desert
-monitor.sub.SaltDesert <- monitor.sub %>% 
-  filter(Site == "Salt_Desert") %>% 
-  filter(Date_Monitored == "2019-03-29") %>% 
-  filter(Plot == "32") %>% 
-  filter(Treatment == "Pits")
-
-# SCC
-monitor.sub.SCC <- monitor.sub %>% 
-  filter(Site == "SCC") %>% 
-  filter(Date_Monitored == "2020-03-27") %>% 
-  bind_rows(filter(monitor.sub,
-                   Site == "SCC",
-                   Date_Monitored == "2021-03-31",
-                   Plot %in% c("4", "8", "13", "16", "22", "25", "32", "35"))) %>% 
-  bind_rows(filter(monitor.sub,
-                   Site == "SCC",
-                   Date_Monitored == "2021-10-13",
-                   Plot %in% c("16", "25", "35")))
-
-# Combing monitoring info for all sites
-monitor.sub.all <- bind_rows(monitor.sub.AVRCD,
-                             monitor.sub.FlyingM,
-                             monitor.sub.Mesquite,
-                             monitor.sub.Patagonia,
-                             monitor.sub.Pleasant,
-                             monitor.sub.Preserve,
-                             monitor.sub.Roosevelt,
-                             monitor.sub.SaltDesert,
-                             monitor.sub.SCC)
-
-nrow(monitor.sub.all) == nrow(monitor.diff)
-
-# Combine subplot codes and 2x2 codes for comparison
-monitor.fix <- monitor.diff %>% 
-  select(-Site, -MonitorID) %>% 
-  rename(Date_Seeded_2x2 = Date_Seeded,
-         Date_Monitored_2x2 = Date_Monitored,
-         Plot_2x2 = Plot,
-         Treatment_2x2 = Treatment,
-         PlotMix_2x2 = PlotMix)
-monitor.fix <- bind_cols(monitor.sub.all, monitor.fix)
+# Convert monitor.fix cols to character, to be able to left_join()
 monitor.fix <- monitor.fix %>% 
-  select(Site, Date_Seeded, Date_Seeded_2x2, Date_Monitored, Date_Monitored_2x2,
-         Plot, Plot_2x2, Treatment, Treatment_2x2, PlotMix, PlotMix_2x2, MonitorID)
+  mutate(across(everything(), as.character))
 
-# Write to csv
-write_csv(monitor.fix,
-          file = "data/raw/output-wrangling-2x2_1conflicting-monitoring-info.csv")
+# Fix the monitoring info in p2x2 data now there is a MonitorID to join by
+p2x2.monitor.fix <- p2x2.monitor.fix %>% 
+  select(-Date_Seeded, -Date_Monitored, -Plot, -Treatment, -PlotMix) %>% # remove incorrect monitoring info
+  left_join(monitor.fix)
 
-
-#### edited manually to include correct monitoring info only #########
-monitor.fix <- read_xlsx("data/raw/edited-wrangling-2x2_1conflicting-monitoring-info-resolved.xlsx",
-                         sheet = "corrected")
-
-# Compile a complete corrected list of monitoring info
-monitor.info <- monitor.sub %>% 
-  mutate(Date_Seeded = as.Date(monitor.sub$Date_Seeded),
-         Date_Monitored = as.Date(monitor.sub$Date_Monitored),
-         Plot = as.numeric(monitor.sub$Plot)) %>% 
-  filter(!MonitorID %in% monitor.fix$MonitorID) %>% 
-  bind_rows(monitor.fix) %>% 
-  arrange(MonitorID)
-
-# Write to CSV
-write_csv(monitor.info,
-          file = "data/cleaned/corrected-monitoring-info_clean.csv")
-
-
-# Add MonitorID to monitor.diff to match with original (incorrect) values in 2x2 data
-monitor.diff$MonitorID <- monitor.fix$MonitorID
-
-# Add original values with MonitorID to already correct values with MonitorID for full list
-  # needed for a succesful left_join()
-monitor.assign <- monitor.2x2 %>% 
-  filter(!is.na(MonitorID)) %>% 
-  bind_rows(monitor.diff)
-
-# Add MonitorID to 2x2 data
-p2x2.long.intermediate <- left_join(p2x2.long.intermediate, monitor.assign)
-
-# Remove monitoring info from 2x2 data because some of it is wrong
-p2x2.long.intermediate <- p2x2.long.intermediate %>% 
-  select(-Date_Seeded, -Date_Monitored, -Plot, -Treatment, -PlotMix)
-
-# Add corrected monitoring info with left_join()
-p2x2.long.intermediate <- left_join(p2x2.long.intermediate, monitor.info)
-p2x2.long.intermediate <- p2x2.long.intermediate %>% 
+# Combine fixed p2x2 data with p2x2 data already correct
+p2x2.long.monitor.fixed <- p2x2.long.intermediate %>% 
+  filter(!raw.row %in% p2x2.monitor.fix$raw.row) %>% # remove old incorrect rows
+  bind_rows(p2x2.monitor.fix) %>% # add fixed rows
   select(Site, Region, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix,
-         Code, Seeded_Cover, Total_Veg_Cover, raw.row, source, MonitorID) %>% # reorder cols
-  mutate(raw.row = as.numeric(p2x2.long.intermediate$raw.row)) # convert raw.row back to numeric so all cols are of correct class
+         Code, Seeded_Cover, Total_Veg_Cover, raw.row, source, MonitorID) # reorder cols
+
+# Convert cols back to date/numermic if needed
+p2x2.long.monitor.fixed <- p2x2.long.monitor.fixed %>% 
+  mutate(Date_Seeded = as.Date(Date_Seeded),
+         Date_Monitored = as.Date(Date_Monitored),
+         raw.row = as.numeric(raw.row),
+         Plot = as.numeric(Plot),
+         MonitorID = as.numeric(MonitorID))
 
 # Check all cols for NAs
-apply(p2x2.long.intermediate, 2, anyNA) 
+apply(p2x2.long.monitor.fixed, 2, anyNA) 
   # monitoring info is correct now, but codes still need to be corrected
 
 
