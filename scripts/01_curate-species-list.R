@@ -302,17 +302,22 @@ species.de <- read_csv("data/raw/edited-species4_location-dependent_native-durat
 # Add Site to Name col for location-dependent
 species.de$Name <- apply(species.de[ , c("Name", "Site")], 1, paste, collapse = ", ")
   
+# Rename Code col as CodeOriginal
+species.de <- species.de %>% 
+  rename(CodeOriginal = Code)
 
-# Create column of Code.Site
-species.de$Code.Site <- apply(species.de[ , c("Code", "Site")], 1, paste, collapse = ".")
+# Create column of Code that hasthe site info
+species.de$Code <- apply(species.de[ , c("CodeOriginal", "Site")], 1, paste, collapse = ".")
 
 # Look for overlapping codes between location-dependent and independent 
-intersect(species.de$Code, species.in$Code)
+intersect(species.de$CodeOriginal, species.in$Code)
   
 
 # Check for unique codes
-length(unique(species.de$Code.Site)) == nrow(species.de) # all codes in species list are unique
-intersect(species.de$Code, species.in$Code) # location-dependent codes are also unique from location-dependent ones
+length(unique(species.de$Code)) == nrow(species.de) # all codes in species list are unique
+intersect(species.de$CodeOriginal, species.in$Code) 
+intersect(species.de$Code, species.in$Code) 
+  # location-dependent codes are also unique from location-dependent ones, both original code and new code with site info
 
 
 # Check for absent information (NAs)
@@ -320,10 +325,6 @@ unique(species.de$Native)
 unique(species.de$Duration)
 unique(species.de$Lifeform)
 
-# Change code col names to standardize
-species.de <- species.de %>% 
-  rename(CodeOriginal = Code,
-         Code = Code.Site)
 
 
 # Write intermediate to CSV -----------------------------------------------
@@ -332,7 +333,6 @@ species.de <- species.de %>%
   # were marked as seeded in the subplot data, used in 01.1-dependency_assign-seeded-species-native-status.R
 write_csv(species.de,
           file = "data/raw/intermediate-dependency1_species-list_location-dependent.csv")
-
 
 
 # Fix native status for select seeded species -----------------------------
@@ -381,14 +381,20 @@ subplot.codes <- bind_rows(subplot.codes.de, subplot.codes.in) %>%
 write_csv(subplot.codes,
           file = "data/cleaned/subplot-codes_clean.csv")
 
+species.subplot.in <- species.in
+species.subplot.de <- species.de
+
+
 
 
 # Codes from AllPlotData (2x2 plots) --------------------------------------
 
+# Codes from AllPlotData (2 x 2 m plots) that missing from location-independent species list
+
 # Codes from these plots are really different and usually long descriptions
   # so they get their own separate list
 
-# Codes from AllPlotData (2 x 2 m plots) missing from location-independent species lists
+
 p2x2.codes.missing <- plot.2x2.raw %>% 
   select(Site, starts_with("Additional")) %>% 
   mutate(across(everything(), as.character)) %>% 
@@ -396,7 +402,7 @@ p2x2.codes.missing <- plot.2x2.raw %>%
   select(-drop) %>% 
   distinct(.keep_all = TRUE) %>% 
   arrange(Code) %>%
-  filter(!Code %in% species.in$Code) %>% 
+  filter(!Code %in% species.subplot.in$Code) %>% 
   filter(!is.na(Code),
          Code != "O")
 
@@ -406,10 +412,11 @@ write_csv(p2x2.codes.missing,
 
 #### edit new file manually #########
   # make sure all have native, duration, lifeform information
+  # create multiple rows for codes that mention more than one species (happens at SRER and Patagonia)
 p2x2.codes.missing <- read_csv("data/raw/edited-species5_codes-missing-2x2plot.csv")
 
-# Check for absent information (NAs)
-apply(p2x2.codes.missing, 2, anyNA) # okay that DuplicateNum has NAs
+# Check for NAs
+apply(p2x2.codes.missing, 2, anyNA)
 
 
 # Add site to code and name for location-dependent species
@@ -439,10 +446,13 @@ write_csv(p2x2.codes.dup,
 
 
 # Combine location-independent 2x2 codes with subplot codes
-species.in <- p2x2.codes.missing %>% 
+species.2x2.in <- p2x2.codes.missing %>% 
   filter(LocationDependence == "independent") %>% 
-  select(-Site, -NeedsItsDuplicate, -LocationDependence) %>% 
-  bind_rows(species.in) %>% 
+  select(-Site, -NeedsItsDuplicate, -LocationDependence, -DuplicateNum)
+
+setdiff(colnames(species.2x2.in), colnames(species.subplot.in)) # columns are the same
+
+species.in <- bind_rows(species.2x2.in, species.subplot.in) %>% 
   distinct(.keep_all = TRUE) %>% 
   arrange(Name) %>% 
   arrange(Code)
@@ -467,13 +477,17 @@ p2x2.codes.missing <- p2x2.codes.missing %>%
     str_detect(p2x2.codes.missing$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central",
     TRUE ~ "unk"))
 
-species.de <- p2x2.codes.missing %>% 
+species.2x2.de <- p2x2.codes.missing %>% 
   filter(LocationDependence == "dependent") %>% 
-  select(-NeedsItsDuplicate, -LocationDependence) %>% 
-  bind_rows(species.de) %>% 
-  distinct(.keep_all = TRUE)  %>% 
+  select(-NeedsItsDuplicate, -LocationDependence, -DuplicateNum) 
+
+setdiff(colnames(species.2x2.de), colnames(species.subplot.de)) # columns are the same
+
+species.de <- bind_rows(species.2x2.de, species.subplot.de) %>% 
+  distinct(.keep_all = TRUE) %>% 
   arrange(Name) %>% 
   arrange(Code)
+
 
 # Write to csv
 write_csv(species.de,
