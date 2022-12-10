@@ -132,7 +132,7 @@ File naming notes:
 - Output written directly from R and edited in a new file, in combination with `output-species4.1.csv`.
 
 `output-species5_codes-missing-2x2plot.csv`
-- List of codes that were in the `2x2` data, but not yet in the species lists for the subplot data, which have already been generated.
+- List of codes that were in the `2x2` data, but not yet in the species lists for the subplot data, which have already been generated/have species info associated with them.
 - Most of the codes are unknowns or descriptions.
 - Output written directly from R and edited in a new file.
 

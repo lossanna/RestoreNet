@@ -18,6 +18,10 @@ SRER,A few possible ARPUs (2 certainty) or other ARsp. (ARTE),No,,ARPUspp,Aristi
 Patagonia,A few possible small SPCR in/around some of the pits,No,,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass,independent
 Creosote,ACCH,No,,ACCH,Unknown ACCH,Unknown,Unknown,Unknown,dependent
 Spiderweb,ALNI,No,,ALNI,Unknown ALNI,Unknown,Unknown,Unknown,dependent
+FlyingM,AmaranthusSpp,No,,AmaranthusSpp,Amaranthus spp.,Unknown,Unknown,Forb,dependent
+BarTBar,AMASPP,No,,AMASPP,Amaranthus spp.,Unknown,Unknown,Forb,dependent
+FlyingM,AMASPP,No,,AMASPP,Amaranthus spp.,Unknown,Unknown,Forb,dependent
+SRER,ARISPP,No,,ARISPP,Aristida spp.,Native,Unknown,Grass,dependent
 Patagonia,ARPU a few individuals,No,,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
 Patagonia,ARPU a few small tufts and 1 taller,No,,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
 Patagonia,ARPU about 5 individuals and an individual BAMU resprouting at base,Yes,1,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
@@ -32,8 +36,13 @@ Patagonia,ARPU numerous individuals,No,,ARPU9,Aristida purpurea,Native,Perennial
 Patagonia,ARPU small tufts and a tall individual,No,,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
 SCC,ARPUP6,No,,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
 Pleasant,ARPUP6,No,,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
+Creosote,ASTRAG,No,,ASTRAG,Astragalus spp.,Unknown,Unknown,Forb,dependent
+Mesquite,ASTRAG,No,,ASTRAG,Astragalus spp.,Unknown,Unknown,Forb,dependent
 Patagonia,At least 10 ARPUs throughout small to large in size,No,,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
-FlyingM,ATSPP,No,,ATSPP,Unknown AT spp.,Unknown,Unknown,Unknown,dependent
+BarTBar,ATSP,No,,ATSP,Atriplex spp.,Native/Unknown,Perennial,Shrub,dependent
+FlyingM,ATSP,No,,ATSP,Atriplex spp.,Native/Unknown,Perennial,Shrub,dependent
+TLE,ATSP,No,,ATSP,Atriplex spp.,Native/Unknown,Perennial,Shrub,dependent
+FlyingM,ATSPP,No,,ATSPP,Atriplex spp.,Native/Unknown,Perennial,Shrub,dependent
 Patagonia,Blue grama BOGR in the S half of the plot don't confuse with black grama BOER,No,,BOGR2,Bouteloua gracilis,Native,Perennial,Grass,independent
 SRER,BOCUs up to this point could also possibly be slender grama BORE or purple BORA,No,,BOCU/BORE/BORA,Bouteloua curtipendula/repens/radicosa (spp.),Native,Perennial,Grass,dependent
 Creosote,BOER,No,,BOER4,Bouteloua eriopoda,Native,Perennial,Grass,independent
@@ -47,10 +56,15 @@ MOWE,BOSPP,No,,BOSPP,Bouteloua spp.,Native,Unknown,Grass,dependent
 PEFO,BOSPP,No,,BOSPP,Bouteloua spp.,Native,Unknown,Grass,dependent
 Spiderweb,BOSPP,No,,BOSPP,Bouteloua spp.,Native,Unknown,Grass,dependent
 Spiderweb,BOUBAR,No,,BOBAB3,Bouteloua barbata v. barbata,Native,Annual,Grass,independent
+SRER,BOUSPP,No,,BOUSPP,Bouteloua spp.,Native,Unknown,Grass,dependent
 Patagonia,Bouteloua on W edge but almost positive it's BOGR (blue gramma) not BOER (black gramma),No,,BOGR2,Bouteloua gracilis,Native,Perennial,Grass,independent
+Creosote,CHAMA,No,,CHAMA,Chamaesyce spp.,Native,Unknown,Forb,dependent
+Mesquite,CHAMA,No,,CHAMA,Chamaesyce spp.,Native,Unknown,Forb,dependent
+29_Palms,CHASPP,No,,CHASPP,Chamaesyce spp.,Native,Unknown,Forb,dependent
 BabbittPJ,CHEN,No,,CHEN,Unknown chenopod,Native/Unknown,Unknown,Forb,dependent
 PEFO,CHEN,No,,CHEN,Unknown chenopod,Native/Unknown,Unknown,Forb,dependent
 MOWE,CHEN,No,,CHEN,Unknown chenopod,Native/Unknown,Unknown,Forb,dependent
+Spiderweb,CLESP,No,,CLESP,Unknown chenopod,Native/Unknown,Unknown,Forb,dependent
 Patagonia,Couple big ARPUs and a few small ones throughout,No,,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
 SRER,Couple extra large BOCUs,No,,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
 SRER,Couple medium sized ARPUs (not completely sure 2/3 on certainty of ID) and a large BOCU right next to the NW plot marker rooted just outside of the plot but some overhangs into the plot,Yes,1,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
@@ -59,30 +73,51 @@ Patagonia,Couple small to medium ARPUs throughout and a couple small SECOs in N 
 Patagonia,Couple small to medium ARPUs throughout and a couple small SECOs in N half of the plot typically hidden under/using ERCU as a shade plant,Yes,2,SECO10,Senna covesii,Native,Perennial,Forb,independent
 Patagonia,Couple small to medium ARPUs throughout and a couple small SECOs in N half of the plot typically hidden under/using ERCU as a shade plant,Yes,3,ERCU2,Eragrostis curvula,Introduced,Perennial,Grass,independent
 AVRCD,CRSE1,No,,CRSE1,Croton or Cryptantha spp. (?),Native/Unknown,Unknown,Forb,dependent
+Roosevelt,CRYPT,No,,CRYPT,Cryptantha spp.,Native,Unknown,Forb,dependent
+Preserve,CRYPT,No,,CRYPT,Cryptantha spp.,Native,Unknown,Forb,dependent
+BarTBar,CRYSPP,No,,CRYSPP,Cryptantha spp.,Native,Unknown,Forb,dependent
+PEFO,CRYSPP,No,,CRYSPP,Cryptantha spp.,Native,Unknown,Forb,dependent
+29_Palms,CRYSPP,No,,CRYSPP,Cryptantha spp.,Native,Unknown,Forb,dependent
+AVRCD,CRYSPP,No,,CRYSPP,Cryptantha spp.,Native,Unknown,Forb,dependent
 Spiderweb,DASPUL,No,,DASPUL,Unknown DASPUL,Unknown,Unknown,Unknown,dependent
 UtahPJ,Dormant shrubs,No,,SHRUBdor,Dormant shrubs,Unknown,Perennial,Shrub,dependent
 BabbittPJ,ELEL5 (seeded),No,,ELEL6,Elymus elymoides,Native,Perennial,Grass,independent
 BabbittPJ,ELEL5 (unseeded),No,,ELEL7,Elymus elymoides,Native,Perennial,Grass,independent
 BabbittPJ,ELSP,No,,ELSP,Elymus spp.,Native/Unknown,Unknown,Grass,dependent
 BabbittPJ,ELSP (seeded),No,,ELSPse,seeded Elymus spp.,Native,Unknown,Grass,dependent
+AguaFria,ELSPP,No,,ELSP,Elymus spp.,Native/Unknown,Unknown,Grass,dependent
+BabbittPJ,ELSPP,No,,ELSP,Elymus spp.,Native/Unknown,Unknown,Grass,dependent
+FlyingM,ELSPP,No,,ELSP,Elymus spp.,Native/Unknown,Unknown,Grass,dependent
+PEFO,ELSPP,No,,ELSP,Elymus spp.,Native/Unknown,Unknown,Grass,dependent
 BabbittPJ,ELTR7 (seeded),No,,ELTR7,Elymus trachycaulus,Native,Perennial,Grass,independent
 BabbittPJ,ELWA,No,,ELWA2,Elymus wawawaiensis,Native,Perennial,Grass,independent
 BabbittPJ,ELWA2 (seeded),No,,ELWA2,Elymus wawawaiensis,Native,Perennial,Grass,independent
 UtahPJ,ERIGSPP,No,,ERIGSPP,Unknown ERIG (?),Unknown,Unknown,Unknown,dependent
+Creosote,Eriogonum,No,,Eriogonum,Eriogonum spp.,Native,Unknown,Forb,dependent
+PEFO,ERISP,No,,ERISP,Eriogonum spp.,Native,Unknown,Forb,dependent
+BarTBar,ERISP,No,,ERISP,Eriogonum spp.,Native,Unknown,Forb,dependent
+BarTBar,ERISPP,No,,ERISPP,Eriogonum spp.,Native,Unknown,Forb,dependent
 Preserve,EUPO3,No,,CHPO12,Chamaesyce polycarpa,Native,Unknown,Forb,independent
+AVRCD,EUPSPP,No,,EUPSPP,Euphorbia spp.,Unknown,Unknown,Forb,dependent
 SRER,Extra large BOCU,No,,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
 SRER,Extra large BOER in S half and medium sized one next to NE plot  corner that partially hangs in and at least 2 small ones within the plot as well,No,,BOER4,Bouteloua eriopoda,Native,Perennial,Grass,independent
 SRER,Extra large to medium large BOCUs throughout and at least 2 tiny SECO near/in SE pit and NE/subplot pit,Yes,1,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
 SRER,Extra large to medium large BOCUs throughout and at least 2 tiny SECO near/in SE pit and NE/subplot pit,Yes,2,SECO10,Senna covesii,Native,Perennial,Forb,independent
 BabbittPJ,HCI,No,,HCI,Unknown HCI (?),Unknown,Unknown,Unknown,dependent
 SRER,HEMU,No,,HEMU3,Heliomeris multiflora,Native,Perennial,Forb,independent
+BabbittPJ,HESP,No,,HESP,Heliomeris spp.,Native,Unknown,Forb,dependent
+FlyingM,HESP,No,,HESP,Heliomeris spp.,Native,Unknown,Forb,dependent
 PEFO,HOIN,No,,HOIN2,Hordeum intercedens,Native,Annual,Grass,independent
 MOWE,HYVE,No,,HYVE,Hybanthus verticillatus,Native,Perennial,Forb,independent
 SRER,Large and medium BOCUs in plot,No,,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
 Patagonia,Large BOCU in the southeast with a few small ones throughout and about 5 ARPUs small to large in size that're mostly near the conmods,Yes,1,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
 Patagonia,Large BOCU in the southeast with a few small ones throughout and about 5 ARPUs small to large in size that're mostly near the conmods,Yes,2,ARPUspp,Aristida spp.,Native,Unknown,Grass,dependent
+29_Palms,LEPSPP,No,,LESSPP,Lepidium spp.,Native/Unknown,Unknown,Forb,dependent
 Creosote,Lesquerella sp.,No,,LESSPP,Lesquerella spp.,Native,Unknown,Forb,dependent
 CRC,"Lots of unknown grasses, potentially S-PASM",No,,UNKGR,"Lots of unknown grasses, potentially S-PASM",Unknown,Unknown,Grass,dependent
+AguaFria,LUSPP,No,,LUSPP,Lupinus spp.,Unknown,Unknown,Forb,dependent
+PEFO,LUSPP,No,,LUSPP,Lupinus spp.,Unknown,Unknown,Forb,dependent
+TLE,MACSPP,No,,MACSPP,Machaeranthera spp.,Native,Unknown,Forb,dependent
 Patagonia,MATA is the SW corner,No,,MATA2,Machaeranthera tanacetifolia,Native,Annual,Forb,independent
 Patagonia,MATA seedling in southwest section,No,,MATA2,Machaeranthera tanacetifolia,Native,Annual,Forb,independent
 SRER,Medium BOCU mostly rooted outside of the SW side of the plot butr partially in with some overhang,No,,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
@@ -95,6 +130,7 @@ SRER,Medium sized BOCU and ARPU,Yes,2,ARPU9,Aristida purpurea,Native,Perennial,G
 Patagonia,Medium to large ARPUs throughout and a couple small and medium BOCUs near the N conmods and a few teeny tiny SECOs near conmods as well,Yes,1,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
 Patagonia,Medium to large ARPUs throughout and a couple small and medium BOCUs near the N conmods and a few teeny tiny SECOs near conmods as well,Yes,2,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
 Patagonia,Medium to large ARPUs throughout and a couple small and medium BOCUs near the N conmods and a few teeny tiny SECOs near conmods as well,Yes,3,SECO10,Senna covesii,Native,Perennial,Forb,independent
+29_Palms,MENSPP,No,,MENSPP,Mentzelia spp.,Native,Unknown,Forb,dependent
 Patagonia,Might possibly be a small POSE,No,,POSE,Poa secunda,Native,Perennial,Grass,independent
 Patagonia,More Blue grama Don't confuse with Black,No,,BOGR2,Bouteloua gracilis,Native,Perennial,Grass,independent
 SRER,More of what we called BOCU in last plot,No,,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
@@ -117,14 +153,18 @@ Patagonia,Multiple small to medium ARPUs and BOCUs along with a possible PLMU (r
 Patagonia,Multiple small to medium ARPUs and BOCUs along with a possible PLMU (rough feeling leaves and similar seeds) with a couple small/medium BAMU that are in or near the N half of the pits and a couple small SECO seedlings sprinkled throughout,Yes,3,PLMU3,Pleuraphis mutica,Native,Perennial,Grass,independent
 Patagonia,Multiple small to medium ARPUs and BOCUs along with a possible PLMU (rough feeling leaves and similar seeds) with a couple small/medium BAMU that are in or near the N half of the pits and a couple small SECO seedlings sprinkled throughout,Yes,4,BAMU,Baileya multiradiata,Native,Unknown,Forb,independent
 Patagonia,Multiple small to medium ARPUs and BOCUs along with a possible PLMU (rough feeling leaves and similar seeds) with a couple small/medium BAMU that are in or near the N half of the pits and a couple small SECO seedlings sprinkled throughout,Yes,5,SECO10,Senna covesii,Native,Perennial,Forb,independent
-Patagonia,none seeded,No,,0,0,0,0,0,0
-Patagonia,None seeded,No,,0,0,0,0,0,0
+Patagonia,none seeded,No,,0,0,0,0,0,independent
+Patagonia,None seeded,No,,0,0,0,0,0,independent
 Patagonia,Not in the Med mix but there are a couple young SECOs,No,,SECO10,Senna covesii,Native,Perennial,Forb,independent
-CRC,Not recorded,No,,0,0,0,0,0,0
-UtahPJ,Not recorded,No,,0,0,0,0,0,0
-Salt_Desert,Not recorded,No,,0,0,0,0,0,0
+CRC,Not recorded,No,,0,0,0,0,0,independent
+UtahPJ,Not recorded,No,,0,0,0,0,0,independent
+Salt_Desert,Not recorded,No,,0,0,0,0,0,independent
 BabbittPJ,PASM (maybe),No,,PASM,Pascopyrum smithii,Native,Perennial,Grass,independent
+29_Palms,PECSPP,No,,PECSPP,Pectocarya spp.,Native,Unknown,Forb,dependent
 SRER,PEPA (possibly),No,,PEPAspp,Unknown PEPA,Unknown,Unknown,Unknown,dependent
+BabbittPJ,PHSPP,No,,PHSPP,Phacelia spp.,Native,Unknown,Forb,dependent
+BarTBar,PORSPP,No,,PORSPP,Portulaca spp.,Native,Unknown,Forb,dependent
+PEFO,PORSPP,No,,PORSPP,Portulaca spp.,Native,Unknown,Forb,dependent
 Patagonia,Possible ACHY near southwest corner (2 certainty) and about 10 ARPU small to medium in size with 2 of them next to the subplot but not quite in,Yes,1,ACHY,Achnatherum hymenoides,Native,Perennial,Grass,independent
 Patagonia,Possible ACHY near southwest corner (2 certainty) and about 10 ARPU small to medium in size with 2 of them next to the subplot but not quite in,Yes,2,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
 SRER,"Possible ARPUs, SECO seedling in subplot",Yes,1,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
@@ -191,6 +231,12 @@ Roosevelt,SPAMA,No,,SPAM3,Sphaeralcea ambigua,Native,Perennial,Forb,independent
 Pleasant,SPAMA,No,,SPAM4,Sphaeralcea ambigua,Native,Perennial,Forb,independent
 SCC,SPAMA,No,,SPAM5,Sphaeralcea ambigua,Native,Perennial,Forb,independent
 Spiderweb,Sporobolus,No,,SPOspp,Sporobolus spp.,Unknown,Unknown,Grass,dependent
+BabbittPJ,SPSP,No,,SPSP,Sphaeralcea spp.,Native/Unknown,Unknown,Forb,dependent
+BarTBar,SPSP,No,,SPSP,Sphaeralcea spp.,Native/Unknown,Unknown,Forb,dependent
+FlyingM,SPSP,No,,SPSP,Sphaeralcea spp.,Native/Unknown,Unknown,Forb,dependent
+PEFO,SPSP,No,,SPSP,Sphaeralcea spp.,Native/Unknown,Unknown,Forb,dependent
+TLE,SPSP,No,,SPSP,Sphaeralcea spp.,Native/Unknown,Unknown,Forb,dependent
+29_Palms,STISPP,No,,STISPP,Stipa spp.,Native,Unknown,Grass,dependent
 Spiderweb,SUNFO,No,,SUNFO,Seeded unknown forb,Native,Unknown,Forb,dependent
 PEFO,SUNGR,No,,SUNGR,Seeded unknown grass,Native,Unknown,Grass,dependent
 Spiderweb,SUNGR,No,,SUNGR,Seeded unknown grass,Native,Unknown,Grass,dependent

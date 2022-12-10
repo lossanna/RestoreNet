@@ -388,14 +388,14 @@ write_csv(subplot.codes,
 # Codes from these plots are really different and usually long descriptions
   # so they get their own separate list
 
-# Location-independent codes from AllPlotData (2 x 2 m plots) missing from location-independent list
+# Codes from AllPlotData (2 x 2 m plots) missing from location-independent species lists
 p2x2.codes.missing <- plot.2x2.raw %>% 
   select(Site, starts_with("Additional")) %>% 
   mutate(across(everything(), as.character)) %>% 
   pivot_longer(!Site, names_to = "drop", values_to = "Code") %>% 
   select(-drop) %>% 
   distinct(.keep_all = TRUE) %>% 
-  arrange(Code) %>% # 176 codes
+  arrange(Code) %>%
   filter(!Code %in% species.in$Code) %>% 
   filter(!is.na(Code),
          Code != "O")
@@ -420,8 +420,8 @@ p2x2.codes.de$Name <- apply(p2x2.codes.de[ , c("Name", "Site")], 1, paste, colla
 
 # Combine location-independent and dependent with new codes
 p2x2.codes.missing <- p2x2.codes.missing %>% 
-  filter(LocationDependence != "dependent") %>% 
-  bind_rows(p2x2.codes.de)
+  filter(LocationDependence != "dependent") %>% # remove in correct location-dependent
+  bind_rows(p2x2.codes.de) # add correct location-dependent
 
 
 # Extract codes that need duplicates (same code refers to multiple species) and write to csv
@@ -439,7 +439,7 @@ write_csv(p2x2.codes.dup,
 
 
 # Combine location-independent 2x2 codes with subplot codes
-species.all.in <- p2x2.codes.missing %>% 
+species.in <- p2x2.codes.missing %>% 
   filter(LocationDependence == "independent") %>% 
   select(-Site, -NeedsItsDuplicate, -LocationDependence) %>% 
   bind_rows(species.in) %>% 
@@ -448,7 +448,7 @@ species.all.in <- p2x2.codes.missing %>%
   arrange(Code)
 
 # Write to csv
-write_csv(species.all.in,
+write_csv(species.in,
           file = "data/cleaned/species-list_location-independent_clean.csv")
 
 
@@ -467,7 +467,7 @@ p2x2.codes.missing <- p2x2.codes.missing %>%
     str_detect(p2x2.codes.missing$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central",
     TRUE ~ "unk"))
 
-species.all.de <- p2x2.codes.missing %>% 
+species.de <- p2x2.codes.missing %>% 
   filter(LocationDependence == "dependent") %>% 
   select(-NeedsItsDuplicate, -LocationDependence) %>% 
   bind_rows(species.de) %>% 
@@ -476,7 +476,7 @@ species.all.de <- p2x2.codes.missing %>%
   arrange(Code)
 
 # Write to csv
-write_csv(species.all.de,
+write_csv(species.de,
           file = "data/cleaned/species-list_location-dependent_clean.csv")
 
 

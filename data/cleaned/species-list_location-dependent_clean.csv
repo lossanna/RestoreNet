@@ -3,7 +3,9 @@ SRER,ACASPP,NA,ACASPP.SRER,"Acalypha spp., SRER",Native/Unknown,Unknown,Forb,Son
 Creosote,ACCH,NA,ACCH.Creosote,"Unknown ACCH, Creosote",Unknown,Unknown,Unknown,Chihuahuan
 Spiderweb,ALNI,NA,ALNI.Spiderweb,"Unknown ALNI, Spiderweb",Unknown,Unknown,Unknown,Colorado Plateau
 FlyingM,AmaranthusSpp,NA,AmaranthusSpp.FlyingM,"Amaranthus spp., FlyingM",Unknown,Unknown,Forb,Colorado Plateau
+BarTBar,AMASPP,NA,AMASPP.BarTBar,"Amaranthus spp., BarTBar",Unknown,Unknown,Forb,Colorado Plateau
 BarTBar,AMASPP,NA,AMASPP.BarTBar,"Amaranthus spp., BarTBar",Native/Unknown,Unknown,Forb,Colorado Plateau
+FlyingM,AMASPP,NA,AMASPP.FlyingM,"Amaranthus spp., FlyingM",Unknown,Unknown,Forb,Colorado Plateau
 BabbittPJ,AMBSPP,NA,AMBSPP.BabbittPJ,"Ambrosia spp., BabbittPJ",Native/Unknown,Unknown,Forb,Colorado Plateau
 SRER,ANOSPP,NA,ANOSPP.SRER,"Anoda spp., SRER",Native,Unknown,Forb,Sonoran SE
 Patagonia,ARISPP,NA,ARISPP.Patagonia,"Aristida spp., Patagonia",Native,Unknown,Grass,Sonoran SE
@@ -14,10 +16,15 @@ SRER,Potentially 3 or 4 BOCU (1 certainty) and possibly an ARPU (2) or othe ARsp
 SRER,Some possible ARPUs (2 certainty) or ARsp. (ARTE). Mostly dried still or grazed down.,NA,ARPUspp.SRER,"Aristida spp., SRER",Native,Unknown,Grass,Sonoran SE
 SRER,Some type of Aristida possibly and ARPU and maybe 1 small maybe BOCU near subplot that's been grazed down,2,ARPUspp.SRER,"Aristida spp., SRER",Native,Unknown,Grass,Sonoran SE
 BarTBar,ARSPP,NA,ARSPP.BarTBar,"Artemisia spp., BarTBar",Native/Unknown,Perennial,Shrub,Colorado Plateau
+Creosote,ASTRAG,NA,ASTRAG.Creosote,"Astragalus spp., Creosote",Unknown,Unknown,Forb,Chihuahuan
+Mesquite,ASTRAG,NA,ASTRAG.Mesquite,"Astragalus spp., Mesquite",Unknown,Unknown,Forb,Chihuahuan
 SRER,ASTSPP,NA,ASTSPP.SRER,"Astragalus spp., SRER",Native/Unknown,Unknown,Forb,Sonoran SE
 Mesquite,ATCA,NA,ATCA.Mesquite,"Unknown ATCA (but not Atriplex, a grass?), Mesquite",Native,Unknown,Grass,Chihuahuan
+BarTBar,ATSP,NA,ATSP.BarTBar,"Atriplex spp., BarTBar",Native/Unknown,Perennial,Shrub,Colorado Plateau
+FlyingM,ATSP,NA,ATSP.FlyingM,"Atriplex spp., FlyingM",Native/Unknown,Perennial,Shrub,Colorado Plateau
 PEFO,ATSP,NA,ATSP.PEFO,"Atriplex spp., PEFO",Native/Unknown,Perennial,Shrub,Colorado Plateau
-FlyingM,ATSPP,NA,ATSPP.FlyingM,"Unknown AT spp., FlyingM",Unknown,Unknown,Unknown,Colorado Plateau
+TLE,ATSP,NA,ATSP.TLE,"Atriplex spp., TLE",Native/Unknown,Perennial,Shrub,Colorado Plateau
+FlyingM,ATSPP,NA,ATSPP.FlyingM,"Atriplex spp., FlyingM",Native/Unknown,Perennial,Shrub,Colorado Plateau
 SRER,1 Possible PLJA (1 out of 3 on certainty) on south border as well as some BOCUs (might be BOER but probably BOCU or other BOsp.) Mostly grazed,2,BOCU/BOER4.SRER,"BOCUs, or might be BOER4, SRER",Native,Perennial,Grass,Sonoran SE
 SRER,BOCUs up to this point could also possibly be slender grama BORE or purple BORA,NA,BOCU/BORE/BORA.SRER,"Bouteloua curtipendula/repens/radicosa (spp.), SRER",Native,Perennial,Grass,Sonoran SE
 SRER,BOsp. a lot of possibly BOCU but could also be BORE or BORA,NA,BOCU/BORE/BORA.SRER,"Bouteloua curtipendula/repens/radicosa (spp.), SRER",Native,Perennial,Grass,Sonoran SE
@@ -42,19 +49,28 @@ Patagonia,CALSPP,NA,CALSPP.Patagonia,"Calandrinia spp., Patagonia",Native,Unknow
 Creosote,CHAMA,NA,CHAMA.Creosote,"Chamaesyce spp., Creosote",Native,Unknown,Forb,Chihuahuan
 Mesquite,CHAMA,NA,CHAMA.Mesquite,"Chamaesyce spp., Mesquite",Native,Unknown,Forb,Chihuahuan
 29_Palms,CHASPP,NA,CHASPP.29_Palms,"Chaenactis spp., 29_Palms",Native,Unknown,Forb,Mojave
+29_Palms,CHASPP,NA,CHASPP.29_Palms,"Chamaesyce spp., 29_Palms",Native,Unknown,Forb,Mojave
 BabbittPJ,CHEN,NA,CHEN.BabbittPJ,"Unknown chenopod, BabbittPJ",Native/Unknown,Unknown,Forb,Colorado Plateau
 MOWE,CHEN,NA,CHEN.MOWE,"Unknown chenopod, MOWE",Native/Unknown,Unknown,Forb,Colorado Plateau
 PEFO,CHEN,NA,CHEN.PEFO,"Unknown chenopod, PEFO",Native/Unknown,Unknown,Forb,Colorado Plateau
 TLE,CHEN,NA,CHEN.TLE,"Unknown chenopod, TLE",Native/Unknown,Unknown,Forb,Colorado Plateau
 Patagonia,CHESPP,NA,CHESPP.Patagonia,"Chenopodium spp., Patagonia",Unknown,Unknown,Forb,Sonoran SE
+Spiderweb,CLESP,NA,CLESP.Spiderweb,"Unknown chenopod, Spiderweb",Native/Unknown,Unknown,Forb,Colorado Plateau
 AVRCD,CRSE1,NA,CRSE1.AVRCD,"Croton or Cryptantha spp. (?), AVRCD",Native/Unknown,Unknown,Forb,Mojave
+Preserve,CRYPT,NA,CRYPT.Preserve,"Cryptantha spp., Preserve",Native,Unknown,Forb,Sonoran Central
 Roosevelt,CRYPT,NA,CRYPT.Roosevelt,"Cryptantha spp., Roosevelt",Native,Unknown,Forb,Sonoran Central
 29_Palms,CRYSPP,NA,CRYSPP.29_Palms,"Cryptantha spp., 29_Palms",Native,Unknown,Forb,Mojave
 AVRCD,CRYSPP,NA,CRYSPP.AVRCD,"Cryptantha spp., AVRCD",Native,Unknown,Forb,Mojave
+BarTBar,CRYSPP,NA,CRYSPP.BarTBar,"Cryptantha spp., BarTBar",Native,Unknown,Forb,Colorado Plateau
+PEFO,CRYSPP,NA,CRYSPP.PEFO,"Cryptantha spp., PEFO",Native,Unknown,Forb,Colorado Plateau
 SRER,CRYSPP,NA,CRYSPP.SRER,"Cryptantha spp., SRER",Native,Unknown,Forb,Sonoran SE
 Spiderweb,DASPUL,NA,DASPUL.Spiderweb,"Unknown DASPUL, Spiderweb",Unknown,Unknown,Unknown,Colorado Plateau
 UtahPJ,DRABA,NA,DRABA.UtahPJ,"Draba spp., UtahPJ",Native/Unknown,Unknown,Forb,Utah
+AguaFria,ELSPP,NA,ELSP.AguaFria,"Elymus spp., AguaFria",Native/Unknown,Unknown,Grass,Colorado Plateau
 BabbittPJ,ELSP,NA,ELSP.BabbittPJ,"Elymus spp., BabbittPJ",Native/Unknown,Unknown,Grass,Colorado Plateau
+BabbittPJ,ELSPP,NA,ELSP.BabbittPJ,"Elymus spp., BabbittPJ",Native/Unknown,Unknown,Grass,Colorado Plateau
+FlyingM,ELSPP,NA,ELSP.FlyingM,"Elymus spp., FlyingM",Native/Unknown,Unknown,Grass,Colorado Plateau
+PEFO,ELSPP,NA,ELSP.PEFO,"Elymus spp., PEFO",Native/Unknown,Unknown,Grass,Colorado Plateau
 AguaFria,ELSPP,NA,ELSPP.AguaFria,"Elymus spp., AguaFria",Native/Unknown,Unknown,Grass,Colorado Plateau
 BabbittPJ,ELSPP,NA,ELSPP.BabbittPJ,"Elymus spp., BabbittPJ",Native,Unknown,Grass,Colorado Plateau
 FlyingM,ELSPP,NA,ELSPP.FlyingM,"Elymus spp., FlyingM",Native/Unknown,Unknown,Grass,Colorado Plateau
@@ -65,8 +81,10 @@ UtahPJ,Eriogonum sp.,NA,Eriogonum sp..UtahPJ,"Erigonum spp., UtahPJ",Native,Unkn
 Creosote,Eriogonum,NA,Eriogonum.Creosote,"Eriogonum spp., Creosote",Native,Unknown,Forb,Chihuahuan
 BarTBar,ERISP,NA,ERISP.BarTBar,"Eriogonum spp., BarTBar",Native,Unknown,Forb,Colorado Plateau
 PEFO,ERISP,NA,ERISP.PEFO,"Eriogonum spp., PEFO",Native,Unknown,Forb,Colorado Plateau
+BarTBar,ERISPP,NA,ERISPP.BarTBar,"Eriogonum spp., BarTBar",Native,Unknown,Forb,Colorado Plateau
 Patagonia,ERISPP,NA,ERISPP.Patagonia,"Eriastrum or Erigonum spp. (?), Patagonia",Native,Unknown,Forb,Sonoran SE
 SRER,ERISPP,NA,ERISPP.SRER,"Eriastrum or Erigonum spp. (?), SRER",Native,Unknown,Forb,Sonoran SE
+AVRCD,EUPSPP,NA,EUPSPP.AVRCD,"Euphorbia spp., AVRCD",Unknown,Unknown,Forb,Mojave
 SRER,FESSPP,NA,FESSPP.SRER,"FES (fescue?) spp., SRER",Unknown,Unknown,Grass,Sonoran SE
 29_Palms,GILSPP,NA,GILSPP.29_Palms,"Gilia spp., 29_Palms",Native,Unknown,Forb,Mojave
 Spiderweb,GILSPP,NA,GILSPP.Spiderweb,"Gilia spp., Spiderweb",Native,Unknown,Forb,Colorado Plateau
@@ -74,9 +92,12 @@ BabbittPJ,HCI,NA,HCI.BabbittPJ,"Unknown HCI (?), BabbittPJ",Unknown,Unknown,Unkn
 BabbittPJ,HESP,NA,HESP.BabbittPJ,"Heliomeris spp., BabbittPJ",Native,Unknown,Forb,Colorado Plateau
 FlyingM,HESP,NA,HESP.FlyingM,"Heliomeris spp., FlyingM",Native,Unknown,Forb,Colorado Plateau
 29_Palms,LEPSPP,NA,LEPSPP.29_Palms,"Lepidium spp., 29_Palms",Native/Unknown,Unknown,Forb,Mojave
+29_Palms,LEPSPP,NA,LESSPP.29_Palms,"Lepidium spp., 29_Palms",Native/Unknown,Unknown,Forb,Mojave
 Creosote,Lesquerella sp.,NA,LESSPP.Creosote,"Lesquerella spp., Creosote",Native,Unknown,Forb,Chihuahuan
 SRER,LUPSPP,NA,LUPSPP.SRER,"Lupinus spp., SRER",Unknown,Unknown,Forb,Sonoran SE
+AguaFria,LUSPP,NA,LUSPP.AguaFria,"Lupinus spp., AguaFria",Unknown,Unknown,Forb,Colorado Plateau
 AguaFria,LUSPP,NA,LUSPP.AguaFria,"Lupinus spp., AguaFria",Native/Unknown,Unknown,Forb,Colorado Plateau
+PEFO,LUSPP,NA,LUSPP.PEFO,"Lupinus spp., PEFO",Unknown,Unknown,Forb,Colorado Plateau
 TLE,MACSPP,NA,MACSPP.TLE,"Machaeranthera spp., TLE",Native,Unknown,Forb,Colorado Plateau
 29_Palms,MENSPP,NA,MENSPP.29_Palms,"Mentzelia spp., 29_Palms",Native,Unknown,Forb,Mojave
 Patagonia,MENSPP,NA,MENSPP.Patagonia,"Mentzelia spp., Patagonia",Native,Unknown,Forb,Sonoran SE
@@ -115,8 +136,10 @@ SRER,SIDSPP,NA,SIDSPP.SRER,"Sida spp., SRER",Native/Unknown,Unknown,Forb,Sonoran
 FlyingM,SOSP,NA,SOSP.FlyingM,"Solanum spp., FlyingM",Native,Unknown,Forb,Colorado Plateau
 Spiderweb,Sporobolus,NA,SPOspp.Spiderweb,"Sporobolus spp., Spiderweb",Unknown,Unknown,Grass,Colorado Plateau
 AguaFria,SPSP,NA,SPSP.AguaFria,"Sphaeralcea spp., AguaFria",Native/Unknown,Unknown,Forb,Colorado Plateau
+BabbittPJ,SPSP,NA,SPSP.BabbittPJ,"Sphaeralcea spp., BabbittPJ",Native/Unknown,Unknown,Forb,Colorado Plateau
 BarTBar,SPSP,NA,SPSP.BarTBar,"Sphaeralcea spp., BarTBar",Native/Unknown,Unknown,Forb,Colorado Plateau
 FlyingM,SPSP,NA,SPSP.FlyingM,"Sphaeralcea spp., FlyingM",Native/Unknown,Unknown,Forb,Colorado Plateau
+PEFO,SPSP,NA,SPSP.PEFO,"Sphaeralcea spp., PEFO",Native/Unknown,Unknown,Forb,Colorado Plateau
 TLE,SPSP,NA,SPSP.TLE,"Sphaeralcea spp., TLE",Native/Unknown,Unknown,Forb,Colorado Plateau
 UtahPJ,SPSP,NA,SPSP.UtahPJ,"Sphaeralcea spp., UtahPJ",Native/Unknown,Unknown,Forb,Utah
 29_Palms,STISPP,NA,STISPP.29_Palms,"Stipa spp., 29_Palms",Native,Unknown,Grass,Mojave

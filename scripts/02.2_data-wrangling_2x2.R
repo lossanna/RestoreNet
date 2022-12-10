@@ -238,7 +238,7 @@ apply(p2x2.add, 2, anyNA) # some observations are missing Total_Veg_Cover becaus
 # Correct codes for p2x2.add ----------------------------------------------
 
 # Extract incorrect codes
-setdiff(unique(p2x2.add$Code), unique(c(species.de$Code, species.in$Code)))
+setdiff(unique(p2x2.add$CodeOriginal), c(species.de$CodeOriginal, species.in$CodeOriginal))
 
 codes <- count(p2x2.add, Code)
 
