@@ -84,10 +84,3 @@ write_csv(seeded.marked.notnative,
 
 
 
-# Check if it worked after fixing 01_curate-species-list.R and writing new CSVs
-unique(subplot.seeded$Native) # only option should be "Native"
-
-########### Chunk related to 01_curate-species-list.R complete ############
-
-
-

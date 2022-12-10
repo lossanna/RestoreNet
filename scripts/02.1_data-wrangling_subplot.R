@@ -4,8 +4,8 @@ library(tidyverse)
 # Load data ---------------------------------------------------------------
 
 subplot.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllSubplotData")
-species.in <- read_csv("data/cleaned/species-list_all_location-independent_clean.csv")
-species.de <- read_csv("data/cleaned/species-list_all_location-dependent_clean.csv")
+species.in <- read_csv("data/cleaned/species-list_location-independent_clean.csv")
+species.de <- read_csv("data/cleaned/species-list_location-dependent_clean.csv")
 subplot.codes <- read_csv("data/cleaned/subplot-codes_clean.csv")
 mix <- read_xlsx("data/raw/master-seed-mix.xlsx")
 monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")

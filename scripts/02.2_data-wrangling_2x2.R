@@ -5,8 +5,8 @@ library(tidyverse)
 
 p2x2.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllPlotData")
 subplot.clean <- read_csv("data/cleaned/subplot-data_clean.csv")
-species.in <- read_csv("data/cleaned/species-list_all_location-independent_clean.csv")
-species.de <- read_csv("data/cleaned/species-list_all_location-dependent_clean.csv")
+species.in <- read_csv("data/cleaned/species-list_location-independent_clean.csv")
+species.de <- read_csv("data/cleaned/species-list_location-dependent_clean.csv")
 p2x2.codes.dup <- read_csv("data/raw/output-species6_2x2-codes_need-duplicate-rows.csv")
 mix <- read_xlsx("data/raw/master-seed-mix.xlsx")
 monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
@@ -235,9 +235,19 @@ apply(p2x2.add, 2, anyNA) # some observations are missing Total_Veg_Cover becaus
   # Duplicate rows have been added for all codes that refer to multiple species, to capture all species observations.
 
 
+# Correct codes for p2x2.add ----------------------------------------------
+
+# Extract incorrect codes
+setdiff(unique(p2x2.add$Code), unique(c(species.de$Code, species.in$Code)))
+
+codes <- count(p2x2.add, Code)
+
+# Standardize codes 
+p2x2.add <- 
+
 # Combine subplot and additional and standardize codes --------------------
 
-p2x2 <- bind_rows(p2x2.subplot, p2x2.add) %>% 
+p2x2 <- bind_rows(p2x2.add) %>% 
   arrange(MonitorID)
 
 # Check all cols for NAs

@@ -449,7 +449,7 @@ species.all.in <- p2x2.codes.missing %>%
 
 # Write to csv
 write_csv(species.all.in,
-          file = "data/cleaned/species-list_all_location-independent_clean.csv")
+          file = "data/cleaned/species-list_location-independent_clean.csv")
 
 
 
@@ -477,7 +477,7 @@ species.all.de <- p2x2.codes.missing %>%
 
 # Write to csv
 write_csv(species.all.de,
-          file = "data/cleaned/species-list_all_location-dependent_clean.csv")
+          file = "data/cleaned/species-list_location-dependent_clean.csv")
 
 
 
