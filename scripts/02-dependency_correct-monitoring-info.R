@@ -114,23 +114,21 @@ monitor.diff <- monitor.2x2 %>%
 
 # Manually inspect monitor.diff for differences by site, then write df of 
   # corresponding rows using subplot monitoring info
-# Use temporary object "x" to compare monitor.diff (2x2 monitoring info) values 
-    # with relevant obs from subplot monitoring info to determine correct value
+# Compare monitor.diff (2x2 monitoring info) values with relevant obs from 
+  # subplot monitoring info to determine correct value
 
 # AVRCD: 2 issues
 monitor.sub.AVRCD1 <- monitor.sub %>% 
   filter(Site == "AVRCD", Date_Monitored == "2020-04-30", Plot == "14") # PlotMix conflicting
-x <- monitor.sub %>% 
-  filter(Site == "AVRCD", Date_Monitored == "2020-04-30",
-         Treatment == "Seed")
-count(x, PlotMix) # there should be 4 Warm and 4 Cool
+
+count(filter(monitor.sub, Site == "AVRCD", Date_Monitored == "2020-04-30", Treatment == "Seed"), PlotMix)
+  # should be 4 Cool and 4 Warm
   
 monitor.sub.AVRCD2 <- monitor.sub %>% 
   filter(Site == "AVRCD") %>% 
   filter(Date_Monitored == "2021-04-06") # Date_Seeded conflicting
-x <- monitor.sub %>% 
-  filter(Site == "AVRCD")
-count(x, Date_Seeded) # impossible that it was seeded in 2021, because monitoring occured in 2020
+count(filter(monitor.sub, Site == "AVRCD"), Date_Seeded)
+ # impossible that it was seeded in 2021, because monitoring occurred in 2020
 
 monitor.sub.AVRCD <- bind_rows(monitor.sub.AVRCD1, monitor.sub.AVRCD2)
 
@@ -155,31 +153,52 @@ count(filter(monitor.2x2, Site == "FlyingM"), Date_Seeded) # 7/25 date is wrong
 count(filter(monitor.2x2, Site == "FlyingM"), Date_Monitored) # 6/13 is wrong, all others are 6/12
 
 
-# Mesquite
+# Mesquite: 2 issues
 monitor.sub.Mesquite <- monitor.sub %>% 
   filter(Site == "Mesquite") %>% 
-  filter(Date_Monitored == "2020-12-12") %>% 
+  filter(Date_Monitored == "2020-12-12") %>% # Date_Monitored conflicting
   bind_rows(filter(monitor.sub,
                    Site == "Mesquite",
                    Date_Monitored == "2021-10-10",
-                   Plot %in% c("233", "234", "235")))
+                   Plot %in% c("233", "234", "235"))) # PlotMix and/or Treatment conflicting for other rows
+
+count(filter(monitor.sub, Site == "Mesquite"), Date_Monitored)
+count(filter(monitor.2x2, Site == "Mesquite"), Date_Monitored) 
+  # no way to tell if date should be 12/12 or 12/13,
+    # but will change it all to 12/13 to be standardized across 2x2 and subplot data
+
+filter(monitor.sub, Site == "Mesquite", Plot == "233") # PlotMix should be None
+filter(monitor.sub, Site == "Mesquite", Plot == "234") # Should be Seed Medium
+filter(monitor.sub, Site == "Mesquite", Plot == "235") # Treatment should be Mulch
+
 
 # Patagonia
 monitor.sub.Patagonia <- monitor.sub %>% 
   filter(Site == "Patagonia") %>% 
   filter(Date_Monitored == "2021-03-12") %>% 
-  filter(Plot == "33")  
+  filter(Plot == "33") # Treatment conflicting
+
+monitor.2x2 %>% 
+  filter(Site == "Patagonia") %>% 
+  filter(Date_Monitored == "2021-03-12") %>% 
+  filter(Plot == "33")
+monitor.sub.Patagonia # Typo; should be ConMod, not `ConMod
+
 
 # Pleasant  
 monitor.sub.Pleasant <- monitor.sub %>% 
   filter(Site == "Pleasant") %>% 
   filter(Date_Monitored %in% c("2021-04-02", "2021-10-04")) %>% 
-  filter(Plot %in% c("4", "8", "12", "15", "22", "23", "30", "32"))
+  filter(Plot %in% c("4", "8", "12", "15", "22", "23", "30", "32")) # Treatment conflicting
 
-# Preserve
+count(filter(monitor.sub, Site == "Pleasant"), Treatment)
+count(filter(monitor.2x2, Site == "Pleasant"), Treatment) # should be "Seed" not "Seed only"
+
+
+# Preserve: 2 issues
 monitor.sub.Preserve <- monitor.sub %>% 
   filter(Site == "Preserve") %>% 
-  filter(Date_Monitored == "2020-03-26") %>% 
+  filter(Date_Monitored == "2020-03-26") %>%
   bind_rows(filter(monitor.sub,
                    Site == "Preserve",
                    Date_Monitored == "2021-03-30",
@@ -187,9 +206,16 @@ monitor.sub.Preserve <- monitor.sub %>%
   bind_rows(filter(monitor.sub,
                    Site == "Preserve",
                    Date_Monitored == "2021-10-06",
-                   Plot == "11"))
+                   Plot == "11")) # Date_Seeded conflicting, Treatment conflicting
 
-# Roosevelt
+count(filter(monitor.sub, Site == "Preserve"), Date_Seeded)
+count(filter(monitor.2x2, Site == "Preserve"), Date_Seeded) # should be 11/25
+
+count(filter(monitor.sub, Site == "Preserve"), Treatment)
+count(filter(monitor.2x2, Site == "Preserve"), Treatment) # should be "Seed" not "Seed only"
+
+
+# Roosevelt: 2 issues
 monitor.sub.Roosevelt <- monitor.sub %>% 
   filter(Site == "Roosevelt") %>% 
   filter(Date_Monitored %in% c("2020-03-25")) %>% 
@@ -200,14 +226,25 @@ monitor.sub.Roosevelt <- monitor.sub %>%
   bind_rows(filter(monitor.sub,
                    Site == "Roosevelt",
                    Date_Monitored == "2021-10-08",
-                   Plot %in% c("2", "16", "30", "34")))
+                   Plot %in% c("2", "16", "30", "34"))) # Date_Seeded conflicting, Treatment conflicting
+
+count(filter(monitor.sub, Site == "Roosevelt"), Date_Seeded)
+count(filter(monitor.2x2, Site == "Roosevelt"), Date_Seeded) # should be 11/22
+
+count(filter(monitor.sub, Site == "Roosevelt"), Treatment)
+count(filter(monitor.2x2, Site == "Roosevelt"), Treatment) # should be "Seed" not "Seed only"
+
 
 # Salt Desert
 monitor.sub.SaltDesert <- monitor.sub %>% 
   filter(Site == "Salt_Desert") %>% 
   filter(Date_Monitored == "2019-03-29") %>% 
   filter(Plot == "32") %>% 
-  filter(Treatment == "Pits")
+  filter(Treatment == "Pits") # Plot conflicting
+
+filter(monitor.sub, Site == "Salt_Desert", Plot == "32")
+filter(monitor.sub, Site == "Salt_Desert", Plot == "33") # should be 33
+
 
 # SCC
 monitor.sub.SCC <- monitor.sub %>% 
@@ -220,7 +257,15 @@ monitor.sub.SCC <- monitor.sub %>%
   bind_rows(filter(monitor.sub,
                    Site == "SCC",
                    Date_Monitored == "2021-10-13",
-                   Plot %in% c("16", "25", "35")))
+                   Plot %in% c("16", "25", "35"))) # Date_Seeded conflicting, Treatment conflicting
+
+count(filter(monitor.sub, Site == "SCC"), Date_Seeded)
+count(filter(monitor.2x2, Site == "SCC"), Date_Seeded) # should be 11/21
+
+count(filter(monitor.sub, Site == "SCC"), Treatment)
+count(filter(monitor.2x2, Site == "SCC"), Treatment) # should be "Seed" not "Seed only"
+
+
 
 # Combing monitoring info for all sites
 monitor.sub.all <- bind_rows(monitor.sub.AVRCD,

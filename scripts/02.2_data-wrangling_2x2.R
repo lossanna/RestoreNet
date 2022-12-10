@@ -98,15 +98,16 @@ monitor.diff <-p2x2.monitorid.na %>%
 
 # Write to CSV to correct manually
 write_csv(monitor.diff,
-          file = "data/raw/output-wrangling-2x2_monitor-info-to-be-fixed.csv")
+          file = "data/raw/output-wrangling-2x2_1monitor-info-to-be-fixed.csv")
 
 
 ##### edited manually to correct monitoring info ############################
   # similar to intermediate-dependency2-edited1_conflicting-monitoring-info-resolved.xlsx,
     # but only the ones where 2x2 was wrong
-monitor.fix <- read_xlsx("data/raw/edited-wrangling-2x2_monitor-info-fixed.xlsx")
+monitor.fix <- read_xlsx("data/raw/edited-wrangling-2x2_1monitor-info-fixed.xlsx")
 
-
+# Assign MonitorID based on fixed monitoring info
+monitor.fix <- left_join(monitor.fix, monitor.info)
 
 
 
