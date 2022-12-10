@@ -79,7 +79,7 @@ p2x2.long.intermediate <- p2x2.wide %>%
     source == "Additional_Species_In_Plot...18" ~ "add7",
     source == "Additional_Species_In_Plot...19" ~ "add8",
     TRUE ~ source)) %>% 
-  filter(source != "0")
+  filter(Code != "0")
 
 # Check all cols for NAs
 apply(p2x2.long.intermediate, 2, anyNA) 
@@ -166,8 +166,7 @@ apply(p2x2.long.monitor.fixed, 2, anyNA)
 
 # Status: p2x2.long.monitor.fixed has corrected motoring info and MonitorID for 
   # all observations, but codes that refer to more than one species have not yet
-  # been handled, and no additional species "0" observations have been removed 
-  # except for the completely empty Additional_Species cols.
+  # been handled.
 
 
 
@@ -178,17 +177,12 @@ apply(p2x2.long.monitor.fixed, 2, anyNA)
   # handle observations of additional species in plot (not subplot)
       # mnaully add extra rows for codes that need duplicate rows because codes refer to more than one species
       # make Code and CodeOriginal cols, but do not add other species info yet
-  # handle observations of species in subplot
-      # make CodeOriginal col (Code col already correct), but do not add other species info yet
   # combine additional species and subplot species obs, and standardize codes
 
 
-# Handle additional species obs first -------------------------------------
+# Handle additional species observations ----------------------------------
 
-# Remove "0"s from additional cols
 p2x2.add <- p2x2.long.monitor.fixed %>% 
-  filter(source != "subplot") %>% 
-  filter(Code != "0") %>% 
   rename(CodeOriginal = Code)
 
 # Extract codes that need duplicate rows, to add duplicates manually
@@ -239,53 +233,6 @@ apply(p2x2.add, 2, anyNA) # some observations are missing Total_Veg_Cover becaus
 # Status: p2x2.add has correct monitoring info and Code and CodeOriginal cols for all observations of
   # additional species (not subplot observations), and empty Additional_Species rows of "0" are removed.
   # Duplicate rows have been added for all codes that refer to multiple species, to capture all species observations.
-
-
-
-# Handle subplot species obs ----------------------------------------------
-
-# Extract species observed in subplots
-p2x2.subplot <- p2x2.long.monitor.fixed %>% 
-  filter(source == "subplot") 
-  # subplot data has correct Code, but no CodeOriginal col, because it was pivoted from
-    # the Code col of subplot.clean, which has corrected codes
-apply(p2x2.subplot, 2, anyNA) 
-
-# Inspect subplot species observations with NA code
-p2x2.sub.codena <- p2x2.subplot %>% 
-  filter(is.na(Code))
-setdiff(p2x2.sub.codena$MonitorID, monitor.diff$MonitorID)
-  # The rows missing codes are from the same monitoring events that had to be fixed manually
-
-idk <- p2x2.long.monitor.fixed %>% 
-  filter(MonitorID %in% p2x2.sub.codena$MonitorID) %>% 
-  arrange(MonitorID)
-
-subplot %>% 
-  filter(MonitorID == 1405)
-
-
-# Add CodeOriginal col to location-independent and location-dependent separately              
-# Separate out location-dependent
-p2x2.subplot.de <- p2x2.subplot %>% 
-  filter(Code %in% species.de$Code)
-
-# Add CodeOriginal col to location-dependent (remove .Site from Code)
-p2x2.subplot.de$CodeOriginal <- gsub("\\..*", "", p2x2.subplot.de$Code)  
-
-# Add CodeOriginal col to location-independent and combine with location-dependent
-p2x2.subplot <- p2x2.subplot %>% 
-  mutate(CodeOriginal = p2x2.subplot$Code) %>% # add CodeOriginal col
-  filter(!CodeOriginal %in% species.de$Code) %>% # remove location-dependent because they have incorrect CodeOriginal
-  bind_rows(p2x2.subplot.de) %>% # add location-dependent with correct CodeOriginal
-  select(Site, Region, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix,
-         CodeOriginal, Code, Seeded_Cover, Total_Veg_Cover, raw.row, source, MonitorID) %>%  # reorder cols
-  arrange(MonitorID)
-
-# p2x2.subplot is 2x2 plot data with correct monitoring info and codes for all observations of
-  # subplot species (not additional species in plot).
-
-
 
 
 # Combine subplot and additional and standardize codes --------------------
