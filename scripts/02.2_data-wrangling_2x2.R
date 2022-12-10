@@ -5,7 +5,6 @@ library(tidyverse)
 
 p2x2.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllPlotData")
 subplot.clean <- read_csv("data/cleaned/subplot-data_clean.csv")
-subo <- read_csv("data/raw/intermediate-dependency2_subplot-data_original-monitoring-info.csv")
 species.in <- read_csv("data/cleaned/species-list_all_location-independent_clean.csv")
 species.de <- read_csv("data/cleaned/species-list_all_location-dependent_clean.csv")
 p2x2.codes.dup <- read_csv("data/raw/output-species6_2x2-codes_need-duplicate-rows.csv")
@@ -39,6 +38,11 @@ unique(p2x2.wide$Additional_Species_In_Plot...19) # observations in col
 p2x2.wide <- p2x2.wide %>% 
   select(-Additional_Species_In_Plot...22, -Additional_Species_In_Plot...21,
          -Additional_Species_In_Plot...20)
+
+# Change Date_Seeded to 7/18 for all of FlyingM
+p2x2.wide <- p2x2.wide %>% 
+  mutate(Date_Seeded = as.Date(Date_Seeded)) %>% 
+  mutate(Date_Seeded = if_else(Site == "FlyingM", as.Date("2018-07-18"), Date_Seeded))
 
 # Add subplot species observations
 subplot <- subplot.clean %>% 
@@ -108,7 +112,7 @@ monitor.fix <- read_xlsx("data/raw/edited-wrangling-2x2_1monitor-info-fixed.xlsx
 
 # Assign MonitorID based on fixed monitoring info
 monitor.fix <- left_join(monitor.fix, monitor.info)
-
+filter(monitor.fix, is.na(MonitorID)) # all assigned MonitorID
 
 
 

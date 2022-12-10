@@ -170,6 +170,11 @@ write_csv(subplot,
 # Complete corrected monitoring info was derived from 02.2_data-wrangling_2x2.R script
 monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
 
+# Change Date_Seeded to 7/18 for all of FlyingM
+subplot <- subplot %>% 
+  mutate(Date_Seeded = as.Date(Date_Seeded)) %>% 
+  mutate(Date_Seeded = if_else(Site == "FlyingM", as.Date("2018-07-18"), Date_Seeded))
+
 # Create df of original (incorrect) monitoring data to match MonitorID to subplot data
   # with left_join()
 monitor.assign <- subplot %>% 
@@ -180,6 +185,7 @@ monitor.assign <- monitor.assign %>%
 
 # Add MonitorID to subplot data
 subplot <- left_join(subplot, monitor.assign)
+filter(subplot, is.na(MonitorID)) # all assigned MonitorID
 
 # Remove monitoring info from subplot data because some of it is wrong
 subplot <- subplot %>% 
@@ -191,11 +197,6 @@ subplot <- subplot %>%
   select(Site, Region, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix,
          CodeOriginal, Code, Name, Native, Duration, Lifeform, Count, Height,
          Seeded, raw.row, MonitorID) # reorder cols
-
-# Change Date_Seeded to 7/18 for all of FlyingM
-subplot <- subplot %>% 
-  mutate(Date_Seeded = as.Date(Date_Seeded)) %>% 
-  mutate(Date_Seeded = if_else(Site == "FlyingM", as.Date("2018-07-18"), Date_Seeded))
 
 # Check all cols for NAs
 apply(subplot, 2, anyNA) 

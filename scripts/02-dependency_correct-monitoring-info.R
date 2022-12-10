@@ -81,6 +81,7 @@ p2x2.long.intermediate <- p2x2.wide %>%
 apply(p2x2.long.intermediate, 2, anyNA)
 
 
+
 # Correct monitoring info -------------------------------------------------
 
 # Check for NA codes
@@ -310,6 +311,11 @@ monitor.info <- monitor.sub %>%
   filter(!MonitorID %in% monitor.fix$MonitorID) %>% 
   bind_rows(monitor.fix) %>% 
   arrange(MonitorID)
+
+# Change Date_Seeded to 7/18 for all of FlyingM
+monitor.info <- monitor.info %>% 
+  mutate(Date_Seeded = as.Date(Date_Seeded)) %>% 
+  mutate(Date_Seeded = if_else(Site == "FlyingM", as.Date("2018-07-18"), Date_Seeded))
 
 # Write to CSV
 write_csv(monitor.info,
