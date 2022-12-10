@@ -44,27 +44,30 @@ p2x2.wide <- p2x2.wide %>%
   mutate(Date_Seeded = as.Date(Date_Seeded)) %>% 
   mutate(Date_Seeded = if_else(Site == "FlyingM", as.Date("2018-07-18"), Date_Seeded))
 
-# Add subplot species observations
+# Add MonitorID based on subplot data
 subplot <- subplot.clean %>% 
-  select(Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix, Code, MonitorID) %>% 
-  rename(subplot = Code)
+  select(Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix, MonitorID) 
 
-p2x2.wide <- left_join(p2x2.wide, subplot) # NA codes (subplot col) created because of conflicts between subplot and 2x2 monitoring info
+p2x2.wide <- left_join(p2x2.wide, subplot)
 
 # Check for all cols for NAs
 apply(p2x2.wide, 2, anyNA)
-to.drop <- p2x2.wide %>% # remove completely empty rows (not counting raw.row, Region, or subplot cols)
+to.drop <- p2x2.wide %>% # remove completely empty rows (not counting raw.row, Region, or MonitorID cols)
   filter(is.na(Site) & is.na(Date_Seeded) & is.na(Date_Monitored) & is.na(Plot) &
-         is.na(Treatment) & is.na(PlotMix))
+           is.na(Treatment) & is.na(PlotMix))
 p2x2.wide <- p2x2.wide %>% 
   filter(!raw.row %in% to.drop$raw.row)
 rm(to.drop)
+apply(p2x2.wide, 2, anyNA)
+  # Total_Veg_Cover has NAs because sometimes that data was not recorded in the field
+  # Additional_Species cols have NAs because not all observations had >1 additional species in plot
+  # MonitorID has NAs because of conflicts between subplot and 2x2 monitoring info, so no MonitorID could be assigned
 
 
 # Pivot species columns
 p2x2.long.intermediate <- p2x2.wide %>% 
   mutate(across(everything(), as.character)) %>% 
-  pivot_longer(c(starts_with("Additional"), subplot), names_to = "source", values_to = "Code") %>% 
+  pivot_longer(c(starts_with("Additional")), names_to = "source", values_to = "Code") %>% 
   distinct(.keep_all = TRUE) %>% 
   mutate(source = case_when(
     source == "Additional_Species_In_Plot...12" ~ "add1",
@@ -75,11 +78,18 @@ p2x2.long.intermediate <- p2x2.wide %>%
     source == "Additional_Species_In_Plot...17" ~ "add6",
     source == "Additional_Species_In_Plot...18" ~ "add7",
     source == "Additional_Species_In_Plot...19" ~ "add8",
-    TRUE ~ source))
+    TRUE ~ source)) %>% 
+  filter(source != "0")
 
 # Check all cols for NAs
 apply(p2x2.long.intermediate, 2, anyNA) 
   # NA codes and MonitorID created because of conflicts between subplot and 2x2 monitoring info
+
+# Status: p2x2.long.intermediate has MonitorID applied to observations with correct monitoring info,
+  # and empty Additional_Species observations created from pivot_longer() have been removed,
+  # but there is incorrect monitoring info, and codes that refer to more than one species have not
+  # yet been handled.
+
 
 
 
@@ -153,8 +163,11 @@ p2x2.long.monitor.fixed <- p2x2.long.monitor.fixed %>%
 
 # Check all cols for NAs
 apply(p2x2.long.monitor.fixed, 2, anyNA) 
-  # monitoring info is correct now, but codes still need to be corrected
 
+# Status: p2x2.long.monitor.fixed has corrected motoring info and MonitorID for 
+  # all observations, but codes that refer to more than one species have not yet
+  # been handled, and no additional species "0" observations have been removed 
+  # except for the completely empty Additional_Species cols.
 
 
 
@@ -163,18 +176,17 @@ apply(p2x2.long.monitor.fixed, 2, anyNA)
 
 # Workflow:
   # handle observations of additional species in plot (not subplot)
-      # add extra rows for codes that need duplicate rows because codes refer to more than one species
+      # mnaully add extra rows for codes that need duplicate rows because codes refer to more than one species
       # make Code and CodeOriginal cols, but do not add other species info yet
   # handle observations of species in subplot
-      # made Code and CodeOriginal cols, but do not add other species info yet
+      # make CodeOriginal col (Code col already correct), but do not add other species info yet
   # combine additional species and subplot species obs, and standardize codes
-
 
 
 # Handle additional species obs first -------------------------------------
 
 # Remove "0"s from additional cols
-p2x2.add <- p2x2.long.intermediate %>% 
+p2x2.add <- p2x2.long.monitor.fixed %>% 
   filter(source != "subplot") %>% 
   filter(Code != "0") %>% 
   rename(CodeOriginal = Code)
@@ -194,51 +206,69 @@ p2x2.add.dup <- p2x2.add.dup %>%
   mutate(Total_Veg_Cover = as.character(p2x2.add.dup$Total_Veg_Cover)) # correct the col class to match p2x2.long.intermediate
 
 
-
 # Standard Code and CodeOriginal cols for non-duplicates 
-
 # Add Code.Site to location-dependent non-duplicate rows
   # obs that need duplicate rows already have Code.Site as Code, because it was manually entered
+
 # Remove codes for duplicate rows that were fixed separately
 p2x2.add.single <- p2x2.add %>% 
   filter(!CodeOriginal %in% p2x2.add.dup$CodeOriginal) 
 
 # Separate out location-dependent
 p2x2.add.single.de <- p2x2.add.single %>% 
-  filter(CodeOriginal %in% species.all.de$CodeOriginal)
+  filter(CodeOriginal %in% species.de$CodeOriginal)
 
 # Add Code col (Code.Site) to location-dependent
 p2x2.add.single.de$Code <- apply(p2x2.add.single.de[ , c("CodeOriginal", "Site")], 1, paste, collapse = ".")
 
-
 # Add Code col to location-independent and combine with location-dependent
 p2x2.add.single <- p2x2.add.single %>% 
   mutate(Code = p2x2.add.single$CodeOriginal) %>% # add Code col
-  filter(!CodeOriginal %in% species.all.de$CodeOriginal) %>% # remove location-dependent because they have incorrect Codes
+  filter(!CodeOriginal %in% species.de$CodeOriginal) %>% # remove location-dependent because they have incorrect Codes
   bind_rows(p2x2.add.single.de) %>% # add location-dependent with correct codes
   select(Site, Region, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix,
          CodeOriginal, Code, Seeded_Cover, Total_Veg_Cover, raw.row, source, MonitorID) # reorder cols
-
 
 # Combine all additional species obs
 p2x2.add <- bind_rows(p2x2.add.dup, p2x2.add.single) %>% 
   arrange(MonitorID)
 
-filter(p2x2.add, is.na(Code))
+# Check all cols for NAs
+apply(p2x2.add, 2, anyNA) # some observations are missing Total_Veg_Cover because that data was not collected
 
-# p2x2.add is 2x2 plot data with correct monitoring info and codes for all observations of
-  # additional species (not subplot obs) 
+# Status: p2x2.add has correct monitoring info and Code and CodeOriginal cols for all observations of
+  # additional species (not subplot observations), and empty Additional_Species rows of "0" are removed.
+  # Duplicate rows have been added for all codes that refer to multiple species, to capture all species observations.
 
 
 
 # Handle subplot species obs ----------------------------------------------
 
-p2x2.subplot <- p2x2.long.intermediate %>% 
+# Extract species observed in subplots
+p2x2.subplot <- p2x2.long.monitor.fixed %>% 
   filter(source == "subplot") 
+  # subplot data has correct Code, but no CodeOriginal col, because it was pivoted from
+    # the Code col of subplot.clean, which has corrected codes
+apply(p2x2.subplot, 2, anyNA) 
 
+# Inspect subplot species observations with NA code
+p2x2.sub.codena <- p2x2.subplot %>% 
+  filter(is.na(Code))
+setdiff(p2x2.sub.codena$MonitorID, monitor.diff$MonitorID)
+  # The rows missing codes are from the same monitoring events that had to be fixed manually
+
+idk <- p2x2.long.monitor.fixed %>% 
+  filter(MonitorID %in% p2x2.sub.codena$MonitorID) %>% 
+  arrange(MonitorID)
+
+subplot %>% 
+  filter(MonitorID == 1405)
+
+
+# Add CodeOriginal col to location-independent and location-dependent separately              
 # Separate out location-dependent
 p2x2.subplot.de <- p2x2.subplot %>% 
-  filter(Code %in% species.all.de$Code)
+  filter(Code %in% species.de$Code)
 
 # Add CodeOriginal col to location-dependent (remove .Site from Code)
 p2x2.subplot.de$CodeOriginal <- gsub("\\..*", "", p2x2.subplot.de$Code)  
@@ -246,14 +276,14 @@ p2x2.subplot.de$CodeOriginal <- gsub("\\..*", "", p2x2.subplot.de$Code)
 # Add CodeOriginal col to location-independent and combine with location-dependent
 p2x2.subplot <- p2x2.subplot %>% 
   mutate(CodeOriginal = p2x2.subplot$Code) %>% # add CodeOriginal col
-  filter(!CodeOriginal %in% species.all.de$Code) %>% # remove location-dependent because they have incorrect CodeOriginal
+  filter(!CodeOriginal %in% species.de$Code) %>% # remove location-dependent because they have incorrect CodeOriginal
   bind_rows(p2x2.subplot.de) %>% # add location-dependent with correct CodeOriginal
   select(Site, Region, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix,
          CodeOriginal, Code, Seeded_Cover, Total_Veg_Cover, raw.row, source, MonitorID) %>%  # reorder cols
   arrange(MonitorID)
 
 # p2x2.subplot is 2x2 plot data with correct monitoring info and codes for all observations of
-  # subplot species (not additional species in plot) 
+  # subplot species (not additional species in plot).
 
 
 
@@ -262,6 +292,10 @@ p2x2.subplot <- p2x2.subplot %>%
 
 p2x2 <- bind_rows(p2x2.subplot, p2x2.add) %>% 
   arrange(MonitorID)
+
+# Check all cols for NAs
+apply(p2x2, 2, anyNA) 
+
 
 # Remove rows with NA code 
   # these were assigned NA because of conflicting monitoring info, and the correct obs have already been retained
