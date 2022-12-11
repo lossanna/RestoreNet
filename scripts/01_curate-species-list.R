@@ -405,8 +405,6 @@ species.subplot.de <- species.de
 # Codes from AllPlotData (2 x 2 m plots) that missing from location-independent species list
 
 # Codes from these plots are really different and usually long descriptions
-  # so they get their own separate list
-
 
 p2x2.codes.missing <- plot.2x2.raw %>% 
   select(Site, starts_with("Additional")) %>% 
@@ -432,12 +430,65 @@ head(p2x2.codes.missing)
 # Check for NAs
 apply(p2x2.codes.missing, 2, anyNA) # should be no NA
 
-
 # Add site to code and name for location-dependent species
 p2x2.codes.de <- p2x2.codes.missing %>% 
   filter(LocationDependence == "dependent") 
 p2x2.codes.de$Code <- apply(p2x2.codes.de[ , c("Code", "Site")], 1, paste, collapse = ".")
 p2x2.codes.de$Name <- apply(p2x2.codes.de[ , c("Name", "Site")], 1, paste, collapse = ", ")
+
+
+
+# Compare 2x2 and subplot species info
+  # because 2x2 species info was entered manually based on just the original code, and may be wrong
+  # But this is only possible now because Code has site info also
+
+# 2x2 species info for overlapping codes
+de.overlap.2x2 <- p2x2.codes.de %>% 
+  filter(Code %in% species.subplot.de$Code) %>% 
+  arrange(Code) %>% 
+  select(-NeedsItsDuplicate, -DuplicateNum, -LocationDependence, -Site)  
+newcol <- paste0(colnames(de.overlap.2x2), "_2x2")
+colnames(de.overlap.2x2) <- newcol
+
+# Subplot species info for overlapping codes
+de.overlap.sub <- species.subplot.de %>% 
+  filter(Code %in% p2x2.codes.de$Code) %>% 
+  arrange(Code) %>% 
+  select(-Site, -Region) 
+
+# Combine and compare
+de.overlap <- bind_cols(de.overlap.2x2, de.overlap.sub) %>% 
+  select(CodeOriginal, CodeOriginal_2x2, Code, Code_2x2, Name, Name_2x2,
+         Native, Native_2x2, Duration, Duration_2x2, Lifeform, Lifeform_2x2)
+
+# Visually inspect differences in table
+identical(de.overlap$CodeOriginal, de.overlap$CodeOriginal_2x2) # no difference
+identical(de.overlap$Code, de.overlap$Code_2x2) # no difference
+
+identical(de.overlap$Name, de.overlap$Name_2x2)
+setdiff(de.overlap$Name, de.overlap$Name_2x2) 
+  # subplot names are right, they are either more detailed or came from master species list
+
+identical(de.overlap$Native, de.overlap$Native_2x2)
+count(de.overlap, Native)
+count(de.overlap, Native_2x2)
+  # subplot Native status is more specific, and should be used
+
+identical(de.overlap$Duration, de.overlap$Duration_2x2) # no difference
+
+identical(de.overlap$Lifeform, de.overlap$Lifeform_2x2)
+count(de.overlap, Lifeform)
+count(de.overlap, Lifeform_2x2)
+  # subplot Lifeform is more specific, and should be used
+
+
+# Replace species info with info from subplot where there are conflicts
+p2x2.codes.de <- p2x2.codes.de %>% 
+  filter(!Code %in% de.overlap$Code) %>% # remove incorrect info
+  bind_rows(de.overlap.sub) # replace with subplot species info
+
+
+
 
 # Combine location-independent and dependent with new codes
 p2x2.codes.missing <- p2x2.codes.missing %>% 
@@ -471,7 +522,6 @@ species.in <- bind_rows(species.2x2.in, species.subplot.in) %>%
 # Look for codes previously standardized, now that we have added 2x2 data
 species.in %>% 
   filter(Code %in% codes.standardized.in$Old_Code) # no old codes show up
-
 
 # Write to csv
 write_csv(species.in,

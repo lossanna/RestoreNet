@@ -218,7 +218,7 @@ UNK heart,Unknown forb with heart-shaped cotyledon; possibly MAPA5 (although tha
 Unk sp.,Unknown species,Unknown,Sonoran Central,Pleasant,Unknown,Unknown
 Unk sp.,Unknown species,Unknown,Sonoran Central,SCC,Unknown,Unknown
 Unkaster,Unknown aster,Unknown,Chihuahuan,Mesquite,Unknown,Forb
-UnkATCA,Unknown shrub; Possible Atriplex canescens,Native/Unknown,Chihuahuan,Mesquite,Unknown,Shrub
+UnkATCA,Unknown shrub; Possible Atriplex canescens,Native/Unknown,Chihuahuan,Mesquite,Perennial,Shrub
 Unkcrypt,Cryptantha spp.,Native,Chihuahuan,Creosote,Unknown,Forb
 Unkfabaceae,Unknown fabaceae,Unknown,Chihuahuan,Creosote,Unknown,Forb
 Unkforb,Unknown forb,Unknown,Chihuahuan,Creosote,Unknown,Forb
@@ -234,5 +234,5 @@ Unksporo,Unknown grass; Sporobolus and Eragrostis,Unknown,Chihuahuan,Creosote,Un
 Unksporo,Unknown grass; Sporobolus and Eragrostis,Unknown,Chihuahuan,Mesquite,Unknown,Grass
 Unksporob,Sporobolus spp.,Unknown,Chihuahuan,Mesquite,Unknown,Grass
 UNSFF,"Unknown shrubby fuzzy forb, munched down",Unknown,Sonoran SE,SRER,Unknown,Grass
-UNSH,Unknown shrub,Unknown,Colorado Plateau,BarTBar,Unknown,Shrub
+UNSH,Unknown shrub,Unknown,Colorado Plateau,BarTBar,Perennial,Shrub
 UNFO.12166.assigned,"Unknown forb with assigned code, and manually entered",Unknown,Utah,Salt_Desert,Unknown,Forb

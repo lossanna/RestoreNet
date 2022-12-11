@@ -218,7 +218,7 @@ UNK heart,"Unknown forb with heart-shaped cotyledon; possibly MAPA5 (although th
 Unk sp.,"Unknown species, Pleasant",Unknown,Sonoran Central,Pleasant,Unknown,Unknown,Unk sp..Pleasant
 Unk sp.,"Unknown species, SCC",Unknown,Sonoran Central,SCC,Unknown,Unknown,Unk sp..SCC
 Unkaster,"Unknown aster, Mesquite",Unknown,Chihuahuan,Mesquite,Unknown,Forb,Unkaster.Mesquite
-UnkATCA,"Unknown shrub; Possible Atriplex canescens, Mesquite",Native/Unknown,Chihuahuan,Mesquite,Unknown,Shrub,UnkATCA.Mesquite
+UnkATCA,"Unknown shrub; Possible Atriplex canescens, Mesquite",Native/Unknown,Chihuahuan,Mesquite,Perennial,Shrub,UnkATCA.Mesquite
 Unkcrypt,"Cryptantha spp., Creosote",Native,Chihuahuan,Creosote,Unknown,Forb,Unkcrypt.Creosote
 Unkfabaceae,"Unknown fabaceae, Creosote",Unknown,Chihuahuan,Creosote,Unknown,Forb,Unkfabaceae.Creosote
 Unkforb,"Unknown forb, Creosote",Unknown,Chihuahuan,Creosote,Unknown,Forb,Unkforb.Creosote
@@ -234,5 +234,5 @@ Unksporo,"Unknown grass; Sporobolus and Eragrostis, Creosote",Unknown,Chihuahuan
 Unksporo,"Unknown grass; Sporobolus and Eragrostis, Mesquite",Unknown,Chihuahuan,Mesquite,Unknown,Grass,Unksporo.Mesquite
 Unksporob,"Sporobolus spp., Mesquite",Unknown,Chihuahuan,Mesquite,Unknown,Grass,Unksporob.Mesquite
 UNSFF,"Unknown shrubby fuzzy forb, munched down, SRER",Unknown,Sonoran SE,SRER,Unknown,Grass,UNSFF.SRER
-UNSH,"Unknown shrub, BarTBar",Unknown,Colorado Plateau,BarTBar,Unknown,Shrub,UNSH.BarTBar
+UNSH,"Unknown shrub, BarTBar",Unknown,Colorado Plateau,BarTBar,Perennial,Shrub,UNSH.BarTBar
 UNFO.12166.assigned,"Unknown forb with assigned code, and manually entered, Salt_Desert",Unknown,Utah,Salt_Desert,Unknown,Forb,UNFO.12166.assigned.Salt_Desert
