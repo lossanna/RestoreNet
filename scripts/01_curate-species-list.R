@@ -481,13 +481,22 @@ count(de.overlap, Lifeform)
 count(de.overlap, Lifeform_2x2)
   # subplot Lifeform is more specific, and should be used
 
-
 # Replace species info with info from subplot where there are conflicts
 p2x2.codes.de <- p2x2.codes.de %>% 
   filter(!Code %in% de.overlap$Code) %>% # remove incorrect info
   bind_rows(de.overlap.sub) # replace with subplot species info
 
 
+# Check for Codes with multiple species
+p2x2.codes.de %>% 
+  filter(Code %in% filter(p2x2.codes.de, duplicated(Code))$Code) %>% 
+  arrange(Code) 
+  # SRER ones are duplicates because they mention more than one species
+  # BabbittPJ should not have duplicates
+
+# Replace "ELSP" with "ELSPP"
+p2x2.codes.de[p2x2.codes.de == "ELSP"] <- "ELSPP"
+p2x2.codes.de[p2x2.codes.de == "ELSP.BabbittPJ"] <- "ELSPP.BabbittPJ"
 
 
 # Combine location-independent and dependent with new codes

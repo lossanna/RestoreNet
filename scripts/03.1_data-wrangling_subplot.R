@@ -101,7 +101,6 @@ subplot.de <-subplot %>%
 # Rename code col so subplot data matches species list
 subplot.de <- subplot.de %>% 
   rename(CodeOriginal = Code)
-nrow(subplot.de) # 5265
 
 # Add species info
 subplot.de.join <- left_join(subplot.de, species.de)
