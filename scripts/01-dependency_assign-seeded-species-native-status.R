@@ -60,11 +60,13 @@ subplot <- bind_rows(subplot.in, subplot.de)
 
 # Address native status for unknown seeded species ------------------------
 
+# Filter out seeded species
 subplot.seeded <- subplot %>% 
   filter(Seeded == "Yes")
 
-subplot.seeded <- left_join(subplot.seeded, mix) %>% 
-  select(-Family, -Scientific, -Common)
+# Check Native status
+unique(subplot.seeded$Native) # seeded species should all be native
+
 
 # Extract names that were seeded but not marked Native
 seeded.marked.notnative <- subplot.seeded %>% 

@@ -224,4 +224,35 @@ seed.rate.na.known <- seed.rate.na %>%
   filter(!str_detect(seed.rate.na$Name, "Unk|unk|spp."))
 
 
+
+# Address seeded species codes not in mix ---------------------------------
+
+# Filter out seeded species
+subplot.seeded <- subplot %>% 
+  filter(`Seeded(Yes/No)` == "Yes")
+
+# Add mix information to seeded species
+apply(mix, 2, anyNA) # mix has no NAs
+
+subplot.seeded <- left_join(subplot.seeded, mix) %>% 
+  select(-Family, -Scientific, -Common) # left_join() to assign mix information to seeded species
+
+# Examine species that were marked seeded but not in mix table
+seeded.na.mix <- subplot.seeded %>% 
+  filter(is.na(Mix)) %>% 
+  select(Site, Code, Code, Name, Mix) %>% 
+  distinct(.keep_all = TRUE) %>% 
+  arrange(Name) 
+
+# Make list of species marked "Seeded" (Codes already location-specific)
+subplot.seeded.codes <- subplot.seeded %>% 
+  select(Site, Code, CodeOriginal, Name, Seeded) %>% 
+  distinct(.keep_all = TRUE) %>% 
+  arrange(Name) 
+
+# Write seeded species codes to CSV
+write_csv("data/raw/intermediate-dependency")
+
+
+
 save.image("RData/02.1_data-wrangling_subplot.RData")

@@ -340,6 +340,7 @@ write_csv(species.de,
 
 
 
+
 # Fix native status for select seeded species -----------------------------
 
 # Load dependency list created in 01.1-dependency_assign-seeded-species-native-status.R
@@ -350,7 +351,11 @@ native.fix <- read_csv("data/raw/intermediate-dependency1_seeded-species-to-be-m
 species.in <- species.in %>% 
   mutate(Native.new = if_else(Name %in% native.fix$Name, "Native", Native))
 
-# Visually inspect to make sure things changed, then keep fixed column
+# Visually inspect to make sure things changed
+species.in %>% 
+  filter(Code %in% native.fix$Code)
+
+# Keep the fixed version of Native col
 species.in <- species.in %>% 
   select(-Native) %>% 
   rename(Native = Native.new)
@@ -360,7 +365,12 @@ species.in <- species.in %>%
 species.de <- species.de %>% 
   mutate(Native.test = if_else(Name %in% native.fix$Name, "Native", Native))
 
-# Visually inspect to make sure things changed, then keep fixed column
+# Visually inspect to make sure things changed
+species.de %>% 
+  filter(Code %in% native.fix$Code) %>% 
+  select(CodeOriginal, Name, Native, Native.test)
+
+# Keep the fixed version of Native col
 species.de <- species.de %>% 
   select(-Native) %>% 
   rename(Native = Native.test)
@@ -391,7 +401,6 @@ species.subplot.de <- species.de
 
 
 
-
 # Codes from AllPlotData (2x2 plots) --------------------------------------
 
 # Codes from AllPlotData (2 x 2 m plots) that missing from location-independent species list
@@ -411,17 +420,18 @@ p2x2.codes.missing <- plot.2x2.raw %>%
   filter(!is.na(Code),
          Code != "O")
 
+# OUTPUT: create list of sites and codes that need more info
 write_csv(p2x2.codes.missing,
           file = "data/raw/output-species5_codes-missing-2x2plot.csv")
+head(p2x2.codes.missing)
 
-
-#### edit new file manually #########
-  # make sure all have native, duration, lifeform information
+# EDITED: add/correct Native, Duration, Lifeform info
   # create multiple rows for codes that mention more than one species (happens at SRER and Patagonia)
 p2x2.codes.missing <- read_csv("data/raw/edited-species5_codes-missing-2x2plot.csv")
+head(p2x2.codes.missing)
 
 # Check for NAs
-apply(p2x2.codes.missing, 2, anyNA)
+apply(p2x2.codes.missing, 2, anyNA) # should be no NA
 
 
 # Add site to code and name for location-dependent species
@@ -444,21 +454,8 @@ write_csv(p2x2.codes.dup,
           file = "data/raw/output-species6_2x2-codes_need-duplicate-rows.csv")
 
 
-# Extract species with multiple codes for the same name, retaining all codes
-species.in %>% 
-  filter(Name %in% filter(species.in, duplicated(Name))$Name) %>% 
-  distinct(.keep_all = TRUE) %>% 
-  arrange(Name) # DRCU/DRCUI and ESCA2/ESCAM are okay
-
-species.de %>% 
-  filter(Name %in% filter(species.de, duplicated(Name))$Name) %>% 
-  distinct(.keep_all = TRUE) %>% 
-  arrange(Name) # these unknowns are okay
-
-
 
 # Full species list for location-independent ------------------------------
-
 
 # Combine location-independent 2x2 codes with subplot codes
 species.2x2.in <- p2x2.codes.missing %>% 
@@ -475,6 +472,7 @@ species.in <- bind_rows(species.2x2.in, species.subplot.in) %>%
 # Look for codes previously standardized, now that we have added 2x2 data
 species.in %>% 
   filter(Code %in% codes.standardized.in$Old_Code) # no old codes show up
+
 
 # Write to csv
 write_csv(species.in,
@@ -510,7 +508,6 @@ species.de <- bind_rows(species.2x2.de, species.subplot.de) %>%
 # Look for codes previously standardized, now that we have added 2x2 data
 species.de %>% 
   filter(Code %in% codes.standardized.in$Old_Code) # no old codes show up
-
 
 # Write to csv
 write_csv(species.de,
