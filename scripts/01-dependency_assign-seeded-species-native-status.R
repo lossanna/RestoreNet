@@ -10,8 +10,8 @@ library(tidyverse)
 
 # Load data ---------------------------------------------------------------
 
-species.in.intermed <- read_csv("data/raw/intermediate-dependency1_species-list_location-independent.csv")
-species.de.intermed <- read_csv("data/raw/intermediate-dependency1_species-list_location-dependent.csv")
+species.in.intermed <- read_csv("data/raw/01-dependency_species-list_location-independent.csv")
+species.de.intermed <- read_csv("data/raw/01-dependency_species-list_location-dependent.csv")
 subplot.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllSubplotData")
 mix <- read_xlsx("data/raw/master-seed-mix.xlsx")
 
@@ -82,7 +82,7 @@ seeded.marked.notnative <- seeded.marked.notnative %>%
 # Write list of names to CSV for 01_curate-species-list.R
   # Codes are already location-specific
 write_csv(seeded.marked.notnative,
-          file = "data/raw/intermediate-dependency1_seeded-species-to-be-marked-native.csv")
+          file = "data/raw/01-dependency_seeded-species-to-be-marked-native.csv")
 
 
 

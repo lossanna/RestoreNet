@@ -9,8 +9,7 @@ species.raw <- read_xlsx("data/raw/master-species_native.xlsx")
 mix <- read_xlsx("data/raw/master-seed-mix.xlsx")
 
 # Dependency created in 01-dependency_assign-seeded-species-native-status.R
-native.fix <- read_csv("data/raw/intermediate-dependency1_seeded-species-to-be-marked-native.csv") 
-
+native.fix <- read_csv("data/raw/01-dependency_seeded-species-to-be-marked-native.csv")
 
 
 # Notes about manual edits ------------------------------------------------
@@ -57,11 +56,11 @@ subplot.missing <- subplot %>%
 
 # OUTPUT: write to csv to manually fill in information
 write_csv(subplot.missing,
-          file = "data/raw/output-species1_subplot-codes-missing.csv")
+          file = "data/raw/01a_output-species1_subplot-codes-missing.csv")
 head(subplot.missing)
 
 # EDITED: manually edit new file to add Name, Native, Lifeform, and Duration cols
-sub.missing.edit <- read_csv("data/raw/edited-species1_subplot-codes-missing_native-duration-lifeform.csv")
+sub.missing.edit <- read_csv("data/raw/01b_edited-species1_subplot-codes-missing_native-duration-lifeform.csv")
 head(sub.missing.edit)
 
 
@@ -141,11 +140,11 @@ lifeform.na <- species.m.known %>%
   arrange(Code)
 
 write_csv(lifeform.na,
-          file = "data/raw/output-species2_xlsx_lifeform-na.csv")
+          file = "data/raw/01a_output-species2_xlsx_lifeform-na.csv")
 head(lifeform.na)
 
 # EDITED: manually edit new file and fill in Lifeform col
-lifeform.na.edit <- read_csv("data/raw/edited-species2_xlsx_lifeform-na.csv")
+lifeform.na.edit <- read_csv("data/raw/01b_edited-species2_xlsx_lifeform-na.csv")
 head(lifeform.na.edit)
 
 
@@ -180,12 +179,12 @@ unique(species.m.known$Lifeform) # lifeform has been standardized
 
 # OUTPUT: write output with Native and Lifeform columns
 write_csv(species.m.known,
-          file = "data/raw/output-species3_xlsx_native-lifeform.csv")
+          file = "data/raw/01a_output-species3_xlsx_native-lifeform.csv")
 head(species.m.known)
 
 
 # EDITED: edit new file manually to add Duration and correct Lifeform if needed
-species.m.known <- read_csv("data/raw/edited-species3_xlsx_native-lifeform-duration.csv")
+species.m.known <- read_csv("data/raw/01b_edited-species3_xlsx_native-lifeform-duration.csv")
 head(species.m.known)
 
 
@@ -269,7 +268,7 @@ species.in <- species.in %>%
   # Used in 01.1-dependency_assign-seeded-species-native-status.R
 
 write_csv(species.in,
-          file = "data/raw/intermediate-dependency1_species-list_location-independent.csv")
+          file = "data/raw/01-dependency_species-list_location-independent.csv")
 head(species.in)
 
 
@@ -284,7 +283,7 @@ species.de <- bind_rows(species.m.unk, sub.missing.unk)
 
 # OUTPUT: write to CSV to fill in information for species.m.unk
 write_csv(species.de,
-          file = "data/raw/output-species4.1_location-dependent.csv")
+          file = "data/raw/01a_output-species4.1_location-dependent.csv")
 head(species.de) # skeleton to edit
 
 # OUTPUT: extract Site information for species.m.unk to add to location-dependent list
@@ -296,11 +295,11 @@ sites.m.unk <- subplot %>%
   arrange(Region) %>% 
   arrange(Code)
 write_csv(sites.m.unk,
-          file = "data/raw/output-species4.2_location-dependent_xlsx_sites.csv")
+          file = "data/raw/01a_output-species4.2_location-dependent_xlsx_sites.csv")
 head(sites.m.unk) # use for reference to connect codes to sites
 
 # EDITED: manually add/correct Site, Native, Duration, and Lifeform cols
-species.de <- read_csv("data/raw/edited-species4_location-dependent_native-duration-lifeform.csv")
+species.de <- read_csv("data/raw/01b_edited-species4_location-dependent_native-duration-lifeform.csv")
 
 
 # Add Site to Name col for location-dependent
@@ -336,7 +335,7 @@ unique(species.de$Lifeform)
 # This is an intermediate because it does not yet have fixed native status for species that
   # were marked as seeded in the subplot data, used in 01.1-dependency_assign-seeded-species-native-status.R
 write_csv(species.de,
-          file = "data/raw/intermediate-dependency1_species-list_location-dependent.csv")
+          file = "data/raw/01-dependency_species-list_location-dependent.csv")
 
 
 
@@ -344,7 +343,7 @@ write_csv(species.de,
 # Fix native status for select seeded species -----------------------------
 
 # Load dependency list created in 01.1-dependency_assign-seeded-species-native-status.R
-native.fix <- read_csv("data/raw/intermediate-dependency1_seeded-species-to-be-marked-native.csv")
+native.fix <- read_csv("data/raw/01-dependency_seeded-species-to-be-marked-native.csv")
 
 
 # Fix location independent
@@ -422,12 +421,12 @@ p2x2.codes.missing <- plot.2x2.raw %>%
 
 # OUTPUT: create list of sites and codes that need more info
 write_csv(p2x2.codes.missing,
-          file = "data/raw/output-species5_codes-missing-2x2plot.csv")
+          file = "data/raw/01a_output-species5_codes-missing-2x2plot.csv")
 head(p2x2.codes.missing)
 
 # EDITED: add/correct Native, Duration, Lifeform info
   # create multiple rows for codes that mention more than one species (happens at SRER and Patagonia)
-p2x2.codes.missing <- read_csv("data/raw/edited-species5_codes-missing-2x2plot.csv")
+p2x2.codes.missing <- read_csv("data/raw/01b_edited-species5_codes-missing-2x2plot.csv")
 head(p2x2.codes.missing)
 
 # Check for NAs
@@ -451,7 +450,7 @@ p2x2.codes.dup <- p2x2.codes.missing %>%
   filter(NeedsItsDuplicate == "Yes") %>% 
   arrange(CodeOriginal)
 write_csv(p2x2.codes.dup,
-          file = "data/raw/output-species6_2x2-codes_need-duplicate-rows.csv")
+          file = "data/raw/01c_output-species6_2x2-codes_need-duplicate-rows.csv")
 
 
 
