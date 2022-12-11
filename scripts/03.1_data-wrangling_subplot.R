@@ -76,11 +76,16 @@ filter(subplot, is.na(Code)) # no NAs
 # Standardize incorrect codes ---------------------------------------------
 
 # Extract incorrect codes
-setdiff(unique(subplot$Code), unique(c(species.de$CodeOriginal, species.in$CodeOriginal)))
+setdiff(subplot$Code, c(species.de$CodeOriginal, species.in$CodeOriginal))
 
 # Replace codes
 subplot$Code[subplot$Code == "S-PASM"] <- "PASM"
 subplot$Code[subplot$Code == "S-HEBO"] <- "HEBO"
+subplot$Code[subplot$Code == "ARPUP6"] <- "ARPU9"
+subplot$Code[subplot$Code == "BOER"] <- "BOER4"
+subplot$Code[subplot$Code == "EUPO3"] <- "CHPO12"
+subplot$Code[subplot$Code == "SIAL"] <- "SIAL2"
+subplot$Code[subplot$Code == "SPAMA"] <- "SPAM2"
 
 # Check for missing codes by comparing subplot data to both species lists
 sub.codes <- c(species.de$CodeOriginal, species.in$CodeOriginal)
@@ -114,7 +119,8 @@ apply(subplot.de, 2, anyNA)
 # Add species info for location-independent codes -------------------------
 
 subplot.in <- subplot %>% 
-  filter(Code %in% species.in$Code)
+  filter(Code %in% species.in$Code) %>% 
+  rename(CodeOriginal = Code)
 
 subplot.in <- left_join(subplot.in, species.in) 
 
