@@ -482,21 +482,28 @@ count(de.overlap, Lifeform_2x2)
   # subplot Lifeform is more specific, and should be used
 
 # Replace species info with info from subplot where there are conflicts
-p2x2.codes.de <- p2x2.codes.de %>% 
-  filter(!Code %in% de.overlap$Code) %>% # remove incorrect info
-  bind_rows(de.overlap.sub) # replace with subplot species info
+de.overlap.replace <- species.subplot.de %>% 
+  filter(Code %in% de.overlap$Code) 
+de.overlap.replace <- de.overlap.replace %>% 
+  mutate(NeedsItsDuplicate =  rep("No", nrow(de.overlap.replace)),
+         DuplicateNum = rep(0, nrow(de.overlap.replace))) # add cols to match p2x2
 
+p2x2.codes.de <- p2x2.codes.de %>% 
+  filter(!Code %in% de.overlap$Code) %>%   # remove incorrect info
+  bind_rows(de.overlap.replace) # replace with subplot species info
+
+
+# Check for NAs
+apply(p2x2.codes.de, 2, anyNA)
+
+test<- p2x2.codes.de %>% 
+  filter(!Code %in% de.overlap$Code)
 
 # Check for Codes with multiple species
 p2x2.codes.de %>% 
   filter(Code %in% filter(p2x2.codes.de, duplicated(Code))$Code) %>% 
   arrange(Code) 
-  # SRER ones are duplicates because they mention more than one species
-  # BabbittPJ should not have duplicates
-
-# Replace "ELSP" with "ELSPP"
-p2x2.codes.de[p2x2.codes.de == "ELSP"] <- "ELSPP"
-p2x2.codes.de[p2x2.codes.de == "ELSP.BabbittPJ"] <- "ELSPP.BabbittPJ"
+  # SRER ones are duplicates because they mention more than one species, that's okay
 
 
 # Combine location-independent and dependent with new codes

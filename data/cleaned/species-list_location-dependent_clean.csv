@@ -60,13 +60,11 @@ PEFO,CRYSPP,CRYSPP.PEFO,"Cryptantha spp., PEFO",Native,Unknown,Forb,Colorado Pla
 SRER,CRYSPP,CRYSPP.SRER,"Cryptantha spp., SRER",Native,Unknown,Forb,Sonoran SE
 Spiderweb,DASPUL,DASPUL.Spiderweb,"Unknown DASPUL, Spiderweb",Unknown,Unknown,Unknown,Colorado Plateau
 UtahPJ,DRABA,DRABA.UtahPJ,"Draba spp., UtahPJ",Native/Unknown,Unknown,Forb,Utah
-AguaFria,ELSPP,ELSP.AguaFria,"Elymus spp., AguaFria",Native/Unknown,Unknown,Grass,Colorado Plateau
-FlyingM,ELSPP,ELSP.FlyingM,"Elymus spp., FlyingM",Native/Unknown,Unknown,Grass,Colorado Plateau
-PEFO,ELSPP,ELSP.PEFO,"Elymus spp., PEFO",Native/Unknown,Unknown,Grass,Colorado Plateau
+BabbittPJ,ELSP,ELSP.BabbittPJ,"Elymus spp., BabbittPJ",Native/Unknown,Unknown,Grass,Colorado Plateau
 AguaFria,ELSPP,ELSPP.AguaFria,"Elymus spp., AguaFria",Native/Unknown,Unknown,Grass,Colorado Plateau
-BabbittPJ,ELSPP,ELSPP.BabbittPJ,"Elymus spp., BabbittPJ",Native/Unknown,Unknown,Grass,Colorado Plateau
 BabbittPJ,ELSPP,ELSPP.BabbittPJ,"Elymus spp., BabbittPJ",Native,Unknown,Grass,Colorado Plateau
 FlyingM,ELSPP,ELSPP.FlyingM,"Elymus spp., FlyingM",Native/Unknown,Unknown,Grass,Colorado Plateau
+PEFO,ELSPP,ELSPP.PEFO,"Elymus spp., PEFO",Native/Unknown,Unknown,Grass,Colorado Plateau
 BabbittPJ,ELSP (seeded),ELSPse.BabbittPJ,"seeded Elymus spp., BabbittPJ",Native,Unknown,Grass,Colorado Plateau
 Patagonia,ERASPP,ERASPP.Patagonia,"Eragrostis spp., ERCU or ERLE, Patagonia",Unknown,Unknown,Grass,Sonoran SE
 UtahPJ,ERIGSPP,ERIGSPP.UtahPJ,"Unknown ERIG (?), UtahPJ",Unknown,Unknown,Unknown,Utah

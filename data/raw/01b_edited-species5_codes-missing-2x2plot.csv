@@ -85,10 +85,10 @@ BabbittPJ,ELEL5 (seeded),No,0,ELEL6,Elymus elymoides,Native,Perennial,Grass,inde
 BabbittPJ,ELEL5 (unseeded),No,0,ELEL7,Elymus elymoides,Native,Perennial,Grass,independent
 BabbittPJ,ELSP,No,0,ELSP,Elymus spp.,Native/Unknown,Unknown,Grass,dependent
 BabbittPJ,ELSP (seeded),No,0,ELSPse,seeded Elymus spp.,Native,Unknown,Grass,dependent
-AguaFria,ELSPP,No,0,ELSP,Elymus spp.,Native/Unknown,Unknown,Grass,dependent
-BabbittPJ,ELSPP,No,0,ELSP,Elymus spp.,Native/Unknown,Unknown,Grass,dependent
-FlyingM,ELSPP,No,0,ELSP,Elymus spp.,Native/Unknown,Unknown,Grass,dependent
-PEFO,ELSPP,No,0,ELSP,Elymus spp.,Native/Unknown,Unknown,Grass,dependent
+AguaFria,ELSPP,No,0,ELSPP,Elymus spp.,Native/Unknown,Unknown,Grass,dependent
+BabbittPJ,ELSPP,No,0,ELSPP,Elymus spp.,Native/Unknown,Unknown,Grass,dependent
+FlyingM,ELSPP,No,0,ELSPP,Elymus spp.,Native/Unknown,Unknown,Grass,dependent
+PEFO,ELSPP,No,0,ELSPP,Elymus spp.,Native/Unknown,Unknown,Grass,dependent
 BabbittPJ,ELTR7 (seeded),No,0,ELTR7,Elymus trachycaulus,Native,Perennial,Grass,independent
 BabbittPJ,ELWA,No,0,ELWA2,Elymus wawawaiensis,Native,Perennial,Grass,independent
 BabbittPJ,ELWA2 (seeded),No,0,ELWA2,Elymus wawawaiensis,Native,Perennial,Grass,independent
