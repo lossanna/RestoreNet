@@ -203,33 +203,14 @@ write_csv(subplot,
 
 
 
-# Subplot data for seeded species only ------------------------------------
-
-subplot.seeded <- subplot %>% 
-  filter(Seeded == "Yes")
-
-subplot.seeded <- left_join(subplot.seeded, mix) %>% 
-  select(-Family, -Scientific, -Common)
-
-# Check which ones are missing seeding rate data
-seed.rate.na <- subplot.seeded %>% 
-  filter(is.na(SeedingRate)) %>% 
-  select(Code, Name, Mix, SeedingRate, NicheValue) %>% 
-  distinct(.keep_all = TRUE) 
-
-seed.rate.na.known <- seed.rate.na %>% 
-  filter(!str_detect(seed.rate.na$Name, "Unk|unk|spp."))
-
-
-
 # Address seeded species codes not in mix ---------------------------------
 
 # Filter out seeded species
 subplot.seeded <- subplot %>% 
-  filter(`Seeded(Yes/No)` == "Yes")
+  filter(Seeded == "Yes")
 
 # Add mix information to seeded species
-apply(mix, 2, anyNA) # mix has no NAs
+apply(mix.raw, 2, anyNA) # mix has no NAs
 
 subplot.seeded <- left_join(subplot.seeded, mix) %>% 
   select(-Family, -Scientific, -Common) # left_join() to assign mix information to seeded species
