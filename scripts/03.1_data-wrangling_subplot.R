@@ -101,12 +101,22 @@ subplot.de <-subplot %>%
 # Rename code col so subplot data matches species list
 subplot.de <- subplot.de %>% 
   rename(CodeOriginal = Code)
+nrow(subplot.de) # 5265
 
 # Add species info
-subplot.de <- left_join(subplot.de, species.de)
+subplot.de.join <- left_join(subplot.de, species.de)
+# subplot.de <- left_join(subplot.de, species.de)
+nrow(subplot.de.join)
+
+# why are there extra rows after left_join()
+de.extra.join <- subplot.de.join %>% 
+  filter(raw.row %in% filter(subplot.de.join, duplicated(raw.row))$raw.row) %>% 
+  distinct(.keep_all = TRUE) %>% 
+  arrange(raw.row) 
 
 # Check for NA codes
 filter(subplot.de, is.na(Code))
+apply(subplot.de, 2, anyNA)
 
 
 
