@@ -1,12 +1,3 @@
-# This script is to produce an intermediate depedency table with correct monitoring info. In comparing
-  # the monitoring information from the subplot vs. 2x2 plot data, there were descrepancies.
-  # However, one version is not completely right, so we must compare differences and figure out the 
-  # correct values.
-
-# "Monitoring info" refers to columns Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix.
-  # A unique ID for each plot monitored at each time point, without taking into account
-    # any actual data collection (species present, species measurements).
-
 library(readxl)
 library(tidyverse)
 
@@ -239,11 +230,11 @@ monitor.fix <- monitor.fix %>%
 
 # OUTPUT: write subplot and 2x2 comparison to csv
 write_csv(monitor.fix,
-          file = "data/raw/output-monitor1_subplot-2x2-conflicting-monitoring-info.csv")
+          file = "data/raw/02a_output-monitor_subplot-2x2-conflicting-monitoring-info.csv")
 
 
 # EDITED: manually edited to include correct monitoring info only
-monitor.fix <- read_xlsx("data/raw/edited-monitor1_conflicting-monitoring-info-resolved.xlsx",
+monitor.fix <- read_xlsx("data/raw/02b_edited-monitor_conflicting-monitoring-info-resolved.xlsx",
                          sheet = "corrected")
 
 

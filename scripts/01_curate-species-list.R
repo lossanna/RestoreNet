@@ -450,7 +450,7 @@ p2x2.codes.dup <- p2x2.codes.missing %>%
   filter(NeedsItsDuplicate == "Yes") %>% 
   arrange(CodeOriginal)
 write_csv(p2x2.codes.dup,
-          file = "data/raw/01c_output-species6_2x2-codes_need-duplicate-rows.csv")
+          file = "data/raw/01a_output-species6_2x2-codes_need-duplicate-rows.csv")
 
 
 
