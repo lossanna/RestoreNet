@@ -82,16 +82,6 @@ setdiff(unique(subplot$Code), unique(c(species.de$CodeOriginal, species.in$CodeO
 subplot$Code[subplot$Code == "S-PASM"] <- "PASM"
 subplot$Code[subplot$Code == "S-HEBO"] <- "HEBO"
 
-
-
-
-
-
-subplot$Code[subplot$Code == "SPAMA"] <- "SPAM2"
-subplot$Code[subplot$Code == "ARPUP6"] <- "ARPU9"
-subplot$Code[subplot$Code == "EUPO3"] <- "CHPO12"
-
-
 # Check for missing codes by comparing subplot data to both species lists
 sub.codes <- c(species.de$CodeOriginal, species.in$CodeOriginal)
 setdiff(subplot$Code, sub.codes) 
