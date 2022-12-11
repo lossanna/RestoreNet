@@ -112,7 +112,7 @@ MOWE,HYVE,No,0,HYVE,Hybanthus verticillatus,Native,Perennial,Forb,independent
 SRER,Large and medium BOCUs in plot,No,0,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
 Patagonia,Large BOCU in the southeast with a few small ones throughout and about 5 ARPUs small to large in size that're mostly near the conmods,Yes,1,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
 Patagonia,Large BOCU in the southeast with a few small ones throughout and about 5 ARPUs small to large in size that're mostly near the conmods,Yes,2,ARPUspp,Aristida spp.,Native,Unknown,Grass,dependent
-29_Palms,LEPSPP,No,0,LESSPP,Lepidium spp.,Native/Unknown,Unknown,Forb,dependent
+29_Palms,LEPSPP,No,0,LEPSPP,Lepidium spp.,Native/Unknown,Unknown,Forb,dependent
 Creosote,Lesquerella sp.,No,0,LESSPP,Lesquerella spp.,Native,Unknown,Forb,dependent
 CRC,"Lots of unknown grasses, potentially S-PASM",No,0,UNKGR,"Lots of unknown grasses, potentially S-PASM",Unknown,Unknown,Grass,dependent
 AguaFria,LUSPP,No,0,LUSPP,Lupinus spp.,Unknown,Unknown,Forb,dependent

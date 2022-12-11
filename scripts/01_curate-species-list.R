@@ -496,9 +496,6 @@ p2x2.codes.de <- p2x2.codes.de %>%
 # Check for NAs
 apply(p2x2.codes.de, 2, anyNA)
 
-test<- p2x2.codes.de %>% 
-  filter(!Code %in% de.overlap$Code)
-
 # Check for Codes with multiple species
 p2x2.codes.de %>% 
   filter(Code %in% filter(p2x2.codes.de, duplicated(Code))$Code) %>% 
@@ -526,7 +523,7 @@ write_csv(p2x2.codes.dup,
 # Combine location-independent 2x2 codes with subplot codes
 species.2x2.in <- p2x2.codes.missing %>% 
   filter(LocationDependence == "independent") %>% 
-  select(-Site, -NeedsItsDuplicate, -LocationDependence, -DuplicateNum)
+  select(-Site, -NeedsItsDuplicate, -LocationDependence, -DuplicateNum, -Region)
 
 setdiff(colnames(species.2x2.in), colnames(species.subplot.in)) # columns are the same
 
