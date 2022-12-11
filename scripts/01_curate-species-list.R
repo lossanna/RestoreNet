@@ -7,8 +7,9 @@ subplot.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "
 plot.2x2.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllPlotData")
 species.raw <- read_xlsx("data/raw/master-species_native.xlsx")
 mix <- read_xlsx("data/raw/master-seed-mix.xlsx")
+
+# Dependency created in 01-dependency_assign-seeded-species-native-status.R
 native.fix <- read_csv("data/raw/intermediate-dependency1_seeded-species-to-be-marked-native.csv") 
-  # native.fix dependency created in 01-dependency_assign-seeded-species-native-status.R
 
 
 
@@ -20,6 +21,7 @@ native.fix <- read_csv("data/raw/intermediate-dependency1_seeded-species-to-be-m
 # Files in the format "output-species_xx.csv" are ones written from R
 # Files in the format "edited-species_xx.csv" are manually edited and read back in as new objects,
   # but then usually used to alter existing objects
+  # See README_rawdata.md for more details
 
 
 
@@ -53,14 +55,14 @@ subplot.missing <- subplot %>%
   filter(!Code %in% c("0", "NA"),
          !is.na(Code))
 
-# Write to csv to manually fill in information
+# OUTPUT: write to csv to manually fill in information
 write_csv(subplot.missing,
           file = "data/raw/output-species1_subplot-codes-missing.csv")
+head(subplot.missing)
 
-
-#### manually edit new file to add name, native status, lifeform, and duration ####
-
+# EDITED: manually edit new file to add Name, Native, Lifeform, and Duration cols
 sub.missing.edit <- read_csv("data/raw/edited-species1_subplot-codes-missing_native-duration-lifeform.csv")
+head(sub.missing.edit)
 
 
 
@@ -70,30 +72,27 @@ sub.missing.edit <- read_csv("data/raw/edited-species1_subplot-codes-missing_nat
   # plants not defined to species level are location-specific and Site must be retained
 
 # Unknowns (location-dependent)
-species.m.unk <- species.raw %>% # from original master list
+species.m.unk <- species.raw %>% # from original master list (xlsx)
   filter(str_detect(species.raw$Name, "Unk|unk|spp.")) %>% 
   arrange(Region) %>% 
   arrange(Code)
 
-sub.missing.unk <- sub.missing.edit %>% # ones missing from original master list
+sub.missing.unk <- sub.missing.edit %>% # ones missing from original master list (.xlsx)
   filter(str_detect(sub.missing.edit$Name, "Unk|unk|spp.")) %>% 
   arrange(Region) %>% 
   arrange(Code)
 
 # Knowns (location-independent)
-species.m.known <- species.raw %>% # from original master list
+species.m.known <- species.raw %>% # from original master list (.xlsx)
   filter(!str_detect(species.raw$Name, "Unk|unk|spp.")) %>% 
   select(-Region) %>% 
   arrange(Code)
 
-sub.missing.known <- sub.missing.edit %>% # ones missing from original master list
+sub.missing.known <- sub.missing.edit %>% # ones missing from original master list (.xlsx)
   filter(!str_detect(sub.missing.edit$Name, "Unk|unk|spp.")) %>% 
   select(-Region, -Site) %>% 
   arrange(Code)
-  # although there are a couple names with ?s, the names and codes are unique 
-      # and not repeated across sites to refer to different plants,
-      # and therefore location-independent
-  # combine dfs after doing left_join() assignment of lifeform
+
 
 
 
@@ -101,7 +100,7 @@ sub.missing.known <- sub.missing.edit %>% # ones missing from original master li
 
 # Add lifeform information to species list --------------------------------
 
-# Extract lifeform information from subplot.raw data for knowns from master
+# Extract lifeform information from subplot.raw data for knowns from master.xlsx
 subplot.in.lifeform <- subplot %>% 
   select(Code, Functional_Group) %>% 
   distinct(.keep_all = TRUE) %>% 
@@ -110,7 +109,7 @@ subplot.in.lifeform <- subplot %>%
 # Add subplot lifeform information to location-independent species list
 species.m.known <- left_join(species.m.known, subplot.in.lifeform)
 
-# Standardize lifeform names to Grass/Forb/Shrub
+# Standardize Lifeform to Grass/Forb/Shrub
 unique(species.m.known$Lifeform)
 
 species.m.known <- species.m.known %>% 
@@ -129,12 +128,12 @@ species.m.known <- species.m.known %>%
   distinct(.keep_all = TRUE) %>% 
   arrange(Code) 
 
-unique(species.m.known$Lifeform) # lifeform names have been standardized, with NAs
+unique(species.m.known$Lifeform) # Lifeform names have been standardized, with NAs
 species.m.known$Lifeform[species.m.known$Lifeform == "NA"] <- NA # convert to real (logical) NA
 unique(species.m.known$Lifeform)
 
 
-# Find species without lifeform information and write to csv, to manually add information
+# OUTPUT: find species without lifeform information and write to csv
 lifeform.na <- species.m.known %>% 
   filter(is.na(Lifeform)) %>% 
   select(Code, Name, Lifeform) %>% 
@@ -143,25 +142,27 @@ lifeform.na <- species.m.known %>%
 
 write_csv(lifeform.na,
           file = "data/raw/output-species2_xlsx_lifeform-na.csv")
+head(lifeform.na)
 
-
-#### edit new file manually to add lifeform ######
-
+# EDITED: manually edit new file and fill in Lifeform col
 lifeform.na.edit <- read_csv("data/raw/edited-species2_xlsx_lifeform-na.csv")
+head(lifeform.na.edit)
 
 
-# Add manually-edited lifeform information to working species list 
-  # split up species because left_join() will not override and will create duplicates,
+# Add lifeform.na.edit to working location-independent species list
+
+  # Species are split up because left_join() will not override and will create duplicates,
     # and information from edited version is definitely correct (information from subplot.raw could be wrong)
 
-species.lifeform <- species.m.known %>%  # known lifeform species
+species.lifeform <- species.m.known %>%  # known species with lifeform info
   filter(!Code %in% lifeform.na.edit$Code) 
 
-species.lifeform.na <- species.m.known %>%  # unknown lifeform species
+species.lifeform.na <- species.m.known %>%  # unknown species with lifeform info
   filter(Code %in% lifeform.na.edit$Code) %>% 
   select(-Lifeform) %>% 
   distinct(.keep_all = TRUE) %>%
-  arrange(Code) # dimensions are different than lifeform.na.edit because HAGL was a duplicate now removed
+  arrange(Code)
+
 species.lifeform.na <- left_join(species.lifeform.na, lifeform.na.edit) %>% 
   distinct(.keep_all = TRUE)
 
@@ -172,31 +173,31 @@ unique(species.m.known$Lifeform) # lifeform has been standardized
 
 
 
-# Add duration information to species list --------------------------------
+# Add duration to location-independent list -------------------------------
 
   # (All duration information must be added manually from USDA Plants)
   # Multiple lifeforms for same species are also corrected (wrong ones deleted)
 
-# Write output with native status and lifeform columns
+# OUTPUT: write output with Native and Lifeform columns
 write_csv(species.m.known,
           file = "data/raw/output-species3_xlsx_native-lifeform.csv")
+head(species.m.known)
 
 
-#### edit new file manually to add duration and check lifeform ####
-
+# EDITED: edit new file manually to add Duration and correct Lifeform if needed
 species.m.known <- read_csv("data/raw/edited-species3_xlsx_native-lifeform-duration.csv")
+head(species.m.known)
 
 
 
-
-# Add codes from data not included in species list ------------------------
+# Add codes to location-independent not in master -------------------------
 
 # Combine species.m.known and sub.missing.known
 species.in <- bind_rows(species.m.known, sub.missing.known) %>% 
   arrange(Code)
 
 # Check for absent information (NAs)
-apply(species.in, 2, anyNA)
+apply(species.in, 2, anyNA) # should all be FALSE
 
 
 
@@ -207,15 +208,17 @@ codes.fix.in <- species.in %>%
   filter(Name %in% filter(species.in, duplicated(Name))$Name) %>% 
   distinct(.keep_all = TRUE) %>% 
   arrange(Name) 
+codes.fix.in
 
 # Compare codes with those from seed mix
 mix.codes <- mix %>% 
   filter(Code %in% codes.fix.in$Code) %>% 
   select(Scientific, Code) %>% 
   distinct(.keep_all = TRUE) %>% 
-  arrange(Code) # codes need to match ones from seed mix
+  arrange(Code) 
+mix.codes # codes need to match ones from seed mix
 
-# Gather standardized codes based on USDA Plants
+# Create df standardized codes based on USDA Plants
 codes.standardized.in <- codes.fix.in %>% 
   filter(Code %in% c(mix.codes$Code, "CHPO12", "SIAL2")) %>% 
   mutate(Old_Code = c("ARPUP6", "BOER", "EUPO3", "S-HEBO", "S-PASM", "SIAL", "SPAMA")) %>% 
@@ -237,10 +240,10 @@ species.in %>%
 names.fix.in <- species.in %>% 
   filter(Code %in% filter(species.in, duplicated(Code))$Code) %>% 
   arrange(Code) 
-filter(species.in, Name == "Eragrostis ciliaris") # name only occurs once
-filter(species.in, Code == "ERCI2") # correct code is not present in species list
+names.fix.in # Eragrostis ciliaris is mislabeled; E. cilianensis code is correct
+filter(species.in, Code == "ERCI2") # E. ciliaris code is not present in species list
 
-# Fix code for ERCI
+# Fix code for E. cilaris
 species.in$Code[species.in$Name == "Eragrostis ciliaris"] <- "ERCI2"
 
 
@@ -248,11 +251,10 @@ species.in$Code[species.in$Name == "Eragrostis ciliaris"] <- "ERCI2"
 length(unique(species.in$Code)) == nrow(species.in) # TRUE, all codes in species list are unique
 
 
-# Check for absent information (NAs)
+# Check for absent information (NAs; "0" is okay)
 unique(species.in$Native)
 unique(species.in$Duration)
 unique(species.in$Lifeform)
-
 
 # Add CodeOriginal col
 species.in <- species.in %>% 
@@ -260,28 +262,32 @@ species.in <- species.in %>%
 
 
 
-# Write intermediate to CSV -----------------------------------------------
+# Write intermediate location-dependent to CSV ----------------------------
 
 # This is an intermediate because it does not yet have fixed native status for species that
-  # were marked as seeded in the subplot data, used in 01.1-dependency_assign-seeded-species-native-status.R
+  # were marked as seeded in the subplot data
+  # Used in 01.1-dependency_assign-seeded-species-native-status.R
 
 write_csv(species.in,
           file = "data/raw/intermediate-dependency1_species-list_location-independent.csv")
+head(species.in)
 
 
 
-
+#### Location-dependent species (species unknown) ##########################
 
 # Location-dependent species (unknowns) -----------------------------------
 
-# Combine all location-dependent species (ones from master species list and from subplot data)
+# Combine all location-dependent species 
+  # (ones from master species list and from subplot data)
 species.de <- bind_rows(species.m.unk, sub.missing.unk)
 
-# Write to CSV to fill in information for species.m.unk
+# OUTPUT: write to CSV to fill in information for species.m.unk
 write_csv(species.de,
           file = "data/raw/output-species4.1_location-dependent.csv")
+head(species.de) # skeleton to edit
 
-# Extract Site information for species.m.unk to add to location-dependent list
+# OUTPUT: extract Site information for species.m.unk to add to location-dependent list
   # and write to CSV
 sites.m.unk <- subplot %>% 
   filter(Code %in% species.m.unk$Code) %>% 
@@ -291,11 +297,10 @@ sites.m.unk <- subplot %>%
   arrange(Code)
 write_csv(sites.m.unk,
           file = "data/raw/output-species4.2_location-dependent_xlsx_sites.csv")
+head(sites.m.unk) # use for reference to connect codes to sites
 
-#### edit new file manually #########
-  # make sure all have site, native, duration, lifeform information
+# EDITED: manually add/correct Site, Native, Duration, and Lifeform cols
 species.de <- read_csv("data/raw/edited-species4_location-dependent_native-duration-lifeform.csv")
-
 
 
 # Add Site to Name col for location-dependent
@@ -305,7 +310,7 @@ species.de$Name <- apply(species.de[ , c("Name", "Site")], 1, paste, collapse = 
 species.de <- species.de %>% 
   rename(CodeOriginal = Code)
 
-# Create column of Code that hasthe site info
+# Create new Code col that has the site info
 species.de$Code <- apply(species.de[ , c("CodeOriginal", "Site")], 1, paste, collapse = ".")
 
 # Look for overlapping codes between location-dependent and independent 
@@ -332,6 +337,7 @@ unique(species.de$Lifeform)
   # were marked as seeded in the subplot data, used in 01.1-dependency_assign-seeded-species-native-status.R
 write_csv(species.de,
           file = "data/raw/intermediate-dependency1_species-list_location-dependent.csv")
+
 
 
 # Fix native status for select seeded species -----------------------------
