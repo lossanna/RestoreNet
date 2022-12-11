@@ -116,7 +116,7 @@ write_csv(monitor.diff,
 
 
 ##### edited manually to correct monitoring info ############################
-  # similar to intermediate-dependency2-edited1_conflicting-monitoring-info-resolved.xlsx,
+  # similar to monitor-edited1_conflicting-monitoring-info-resolved.xlsx,
     # but only the ones where 2x2 was wrong
 monitor.fix <- read_xlsx("data/raw/edited-wrangling-2x2_1monitor-info-fixed.xlsx")
 

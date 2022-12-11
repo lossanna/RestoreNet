@@ -7,9 +7,9 @@ subplot.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "
 species.in <- read_csv("data/cleaned/species-list_location-independent_clean.csv")
 species.de <- read_csv("data/cleaned/species-list_location-dependent_clean.csv")
 subplot.codes <- read_csv("data/cleaned/subplot-codes_clean.csv")
-mix <- read_xlsx("data/raw/master-seed-mix.xlsx")
+mix.raw <- read_xlsx("data/raw/master-seed-mix.xlsx")
 monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
-  # intermediate dependency created from 02-dependency_correct-monitoring-info.R
+
 
 
 # Organize columns --------------------------------------------------------
@@ -150,16 +150,6 @@ filter(subplot, is.na(Name)) # no NA names
 
 
 
-# Write intermediate to CSV -----------------------------------------------
-
-# This is an intermediate because it does not yet have correct monitoring info, but the
-  # original subplot monitoring info is needed,
-  # Used in 02-dependency_correct-monitoring-info.R
-
-write_csv(subplot,
-          file = "data/raw/intermediate-dependency2_subplot-data_original-monitoring-info.csv")
-
-
 
 # Correct monitoring info -------------------------------------------------
 
@@ -251,7 +241,7 @@ subplot.seeded.codes <- subplot.seeded %>%
   arrange(Name) 
 
 # Write seeded species codes to CSV
-write_csv("data/raw/intermediate-dependency")
+
 
 
 
