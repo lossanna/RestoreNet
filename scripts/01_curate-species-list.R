@@ -220,8 +220,7 @@ codes.standardized.in <- codes.fix.in %>%
   filter(Code %in% c(mix.codes$Code, "CHPO12", "SIAL2")) %>% 
   mutate(Old_Code = c("ARPUP6", "BOER", "EUPO3", "S-HEBO", "S-PASM", "SIAL", "SPAMA")) %>% 
   select(Old_Code, Code, Name)
-  # DRCU/DRCUI and ESCA/ESCAM refer to different varieties, so specificity is retained,
-      # and "spp." are unknown species, so they can have different codes
+  # DRCU/DRCUI and ESCA/ESCAM refer to different varieties, so specificity is retained
 
 # Remove wrong codes from species list
 species.in <- species.in %>% 
@@ -439,6 +438,16 @@ write_csv(p2x2.codes.dup,
           file = "data/raw/output-species6_2x2-codes_need-duplicate-rows.csv")
 
 
+# Extract species with multiple codes for the same name, retaining all codes
+species.in %>% 
+  filter(Name %in% filter(species.in, duplicated(Name))$Name) %>% 
+  distinct(.keep_all = TRUE) %>% 
+  arrange(Name) # DRCU/DRCUI and ESCA2/ESCAM are okay
+
+species.de %>% 
+  filter(Name %in% filter(species.de, duplicated(Name))$Name) %>% 
+  distinct(.keep_all = TRUE) %>% 
+  arrange(Name) # these unknowns are okay
 
 
 
@@ -456,6 +465,10 @@ species.in <- bind_rows(species.2x2.in, species.subplot.in) %>%
   distinct(.keep_all = TRUE) %>% 
   arrange(Name) %>% 
   arrange(Code)
+
+# Look for codes previously standardized, now that we have added 2x2 data
+species.in %>% 
+  filter(Code %in% codes.standardized.in$Old_Code) # no old codes show up
 
 # Write to csv
 write_csv(species.in,
@@ -487,6 +500,10 @@ species.de <- bind_rows(species.2x2.de, species.subplot.de) %>%
   distinct(.keep_all = TRUE) %>% 
   arrange(Name) %>% 
   arrange(Code)
+
+# Look for codes previously standardized, now that we have added 2x2 data
+species.de %>% 
+  filter(Code %in% codes.standardized.in$Old_Code) # no old codes show up
 
 
 # Write to csv

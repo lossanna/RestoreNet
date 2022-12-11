@@ -81,6 +81,12 @@ setdiff(unique(subplot$Code), unique(c(species.de$CodeOriginal, species.in$CodeO
 # Replace codes
 subplot$Code[subplot$Code == "S-PASM"] <- "PASM"
 subplot$Code[subplot$Code == "S-HEBO"] <- "HEBO"
+
+
+
+
+
+
 subplot$Code[subplot$Code == "SPAMA"] <- "SPAM2"
 subplot$Code[subplot$Code == "ARPUP6"] <- "ARPU9"
 subplot$Code[subplot$Code == "EUPO3"] <- "CHPO12"

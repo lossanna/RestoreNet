@@ -175,8 +175,8 @@ apply(p2x2.long.monitor.fixed, 2, anyNA)
 
 # Workflow:
   # handle observations of additional species in plot (not subplot)
-      # mnaully add extra rows for codes that need duplicate rows because codes refer to more than one species
-      # make Code and CodeOriginal cols, but do not add other species info yet
+      # manually add extra rows for codes that need duplicate rows because codes refer to more than one species
+      # make Code and CodeOriginal cols, standardize codes, and add species info to 2x2 data
   # combine additional species and subplot species obs, and standardize codes
 
 
@@ -194,6 +194,7 @@ write_csv(p2x2.add.dup,
           file = "data/raw/output-wrangling-2x2_2need-duplicate-rows.csv")
 
 #### edited manually to add correct duplicate rows #################
+  # consult edited-species5_codes-missing-2x2plot.csv to see what codes are duplicates/multiple rows
 p2x2.add.dup <- read_csv("data/raw/edited-wrangling-2x2_2duplicate-rows-added.csv")
 
 p2x2.add.dup <- p2x2.add.dup %>% 
@@ -237,10 +238,21 @@ apply(p2x2.add, 2, anyNA) # some observations are missing Total_Veg_Cover becaus
 
 # Correct codes for p2x2.add ----------------------------------------------
 
-# Extract incorrect codes
-setdiff(unique(p2x2.add$CodeOriginal), c(species.de$CodeOriginal, species.in$CodeOriginal))
+# Check for incorrect codes
+setdiff(p2x2.add$CodeOriginal, c(species.de$CodeOriginal, species.in$CodeOriginal))
 
-codes <- count(p2x2.add, Code)
+filter(p2x2.add, Code == "S-PASM")
+filter(p2x2.add, Code == "S-HEBO")
+filter(p2x2.add, Code == "SPAMA")
+filter(p2x2.add, Code == "ARPU6")
+filter(p2x2.add, Code == "EUPO3")
+
+
+subplot$Code[subplot$Code == "S-PASM"] <- "PASM"
+subplot$Code[subplot$Code == "S-HEBO"] <- "HEBO"
+subplot$Code[subplot$Code == "SPAMA"] <- "SPAM2"
+subplot$Code[subplot$Code == "ARPUP6"] <- "ARPU9"
+subplot$Code[subplot$Code == "EUPO3"] <- "CHPO12"
 
 # Standardize codes 
 p2x2.add <- 
