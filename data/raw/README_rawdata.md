@@ -52,7 +52,7 @@ File naming notes:
 
 `01a_output-species6_2x2-codes_need-duplicate-rows.csv`
 - List of codes from `2x2` data that need duplicate rows because a single original code mentions multiple species; hence, the same code will need multiple rows to describe all the information. All duplicate rows needed are included in this table.
-- Codes from `01b_edited-species5_codes-missing-2x2plot.csv` that did not need duplicate rows were added to comprehensive location-dependent/location-indendent species lists that include `subplot` and `2x2` codes:
+- Codes from `01b_edited-species5_codes-missing-2x2plot.csv` that did not need duplicate rows were added to comprehensive location-dependent/location-independent species lists that include `subplot` and `2x2` codes:
 	+ `data/cleaned/species-list_location-dependent_clean.csv`
 	+ `data/cleaned/species-list_location-independent_clean.csv`
 - Codes that need duplicate rows must be dealt with separate in the `2x2` data and species information cannot be added with just a `left_join()`.
@@ -82,7 +82,7 @@ File naming notes:
 
 `01b_edited-species4_location-dependent_native-duration-lifeform.csv`
 - List of location-dependent species (unknowns), listed first by the ones from `master-species_native.unk` that lack site data, and then by location-dependent codes from the raw `subplot` data, whose native/duration/lifeform information was already manually added in `01b_edited-species1_subplot-codes-missing_native-duration-lifeform.csv`.
-- Manually added site information for the unknowns from the master list (first section) based on site information in the subplot data, which sometimes included adding multiple rows because the same code occured at different sites. Codes have not been changed, and will be changed in the cleaned data through data wrangling (`03.1_data-wrangling_subplot.R` and `03.2_data-wrangling_2x2.R`).
+- Manually added site information for the unknowns from the master list (first section) based on site information in the subplot data, which sometimes included adding multiple rows because the same code occurred at different sites. Codes have not been changed, and will be changed in the cleaned data through data wrangling (`03.1_data-wrangling_subplot.R` and `03.2_data-wrangling_2x2.R`).
 	+ Sometimes codes were listed in the master species list that didn't occur in the `subplot` data, and therefore didn't have any site information. They are not included here, but are included later when looking at `2x2` codes in `species5.csv`.
 - Manually added assigned codes for subplot observations that were missing codes, as noted in `03_data-wrangling_subplot.R` (there is just one in row 12166).
 - Edited list is not the same length as either output list, because some codes in `4.1.csv` weren't in the subplot data, so they weren't included, and some codes had multiple locations according to `4.2.csv`.
@@ -146,5 +146,5 @@ File naming notes:
 
 `master-species_native.xlsx`
 - Adapted from the `Species_Definitions` tab of `Master.xlsx`.
-- Manually added the `Native` column based on USDA Plants databse, and did small corrections to spelling of scientific names.
+- Manually added the `Native` column based on USDA Plants database, and did small corrections to spelling of scientific names.
 - I did not change any species codes, as they relate directly to the `Master` data (the original `subplot` and `2x2` data).
