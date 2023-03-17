@@ -1,9 +1,12 @@
-# In merging the species data with the subplot data (actual observations), we see that some unknown
-  # species were seeded, and therefore native, but it is impossible to know this without first producing
-  # a species list. However, the cleaned species list should be final and generated all from one script,
-  # so this script is to produce a dependency to be loaded/used partway through 01_curate-species-list.R
-  # Having a separate script and writing out/reading in intermediate dependencies will ensure things 
-  # don't break or are overwitten.
+# Purpose: in merging the species data with the subplot data (actual observations), we see that some unknown
+#   species were seeded, and therefore native, but it is impossible to know this without first producing
+#   a species list. However, the cleaned species list should be final and generated all from one script,
+#   so this script is to produce a dependency to be loaded/used partway through 01_curate-species-list.R
+#   Having a separate script and writing out/reading in intermediate dependencies will ensure things 
+#   don't break or are overwritten.
+# The CSVs to be read in are created partway through 01_curate-species-list.R, in two different sections
+#   (separate for location dependent vs. independent).
+
 
 library(readxl)
 library(tidyverse)

@@ -1,3 +1,13 @@
+# Purpose: In comparing the monitoring information from the subplot vs. 2x2 plot data, 
+#   there were discrepancies, but there should be only one correct version. 
+#   This script shows what corrections were made and why, to standardize information 
+#   for all the monitoring events. 
+
+# Monitoring events were assigned a MonitorID, where the ID is unique for each plot monitored 
+#   at each time point (Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix cols),
+#   without taking into account any actual data collection (species present or species measurements).
+
+
 library(readxl)
 library(tidyverse)
 
@@ -27,7 +37,7 @@ p2x2 <- p2x2.raw %>%
 # Correct monitoring info -------------------------------------------------
 
 # Assign monitoring events an ID based on subplot monitoring info
-  # use subplot monitoring info because some monitoring events were not recorded in 2x2 data
+#   use subplot monitoring info because some monitoring events were not recorded in 2x2 data
 monitor.sub <- subplot %>% 
   mutate(across(everything(), as.character)) %>% 
   mutate(MonitorID = 1:nrow(subplot))
@@ -48,22 +58,22 @@ monitor.diff <- monitor.diff %>%
 
 
 # Manually inspect monitor.diff for differences by site, then write df of 
-  # corresponding rows using subplot monitoring info
+#   corresponding rows using subplot monitoring info
 # Compare monitor.diff (2x2 monitoring info) values with relevant obs from 
-  # subplot monitoring info to determine correct value
+#   subplot monitoring info to determine correct value
 
 # AVRCD: 2 issues
 monitor.sub.AVRCD1 <- monitor.sub %>% 
   filter(Site == "AVRCD", Date_Monitored == "2020-04-30", Plot == "14") # PlotMix conflicting
 
 count(filter(monitor.sub, Site == "AVRCD", Date_Monitored == "2020-04-30", Treatment == "Seed"), PlotMix)
-  # should be 4 Cool and 4 Warm
+#   should be 4 Cool and 4 Warm
   
 monitor.sub.AVRCD2 <- monitor.sub %>% 
   filter(Site == "AVRCD") %>% 
   filter(Date_Monitored == "2021-04-06") # Date_Seeded conflicting
 count(filter(monitor.sub, Site == "AVRCD"), Date_Seeded)
- # impossible that it was seeded in 2021, because monitoring occurred in 2020
+#   impossible that it was seeded in 2021, because monitoring occurred in 2020
 
 monitor.sub.AVRCD <- bind_rows(monitor.sub.AVRCD1, monitor.sub.AVRCD2)
 
@@ -78,12 +88,12 @@ monitor.sub.FlyingM <- monitor.sub %>%
 
 count(filter(monitor.sub, Site == "FlyingM"), Date_Seeded)
 count(filter(monitor.2x2, Site == "FlyingM"), Date_Seeded) # 7/25 date is wrong
-  # Even though this isn't a conflict between subplot and 2x2 data, It does not make sense 
-      # that there would be two seeding dates, and it's not like some plots 
-      # were seeded on 7/17 and others were seeded on 7/18. There are monitoring days 
-      # that have all plots marked as 7/17, and other monitoring days that have all plots 
-      # marked as 7/18. The majority say 7/18, so I will change all of the subplot data  
-      # and 2x2 data Date_Seeded values in a separate line of code.
+#   Even though this isn't a conflict between subplot and 2x2 data, It does not make sense 
+#     that there would be two seeding dates, and it's not as though some plots 
+#     were seeded on 7/17 and others were seeded on 7/18. There are monitoring days 
+#     that have all plots marked as 7/17, and other monitoring days that have all plots 
+#     marked as 7/18. The majority say 7/18, so I will change all of the subplot data  
+#     and 2x2 data Date_Seeded values in a separate line of code.
 
 count(filter(monitor.2x2, Site == "FlyingM"), Date_Monitored) # 6/13 is wrong, all others are 6/12
 
@@ -99,8 +109,8 @@ monitor.sub.Mesquite <- monitor.sub %>%
 
 count(filter(monitor.sub, Site == "Mesquite"), Date_Monitored)
 count(filter(monitor.2x2, Site == "Mesquite"), Date_Monitored) 
-  # no way to tell if date should be 12/12 or 12/13,
-    # but will change it all to 12/13 to be standardized across 2x2 and subplot data
+#   no way to tell if date should be 12/12 or 12/13,
+#     but will change it all to 12/13 to be standardized across 2x2 and subplot data
 
 filter(monitor.sub, Site == "Mesquite", Plot == "233") # PlotMix should be None
 filter(monitor.sub, Site == "Mesquite", Plot == "234") # Should be Seed Medium

@@ -1,3 +1,15 @@
+# Purpose: curate a complete species list with Code, Code Original, Name, Native, Duration, Lifeform info.
+#   Two lists must be created, a location-independent version (known species), and a 
+#     location-dependent version (unknown species, which includes location information).
+#   The lists will include every code in the subplot and 2x2 plot data.
+# The species lists are essentially metadata for the codes.
+
+# Note about dependency: to create the dependency CSV, read in .xlsx files and code will run to create dependency 
+#   CSVs of intermediate species lists for both location dependent and independent.
+#   Then run the 01-dependency_assign-seeded-species-native-status.R to create the dependency that must be
+#   read in for this script, and continue running script until the end.
+
+
 library(readxl)
 library(tidyverse)
 
@@ -41,6 +53,10 @@ subplot <- subplot.raw %>%
 
 
 # Assign names to codes in subplot data but not species list --------------
+
+  # Dealing with codes that are present in the subplot data, but not present in 
+  #   the species list from master-species_native.xlsx (which was adapted from Master.xlsx)
+  # Manually adding the missing information (Name, Native, Lifeform, and Duration cols)
 
 # Extract missing codes
 codes.missing.sub <- setdiff(subplot$Code, species.raw$Code)
@@ -181,7 +197,6 @@ unique(species.m.known$Lifeform) # lifeform has been standardized
 write_csv(species.m.known,
           file = "data/raw/01a_output-species3_xlsx_native-lifeform.csv")
 head(species.m.known)
-
 
 # EDITED: edit new file manually to add Duration and correct Lifeform if needed
 species.m.known <- read_csv("data/raw/01b_edited-species3_xlsx_native-lifeform-duration.csv")
