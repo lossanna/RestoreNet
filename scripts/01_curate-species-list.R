@@ -27,12 +27,12 @@ native.fix <- read_csv("data/raw/01-dependency_seeded-species-to-be-marked-nativ
 # Notes about manual edits ------------------------------------------------
 
 # For manual edits to CSVs, the CSV is written from R, copied and named a new name, edited, 
-      # and new file is read into R
+#   and new file is read into R
 
 # Files in the format "output-species_xx.csv" are ones written from R
 # Files in the format "edited-species_xx.csv" are manually edited and read back in as new objects,
-  # but then usually used to alter existing objects
-  # See README_rawdata.md for more details
+#   but then usually used to alter existing objects
+#   See README_rawdata.md for more details
 
 
 
@@ -54,9 +54,9 @@ subplot <- subplot.raw %>%
 
 # Assign names to codes in subplot data but not species list --------------
 
-  # Dealing with codes that are present in the subplot data, but not present in 
-  #   the species list from master-species_native.xlsx (which was adapted from Master.xlsx)
-  # Manually adding the missing information (Name, Native, Lifeform, and Duration cols)
+#   This is dealing with codes that are present in the subplot data, but not present in 
+#     the species list from master-species_native.xlsx (which was adapted from Master.xlsx)
+#   Manually adding the missing information (Name, Native, Lifeform, and Duration cols)
 
 # Extract missing codes
 codes.missing.sub <- setdiff(subplot$Code, species.raw$Code)
@@ -84,7 +84,7 @@ head(sub.missing.edit)
 # Separate location-dependent species (unknowns) --------------------------
 
 # Knowns and unknowns must be separated; 
-  # plants not defined to species level are location-specific and Site must be retained
+#   plants not defined to species level are location-specific and Site must be retained
 
 # Unknowns (location-dependent)
 species.m.unk <- species.raw %>% # from original master list (xlsx)
@@ -166,8 +166,8 @@ head(lifeform.na.edit)
 
 # Add lifeform.na.edit to working location-independent species list
 
-  # Species are split up because left_join() will not override and will create duplicates,
-    # and information from edited version is definitely correct (information from subplot.raw could be wrong)
+#   Species are split up because left_join() will not override and will create duplicates,
+#     and information from edited version is definitely correct (information from subplot.raw could be wrong)
 
 species.lifeform <- species.m.known %>%  # known species with lifeform info
   filter(!Code %in% lifeform.na.edit$Code) 
@@ -190,8 +190,8 @@ unique(species.m.known$Lifeform) # lifeform has been standardized
 
 # Add duration to location-independent list -------------------------------
 
-  # (All duration information must be added manually from USDA Plants)
-  # Multiple lifeforms for same species are also corrected (wrong ones deleted)
+#   (All duration information must be added manually from USDA Plants)
+#   Multiple lifeforms for same species are also corrected (wrong ones deleted)
 
 # OUTPUT: write output with Native and Lifeform columns
 write_csv(species.m.known,
@@ -237,7 +237,7 @@ codes.standardized.in <- codes.fix.in %>%
   filter(Code %in% c(mix.codes$Code, "CHPO12", "SIAL2")) %>% 
   mutate(Old_Code = c("ARPUP6", "BOER", "EUPO3", "S-HEBO", "S-PASM", "SIAL", "SPAMA")) %>% 
   select(Old_Code, Code, Name)
-  # DRCU/DRCUI and ESCA/ESCAM refer to different varieties, so specificity is retained
+#   DRCU/DRCUI and ESCA/ESCAM refer to different varieties, so specificity is retained
 
 # Remove wrong codes from species list
 species.in <- species.in %>% 
@@ -279,8 +279,8 @@ species.in <- species.in %>%
 # Write intermediate location-dependent to CSV ----------------------------
 
 # This is an intermediate because it does not yet have fixed native status for species that
-  # were marked as seeded in the subplot data
-  # Used in 01.1-dependency_assign-seeded-species-native-status.R
+#   were marked as seeded in the subplot data.
+#   Output here is used in 01-dependency_assign-seeded-species-native-status.R
 
 write_csv(species.in,
           file = "data/raw/01-dependency_species-list_location-independent.csv")
@@ -293,7 +293,7 @@ head(species.in)
 # Location-dependent species (unknowns) -----------------------------------
 
 # Combine all location-dependent species 
-  # (ones from master species list and from subplot data)
+#   (ones from master species list and from subplot data)
 species.de <- bind_rows(species.m.unk, sub.missing.unk)
 
 # OUTPUT: write to CSV to fill in information for species.m.unk
@@ -302,7 +302,7 @@ write_csv(species.de,
 head(species.de) # skeleton to edit
 
 # OUTPUT: extract Site information for species.m.unk to add to location-dependent list
-  # and write to CSV
+#   and write to CSV
 sites.m.unk <- subplot %>% 
   filter(Code %in% species.m.unk$Code) %>% 
   select(Code, Region, Site) %>% 
@@ -335,7 +335,7 @@ intersect(species.de$CodeOriginal, species.in$Code)
 length(unique(species.de$Code)) == nrow(species.de) # all codes in species list are unique
 intersect(species.de$CodeOriginal, species.in$Code) 
 intersect(species.de$Code, species.in$Code) 
-  # location-dependent codes are also unique from location-dependent ones, both original code and new code with site info
+#   location-dependent codes are also unique from location-dependent ones, both original code and new code with site info
 
 
 # Check for absent information (NAs)
@@ -347,8 +347,10 @@ unique(species.de$Lifeform)
 
 # Write intermediate to CSV -----------------------------------------------
 
-# This is an intermediate because it does not yet have fixed native status for species that
-  # were marked as seeded in the subplot data, used in 01.1-dependency_assign-seeded-species-native-status.R
+#   This is an intermediate because it does not yet have fixed native status for species that
+#     were marked as seeded in the subplot data
+#   Output here used in 01-dependency_assign-seeded-species-native-status.R
+
 write_csv(species.de,
           file = "data/raw/01-dependency_species-list_location-dependent.csv")
 
@@ -417,10 +419,10 @@ species.subplot.de <- species.de
 
 # Codes from AllPlotData (2x2 plots) --------------------------------------
 
-# Codes from AllPlotData (2 x 2 m plots) that missing from location-independent species list
+#   These are codes from AllPlotData (2 x 2 m plots) that missing from location-independent species list.
+#     Codes from these plots are really different and usually long descriptions
 
-# Codes from these plots are really different and usually long descriptions
-
+# Compile codes
 p2x2.codes.missing <- plot.2x2.raw %>% 
   select(Site, starts_with("Additional")) %>% 
   mutate(across(everything(), as.character)) %>% 
@@ -438,7 +440,7 @@ write_csv(p2x2.codes.missing,
 head(p2x2.codes.missing)
 
 # EDITED: add/correct Native, Duration, Lifeform info
-  # create multiple rows for codes that mention more than one species (happens at SRER and Patagonia)
+#   create multiple rows for codes that mention more than one species (happens at SRER and Patagonia)
 p2x2.codes.missing <- read_csv("data/raw/01b_edited-species5_codes-missing-2x2plot.csv")
 head(p2x2.codes.missing)
 
@@ -454,8 +456,8 @@ p2x2.codes.de$Name <- apply(p2x2.codes.de[ , c("Name", "Site")], 1, paste, colla
 
 
 # Compare 2x2 and subplot species info
-  # because 2x2 species info was entered manually based on just the original code, and may be wrong
-  # But this is only possible now because Code has site info also
+#   because 2x2 species info was entered manually based on just the original code, and may be wrong
+#   But this is only possible now because Code has site info also
 
 # 2x2 species info for overlapping codes
 de.overlap.2x2 <- p2x2.codes.de %>% 
@@ -482,19 +484,19 @@ identical(de.overlap$Code, de.overlap$Code_2x2) # no difference
 
 identical(de.overlap$Name, de.overlap$Name_2x2)
 setdiff(de.overlap$Name, de.overlap$Name_2x2) 
-  # subplot names are right, they are either more detailed or came from master species list
+#  subplot names are right, they are either more detailed or came from master species list
 
 identical(de.overlap$Native, de.overlap$Native_2x2)
 count(de.overlap, Native)
 count(de.overlap, Native_2x2)
-  # subplot Native status is more specific, and should be used
+#   subplot Native status is more specific, and should be used
 
 identical(de.overlap$Duration, de.overlap$Duration_2x2) # no difference
 
 identical(de.overlap$Lifeform, de.overlap$Lifeform_2x2)
 count(de.overlap, Lifeform)
 count(de.overlap, Lifeform_2x2)
-  # subplot Lifeform is more specific, and should be used
+#   subplot Lifeform is more specific, and should be used
 
 # Replace species info with info from subplot where there are conflicts
 de.overlap.replace <- species.subplot.de %>% 
@@ -515,7 +517,7 @@ apply(p2x2.codes.de, 2, anyNA)
 p2x2.codes.de %>% 
   filter(Code %in% filter(p2x2.codes.de, duplicated(Code))$Code) %>% 
   arrange(Code) 
-  # SRER ones are duplicates because they mention more than one species, that's okay
+#   SRER ones are duplicates because they mention more than one species, and that's okay
 
 
 # Combine location-independent and dependent with new codes
