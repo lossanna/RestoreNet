@@ -26,7 +26,7 @@ subplot <- subplot.raw %>%
   rename(Code = Species_Code,
          Count = Seedling_Count,
          Height = Average_Height_mm,
-         Seeded = `Seeded(Yes/No)`,
+         SpeciesSeeded = `Seeded(Yes/No)`,
          PlotMix = Seed_Mix)
 
 # Add Region col
@@ -47,11 +47,10 @@ subplot <- subplot %>%
   mutate(Date_Seeded = as.character(Date_Seeded),
          Date_Monitored = as.character(Date_Monitored))
 subplot[subplot == "NA"] <- NA
-apply(subplot, 2, anyNA) # check all columns for NAs
-  # NAs in Code, Count, Height, Seeded
-subplot <- subplot %>% # convert to date
+apply(subplot, 2, anyNA) # check all columns for NAs; NAs in Code, Count, Height, Seeded
+subplot <- subplot %>% 
   mutate(Date_Seeded = as.Date(Date_Seeded),
-         Date_Monitored = as.Date(Date_Monitored))
+         Date_Monitored = as.Date(Date_Monitored)) # convert back to date
 
 
 
@@ -68,7 +67,7 @@ subplot$Code[subplot$raw.row == 9318] <- "0"
 # Examine non-empty subplots
 subplot.raw[12166, ]
 subplot.raw[12166, c("Species_Code", "Functional_Group", "Seeded(Yes/No)", "Notes")]
-  # No notes for 12166, but a functional group was listed; not seeded, and probably an unknown
+#   No notes for 12166, but a functional group was listed; not seeded, and probably an unknown
 
 # Assign location-dependent code for 12166
 subplot$Code[subplot$raw.row == 12166] <- "UNFO.12166.assigned"
@@ -82,6 +81,7 @@ filter(subplot, is.na(Code)) # no NAs
 
 # Extract incorrect codes
 setdiff(subplot$Code, c(species.de$CodeOriginal, species.in$CodeOriginal))
+#   ARPUP6, BOER, EUPO3, S-HEBO, S-PASM, SIAL, SPAMA are all codes that had to be fixed previously (known to exist and be wrong)
 
 # Replace codes
 subplot$Code[subplot$Code == "S-PASM"] <- "PASM"

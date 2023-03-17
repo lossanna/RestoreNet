@@ -1,4 +1,4 @@
-# Purpose: curate a complete species list with Code, Code Original, Name, Native, Duration, Lifeform info.
+# Purpose: Curate a complete species list with Code, Code Original, Name, Native, Duration, Lifeform info.
 #   Two lists must be created, a location-independent version (known species), and a 
 #     location-dependent version (unknown species, which includes location information).
 #   The lists will include every code in the subplot and 2x2 plot data.
