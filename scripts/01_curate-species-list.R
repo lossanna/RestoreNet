@@ -7,10 +7,12 @@
 #   The lists will include every code in the subplot and 2x2 plot data.
 # The species lists are essentially metadata for the codes.
 
-# Note about dependency: to create the dependency CSV, read in .xlsx files and code will run to create dependency 
-#   CSVs of intermediate species lists for both location dependent and independent.
+# Note about dependency: To create the dependency CSV, read in .xlsx files and run
+#   code from beginning to "Write intermediate to CSV" section to create dependency. 
 #   Then run the 01-dependency_assign-seeded-species-native-status.R to create the dependency that must be
-#   read in for this script, and continue running script until the end.
+#     read in for this script, and continue running this script until the end.
+#   CSVs of intermediate species lists for both location dependent and independent.
+
 
 
 library(readxl)
@@ -30,12 +32,12 @@ native.fix <- read_csv("data/raw/01-dependency_seeded-species-to-be-marked-nativ
 # Notes about manual edits ------------------------------------------------
 
 # For manual edits to CSVs, the CSV is written from R, copied and named a new name, edited, 
-#   and new file is read into R
+#   and new file is read into R.
 
-# Files in the format "output-species_xx.csv" are ones written from R
+# Files in the format "output-species_xx.csv" are ones written from R.
 # Files in the format "edited-species_xx.csv" are manually edited and read back in as new objects,
-#   but then usually used to alter existing objects
-#   See README_rawdata.md for more details
+#   but then usually used to alter existing objects.
+#   See README_rawdata.md for more details.
 
 
 
@@ -58,8 +60,8 @@ subplot <- subplot.raw %>%
 # Assign names to codes in subplot data but not species list --------------
 
 #   This is dealing with codes that are present in the subplot data, but not present in 
-#     the species list from master-species_native.xlsx (which was adapted from Master.xlsx)
-#   Manually adding the missing information (Name, Native, Lifeform, and Duration cols)
+#     the species list from master-species_native.xlsx (which was adapted from Master.xlsx).
+#   Manually adding the missing information (Name, Native, Lifeform, and Duration cols).
 
 # Extract missing codes
 codes.missing.sub <- setdiff(subplot$Code, species.raw$Code)
@@ -87,7 +89,7 @@ head(sub.missing.edit)
 # Separate location-dependent species (unknowns) --------------------------
 
 # Knowns and unknowns must be separated; 
-#   plants not defined to species level are location-specific and Site must be retained
+#   plants not defined to species level are location-specific and Site must be retained.
 
 # Unknowns (location-dependent)
 species.m.unk <- species.raw %>% # from original master list (xlsx)
@@ -168,9 +170,8 @@ head(lifeform.na.edit)
 
 
 # Add lifeform.na.edit to working location-independent species list
-
 #   Species are split up because left_join() will not override and will create duplicates,
-#     and information from edited version is definitely correct (information from subplot.raw could be wrong)
+#     and information from edited version is definitely correct (information from subplot.raw could be wrong).
 
 species.lifeform <- species.m.known %>%  # known species with lifeform info
   filter(!Code %in% lifeform.na.edit$Code) 
@@ -193,8 +194,8 @@ unique(species.m.known$Lifeform) # lifeform has been standardized
 
 # Add duration to location-independent list -------------------------------
 
-#   (All duration information must be added manually from USDA Plants)
-#   Multiple lifeforms for same species are also corrected (wrong ones deleted)
+#   All duration information must be added manually from USDA Plants.
+#   Multiple lifeforms for same species are also corrected (wrong ones deleted).
 
 # OUTPUT: write output with Native and Lifeform columns
 write_csv(species.m.known,
@@ -351,7 +352,7 @@ unique(species.de$Lifeform)
 # Write intermediate to CSV -----------------------------------------------
 
 #   This is an intermediate because it does not yet have fixed native status for species that
-#     were marked as seeded in the subplot data
+#     were marked as seeded in the subplot data.
 #   Output here used in 01-dependency_assign-seeded-species-native-status.R
 
 write_csv(species.de,
@@ -423,7 +424,7 @@ species.subplot.de <- species.de
 # Codes from AllPlotData (2x2 plots) --------------------------------------
 
 #   These are codes from AllPlotData (2 x 2 m plots) that missing from location-independent species list.
-#     Codes from these plots are really different and usually long descriptions
+#     Codes from these plots are really different and are usually long descriptions.
 
 # Compile codes
 p2x2.codes.missing <- plot.2x2.raw %>% 
