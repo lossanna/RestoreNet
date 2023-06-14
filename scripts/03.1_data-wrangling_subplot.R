@@ -147,14 +147,14 @@ nrow(subplot) == nrow(subplot.raw)
 
 subplot.inva <- subplot %>% 
   filter(Native == "Introduced") %>% 
-  select(Code, Seeded, Name, Native) %>% 
+  select(Code, SpeciesSeeded, Name, Native) %>% 
   distinct(.keep_all = TRUE)
-unique(subplot.inva$Seeded) # something is mislabeled; no introduced species were seeded
+unique(subplot.inva$SpeciesSeeded) # something is mislabeled; no introduced species were seeded
 subplot.inva %>% 
-  filter(Seeded == "Yes") # Eragrostis curvula was not seeded
+  filter(SpeciesSeeded == "Yes") # Eragrostis curvula was not seeded
 
 # Fix Eragrostis curvula - mark all observations as "No" for Seeded col
-subplot$Seeded[subplot$Name == "Eragrostis curvula"] <- "No"
+subplot$SpeciesSeeded[subplot$Name == "Eragrostis curvula"] <- "No"
 
 
 
@@ -168,21 +168,13 @@ filter(subplot, is.na(Name)) # no NA names
 
 # Correct monitoring info -------------------------------------------------
 
-# Complete corrected monitoring info was derived from 02.2_data-wrangling_2x2.R script
-monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
-
-# Change Date_Seeded to 7/18 for all of FlyingM
-subplot <- subplot %>% 
-  mutate(Date_Seeded = as.Date(Date_Seeded)) %>% 
-  mutate(Date_Seeded = if_else(Site == "FlyingM", as.Date("2018-07-18"), Date_Seeded))
-
-# Create df of original (incorrect) monitoring data to match MonitorID to subplot data
-  # with left_join()
+# Create df of original (incorrect) monitoring data to generate MonitorID for subplot data
+  # to match correct monitoring data (monitor.info) with left_join()
 monitor.assign <- subplot %>% 
   select(Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix) %>% 
   distinct(.keep_all = TRUE) 
 monitor.assign <- monitor.assign %>% 
-  mutate(MonitorID = 1:nrow(monitor.assign))
+  mutate(MonitorID = 1:nrow(monitor.assign)) # monitor.assign is in same row order as monitor.info
 
 # Add MonitorID to subplot data
 subplot <- left_join(subplot, monitor.assign)
@@ -197,7 +189,7 @@ subplot <- left_join(subplot, monitor.info)
 subplot <- subplot %>% 
   select(Site, Region, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix,
          CodeOriginal, Code, Name, Native, Duration, Lifeform, Count, Height,
-         Seeded, raw.row, MonitorID) # reorder cols
+         SpeciesSeeded, raw.row, MonitorID) # reorder cols
 
 # Check all cols for NAs
 apply(subplot, 2, anyNA) 
@@ -215,30 +207,43 @@ write_csv(subplot,
 
 # Filter out seeded species
 subplot.seeded <- subplot %>% 
-  filter(Seeded == "Yes")
+  filter(SpeciesSeeded == "Yes")
 
 # Add mix information to seeded species
 apply(mix.raw, 2, anyNA) # mix has no NAs
 
-subplot.seeded <- left_join(subplot.seeded, mix) %>% 
+unique(subplot$Region)
+unique(mix.raw$Region) # mix is missing Utah
+
+subplot.seeded <- left_join(subplot.seeded, mix.raw) %>% 
   select(-Family, -Scientific, -Common) # left_join() to assign mix information to seeded species
 
 # Examine species that were marked seeded but not in mix table
 seeded.na.mix <- subplot.seeded %>% 
   filter(is.na(Mix)) %>% 
-  select(Site, Code, Code, Name, Mix) %>% 
+  select(Site, Region, CodeOriginal, Code, Name, Mix) %>% 
   distinct(.keep_all = TRUE) %>% 
   arrange(Name) 
+
+# OUTPUT: create list of species codes with unknown SpeciesSeeded
+write_csv(seeded.na.mix,
+          file = "data/raw/03.1a_output_species-seeded1_na-mix_subplot.csv")
+
+
+# EDITED: manually check is species were seeded, and correct SpeciesSeeded col if not
+#   Utah sites are not included in the seed mix list, but almost all of those species were also 
+#     seeded at other sites. Unknown species not marked seeded are marked "Unknown"
+
+
+
 
 # Make list of species marked "Seeded" (Codes already location-specific)
 subplot.seeded.codes <- subplot.seeded %>% 
-  select(Site, Code, CodeOriginal, Name, Seeded) %>% 
+  select(Site, Code, CodeOriginal, Name, SpeciesSeeded) %>% 
   distinct(.keep_all = TRUE) %>% 
   arrange(Name) 
 
-# Write seeded species codes to CSV
-
-
+unique(subplot$SpeciesSeeded)
 
 
 save.image("RData/03.1_data-wrangling_subplot.RData")

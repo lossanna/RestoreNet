@@ -1,0 +1,74 @@
+Site,Region,CodeOriginal,Code,Name,Mix
+CRC,Utah,ACMI2,ACMI2,Achillea millefolium,NA
+Salt_Desert,Utah,ACMI2,ACMI2,Achillea millefolium,NA
+UtahPJ,Utah,ACMI2,ACMI2,Achillea millefolium,NA
+SRER,Sonoran SE,BOER4,BOER4,Bouteloua eriopoda,NA
+Salt_Desert,Utah,DACA7,DACA7,Dalea candida,NA
+UtahPJ,Utah,DACA7,DACA7,Dalea candida,NA
+CRC,Utah,ELEL5,ELEL5,Elymus elymoides,NA
+Salt_Desert,Utah,ELEL5,ELEL5,Elymus elymoides,NA
+UtahPJ,Utah,ELEL5,ELEL5,Elymus elymoides,NA
+BabbittPJ,Colorado Plateau,ELSPP,ELSPP.BabbittPJ,"Elymus spp., BabbittPJ",NA
+UtahPJ,Utah,HEBO,HEBO,Hedysarum boreale,NA
+CRC,Utah,HEMU3,HEMU3,Heliomeris multiflora,NA
+Salt_Desert,Utah,HEMU3,HEMU3,Heliomeris multiflora,NA
+UtahPJ,Utah,HEMU3,HEMU3,Heliomeris multiflora,NA
+UtahPJ,Utah,HECO26,HECO26,Hesperostipa comata,NA
+CRC,Utah,KRLA2,KRLA2,Krascheninnikovia lanata,NA
+Salt_Desert,Utah,KRLA2,KRLA2,Krascheninnikovia lanata,NA
+CRC,Utah,LILE,LILE,Leptosiphon lemmonii,NA
+UtahPJ,Utah,LECI4,LECI4,Leymus cinereus,NA
+CRC,Utah,LILE3,LILE3,Linum lewisii,NA
+Salt_Desert,Utah,LILE3,LILE3,Linum lewisii,NA
+UtahPJ,Utah,LILE3,LILE3,Linum lewisii,NA
+Salt_Desert,Utah,PASM,PASM,Pascopyrum smithii,NA
+CRC,Utah,PASM,PASM,Pascopyrum smithii,NA
+UtahPJ,Utah,PASM,PASM,Pascopyrum smithii,NA
+CRC,Utah,PEPA8,PEPA8,Penstemon palmeri,NA
+BarTBar,Colorado Plateau,SARE3,SARE3,Salvia reflexa,NA
+FlyingM,Colorado Plateau,SARE3,SARE3,Salvia reflexa,NA
+CRC,Utah,S-UNFO2,S-UNFO2.CRC,"Seeded unknown forb 2, CRC",NA
+Salt_Desert,Utah,S-UNFO2,S-UNFO2.Salt_Desert,"Seeded unknown forb 2, Salt_Desert",NA
+BabbittPJ,Colorado Plateau,SUNGR,SUNGR.BabbittPJ,"Seeded unknown grass (?), BabbittPJ",NA
+TLE,Colorado Plateau,SUNGR,SUNGR.TLE,"Seeded unknown grass (?), TLE",NA
+CRC,Utah,S-UNGR1,S-UNGR1.CRC,"Seeded unknown grass 1, CRC",NA
+Salt_Desert,Utah,S-UNGR1,S-UNGR1.Salt_Desert,"Seeded unknown grass 1, Salt_Desert",NA
+CRC,Utah,S-UNGR2,S-UNGR2.CRC,"Seeded unknown grass 2, CRC",NA
+Salt_Desert,Utah,S-UNGR2,S-UNGR2.Salt_Desert,"Seeded unknown grass 2, Salt_Desert",NA
+UtahPJ,Utah,S-UNGR2,S-UNGR2.UtahPJ,"Seeded unknown grass 2, UtahPJ",NA
+CRC,Utah,S-UNGR3,S-UNGR3.CRC,"Seeded unknown grass 3, CRC",NA
+Salt_Desert,Utah,S-UNGR3,S-UNGR3.Salt_Desert,"Seeded unknown grass 3, Salt_Desert",NA
+UtahPJ,Utah,S-UNGR3,S-UNGR3.UtahPJ,"Seeded unknown grass 3, UtahPJ",NA
+CRC,Utah,S-UNGR4,S-UNGR4.CRC,"Seeded unknown grass 4, CRC",NA
+UtahPJ,Utah,S-UNGR4,S-UNGR4.UtahPJ,"Seeded unknown grass 4, UtahPJ",NA
+UtahPJ,Utah,S-UNGR5,S-UNGR5.UtahPJ,"Seeded unknown grass 5, UtahPJ",NA
+FlyingM,Colorado Plateau,SOSP,SOSP.FlyingM,"Solanum spp., FlyingM",NA
+Mesquite,Chihuahuan,Unksporob,Unksporob.Mesquite,"Sporobolus spp., Mesquite",NA
+29_Palms,Mojave,STISPP,STISPP.29_Palms,"Stipa spp., 29_Palms",NA
+Mesquite,Chihuahuan,ATCA,ATCA.Mesquite,"Unknown ATCA (but not Atriplex, a grass?), Mesquite",NA
+BabbittPJ,Colorado Plateau,UNFO1,UNFO1.BabbittPJ,"Unknown forb 1, BabbittPJ",NA
+Spiderweb,Colorado Plateau,UNFO2,UNFO2.Spiderweb,"Unknown forb 2, Spiderweb",NA
+BarTBar,Colorado Plateau,UNFO9,UNFO9.BarTBar,"Unknown forb 9, BarTBar",NA
+FlyingM,Colorado Plateau,UNFO,UNFO.FlyingM,"Unknown forb, FlyingM",NA
+Mesquite,Chihuahuan,Unkforb,Unkforb.Mesquite,"Unknown forb, Mesquite",NA
+Spiderweb,Colorado Plateau,UNFO,UNFO.Spiderweb,"Unknown forb, Spiderweb",NA
+AguaFria,Colorado Plateau,UNGR1,UNGR1.AguaFria,"Unknown grass 1, AguaFria",NA
+BabbittPJ,Colorado Plateau,UNGR1,UNGR1.BabbittPJ,"Unknown grass 1, BabbittPJ",NA
+PEFO,Colorado Plateau,UNGR1,UNGR1.PEFO,"Unknown grass 1, PEFO",NA
+AguaFria,Colorado Plateau,UNGR2,UNGR2.AguaFria,"Unknown grass 2, AguaFria",NA
+MOWE,Colorado Plateau,UNGR2,UNGR2.MOWE,"Unknown grass 2, MOWE",NA
+PEFO,Colorado Plateau,UNGR2,UNGR2.PEFO,"Unknown grass 2, PEFO",NA
+AguaFria,Colorado Plateau,UNGR3,UNGR3.AguaFria,"Unknown grass 3, AguaFria",NA
+PEFO,Colorado Plateau,UNGR3,UNGR3.PEFO,"Unknown grass 3, PEFO",NA
+AguaFria,Colorado Plateau,UNGR,UNGR.AguaFria,"Unknown grass, AguaFria",NA
+BabbittPJ,Colorado Plateau,UNGR,UNGR.BabbittPJ,"Unknown grass, BabbittPJ",NA
+BarTBar,Colorado Plateau,UNGR,UNGR.BarTBar,"Unknown grass, BarTBar",NA
+FlyingM,Colorado Plateau,UNGR,UNGR.FlyingM,"Unknown grass, FlyingM",NA
+MOWE,Colorado Plateau,UNGR,UNGR.MOWE,"Unknown grass, MOWE",NA
+Mesquite,Chihuahuan,Unkgrass,Unkgrass.Mesquite,"Unknown grass, Mesquite",NA
+PEFO,Colorado Plateau,UNGR,UNGR.PEFO,"Unknown grass, PEFO",NA
+Spiderweb,Colorado Plateau,UNGR,UNGR.Spiderweb,"Unknown grass, Spiderweb",NA
+TLE,Colorado Plateau,UNGR,UNGR.TLE,"Unknown grass, TLE",NA
+Mesquite,Chihuahuan,UnkATCA,UnkATCA.Mesquite,"Unknown shrub; Possible Atriplex canescens, Mesquite",NA
+PEFO,Colorado Plateau,BOSPP,BOSPP.PEFO,"local Bouteloua species (unknown), PEFO",NA
+Spiderweb,Colorado Plateau,BOSPP,BOSPP.Spiderweb,"local Bouteloua species (unknown), Spiderweb",NA
