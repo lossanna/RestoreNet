@@ -1,3 +1,6 @@
+# Created: 2022-12-09
+# Last updated: 2023-03-17
+
 # Purpose: In comparing the monitoring information from the subplot vs. 2x2 plot data, 
 #   there were discrepancies, but there should be only one correct version. 
 #   This script shows what corrections were made and why, to standardize information 

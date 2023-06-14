@@ -1,3 +1,6 @@
+# Created: 2022-11-28
+# Last updated: 2023-03-17
+
 # Purpose: Curate a complete species list with Code, Code Original, Name, Native, Duration, Lifeform info.
 #   Two lists must be created, a location-independent version (known species), and a 
 #     location-dependent version (unknown species, which includes location information).
