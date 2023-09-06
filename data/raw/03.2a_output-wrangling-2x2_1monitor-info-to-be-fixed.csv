@@ -1,70 +1,19 @@
 Site,Date_Seeded,Date_Monitored,Plot,Treatment,PlotMix
-Creosote,2020-08-05,2021-10-11,221,Mulch,Medium
-Creosote,2020-08-05,2021-10-11,222,Seed,Warm
-Creosote,2020-08-05,2021-10-11,223,Seed,Medium
-Creosote,2020-08-05,2021-10-11,224,Mulch,Medium
-Creosote,2020-08-05,2021-10-11,225,ConMod,Warm
-Creosote,2020-08-05,2021-10-11,226,Pits,Warm
-Creosote,2020-08-05,2021-10-11,227,Seed,Medium
-Creosote,2020-08-05,2021-10-11,228,Mulch,Warm
-Creosote,2020-08-05,2021-10-11,229,Seed,Medium
-Creosote,2020-08-05,2021-10-11,230,Control,None
-Creosote,2020-08-05,2021-10-11,231,Seed,Warm
-Creosote,2020-08-05,2021-10-11,232,ConMod,Medium
-Creosote,2020-08-05,2021-10-11,233,ConMod,Medium
-Creosote,2020-08-05,2021-10-11,234,Pits,Medium
-Creosote,2020-08-05,2021-10-11,235,Mulch,Medium
-Creosote,2020-08-05,2021-10-11,236,Pits,Medium
 FlyingM,2018-07-18,2019-06-13,36,Pits,Med-Warm
-Mesquite,2020-08-05,2021-10-10,221,ConMod,Warm
-Mesquite,2020-08-05,2021-10-10,222,Pits,Warm
-Mesquite,2020-08-05,2021-10-10,223,Seed,Medium
-Mesquite,2020-08-05,2021-10-10,224,Mulch,Medium
-Mesquite,2020-08-05,2021-10-10,225,Pits,Medium
-Mesquite,2020-08-05,2021-10-10,226,Seed,Warm
-Mesquite,2020-08-05,2021-10-10,227,Mulch,Warm
-Mesquite,2020-08-05,2021-10-10,228,ConMod,Medium
-Mesquite,2020-08-05,2021-10-10,229,Pits,Warm
-Mesquite,2020-08-05,2021-10-10,230,Seed,Warm
-Mesquite,2020-08-05,2021-10-10,231,Pits,Medium
-Mesquite,2020-08-05,2021-10-10,232,ConMod,Warm
-Mesquite,2020-08-05,2021-10-10,233,Control,None
-Mesquite,2020-08-05,2021-10-10,234,Seed,Medium
-Mesquite,2020-08-05,2021-10-10,235,Mulch,Medium
-Mesquite,2020-08-05,2021-10-10,236,ConMod,Medium
 Pleasant,2019-12-19,2021-04-02,4,Seed only,Warm
 Pleasant,2019-12-19,2021-04-02,8,Seed only,Cool
 Pleasant,2019-12-19,2021-04-02,12,Seed only,Warm
 Pleasant,2019-12-19,2021-04-02,15,Seed only,Cool
 Pleasant,2019-12-19,2021-04-02,23,Seed only,Cool
-Pleasant,2019-12-19,2021-04-02,25,Control,None
-Pleasant,2019-12-19,2021-04-02,26,ConMod,Cool
-Pleasant,2019-12-19,2021-04-02,27,Mulch,Cool
-Pleasant,2019-12-19,2021-04-02,28,Mulch,Warm
-Pleasant,2019-12-19,2021-04-02,29,Pits,Cool
 Pleasant,2019-12-19,2021-04-02,30,Seed only,Warm
-Pleasant,2019-12-19,2021-04-02,31,ConMod,Warm
 Pleasant,2019-12-19,2021-04-02,32,Seed only,Cool
-Pleasant,2019-12-19,2021-04-02,33,ConMod,Cool
-Pleasant,2019-12-19,2021-04-02,34,Pits,Warm
-Pleasant,2019-12-19,2021-04-02,35,Mulch,Cool
-Pleasant,2019-12-19,2021-04-02,36,Pits,Cool
 Pleasant,2019-12-19,2021-10-04,4,Seed only,Warm
 Pleasant,2019-12-19,2021-10-04,8,Seed only,Cool
 Pleasant,2019-12-19,2021-10-04,12,Seed only,Warm
 Pleasant,2019-12-19,2021-10-04,22,Seed only,Warm
 Pleasant,2019-12-19,2021-10-04,23,Seed only,Cool
-Pleasant,2019-12-19,2021-10-04,26,ConMod,Cool
-Pleasant,2019-12-19,2021-10-04,27,Mulch,Cool
-Pleasant,2019-12-19,2021-10-04,28,Mulch,Warm
-Pleasant,2019-12-19,2021-10-04,29,Pits,Cool
 Pleasant,2019-12-19,2021-10-04,30,Seed only,Warm
-Pleasant,2019-12-19,2021-10-04,31,ConMod,Warm
 Pleasant,2019-12-19,2021-10-04,32,Seed only,Cool
-Pleasant,2019-12-19,2021-10-04,33,ConMod,Cool
-Pleasant,2019-12-19,2021-10-04,34,Pits,Warm
-Pleasant,2019-12-19,2021-10-04,35,Mulch,Cool
-Pleasant,2019-12-19,2021-10-04,36,Pits,Cool
 Preserve,2019-09-25,2020-03-26,1,Mulch,Cool
 Preserve,2019-09-25,2020-03-26,2,Seed,Cool
 Preserve,2019-09-25,2020-03-26,3,Pits,Cool
@@ -101,17 +50,6 @@ Preserve,2019-09-25,2020-03-26,33,Mulch,Warm
 Preserve,2019-09-25,2020-03-26,34,ConMod,Warm
 Preserve,2019-09-25,2020-03-26,35,Control,None
 Preserve,2019-09-25,2020-03-26,36,Pits,Warm
-Preserve,2019-11-25,2020-10-12,26,ConMod,Cool
-Preserve,2019-11-25,2020-10-12,27,Pits,Warm
-Preserve,2019-11-25,2020-10-12,28,Mulch,Warm
-Preserve,2019-11-25,2020-10-12,29,Control,None
-Preserve,2019-11-25,2020-10-12,30,Pits,Cool
-Preserve,2019-11-25,2020-10-12,31,Mulch,Cool
-Preserve,2019-11-25,2020-10-12,32,Seed,Warm
-Preserve,2019-11-25,2020-10-12,33,Mulch,Warm
-Preserve,2019-11-25,2020-10-12,34,ConMod,Warm
-Preserve,2019-11-25,2020-10-12,35,Control,None
-Preserve,2019-11-25,2020-10-12,36,Pits,Warm
 Preserve,2019-11-25,2021-03-30,2,Seed only,Cool
 Preserve,2019-11-25,2021-03-30,6,Seed only,Warm
 Preserve,2019-11-25,2021-03-30,10,Seed only,Cool
@@ -119,34 +57,8 @@ Preserve,2019-11-25,2021-03-30,11,Seed only,Warm
 Preserve,2019-11-25,2021-03-30,15,Seed only,Cool
 Preserve,2019-11-25,2021-03-30,21,Seed only,Warm
 Preserve,2019-11-25,2021-03-30,23,Seed only,Cool
-Preserve,2019-11-25,2021-03-30,25,Mulch,Cool
-Preserve,2019-11-25,2021-03-30,26,ConMod,Cool
-Preserve,2019-11-25,2021-03-30,27,Pits,Warm
-Preserve,2019-11-25,2021-03-30,28,Mulch,Warm
-Preserve,2019-11-25,2021-03-30,29,Control,None
-Preserve,2019-11-25,2021-03-30,30,Pits,Cool
-Preserve,2019-11-25,2021-03-30,31,Mulch,Cool
 Preserve,2019-11-25,2021-03-30,32,Seed only,Warm
-Preserve,2019-11-25,2021-03-30,33,Mulch,Warm
-Preserve,2019-11-25,2021-03-30,34,ConMod,Warm
-Preserve,2019-11-25,2021-03-30,35,Control,None
-Preserve,2019-11-25,2021-03-30,36,Pits,Warm
 Preserve,2019-11-25,2021-10-06,11,Seed only,Warm
-Preserve,2019-11-25,2021-10-06,21,Seed only,Warm
-Preserve,2019-11-25,2021-10-06,22,Pits,Cool
-Preserve,2019-11-25,2021-10-06,23,Seed only,Cool
-Preserve,2019-11-25,2021-10-06,25,Mulch,Cool
-Preserve,2019-11-25,2021-10-06,26,ConMod,Cool
-Preserve,2019-11-25,2021-10-06,27,Pits,Warm
-Preserve,2019-11-25,2021-10-06,28,Mulch,Warm
-Preserve,2019-11-25,2021-10-06,29,Control,None
-Preserve,2019-11-25,2021-10-06,30,Pits,Cool
-Preserve,2019-11-25,2021-10-06,31,Mulch,Cool
-Preserve,2019-11-25,2021-10-06,32,Seed only,Warm
-Preserve,2019-11-25,2021-10-06,33,Mulch,Warm
-Preserve,2019-11-25,2021-10-06,34,ConMod,Warm
-Preserve,2019-11-25,2021-10-06,35,Control,None
-Preserve,2019-11-25,2021-10-06,36,Pits,Warm
 Roosevelt,2019-09-22,2020-03-25,1,Pits,Cool
 Roosevelt,2019-09-22,2020-03-25,2,Seed,Cool
 Roosevelt,2019-09-22,2020-03-25,3,ConMod,Cool
@@ -183,39 +95,17 @@ Roosevelt,2019-09-22,2020-03-25,33,Pits,Warm
 Roosevelt,2019-09-22,2020-03-25,34,Seed,Cool
 Roosevelt,2019-09-22,2020-03-25,35,Control,None
 Roosevelt,2019-09-22,2020-03-25,36,Seed,Warm
-Roosevelt,2019-11-22,2020-10-15,26,Mulch,Warm
-Roosevelt,2019-11-22,2020-10-15,28,ConMod,Cool
-Roosevelt,2019-11-22,2020-10-15,33,Pits,Warm
-Roosevelt,2019-11-22,2020-10-15,36,Seed,Warm
 Roosevelt,2019-11-22,2021-04-01,2,Seed only,Cool
 Roosevelt,2019-11-22,2021-04-01,7,Seed only,Warm
 Roosevelt,2019-11-22,2021-04-01,11,Seed only,Cool
 Roosevelt,2019-11-22,2021-04-01,16,Seed only,Warm
 Roosevelt,2019-11-22,2021-04-01,20,Seed only,Cool
-Roosevelt,2019-11-22,2021-04-01,25,Control,None
-Roosevelt,2019-11-22,2021-04-01,27,Pits,Cool
-Roosevelt,2019-11-22,2021-04-01,28,ConMod,Cool
-Roosevelt,2019-11-22,2021-04-01,29,Mulch,Cool
 Roosevelt,2019-11-22,2021-04-01,30,Seed only,Warm
-Roosevelt,2019-11-22,2021-04-01,31,Mulch,Warm
-Roosevelt,2019-11-22,2021-04-01,32,ConMod,Warm
-Roosevelt,2019-11-22,2021-04-01,33,Pits,Warm
 Roosevelt,2019-11-22,2021-04-01,34,Seed only,Cool
-Roosevelt,2019-11-22,2021-04-01,35,Control,None
 Roosevelt,2019-11-22,2021-04-01,36,Seed only,Warm
 Roosevelt,2019-11-22,2021-10-08,2,Seed only,Cool
 Roosevelt,2019-11-22,2021-10-08,16,Seed only,Warm
-Roosevelt,2019-11-22,2021-10-08,24,ConMod,Warm
-Roosevelt,2019-11-22,2021-10-08,25,Control,None
-Roosevelt,2019-11-22,2021-10-08,26,Mulch,Warm
-Roosevelt,2019-11-22,2021-10-08,27,Pits,Cool
-Roosevelt,2019-11-22,2021-10-08,28,ConMod,Cool
-Roosevelt,2019-11-22,2021-10-08,29,Mulch,Cool
 Roosevelt,2019-11-22,2021-10-08,30,Seed only,Warm
-Roosevelt,2019-11-22,2021-10-08,31,Mulch,Warm
-Roosevelt,2019-11-22,2021-10-08,32,ConMod,Warm
-Roosevelt,2019-11-22,2021-10-08,33,Pits,Warm
-Roosevelt,2019-11-22,2021-10-08,36,Seed only,Warm
 SCC,2019-09-21,2020-03-27,1,Mulch,Cool
 SCC,2019-09-21,2020-03-27,2,ConMod,Cool
 SCC,2019-09-21,2020-03-27,3,Control,None
@@ -252,19 +142,7 @@ SCC,2019-09-21,2020-03-27,33,ConMod,Warm
 SCC,2019-09-21,2020-03-27,34,Mulch,Warm
 SCC,2019-09-21,2020-03-27,35,Seed,Warm
 SCC,2019-09-21,2020-03-27,36,Pits,Warm
-SCC,2019-11-21,2021-03-31,28,Pits,Warm
 SCC,2019-11-21,2021-03-31,32,Seed only,Cool
-SCC,2019-11-21,2021-03-31,34,Mulch,Warm
 SCC,2019-11-21,2021-10-13,16,Seed only,Warm
-SCC,2019-11-21,2021-10-13,24,Pits,Cool
 SCC,2019-11-21,2021-10-13,25,Seed only,Warm
-SCC,2019-11-21,2021-10-13,26,ConMod,Cool
-SCC,2019-11-21,2021-10-13,27,Mulch,Warm
-SCC,2019-11-21,2021-10-13,28,Pits,Warm
-SCC,2019-11-21,2021-10-13,30,Mulch,Cool
-SCC,2019-11-21,2021-10-13,31,Pits,Cool
-SCC,2019-11-21,2021-10-13,32,Seed only,Cool
-SCC,2019-11-21,2021-10-13,33,ConMod,Warm
-SCC,2019-11-21,2021-10-13,34,Mulch,Warm
 SCC,2019-11-21,2021-10-13,35,Seed only,Warm
-SCC,2019-11-21,2021-10-13,36,Pits,Warm

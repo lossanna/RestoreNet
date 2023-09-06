@@ -120,9 +120,12 @@ File naming notes:
 - `comparison` tab manually edited to highlight correct values in green, and wrong values in yellow. Comments inserted to give brief explanation of how this decision was made.
 - `corrected` tab manually created to have table of only correct information to read back in. 	
 
-`output-wrangling-2x2_1monitor-info-to-be-fixed.csv`
+`03.2a_output-wrangling-2x2_1monitor-info-to-be-fixed.csv`
 - Table of monitoring events from `2x2` data with information that conflicts with `subplot` data and must be corrected manually.
 - Output written directly from R and edited in a new file.
+
+`03.2b_edited-wrangling-2x2_1monitor-info-fixed.xlsx`
+- Shortened version of the `corrected` tab of `02b_edited-monitor_conflicting-monitoring-info-resolved.xlsx`; includes only events that need to be fixed for 2x2 data.
 
 `output-wrangling-2x2_2need-duplicate-rows.csv`
 - A subset of the `2x2` data for codes that need duplicate rows because the code refers to more than one species.
@@ -142,7 +145,7 @@ File naming notes:
 
 `master-seed-mix.xlsx`
 - Adapted from the `Seed Mixes` tab of `Master.xlsx`.
-- Manually added native status column (all seeded species were native).
+- Read into `01_curate-species-list.R` script.
 
 `master-species_native.xlsx`
 - Adapted from the `Species_Definitions` tab of `Master.xlsx`.

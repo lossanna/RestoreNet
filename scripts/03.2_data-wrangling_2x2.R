@@ -1,8 +1,8 @@
 # Created: 2022-12-07
-# Last updated: 2022-12-10
+# Last updated: 2023-09-06
 
-# Purpose: 
-
+# Purpose: create clean data table for 2x2 plot data, with corrected and standardized species 
+#   information, and monitoring and plot information.
 
 library(readxl)
 library(tidyverse)
@@ -13,7 +13,7 @@ p2x2.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "All
 subplot.clean <- read_csv("data/cleaned/subplot-data_clean.csv")
 species.in <- read_csv("data/cleaned/species-list_location-independent_clean.csv")
 species.de <- read_csv("data/cleaned/species-list_location-dependent_clean.csv")
-p2x2.codes.dup <- read_csv("data/raw/output-species6_2x2-codes_need-duplicate-rows.csv")
+p2x2.codes.dup <- read_csv("data/raw/01a_output-species6_2x2-codes_need-duplicate-rows.csv")
 mix <- read_xlsx("data/raw/master-seed-mix.xlsx")
 monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
 
@@ -34,11 +34,11 @@ p2x2.wide <- p2x2.raw %>%
     str_detect(p2x2.raw$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central",
     TRUE ~ "unk"))
   
-# Inspect Additional_species_in_plot cols
+ # Inspect Additional_species_in_plot cols
 unique(p2x2.wide$Additional_Species_In_Plot...22)
 unique(p2x2.wide$Additional_Species_In_Plot...21)
 unique(p2x2.wide$Additional_Species_In_Plot...20)
-unique(p2x2.wide$Additional_Species_In_Plot...19) # observations in col
+unique(p2x2.wide$Additional_Species_In_Plot...19) # observations in 12-19
 
 # Drop empty Additional_species_in_plot cols
 p2x2.wide <- p2x2.wide %>% 
@@ -61,13 +61,14 @@ apply(p2x2.wide, 2, anyNA)
 to.drop <- p2x2.wide %>% # remove completely empty rows (not counting raw.row, Region, or MonitorID cols)
   filter(is.na(Site) & is.na(Date_Seeded) & is.na(Date_Monitored) & is.na(Plot) &
            is.na(Treatment) & is.na(PlotMix))
+#   for some reason, a bunch of all-NA rows were added when reading in Master.xlsx AllPlotData
 p2x2.wide <- p2x2.wide %>% 
   filter(!raw.row %in% to.drop$raw.row)
 rm(to.drop)
 apply(p2x2.wide, 2, anyNA)
-  # Total_Veg_Cover has NAs because sometimes that data was not recorded in the field
-  # Additional_Species cols have NAs because not all observations had >1 additional species in plot
-  # MonitorID has NAs because of conflicts between subplot and 2x2 monitoring info, so no MonitorID could be assigned
+#   Total_Veg_Cover has NAs because sometimes that data was not recorded in the field
+#   Additional_Species cols have NAs because not all observations had >1 additional species in plot
+#   MonitorID has NAs because of conflicts between subplot and 2x2 monitoring info, so no MonitorID could be assigned
 
 
 # Pivot species columns
@@ -89,12 +90,12 @@ p2x2.long.intermediate <- p2x2.wide %>%
 
 # Check all cols for NAs
 apply(p2x2.long.intermediate, 2, anyNA) 
-  # NA MonitorID created because of conflicts between subplot and 2x2 monitoring info
+#  NA MonitorID created because of conflicts between subplot and 2x2 monitoring info
 
 # Status: p2x2.long.intermediate has MonitorID applied to observations with correct monitoring info,
-  # and empty Additional_Species observations created from pivot_longer() have been removed,
-  # but there is incorrect monitoring info, and codes that refer to more than one species have not
-  # yet been handled.
+#   and empty Additional_Species observations created from pivot_longer() have been removed,
+#   but there is incorrect monitoring info, and codes that refer to more than one species have not
+#   yet been handled.
 
 
 
@@ -102,11 +103,12 @@ apply(p2x2.long.intermediate, 2, anyNA)
 # Correct monitoring info -------------------------------------------------
 
 # Complete corrected monitoring info was derived from 02.2_data-wrangling_2x2.R script
+#   (will be writing over this object later with edited xlsx)
 monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
 
 # Check NA codes and MonitorID
-  # NA are due to differences in monitoring info between 2x2 and subplot,
-    # which is why no code was created after left_join()
+#  NA are due to differences in monitoring info between 2x2 and subplot,
+#    which is why no code was created after left_join()
 p2x2.monitorid.na <- p2x2.long.intermediate %>% 
   filter(is.na(MonitorID))
 
@@ -118,13 +120,13 @@ monitor.diff <- p2x2.monitorid.na %>%
 
 # Write to CSV to correct manually
 write_csv(monitor.diff,
-          file = "data/raw/output-wrangling-2x2_1monitor-info-to-be-fixed.csv")
+          file = "data/raw/03.2a_output-wrangling-2x2_1monitor-info-to-be-fixed.csv")
 
 
 ##### edited manually to correct monitoring info ############################
-  # similar to monitor-edited1_conflicting-monitoring-info-resolved.xlsx,
-    # but only the ones where 2x2 was wrong
-monitor.fix <- read_xlsx("data/raw/edited-wrangling-2x2_1monitor-info-fixed.xlsx")
+#  This is a shortened version of 02b_monitor-edited1_conflicting-monitoring-info-resolved.xlsx,
+#     with only the ones where 2x2 was wrong included
+monitor.fix <- read_xlsx("data/raw/03.2b_edited-wrangling-2x2_1monitor-info-fixed.xlsx")
 
 # Assign MonitorID based on fixed monitoring info
 monitor.fix <- left_join(monitor.fix, monitor.info)
@@ -179,11 +181,11 @@ apply(p2x2.long.monitor.fixed, 2, anyNA)
 
 # Correct codes -----------------------------------------------------------
 
+# Goal: handle observations of additional species in plot (not subplot)
 # Workflow:
-  # handle observations of additional species in plot (not subplot)
-      # manually add extra rows for codes that need duplicate rows because codes refer to more than one species
-      # make Code and CodeOriginal cols, standardize codes, and add species info to 2x2 data
-  # combine additional species and subplot species obs, and standardize codes
+#   manually add extra rows for codes that need duplicate rows because codes refer to more than one species
+#   make Code and CodeOriginal cols, standardize codes, and add species info to 2x2 data
+#   combine additional species and subplot species obs, and standardize codes
 
 
 # Handle additional species observations ----------------------------------
