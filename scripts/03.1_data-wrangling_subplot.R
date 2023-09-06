@@ -1,5 +1,5 @@
 # Created: 2022-11-29
-# Last updated: 2023-03-17
+# Last updated: 2023-09-06
 
 # Purpose: Create clean data table for subplot data, with corrected and standardized species information,
 #   and monitoring and plot information. 
@@ -65,8 +65,7 @@ filter(subplot, is.na(Code)) # raw.row 8610, 9318, 12166
 subplot$Code[subplot$raw.row == 8610] <- "0"
 subplot$Code[subplot$raw.row == 9318] <- "0"
 
-
-# Examine non-empty subplots
+# Examine non-empty subplots (12166)
 subplot.raw[12166, ]
 subplot.raw[12166, c("Species_Code", "Functional_Group", "Seeded(Yes/No)", "Notes")]
 #   No notes for 12166, but a functional group was listed; not seeded, and probably an unknown
@@ -96,7 +95,7 @@ subplot$Code[subplot$Code == "SPAMA"] <- "SPAM2"
 
 # Check for missing codes by comparing subplot data to both species lists
 sub.codes <- c(species.de$CodeOriginal, species.in$CodeOriginal)
-setdiff(subplot$Code, sub.codes) 
+setdiff(subplot$Code, sub.codes) # should be 0
 
 # Check again for NA codes
 filter(subplot, is.na(Code)) # no NAs
@@ -118,7 +117,7 @@ subplot.de <- subplot.de %>%
 subplot.de <- left_join(subplot.de, species.de)
 
 # Check for NA codes
-filter(subplot.de, is.na(Code))
+filter(subplot.de, is.na(Code)) # no NAs
 apply(subplot.de, 2, anyNA)
 
 
@@ -220,7 +219,7 @@ subplot.seeded <- left_join(subplot.seeded, mix.raw) %>%
 # Examine species that were marked seeded but not in mix table
 seeded.na.mix <- subplot.seeded %>% 
   filter(is.na(Mix)) %>% 
-  select(Site, Region, CodeOriginal, Code, Name, Mix) %>% 
+  select(Site, Region, CodeOriginal, Code, Name, Mix, SpeciesSeeded) %>% 
   distinct(.keep_all = TRUE) %>% 
   arrange(Name) 
 

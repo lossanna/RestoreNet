@@ -1,5 +1,5 @@
 # Created: 2022-12-09
-# Last updated: 2023-03-17
+# Last updated: 2023-09-06
 
 # Purpose: in merging the species data with the subplot data (actual observations), we see that some unknown
 #   species were seeded, and therefore native, but it is impossible to know this without first producing
@@ -20,7 +20,6 @@ library(tidyverse)
 species.in.intermed <- read_csv("data/raw/01-dependency_species-list_location-independent.csv")
 species.de.intermed <- read_csv("data/raw/01-dependency_species-list_location-dependent.csv")
 subplot.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllSubplotData")
-mix <- read_xlsx("data/raw/master-seed-mix.xlsx")
 
 
 # Set up subplot data -----------------------------------------------------

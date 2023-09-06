@@ -22,8 +22,8 @@ library(tidyverse)
 
 subplot.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllSubplotData")
 plot.2x2.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllPlotData")
-species.raw <- read_xlsx("data/raw/master-species_native.xlsx")
-mix <- read_xlsx("data/raw/master-seed-mix.xlsx")
+species.raw <- read_xlsx("data/raw/from-Master_species-list-with-native-status_LO.xlsx")
+mix <- read_xlsx("data/raw/from-Master_seed-mix_LO.xlsx", sheet = "from-Master.xlsx")
 
 # Dependency created in 01-dependency_assign-seeded-species-native-status.R
 native.fix <- read_csv("data/raw/01-dependency_seeded-species-to-be-marked-native.csv")
@@ -127,7 +127,8 @@ subplot.in.lifeform <- subplot %>%
   rename(Lifeform = Functional_Group)
 
 # Add subplot lifeform information to location-independent species list
-species.m.known <- left_join(species.m.known, subplot.in.lifeform)
+species.m.known <- left_join(species.m.known, subplot.in.lifeform,
+                              relationship = "many-to-many")
 
 # Standardize Lifeform to Grass/Forb/Shrub
 unique(species.m.known$Lifeform)
@@ -194,8 +195,8 @@ unique(species.m.known$Lifeform) # lifeform has been standardized
 
 # Add duration to location-independent list -------------------------------
 
-#   All duration information must be added manually from USDA Plants.
-#   Multiple lifeforms for same species are also corrected (wrong ones deleted).
+#   All duration information needed to be added manually from USDA Plants.
+#   Multiple lifeforms for same species were also corrected (wrong ones deleted).
 
 # OUTPUT: write output with Native and Lifeform columns
 write_csv(species.m.known,

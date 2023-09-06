@@ -1,12 +1,12 @@
 Region,Site,Code
-Colorado Plateau,FlyingM,AmaranthusSpp
 Chihuahuan,Mesquite,ATCA
+Colorado Plateau,FlyingM,AmaranthusSpp
 Chihuahuan,Mesquite,BAHI
 Sonoran SE,SRER,DeadStem
 Sonoran Central,Preserve,ERDI2
 Utah,UtahPJ,ERIGSPP
-Utah,UtahPJ,Eriogonum sp.
 Sonoran SE,Patagonia,ERISPP
+Utah,UtahPJ,Eriogonum sp.
 Sonoran SE,SRER,FESSPP
 Utah,CRC,LILE
 Colorado Plateau,AguaFria,LUSP
@@ -78,6 +78,6 @@ Utah,Salt_Desert,UNGR4
 Utah,UtahPJ,UNGR4
 Colorado Plateau,AguaFria,UNGR5
 Chihuahuan,Mesquite,UNK Fuzzy astr
-Chihuahuan,Mesquite,Unkaster
 Chihuahuan,Mesquite,UnkForb
 Chihuahuan,Creosote,UnkForb1
+Chihuahuan,Mesquite,Unkaster

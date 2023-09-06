@@ -1,5 +1,5 @@
 Created: 2022-11-28  
-Last updated: 2022-12-10  
+Last updated: 2023-09-05  
   
 Notes about raw data for RAMPS RestoreNet project.
 
@@ -15,6 +15,8 @@ File naming notes:
 - `_edited-` indicates the corresponding CSV written from R was then manually edited, and then read back into script.
 - `-species#_` indicates the CSV is an intermediate step in curating a complete species list, from `01_curate-species-list.R`. Numbers correspond between output and edited files, and sequentially mark workflow.
 - `01-dependency_` indicates the CSV is an intermediate step in correcting native status of seeded species, based on information from `subplot` data; produced from `01-dependency_assign-seeded-species-native-status.R` or `01_curate-species-list.R`.
+- `-monitor_` indicates CSV is an intermediate step in curating complete correct monitoring information, from `02_correct-monitoring-info.R`. No number because only one output/edited needed from script.
+
 - `_xlsx_` indicates the species list includes only codes from  `master-species_native.xlsx`, with unknowns removed.
 - `_native-lifeform-duration` indicates if the respective columns are present in the species list.
 - `-wrangling-2x2-` indicates the CSV is an intermediate step in data wrangling for `2x2` m plot data, from `02.2_data-wrangling_2x2`.
@@ -139,15 +141,17 @@ File naming notes:
 `Farrell_2020_EcologicalApplications_table1.xlsx`
 - Adapted from Table 1 of H. Farrell's manuscript (in review), with coordinates taken from the `Site_Information` tab of `Master.xlsx`
 
-`Master Germination Data 2022.xlsx`
-- Received from Hannah Farrell via email. I believe this is what she used to write her paper, which is currently in review.
-- File will not be modified in any way.  
-
-`master-seed-mix.xlsx`
-- Adapted from the `Seed Mixes` tab of `Master.xlsx`.
+`from-Master_seed-mix_LO.xlsx`
+- Two tabs: `from-Master.xlsx` is directly from the `Seed Mixes` tab of `Master.xlsx`, but codes have been alphabetized within each region.
 - Read into `01_curate-species-list.R` script.
+- `with-site` tab has been edited so the PJ and Mesquite mixes are separated into different rows and assigned as appropriate.
 
-`master-species_native.xlsx`
+`from-Master_species-list-with-native-status_LO.xlsx`
 - Adapted from the `Species_Definitions` tab of `Master.xlsx`.
 - Manually added the `Native` column based on USDA Plants database, and did small corrections to spelling of scientific names.
 - I did not change any species codes, as they relate directly to the `Master` data (the original `subplot` and `2x2` data).
+- Used to be read into `01.R`.
+
+`Master Germination Data 2022.xlsx`
+- Received from Hannah Farrell via email. I believe this is what she used to write her paper, which is currently in review.
+- File will not be modified in any way.  
