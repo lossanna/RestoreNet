@@ -1,0 +1,76 @@
+Site,Region,PlotMix,CodeOriginal,Code,Name,Native,Duration,Lifeform,SpeciesSeeded
+Mesquite,Chihuahuan,Warm,Unksporob,Unksporob.Mesquite,"Sporobolus spp., Mesquite",Native,Unknown,Grass,Yes
+Mesquite,Chihuahuan,Medium,Unksporob,Unksporob.Mesquite,"Sporobolus spp., Mesquite",Native,Unknown,Grass,Yes
+Mesquite,Chihuahuan,Warm,ATCA,ATCA.Mesquite,"Unknown ATCA (but not Atriplex, a grass?), Mesquite",Native,Unknown,Grass,Yes
+Mesquite,Chihuahuan,Warm,Unkforb,Unkforb.Mesquite,"Unknown forb, Mesquite",Native,Unknown,Forb,Yes
+Mesquite,Chihuahuan,Warm,Unkgrass,Unkgrass.Mesquite,"Unknown grass, Mesquite",Native,Unknown,Grass,Yes
+Mesquite,Chihuahuan,Medium,Unkgrass,Unkgrass.Mesquite,"Unknown grass, Mesquite",Native,Unknown,Grass,Yes
+Mesquite,Chihuahuan,Warm,UnkATCA,UnkATCA.Mesquite,"Unknown shrub; Possible Atriplex canescens, Mesquite",Native,Perennial,Shrub,Yes
+AguaFria,Colorado Plateau,Med-Warm,UNGR1,UNGR1.AguaFria,"Unknown grass 1, AguaFria",Native,Unknown,Grass,Yes
+AguaFria,Colorado Plateau,Warm,UNGR1,UNGR1.AguaFria,"Unknown grass 1, AguaFria",Native,Unknown,Grass,Yes
+AguaFria,Colorado Plateau,Med-Warm,UNGR2,UNGR2.AguaFria,"Unknown grass 2, AguaFria",Native,Unknown,Grass,Yes
+AguaFria,Colorado Plateau,Warm,UNGR3,UNGR3.AguaFria,"Unknown grass 3, AguaFria",Native,Unknown,Grass,Yes
+AguaFria,Colorado Plateau,Warm,UNGR,UNGR.AguaFria,"Unknown grass, AguaFria",Native,Unknown,Grass,Yes
+AguaFria,Colorado Plateau,Med-Warm,UNGR,UNGR.AguaFria,"Unknown grass, AguaFria",Native,Unknown,Grass,Yes
+BabbittPJ,Colorado Plateau,Cool,ELSPP,ELSPP.BabbittPJ,"Elymus spp., BabbittPJ",Native,Unknown,Grass,Yes
+BabbittPJ,Colorado Plateau,Cool-Med,ELSPP,ELSPP.BabbittPJ,"Elymus spp., BabbittPJ",Native,Unknown,Grass,Yes
+BabbittPJ,Colorado Plateau,Cool,SUNGR,SUNGR.BabbittPJ,"Seeded unknown grass (?), BabbittPJ",Native,Unknown,Shrub,Yes
+BabbittPJ,Colorado Plateau,Cool-Med,UNFO1,UNFO1.BabbittPJ,"Unknown forb 1, BabbittPJ",Native,Unknown,Forb,Yes
+BabbittPJ,Colorado Plateau,Cool,UNGR1,UNGR1.BabbittPJ,"Unknown grass 1, BabbittPJ",Native,Unknown,Grass,Yes
+BabbittPJ,Colorado Plateau,Cool-Med,UNGR1,UNGR1.BabbittPJ,"Unknown grass 1, BabbittPJ",Native,Unknown,Grass,Yes
+BabbittPJ,Colorado Plateau,Cool,UNGR,UNGR.BabbittPJ,"Unknown grass, BabbittPJ",Native,Unknown,Grass,Yes
+BarTBar,Colorado Plateau,Cool-Med,SARE3,SARE3,Salvia reflexa,Native,Annual,Forb,Yes
+BarTBar,Colorado Plateau,None,SARE3,SARE3,Salvia reflexa,Native,Annual,Forb,Yes
+BarTBar,Colorado Plateau,Med-Warm,SARE3,SARE3,Salvia reflexa,Native,Annual,Forb,Yes
+BarTBar,Colorado Plateau,Med-Warm,UNFO9,UNFO9.BarTBar,"Unknown forb 9, BarTBar",Native,Unknown,Forb,Yes
+BarTBar,Colorado Plateau,Med-Warm,UNGR,UNGR.BarTBar,"Unknown grass, BarTBar",Native,Unknown,Grass,Yes
+BarTBar,Colorado Plateau,Cool-Med,UNGR,UNGR.BarTBar,"Unknown grass, BarTBar",Native,Unknown,Grass,Yes
+FlyingM,Colorado Plateau,Cool-Med,SARE3,SARE3,Salvia reflexa,Native,Annual,Forb,Yes
+FlyingM,Colorado Plateau,None,SARE3,SARE3,Salvia reflexa,Native,Annual,Forb,Yes
+FlyingM,Colorado Plateau,Med-Warm,SARE3,SARE3,Salvia reflexa,Native,Annual,Forb,Yes
+FlyingM,Colorado Plateau,Med-Warm,SOSP,SOSP.FlyingM,"Solanum spp., FlyingM",Native,Unknown,Forb,Yes
+FlyingM,Colorado Plateau,Cool-Med,UNFO,UNFO.FlyingM,"Unknown forb, FlyingM",Native,Unknown,Forb,Yes
+FlyingM,Colorado Plateau,Med-Warm,UNFO,UNFO.FlyingM,"Unknown forb, FlyingM",Native,Unknown,Forb,Yes
+FlyingM,Colorado Plateau,Cool-Med,UNGR,UNGR.FlyingM,"Unknown grass, FlyingM",Native,Unknown,Grass,Yes
+FlyingM,Colorado Plateau,Med-Warm,UNGR,UNGR.FlyingM,"Unknown grass, FlyingM",Native,Unknown,Grass,Yes
+MOWE,Colorado Plateau,Med-Warm,UNGR2,UNGR2.MOWE,"Unknown grass 2, MOWE",Native,Unknown,Grass,Yes
+MOWE,Colorado Plateau,Warm,UNGR2,UNGR2.MOWE,"Unknown grass 2, MOWE",Native,Unknown,Grass,Yes
+MOWE,Colorado Plateau,Med-Warm,UNGR,UNGR.MOWE,"Unknown grass, MOWE",Native,Unknown,Grass,Yes
+MOWE,Colorado Plateau,Warm,UNGR,UNGR.MOWE,"Unknown grass, MOWE",Native,Unknown,Grass,Yes
+PEFO,Colorado Plateau,Med-Warm,UNGR1,UNGR1.PEFO,"Unknown grass 1, PEFO",Native,Unknown,Grass,Yes
+PEFO,Colorado Plateau,Warm,UNGR1,UNGR1.PEFO,"Unknown grass 1, PEFO",Native,Unknown,Grass,Yes
+PEFO,Colorado Plateau,Med-Warm,UNGR2,UNGR2.PEFO,"Unknown grass 2, PEFO",Native,Unknown,Grass,Yes
+PEFO,Colorado Plateau,Warm,UNGR2,UNGR2.PEFO,"Unknown grass 2, PEFO",Native,Unknown,Grass,Yes
+PEFO,Colorado Plateau,Med-Warm,UNGR3,UNGR3.PEFO,"Unknown grass 3, PEFO",Native,Unknown,Grass,Yes
+PEFO,Colorado Plateau,Warm,UNGR3,UNGR3.PEFO,"Unknown grass 3, PEFO",Native,Unknown,Grass,Yes
+PEFO,Colorado Plateau,Warm,UNGR,UNGR.PEFO,"Unknown grass, PEFO",Native,Unknown,Grass,Yes
+PEFO,Colorado Plateau,Med-Warm,UNGR,UNGR.PEFO,"Unknown grass, PEFO",Native,Unknown,Grass,Yes
+PEFO,Colorado Plateau,Warm,BOSPP,BOSPP.PEFO,"local Bouteloua species (unknown), PEFO",Native,Unknown,Grass,Yes
+Spiderweb,Colorado Plateau,Warm,UNFO2,UNFO2.Spiderweb,"Unknown forb 2, Spiderweb",Native,Unknown,Forb,Yes
+Spiderweb,Colorado Plateau,Warm,UNFO,UNFO.Spiderweb,"Unknown forb, Spiderweb",Native,Unknown,Forb,Yes
+Spiderweb,Colorado Plateau,Med-Warm,UNFO,UNFO.Spiderweb,"Unknown forb, Spiderweb",Native,Unknown,Forb,Yes
+Spiderweb,Colorado Plateau,Med-Warm,UNGR,UNGR.Spiderweb,"Unknown grass, Spiderweb",Native,Unknown,Grass,Yes
+Spiderweb,Colorado Plateau,Warm,UNGR,UNGR.Spiderweb,"Unknown grass, Spiderweb",Native,Unknown,Grass,Yes
+Spiderweb,Colorado Plateau,Warm,BOSPP,BOSPP.Spiderweb,"local Bouteloua species (unknown), Spiderweb",Native,Unknown,Grass,Yes
+TLE,Colorado Plateau,Warm,SUNGR,SUNGR.TLE,"Seeded unknown grass (?), TLE",Native,Unknown,Shrub,Yes
+TLE,Colorado Plateau,Cool,SUNGR,SUNGR.TLE,"Seeded unknown grass (?), TLE",Native,Unknown,Shrub,Yes
+TLE,Colorado Plateau,Cool,UNGR,UNGR.TLE,"Unknown grass, TLE",Native,Unknown,Grass,Yes
+29_Palms,Mojave,Cool,STISPP,STISPP.29_Palms,"Stipa spp., 29_Palms",Native,Unknown,Grass,Yes
+CRC,Utah,Cool-Med,LILE,LILE,Leptosiphon lemmonii,Native,Annual,Forb,Yes
+CRC,Utah,Cool-Med,S-UNFO2,S-UNFO2.CRC,"Seeded unknown forb 2, CRC",Native,Unknown,Forb,Yes
+CRC,Utah,Med-Warm,S-UNGR1,S-UNGR1.CRC,"Seeded unknown grass 1, CRC",Native,Unknown,Grass,Yes
+CRC,Utah,Cool-Med,S-UNGR1,S-UNGR1.CRC,"Seeded unknown grass 1, CRC",Native,Unknown,Grass,Yes
+CRC,Utah,Cool-Med,S-UNGR2,S-UNGR2.CRC,"Seeded unknown grass 2, CRC",Native,Unknown,Grass,Yes
+CRC,Utah,Med-Warm,S-UNGR2,S-UNGR2.CRC,"Seeded unknown grass 2, CRC",Native,Unknown,Grass,Yes
+CRC,Utah,Med-Warm,S-UNGR3,S-UNGR3.CRC,"Seeded unknown grass 3, CRC",Native,Unknown,Grass,Yes
+CRC,Utah,Cool-Med,S-UNGR3,S-UNGR3.CRC,"Seeded unknown grass 3, CRC",Native,Unknown,Grass,Yes
+CRC,Utah,Med-Warm,S-UNGR4,S-UNGR4.CRC,"Seeded unknown grass 4, CRC",Native,Unknown,Grass,Yes
+Salt_Desert,Utah,Cool-Med,S-UNFO2,S-UNFO2.Salt_Desert,"Seeded unknown forb 2, Salt_Desert",Native,Unknown,Forb,Yes
+Salt_Desert,Utah,Med-Warm,S-UNGR1,S-UNGR1.Salt_Desert,"Seeded unknown grass 1, Salt_Desert",Native,Unknown,Grass,Yes
+Salt_Desert,Utah,Cool-Med,S-UNGR2,S-UNGR2.Salt_Desert,"Seeded unknown grass 2, Salt_Desert",Native,Unknown,Grass,Yes
+Salt_Desert,Utah,Med-Warm,S-UNGR2,S-UNGR2.Salt_Desert,"Seeded unknown grass 2, Salt_Desert",Native,Unknown,Grass,Yes
+Salt_Desert,Utah,Med-Warm,S-UNGR3,S-UNGR3.Salt_Desert,"Seeded unknown grass 3, Salt_Desert",Native,Unknown,Grass,Yes
+UtahPJ,Utah,Cool-Med,S-UNGR2,S-UNGR2.UtahPJ,"Seeded unknown grass 2, UtahPJ",Native,Unknown,Grass,Yes
+UtahPJ,Utah,Cool-Med,S-UNGR3,S-UNGR3.UtahPJ,"Seeded unknown grass 3, UtahPJ",Native,Unknown,Grass,Yes
+UtahPJ,Utah,Cool,S-UNGR4,S-UNGR4.UtahPJ,"Seeded unknown grass 4, UtahPJ",Native,Unknown,Grass,Yes
+UtahPJ,Utah,Cool,S-UNGR5,S-UNGR5.UtahPJ,"Seeded unknown grass 5, UtahPJ",Native,Unknown,Grass,Yes

@@ -14,7 +14,7 @@ subplot.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "
 species.in <- read_csv("data/cleaned/species-list_location-independent_clean.csv")
 species.de <- read_csv("data/cleaned/species-list_location-dependent_clean.csv")
 subplot.codes <- read_csv("data/cleaned/subplot-codes_clean.csv")
-mix.raw <- read_xlsx("data/raw/master-seed-mix.xlsx")
+mix.raw <- read_xlsx("data/raw/from-Master_seed-mix_LO.xlsx", sheet = "from-Master.xlsx")
 monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
 
 
@@ -203,34 +203,92 @@ write_csv(subplot,
 
 # Address seeded species codes not in mix ---------------------------------
 
-# Filter out seeded species
+# Examine possible SpeciesSeeded values
+#   then deal with each separately in own section
+unique(subplot$SpeciesSeeded)
+
+
+# Species seeded but not listed in mix by code
 subplot.seeded <- subplot %>% 
-  filter(SpeciesSeeded == "Yes")
+  filter(SpeciesSeeded %in% c("Yes", "Y", "y"))
+
+setdiff(unique(subplot.seeded$CodeOriginal), unique(mix.raw$CodeOriginal)) # descrepanices exist
+
+species.seeded.not.in.mix <- subplot.seeded |> 
+  filter(CodeOriginal %in% 
+           setdiff(unique(subplot.seeded$CodeOriginal), unique(mix.raw$CodeOriginal))) |> 
+  select(Site, Region, PlotMix, CodeOriginal, Code, Name, Native, Duration, Lifeform,
+         SpeciesSeeded) |> 
+  distinct(.keep_all = TRUE) |> 
+  arrange(Name) |> 
+  arrange(Site) |> 
+  arrange(Region)
+
+# OUTPUT: create list of species marked seeded but not in mix
+write_csv(species.seeded.not.in.mix,
+          file = "data/raw/03.1a_output-species-seeded1_seeded-not-in-mix_subplot.csv")
+
+# EDITED: manually review and fix SpeciesSeeded status
+#   SpeciesSeeded only corrected if plant was identified to species level and definitely  
+#     not seeded. Unknowns retain original classification.
+species.seeded.not.in.mix <- read_xlsx("data/raw/03.1b_edited-species-seeded1_corrected-seeded-not-in-mix_subplot.xlsx")
+
+
+# Species marked NA or unknown
+species.unk.seeded <- subplot |> 
+  filter(SpeciesSeeded %in% c("?", "Unk", "UNK", NA)) |> 
+  select(Site, Region, PlotMix, CodeOriginal, Code, Name, Native, Duration, Lifeform,
+         SpeciesSeeded) |> 
+  distinct(.keep_all = TRUE) |> 
+  arrange(Name) |> 
+  arrange(Site) |> 
+  arrange(Region)
+
+# OUTPUT: create list of species of unknown seeding status
+write_csv(species.unk.seeded,
+          file = "data/raw/03.1a_output-species-seeded2_unk_subplot.csv")
+
+# EDITED: manually review and fix SpeciesSeeded status
+#   Unknowns marked as not seeded.
+#   0 code marked as "0" (no plants were present)
+#  Seeded status changed if identified to species level and it was seeded.
+species.unk.seeded <- read_xlsx("data/raw/03.1b_edited-species-seeded2_unk-corrected_subplot.xlsx")
+
+
+
+# Species marked not seeded
+subplot.no <- subplot |> 
+  filter(SpeciesSeeded == "No")
+
+species.no.seeded <- subplot.no |> 
+  select(Site, Region, CodeOriginal, Code, Name, Native, Duration, Lifeform,
+         SpeciesSeeded) |> 
+  distinct(.keep_all = TRUE) |> 
+  arrange(Name) |> 
+  arrange(Site) |> 
+  arrange(Region)
+
+# OUTPUT: create list of species marked not seeded
+write_csv(species.no.seeded,
+          "data/raw/03.1a_output-species-seeded3_no_subplot.csv")
+
+# EDITED: manually review and fix SpeciesSeeded status 
+
+
 
 # Add mix information to seeded species
-apply(mix.raw, 2, anyNA) # mix has no NAs
-
 unique(subplot$Region)
 unique(mix.raw$Region) # mix is missing Utah
 
 subplot.seeded <- left_join(subplot.seeded, mix.raw) %>% 
   select(-Family, -Scientific, -Common) # left_join() to assign mix information to seeded species
 
-# Examine species that were marked seeded but not in mix table
-seeded.na.mix <- subplot.seeded %>% 
-  filter(is.na(Mix)) %>% 
+subplot.seeded.mix <- subplot.seeded %>% 
+  filter(!is.na(Mix)) %>% 
   select(Site, Region, CodeOriginal, Code, Name, Mix, SpeciesSeeded) %>% 
   distinct(.keep_all = TRUE) %>% 
   arrange(Name) 
 
-# OUTPUT: create list of species codes with unknown SpeciesSeeded
-write_csv(seeded.na.mix,
-          file = "data/raw/03.1a_output_species-seeded1_na-mix_subplot.csv")
-
-
-# EDITED: manually check is species were seeded, and correct SpeciesSeeded col if not
-#   Utah sites are not included in the seed mix list, but almost all of those species were also 
-#     seeded at other sites. Unknown species not marked seeded are marked "Unknown"
 
 
 

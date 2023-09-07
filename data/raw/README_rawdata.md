@@ -25,6 +25,8 @@ File naming notes:
 
 # Directory
 
+## From `01.R`
+
 `01a_output-species1_subplot-codes-missing.csv`
 - List of codes included in the `subplot` data, but are missing from the the original master species list (`master-species_native.xlsx`).
 - Output written directly from R and edited in a new file.
@@ -86,7 +88,7 @@ File naming notes:
 - List of location-dependent species (unknowns), listed first by the ones from `master-species_native.unk` that lack site data, and then by location-dependent codes from the raw `subplot` data, whose native/duration/lifeform information was already manually added in `01b_edited-species1_subplot-codes-missing_native-duration-lifeform.csv`.
 - Manually added site information for the unknowns from the master list (first section) based on site information in the subplot data, which sometimes included adding multiple rows because the same code occurred at different sites. Codes have not been changed, and will be changed in the cleaned data through data wrangling (`03.1_data-wrangling_subplot.R` and `03.2_data-wrangling_2x2.R`).
 	+ Sometimes codes were listed in the master species list that didn't occur in the `subplot` data, and therefore didn't have any site information. They are not included here, but are included later when looking at `2x2` codes in `species5.csv`.
-- Manually added assigned codes for subplot observations that were missing codes, as noted in `03_data-wrangling_subplot.R` (there is just one in row 12166).
+- Manually added assigned codes for subplot observations that were missing codes, as noted in `03.1_data-wrangling_subplot.R` (there is just one in row 12166).
 - Edited list is not the same length as either output list, because some codes in `4.1.csv` weren't in the subplot data, so they weren't included, and some codes had multiple locations according to `4.2.csv`.
 
 `01b_edited-species5_codes-missing-2x2plot.csv`
@@ -97,11 +99,8 @@ File naming notes:
 	+ `DuplicateNum` = `1`, `2`, `3`, etc.: row number for duplicate rows when more than one species is mentioned in a single code. Marked `0` when `NeedsItsDuplicate` = `No`.
 	+ `LocationDependence` = `dependent`: Site needs to be added to code to make `Code` column. Unknowns are location-dependent.
 	
-`01b_edited-wrangling-2x2_1conflicting-monitoring-info-resolved.xlsx`
-- Table of monitoring events from `2x2` data with information that conflicts with `subplot` data. Monitoring information refers to the columns `Site`, `Date_Seeded`, `Date_Monitored`, `Plot`, `Treatment`, and `PlotMix`. Each monitoring event is given an ID, unrelated to the data actually collected from the subplot or 2x2 m plot.
-- Converted to an Excel file to manually edit so I could highlight changes and add comments. All changes are also already explained in `02b_edited-monitor_conflicting-monitoring-info-resolved.xlsx`, and in the `02_correct-monitoring-info.R` script.
 
-
+## From `01-dependency.R`
 `01-dependency_seeded-species-to-be-marked-native.csv`
 - List of seeded species marked as seeded in the `subplot` data, and are therefore native, but were not marked as such in `master-species_native.xlsx`. 
 - Produced in `01-dependency_assign-seeded-species-native-status.R` and needed for `01_curate-species-list.R`.
@@ -114,14 +113,36 @@ File naming notes:
 `01-dependency_species-list_location-independent.csv`
 - Table of location-independent species before native status of select seeded species was fixed. Produced in `01.R` and needed for `01-dependency.R`.
 
+## From `02.R`
 `02a_output-monitor_subplot-2x2-conflicting-monitoring-info.csv`
 - Table of original monitoring information from `subplot` data, with no corrections made yet.
 
 `02b_edited-monitor_conflicting-monitoring-info-resolved.xlsx`
 - Spreadsheet of monitoring events with conflicting information between the `subplot` and `2x2` data. Monitoring information refers to the columns `Site`, `Date_Seeded`, `Date_Monitored`, `Plot`, `Treatment`, and `PlotMix`. Each monitoring event (for each plot) is given an ID number (`MonitorID`), unrelated to the data actually collected from the subplot or 2x2 m plot.
-- `comparison` tab manually edited to highlight correct values in green, and wrong values in yellow. Comments inserted to give brief explanation of how this decision was made.
+- Converted to an Excel file to manually edit so I could highlight changes and add comments.
+- `comparison` tab manually edited to highlight correct values in green, and wrong values in yellow. Comments inserted to give brief explanation of how this decision was made. Justifications also written in comments in `02_correct-monitoring-info.R` script.
 - `corrected` tab manually created to have table of only correct information to read back in. 	
 
+## From `03.1_subplot.R`
+`03.1a_output-species-seeded1_seeded-not-in-mix_subplot.csv`
+- List of species from `subplot` data originally marked as seeded but do not appear on seed mix list, as matched by `CodeOriginal`.
+
+`03.1a_output-species-seeded2_unk_subplot.csv`
+- List of species from `subplot` data originally marked as either unknown or NA for seeding status.
+
+`03.1a_output-species-seeded3_no_subplot.csv`
+- List of species from `subplot` data originally marked as not seeded.
+
+`03.1b_output-species-seeded1_corrected-seeded-not-in-mix_subplot.xlsx`
+- `SpeciesSeeded` column corrected based on seed mixes listed in `from-Master_seed-mix_LO.xlsx`. 
+- Unknowns originally marked as seeded remained marked as seeded.
+- Only changed status if the plant was identified to genus level. Cells that are changed are highlighted.
+
+`03.1b_edited-species-seeded2_unk-corrected_subplot.xlsx`
+- Entire `SpeciesSeeded` column edited to either `No`, `Yes`, or `0`.
+- `0` assigned if `Code` was `0`, which indicates there was no plant for observation.
+
+## From `03.2_2x2.R`
 `03.2a_output-wrangling-2x2_1monitor-info-to-be-fixed.csv`
 - Table of monitoring events from `2x2` data with information that conflicts with `subplot` data and must be corrected manually.
 - Output written directly from R and edited in a new file.
@@ -129,6 +150,7 @@ File naming notes:
 `03.2b_edited-wrangling-2x2_1monitor-info-fixed.xlsx`
 - Shortened version of the `corrected` tab of `02b_edited-monitor_conflicting-monitoring-info-resolved.xlsx`; includes only events that need to be fixed for 2x2 data.
 
+## Need to be dealt with
 `output-wrangling-2x2_2need-duplicate-rows.csv`
 - A subset of the `2x2` data for codes that need duplicate rows because the code refers to more than one species.
 - Output written directly from R and edited in a new file.
@@ -137,10 +159,11 @@ File naming notes:
 - A subset of the `2x2` data for original codes that need duplicate rows because the code refers to more than one species.
 - Manually added extra rows based on what was needed, and added a new Code that connects to species lists, based on definitions and species information listed in `output-species6_2x2-codes_need-duplicate-rows.csv`.
 
-	
+## From Farrell papers	
 `Farrell_2020_EcologicalApplications_table1.xlsx`
 - Adapted from Table 1 of H. Farrell's manuscript (in review), with coordinates taken from the `Site_Information` tab of `Master.xlsx`
 
+## Master data
 `from-Master_seed-mix_LO.xlsx`
 - Two tabs: `from-Master.xlsx` is directly from the `Seed Mixes` tab of `Master.xlsx`, but codes have been alphabetized within each region.
 - Read into `01_curate-species-list.R` script.
