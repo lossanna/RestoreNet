@@ -1,0 +1,164 @@
+Site,Region,PlotMix,CodeOriginal,Code,Name,Native,Duration,Lifeform,SpeciesSeeded
+Creosote,Chihuahuan,Warm,BAMU,BAMU,Baileya multiradiata,Native,Unknown,Forb,Yes
+Creosote,Chihuahuan,Medium,BAMU,BAMU,Baileya multiradiata,Native,Unknown,Forb,No
+Mesquite,Chihuahuan,Warm,BAMU,BAMU,Baileya multiradiata,Native,Unknown,Forb,Yes
+AguaFria,Colorado Plateau,Warm,ACHY,ACHY,Achnatherum hymenoides,Native,Perennial,Grass,Yes
+AguaFria,Colorado Plateau,Warm,ASTU,ASTU,Asclepias tuberosa,Native,Perennial,Forb,Yes
+AguaFria,Colorado Plateau,Warm,BAMU,BAMU,Baileya multiradiata,Native,Unknown,Forb,Yes
+AguaFria,Colorado Plateau,Warm,SECO10,SECO10,Senna covesii,Native,Perennial,Forb,Yes
+AguaFria,Colorado Plateau,None,SECO10,SECO10,Senna covesii,Native,Perennial,Forb,No
+BabbittPJ,Colorado Plateau,Cool-Med,ACMI2,ACMI2,Achillea millefolium,Native,Perennial,Forb,Yes
+BabbittPJ,Colorado Plateau,Cool-Med,BOGR2,BOGR2,Bouteloua gracilis,Native,Perennial,Grass,Yes
+BabbittPJ,Colorado Plateau,Cool,BOGR2,BOGR2,Bouteloua gracilis,Native,Perennial,Grass,No
+BabbittPJ,Colorado Plateau,Cool-Med,DACA7,DACA7,Dalea candida,Native,Perennial,Forb,Yes
+BabbittPJ,Colorado Plateau,Cool-Med,ELEL5,ELEL5,Elymus elymoides,Native,Perennial,Grass,Yes
+BabbittPJ,Colorado Plateau,Cool,ELTR7,ELTR7,Elymus trachycaulus,Native,Perennial,Grass,Yes
+BabbittPJ,Colorado Plateau,Cool,ELWA2,ELWA2,Elymus wawawaiensis,Native,Perennial,Grass,Yes
+BabbittPJ,Colorado Plateau,Cool,HEBO,HEBO,Hedysarum boreale,Native,Perennial,Forb,Yes
+BabbittPJ,Colorado Plateau,Cool,HECO26,HECO26,Hesperostipa comata,Native,Perennial,Grass,Yes
+BabbittPJ,Colorado Plateau,Cool,LECI4,LECI4,Leymus cinereus,Native,Perennial,Grass,Yes
+BabbittPJ,Colorado Plateau,Cool-Med,LECI4,LECI4,Leymus cinereus,Native,Perennial,Grass,No
+BabbittPJ,Colorado Plateau,Cool-Med,LILE3,LILE3,Linum lewisii,Native,Perennial,Forb,Yes
+BabbittPJ,Colorado Plateau,Cool-Med,PASM,PASM,Pascopyrum smithii,Native,Perennial,Grass,Yes
+BarTBar,Colorado Plateau,Cool-Med,ACMI2,ACMI2,Achillea millefolium,Native,Perennial,Forb,Yes
+BarTBar,Colorado Plateau,Med-Warm,ACMI2,ACMI2,Achillea millefolium,Native,Perennial,Forb,No
+BarTBar,Colorado Plateau,Med-Warm,BOER4,BOER4,Bouteloua eriopoda,Native,Perennial,Grass,Yes
+BarTBar,Colorado Plateau,Cool-Med,BOER4,BOER4,Bouteloua eriopoda,Native,Perennial,Grass,No
+BarTBar,Colorado Plateau,Cool-Med,BOGR2,BOGR2,Bouteloua gracilis,Native,Perennial,Grass,Yes
+BarTBar,Colorado Plateau,Cool-Med,DACA7,DACA7,Dalea candida,Native,Perennial,Forb,Yes
+BarTBar,Colorado Plateau,Cool-Med,ELEL5,ELEL5,Elymus elymoides,Native,Perennial,Grass,Yes
+BarTBar,Colorado Plateau,Med-Warm,KRLA2,KRLA2,Krascheninnikovia lanata,Native,Perennial,Shrub,Yes
+BarTBar,Colorado Plateau,Cool-Med,LILE3,LILE3,Linum lewisii,Native,Perennial,Forb,Yes
+BarTBar,Colorado Plateau,Med-Warm,MATA2,MATA2,Machaeranthera tanacetifolia,Native,Annual,Forb,Yes
+BarTBar,Colorado Plateau,Cool-Med,PASM,PASM,Pascopyrum smithii,Native,Perennial,Grass,Yes
+BarTBar,Colorado Plateau,Med-Warm,PEPA8,PEPA8,Penstemon palmeri,Native,Perennial,Forb,Yes
+BarTBar,Colorado Plateau,Med-Warm,PLJA,PLJA,Pleuraphis jamesii,Native,Perennial,Grass,Yes
+BarTBar,Colorado Plateau,Med-Warm,POSE,POSE,Poa secunda,Native,Perennial,Grass,Yes
+FlyingM,Colorado Plateau,Cool-Med,ACMI2,ACMI2,Achillea millefolium,Native,Perennial,Forb,Yes
+FlyingM,Colorado Plateau,Med-Warm,BOER4,BOER4,Bouteloua eriopoda,Native,Perennial,Grass,Yes
+FlyingM,Colorado Plateau,Cool-Med,BOGR2,BOGR2,Bouteloua gracilis,Native,Perennial,Grass,Yes
+FlyingM,Colorado Plateau,Cool-Med,DACA7,DACA7,Dalea candida,Native,Perennial,Forb,Yes
+FlyingM,Colorado Plateau,Cool-Med,ELEL5,ELEL5,Elymus elymoides,Native,Perennial,Grass,Yes
+FlyingM,Colorado Plateau,Cool-Med,HEMU3,HEMU3,Heliomeris multiflora,Native,Perennial,Forb,Yes
+FlyingM,Colorado Plateau,Med-Warm,KRLA2,KRLA2,Krascheninnikovia lanata,Native,Perennial,Shrub,Yes
+FlyingM,Colorado Plateau,Cool-Med,LILE3,LILE3,Linum lewisii,Native,Perennial,Forb,Yes
+FlyingM,Colorado Plateau,Cool-Med,PASM,PASM,Pascopyrum smithii,Native,Perennial,Grass,Yes
+FlyingM,Colorado Plateau,Med-Warm,PLJA,PLJA,Pleuraphis jamesii,Native,Perennial,Grass,Yes
+FlyingM,Colorado Plateau,Med-Warm,POSE,POSE,Poa secunda,Native,Perennial,Grass,Yes
+FlyingM,Colorado Plateau,Med-Warm,SPCR,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass,Yes
+MOWE,Colorado Plateau,Warm,ACHY,ACHY,Achnatherum hymenoides,Native,Perennial,Grass,Yes
+MOWE,Colorado Plateau,Warm,ASTU,ASTU,Asclepias tuberosa,Native,Perennial,Forb,Yes
+MOWE,Colorado Plateau,Warm,BAMU,BAMU,Baileya multiradiata,Native,Unknown,Forb,Yes
+MOWE,Colorado Plateau,Med-Warm,KRLA2,KRLA2,Krascheninnikovia lanata,Native,Perennial,Shrub,Yes
+MOWE,Colorado Plateau,Med-Warm,MATA2,MATA2,Machaeranthera tanacetifolia,Native,Annual,Forb,Yes
+MOWE,Colorado Plateau,Med-Warm,PEPA8,PEPA8,Penstemon palmeri,Native,Perennial,Forb,Yes
+MOWE,Colorado Plateau,Warm,SECO10,SECO10,Senna covesii,Native,Perennial,Forb,Yes
+PEFO,Colorado Plateau,Warm,ACHY,ACHY,Achnatherum hymenoides,Native,Perennial,Grass,Yes
+PEFO,Colorado Plateau,Warm,ARPU9,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes
+PEFO,Colorado Plateau,Warm,BAMU,BAMU,Baileya multiradiata,Native,Unknown,Forb,Yes
+PEFO,Colorado Plateau,Warm,BOCU,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,Yes
+PEFO,Colorado Plateau,Med-Warm,BOER4,BOER4,Bouteloua eriopoda,Native,Perennial,Grass,Yes
+PEFO,Colorado Plateau,Med-Warm,MATA2,MATA2,Machaeranthera tanacetifolia,Native,Annual,Forb,Yes
+PEFO,Colorado Plateau,Med-Warm,POSE,POSE,Poa secunda,Native,Perennial,Grass,Yes
+PEFO,Colorado Plateau,Med-Warm,SPCR,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass,Yes
+Spiderweb,Colorado Plateau,Warm,ACHY,ACHY,Achnatherum hymenoides,Native,Perennial,Grass,Yes
+Spiderweb,Colorado Plateau,Warm,ASTU,ASTU,Asclepias tuberosa,Native,Perennial,Forb,Yes
+Spiderweb,Colorado Plateau,Warm,BAMU,BAMU,Baileya multiradiata,Native,Unknown,Forb,Yes
+Spiderweb,Colorado Plateau,Warm,BOCU,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,Yes
+Spiderweb,Colorado Plateau,Med-Warm,BOER4,BOER4,Bouteloua eriopoda,Native,Perennial,Grass,Yes
+Spiderweb,Colorado Plateau,Med-Warm,MATA2,MATA2,Machaeranthera tanacetifolia,Native,Annual,Forb,Yes
+Spiderweb,Colorado Plateau,Med-Warm,PEPA8,PEPA8,Penstemon palmeri,Native,Perennial,Forb,Yes
+Spiderweb,Colorado Plateau,Warm,PEPA8,PEPA8,Penstemon palmeri,Native,Perennial,Forb,No
+Spiderweb,Colorado Plateau,Med-Warm,PLJA,PLJA,Pleuraphis jamesii,Native,Perennial,Grass,Yes
+Spiderweb,Colorado Plateau,Warm,SECO10,SECO10,Senna covesii,Native,Perennial,Forb,Yes
+29_Palms,Mojave,Warm,ATCA2,ATCA2,Atriplex canescens,Native,Perennial,Shrub,Yes
+29_Palms,Mojave,Cool,BAMU,BAMU,Baileya multiradiata,Native,Unknown,Forb,Yes
+29_Palms,Mojave,Warm,ERIN4,ERIN4,Eriogonum inflatum,Native,Unknown,Forb,Yes
+29_Palms,Mojave,Warm,SPAM2,SPAM2,Sphaeralcea ambigua,Native,Perennial,Forb,Yes
+AVRCD,Mojave,Warm,ATCA2,ATCA2,Atriplex canescens,Native,Perennial,Shrub,Yes
+AVRCD,Mojave,Cool,BAMU,BAMU,Baileya multiradiata,Native,Unknown,Forb,Yes
+AVRCD,Mojave,Cool,ERFA2,ERFA2,Eriogonum fasciculatum,Native,Perennial,Forb,Yes
+AVRCD,Mojave,Warm,ERIN4,ERIN4,Eriogonum inflatum,Native,Unknown,Forb,Yes
+AVRCD,Mojave,Cool,LAGL5,LAGL5,Layia glandulosa,Native,Annual,Forb,Yes
+AVRCD,Mojave,Cool,LEFR2,LEFR2,Lepidium fremontii,Native,Perennial,Shrub,Yes
+AVRCD,Mojave,Cool,SPAM2,SPAM2,Sphaeralcea ambigua,Native,Perennial,Forb,No
+AVRCD,Mojave,Warm,SPAM2,SPAM2,Sphaeralcea ambigua,Native,Perennial,Forb,Yes
+Pleasant,Sonoran Central,Warm,ARPU9,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes
+Pleasant,Sonoran Central,Cool,BAMU,BAMU,Baileya multiradiata,Native,Unknown,Forb,Yes
+Pleasant,Sonoran Central,Cool,DICA8,DICA8,Digitaria californica,Native,Perennial,Grass,Yes
+Pleasant,Sonoran Central,Cool,LUSP2,LUSP2,Lupinus sparsiflorus,Native,Annual,Forb,Yes
+Pleasant,Sonoran Central,Warm,PLOV,PLOV,Plantago ovata,Native,Annual,Forb,Yes
+Pleasant,Sonoran Central,Cool,SACO6,SACO6,Salvia columbariae,Native,Annual,Forb,Yes
+Pleasant,Sonoran Central,Warm,SECO10,SECO10,Senna covesii,Native,Perennial,Forb,Yes
+Preserve,Sonoran Central,Cool,BAMU,BAMU,Baileya multiradiata,Native,Unknown,Forb,Yes
+Preserve,Sonoran Central,Warm,BOAR,BOAR,Bouteloua aristidoides,Native,Annual,Grass,Yes
+Preserve,Sonoran Central,Warm,BORO2,BORO2,Bouteloua rothrockii,Native,Perennial,Grass,Yes
+Preserve,Sonoran Central,Cool,DICA8,DICA8,Digitaria californica,Native,Perennial,Grass,Yes
+Preserve,Sonoran Central,Cool,LUSP2,LUSP2,Lupinus sparsiflorus,Native,Annual,Forb,Yes
+Preserve,Sonoran Central,Warm,PLOV,PLOV,Plantago ovata,Native,Annual,Forb,Yes
+Preserve,Sonoran Central,Cool,SACO6,SACO6,Salvia columbariae,Native,Annual,Forb,Yes
+Preserve,Sonoran Central,Warm,SECO10,SECO10,Senna covesii,Native,Perennial,Forb,Yes
+Roosevelt,Sonoran Central,Cool,BAMU,BAMU,Baileya multiradiata,Native,Unknown,Forb,Yes
+Roosevelt,Sonoran Central,Warm,BORO2,BORO2,Bouteloua rothrockii,Native,Perennial,Grass,Yes
+Roosevelt,Sonoran Central,Cool,LUSP2,LUSP2,Lupinus sparsiflorus,Native,Annual,Forb,Yes
+Roosevelt,Sonoran Central,Warm,PLOV,PLOV,Plantago ovata,Native,Annual,Forb,Yes
+Roosevelt,Sonoran Central,Cool,SACO6,SACO6,Salvia columbariae,Native,Annual,Forb,Yes
+Roosevelt,Sonoran Central,Warm,SECO10,SECO10,Senna covesii,Native,Perennial,Forb,Yes
+Roosevelt,Sonoran Central,Cool,SPAM2,SPAM2,Sphaeralcea ambigua,Native,Perennial,Forb,Yes
+SCC,Sonoran Central,Cool,AMDE4,AMDE4,Ambrosia deltoidea,Native,Perennial,Shrub,Yes
+SCC,Sonoran Central,Warm,ARPU9,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes
+SCC,Sonoran Central,Cool,BAMU,BAMU,Baileya multiradiata,Native,Unknown,Forb,Yes
+SCC,Sonoran Central,Warm,BORO2,BORO2,Bouteloua rothrockii,Native,Perennial,Grass,Yes
+SCC,Sonoran Central,Cool,LUSP2,LUSP2,Lupinus sparsiflorus,Native,Annual,Forb,Yes
+SCC,Sonoran Central,Cool,SACO6,SACO6,Salvia columbariae,Native,Annual,Forb,Yes
+SCC,Sonoran Central,Warm,SECO10,SECO10,Senna covesii,Native,Perennial,Forb,Yes
+Patagonia,Sonoran SE,Warm,ARPU9,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes
+Patagonia,Sonoran SE,Warm,ARPU9,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes
+Patagonia,Sonoran SE,Warm,ASTU,ASTU,Asclepias tuberosa,Native,Perennial,Forb,Yes
+Patagonia,Sonoran SE,Warm,BAMU,BAMU,Baileya multiradiata,Native,Unknown,Forb,Yes
+Patagonia,Sonoran SE,Medium,BAMU,BAMU,Baileya multiradiata,Native,Unknown,Forb,No
+Patagonia,Sonoran SE,Warm,BOCU,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,Yes
+Patagonia,Sonoran SE,Medium,ELEL5,ELEL5,Elymus elymoides,Native,Perennial,Grass,Yes
+Patagonia,Sonoran SE,Medium,MATA2,MATA2,Machaeranthera tanacetifolia,Native,Annual,Forb,Yes
+Patagonia,Sonoran SE,Medium,POSE,POSE,Poa secunda,Native,Perennial,Grass,Yes
+Patagonia,Sonoran SE,Warm,SECO10,SECO10,Senna covesii,Native,Perennial,Forb,Yes
+Patagonia,Sonoran SE,Warm,SECO10,SECO10,Senna covesii,Native,Perennial,Forb,Yes
+Patagonia,Sonoran SE,Warm,SECO10,SECO10,Senna covesii,Native,Perennial,Forb,Yes
+Patagonia,Sonoran SE,Medium,SPCR,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass,Yes
+Patagonia,Sonoran SE,Medium,SPCR,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass,Yes
+SRER,Sonoran SE,Warm,ARPU9,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes
+SRER,Sonoran SE,Warm,ARPU9,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes
+SRER,Sonoran SE,Warm,ASTU,ASTU,Asclepias tuberosa,Native,Perennial,Forb,Yes
+SRER,Sonoran SE,Warm,BOCU,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,Yes
+SRER,Sonoran SE,Medium,BOER4,BOER4,Bouteloua eriopoda,Native,Perennial,Grass,No
+SRER,Sonoran SE,Medium,BOER4,BOER4,Bouteloua eriopoda,Native,Perennial,Grass,No
+SRER,Sonoran SE,Medium,ELEL5,ELEL5,Elymus elymoides,Native,Perennial,Grass,Yes
+SRER,Sonoran SE,Warm,SECO10,SECO10,Senna covesii,Native,Perennial,Forb,Yes
+CRC,Utah,Cool-Med,ACMI2,ACMI2,Achillea millefolium,Native,Perennial,Forb,Yes
+CRC,Utah,Cool-Med,ELEL5,ELEL5,Elymus elymoides,Native,Perennial,Grass,Yes
+CRC,Utah,Cool-Med,HEMU3,HEMU3,Heliomeris multiflora,Native,Perennial,Forb,Yes
+CRC,Utah,Med-Warm,KRLA2,KRLA2,Krascheninnikovia lanata,Native,Perennial,Shrub,Yes
+CRC,Utah,Cool-Med,LILE3,LILE3,Linum lewisii,Native,Perennial,Forb,Yes
+CRC,Utah,Cool-Med,PASM,PASM,Pascopyrum smithii,Native,Perennial,Grass,Yes
+CRC,Utah,Med-Warm,PEPA8,PEPA8,Penstemon palmeri,Native,Perennial,Forb,Yes
+CRC,Utah,Cool-Med,PEPA8,PEPA8,Penstemon palmeri,Native,Perennial,Forb,No
+Salt_Desert,Utah,Cool-Med,ACMI2,ACMI2,Achillea millefolium,Native,Perennial,Forb,Yes
+Salt_Desert,Utah,Cool-Med,DACA7,DACA7,Dalea candida,Native,Perennial,Forb,Yes
+Salt_Desert,Utah,Cool-Med,ELEL5,ELEL5,Elymus elymoides,Native,Perennial,Grass,Yes
+Salt_Desert,Utah,Cool-Med,HEMU3,HEMU3,Heliomeris multiflora,Native,Perennial,Forb,Yes
+Salt_Desert,Utah,Med-Warm,HEMU3,HEMU3,Heliomeris multiflora,Native,Perennial,Forb,No
+Salt_Desert,Utah,Med-Warm,KRLA2,KRLA2,Krascheninnikovia lanata,Native,Perennial,Shrub,Yes
+Salt_Desert,Utah,Cool-Med,LILE3,LILE3,Linum lewisii,Native,Perennial,Forb,Yes
+Salt_Desert,Utah,Med-Warm,LILE3,LILE3,Linum lewisii,Native,Perennial,Forb,No
+Salt_Desert,Utah,Cool-Med,PASM,PASM,Pascopyrum smithii,Native,Perennial,Grass,Yes
+UtahPJ,Utah,Cool-Med,ACMI2,ACMI2,Achillea millefolium,Native,Perennial,Forb,Yes
+UtahPJ,Utah,Cool-Med,DACA7,DACA7,Dalea candida,Native,Perennial,Forb,Yes
+UtahPJ,Utah,Cool-Med,ELEL5,ELEL5,Elymus elymoides,Native,Perennial,Grass,Yes
+UtahPJ,Utah,Cool,ELEL5,ELEL5,Elymus elymoides,Native,Perennial,Grass,No
+UtahPJ,Utah,Cool,HEBO,HEBO,Hedysarum boreale,Native,Perennial,Forb,Yes
+UtahPJ,Utah,Cool-Med,HEMU3,HEMU3,Heliomeris multiflora,Native,Perennial,Forb,Yes
+UtahPJ,Utah,None,HEMU3,HEMU3,Heliomeris multiflora,Native,Perennial,Forb,No
+UtahPJ,Utah,Cool,HECO26,HECO26,Hesperostipa comata,Native,Perennial,Grass,Yes
+UtahPJ,Utah,Cool,LECI4,LECI4,Leymus cinereus,Native,Perennial,Grass,Yes
+UtahPJ,Utah,Cool-Med,LILE3,LILE3,Linum lewisii,Native,Perennial,Forb,Yes
+UtahPJ,Utah,Cool-Med,PASM,PASM,Pascopyrum smithii,Native,Perennial,Grass,Yes

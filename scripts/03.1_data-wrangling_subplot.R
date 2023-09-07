@@ -210,9 +210,9 @@ unique(subplot$SpeciesSeeded)
 
 # Species seeded but not listed in mix by code
 subplot.seeded <- subplot %>% 
-  filter(SpeciesSeeded %in% c("Yes", "Y", "y"))
+  filter(SpeciesSeeded %in% c("Yes", "Y", "y", "Yes?"))
 
-setdiff(unique(subplot.seeded$CodeOriginal), unique(mix.raw$CodeOriginal)) # descrepanices exist
+setdiff(unique(subplot.seeded$CodeOriginal), unique(mix.raw$CodeOriginal)) # discrepancies exist
 
 species.seeded.not.in.mix <- subplot.seeded |> 
   filter(CodeOriginal %in% 
@@ -230,8 +230,30 @@ write_csv(species.seeded.not.in.mix,
 
 # EDITED: manually review and fix SpeciesSeeded status
 #   SpeciesSeeded only corrected if plant was identified to species level and definitely  
-#     not seeded. Unknowns retain original classification.
+#     not seeded, as well as "local Bouteloua". Unknowns retain original classification.
 species.seeded.not.in.mix <- read_xlsx("data/raw/03.1b_edited-species-seeded1_corrected-seeded-not-in-mix_subplot.xlsx")
+
+
+# Species seeded and in mix
+species.seeded.in.mix <- subplot.seeded |> 
+  filter(SpeciesSeeded %in% c("Yes", "Y", "y", "Yes?"),
+         !CodeOriginal %in% species.seeded.not.in.mix$CodeOriginal) |> 
+  select(Site, Region, PlotMix, CodeOriginal, Code, Name, Native, Duration, Lifeform,
+         SpeciesSeeded) |> 
+  distinct(.keep_all = TRUE) |> 
+  arrange(Name) |> 
+  arrange(Site) |> 
+  arrange(Region)
+
+# OUTPUT: create list of species marked seeded but not in mix
+write_csv(species.seeded.in.mix,
+          file = "data/raw/03.1a_output-species-seeded2_seeded-in-mix_subplot.csv")
+
+# EDITED: manually review and fix SpeciesSeeded status
+#   Standardize responses so all are in format "Yes"
+#   Incorrect ones corrected
+species.seeded.in.mix <- read_xlsx("data/raw/03.1b_edited-species-seeded2_corrected-seeded-in-mix_subplot.xlsx")
+
 
 
 # Species marked NA or unknown
@@ -246,22 +268,22 @@ species.unk.seeded <- subplot |>
 
 # OUTPUT: create list of species of unknown seeding status
 write_csv(species.unk.seeded,
-          file = "data/raw/03.1a_output-species-seeded2_unk_subplot.csv")
+          file = "data/raw/03.1a_output-species-seeded3_unk_subplot.csv")
 
 # EDITED: manually review and fix SpeciesSeeded status
 #   Unknowns marked as not seeded.
 #   0 code marked as "0" (no plants were present)
 #  Seeded status changed if identified to species level and it was seeded.
-species.unk.seeded <- read_xlsx("data/raw/03.1b_edited-species-seeded2_unk-corrected_subplot.xlsx")
+species.unk.seeded <- read_xlsx("data/raw/03.1b_edited-species-seeded3_unk-corrected_subplot.xlsx")
 
 
 
 # Species marked not seeded
 subplot.no <- subplot |> 
-  filter(SpeciesSeeded == "No")
+  filter(SpeciesSeeded %in% c("No", "N"))
 
 species.no.seeded <- subplot.no |> 
-  select(Site, Region, CodeOriginal, Code, Name, Native, Duration, Lifeform,
+  select(Site, Region, PlotMix, CodeOriginal, Code, Name, Native, Duration, Lifeform,
          SpeciesSeeded) |> 
   distinct(.keep_all = TRUE) |> 
   arrange(Name) |> 
@@ -270,36 +292,41 @@ species.no.seeded <- subplot.no |>
 
 # OUTPUT: create list of species marked not seeded
 write_csv(species.no.seeded,
-          "data/raw/03.1a_output-species-seeded3_no_subplot.csv")
+          "data/raw/03.1a_output-species-seeded4_no_subplot.csv")
 
-# EDITED: manually review and fix SpeciesSeeded status 
-
-
-
-# Add mix information to seeded species
-unique(subplot$Region)
-unique(mix.raw$Region) # mix is missing Utah
-
-subplot.seeded <- left_join(subplot.seeded, mix.raw) %>% 
-  select(-Family, -Scientific, -Common) # left_join() to assign mix information to seeded species
-
-subplot.seeded.mix <- subplot.seeded %>% 
-  filter(!is.na(Mix)) %>% 
-  select(Site, Region, CodeOriginal, Code, Name, Mix, SpeciesSeeded) %>% 
-  distinct(.keep_all = TRUE) %>% 
-  arrange(Name) 
+# EDITED: manually review and fix SpeciesSeeded status
+#   Standardize responses so all are in format "Yes"
+#   Incorrect ones corrected
+species.no.seeded <- read_xlsx("data/raw/03.1b_edited-species-seeded4_corrected-not-seeded_subplot.xlsx")
 
 
+# Compile list of correct species metadata
+#   Correct SpeciesSeeded status based on PlotMix and Site
+seeded.correct <- bind_rows(species.seeded.in.mix,
+                            species.seeded.not.in.mix,
+                            species.unk.seeded,
+                            species.no.seeded) |> 
+  distinct(.keep_all = TRUE) |> 
+  arrange(PlotMix) |> 
+  arrange(Name) |> 
+  arrange(Site) |> 
+  arrange(Region) |> 
+  arrange(desc(SpeciesSeeded))
+
+setdiff(unique(subplot$Code), unique(seeded.correct$Code))
 
 
+# Assign corrected species metadata to subplot data
+subplot <- subplot |> 
+  select(-SpeciesSeeded)
+subplot <- left_join(subplot, seeded.correct, 
+                     relationship = "many-to-many") |> 
+  distinct(.keep_all = TRUE)
+#   We expect many-to-many relationships with y matching more than one x, but when
+#   there are multiple x matching to y, idk what's happening.
 
-# Make list of species marked "Seeded" (Codes already location-specific)
-subplot.seeded.codes <- subplot.seeded %>% 
-  select(Site, Code, CodeOriginal, Name, SpeciesSeeded) %>% 
-  distinct(.keep_all = TRUE) %>% 
-  arrange(Name) 
+nrow(subplot) == nrow(subplot.raw)
 
-unique(subplot$SpeciesSeeded)
 
 
 save.image("RData/03.1_data-wrangling_subplot.RData")
