@@ -1,5 +1,5 @@
 # Created: 2022-11-28
-# Last updated: 2023-09-06
+# Last updated: 2023-09-09
 
 # Purpose: Curate a complete species list with Code, Code Original, Name, Native, Duration, Lifeform info.
 #   Two lists must be created, a location-independent version (known species), and a 
@@ -23,7 +23,7 @@ library(tidyverse)
 subplot.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllSubplotData")
 plot.2x2.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllPlotData")
 species.raw <- read_xlsx("data/raw/from-Master_species-list-with-native-status_LO.xlsx")
-mix <- read_xlsx("data/raw/from-Master_seed-mix_LO.xlsx", sheet = "from-Master.xlsx")
+mix <- read_xlsx("data/raw/from-Master_seed-mix_LO.xlsx", sheet = "with-site_R")
 
 # Dependency created in 01-dependency_assign-seeded-species-native-status.R
 native.fix <- read_csv("data/raw/01-dependency_seeded-species-to-be-marked-native.csv")

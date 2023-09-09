@@ -1,5 +1,5 @@
 # Created: 2022-11-29
-# Last updated: 2023-09-06
+# Last updated: 2023-09-07
 
 # Purpose: Create clean data table for subplot data, with corrected and standardized species information,
 #   and monitoring and plot information. 
@@ -14,7 +14,7 @@ subplot.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "
 species.in <- read_csv("data/cleaned/species-list_location-independent_clean.csv")
 species.de <- read_csv("data/cleaned/species-list_location-dependent_clean.csv")
 subplot.codes <- read_csv("data/cleaned/subplot-codes_clean.csv")
-mix.raw <- read_xlsx("data/raw/from-Master_seed-mix_LO.xlsx", sheet = "from-Master.xlsx")
+mix <- read_xlsx("data/raw/from-Master_seed-mix_LO.xlsx", sheet = "with-site_R")
 monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
 
 
@@ -194,13 +194,6 @@ apply(subplot, 2, anyNA)
 
 
 
-# Write clean subplot data to csv -----------------------------------------
-
-write_csv(subplot,
-          file = "data/cleaned/subplot-data_clean.csv")
-
-
-
 # Address seeded species codes not in mix ---------------------------------
 
 # Examine possible SpeciesSeeded values
@@ -212,11 +205,11 @@ unique(subplot$SpeciesSeeded)
 subplot.seeded <- subplot %>% 
   filter(SpeciesSeeded %in% c("Yes", "Y", "y", "Yes?"))
 
-setdiff(unique(subplot.seeded$CodeOriginal), unique(mix.raw$CodeOriginal)) # discrepancies exist
+setdiff(unique(subplot.seeded$CodeOriginal), unique(mix$CodeOriginal)) # discrepancies exist
 
 species.seeded.not.in.mix <- subplot.seeded |> 
   filter(CodeOriginal %in% 
-           setdiff(unique(subplot.seeded$CodeOriginal), unique(mix.raw$CodeOriginal))) |> 
+           setdiff(unique(subplot.seeded$CodeOriginal), unique(mix$CodeOriginal))) |> 
   select(Site, Region, PlotMix, CodeOriginal, Code, Name, Native, Duration, Lifeform,
          SpeciesSeeded) |> 
   distinct(.keep_all = TRUE) |> 
@@ -319,14 +312,15 @@ setdiff(unique(subplot$Code), unique(seeded.correct$Code))
 # Assign corrected species metadata to subplot data
 subplot <- subplot |> 
   select(-SpeciesSeeded)
-subplot <- left_join(subplot, seeded.correct, 
-                     relationship = "many-to-many") |> 
-  distinct(.keep_all = TRUE)
-#   We expect many-to-many relationships with y matching more than one x, but when
-#   there are multiple x matching to y, idk what's happening.
+subplot <- left_join(subplot, seeded.correct)
 
 nrow(subplot) == nrow(subplot.raw)
 
+
+# Write clean subplot data to csv -----------------------------------------
+
+write_csv(subplot,
+          file = "data/cleaned/subplot-data_clean.csv")
 
 
 save.image("RData/03.1_data-wrangling_subplot.RData")
