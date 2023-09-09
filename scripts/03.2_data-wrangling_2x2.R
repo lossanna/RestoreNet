@@ -1,5 +1,5 @@
 # Created: 2022-12-07
-# Last updated: 2023-09-06
+# Last updated: 2023-09-09
 
 # Purpose: create clean data table for 2x2 plot data, with corrected and standardized species 
 #   information, and monitoring and plot information.
@@ -14,11 +14,12 @@ subplot.clean <- read_csv("data/cleaned/subplot-data_clean.csv")
 species.in <- read_csv("data/cleaned/species-list_location-independent_clean.csv")
 species.de <- read_csv("data/cleaned/species-list_location-dependent_clean.csv")
 p2x2.codes.dup <- read_csv("data/raw/01a_output-species6_2x2-codes_need-duplicate-rows.csv")
-mix <- read_xlsx("data/raw/master-seed-mix.xlsx")
+mix <- read_xlsx("data/raw/from-Master_seed-mix_LO.xlsx", sheet = "with-site_R")
 monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
 
 
-# Organize columns and pivot to longer ------------------------------------
+
+# Organize columns and add monitoring info based on subplot data ----------
 
 # Add raw.row and Region cols
 p2x2.wide <- p2x2.raw %>% 
@@ -34,11 +35,11 @@ p2x2.wide <- p2x2.raw %>%
     str_detect(p2x2.raw$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central",
     TRUE ~ "unk"))
   
- # Inspect Additional_species_in_plot cols
+# Inspect Additional_species_in_plot cols
 unique(p2x2.wide$Additional_Species_In_Plot...22)
 unique(p2x2.wide$Additional_Species_In_Plot...21)
 unique(p2x2.wide$Additional_Species_In_Plot...20)
-unique(p2x2.wide$Additional_Species_In_Plot...19) # observations in 12-19
+unique(p2x2.wide$Additional_Species_In_Plot...19) # observations in 19 and smaller
 
 # Drop empty Additional_species_in_plot cols
 p2x2.wide <- p2x2.wide %>% 
@@ -71,45 +72,14 @@ apply(p2x2.wide, 2, anyNA)
 #   MonitorID has NAs because of conflicts between subplot and 2x2 monitoring info, so no MonitorID could be assigned
 
 
-# Pivot species columns
-p2x2.long.intermediate <- p2x2.wide %>% 
-  mutate(across(everything(), as.character)) %>% 
-  pivot_longer(c(starts_with("Additional")), names_to = "source", values_to = "Code") %>% 
-  distinct(.keep_all = TRUE) %>% 
-  mutate(source = case_when(
-    source == "Additional_Species_In_Plot...12" ~ "add1",
-    source == "Additional_Species_In_Plot...13" ~ "add2",
-    source == "Additional_Species_In_Plot...14" ~ "add3",
-    source == "Additional_Species_In_Plot...15" ~ "add4",
-    source == "Additional_Species_In_Plot...16" ~ "add5",
-    source == "Additional_Species_In_Plot...17" ~ "add6",
-    source == "Additional_Species_In_Plot...18" ~ "add7",
-    source == "Additional_Species_In_Plot...19" ~ "add8",
-    TRUE ~ source)) %>% 
-  filter(Code != "0")
-
-# Check all cols for NAs
-apply(p2x2.long.intermediate, 2, anyNA) 
-#  NA MonitorID created because of conflicts between subplot and 2x2 monitoring info
-
-# Status: p2x2.long.intermediate has MonitorID applied to observations with correct monitoring info,
-#   and empty Additional_Species observations created from pivot_longer() have been removed,
-#   but there is incorrect monitoring info, and codes that refer to more than one species have not
-#   yet been handled.
-
-
 
 
 # Correct monitoring info -------------------------------------------------
 
-# Complete corrected monitoring info was derived from 02.2_data-wrangling_2x2.R script
-#   (will be writing over this object later with edited xlsx)
-monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
-
 # Check NA codes and MonitorID
 #  NA are due to differences in monitoring info between 2x2 and subplot,
-#    which is why no code was created after left_join()
-p2x2.monitorid.na <- p2x2.long.intermediate %>% 
+#    which is why no MonitorID was created after left_join()
+p2x2.monitorid.na <- p2x2.wide %>% 
   filter(is.na(MonitorID))
 
 # Extract distinct monitoring events without MonitorID
@@ -118,12 +88,12 @@ monitor.diff <- p2x2.monitorid.na %>%
   distinct(.keep_all = TRUE) %>% 
   arrange(Site)
 
-# Write to CSV to correct manually
+# OUTPUT: creat list of events that need MonitorID assigned
 write_csv(monitor.diff,
           file = "data/raw/03.2a_output-wrangling-2x2_1monitor-info-to-be-fixed.csv")
 
 
-##### edited manually to correct monitoring info ############################
+# EDITED: 
 #  This is a shortened version of 02b_monitor-edited1_conflicting-monitoring-info-resolved.xlsx,
 #     with only the ones where 2x2 was wrong included
 monitor.fix <- read_xlsx("data/raw/03.2b_edited-wrangling-2x2_1monitor-info-fixed.xlsx")
@@ -173,8 +143,55 @@ p2x2.long.monitor.fixed <- p2x2.long.monitor.fixed %>%
 apply(p2x2.long.monitor.fixed, 2, anyNA) 
 
 # Status: p2x2.long.monitor.fixed has corrected motoring info and MonitorID for 
-  # all observations, but codes that refer to more than one species have not yet
-  # been handled.
+# all observations, but codes that refer to more than one species have not yet
+# been handled.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Pivot species columns
+p2x2.long.intermediate <- p2x2.wide %>% 
+  mutate(across(everything(), as.character)) %>% 
+  pivot_longer(c(starts_with("Additional")), names_to = "source", values_to = "Code") %>% 
+  distinct(.keep_all = TRUE) %>% 
+  mutate(source = case_when(
+    source == "Additional_Species_In_Plot...12" ~ "add1",
+    source == "Additional_Species_In_Plot...13" ~ "add2",
+    source == "Additional_Species_In_Plot...14" ~ "add3",
+    source == "Additional_Species_In_Plot...15" ~ "add4",
+    source == "Additional_Species_In_Plot...16" ~ "add5",
+    source == "Additional_Species_In_Plot...17" ~ "add6",
+    source == "Additional_Species_In_Plot...18" ~ "add7",
+    source == "Additional_Species_In_Plot...19" ~ "add8",
+    TRUE ~ source)) %>% 
+  filter(Code != "0")
+
+# Check all cols for NAs
+apply(p2x2.long.intermediate, 2, anyNA) 
+#  NA MonitorID created because of conflicts between subplot and 2x2 monitoring info
+
+# Status: p2x2.long.intermediate has MonitorID applied to observations with correct monitoring info,
+#   and empty Additional_Species observations created from pivot_longer() have been removed,
+#   but there is incorrect monitoring info, and codes that refer to more than one species have not
+#   yet been handled.
+
+
+
 
 
 
