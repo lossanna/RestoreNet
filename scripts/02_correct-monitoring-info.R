@@ -1,5 +1,5 @@
 # Created: 2022-12-09
-# Last updated: 2023-03-17
+# Last updated: 2023-09-09
 
 # Purpose: In comparing the monitoring information from the subplot vs. 2x2 plot data, 
 #   there were discrepancies, but there should be only one correct version. 
@@ -28,16 +28,39 @@ subplot <- subplot.raw %>%
   select(Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix) %>% 
   distinct(.keep_all = TRUE)
 
+# Add Region col
+subplot <- subplot %>% 
+  mutate(Region = case_when(
+    str_detect(subplot$Site, c("AguaFria|BabbittPJ|MOWE|Spiderweb|BarTBar|FlyingM|PEFO|TLE")) ~ "Colorado Plateau",
+    str_detect(subplot$Site, c("CRC|UtahPJ|Salt_Desert")) ~ "Utah",
+    str_detect(subplot$Site, c("29_Palms|AVRCD")) ~ "Mojave",
+    str_detect(subplot$Site, c("Creosote|Mesquite")) ~ "Chihuahuan",
+    str_detect(subplot$Site, c("SRER|Patagonia")) ~ "Sonoran SE",
+    str_detect(subplot$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central")) |> 
+  select(Region, Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix)
+
 
 # Set up 2x2 plot data ----------------------------------------------------
 
+# Narrow down cols
 p2x2 <- p2x2.raw %>% 
   rename(PlotMix = Seed_Mix) %>% 
   select(Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix) %>% 
   distinct(.keep_all = TRUE)
-  
 
-# Correct monitoring info -------------------------------------------------
+# Add Region
+p2x2 <- p2x2 |> 
+  mutate(Region = case_when(
+    str_detect(p2x2$Site, c("AguaFria|BabbittPJ|MOWE|Spiderweb|BarTBar|FlyingM|PEFO|TLE")) ~ "Colorado Plateau",
+    str_detect(p2x2$Site, c("CRC|UtahPJ|Salt_Desert")) ~ "Utah",
+    str_detect(p2x2$Site, c("29_Palms|AVRCD")) ~ "Mojave",
+    str_detect(p2x2$Site, c("Creosote|Mesquite")) ~ "Chihuahuan",
+    str_detect(p2x2$Site, c("SRER|Patagonia")) ~ "Sonoran SE",
+    str_detect(p2x2$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central"))   |> 
+  select(Region, Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix)
+
+
+# Assign MonitorID --------------------------------------------------------
 
 # Assign monitoring events an ID based on subplot monitoring info
 #   use subplot monitoring info because some monitoring events were not recorded in 2x2 data
@@ -50,35 +73,68 @@ monitor.2x2 <- p2x2 %>%
   mutate(across(everything(), as.character)) %>% 
   left_join(monitor.sub)
 
+
+# Examine conflicts between subplot & 2x2 monitoring info -----------------
+
 # Examine differences by looking at NAs
 monitor.diff <- monitor.2x2 %>% 
   filter(is.na(MonitorID)) %>% 
   arrange(Site) 
 
-# Remove line of all NA
+# Remove line of all NA at the bottom
 monitor.diff <- monitor.diff %>% 
   filter(!is.na(Site))
 
-
-# Manually inspect monitor.diff for differences by site, then write df of 
+# Need to manually inspect monitor.diff for differences by site, then write df of 
 #   corresponding rows using subplot monitoring info
 # Compare monitor.diff (2x2 monitoring info) values with relevant obs from 
 #   subplot monitoring info to determine correct value
 
-# AVRCD: 2 issues
-monitor.sub.AVRCD1 <- monitor.sub %>% 
-  filter(Site == "AVRCD", Date_Monitored == "2020-04-30", Plot == "14") # PlotMix conflicting
 
+# AVRCD conflicts ---------------------------------------------------------
+
+# AVRCD (Mojave): 2 issues
+
+# 1. PlotMix conflicts
+# Extract differing rows
+filter(monitor.diff, Site == "AVRCD", Date_Monitored == "2020-04-30", Plot == "14") # Cool
+filter(monitor.sub, Site == "AVRCD", Date_Monitored == "2020-04-30", Plot == "14") # Warm 
+filter(monitor.2x2, Site == "AVRCD", Date_Monitored == "2020-04-30", Plot == "14") # Cool
+
+# Figure out which version is correct
 count(filter(monitor.sub, Site == "AVRCD", Date_Monitored == "2020-04-30", Treatment == "Seed"), PlotMix)
-#   should be 4 Cool and 4 Warm
-  
-monitor.sub.AVRCD2 <- monitor.sub %>% 
-  filter(Site == "AVRCD") %>% 
-  filter(Date_Monitored == "2021-04-06") # Date_Seeded conflicting
-count(filter(monitor.sub, Site == "AVRCD"), Date_Seeded)
-#   impossible that it was seeded in 2021, because monitoring occurred in 2020
+count(filter(monitor.2x2, Site == "AVRCD", Date_Monitored == "2020-04-30", Treatment == "Seed"), PlotMix)
+#   should be 4 Cool and 4 Warm, info from 2x2 data is correct
 
-monitor.sub.AVRCD <- bind_rows(monitor.sub.AVRCD1, monitor.sub.AVRCD2)
+# Create correct row
+fix.AVRCD1 <- monitor.2x2 %>% 
+  filter(Site == "AVRCD", Date_Monitored == "2020-04-30", Plot == "14")
+
+
+# 2. Date_Seeded conflict  
+# Extract differing rows
+filter(monitor.diff, Site == "AVRCD", Date_Monitored == "2021-04-06") # 2020
+filter(monitor.sub, Site == "AVRCD", Date_Monitored == "2021-04-06") # 2021
+filter(monitor.2x2, Site == "AVRCD", Date_Monitored == "2021-04-06") # 2020
+
+# Figure out which version is correct
+count(filter(monitor.sub, Site == "AVRCD"), Date_Seeded)
+count(filter(monitor.2x2, Site == "AVRCD"), Date_Seeded)
+#   impossible that it was seeded in 2021, because monitoring occurred in 2020, 2x2 is correct
+
+# Create correct row
+fix.AVRCD2 <- monitor.2x2 %>% 
+  filter(Site == "AVRCD", Date_Monitored == "2021-04-06")
+
+# Combine AVRCD conflicts
+fix.AVRCD <- bind_rows(fix.AVRCD1, fix.AVRCD2)
+
+
+
+
+# FlyingM -----------------------------------------------------------------
+
+
 
 
 # FlyingM
