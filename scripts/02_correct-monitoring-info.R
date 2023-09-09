@@ -268,3 +268,7 @@ monitor.info <- monitor.info %>%
 # Write to CSV
 write_csv(monitor.info,
           file = "data/cleaned/corrected-monitoring-info_clean.csv")
+
+
+
+save.image("RData/02_correct-monitoring-info.RData")
