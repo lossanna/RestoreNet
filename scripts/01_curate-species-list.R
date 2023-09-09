@@ -53,27 +53,28 @@ subplot <- subplot.raw %>%
     str_detect(subplot.raw$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central",
     TRUE ~ "unk"),
     raw.row = 1:nrow(subplot.raw)) %>% 
-  rename(Code = Species_Code)
+  rename(CodeOriginal = Species_Code)
 
 
 
 # Assign names to codes in subplot data but not species list --------------
 
 #   This is dealing with codes that are present in the subplot data, but not present in 
-#     the species list from master-species_native.xlsx (which was adapted from Master.xlsx).
+#     the species list from from-Master_species-list-with-native-status_LO.xlsx
+#     (which was adapted from Master.xlsx).
 #   Manually adding the missing information (Name, Native, Lifeform, and Duration cols).
 
 # Extract missing codes
-codes.missing.sub <- setdiff(subplot$Code, species.raw$Code)
+codes.missing.sub <- setdiff(subplot$CodeOriginal, species.raw$CodeOriginal)
 
 # Narrow columns and remove duplicates for missing subplot data
 subplot.missing <- subplot %>%
-  filter(Code %in% codes.missing.sub) %>% 
-  select(Region, Site, Code) %>% 
+  filter(CodeOriginal %in% codes.missing.sub) %>% 
+  select(Region, Site, CodeOriginal) %>% 
   distinct(.keep_all = TRUE) %>% 
-  arrange(Code) %>% 
-  filter(!Code %in% c("0", "NA"),
-         !is.na(Code))
+  arrange(CodeOriginal) %>% 
+  filter(!CodeOriginal %in% c("0", "NA"),
+         !is.na(CodeOriginal))
 
 # OUTPUT: write to csv to manually fill in information
 write_csv(subplot.missing,
@@ -91,27 +92,32 @@ head(sub.missing.edit)
 # Knowns and unknowns must be separated; 
 #   plants not defined to species level are location-specific and Site must be retained.
 
-# Unknowns (location-dependent)
-species.m.unk <- species.raw %>% # from original master list (xlsx)
+# Unknowns (location-dependent) 
+#   From original master species list
+species.m.unk <- species.raw %>%
   filter(str_detect(species.raw$Name, "Unk|unk|spp.")) %>% 
   arrange(Region) %>% 
-  arrange(Code)
+  arrange(CodeOriginal)
 
-sub.missing.unk <- sub.missing.edit %>% # ones missing from original master list (.xlsx)
+#   Ones missing from original master species list
+sub.missing.unk <- sub.missing.edit %>%
   filter(str_detect(sub.missing.edit$Name, "Unk|unk|spp.")) %>% 
   arrange(Region) %>% 
-  arrange(Code)
+  arrange(CodeOriginal)
+
 
 # Knowns (location-independent)
-species.m.known <- species.raw %>% # from original master list (.xlsx)
+#   From original master species list
+species.m.known <- species.raw %>%
   filter(!str_detect(species.raw$Name, "Unk|unk|spp.")) %>% 
   select(-Region) %>% 
-  arrange(Code)
+  arrange(CodeOriginal)
 
+#   Ones missing from original master species list
 sub.missing.known <- sub.missing.edit %>% # ones missing from original master list (.xlsx)
   filter(!str_detect(sub.missing.edit$Name, "Unk|unk|spp.")) %>% 
   select(-Region, -Site) %>% 
-  arrange(Code)
+  arrange(CodeOriginal)
 
 
 
@@ -120,9 +126,9 @@ sub.missing.known <- sub.missing.edit %>% # ones missing from original master li
 
 # Add lifeform information to species list --------------------------------
 
-# Extract lifeform information from subplot.raw data for knowns from master.xlsx
+# Extract lifeform information from subplot.raw data for knowns from Master.xlsx
 subplot.in.lifeform <- subplot %>% 
-  select(Code, Functional_Group) %>% 
+  select(CodeOriginal, Functional_Group) %>% 
   distinct(.keep_all = TRUE) %>% 
   rename(Lifeform = Functional_Group)
 
@@ -147,7 +153,7 @@ species.m.known <- species.m.known %>%
     str_detect(species.m.known$Lifeform, "C3 grass") ~ "Grass",
     TRUE ~ species.m.known$Lifeform)) %>% 
   distinct(.keep_all = TRUE) %>% 
-  arrange(Code) 
+  arrange(CodeOriginal) 
 
 unique(species.m.known$Lifeform) # Lifeform names have been standardized, with NAs
 species.m.known$Lifeform[species.m.known$Lifeform == "NA"] <- NA # convert to real (logical) NA
@@ -157,9 +163,9 @@ unique(species.m.known$Lifeform)
 # OUTPUT: find species without lifeform information and write to csv
 lifeform.na <- species.m.known %>% 
   filter(is.na(Lifeform)) %>% 
-  select(Code, Name, Lifeform) %>% 
+  select(CodeOriginal, Name, Lifeform) %>% 
   distinct(.keep_all = TRUE) %>% 
-  arrange(Code)
+  arrange(CodeOriginal)
 
 write_csv(lifeform.na,
           file = "data/raw/01a_output-species2_xlsx_lifeform-na.csv")
@@ -175,19 +181,19 @@ head(lifeform.na.edit)
 #     and information from edited version is definitely correct (information from subplot.raw could be wrong).
 
 species.lifeform <- species.m.known %>%  # known species with lifeform info
-  filter(!Code %in% lifeform.na.edit$Code) 
+  filter(!CodeOriginal %in% lifeform.na.edit$CodeOriginal) 
 
 species.lifeform.na <- species.m.known %>%  # unknown species with lifeform info
-  filter(Code %in% lifeform.na.edit$Code) %>% 
+  filter(CodeOriginal %in% lifeform.na.edit$CodeOriginal) %>% 
   select(-Lifeform) %>% 
   distinct(.keep_all = TRUE) %>%
-  arrange(Code)
+  arrange(CodeOriginal)
 
 species.lifeform.na <- left_join(species.lifeform.na, lifeform.na.edit) %>% 
   distinct(.keep_all = TRUE)
 
 species.m.known <- bind_rows(species.lifeform, species.lifeform.na) %>% 
-  arrange(Code) 
+  arrange(CodeOriginal) 
 
 unique(species.m.known$Lifeform) # lifeform has been standardized
 
@@ -213,7 +219,7 @@ head(species.m.known)
 
 # Combine species.m.known and sub.missing.known
 species.in <- bind_rows(species.m.known, sub.missing.known) %>% 
-  arrange(Code)
+  arrange(CodeOriginal)
 
 # Check for absent information (NAs)
 apply(species.in, 2, anyNA) # should all be FALSE
@@ -231,53 +237,52 @@ codes.fix.in
 
 # Compare codes with those from seed mix
 mix.codes <- mix %>% 
-  filter(Code %in% codes.fix.in$Code) %>% 
-  select(Scientific, Code) %>% 
+  filter(CodeOriginal %in% codes.fix.in$CodeOriginal) %>% 
+  select(Scientific, CodeOriginal) %>% 
   distinct(.keep_all = TRUE) %>% 
-  arrange(Code) 
+  arrange(CodeOriginal) 
 mix.codes # codes need to match ones from seed mix
 
 # Create df standardized codes based on USDA Plants
 codes.standardized.in <- codes.fix.in %>% 
-  filter(Code %in% c(mix.codes$Code, "CHPO12", "SIAL2")) %>% 
+  filter(CodeOriginal %in% c(mix.codes$CodeOriginal, "CHPO12", "SIAL2")) %>% 
   mutate(Old_Code = c("ARPUP6", "BOER", "EUPO3", "S-HEBO", "S-PASM", "SIAL", "SPAMA")) %>% 
-  select(Old_Code, Code, Name)
+  select(Old_Code, CodeOriginal, Name)
 #   DRCU/DRCUI and ESCA/ESCAM refer to different varieties, so specificity is retained
 
 # Remove wrong codes from species list
 species.in <- species.in %>% 
-  filter(!Code %in% codes.standardized.in$Old_Code) %>% 
-  arrange(Code)
+  filter(!CodeOriginal %in% codes.standardized.in$Old_Code) %>% 
+  arrange(CodeOriginal)
 
 species.in %>% 
-  filter(Code %in% codes.standardized.in$Old_Code) # no old codes show up
+  filter(CodeOriginal %in% codes.standardized.in$Old_Code) # no old codes show up
 species.in %>% 
-  filter(Code %in% codes.standardized.in$Code) # all codes have been correctly replaced
+  filter(CodeOriginal %in% codes.standardized.in$CodeOriginal) # all codes have been correctly replaced
 
 
 # Find codes with multiple species
 names.fix.in <- species.in %>% 
-  filter(Code %in% filter(species.in, duplicated(Code))$Code) %>% 
-  arrange(Code) 
+  filter(CodeOriginal %in% filter(species.in, duplicated(CodeOriginal))$CodeOriginal) %>% 
+  arrange(CodeOriginal) 
 names.fix.in # Eragrostis ciliaris is mislabeled; E. cilianensis code is correct
-filter(species.in, Code == "ERCI2") # E. ciliaris code is not present in species list
+filter(species.in, CodeOriginal == "ERCI2") # E. ciliaris code is not present in species list
 
 # Fix code for E. cilaris
-species.in$Code[species.in$Name == "Eragrostis ciliaris"] <- "ERCI2"
+species.in$CodeOriginal[species.in$Name == "Eragrostis ciliaris"] <- "ERCI2"
 
 
 # Unique codes
-length(unique(species.in$Code)) == nrow(species.in) # TRUE, all codes in species list are unique
+length(unique(species.in$CodeOriginal)) == nrow(species.in) # TRUE, all codes in species list are unique
+
+# Create Code column
+species.in$Code <- species.in$CodeOriginal
 
 
 # Check for absent information (NAs; "0" is okay)
 unique(species.in$Native)
 unique(species.in$Duration)
 unique(species.in$Lifeform)
-
-# Add CodeOriginal col
-species.in <- species.in %>% 
-  mutate(CodeOriginal = Code)
 
 
 
@@ -309,11 +314,11 @@ head(species.de) # skeleton to edit
 # OUTPUT: extract Site information for species.m.unk to add to location-dependent list
 #   and write to CSV
 sites.m.unk <- subplot %>% 
-  filter(Code %in% species.m.unk$Code) %>% 
-  select(Code, Region, Site) %>% 
+  filter(CodeOriginal %in% species.m.unk$CodeOriginal) %>% 
+  select(CodeOriginal, Region, Site) %>% 
   distinct(.keep_all = TRUE) %>% 
   arrange(Region) %>% 
-  arrange(Code)
+  arrange(CodeOriginal)
 write_csv(sites.m.unk,
           file = "data/raw/01a_output-species4.2_location-dependent_xlsx_sites.csv")
 head(sites.m.unk) # use for reference to connect codes to sites
@@ -324,21 +329,17 @@ species.de <- read_csv("data/raw/01b_edited-species4_location-dependent_native-d
 
 # Add Site to Name col for location-dependent
 species.de$Name <- apply(species.de[ , c("Name", "Site")], 1, paste, collapse = ", ")
-  
-# Rename Code col as CodeOriginal
-species.de <- species.de %>% 
-  rename(CodeOriginal = Code)
 
 # Create new Code col that has the site info
 species.de$Code <- apply(species.de[ , c("CodeOriginal", "Site")], 1, paste, collapse = ".")
 
 # Look for overlapping codes between location-dependent and independent 
-intersect(species.de$CodeOriginal, species.in$Code)
+intersect(species.de$CodeOriginal, species.in$CodeOriginal)
   
 
 # Check for unique codes
 length(unique(species.de$Code)) == nrow(species.de) # all codes in species list are unique
-intersect(species.de$CodeOriginal, species.in$Code) 
+intersect(species.de$CodeOriginal, species.in$CodeOriginal) 
 intersect(species.de$Code, species.in$Code) 
 #   location-dependent codes are also unique from location-dependent ones, both original code and new code with site info
 
