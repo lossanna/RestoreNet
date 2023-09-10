@@ -54,6 +54,10 @@ File naming notes:
 - Most of the codes are unknowns or descriptions.
 - Output written directly from R and edited in a new file.
 
+`-1a_output-species6_subplot-2x2-conflicting-species-info.csv`
+- List of codes/species with conflicting information between `subplot` and `2x2` data. Columns from both are placed next to each other for easy comparison.
+- Output written directly from R and edited in a new file.
+
 `01a_output-species7_2x2-codes_need-duplicate-rows.csv`
 - List of codes from `2x2` data that need duplicate rows because a single original code mentions multiple species; hence, the same code will need multiple rows to describe all the information. All duplicate rows needed are included in this table.
 - Codes from `01b_edited-species5_codes-missing-2x2plot.csv` that did not need duplicate rows were added to comprehensive location-dependent/location-independent species lists that include `subplot` and `2x2` codes:
@@ -62,10 +66,8 @@ File naming notes:
 - Codes that need duplicate rows must be dealt with separate in the `2x2` data and species information cannot be added with just a `left_join()`.
 - There is no "edited" version of this file.
 
-`-1a_output-species7_subplot-2x2-conflicting-species-info.csv`
-- List of codes/species with conflicting information between `subplot` and `2x2` data. Columns from both are placed next to each other for easy comparison.
-- Output written directly from R and edited in a new file.
-
+`01a_output-species8_location-independent-final-check.csv`
+- Final manual check of codes for location-independent species list.
 
 
 
@@ -105,9 +107,14 @@ File naming notes:
 	+ `DuplicateNum` = `1`, `2`, `3`, etc.: row number for duplicate rows when more than one species is mentioned in a single code. Marked `0` when `NeedsItsDuplicate` = `No`.
 	+ `LocationDependence` = `dependent`: Site needs to be added to code to make `Code` column. Unknowns are location-dependent.
 
-`01b_edited-species7_subplot-2x2-conflicting-info-resolved.csv`
+`01b_edited-species6_subplot-2x2-conflicting-info-resolved.csv`
 - List of corrected species information where `subplot` and `2x2` data varied. Had to write out and edit manually because for `Lifeform`, neither column was completely right. Also kept only `subplot` columns for the rest, because they were either identical, or I wanted to use `subplot` ones.
-	
+
+`01b_edited-species8_location-independent-final-fix.xlsx`
+- Final fixes to  location-independent species list. All that was changed was the `Code` of a couple of species (ELEL5 and SPAM2) because they had wrong numbers for some reason.
+
+
+
 
 ## From `01-dependency.R`
 `01-dependency_seeded-species-to-be-marked-native.csv`

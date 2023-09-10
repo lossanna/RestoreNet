@@ -68,6 +68,7 @@ p2x2 <- plot.2x2.raw |>
     str_detect(plot.2x2.raw$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central"))
 
 
+
 # Assign names to codes in subplot data but not species list --------------
 
 #   This is dealing with codes that are present in the subplot data, but not present in 
@@ -106,13 +107,13 @@ head(sub.missing.edit)
 # Unknowns (location-dependent) 
 #   From original master species list
 species.m.unk <- species.raw %>%
-  filter(str_detect(species.raw$Name, "Unk|unk|spp.")) %>% 
+  filter(str_detect(species.raw$Name, "Unk|unk|spp.|Could be")) %>% 
   arrange(Region) %>% 
   arrange(CodeOriginal)
 
 #   Ones missing from original master species list
 sub.missing.unk <- sub.missing.edit %>%
-  filter(str_detect(sub.missing.edit$Name, "Unk|unk|spp.")) %>% 
+  filter(str_detect(sub.missing.edit$Name, "Unk|unk|spp.|Could be")) %>% 
   arrange(Region) %>% 
   arrange(CodeOriginal)
 
@@ -120,13 +121,14 @@ sub.missing.unk <- sub.missing.edit %>%
 # Knowns (location-independent)
 #   From original master species list
 species.m.known <- species.raw %>%
-  filter(!str_detect(species.raw$Name, "Unk|unk|spp.")) %>% 
+  filter(!str_detect(species.raw$Name, "Unk|unk|spp.|Could be")) %>% 
   select(-Region) %>% 
-  arrange(CodeOriginal)
+  arrange(CodeOriginal) |> 
+  distinct(.keep_all = TRUE)
 
 #   Ones missing from original master species list
 sub.missing.known <- sub.missing.edit %>% # ones missing from original master list (.xlsx)
-  filter(!str_detect(sub.missing.edit$Name, "Unk|unk|spp.")) %>% 
+  filter(!str_detect(sub.missing.edit$Name, "Unk|unk|spp.|Could be")) %>% 
   select(-Region, -Site) %>% 
   arrange(CodeOriginal)
 
@@ -170,6 +172,11 @@ unique(species.m.known$Lifeform) # Lifeform names have been standardized, with N
 species.m.known$Lifeform[species.m.known$Lifeform == "NA"] <- NA # convert to real (logical) NA
 unique(species.m.known$Lifeform)
 
+lifeform.known <- species.m.known %>% 
+  filter(!is.na(Lifeform)) %>% 
+  select(CodeOriginal, Name, Lifeform) %>% 
+  distinct(.keep_all = TRUE) %>% 
+  arrange(CodeOriginal)
 
 # OUTPUT: find species without lifeform information and write to csv
 lifeform.na <- species.m.known %>% 
@@ -296,6 +303,7 @@ length(unique(species.in$Code)) == nrow(species.in) # TRUE, all codes in species
 unique(species.in$Native)
 unique(species.in$Duration)
 unique(species.in$Lifeform)
+
 
 
 
@@ -616,6 +624,13 @@ species.in <- bind_rows(species.2x2.in, species.subplot.in) %>%
 species.in %>% 
   filter(Code %in% codes.standardized.in$Old_Code) # no old codes show up
 
+# OUTPUT: Final manual check of location-independent species list
+write_csv(species.in,
+          file = "data/raw/01a_output-species8_location-independent-final-check.csv")
+
+# EDITED: fixed a few codes with wrong numbers (ELEL5 and SPAM2)
+species.in <- read_xlsx("data/raw/01b_edited-species8_location-independent-final-fix.xlsx")
+
 # Write to csv
 write_csv(species.in,
           file = "data/cleaned/species-list_location-independent_clean.csv")
@@ -624,17 +639,6 @@ write_csv(species.in,
 
 
 # Full species list for location-dependent --------------------------------
-
-# Add Region col to 2x2 codes
-p2x2.codes.missing <- p2x2.codes.missing %>% 
-  mutate(Region = case_when(
-    str_detect(p2x2.codes.missing$Site, c("AguaFria|BabbittPJ|MOWE|Spiderweb|BarTBar|FlyingM|PEFO|TLE")) ~ "Colorado Plateau",
-    str_detect(p2x2.codes.missing$Site, c("CRC|UtahPJ|Salt_Desert")) ~ "Utah",
-    str_detect(p2x2.codes.missing$Site, c("29_Palms|AVRCD")) ~ "Mojave",
-    str_detect(p2x2.codes.missing$Site, c("Creosote|Mesquite")) ~ "Chihuahuan",
-    str_detect(p2x2.codes.missing$Site, c("SRER|Patagonia")) ~ "Sonoran SE",
-    str_detect(p2x2.codes.missing$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central",
-    TRUE ~ "unk"))
 
 species.2x2.de <- p2x2.codes.missing %>% 
   filter(LocationDependence == "dependent") %>% 
@@ -650,6 +654,14 @@ species.de <- bind_rows(species.2x2.de, species.subplot.de) %>%
 # Look for codes previously standardized, now that we have added 2x2 data
 species.de %>% 
   filter(Code %in% codes.standardized.in$Old_Code) # no old codes show up
+
+# OUTPUT: Final manual check of location-dependent species list; look for duplicate codes
+write_csv(species.de,
+          file = "data/raw/01a_output-species9_location-dependent-final-check.csv")
+
+# EDITED: remove rows that are (functionally) duplicates
+#   See Excel file textbox for changes
+species.de <- read_xlsx("data/raw/01b_edited-species9_location-dependent-final-fix.xlsx")
 
 # Write to csv
 write_csv(species.de,

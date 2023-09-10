@@ -191,8 +191,8 @@ DRCU,DRCU,Draba cuneifolia,Native,Annual,Forb
 DRCUI,DRCUI,Draba cuneifolia,Native,Annual,Forb
 DeadStem,DeadStem,Dead stem,Unknown,Unknown,Forb
 ELEL5,ELEL5,Elymus elymoides,Native,Perennial,Grass
-ELEL5 (seeded),ELEL5,Elymus elymoides,Native,Perennial,Grass
-ELEL5 (unseeded),ELEL5,Elymus elymoides,Native,Perennial,Grass
+ELEL5 (seeded),ELEL6,Elymus elymoides,Native,Perennial,Grass
+ELEL5 (unseeded),ELEL7,Elymus elymoides,Native,Perennial,Grass
 ELTR7 (seeded),ELTR7,Elymus trachycaulus,Native,Perennial,Grass
 ELTR7,ELTR7,Elymus trachycaulus,Native,Perennial,Grass
 ELWA,ELWA2,Elymus wawawaiensis,Native,Perennial,Grass
@@ -369,9 +369,9 @@ SORO,SORO,Solanum rostratum,Native,Annual,Forb
 SPAI,SPAI,Sporobolus airoides,Native,Perennial,Grass
 SPAMA,SPAM2,Sphaeralcea ambigua,Native,Perennial,Forb
 SPAM2,SPAM2,Sphaeralcea ambigua,Native,Perennial,Forb
-SPAMA,SPAM2,Sphaeralcea ambigua,Native,Perennial,Forb
-SPAMA,SPAM2,Sphaeralcea ambigua,Native,Perennial,Forb
-SPAMA,SPAM2,Sphaeralcea ambigua,Native,Perennial,Forb
+SPAMA,SPAM3,Sphaeralcea ambigua,Native,Perennial,Forb
+SPAMA,SPAM4,Sphaeralcea ambigua,Native,Perennial,Forb
+SPAMA,SPAM5,Sphaeralcea ambigua,Native,Perennial,Forb
 SPCO,SPCO,Sphaeralcea coccinea,Native,Perennial,Forb
 A few possible small SPCR in/around some of the pits,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass
 "Possible SPCR in subplot, Blue not Black grama",SPCR,Sporobolus cryptandrus,Native,Perennial,Grass
