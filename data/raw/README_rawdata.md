@@ -69,6 +69,9 @@ File naming notes:
 `01a_output-species8_location-independent-final-check.csv`
 - Final manual check of codes for location-independent species list.
 
+`01a_output-species8_location-independent-final-check.csv`
+- Final manual check of codes for location-dependent species list.
+
 
 
 `01b_edited-species1_subplot-codes-missing.csv`
@@ -113,6 +116,9 @@ File naming notes:
 `01b_edited-species8_location-independent-final-fix.xlsx`
 - Final fixes to  location-independent species list. All that was changed was the `Code` of a couple of species (ELEL5 and SPAM2) because they had wrong numbers for some reason.
 
+`01b_edited-species9_location-dependent-final-fix.xlsx`
+- Final fixes to  location-dependent species list. Removed duplicates so there would only be one row per `Code`, unless the `CodeOriginal` was different. Changes are listed in a textbook in the Excel file.
+
 
 
 
@@ -129,15 +135,9 @@ File naming notes:
 `01-dependency_species-list_location-independent.csv`
 - Table of location-independent species before native status of select seeded species was fixed. Produced in `01.R` and needed for `01-dependency.R`.
 
-## From `02.R`
-`02a_output-monitor_subplot-2x2-conflicting-monitoring-info.csv`
-- Table of original monitoring information from `subplot` data, with no corrections made yet.
 
-`02b_edited-monitor_conflicting-monitoring-info-resolved.xlsx`
-- Spreadsheet of monitoring events with conflicting information between the `subplot` and `2x2` data. Monitoring information refers to the columns `Site`, `Date_Seeded`, `Date_Monitored`, `Plot`, `Treatment`, and `PlotMix`. Each monitoring event (for each plot) is given an ID number (`MonitorID`), unrelated to the data actually collected from the subplot or 2x2 m plot.
-- Converted to an Excel file to manually edit so I could highlight changes and add comments.
-- `comparison` tab manually edited to highlight correct values in green, and wrong values in yellow. Comments inserted to give brief explanation of how this decision was made. Justifications also written in comments in `02_correct-monitoring-info.R` script.
-- `corrected` tab manually created to have table of only correct information to read back in. 	
+
+
 
 ## From `03.1_subplot.R`
 `03.1a_output-species-seeded1_seeded-not-in-mix_subplot.csv`
@@ -194,3 +194,12 @@ File naming notes:
 `Master Germination Data 2022.xlsx`
 - Received from Hannah Farrell via email. I believe this is what she used to write her paper, which is currently in review.
 - File will not be modified in any way.  
+
+
+## Other
+`edited-monitor_conflicting-monitoring-info-resolved.xlsx`
+- Originally from 02.R script, but then I redid the script on 2023-09-09 so I don't need to do manual edits anymore. I wrote justifications here, though, so I thought I would save the file. All the changes should be the same.
+- Spreadsheet of monitoring events with conflicting information between the `subplot` and `2x2` data. Monitoring information refers to the columns `Site`, `Date_Seeded`, `Date_Monitored`, `Plot`, `Treatment`, and `PlotMix`. Each monitoring event (for each plot) is given an ID number (`MonitorID`), unrelated to the data actually collected from the subplot or 2x2 m plot.
+- Converted to an Excel file to manually edit so I could highlight changes and add comments.
+- `comparison` tab manually edited to highlight correct values in green, and wrong values in yellow. Comments inserted to give brief explanation of how this decision was made. Justifications also written in comments in `02_correct-monitoring-info.R` script.
+- `corrected` tab manually created to have table of only correct information to read back in. 	
