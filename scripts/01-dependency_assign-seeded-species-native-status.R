@@ -28,7 +28,7 @@ subplot.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "
 subplot <- subplot.raw %>% 
   select(-Recorder_Initials, -Functional_Group, -`Certainty_of_ID(1-3)`, -Notes) %>% 
   mutate(raw.row = 1:nrow(subplot.raw)) %>% # row number is to be able to easily refer back to the raw data and excluded columns if needed
-  rename(Code = Species_Code,
+  rename(CodeOriginal = Species_Code,
          Count = Seedling_Count,
          Height = Average_Height_mm,
          Seeded = `Seeded(Yes/No)`,
@@ -42,20 +42,17 @@ subplot <- subplot %>%
     str_detect(subplot$Site, c("29_Palms|AVRCD")) ~ "Mojave",
     str_detect(subplot$Site, c("Creosote|Mesquite")) ~ "Chihuahuan",
     str_detect(subplot$Site, c("SRER|Patagonia")) ~ "Sonoran SE",
-    str_detect(subplot$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central",
-    TRUE ~ "unk")) 
+    str_detect(subplot$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central")) 
 
 # Location independent
 subplot.in <- subplot %>% 
-  filter(Code %in% species.in.intermed$Code)
+  filter(CodeOriginal %in% species.in.intermed$CodeOriginal)
 
 subplot.in <- left_join(subplot.in, species.in.intermed)
 
 # Location dependent
 subplot.de <-subplot %>% 
-  filter(Code %in% species.de.intermed$CodeOriginal)
-subplot.de <- subplot.de %>% 
-  rename(CodeOriginal = Code)
+  filter(CodeOriginal %in% species.de.intermed$CodeOriginal)
 
 subplot.de <- left_join(subplot.de, species.de.intermed)
 

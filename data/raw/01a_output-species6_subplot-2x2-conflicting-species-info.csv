@@ -1,0 +1,88 @@
+Region,Site,CodeOriginal,CodeOriginal_2x2,Code,Code_2x2,Name,Name_2x2,Native,Native_2x2,Duration,Duration_2x2,Lifeform,Lifeform_2x2
+Colorado Plateau,BarTBar,AMASPP,AMASPP,AMASPP.BarTBar,AMASPP.BarTBar,"Amaranthus spp., BarTBar","Amaranthus spp., BarTBar",Native/Unknown,Unknown,Unknown,Unknown,Forb,Forb
+Sonoran SE,SRER,ARISPP,ARISPP,ARISPP.SRER,ARISPP.SRER,"Aristida spp., SRER","Aristida spp., SRER",Native,Native,Unknown,Unknown,Grass,Grass
+Colorado Plateau,FlyingM,AmaranthusSpp,AmaranthusSpp,AmaranthusSpp.FlyingM,AmaranthusSpp.FlyingM,"Amaranthus spp., FlyingM","Amaranthus spp., FlyingM",Unknown,Unknown,Unknown,Unknown,Forb,Forb
+Colorado Plateau,BarTBar,BOSPP,BOSPP,BOSPP.BarTBar,BOSPP.BarTBar,"local Bouteloua species (unknown), BarTBar","Bouteloua spp., BarTBar",Native,Native,Unknown,Unknown,Grass,Grass
+Colorado Plateau,FlyingM,BOSPP,BOSPP,BOSPP.FlyingM,BOSPP.FlyingM,"local Bouteloua species (unknown), FlyingM","Bouteloua spp., FlyingM",Native,Native,Unknown,Unknown,Grass,Grass
+Colorado Plateau,PEFO,BOSPP,BOSPP,BOSPP.PEFO,BOSPP.PEFO,"local Bouteloua species (unknown), PEFO","Bouteloua spp., PEFO",Native,Native,Unknown,Unknown,Grass,Grass
+Colorado Plateau,Spiderweb,BOSPP,BOSPP,BOSPP.Spiderweb,BOSPP.Spiderweb,"local Bouteloua species (unknown), Spiderweb","Bouteloua spp., Spiderweb",Native,Native,Unknown,Unknown,Grass,Grass
+Sonoran SE,SRER,BOUSPP,BOUSPP,BOUSPP.SRER,BOUSPP.SRER,"Bouteloua spp., SRER","Bouteloua spp., SRER",Native,Native,Unknown,Unknown,Grass,Grass
+Chihuahuan,Creosote,CHAMA,CHAMA,CHAMA.Creosote,CHAMA.Creosote,"Chamaesyce spp., Creosote","Chamaesyce spp., Creosote",Native,Native,Unknown,Unknown,Forb,Forb
+Chihuahuan,Mesquite,CHAMA,CHAMA,CHAMA.Mesquite,CHAMA.Mesquite,"Chamaesyce spp., Mesquite","Chamaesyce spp., Mesquite",Native,Native,Unknown,Unknown,Forb,Forb
+Mojave,29_Palms,CHASPP,CHASPP,CHASPP.29_Palms,CHASPP.29_Palms,"Chaenactis spp., 29_Palms","Chamaesyce spp., 29_Palms",Native,Native,Unknown,Unknown,Forb,Forb
+Colorado Plateau,BabbittPJ,CHEN,CHEN,CHEN.BabbittPJ,CHEN.BabbittPJ,"Unknown chenopod, BabbittPJ","Unknown chenopod, BabbittPJ",Native/Unknown,Native/Unknown,Unknown,Unknown,Forb,Forb
+Colorado Plateau,MOWE,CHEN,CHEN,CHEN.MOWE,CHEN.MOWE,"Unknown chenopod, MOWE","Unknown chenopod, MOWE",Native/Unknown,Native/Unknown,Unknown,Unknown,Forb,Forb
+Sonoran Central,Roosevelt,CRYPT,CRYPT,CRYPT.Roosevelt,CRYPT.Roosevelt,"Cryptantha spp., Roosevelt","Cryptantha spp., Roosevelt",Native,Native,Unknown,Unknown,Forb,Forb
+Mojave,29_Palms,CRYSPP,CRYSPP,CRYSPP.29_Palms,CRYSPP.29_Palms,"Cryptantha spp., 29_Palms","Cryptantha spp., 29_Palms",Native,Native,Unknown,Unknown,Forb,Forb
+Mojave,AVRCD,CRYSPP,CRYSPP,CRYSPP.AVRCD,CRYSPP.AVRCD,"Cryptantha spp., AVRCD","Cryptantha spp., AVRCD",Native,Native,Unknown,Unknown,Forb,Forb
+Colorado Plateau,AguaFria,ELSPP,ELSPP,ELSPP.AguaFria,ELSPP.AguaFria,"Elymus spp., AguaFria","Elymus spp., AguaFria",Native/Unknown,Native/Unknown,Unknown,Unknown,Grass,Grass
+Colorado Plateau,BabbittPJ,ELSPP,ELSPP,ELSPP.BabbittPJ,ELSPP.BabbittPJ,"Elymus spp., BabbittPJ","Elymus spp., BabbittPJ",Native,Native/Unknown,Unknown,Unknown,Grass,Grass
+Colorado Plateau,FlyingM,ELSPP,ELSPP,ELSPP.FlyingM,ELSPP.FlyingM,"Elymus spp., FlyingM","Elymus spp., FlyingM",Native/Unknown,Native/Unknown,Unknown,Unknown,Grass,Grass
+Utah,UtahPJ,ERIGSPP,ERIGSPP,ERIGSPP.UtahPJ,ERIGSPP.UtahPJ,"Unknown ERIG (?), UtahPJ","Unknown ERIG (?), UtahPJ",Unknown,Unknown,Unknown,Unknown,Unknown,Unknown
+Colorado Plateau,BarTBar,ERISP,ERISP,ERISP.BarTBar,ERISP.BarTBar,"Eriogonum spp., BarTBar","Eriogonum spp., BarTBar",Native,Native,Unknown,Unknown,Forb,Forb
+Colorado Plateau,PEFO,ERISP,ERISP,ERISP.PEFO,ERISP.PEFO,"Eriogonum spp., PEFO","Eriogonum spp., PEFO",Native,Native,Unknown,Unknown,Forb,Forb
+Chihuahuan,Creosote,Eriogonum,Eriogonum,Eriogonum.Creosote,Eriogonum.Creosote,"Eriogonum spp., Creosote","Eriogonum spp., Creosote",Native,Native,Unknown,Unknown,Forb,Forb
+Mojave,29_Palms,GILSPP,GILSPP,GILSPP.29_Palms,GILSPP.29_Palms,"Gilia spp., 29_Palms","Unknown GIL (?), 29_Palms",Native,Unknown,Unknown,Unknown,Forb,Unknown
+Colorado Plateau,BabbittPJ,HESP,HESP,HESP.BabbittPJ,HESP.BabbittPJ,"Heliomeris spp., BabbittPJ","Heliomeris spp., BabbittPJ",Native,Native,Unknown,Unknown,Forb,Forb
+Colorado Plateau,FlyingM,HESP,HESP,HESP.FlyingM,HESP.FlyingM,"Heliomeris spp., FlyingM","Heliomeris spp., FlyingM",Native,Native,Unknown,Unknown,Forb,Forb
+Mojave,29_Palms,LEPSPP,LEPSPP,LEPSPP.29_Palms,LEPSPP.29_Palms,"Lepidium spp., 29_Palms","Lepidium spp., 29_Palms",Native/Unknown,Native/Unknown,Unknown,Unknown,Forb,Forb
+Colorado Plateau,AguaFria,LUSPP,LUSPP,LUSPP.AguaFria,LUSPP.AguaFria,"Lupinus spp., AguaFria","Lupinus spp., AguaFria",Native/Unknown,Unknown,Unknown,Unknown,Forb,Forb
+Colorado Plateau,TLE,MACSPP,MACSPP,MACSPP.TLE,MACSPP.TLE,"Machaeranthera spp., TLE","Machaeranthera spp., TLE",Native,Native,Unknown,Unknown,Forb,Forb
+Mojave,29_Palms,MENSPP,MENSPP,MENSPP.29_Palms,MENSPP.29_Palms,"Mentzelia spp., 29_Palms","Mentzelia spp., 29_Palms",Native,Native,Unknown,Unknown,Forb,Forb
+Mojave,29_Palms,PECSPP,PECSPP,PECSPP.29_Palms,PECSPP.29_Palms,"Pectocarya spp., 29_Palms","Pectocarya spp., 29_Palms",Native,Native,Unknown,Unknown,Forb,Forb
+Colorado Plateau,BabbittPJ,PHSPP,PHSPP,PHSPP.BabbittPJ,PHSPP.BabbittPJ,"Phacelia spp., BabbittPJ","Phacelia spp., BabbittPJ",Native,Native,Unknown,Unknown,Forb,Forb
+Colorado Plateau,BarTBar,PORSPP,PORSPP,PORSPP.BarTBar,PORSPP.BarTBar,"Portulaca spp., BarTBar","Portulaca spp., BarTBar",Native,Native,Unknown,Unknown,Forb,Forb
+Colorado Plateau,PEFO,PORSPP,PORSPP,PORSPP.PEFO,PORSPP.PEFO,"Portulaca spp., PEFO","Portulaca spp., PEFO",Native,Native,Unknown,Unknown,Forb,Forb
+Colorado Plateau,BarTBar,SPSP,SPSP,SPSP.BarTBar,SPSP.BarTBar,"Sphaeralcea spp., BarTBar","Sphaeralcea spp., BarTBar",Native/Unknown,Native/Unknown,Unknown,Unknown,Forb,Forb
+Colorado Plateau,FlyingM,SPSP,SPSP,SPSP.FlyingM,SPSP.FlyingM,"Sphaeralcea spp., FlyingM","Sphaeralcea spp., FlyingM",Native/Unknown,Native/Unknown,Unknown,Unknown,Forb,Forb
+Colorado Plateau,TLE,SPSP,SPSP,SPSP.TLE,SPSP.TLE,"Sphaeralcea spp., TLE","Sphaeralcea spp., TLE",Native/Unknown,Native/Unknown,Unknown,Unknown,Forb,Forb
+Mojave,29_Palms,STISPP,STISPP,STISPP.29_Palms,STISPP.29_Palms,"Stipa spp., 29_Palms","Stipa spp., 29_Palms",Native,Native,Unknown,Unknown,Grass,Grass
+Colorado Plateau,BabbittPJ,SUNGR,SUNGR,SUNGR.BabbittPJ,SUNGR.BabbittPJ,"Seeded unknown grass (?), BabbittPJ","Seeded unknown grass, BabbittPJ",Native,Native,Unknown,Unknown,Shrub,Grass
+Colorado Plateau,TLE,SUNGR,SUNGR,SUNGR.TLE,SUNGR.TLE,"Seeded unknown grass (?), TLE","Seeded unknown grass, TLE",Native,Native,Unknown,Unknown,Shrub,Grass
+Sonoran SE,SRER,UNDPF,UNDPF,UNDPF.SRER,UNDPF.SRER,"Unknown dead pod forb, SRER","Unknown DPF, SRER",Unknown,Unknown,Unknown,Unknown,Forb,Unknown
+Colorado Plateau,Spiderweb,UNFO,UNFO,UNFO.Spiderweb,UNFO.Spiderweb,"Unknown forb, Spiderweb","Unknown forb, Spiderweb",Native,Unknown,Unknown,Unknown,Forb,Forb
+Colorado Plateau,FlyingM,UNFO1,UNFO1,UNFO1.FlyingM,UNFO1.FlyingM,"Unknown forb 1, FlyingM","Unknown forb 1, FlyingM",Unknown,Unknown,Unknown,Unknown,Forb,Forb
+Colorado Plateau,MOWE,UNFO1,UNFO1,UNFO1.MOWE,UNFO1.MOWE,"Unknown forb 1, MOWE","Unknown forb 1, MOWE",Unknown,Unknown,Unknown,Unknown,Forb,Forb
+Colorado Plateau,PEFO,UNFO1,UNFO1,UNFO1.PEFO,UNFO1.PEFO,"Unknown forb 1, PEFO","Unknown forb 1, PEFO",Unknown,Unknown,Unknown,Unknown,Forb,Forb
+Colorado Plateau,BarTBar,UNFO12,UNFO12,UNFO12.BarTBar,UNFO12.BarTBar,"Unknown forb 12, BarTBar","Unknown forb 12, BarTBar",Unknown,Unknown,Unknown,Unknown,Forb,Forb
+Colorado Plateau,BarTBar,UNFO13,UNFO13,UNFO13.BarTBar,UNFO13.BarTBar,"Unknown forb 13, BarTBar","Unknown forb 13, BarTBar",Unknown,Unknown,Unknown,Unknown,Forb,Forb
+Mojave,29_Palms,UNFO2,UNFO2,UNFO2.29_Palms,UNFO2.29_Palms,"Unknown forb 2, 29_Palms","Unknown forb 2, 29_Palms",Unknown,Unknown,Unknown,Unknown,Forb,Forb
+Colorado Plateau,AguaFria,UNFO2,UNFO2,UNFO2.AguaFria,UNFO2.AguaFria,"Unknown forb 2, AguaFria","Unknown forb 2, AguaFria",Unknown,Unknown,Unknown,Unknown,Forb,Forb
+Colorado Plateau,FlyingM,UNFO2,UNFO2,UNFO2.FlyingM,UNFO2.FlyingM,"Unknown forb 2, FlyingM","Unknown forb 2, FlyingM",Unknown,Unknown,Unknown,Unknown,Forb,Forb
+Colorado Plateau,FlyingM,UNFO3,UNFO3,UNFO3.FlyingM,UNFO3.FlyingM,"Unknown forb 3, FlyingM","Unknown forb 3, FlyingM",Unknown,Unknown,Unknown,Unknown,Forb,Forb
+Colorado Plateau,BarTBar,UNFO4,UNFO4,UNFO4.BarTBar,UNFO4.BarTBar,"Unknown forb 4, BarTBar","Unknown forb 4, BarTBar",Unknown,Unknown,Unknown,Unknown,Forb,Forb
+Colorado Plateau,FlyingM,UNFO4,UNFO4,UNFO4.FlyingM,UNFO4.FlyingM,"Unknown forb 4, FlyingM","Unknown forb 4, FlyingM",Unknown,Unknown,Unknown,Unknown,Forb,Forb
+Colorado Plateau,FlyingM,UNFO5,UNFO5,UNFO5.FlyingM,UNFO5.FlyingM,"Unknown forb 5, FlyingM","Unknown forb 5, FlyingM",Unknown,Unknown,Unknown,Unknown,Forb,Forb
+Colorado Plateau,MOWE,UNFO5,UNFO5,UNFO5.MOWE,UNFO5.MOWE,"Unknown forb 5, MOWE","Unknown forb 5, MOWE",Unknown,Unknown,Unknown,Unknown,Forb,Forb
+Colorado Plateau,FlyingM,UNFO6,UNFO6,UNFO6.FlyingM,UNFO6.FlyingM,"Unknown forb 6, FlyingM","Unknown forb 6, FlyingM",Unknown,Unknown,Unknown,Unknown,Forb,Forb
+Colorado Plateau,Spiderweb,UNFO6,UNFO6,UNFO6.Spiderweb,UNFO6.Spiderweb,"Unknown forb 6, Spiderweb","Unknown forb 6, Spiderweb",Unknown,Unknown,Unknown,Unknown,Forb,Forb
+Colorado Plateau,FlyingM,UNFO7,UNFO7,UNFO7.FlyingM,UNFO7.FlyingM,"Unknown forb 7, FlyingM","Unknown forb 7, FlyingM",Unknown,Unknown,Unknown,Unknown,Forb,Forb
+Colorado Plateau,Spiderweb,UNFO7,UNFO7,UNFO7.Spiderweb,UNFO7.Spiderweb,"Unknown forb 7, Spiderweb","Unknown forb 7, Spiderweb",Unknown,Unknown,Unknown,Unknown,Forb,Forb
+Colorado Plateau,AguaFria,UNFO8,UNFO8,UNFO8.AguaFria,UNFO8.AguaFria,"Unknown forb 8, AguaFria","Unknown forb 8, AguaFria",Unknown,Unknown,Unknown,Unknown,Forb,Forb
+Colorado Plateau,BarTBar,UNFO8,UNFO8,UNFO8.BarTBar,UNFO8.BarTBar,"Unknown forb 8, BarTBar","Unknown forb 8, BarTBar",Unknown,Unknown,Unknown,Unknown,Forb,Forb
+Colorado Plateau,Spiderweb,UNFO8,UNFO8,UNFO8.Spiderweb,UNFO8.Spiderweb,"Unknown forb 8, Spiderweb","Unknown forb 8, Spiderweb",Unknown,Unknown,Unknown,Unknown,Forb,Forb
+Colorado Plateau,BabbittPJ,UNGR,UNGR,UNGR.BabbittPJ,UNGR.BabbittPJ,"Unknown grass, BabbittPJ","Unknown grass, BabbittPJ",Native,Unknown,Unknown,Unknown,Grass,Grass
+Colorado Plateau,BarTBar,UNGR,UNGR,UNGR.BarTBar,UNGR.BarTBar,"Unknown grass, BarTBar","Unknown grass, BarTBar",Native,Unknown,Unknown,Unknown,Grass,Grass
+Colorado Plateau,FlyingM,UNGR,UNGR,UNGR.FlyingM,UNGR.FlyingM,"Unknown grass, FlyingM","Unknown grass, FlyingM",Native,Unknown,Unknown,Unknown,Grass,Grass
+Colorado Plateau,MOWE,UNGR,UNGR,UNGR.MOWE,UNGR.MOWE,"Unknown grass, MOWE","Unknown grass, MOWE",Native,Unknown,Unknown,Unknown,Grass,Grass
+Colorado Plateau,PEFO,UNGR,UNGR,UNGR.PEFO,UNGR.PEFO,"Unknown grass, PEFO","Unknown grass, PEFO",Native,Unknown,Unknown,Unknown,Grass,Grass
+Colorado Plateau,Spiderweb,UNGR,UNGR,UNGR.Spiderweb,UNGR.Spiderweb,"Unknown grass, Spiderweb","Unknown grass, Spiderweb",Native,Unknown,Unknown,Unknown,Grass,Grass
+Colorado Plateau,TLE,UNGR,UNGR,UNGR.TLE,UNGR.TLE,"Unknown grass, TLE","Unknown grass, TLE",Native,Unknown,Unknown,Unknown,Grass,Grass
+Colorado Plateau,PEFO,UNGR1,UNGR1,UNGR1.PEFO,UNGR1.PEFO,"Unknown grass 1, PEFO","Unknown grass 1, PEFO",Native,Unknown,Unknown,Unknown,Grass,Grass
+Colorado Plateau,MOWE,UNGR2,UNGR2,UNGR2.MOWE,UNGR2.MOWE,"Unknown grass 2, MOWE","Unknown grass 2, MOWE",Native,Unknown,Unknown,Unknown,Grass,Grass
+Colorado Plateau,PEFO,UNGR2,UNGR2,UNGR2.PEFO,UNGR2.PEFO,"Unknown grass 2, PEFO","Unknown grass 2, PEFO",Native,Unknown,Unknown,Unknown,Grass,Grass
+Utah,UtahPJ,UNGR2,UNGR2,UNGR2.UtahPJ,UNGR2.UtahPJ,"Unknown grass 2, UtahPJ","Unknown grass 2, UtahPJ",Unknown,Unknown,Unknown,Unknown,Grass,Grass
+Colorado Plateau,MOWE,UNGR4,UNGR4,UNGR4.MOWE,UNGR4.MOWE,"Unknown grass 4, MOWE","Unknown grass 4, MOWE",Unknown,Unknown,Unknown,Unknown,Grass,Grass
+Colorado Plateau,AguaFria,UNGR5,UNGR5,UNGR5.AguaFria,UNGR5.AguaFria,"Unknown grass 5, AguaFria","Unknown grass 5, AguaFria",Unknown,Unknown,Unknown,Unknown,Grass,Grass
+Sonoran Central,Preserve,UNK heart,UNK heart,UNK heart.Preserve,UNK heart.Preserve,"Unknown forb with heart-shaped cotyledon; possibly MAPA5 (although that species not seen growing there), Preserve","UNKnown  heart, Preserve",Unknown,Unknown,Unknown,Unknown,Forb,Forb
+Colorado Plateau,BarTBar,UNSH,UNSH,UNSH.BarTBar,UNSH.BarTBar,"Unknown shrub, BarTBar","Unknown shrub, BarTBar",Unknown,Unknown,Perennial,Perennial,Shrub,Shrub
+Sonoran Central,SCC,Unk grass,Unk grass,Unk grass.SCC,Unk grass.SCC,"Unknown likely associated with warm seed mix, SCC","Unknown grass, SCC",Unknown,Unknown,Unknown,Unknown,Grass,Grass
+Sonoran Central,Pleasant,Unk sp.,Unk sp.,Unk sp..Pleasant,Unk sp..Pleasant,"Unknown species, Pleasant","Unknown spp., Pleasant",Unknown,Unknown,Unknown,Unknown,Unknown,Unknown
+Chihuahuan,Creosote,Unkfabaceae,Unkfabaceae,Unkfabaceae.Creosote,Unkfabaceae.Creosote,"Unknown fabaceae, Creosote","Unknown fabaceae, Creosote",Unknown,Unknown,Unknown,Unknown,Forb,Forb
+Chihuahuan,Creosote,Unkforb,Unkforb,Unkforb.Creosote,Unkforb.Creosote,"Unknown forb, Creosote","Unknown forb, Creosote",Unknown,Unknown,Unknown,Unknown,Forb,Forb
+Chihuahuan,Creosote,Unkforb1,Unkforb1,Unkforb1.Creosote,Unkforb1.Creosote,"Unknown forb, Creosote","Unknown forb1, Creosote",Unknown,Unknown,Unknown,Unknown,Forb,Forb
+Chihuahuan,Creosote,Unkgrass,Unkgrass,Unkgrass.Creosote,Unkgrass.Creosote,"Unknown grass, Creosote","Unknown grass, Creosote",Unknown,Unknown,Unknown,Unknown,Grass,Grass
+Chihuahuan,Mesquite,Unkgrass,Unkgrass,Unkgrass.Mesquite,Unkgrass.Mesquite,"Unknown grass, Mesquite","Unknown grass, Mesquite",Native,Unknown,Unknown,Unknown,Grass,Grass
+Chihuahuan,Creosote,Unksalsola,Unksalsola,Unksalsola.Creosote,Unksalsola.Creosote,"Unknown forb; A very small (tiny really) forb germinant that has linear leaves like a small Salsola would. Unlikely to be salsola but best way to distinguish it from other unks., Creosote","Unknown Salsola, Creosote",Unknown,Unknown,Unknown,Unknown,Forb,Forb
+Chihuahuan,Creosote,Unksporo,Unksporo,Unksporo.Creosote,Unksporo.Creosote,"Unknown grass; Sporobolus and Eragrostis, Creosote","Unknown Sporobolus, Creosote",Unknown,Unknown,Unknown,Unknown,Grass,Grass
+Chihuahuan,Mesquite,Unksporo,Unksporo,Unksporo.Mesquite,Unksporo.Mesquite,"Unknown grass; Sporobolus and Eragrostis, Mesquite","Unknown Sporobolus, Mesquite",Unknown,Unknown,Unknown,Unknown,Grass,Grass
