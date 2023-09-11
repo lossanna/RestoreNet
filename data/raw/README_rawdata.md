@@ -11,7 +11,7 @@ Types of data:
 
 File naming notes:
 - First number corresponds to the R script of the same number. `a` and `b` are so `output` files are listed before `edited` ones.
-- `_output-` indicates the CSV was written from R.
+- `_output-` indicates the CSV was written directly from R and not manually edited.
 - `_edited-` indicates the corresponding CSV written from R was then manually edited, and then read back into script.
 - `-species#_` indicates the CSV is an intermediate step in curating a complete species list, from `01_curate-species-list.R`. Numbers correspond between output and edited files, and sequentially mark workflow.
 - `01-dependency_` indicates the CSV is an intermediate step in correcting native status of seeded species, based on information from `subplot` data; produced from `01-dependency_assign-seeded-species-native-status.R` or `01_curate-species-list.R`.
@@ -29,16 +29,16 @@ File naming notes:
 
 `01a_output-species1_subplot-codes-missing.csv`
 - List of codes included in the `subplot` data, but are missing from the the original master species list (`master-species_native.xlsx`).
-- Output written directly from R and edited in a new file.
+
+`01a_output-species2_subplot-lifeform-info.csv`
+- List of codes and accompanying lifeform information based on the `subplot` data, where a code and the functional type was recorded.
 
 `01a_output-species2_xlsx_lifeform-na.csv`
 - List of species without lifeform information. Subset of codes is taken only codes from the `master-species_native.xlsx`.
  	- Lifeform information would have come from `AllSubplotData` tab from `Master.xlsx`.
-- Output written directly from R and edited in a new file.
 
 `01a_output-species3_xlsx_native-lifeform.csv`
 - List of unique species codes (although there are some duplicates when there are conflicting lifeforms or names for the same code).
-- Output written directly from R and edited in a new file.
 
 `01a_output-species4.1_location-dependent.csv`
 - List of codes for location-dependent species in subplot data. Site, Duration, and Lifeform information is filled out for the second part of the list, which came from codes missing from the `master-species_native.xlsx` list, and had been manually input into `01a_edited-species1_subplot-codes-missing_native-duration-lifeform.csv`.
@@ -52,11 +52,9 @@ File naming notes:
 `01a_output-species5_codes-missing-2x2plot.csv`
 - List of codes that were in the `2x2` data, but not yet in the species lists for the subplot data, which have already been generated/have species info associated with them.
 - Most of the codes are unknowns or descriptions.
-- Output written directly from R and edited in a new file.
 
 `-1a_output-species6_subplot-2x2-conflicting-species-info.csv`
 - List of codes/species with conflicting information between `subplot` and `2x2` data. Columns from both are placed next to each other for easy comparison.
-- Output written directly from R and edited in a new file.
 
 `01a_output-species7_2x2-codes_need-duplicate-rows.csv`
 - List of codes from `2x2` data that need duplicate rows because a single original code mentions multiple species; hence, the same code will need multiple rows to describe all the information. All duplicate rows needed are included in this table.
@@ -79,6 +77,9 @@ File naming notes:
 - Manually edited to add plant name, duration, and lifeform based on USDA Plants.
 - Not divided by location dependence, but ones that will be location-dependent (unknowns) have sites added to the name.
 - Edited list is the same length as output list.
+
+`01b_edited-species2_subplot-lifeform-info-corrected.csv`
+- List of codes and their lifeform information, as taken from the `subplot` data. I deleted rows with incorrect information, so there would be only one assignment per `CodeOriginal`.
 
 `01b_edited-species2_xlsx_lifeform-na.csv`
 - List of species originally without lifeform information. Subset of codes is taken only codes from the `master-species_native.xlsx`

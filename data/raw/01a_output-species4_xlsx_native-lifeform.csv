@@ -7,7 +7,6 @@ ACNA2,Acourtia nana,Native,Forb
 ALIN,Allionia incarnata,Native,Forb
 AMCH3,Ammocodon chenopodioides,Native,Forb
 AMCO3,Ambrosia confertiflora,Native,Forb
-AMCO3,Ambrosia confertiflora,Native,Grass
 AMDE4,Ambrosia deltoidea,Native,Shrub
 AMDU2,Ambrosia dumosa,Native,Shrub
 AMMEI2,Amsinckia menziesii,Native,Forb
@@ -17,7 +16,6 @@ AMTE3,Amsinckia tessellata,Native,Forb
 AMTO3,Ambrosia tomentosa,Native,Forb
 ANCR2,Anoda cristata,Native,Forb
 ARAD,Aristida adscensionis,Native,Grass
-ARAD,Aristida adscensionis,Native,Forb
 ARFR4,Artemisia frigida,Native,Shrub
 ARNE2,Argythamnia neomexicana,Native,Forb
 ARPU9,Aristida purpurea,Native,Grass
@@ -38,7 +36,6 @@ BOBA2,Bouteloua barbata,Native,Grass
 BOBAB3,Bouteloua barbata v. barbata,Native,Grass
 BOCO,Boerhavia coccinea,Native,Forb
 BOCU,Bouteloua curtipendula,Native,Grass
-BOCU,Bouteloua curtipendula,Native,Forb
 BOER,Bouteloua eriopoda,Native,Grass
 BOER4,Bouteloua eriopoda,Native,Grass
 BOERH2,Boerhavia,Native,Forb
@@ -87,7 +84,6 @@ DAPU7,Dasyochloa pulchella,Native,Grass
 DEPI,Descurainia pinnata,Native,Forb
 DESO2,Descurainia sophia,Introduced,Forb
 DICA14,Dichelostemma capitatum,Native,Forb
-DICA8,Digitaria californica,Native,Forb
 DICA8,Digitaria californica,Native,Grass
 DRCU,Draba cuneifolia,Native,Forb
 DRCUI,Draba cuneifolia,Native,Forb
@@ -122,7 +118,6 @@ EVAR,Evolvulus arizonicus,Native,Forb
 GIST,Gilia stellata,Native,Forb
 GLGO,Glandularia gooddingii,Native,Forb
 GNPA,Gnaphalium palustre,Native,Forb
-GUSA2,Gutierrezia sarothrae,Native,Forb
 GUSA2,Gutierrezia sarothrae,Native,Shrub
 HAGL,Halogeton glomeratus,Introduced,Forb
 HAPAA,Harpagonella palmeri,Native,Forb
@@ -171,7 +166,6 @@ MEOF,Melilotus officinalis,Introduced,Forb
 MIGR,Microsteris gracilis,Native,Forb
 MILA6,Mirabilis laevis,Native,Forb
 MOCE,Mollugo cerviana,Introduced,Forb
-MOCE,Mollugo cerviana,Introduced,Grass
 MONU,Monolepis nuttalliana,Native,Forb
 MOVE,Mollugo verticillata,Native,Forb
 MUPO2,Muhlenbergia porteri,Native,Grass

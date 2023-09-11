@@ -13,6 +13,10 @@
 #     read in for this script, and continue running this script until the end.
 #   CSVs of intermediate species lists for both location dependent and independent.
 
+# Workflow:
+#   Start with species list (from-Master_species-list-with-native-status_LO) adapted from
+#     Master Germination Data 2022.xlsx, and codes from subplot data not included in species list.
+
 
 
 library(readxl)
@@ -67,6 +71,14 @@ p2x2 <- plot.2x2.raw |>
     str_detect(plot.2x2.raw$Site, c("SRER|Patagonia")) ~ "Sonoran SE",
     str_detect(plot.2x2.raw$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central"))
 
+# Compile 2x2 codes
+p2x2.codes <- p2x2 %>% 
+  select(Region, Site, starts_with("Additional")) %>% 
+  mutate(across(everything(), as.character)) %>% 
+  pivot_longer(starts_with("Additional"), names_to = "drop", values_to = "CodeOriginal") %>% 
+  select(-drop) %>% 
+  distinct(.keep_all = TRUE) %>% 
+  arrange(CodeOriginal)
 
 
 # Assign names to codes in subplot data but not species list --------------
@@ -94,8 +106,8 @@ write_csv(subplot.missing,
 head(subplot.missing)
 
 # EDITED: manually edit new file to add Name, Native, Lifeform, and Duration cols
-sub.missing.edit <- read_csv("data/raw/01b_edited-species1_subplot-codes-missing_native-duration-lifeform.csv")
-head(sub.missing.edit)
+sub.missing <- read_csv("data/raw/01b_edited-species1_subplot-codes-missing_native-duration-lifeform.csv")
+head(sub.missing)
 
 
 
@@ -112,8 +124,8 @@ species.m.unk <- species.raw %>%
   arrange(CodeOriginal)
 
 #   Ones missing from original master species list
-sub.missing.unk <- sub.missing.edit %>%
-  filter(str_detect(sub.missing.edit$Name, "Unk|unk|spp.|Could be")) %>% 
+sub.missing.unk <- sub.missing %>%
+  filter(str_detect(sub.missing$Name, "Unk|unk|spp.|Could be")) %>% 
   arrange(Region) %>% 
   arrange(CodeOriginal)
 
@@ -127,8 +139,8 @@ species.m.known <- species.raw %>%
   distinct(.keep_all = TRUE)
 
 #   Ones missing from original master species list
-sub.missing.known <- sub.missing.edit %>% # ones missing from original master list (.xlsx)
-  filter(!str_detect(sub.missing.edit$Name, "Unk|unk|spp.|Could be")) %>% 
+sub.missing.known <- sub.missing %>% # ones missing from original master list (.xlsx)
+  filter(!str_detect(sub.missing$Name, "Unk|unk|spp.|Could be")) %>% 
   select(-Region, -Site) %>% 
   arrange(CodeOriginal)
 
@@ -139,46 +151,56 @@ sub.missing.known <- sub.missing.edit %>% # ones missing from original master li
 
 # Add lifeform information to species list --------------------------------
 
-# Extract lifeform information from subplot.raw data for knowns from Master.xlsx
+# Extract lifeform information from subplot data for knowns from Master.xlsx
 subplot.in.lifeform <- subplot %>% 
   select(CodeOriginal, Functional_Group) %>% 
   distinct(.keep_all = TRUE) %>% 
   rename(Lifeform = Functional_Group)
 
-# Add subplot lifeform information to location-independent species list
-species.m.known <- left_join(species.m.known, subplot.in.lifeform,
-                              relationship = "many-to-many")
+# Correct codes with conflicting lifeform info
+sub.in.lifeform.duplicate <- count(subplot.in.lifeform, CodeOriginal) |> 
+  filter(n > 1) |> 
+  arrange(CodeOriginal)
+subplot.in.lifeform.inspect <- subplot.in.lifeform |> 
+  filter(CodeOriginal %in% sub.in.lifeform.duplicate$CodeOriginal) |> 
+  arrange(CodeOriginal)
+
+# OUTPUT: list of lifeform info according to subplot data
+write_csv(subplot.in.lifeform.inspect,
+          file = "data/raw/01a_output-species2_subplot-lifeform-info.csv")
+
+# EDITED: delete incorrect rows so there is only one lifeform assignment per code
+subplot.in.duplicate <- read_csv("data/raw/01b_edited-species2_subplot-lifeform-info-corrected.csv")
+
+subplot.in.lifeform <- subplot.in.lifeform |> 
+  filter(!CodeOriginal %in% subplot.in.duplicate$CodeOriginal) |> 
+  bind_rows(subplot.in.duplicate)
+
+
+# Add subplot lifeform information to working species list
+species.m.known <- left_join(species.m.known, subplot.in.lifeform)
 
 # Standardize Lifeform to Grass/Forb/Shrub
 unique(species.m.known$Lifeform)
 
 species.m.known <- species.m.known %>% 
   mutate(Lifeform = case_when(
-    str_detect(species.m.known$Name, "forb") ~ "Forb",
-    str_detect(species.m.known$Name, "grass") ~ "Grass",
-    str_detect(species.m.known$Name, "shrub") ~ "Shrub",
-    TRUE ~ species.m.known$Lifeform))
-
-species.m.known <- species.m.known %>% 
-  mutate(Lifeform = case_when(
-    str_detect(species.m.known$Lifeform, "Shrub/subshrub") ~ "Shrub", # standardize to grass/forb/shrub
     str_detect(species.m.known$Lifeform, "shrub") ~ "Shrub",
-    str_detect(species.m.known$Lifeform, "C3 grass") ~ "Grass",
-    TRUE ~ species.m.known$Lifeform)) %>% 
-  distinct(.keep_all = TRUE) %>% 
-  arrange(CodeOriginal) 
+    TRUE ~ species.m.known$Lifeform))
 
 unique(species.m.known$Lifeform) # Lifeform names have been standardized, with NAs
 species.m.known$Lifeform[species.m.known$Lifeform == "NA"] <- NA # convert to real (logical) NA
-unique(species.m.known$Lifeform)
+unique(species.m.known$Lifeform) # lifeform has been standardized
 
+# Compile list of lifeform information thus far
 lifeform.known <- species.m.known %>% 
   filter(!is.na(Lifeform)) %>% 
   select(CodeOriginal, Name, Lifeform) %>% 
   distinct(.keep_all = TRUE) %>% 
   arrange(CodeOriginal)
 
-# OUTPUT: find species without lifeform information and write to csv
+# Add missing lifeform information to working species list
+# OUTPUT: create list of species without lifeform information
 lifeform.na <- species.m.known %>% 
   filter(is.na(Lifeform)) %>% 
   select(CodeOriginal, Name, Lifeform) %>% 
@@ -186,49 +208,34 @@ lifeform.na <- species.m.known %>%
   arrange(CodeOriginal)
 
 write_csv(lifeform.na,
-          file = "data/raw/01a_output-species2_xlsx_lifeform-na.csv")
+          file = "data/raw/01a_output-species3_xlsx_lifeform-na.csv")
 head(lifeform.na)
 
 # EDITED: manually edit new file and fill in Lifeform col
-lifeform.na.edit <- read_csv("data/raw/01b_edited-species2_xlsx_lifeform-na.csv")
+lifeform.na.edit <- read_csv("data/raw/01b_edited-species3_xlsx_lifeform-na.csv")
 head(lifeform.na.edit)
 
+# Add newly edited lifeform data to existing list
+lifeform.known <- bind_rows(lifeform.known, lifeform.na.edit)
 
-# Add lifeform.na.edit to working location-independent species list
-#   Species are split up because left_join() will not override and will create duplicates,
-#     and information from edited version is definitely correct (information from subplot.raw could be wrong).
-
-species.lifeform <- species.m.known %>%  # known species with lifeform info
-  filter(!CodeOriginal %in% lifeform.na.edit$CodeOriginal) 
-
-species.lifeform.na <- species.m.known %>%  # unknown species with lifeform info
-  filter(CodeOriginal %in% lifeform.na.edit$CodeOriginal) %>% 
-  select(-Lifeform) %>% 
-  distinct(.keep_all = TRUE) %>%
-  arrange(CodeOriginal)
-
-species.lifeform.na <- left_join(species.lifeform.na, lifeform.na.edit) %>% 
-  distinct(.keep_all = TRUE)
-
-species.m.known <- bind_rows(species.lifeform, species.lifeform.na) %>% 
-  arrange(CodeOriginal) 
-
-unique(species.m.known$Lifeform) # lifeform has been standardized
-
+# Add lifeform info to working species list
+species.m.known <- species.m.known |> 
+  select(-Lifeform) |> # must remove Lifeform col so left_join() does not conflict
+  left_join(lifeform.known)
 
 
 # Add duration to location-independent list -------------------------------
 
 #   All duration information needed to be added manually from USDA Plants.
-#   Multiple lifeforms for same species were also corrected (wrong ones deleted).
 
 # OUTPUT: write output with Native and Lifeform columns
 write_csv(species.m.known,
-          file = "data/raw/01a_output-species3_xlsx_native-lifeform.csv")
+          file = "data/raw/01a_output-species4_xlsx_native-lifeform.csv")
 head(species.m.known)
 
-# EDITED: edit new file manually to add Duration and correct Lifeform if needed
-species.m.known <- read_csv("data/raw/01b_edited-species3_xlsx_native-lifeform-duration.csv")
+# EDITED: edit new file manually to add Duration
+#   Also delete 2 duplicate rows (BOAR & SATR12) with misspelled name/updated name (correct row remains)
+species.m.known <- read_csv("data/raw/01b_edited-species4_xlsx_native-lifeform-duration.csv")
 head(species.m.known)
 
 
