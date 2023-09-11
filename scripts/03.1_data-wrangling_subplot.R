@@ -1,5 +1,5 @@
 # Created: 2022-11-29
-# Last updated: 2023-09-07
+# Last updated: 2023-09-11
 
 # Purpose: Create clean data table for subplot data, with corrected and standardized species information,
 #   and monitoring and plot information. 
@@ -25,7 +25,7 @@ monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
 subplot <- subplot.raw %>% 
   select(-Recorder_Initials, -Functional_Group, -`Certainty_of_ID(1-3)`, -Notes) %>% 
   mutate(raw.row = 1:nrow(subplot.raw)) %>% # row number is to be able to easily refer back to the raw data and excluded columns if needed
-  rename(Code = Species_Code,
+  rename(CodeOriginal = Species_Code,
          Count = Seedling_Count,
          Height = Average_Height_mm,
          SpeciesSeeded = `Seeded(Yes/No)`,
@@ -39,9 +39,7 @@ subplot <- subplot %>%
     str_detect(subplot$Site, c("29_Palms|AVRCD")) ~ "Mojave",
     str_detect(subplot$Site, c("Creosote|Mesquite")) ~ "Chihuahuan",
     str_detect(subplot$Site, c("SRER|Patagonia")) ~ "Sonoran SE",
-    str_detect(subplot$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central",
-    TRUE ~ "unk")) 
-filter(subplot, Region == "unk") # all have been assigned a Region
+    str_detect(subplot$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central")) 
 
 # Convert character "NA" to logical NA
 sapply(subplot, class) # temporarily convert date columns to character to replace NAs
@@ -59,11 +57,11 @@ subplot <- subplot %>%
 # Handle NA codes ---------------------------------------------------------
 
 # Extract NA codes
-filter(subplot, is.na(Code)) # raw.row 8610, 9318, 12166
+filter(subplot, is.na(CodeOriginal)) # raw.row 8610, 9318, 12166
 
 # Rows 8610 and 9318 are observations for empty plots; Code should be 0
-subplot$Code[subplot$raw.row == 8610] <- "0"
-subplot$Code[subplot$raw.row == 9318] <- "0"
+subplot$CodeOriginal[subplot$raw.row == 8610] <- "0"
+subplot$CodeOriginal[subplot$raw.row == 9318] <- "0"
 
 # Examine non-empty subplots (12166)
 subplot.raw[12166, ]
@@ -71,39 +69,22 @@ subplot.raw[12166, c("Species_Code", "Functional_Group", "Seeded(Yes/No)", "Note
 #   No notes for 12166, but a functional group was listed; not seeded, and probably an unknown
 
 # Assign location-dependent code for 12166
-subplot$Code[subplot$raw.row == 12166] <- "UNFO.12166.assigned"
+subplot$CodeOriginal[subplot$raw.row == 12166] <- "UNFO.12166.assigned"
 
 # Check again for NA codes
-filter(subplot, is.na(Code)) # no NAs
+filter(subplot, is.na(CodeOriginal)) # no NAs
 
-
-
-# Standardize incorrect codes ---------------------------------------------
-
-# Extract incorrect codes
-setdiff(subplot$Code, c(species.de$CodeOriginal, species.in$CodeOriginal))
-#   ARPUP6, BOER, EUPO3, S-HEBO, S-PASM, SIAL, SPAMA are all codes that had to be fixed previously (known to exist and be wrong)
-
-# Replace codes
-subplot$Code[subplot$Code == "S-PASM"] <- "PASM"
-subplot$Code[subplot$Code == "S-HEBO"] <- "HEBO"
-subplot$Code[subplot$Code == "ARPUP6"] <- "ARPU9"
-subplot$Code[subplot$Code == "BOER"] <- "BOER4"
-subplot$Code[subplot$Code == "EUPO3"] <- "CHPO12"
-subplot$Code[subplot$Code == "SIAL"] <- "SIAL2"
-subplot$Code[subplot$Code == "SPAMA"] <- "SPAM2"
 
 # Check for missing codes by comparing subplot data to both species lists
 sub.codes <- c(species.de$CodeOriginal, species.in$CodeOriginal)
-setdiff(subplot$Code, sub.codes) # should be 0
-
-# Check again for NA codes
-filter(subplot, is.na(Code)) # no NAs
+setdiff(subplot$CodeOriginal, sub.codes) # should be 0 (NA)
 
 
 
 
 # Add species info and change location-dependent code name ----------------
+
+subplot.de <- left_join(subplot, species.de)
 
 # Separate out location-dependent observations
 subplot.de <-subplot %>% 

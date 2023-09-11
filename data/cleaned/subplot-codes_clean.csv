@@ -21,6 +21,7 @@ ANCR2,ANCR2,Anoda cristata
 ANOSPP,ANOSPP.SRER,"Anoda spp., SRER"
 ARAD,ARAD,Aristida adscensionis
 ARPU9,ARPU9,Aristida purpurea
+ARPUP6,ARPU9,Aristida purpurea
 ARISPP,ARISPP.Patagonia,"Aristida spp., Patagonia"
 ARISPP,ARISPP.SRER,"Aristida spp., SRER"
 ARTE3,ARTE3,Aristida ternipes
@@ -65,6 +66,7 @@ EUAB,EUAB,Chamaesyce abramsiana
 CHAL11,CHAL11,Chamaesyce albomarginata
 CHHY3,CHHY3,Chamaesyce hyssopifolia
 CHPO12,CHPO12,Chamaesyce polycarpa
+EUPO3,CHPO12,Chamaesyce polycarpa
 CHAMA,CHAMA.Creosote,"Chamaesyce spp., Creosote"
 CHAMA,CHAMA.Mesquite,"Chamaesyce spp., Mesquite"
 CHFR3,CHFR3,Chenopodium fremontii
@@ -134,6 +136,7 @@ GUSA2,GUSA2,Gutierrezia sarothrae
 HAGL,HAGL,Halogeton glomeratus
 HAPAA,HAPAA,Harpagonella palmeri
 HEBO,HEBO,Hedysarum boreale
+S-HEBO,HEBO,Hedysarum boreale
 HECI,HECI,Helianthus ciliaris
 HEMU3,HEMU3,Heliomeris multiflora
 HESP,HESP.BabbittPJ,"Heliomeris spp., BabbittPJ"
@@ -197,6 +200,7 @@ PACA6,PACA6,Panicum capillare
 PAHI5,PAHI5,Panicum hirticaule
 PANSPP,PANSPP.SRER,"Panicum spp., SRER"
 PASM,PASM,Pascopyrum smithii
+S-PASM,PASM,Pascopyrum smithii
 PEPA2,PEPA2,Pectis papposa
 PECTO,PECTO,Pectocarya
 PEHE,PEHE,Pectocarya heterocarpa
@@ -262,6 +266,7 @@ SOSP,SOSP.FlyingM,"Solanum spp., FlyingM"
 SOOL,SOOL,Sonchus oleraceus
 SPEC2,SPEC2,Spermolepis echinata
 SPAM2,SPAM2,Sphaeralcea ambigua
+SPAMA,SPAM2,Sphaeralcea ambigua
 SPCO,SPCO,Sphaeralcea coccinea
 SPGR2,SPGR2,Sphaeralcea grossulariifolia
 SPSP,SPSP.AguaFria,"Sphaeralcea spp., AguaFria"
@@ -357,13 +362,13 @@ UNFO8,UNFO8.UtahPJ,"Unknown forb 8, UtahPJ"
 UNFO9,UNFO9.BarTBar,"Unknown forb 9, BarTBar"
 UNFO9,UNFO9.UtahPJ,"Unknown forb 9, UtahPJ"
 UNFS,UNFS.Patagonia,"Unknown forb seedling, Patagonia"
-Unk heart,Unk heart.Preserve,"Unknown forb with heart-shaped cotyledon; possibly MAPA5 (although that species not seen growing there), Preserve"
 UNK heart,UNK heart.Preserve,"Unknown forb with heart-shaped cotyledon; possibly MAPA5 (although that species not seen growing there), Preserve"
+Unk heart,Unk heart.Preserve,"Unknown forb with heart-shaped cotyledon; possibly MAPA5 (although that species not seen growing there), Preserve"
 Unkforb,Unkforb.Creosote,"Unknown forb, Creosote"
 Unkforb1,Unkforb1.Creosote,"Unknown forb, Creosote"
 UNFO,UNFO.FlyingM,"Unknown forb, FlyingM"
-Unkforb,Unkforb.Mesquite,"Unknown forb, Mesquite"
 UnkForb,UnkForb.Mesquite,"Unknown forb, Mesquite"
+Unkforb,Unkforb.Mesquite,"Unknown forb, Mesquite"
 UNFO,UNFO.Spiderweb,"Unknown forb, Spiderweb"
 UNFO_S_7,UNFO_S_7.SRER,"Unknown forb; ""artichoke head"", stem leaves alternate, basal rosette, possibly cryptantha? (Spring 2021), SRER"
 Unksalsola,Unksalsola.Creosote,"Unknown forb; A very small (tiny really) forb germinant that has linear leaves like a small Salsola would. Unlikely to be salsola but best way to distinguish it from other unks., Creosote"

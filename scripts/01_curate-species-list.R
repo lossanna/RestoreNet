@@ -49,8 +49,9 @@ native.fix <- read_csv("data/raw/01-dependency_seeded-species-to-be-marked-nativ
 
 
 
-# Add Region and row numbers to subplot data ------------------------------
+# Organize subplot and 2x2 data -------------------------------------------
 
+# Add Region column
 subplot <- subplot.raw %>% 
   mutate(Region = case_when(
     str_detect(subplot.raw$Site, c("AguaFria|BabbittPJ|MOWE|Spiderweb|BarTBar|FlyingM|PEFO|TLE")) ~ "Colorado Plateau",
@@ -63,9 +64,7 @@ subplot <- subplot.raw %>%
     raw.row = 1:nrow(subplot.raw)) %>% 
   rename(CodeOriginal = Species_Code)
 
-
-# Add Region to 2x2 data --------------------------------------------------
-
+# Add Region column
 p2x2 <- plot.2x2.raw |> 
   mutate(Region = case_when(
     str_detect(plot.2x2.raw$Site, c("AguaFria|BabbittPJ|MOWE|Spiderweb|BarTBar|FlyingM|PEFO|TLE")) ~ "Colorado Plateau",
@@ -151,11 +150,10 @@ sub.missing.known <- sub.missing %>% # ones missing from original master list (.
 
 
 
-#### Location-independent species (known genus & species) ###############
+# Location-independent species from master list & subplot data ------------
 
-# Location independent (knowns) -------------------------------------------
 
-# Add lifeform information to species list --------------------------------
+# Add lifeform to species/subplot list ------------------------------------
 
 # Extract lifeform information from subplot data for knowns from Master.xlsx
 subplot.in.lifeform <- subplot %>% 
@@ -230,7 +228,8 @@ species.m.known <- species.m.known |>
   left_join(lifeform.known)
 
 
-# Add duration to location-independent list -------------------------------
+
+# Add duration to species/subplot list ------------------------------------
 
 #   All duration information needed to be added manually from USDA Plants.
 
@@ -247,7 +246,7 @@ head(species.m.known)
 
 
 
-# Add species from subplot data not in master -----------------------------
+# Add species from subplot data not in master
 
 # Combine species.m.known and sub.missing.known
 species.in <- bind_rows(species.m.known, sub.missing.known) %>% 
@@ -258,7 +257,10 @@ apply(species.in, 2, anyNA) # should all be FALSE
 
 
 
-# Standardize codes for location-independent species ----------------------
+# Standardize codes for lo-indepen species/subplot ------------------------
+
+# Add Code col
+species.in$Code <- species.in$CodeOriginal
 
 # Extract species with multiple codes for the same name, retaining all codes
 codes.fix.in <- species.in %>% 
@@ -277,37 +279,43 @@ mix.codes # codes need to match ones from seed mix
 
 # Create df standardized codes based on USDA Plants
 codes.standardized.in <- codes.fix.in %>% 
-  filter(CodeOriginal %in% c(mix.codes$CodeOriginal, "CHPO12", "SIAL2")) %>% 
-  mutate(Old_Code = c("ARPUP6", "BOER", "EUPO3", "S-HEBO", "S-PASM", "SIAL", "SPAMA")) %>% 
-  select(Old_Code, CodeOriginal, Name)
-#   DRCU/DRCUI and ESCA/ESCAM refer to different varieties, so specificity is retained
+  filter(Code %in% c(mix.codes$CodeOriginal, "CHPO12", "SIAL2")) %>% 
+  mutate(CodeOriginal = c("ARPUP6", "BOER", "EUPO3", "S-HEBO", "S-PASM", "SIAL", "SPAMA")) 
 
-# Remove wrong codes from species list
+# Remove wrong codes from species list and add correct ones
 species.in <- species.in %>% 
-  filter(!CodeOriginal %in% codes.standardized.in$Old_Code) %>% 
+  filter(!CodeOriginal %in% codes.standardized.in$CodeOriginal) %>% 
+  bind_rows(codes.standardized.in) |> 
   arrange(CodeOriginal)
 
-species.in %>% 
-  filter(CodeOriginal %in% codes.standardized.in$Old_Code) # no old codes show up
-species.in %>% 
-  filter(CodeOriginal %in% codes.standardized.in$CodeOriginal) # all codes have been correctly replaced
+# DRCU/DRCUI and ESCA/ESCAM refer to different varieties, so specificity is retained
+#   change name for DRCUI & ESCAM
+species.in$Name[species.in$CodeOriginal == "DRCUI"] <- "Draba cuneifolia var. integrifolia"
+species.in$Name[species.in$CodeOriginal == "ESCAM"] <- "Eschscholzia californica ssp. mexicana"
+
+# Reorder cols
+species.in <- species.in |> 
+  select(CodeOriginal, Code, Name, Native, Duration, Lifeform)
+
 
 
 # Find codes with multiple species
 names.fix.in <- species.in %>% 
   filter(CodeOriginal %in% filter(species.in, duplicated(CodeOriginal))$CodeOriginal) %>% 
   arrange(CodeOriginal) 
-names.fix.in # Eragrostis ciliaris is mislabeled; E. cilianensis code is correct
-filter(species.in, CodeOriginal == "ERCI2") # correct code for E. ciliaris is not present in species list
+names.fix.in # look at master species list for clarification
 # Cross-referencing original species list from master shows that ERCI referred to correct species
-#   (E. cilianensis) at Sonoran Central, but referred to E. ciliaris at Chihuahuan
+#   (Eragrostis cilianensis) at Sonoran Central, but referred to E. ciliaris at Chihuahuan
+
+#   Check for ERCI in subplot and 2x2 data
 filter(subplot, CodeOriginal == "ERCI")
 filter(p2x2.codes, CodeOriginal == "ERCI")
-# CodeOriginal must be manually changed for Chihuahuan in 2x2 data
+# ERCI is actually now location-dependent
 
-# For now, remove incorrect row (Chihuahuan) because it will be added back later
+# For now, remove both
 species.in <- species.in |> 
-  filter(Name != "Eragrostis ciliaris")
+  filter(CodeOriginal != "ERCI")
+
 
 # Unique codes
 length(unique(species.in$CodeOriginal)) == nrow(species.in) # TRUE, all codes in species list are unique
@@ -317,9 +325,6 @@ length(unique(species.in$CodeOriginal)) == nrow(species.in) # TRUE, all codes in
 unique(species.in$Native)
 unique(species.in$Duration)
 unique(species.in$Lifeform)
-
-# Add Code col
-species.in$Code <- species.in$CodeOriginal
 
 
 
@@ -337,9 +342,7 @@ head(species.in)
 
 
 
-#### Location-dependent species (species unknown) ##########################
-
-# Location-dependent species (unknowns) -----------------------------------
+# Location-dependent species from master list & subplot -------------------
 
 # Combine all location-dependent species 
 #   (ones from master species list and from subplot data)
@@ -365,6 +368,32 @@ head(sites.m.unk) # use for reference to connect codes to sites
 # EDITED: manually add/correct Site, Native, Duration, and Lifeform cols
 species.de <- read_csv("data/raw/01b_edited-species5_location-dependent_native-duration-lifeform.csv")
 head(species.de)
+
+
+# Add ERCI
+#   ERCI = ERCI at Sonoran Central, ERCI = ERCI2 at Chihuahuan
+erci.soc <- names.fix.in[1, ]
+erci.soc <- rbind(erci.soc, erci.soc, erci.soc, erci.soc)
+erci.soc <- erci.soc |> 
+  mutate(Region = "Chihuahuan",
+         Site = c("Preserve", "SCC", "Roosevelt", "Pleasant")) |> 
+  select(-Code)
+
+erci.chi <- names.fix.in[2, ]
+erci.chi <- rbind(erci.chi, erci.chi)
+erci.chi <- erci.chi |> 
+  mutate(Region = "Sonoran Central",
+         Site = c("Creosote", "Mesquite"),
+         Code = "ERCI2") |> 
+  select(-Code)
+
+
+species.de <- bind_rows(species.de, erci.soc, erci.chi) |> 
+  arrange(Region) |> 
+  arrange(CodeOriginal)
+
+
+# Renane code & name for lo-depen -----------------------------------------
 
 # Add Site to Name col for location-dependent
 species.de$Name <- apply(species.de[ , c("Name", "Site")], 1, paste, collapse = ", ")
@@ -478,7 +507,11 @@ p2x2.codes.missing <- p2x2.codes %>%
          CodeOriginal != "0")
 
 
-# Correct species information (Native, Duration, Lifeform) for 2x2 codes
+
+# Address location-dependent that need duplicates -------------------------
+
+#   Some CodeOriginal values give a description that includes more than one plant;
+#     hence, more than one row is needed for these
 
 # OUTPUT: create list of sites and codes that need more info
 write_csv(p2x2.codes.missing,
@@ -490,6 +523,9 @@ head(p2x2.codes.missing)
 p2x2.codes.missing <- read_csv("data/raw/01b_edited-species6_codes-missing-2x2plot.csv")
 head(p2x2.codes.missing)
 
+
+
+# Add site to code and name for 2x2 lo-dependent --------------------------
 
 # Add site to code and name for location-dependent species
 p2x2.codes.de <- p2x2.codes.missing %>% 
@@ -504,6 +540,9 @@ p2x2.codes.de %>%
   arrange(Code) 
 #   SRER ones are duplicates because they mention more than one species, and that's okay
 
+
+
+# Compare 2x2 and subplot species info ------------------------------------
 
 # Combine location-independent and dependent with new codes
 p2x2.codes.missing <- p2x2.codes.missing %>% 
@@ -585,6 +624,8 @@ filter(species.subplot.de, CodeOriginal == "SUNGR") # unknown grass should not b
 species.subplot.de$Lifeform[species.subplot.de$CodeOriginal == "SUNGR"] <- "Grass"
 
 
+
+# Write list of codes that need duplicates --------------------------------
 
 # Extract codes that need duplicates (same code refers to multiple species) and write to csv
 p2x2.codes.dup <- p2x2.codes.missing %>% 
