@@ -33,42 +33,42 @@ File naming notes:
 `01a_output-species2_subplot-lifeform-info.csv`
 - List of codes and accompanying lifeform information based on the `subplot` data, where a code and the functional type was recorded.
 
-`01a_output-species2_xlsx_lifeform-na.csv`
-- List of species without lifeform information. Subset of codes is taken only codes from the `master-species_native.xlsx`.
+`01a_output-species3_xlsx_lifeform-na.csv`
+- List of species without lifeform information. Subset of codes is taken only codes from the `from-Master-species-list-with-native-status_LO.xlsx`.
  	- Lifeform information would have come from `AllSubplotData` tab from `Master.xlsx`.
 
-`01a_output-species3_xlsx_native-lifeform.csv`
-- List of unique species codes (although there are some duplicates when there are conflicting lifeforms or names for the same code).
+`01a_output-species4_xlsx_native-lifeform.csv`
+- List of unique species codes (although there are some duplicates when there are conflicting names for the same code).
 
-`01a_output-species4.1_location-dependent.csv`
+`01a_output-species5.1_location-dependent.csv`
 - List of codes for location-dependent species in subplot data. Site, Duration, and Lifeform information is filled out for the second part of the list, which came from codes missing from the `master-species_native.xlsx` list, and had been manually input into `01a_edited-species1_subplot-codes-missing_native-duration-lifeform.csv`.
 - Site, Duration, and Lifeform information is not yet entered for codes that were included in the `master-species_native.xlsx` list.
 - Output written directly from R and edited in a new file, in combination with `01a_output-species4.2.csv`.
 
-`01a_output-species4.2_location-dependent_xlsx_sites`
+`01a_output-species5.2_location-dependent_xlsx_sites`
 - List of codes from the `master-species_native.xlsx` list, with their Site and Region information.
 - Output written directly from R and edited in a new file, in combination with `01a_output-species4.1.csv`.
 
-`01a_output-species5_codes-missing-2x2plot.csv`
+`01a_output-species6_codes-missing-2x2plot.csv`
 - List of codes that were in the `2x2` data, but not yet in the species lists for the subplot data, which have already been generated/have species info associated with them.
 - Most of the codes are unknowns or descriptions.
 
-`-1a_output-species6_subplot-2x2-conflicting-species-info.csv`
+`-1a_output-species7_subplot-2x2-conflicting-species-info.csv`
 - List of codes/species with conflicting information between `subplot` and `2x2` data. Columns from both are placed next to each other for easy comparison.
 
-`01a_output-species7_2x2-codes_need-duplicate-rows.csv`
+`01a_output-species_2x2-codes_need-duplicate-rows.csv`
 - List of codes from `2x2` data that need duplicate rows because a single original code mentions multiple species; hence, the same code will need multiple rows to describe all the information. All duplicate rows needed are included in this table.
-- Codes from `01b_edited-species5_codes-missing-2x2plot.csv` that did not need duplicate rows were added to comprehensive location-dependent/location-independent species lists that include `subplot` and `2x2` codes:
+- Codes from `01b_edited-species6_codes-missing-2x2plot.csv` that did not need duplicate rows were added to comprehensive location-dependent/location-independent species lists that include `subplot` and `2x2` codes:
 	+ `data/cleaned/species-list_location-dependent_clean.csv`
 	+ `data/cleaned/species-list_location-independent_clean.csv`
 - Codes that need duplicate rows must be dealt with separate in the `2x2` data and species information cannot be added with just a `left_join()`.
 - There is no "edited" version of this file.
 
 `01a_output-species8_location-independent-final-check.csv`
-- Final manual check of codes for location-independent species list.
+- Final manual check of codes for location-independent species list. Changed values are highlighted and explained in comment.
 
-`01a_output-species8_location-independent-final-check.csv`
-- Final manual check of codes for location-dependent species list.
+`01a_output-species9_location-dependent-final-check.csv`
+- Final manual check of codes for location-dependent species list. Changed values are highlighted and explained in comment.
 
 
 
@@ -81,7 +81,7 @@ File naming notes:
 `01b_edited-species2_subplot-lifeform-info-corrected.csv`
 - List of codes and their lifeform information, as taken from the `subplot` data. I deleted rows with incorrect information, so there would be only one assignment per `CodeOriginal`.
 
-`01b_edited-species2_xlsx_lifeform-na.csv`
+`01b_edited-species3_xlsx_lifeform-na.csv`
 - List of species originally without lifeform information. Subset of codes is taken only codes from the `master-species_native.xlsx`
 	- Lifeform information would have come from raw `subplot` data (`AllSubplotData` tab from `Master.xlsx`).
 - Manually edited to assign missing lifeform (functional group) information.
@@ -89,21 +89,21 @@ File naming notes:
 - Not a complete species list.
 - Edited list is the same length as output list.
 
-`01b_edited-species3_xlsx_native-lifeform-duration.csv`
+`01b_edited-species4_xlsx_native-lifeform-duration.csv`
 - List of codes taken from `master-species_native.xlsx`. Not yet a complete species list.
 - Manually edited to add plant duration, based on USDA Plants.
-- Manually edited to resolve conflicting lifeform assignments or misspelled names to remove duplicates.  Codes are not changed, and different codes for the same species are maintained because they connect to the subplot data.
+- Manually edited to resolve conflicting/misspelled names for BOAR and SATR12 to remove duplicates.
 - Manually add a row of all 0s to mark observations of plots that had no plants.
 - Edited list is not the same length as output list (rows deleted to resolve conflicts, so edited < output).
 
-`01b_edited-species4_location-dependent_native-duration-lifeform.csv`
-- List of location-dependent species (unknowns), listed first by the ones from `master-species_native.unk` that lack site data, and then by location-dependent codes from the raw `subplot` data, whose native/duration/lifeform information was already manually added in `01b_edited-species1_subplot-codes-missing_native-duration-lifeform.csv`.
+`01b_edited-species5_location-dependent_native-duration-lifeform.csv`
+- List of location-dependent species (unknowns), listed first by the ones from master species list that lack site data, and then by location-dependent codes from the raw `subplot` data, whose native/duration/lifeform information was already manually added in `01b_edited-species1_subplot-codes-missing_native-duration-lifeform.csv`.
 - Manually added site information for the unknowns from the master list (first section) based on site information in the subplot data, which sometimes included adding multiple rows because the same code occurred at different sites. Codes have not been changed, and will be changed in the cleaned data through data wrangling (`03.1_data-wrangling_subplot.R` and `03.2_data-wrangling_2x2.R`).
-	+ Sometimes codes were listed in the master species list that didn't occur in the `subplot` data, and therefore didn't have any site information. They are not included here, but are included later when looking at `2x2` codes in `species5.csv`.
+	+ Sometimes codes were listed in the master species list that didn't occur in the `subplot` data, and therefore didn't have any site information. They are not included here, but are included later when looking at `2x2` codes in `species6.csv`.
 - Manually added assigned codes for subplot observations that were missing codes, as noted in `03.1_data-wrangling_subplot.R` (there is just one in row 12166).
-- Edited list is not the same length as either output list, because some codes in `4.1.csv` weren't in the subplot data, so they weren't included, and some codes had multiple locations according to `4.2.csv`.
+- Edited list is not the same length as either output list, because some codes in `5.1.csv` weren't in the subplot data, so they weren't included, and some codes had multiple locations according to `5.2.csv`.
 
-`01b_edited-species5_codes-missing-2x2plot.csv`
+`01b_edited-species6_codes-missing-2x2plot.csv`
 - List of codes that were in the `2x2` plot data (`AllPlotData` tab in `Master.xlsx`), but not yet in the species lists for the subplot data, which have already been generated.
 - Most of the codes are unknowns or descriptions; long codes that are basically descriptions and mention multiple species have multiple rows for the same code, and a column marks if there is a duplicate that is needed. All of these codes came from the Sonoran SE sites. Most other sites had a standard USDA code marked in multiple columns all named `Additional_Species_In_Plot` in the original raw `2x2` data.
 	+ The Sonoran SE plots were difficult to identify, so longer explanations were needed.
@@ -111,7 +111,7 @@ File naming notes:
 	+ `DuplicateNum` = `1`, `2`, `3`, etc.: row number for duplicate rows when more than one species is mentioned in a single code. Marked `0` when `NeedsItsDuplicate` = `No`.
 	+ `LocationDependence` = `dependent`: Site needs to be added to code to make `Code` column. Unknowns are location-dependent.
 
-`01b_edited-species6_subplot-2x2-conflicting-info-resolved.csv`
+`01b_edited-species7_subplot-2x2-conflicting-info-resolved.csv`
 - List of corrected species information where `subplot` and `2x2` data varied. Had to write out and edit manually because for `Lifeform`, neither column was completely right. Also kept only `subplot` columns for the rest, because they were either identical, or I wanted to use `subplot` ones.
 
 `01b_edited-species8_location-independent-final-fix.xlsx`

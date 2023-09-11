@@ -37,8 +37,8 @@ Colorado Plateau,BarTBar,SPSP,SPSP,SPSP.BarTBar,SPSP.BarTBar,"Sphaeralcea spp., 
 Colorado Plateau,FlyingM,SPSP,SPSP,SPSP.FlyingM,SPSP.FlyingM,"Sphaeralcea spp., FlyingM","Sphaeralcea spp., FlyingM",Native/Unknown,Native/Unknown,Unknown,Unknown,Forb,Forb
 Colorado Plateau,TLE,SPSP,SPSP,SPSP.TLE,SPSP.TLE,"Sphaeralcea spp., TLE","Sphaeralcea spp., TLE",Native/Unknown,Native/Unknown,Unknown,Unknown,Forb,Forb
 Mojave,29_Palms,STISPP,STISPP,STISPP.29_Palms,STISPP.29_Palms,"Stipa spp., 29_Palms","Stipa spp., 29_Palms",Native,Native,Unknown,Unknown,Grass,Grass
-Colorado Plateau,BabbittPJ,SUNGR,SUNGR,SUNGR.BabbittPJ,SUNGR.BabbittPJ,"Seeded unknown grass (?), BabbittPJ","Seeded unknown grass, BabbittPJ",Native,Native,Unknown,Unknown,Grass,Grass
-Colorado Plateau,TLE,SUNGR,SUNGR,SUNGR.TLE,SUNGR.TLE,"Seeded unknown grass (?), TLE","Seeded unknown grass, TLE",Native,Native,Unknown,Unknown,Grass,Grass
+Colorado Plateau,BabbittPJ,SUNGR,SUNGR,SUNGR.BabbittPJ,SUNGR.BabbittPJ,"Seeded unknown grass (?), BabbittPJ","Seeded unknown grass, BabbittPJ",Native,Native,Unknown,Unknown,Shrub,Grass
+Colorado Plateau,TLE,SUNGR,SUNGR,SUNGR.TLE,SUNGR.TLE,"Seeded unknown grass (?), TLE","Seeded unknown grass, TLE",Native,Native,Unknown,Unknown,Shrub,Grass
 Sonoran SE,SRER,UNDPF,UNDPF,UNDPF.SRER,UNDPF.SRER,"Unknown dead pod forb, SRER","Unknown DPF, SRER",Unknown,Unknown,Unknown,Unknown,Forb,Unknown
 Colorado Plateau,Spiderweb,UNFO,UNFO,UNFO.Spiderweb,UNFO.Spiderweb,"Unknown forb, Spiderweb","Unknown forb, Spiderweb",Native,Unknown,Unknown,Unknown,Forb,Forb
 Colorado Plateau,FlyingM,UNFO1,UNFO1,UNFO1.FlyingM,UNFO1.FlyingM,"Unknown forb 1, FlyingM","Unknown forb 1, FlyingM",Unknown,Unknown,Unknown,Unknown,Forb,Forb

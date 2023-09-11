@@ -221,8 +221,8 @@ ERTR8,ERTR8,Eriogonum trichopes,Native,Annual,Forb
 ERVE5,ERVE5,Eruca vesicaria,Introduced,Annual,Forb
 ESCA2,ESCA2,Eschscholzia californica,Native,Unknown,Forb
 ESCAM,ESCAM,Eschscholzia californica,Native,Unknown,Forb
-EUAB,EUAB,Chamaesyce abramsiana,Native,Annual,Forb
-EUME3,EUME3,Chamaesyce melanadenia,Native,Perennial,Forb
+EUAB,CHAB2,Chamaesyce abramsiana,Native,Annual,Forb
+EUME3,CHME5,Chamaesyce melanadenia,Native,Perennial,Forb
 EVAR,EVAR,Evolvulus arizonicus,Native,Perennial,Forb
 GIST,GIST,Gilia stellata,Native,Annual,Forb
 GLGO,GLGO,Glandularia gooddingii,Native,Perennial,Forb
@@ -388,7 +388,7 @@ TOIN,TOIN,Townsendia incana,Native,Unknown,Forb
 TRMU,TRMU,Tridens muticus,Native,Perennial,Grass
 TRPI,TRPI,Tradescantia pinetorum,Native,Perennial,Forb
 TRTE,TRTE,Tribulus terrestris,Introduced,Annual,Forb
-URLI5,URLI5,Microseris lindleyi,Native,Annual,Forb
+URLI5,MILI5,Microseris lindleyi,Native,Annual,Forb
 VEEN,VEEN,Verbesina encelioides,Native,Annual,Forb
 VEPE2,VEPE2,Veronica peregrina,Native,Annual,Forb
 VEPEX2,VEPEX2,Veronica peregrina ssp. xalapensis,Native,Annual,Forb

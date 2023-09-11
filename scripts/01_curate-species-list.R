@@ -16,6 +16,7 @@
 # Workflow:
 #   Start with species list (from-Master_species-list-with-native-status_LO) adapted from
 #     Master Germination Data 2022.xlsx, and codes from subplot data not included in species list.
+#   Then add codes from 2x2 data
 
 
 
@@ -314,6 +315,8 @@ unique(species.in$Native)
 unique(species.in$Duration)
 unique(species.in$Lifeform)
 
+# Add Code col
+species.in$Code <- species.in$CodeOriginal
 
 
 
@@ -460,19 +463,13 @@ species.subplot.de <- species.de
 
 
 
-# Codes from AllPlotData (2x2 plots) --------------------------------------
+# Add species from 2x2 plot data ------------------------------------------
 
 #   These are codes from AllPlotData (2 x 2 m plots) that missing from location-independent species list.
 #     Codes from these plots are really different and are usually long descriptions.
 
 # Compile codes
-p2x2.codes.missing <- p2x2 %>% 
-  select(Region, Site, starts_with("Additional")) %>% 
-  mutate(across(everything(), as.character)) %>% 
-  pivot_longer(starts_with("Additional"), names_to = "drop", values_to = "CodeOriginal") %>% 
-  select(-drop) %>% 
-  distinct(.keep_all = TRUE) %>% 
-  arrange(CodeOriginal) %>%
+p2x2.codes.missing <- p2x2.codes %>% 
   filter(!CodeOriginal %in% species.subplot.in$CodeOriginal) %>% 
   filter(!is.na(CodeOriginal),
          CodeOriginal != "0")
@@ -482,12 +479,12 @@ p2x2.codes.missing <- p2x2 %>%
 
 # OUTPUT: create list of sites and codes that need more info
 write_csv(p2x2.codes.missing,
-          file = "data/raw/01a_output-species5_codes-missing-2x2plot.csv")
+          file = "data/raw/01a_output-species6_codes-missing-2x2plot.csv")
 head(p2x2.codes.missing)
 
 # EDITED: add/correct Native, Duration, Lifeform info
 #   create multiple rows for codes that mention more than one species (happens at SRER and Patagonia)
-p2x2.codes.missing <- read_csv("data/raw/01b_edited-species5_codes-missing-2x2plot.csv")
+p2x2.codes.missing <- read_csv("data/raw/01b_edited-species6_codes-missing-2x2plot.csv")
 head(p2x2.codes.missing)
 
 
@@ -555,17 +552,17 @@ identical(de.overlap$Duration, de.overlap$Duration_2x2) # no difference
 identical(de.overlap$Lifeform, de.overlap$Lifeform_2x2)
 count(de.overlap, Lifeform)
 count(de.overlap, Lifeform_2x2)
-#   both have right values and wrong values
+#   inspect manually; both have right values and wrong values
 
 # OUTPUT: create list of species with conflicting information between subplot and 2x2 data
 write_csv(de.overlap,
-          file = "data/raw/01a_output-species6_subplot-2x2-conflicting-species-info.csv")
+          file = "data/raw/01a_output-species7_subplot-2x2-conflicting-species-info.csv")
 
 
 # EDITED: add column of corrected lifeform information and remove duplicate cols
 #   New col needed because neither subplot nor 2x2 were completely right
 #   Remove 2x2 columns and keep subplot ones except for lifeform
-de.overlap.replace <- read_csv("data/raw/01b_edited-species6_subplot-2x2-conflicting-info-resolved.csv")
+de.overlap.replace <- read_csv("data/raw/01b_edited-species7_subplot-2x2-conflicting-info-resolved.csv")
 
 
 # Replace correct Native and Lifeform cols for 2x2 data
@@ -590,9 +587,9 @@ species.subplot.de$Lifeform[species.subplot.de$CodeOriginal == "SUNGR"] <- "Gras
 p2x2.codes.dup <- p2x2.codes.missing %>% 
   filter(NeedsItsDuplicate == "Yes") %>% 
   arrange(CodeOriginal) |> 
-  select(-Native, -Duration, -Lifeform) # this info will later be checked and corrected
+  select(-Native, -Duration, -Lifeform) # this info will be used later in 2x2 data wrangling
 write_csv(p2x2.codes.dup,
-          file = "data/raw/01a_output-species7_2x2-codes_need-duplicate-rows.csv")
+          file = "data/raw/01a_output-species_2x2-codes_need-duplicate-rows.csv")
 
 
 
@@ -607,14 +604,15 @@ species.2x2.in <- p2x2.codes.missing %>%
 species.sub.in.overlap <- species.subplot.in |> 
   filter(Code %in% species.2x2.in$Code) |> 
   select(-CodeOriginal) |> 
-  arrange(Code)
+  arrange(Code) |> 
+  select(Code, Name, Native, Duration, Lifeform)
 
 species.2x2.in.overlap <- species.2x2.in |> 
   filter(Code %in% species.sub.in.overlap$Code) |> 
   select(-CodeOriginal) |> 
   distinct(.keep_all = TRUE) |> 
   arrange(Code) |> 
-  select(Code, Name, Duration, Lifeform, Native)
+  select(Code, Name, Native, Duration, Lifeform)
 
 identical(species.2x2.in.overlap, species.sub.in.overlap)
 #   no conflicting species information for location-independent codes
@@ -640,7 +638,9 @@ species.in %>%
 write_csv(species.in,
           file = "data/raw/01a_output-species8_location-independent-final-check.csv")
 
-# EDITED: fixed a few codes with wrong numbers (ELEL5 and SPAM2)
+# EDITED: fixed a few codes 
+#   Changed a few codes with wrong numbers (ELEL5 and SPAM2)
+#   Changed codes that did not match USDA Plants code (EUAB, EUME3, URLI5)
 species.in <- read_xlsx("data/raw/01b_edited-species8_location-independent-final-fix.xlsx")
 
 # Write to csv
