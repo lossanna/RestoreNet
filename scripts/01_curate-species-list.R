@@ -111,7 +111,7 @@ head(sub.missing)
 
 
 
-# Separate location-dependent species (unknowns) --------------------------
+# Separate species by location dependence (knowns/unknowns) ---------------
 
 # Knowns and unknowns must be separated; 
 #   plants not defined to species level are location-specific and Site must be retained.
@@ -148,6 +148,8 @@ sub.missing.known <- sub.missing %>% # ones missing from original master list (.
 
 
 #### Location-independent species (known genus & species) ###############
+
+# Location independent (knowns) -------------------------------------------
 
 # Add lifeform information to species list --------------------------------
 
@@ -235,12 +237,13 @@ head(species.m.known)
 
 # EDITED: edit new file manually to add Duration
 #   Also delete 2 duplicate rows (BOAR & SATR12) with misspelled name/updated name (correct row remains)
+#     and add row of all 0s for empty plots
 species.m.known <- read_csv("data/raw/01b_edited-species4_xlsx_native-lifeform-duration.csv")
 head(species.m.known)
 
 
 
-# Add codes to location-independent not in master -------------------------
+# Add species from subplot data not in master -----------------------------
 
 # Combine species.m.known and sub.missing.known
 species.in <- bind_rows(species.m.known, sub.missing.known) %>% 
@@ -291,19 +294,19 @@ names.fix.in <- species.in %>%
   filter(CodeOriginal %in% filter(species.in, duplicated(CodeOriginal))$CodeOriginal) %>% 
   arrange(CodeOriginal) 
 names.fix.in # Eragrostis ciliaris is mislabeled; E. cilianensis code is correct
-filter(species.in, CodeOriginal == "ERCI2") # E. ciliaris code is not present in species list
+filter(species.in, CodeOriginal == "ERCI2") # correct code for E. ciliaris is not present in species list
+# Cross-referencing original species list from master shows that ERCI referred to correct species
+#   (E. cilianensis) at Sonoran Central, but referred to E. ciliaris at Chihuahuan
+filter(subplot, CodeOriginal == "ERCI")
+filter(p2x2.codes, CodeOriginal == "ERCI")
+# CodeOriginal must be manually changed for Chihuahuan in 2x2 data
 
-# Create new Code column for corrected codes
+# For now, remove incorrect row (Chihuahuan) because it will be added back later
 species.in <- species.in |> 
-  mutate(Code = CodeOriginal) |> 
-  select(Code, CodeOriginal, Name, Native, Duration, Lifeform)
-
-# Fix code for E. cilaris
-species.in$Code[species.in$Name == "Eragrostis ciliaris"] <- "ERCI2"
-
+  filter(Name != "Eragrostis ciliaris")
 
 # Unique codes
-length(unique(species.in$Code)) == nrow(species.in) # TRUE, all codes in species list are unique
+length(unique(species.in$CodeOriginal)) == nrow(species.in) # TRUE, all codes in species list are unique
 
 
 # Check for absent information (NAs; "0" is okay)
@@ -314,7 +317,7 @@ unique(species.in$Lifeform)
 
 
 
-# Write intermediate location-dependent to CSV ----------------------------
+# Write intermediate location-independent to CSV --------------------------
 
 # This is an intermediate because it does not yet have fixed native status for species that
 #   were marked as seeded in the subplot data.
@@ -323,6 +326,8 @@ unique(species.in$Lifeform)
 write_csv(species.in,
           file = "data/raw/01-dependency_species-list_location-independent.csv")
 head(species.in)
+
+
 
 
 
@@ -336,7 +341,7 @@ species.de <- bind_rows(species.m.unk, sub.missing.unk)
 
 # OUTPUT: write to CSV to fill in information for species.m.unk
 write_csv(species.de,
-          file = "data/raw/01a_output-species4.1_location-dependent.csv")
+          file = "data/raw/01a_output-species5.1_location-dependent.csv")
 head(species.de) # skeleton to edit
 
 # OUTPUT: extract Site information for species.m.unk to add to location-dependent list
@@ -348,11 +353,11 @@ sites.m.unk <- subplot %>%
   arrange(Region) %>% 
   arrange(CodeOriginal)
 write_csv(sites.m.unk,
-          file = "data/raw/01a_output-species4.2_location-dependent_xlsx_sites.csv")
+          file = "data/raw/01a_output-species5.2_location-dependent_xlsx_sites.csv")
 head(sites.m.unk) # use for reference to connect codes to sites
 
 # EDITED: manually add/correct Site, Native, Duration, and Lifeform cols
-species.de <- read_csv("data/raw/01b_edited-species4_location-dependent_native-duration-lifeform.csv")
+species.de <- read_csv("data/raw/01b_edited-species5_location-dependent_native-duration-lifeform.csv")
 head(species.de)
 
 # Add Site to Name col for location-dependent
@@ -372,7 +377,7 @@ species.de <- species.de |>
 # Check for unique codes
 length(unique(species.de$Code)) == nrow(species.de) # all codes in species list are unique
 intersect(species.de$CodeOriginal, species.in$CodeOriginal) 
-intersect(species.de$Code, species.in$Code) 
+intersect(species.de$Code, species.in$CodeOriginal) 
 #   location-dependent codes are also unique from location-dependent ones, both original code and new code with site info
 
 
