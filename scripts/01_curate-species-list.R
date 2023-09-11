@@ -1,5 +1,5 @@
 # Created: 2022-11-28
-# Last updated: 2023-09-09
+# Last updated: 2023-09-11
 
 # Purpose: Curate a complete species list with Code, Code Original, Name, Native, Duration, Lifeform info.
 #   Two lists must be created, a location-independent version (known species), and a 
@@ -16,7 +16,10 @@
 # Workflow:
 #   Start with species list (from-Master_species-list-with-native-status_LO) adapted from
 #     Master Germination Data 2022.xlsx, and codes from subplot data not included in species list.
-#   Then add codes from 2x2 data
+#     Started with these because it makes sense to start from the original species list, and because
+#     subplot data had information about lifeform with observation.
+#   Create location-independent and location-dependent lists from species list and subplot data.
+#   Then add codes from 2x2 data.
 
 
 
