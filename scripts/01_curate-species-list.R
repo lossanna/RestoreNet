@@ -765,7 +765,8 @@ p2x2.codes.in <- p2x2.codes.in |>
   filter(!CodeOriginal %in% p2x2.codes.in.dup$CodeOriginal) |> 
   mutate(NeedsItsDuplicate = "No",
          DuplicateNum = 0) |> 
-  bind_rows(p2x2.codes.in.dup)
+  bind_rows(p2x2.codes.in.dup) |> 
+  arrange(Code)
 
 # Write to csv
 write_csv(p2x2.codes.in,
@@ -785,18 +786,28 @@ p2x2.codes.de.dup <- p2x2.codes.missing %>%
          NeedsItsDuplicate == "Yes") %>% 
   arrange(CodeOriginal)
 
-#   Remove species info in case it has changed to ensure standardized version from species.de
-p2x2.codes.de.dup
+#   Check to see if any information has changed (species.de is standardized info)
+species.de.compare <- species.de |> 
+  filter(Code %in% p2x2.codes.de.dup$Code)
+setdiff(species.de.compare$Code, p2x2.codes.de.dup$Code)
+setdiff(species.de.compare$Name, p2x2.codes.de.dup$Name)
+setdiff(species.de.compare$Native, p2x2.codes.de.dup$Native)
+setdiff(species.de.compare$Duration, p2x2.codes.de.dup$Duration)
+setdiff(species.de.compare$Lifeform, p2x2.codes.de.dup$Lifeform)
+#   nothing is different so p2x2.codes.de.dup can be used
 
-species.de.compare
+p2x2.codes.de.dup <- p2x2.codes.de.dup |> 
+  select(-LocationDependence) # remove col to prepare to bind rows
 
 
-# Add ones that need duplicates to ones that don't for complete list
-p2x2.codes.de <- p2x2.codes.de |> 
+# Add columns to non-duplicate codes and then compile list
+p2x2.codes.de <-species.de %>% 
+  filter(CodeOriginal %in% p2x2.codes$CodeOriginal) |> 
   filter(!CodeOriginal %in% p2x2.codes.de.dup$CodeOriginal) |> 
   mutate(NeedsItsDuplicate = "No",
          DuplicateNum = 0) |> 
-  bded_rows(p2x2.codes.de.dup)
+  bind_rows(p2x2.codes.de.dup) |> 
+  arrange(Code)
 
 # Write to csv
 write_csv(p2x2.codes.de,
