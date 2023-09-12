@@ -500,7 +500,9 @@ write_csv(p2x2.codes.missing,
 head(p2x2.codes.missing)
 
 # EDITED: add/correct Native, Duration, Lifeform info
-#   create multiple rows for codes that mention more than one species (happens at SRER and Patagonia)
+#   Create multiple rows for codes that mention more than one species (happens at SRER and Patagonia)
+#   These codes are technically location-specific, but because they are only used at one location,
+#     they can be considered location independent
 p2x2.codes.missing <- read_csv("data/raw/01b_edited-species6_codes-missing-2x2plot.csv")
 head(p2x2.codes.missing)
 
@@ -589,21 +591,9 @@ p2x2.codes.de <- p2x2.codes.de |>
   arrange(Site)
 
 
-
-# Write list of codes that need duplicates --------------------------------
-
-# Extract codes that need duplicates (same code refers to multiple species) and write to csv
-p2x2.codes.dup <- p2x2.codes.missing %>% 
-  filter(NeedsItsDuplicate == "Yes") %>% 
-  arrange(CodeOriginal) |> 
-  select(-Native, -Duration, -Lifeform) # this info will be used later in 2x2 data wrangling
-write_csv(p2x2.codes.dup,
-          file = "data/raw/01a_output-species7_2x2-codes_need-duplicate-rows.csv")
-
-
-
-
 # Full species list for location-independent ------------------------------
+
+#   This is the finalized version of the complete species list for location-independent
 
 # Combine location-independent 2x2 codes with subplot codes
 species.2x2.in <- p2x2.codes.missing %>% 
@@ -623,12 +613,12 @@ species.in %>%
 
 # OUTPUT: Final manual check of location-independent species list
 write_csv(species.in,
-          file = "data/raw/01a_output-species8_location-independent-final-check.csv")
+          file = "data/raw/01a_output-species7_location-independent-final-check.csv")
 
 # EDITED: fixed a few codes 
 #   Changed a few codes with wrong numbers (ELEL5 and SPAM2)
 #   Changed codes that did not match USDA Plants code (EUAB, EUME3, URLI5)
-species.in <- read_xlsx("data/raw/01b_edited-species8_location-independent-final-fix.xlsx")
+species.in <- read_xlsx("data/raw/01b_edited-species7_location-independent-final-fix.xlsx")
 
 # Write to csv
 write_csv(species.in,
@@ -638,6 +628,8 @@ write_csv(species.in,
 
 
 # Full species list for location-dependent --------------------------------
+
+#   This is the finalized version of the complete species list for location-dependent
 
 species.2x2.de <- p2x2.codes.missing %>% 
   filter(LocationDependence == "dependent") %>% 
@@ -656,11 +648,18 @@ species.de %>%
 
 # OUTPUT: Final manual check of location-dependent species list; look for duplicate codes
 write_csv(species.de,
-          file = "data/raw/01a_output-species9_location-dependent-final-check.csv")
+          file = "data/raw/01a_output-species8_location-dependent-final-check.csv")
 
 # EDITED: remove rows that are (functionally) duplicates
 #   See Excel file textbox for changes
-species.de <- read_xlsx("data/raw/01b_edited-species9_location-dependent-final-fix.xlsx")
+species.de <- read_xlsx("data/raw/01b_edited-species8_location-dependent-final-fix.xlsx")
+
+species.de %>% 
+  filter(Code %in% filter(species.de, duplicated(Code))$Code) %>% 
+  arrange(Code) # SRER duplicates are okay because CodeOriginal is different
+#   Location-dependent codes will join with supblot & 2x2 codes via a combination CodeOriginal
+#     and Site; hence, duplicate CodeOriginal values are okay, because they are not duplicate when 
+#     Site is included, except for these SRER codes, which will be addressed separately
 
 # Write to csv
 write_csv(species.de,
@@ -668,7 +667,10 @@ write_csv(species.de,
 
 
 
-# Full list of subplot codes ----------------------------------------------
+# Full lists of subplot codes ---------------------------------------------
+
+#   Make subset lists for subplot and 2x2 using finalized species info (created above)
+#     in case there were any small changes not represented otherwise
 
 # Location-independent codes
 subplot.codes.in <- species.in %>% 
@@ -678,22 +680,99 @@ subplot.codes.in %>%
   filter(CodeOriginal %in% filter(subplot.codes.in, duplicated(CodeOriginal))$CodeOriginal) %>% 
   arrange(CodeOriginal) # no duplicates
 
+write_csv(subplot.codes.in,
+          file = "data/cleaned/subplot_species-list_location-independent_clean.csv")
+
+
 # Location-dependent codes
 subplot.codes.de <- species.de %>% 
   filter(CodeOriginal %in% subplot$CodeOriginal)
 
 subplot.codes.de %>% 
   filter(Code %in% filter(subplot.codes.de, duplicated(Code))$Code) %>% 
-  arrange(Code) 
+  arrange(Code) # no duplicates
 
-# Combine
-subplot.codes <- bind_rows(subplot.codes.de, subplot.codes.in) %>% 
-  filter(CodeOriginal %in% subplot.raw$Species_Code) %>% 
-  arrange(Name)
+write_csv(subplot.codes.de,
+          file = "data/cleaned/subplot_species-list_location-dependent_clean.csv")
 
 
 
-# Full list of 2x2 codes --------------------------------------------------
+# Full lists of 2x2 codes -------------------------------------------------
+
+#   Make subset lists for subplot and 2x2 using finalized species info (created above)
+#     in case there were any small changes not represented otherwise
+
+# Location-independent codes
+p2x2.codes.in <- species.in %>% 
+  filter(CodeOriginal %in% p2x2.codes$CodeOriginal)
+
+# Mark ones that need duplicates
+p2x2.codes.in.dup <- p2x2.codes.in %>% 
+  filter(CodeOriginal %in% filter(p2x2.codes.in, duplicated(CodeOriginal))$CodeOriginal) %>% 
+  arrange(CodeOriginal) |> 
+  mutate(NeedsItsDuplicate = "Yes")
+
+# OUTPUT: list of location-independent species from 2x2 that need a duplicate row 
+#   (CodeOriginal includes more than one species)
+write_csv(p2x2.codes.in.dup,
+          file = "data/raw/01a_output-species9_p2x2-location-independent-need-duplicate-number.csv")
+
+# EDITED: list of location-independent species from 2x2 with DuplicateNum col
+#   This was much easier to just do manually than to try and do in R
+p2x2.codes.in.dup <- read_csv("data/raw/01b_edited-species9_p2x2-location-independent-duplicate-number-added.csv")
+
+# Add ones that need duplicates to ones that don't for complete list
+p2x2.codes.in <- p2x2.codes.in |> 
+  filter(!CodeOriginal %in% p2x2.codes.in.dup$CodeOriginal) |> 
+  mutate(NeedsItsDuplicate = "No",
+         DuplicateNum = 0) |> 
+  bind_rows(p2x2.codes.in.dup)
+
+# Write to csv
+write_csv(p2x2.codes.in,
+          file = "data/cleaned/p2x2_species-list_location-independent_clean.csv")
+
+
+
+# Location-dependent codes
+p2x2.codes.de <- species.de %>% 
+  filter(CodeOriginal %in% p2x2.codes$CodeOriginal)
+
+# Mark ones that need duplicates
+p2x2.codes.de %>% 
+  filter(Code %in% filter(p2x2.codes.de, duplicated(Code))$Code) %>% 
+  arrange(Code)
+
+
+
+
+
+p2x2.codes.de |> 
+  filter(duplicated(Code))
+p2x2.codes.de.dup <- p2x2.codes.de %>% 
+  filter(Code %in% filter(p2x2.codes.de, duplicated(Code))$Code) %>% 
+  arrange(Code) |> 
+  mutate(NeedsItsDuplicate = "Yes")
+
+# OUTPUT: list of location-dependent species from 2x2 that need a duplicate row 
+#   (CodeOriginal includes more than one species)
+write_csv(p2x2.codes.de.dup,
+          file = "data/raw/01a_output-species10_p2x2-location-dependent-need-duplicate-number.csv")
+
+# EDITED: list of location-dedependent species from 2x2 with DuplicateNum col
+#   This was much easier to just do manually than to try and do de R
+p2x2.codes.de.dup <- read_csv("data/raw/01b_edited-species10_p2x2-location-dependent-duplicate-number-added.csv")
+
+# Add ones that need duplicates to ones that don't for complete list
+p2x2.codes.de <- p2x2.codes.de |> 
+  filter(!CodeOriginal %in% p2x2.codes.de.dup$CodeOriginal) |> 
+  mutate(NeedsItsDuplicate = "No",
+         DuplicateNum = 0) |> 
+  bded_rows(p2x2.codes.de.dup)
+
+# Write to csv
+write_csv(p2x2.codes.de,
+          file = "data/cleaned/p2x2_species-list_location-dependent_clean.csv")
 
 
 

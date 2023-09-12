@@ -53,20 +53,15 @@ File naming notes:
 - List of codes that were in the `2x2` data, but not yet in the species lists for the subplot data, which have already been generated/have species info associated with them.
 - Most of the codes are unknowns or descriptions.
 
-`01a_output-species7_2x2-codes_need-duplicate-rows.csv`
-- List of codes from `2x2` data that need duplicate rows because a single original code mentions multiple species; hence, the same code will need multiple rows to describe all the information. All duplicate rows needed are included in this table.
-- Codes from `01b_edited-species6_codes-missing-2x2plot.csv` that did not need duplicate rows were added to comprehensive location-dependent/location-independent species lists that include `subplot` and `2x2` codes:
-	+ `data/cleaned/species-list_location-dependent_clean.csv`
-	+ `data/cleaned/species-list_location-independent_clean.csv`
-- Codes that need duplicate rows must be dealt with separate in the `2x2` data and species information cannot be added with just a `left_join()`.
-- There is no "edited" version of this file.
-
-`01a_output-species8_location-independent-final-check.csv`
+`01a_output-species7_location-independent-final-check.csv`
 - Final manual check of codes for location-independent species list. Changed values are highlighted and explained in comment.
 
-`01a_output-species9_location-dependent-final-check.csv`
+`01a_output-species8_location-dependent-final-check.csv`
 - Final manual check of codes for location-dependent species list. Changed values are highlighted and explained in comment.
 
+`01a_output-species9_p2x2-location-independent-need-duplicate-number.csv`
+- List of location-independent codes that need duplicate rows from `2x2` with corrected/finalized species info (created in `edited-species7.csv`). List needs `DuplicateNum` column added, which is easiest to do manually (rather than trying to write a vector in R, which I initially tried to do but it didn't work lol).
+- Duplicate rows needed because a single original code mentions multiple species; hence, the same code will need multiple rows to describe all the information. All duplicate rows needed are included in this table. `subplot` data doesn't need any duplicate rows.
 
 
 `01b_edited-species1_subplot-codes-missing.csv`
@@ -107,15 +102,17 @@ File naming notes:
 	+ `NeedsItsDuplicate` = `Yes`: more than one species mentioned in a single code, so the same code has multiple lines with different species.
 	+ `DuplicateNum` = `1`, `2`, `3`, etc.: row number for duplicate rows when more than one species is mentioned in a single code. Marked `0` when `NeedsItsDuplicate` = `No`.
 	+ `LocationDependence` = `dependent`: Site needs to be added to code to make `Code` column. Unknowns are location-dependent.
+- Unknowns that are also duplicates are technically site-specific, but the `CodeOriginal` is usually long and descriptive and never used at another site, so the `CodeOriginal` is already location-independent just by being unique.
 
-
-`01b_edited-species8_location-independent-final-fix.xlsx`
+`01b_edited-species7_location-independent-final-fix.xlsx`
 - Final fixes to  location-independent species list. All that was changed was the `Code` of a couple of species (ELEL5 and SPAM2) because they had wrong numbers for some reason.
 
-`01b_edited-species9_location-dependent-final-fix.xlsx`
+`01b_edited-species8_location-dependent-final-fix.xlsx`
 - Final fixes to  location-dependent species list. Removed duplicates so there would only be one row per `Code`, unless the `CodeOriginal` was different. Changes are listed in a textbook in the Excel file.
 
-
+`01b_edited-species9_p2x2-location-independent-duplicate-number-added.csv`
+- List of location-independent codes that need duplicate rows from `2x2` with corrected/finalized species info (created in `edited-species7.csv`). Manually added `DuplicateNum` column.
+- Duplicate rows needed because a single original code mentions multiple species; hence, the same code will need multiple rows to describe all the information. All duplicate rows needed are included in this table. `subplot` data doesn't need any duplicate rows.
 
 
 ## From `01-dependency.R`
