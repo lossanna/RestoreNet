@@ -1,5 +1,5 @@
 # Created: 2022-11-29
-# Last updated: 2023-09-11
+# Last updated: 2023-09-12
 
 # Purpose: Create clean data table for subplot data, with corrected and standardized species information,
 #   and monitoring and plot information. 
@@ -11,9 +11,9 @@ library(tidyverse)
 # Load data ---------------------------------------------------------------
 
 subplot.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllSubplotData")
-species.in <- read_csv("data/cleaned/species-list_location-independent_clean.csv")
-species.de <- read_csv("data/cleaned/species-list_location-dependent_clean.csv")
-subplot.codes <- read_csv("data/cleaned/subplot-codes_clean.csv")
+species.in <- read_csv("data/cleaned/subplot_species-list_location-independent_clean.csv")
+species.de <- read_csv("data/cleaned/01_subplot_species-list_location-dependent_clean.csv")
+species.de.all <- read_csv("data/cleaned/species-list_location-dependent_clean.csv")
 mix <- read_xlsx("data/raw/from-Master_seed-mix_LO.xlsx", sheet = "with-site_R")
 monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
 
@@ -69,7 +69,19 @@ subplot.raw[12166, c("Species_Code", "Functional_Group", "Seeded(Yes/No)", "Note
 #   No notes for 12166, but a functional group was listed; not seeded, and probably an unknown
 
 # Assign location-dependent code for 12166
-subplot$CodeOriginal[subplot$raw.row == 12166] <- "UNFO.12166.assigned"
+subplot$CodeOriginal[subplot$raw.row == 12166] <- "UNFO.12166.Salt_Desert"
+
+# Add code to subplot species.de list
+subplot.raw[12166, c("Site", "Species_Code", "Functional_Group", "Seeded(Yes/No)")]
+unfo12166 <- data.frame(Region = "Utah",
+                        Site = "Salt_Desert",
+                        CodeOriginal = "UNFO.12166.Salt_Desert",
+                        Code = "UNFO.12166.Salt_Desert",
+                        Name = "Unknown forb, not seeded",
+                        Native = "Unknown",
+                        Duration = "Unknown",
+                        Lifeform = "Forb")
+species.de <- bind_rows(species.de, unfo12166)
 
 # Check again for NA codes
 filter(subplot, is.na(CodeOriginal)) # no NAs
@@ -82,10 +94,10 @@ setdiff(subplot$CodeOriginal, sub.codes) # should be 0
 
 
 
-# Add species info and change location-dependent code name ----------------
+# Add species info for location-dependent ---------------------------------
 
 # Separate out location-dependent observations
-subplot.de <-subplot %>% 
+subplot.de <- subplot %>% 
   filter(CodeOriginal %in% species.de$CodeOriginal)
 
 # Add species info
@@ -93,17 +105,21 @@ subplot.de <- left_join(subplot.de, species.de)
 
 # Check for NA codes
 filter(subplot.de, is.na(Code)) # no NAs
-apply(subplot.de, 2, anyNA)
+apply(subplot.de, 2, anyNA) # NAs for Count, Height, SpeciesSeeded inherent to data
 
 
 
 # Add species info for location-independent codes -------------------------
 
 subplot.in <- subplot %>% 
-  filter(Code %in% species.in$Code) %>% 
-  rename(CodeOriginal = Code)
+  filter(CodeOriginal %in% species.in$CodeOriginal) 
 
 subplot.in <- left_join(subplot.in, species.in) 
+
+# Check for NA codes
+filter(subplot.in, is.na(Code)) # no NAs
+apply(subplot.in, 2, anyNA) # NAs for Count, Height, SpeciesSeeded inherent to data
+
 
 
 # Combine location-dependent and independent ------------------------------
@@ -112,7 +128,14 @@ subplot <- bind_rows(subplot.in, subplot.de) %>%
   arrange(raw.row)
 
 # Check that there the same number of observations as the original subplot data
-nrow(subplot) == nrow(subplot.raw)
+nrow(subplot) == nrow(subplot.raw) # something is wrong
+
+dup.rawrow <- count(subplot, raw.row) |> 
+  filter(n > 1) |> 
+  arrange(desc(n))
+
+subplot.dup <- subplot |> 
+  filter(raw.row %in% dup.rawrow$raw.row)
 
 
 

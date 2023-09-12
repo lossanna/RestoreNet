@@ -732,7 +732,7 @@ subplot.codes.de %>%
   arrange(Code) # no duplicates
 
 write_csv(subplot.codes.de,
-          file = "data/cleaned/subplot_species-list_location-dependent_clean.csv")
+          file = "data/cleaned/01_subplot_species-list_location-dependent_clean.csv")
 
 
 
