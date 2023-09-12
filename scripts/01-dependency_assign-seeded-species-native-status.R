@@ -77,6 +77,7 @@ seeded.marked.notnative <- subplot.seeded %>%
   select(Code, Name) %>% 
   distinct(.keep_all = TRUE) %>% 
   arrange(Name)
+seeded.marked.notnative
 
 # Remove Eragrostis curvula, because it is non-native and not seeded
 seeded.marked.notnative <- seeded.marked.notnative %>% 

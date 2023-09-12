@@ -62,6 +62,7 @@ File naming notes:
 `01a_output-species9_p2x2-location-independent-need-duplicate-number.csv`
 - List of location-independent codes that need duplicate rows from `2x2` with corrected/finalized species info (created in `edited-species7.csv`). List needs `DuplicateNum` column added, which is easiest to do manually (rather than trying to write a vector in R, which I initially tried to do but it didn't work lol).
 - Duplicate rows needed because a single original code mentions multiple species; hence, the same code will need multiple rows to describe all the information. All duplicate rows needed are included in this table. `subplot` data doesn't need any duplicate rows.
+- Location-dependent rows that needed duplicates were handled solely in R (there were only 5).
 
 
 `01b_edited-species1_subplot-codes-missing.csv`
@@ -102,7 +103,7 @@ File naming notes:
 	+ `NeedsItsDuplicate` = `Yes`: more than one species mentioned in a single code, so the same code has multiple lines with different species.
 	+ `DuplicateNum` = `1`, `2`, `3`, etc.: row number for duplicate rows when more than one species is mentioned in a single code. Marked `0` when `NeedsItsDuplicate` = `No`.
 	+ `LocationDependence` = `dependent`: Site needs to be added to code to make `Code` column. Unknowns are location-dependent.
-- Unknowns that are also duplicates are technically site-specific, but the `CodeOriginal` is usually long and descriptive and never used at another site, so the `CodeOriginal` is already location-independent just by being unique.
+- Unknowns that are also duplicates are technically site-specific, but the `CodeOriginal` is usually long and descriptive and never used at another site, so the `CodeOriginal` is already location-independent just by being unique. Thus, what must be addressed is the fact they are duplicates.
 
 `01b_edited-species7_location-independent-final-fix.xlsx`
 - Final fixes to  location-independent species list. All that was changed was the `Code` of a couple of species (ELEL5 and SPAM2) because they had wrong numbers for some reason.
@@ -113,6 +114,7 @@ File naming notes:
 `01b_edited-species9_p2x2-location-independent-duplicate-number-added.csv`
 - List of location-independent codes that need duplicate rows from `2x2` with corrected/finalized species info (created in `edited-species7.csv`). Manually added `DuplicateNum` column.
 - Duplicate rows needed because a single original code mentions multiple species; hence, the same code will need multiple rows to describe all the information. All duplicate rows needed are included in this table. `subplot` data doesn't need any duplicate rows.
+- Location-dependent rows that needed duplicates were handled solely in R (there were only 5).
 
 
 ## From `01-dependency.R`
