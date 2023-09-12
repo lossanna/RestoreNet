@@ -77,22 +77,16 @@ filter(subplot, is.na(CodeOriginal)) # no NAs
 
 # Check for missing codes by comparing subplot data to both species lists
 sub.codes <- c(species.de$CodeOriginal, species.in$CodeOriginal)
-setdiff(subplot$CodeOriginal, sub.codes) # should be 0 (NA)
+setdiff(subplot$CodeOriginal, sub.codes) # should be 0
 
 
 
 
 # Add species info and change location-dependent code name ----------------
 
-subplot.de <- left_join(subplot, species.de)
-
 # Separate out location-dependent observations
 subplot.de <-subplot %>% 
-  filter(Code %in% species.de$CodeOriginal)
-
-# Rename code col so subplot data matches species list
-subplot.de <- subplot.de %>% 
-  rename(CodeOriginal = Code)
+  filter(CodeOriginal %in% species.de$CodeOriginal)
 
 # Add species info
 subplot.de <- left_join(subplot.de, species.de)
