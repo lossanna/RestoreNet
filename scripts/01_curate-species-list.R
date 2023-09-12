@@ -469,27 +469,7 @@ species.de <- species.de %>%
   select(-Native) %>% 
   rename(Native = Native.test)
 
-
-
-# Combine list of codes for subplot data ----------------------------------
-
-# Location-independent codes
-subplot.codes.de <- species.de %>% 
-  select(CodeOriginal, Code, Name) 
-
-# Location-dependent codes
-subplot.codes.in <- species.in %>% 
-  select(CodeOriginal, Code, Name) 
-
-# Combine
-subplot.codes <- bind_rows(subplot.codes.de, subplot.codes.in) %>% 
-  filter(CodeOriginal %in% subplot.raw$Species_Code) %>% 
-  arrange(Name)
-
-# Write to CSV
-write_csv(subplot.codes,
-          file = "data/cleaned/subplot-codes_clean.csv")
-
+# Rename
 species.subplot.in <- species.in
 species.subplot.de <- species.de
 
@@ -686,6 +666,34 @@ species.de <- read_xlsx("data/raw/01b_edited-species9_location-dependent-final-f
 write_csv(species.de,
           file = "data/cleaned/species-list_location-dependent_clean.csv")
 
+
+
+# Full list of subplot codes ----------------------------------------------
+
+# Location-independent codes
+subplot.codes.in <- species.in %>% 
+  filter(CodeOriginal %in% subplot$CodeOriginal)
+
+subplot.codes.in %>% 
+  filter(CodeOriginal %in% filter(subplot.codes.in, duplicated(CodeOriginal))$CodeOriginal) %>% 
+  arrange(CodeOriginal) # no duplicates
+
+# Location-dependent codes
+subplot.codes.de <- species.de %>% 
+  filter(CodeOriginal %in% subplot$CodeOriginal)
+
+subplot.codes.de %>% 
+  filter(Code %in% filter(subplot.codes.de, duplicated(Code))$Code) %>% 
+  arrange(Code) 
+
+# Combine
+subplot.codes <- bind_rows(subplot.codes.de, subplot.codes.in) %>% 
+  filter(CodeOriginal %in% subplot.raw$Species_Code) %>% 
+  arrange(Name)
+
+
+
+# Full list of 2x2 codes --------------------------------------------------
 
 
 
