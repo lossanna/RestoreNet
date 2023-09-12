@@ -694,7 +694,7 @@ write_csv(species.de,
 
 # EDITED: remove rows that are (functionally) duplicates
 #   See Excel file textbox for changes
-species.de2 <- read_xlsx("data/raw/01b_edited-species8_location-dependent-final-fix.xlsx")
+species.de <- read_xlsx("data/raw/01b_edited-species8_location-dependent-final-fix.xlsx")
 
 species.de %>% 
   filter(Code %in% filter(species.de, duplicated(Code))$Code) %>% 
@@ -779,11 +779,16 @@ p2x2.codes.de <- species.de %>%
 
 # Mark ones that need duplicates
 #   Use p2x2.codes.missing, a table previously created that has correct duplicate information
-#   to find ones that need duplicates
+#    to find ones that need duplicates
 p2x2.codes.de.dup <- p2x2.codes.missing %>% 
   filter(LocationDependence == "dependent",
          NeedsItsDuplicate == "Yes") %>% 
   arrange(CodeOriginal)
+
+#   Remove species info in case it has changed to ensure standardized version from species.de
+p2x2.codes.de.dup
+
+species.de.compare
 
 
 # Add ones that need duplicates to ones that don't for complete list
