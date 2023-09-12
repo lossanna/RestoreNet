@@ -500,11 +500,12 @@ species.subplot.de <- species.de
 #   These are codes from AllPlotData (2 x 2 m plots) that missing from location-independent species list.
 #     Codes from these plots are really different and are usually long descriptions.
 
-# Compile codes
+# Compile codes (includes both location dependent and independent)
 p2x2.codes.missing <- p2x2.codes %>% 
   filter(!CodeOriginal %in% species.subplot.in$CodeOriginal) %>% 
   filter(!is.na(CodeOriginal),
-         CodeOriginal != "0")
+         CodeOriginal != "0") |> 
+  arrange(CodeOriginal)
 
 
 
@@ -591,37 +592,21 @@ count(de.overlap, Native_2x2)
 identical(de.overlap$Duration, de.overlap$Duration_2x2) # no difference
 
 #   Lifeform
-identical(de.overlap$Lifeform, de.overlap$Lifeform_2x2)
-count(de.overlap, Lifeform)
-count(de.overlap, Lifeform_2x2)
-#   inspect manually; both have right values and wrong values
+identical(de.overlap$Lifeform, de.overlap$Lifeform_2x2) # no difference
 
-# OUTPUT: create list of species with conflicting information between subplot and 2x2 data
-write_csv(de.overlap,
-          file = "data/raw/01a_output-species7_subplot-2x2-conflicting-species-info.csv")
+# Conclusion: suplot info should be used over 2x2
 
-
-# EDITED: add column of corrected lifeform information and remove duplicate cols
-#   New col needed because neither subplot nor 2x2 were completely right
-#   Remove 2x2 columns and keep subplot ones except for lifeform
-de.overlap.replace <- read_csv("data/raw/01b_edited-species7_subplot-2x2-conflicting-info-resolved.csv")
-
-
-# Replace correct Native and Lifeform cols for 2x2 data
+# Replace correct Native and Lifeform cols from subplot data for 2x2 data
 colnames(de.overlap.2x2) <- colnames(p2x2.codes.de)
-identical(de.overlap.2x2$Code, de.overlap.replace$Code)
-de.overlap.2x2$Native <- de.overlap.replace$Native
-de.overlap.2x2$Lifeform <- de.overlap.replace$Lifeform
+identical(de.overlap.2x2$Code, de.overlap.sub$Code)
+de.overlap.2x2$Native <- de.overlap.sub$Native
+de.overlap.2x2$Lifeform <- de.overlap.sub$Lifeform
 
 p2x2.codes.de <- p2x2.codes.de |> 
   filter(!Code %in% de.overlap.2x2$Code) |> 
   bind_rows(de.overlap.2x2) |> 
   arrange(Code) |> 
   arrange(Site)
-
-# Replace correct lifeform info for subplot data
-filter(species.subplot.de, CodeOriginal == "SUNGR") # unknown grass should not be marked as shrub
-species.subplot.de$Lifeform[species.subplot.de$CodeOriginal == "SUNGR"] <- "Grass"
 
 
 
@@ -633,34 +618,12 @@ p2x2.codes.dup <- p2x2.codes.missing %>%
   arrange(CodeOriginal) |> 
   select(-Native, -Duration, -Lifeform) # this info will be used later in 2x2 data wrangling
 write_csv(p2x2.codes.dup,
-          file = "data/raw/01a_output-species_2x2-codes_need-duplicate-rows.csv")
+          file = "data/raw/01a_output-species7_2x2-codes_need-duplicate-rows.csv")
 
 
 
 
 # Full species list for location-independent ------------------------------
-
-# Look for overlap between 2x2 and subplot codes
-species.2x2.in <- p2x2.codes.missing %>% 
-  filter(LocationDependence == "independent") %>% 
-  select(-Site, -NeedsItsDuplicate, -LocationDependence, -DuplicateNum, -Region)
-
-species.sub.in.overlap <- species.subplot.in |> 
-  filter(Code %in% species.2x2.in$Code) |> 
-  select(-CodeOriginal) |> 
-  arrange(Code) |> 
-  select(Code, Name, Native, Duration, Lifeform)
-
-species.2x2.in.overlap <- species.2x2.in |> 
-  filter(Code %in% species.sub.in.overlap$Code) |> 
-  select(-CodeOriginal) |> 
-  distinct(.keep_all = TRUE) |> 
-  arrange(Code) |> 
-  select(Code, Name, Native, Duration, Lifeform)
-
-identical(species.2x2.in.overlap, species.sub.in.overlap)
-#   no conflicting species information for location-independent codes
-
 
 # Combine location-independent 2x2 codes with subplot codes
 species.2x2.in <- p2x2.codes.missing %>% 
@@ -676,7 +639,7 @@ species.in <- bind_rows(species.2x2.in, species.subplot.in) %>%
 
 # Look for codes previously standardized, now that we have added 2x2 data
 species.in %>% 
-  filter(Code %in% codes.standardized.in$Old_Code) # no old codes show up
+  filter(Code %in% codes.standardized.in$CodeOriginal) # no old codes show up
 
 # OUTPUT: Final manual check of location-independent species list
 write_csv(species.in,
@@ -705,11 +668,11 @@ setdiff(colnames(species.2x2.de), colnames(species.subplot.de)) # columns are th
 species.de <- bind_rows(species.2x2.de, species.subplot.de) %>% 
   distinct(.keep_all = TRUE) %>% 
   arrange(Name) %>% 
-  arrange(Code)
+  arrange(CodeOriginal)
 
 # Look for codes previously standardized, now that we have added 2x2 data
 species.de %>% 
-  filter(Code %in% codes.standardized.in$Old_Code) # no old codes show up
+  filter(Code %in% codes.standardized.in$CodeOriginal) # no old codes show up
 
 # OUTPUT: Final manual check of location-dependent species list; look for duplicate codes
 write_csv(species.de,
