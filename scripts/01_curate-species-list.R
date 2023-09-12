@@ -344,8 +344,8 @@ head(species.in)
 
 # Location-dependent species from master list & subplot -------------------
 
-# Combine all location-dependent species 
-#   (ones from master species list and from subplot data)
+# Combine location-dependent species 
+#   from master species list and from subplot data
 species.de <- bind_rows(species.m.unk, sub.missing.unk)
 
 # OUTPUT: write to CSV to fill in information for species.m.unk

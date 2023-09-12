@@ -53,10 +53,7 @@ File naming notes:
 - List of codes that were in the `2x2` data, but not yet in the species lists for the subplot data, which have already been generated/have species info associated with them.
 - Most of the codes are unknowns or descriptions.
 
-`-1a_output-species7_subplot-2x2-conflicting-species-info.csv`
-- List of codes/species with conflicting information between `subplot` and `2x2` data. Columns from both are placed next to each other for easy comparison.
-
-`01a_output-species_2x2-codes_need-duplicate-rows.csv`
+`01a_output-species7_2x2-codes_need-duplicate-rows.csv`
 - List of codes from `2x2` data that need duplicate rows because a single original code mentions multiple species; hence, the same code will need multiple rows to describe all the information. All duplicate rows needed are included in this table.
 - Codes from `01b_edited-species6_codes-missing-2x2plot.csv` that did not need duplicate rows were added to comprehensive location-dependent/location-independent species lists that include `subplot` and `2x2` codes:
 	+ `data/cleaned/species-list_location-dependent_clean.csv`
@@ -111,8 +108,6 @@ File naming notes:
 	+ `DuplicateNum` = `1`, `2`, `3`, etc.: row number for duplicate rows when more than one species is mentioned in a single code. Marked `0` when `NeedsItsDuplicate` = `No`.
 	+ `LocationDependence` = `dependent`: Site needs to be added to code to make `Code` column. Unknowns are location-dependent.
 
-`01b_edited-species7_subplot-2x2-conflicting-info-resolved.csv`
-- List of corrected species information where `subplot` and `2x2` data varied. Had to write out and edit manually because for `Lifeform`, neither column was completely right. Also kept only `subplot` columns for the rest, because they were either identical, or I wanted to use `subplot` ones.
 
 `01b_edited-species8_location-independent-final-fix.xlsx`
 - Final fixes to  location-independent species list. All that was changed was the `Code` of a couple of species (ELEL5 and SPAM2) because they had wrong numbers for some reason.
