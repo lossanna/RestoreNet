@@ -89,12 +89,6 @@ monitor.diff <- monitor.2x2 %>%
 # Correct subplot info when needed; use subplot data as base because it has the monitoring ID attached
 
 
-# Write csv of wrong 2x2 monitor data for later 2x2 data wrangling
-write_csv(monitor.diff,
-          file = "data/raw/02_2x2-wrong-monitor-events.csv")
-
-
-
 
 # AVRCD conflicts ---------------------------------------------------------
 
@@ -166,6 +160,18 @@ count(filter(monitor.2x2, Site == "FlyingM"), Date_Monitored) # 6/13 is wrong, a
 # Create correct row
 #   Subplot data already correct; no fix needed
 
+# Create wrong row that needs to be corrected for 2x2
+wrong.2x2.FlyingM <- filter(monitor.diff, Site == "FlyingM")
+
+# Create right row for 2x2
+fix.2x2.FlyingM <- monitor.sub %>% 
+  filter(Site == "FlyingM") %>% 
+  filter(Treatment == "Pits") %>% 
+  filter(PlotMix == "Med-Warm") %>% 
+  filter(Plot == "36") |> 
+  filter(Date_Seeded == "2018-07-18") |> 
+  filter(Date_Monitored == "2019-06-12")
+
 
 
 # Mesquite ----------------------------------------------------------------
@@ -193,6 +199,15 @@ count(filter(monitor.2x2, Site == "Mesquite"), Date_Monitored)
 # Create correct row
 #   Subplot data already correct; no fix needed
 
+# Create wrong row that needs to be corrected for 2x2
+wrong.2x2.Mesquite <- filter(monitor.diff, Site == "Mesquite",
+                             Date_Monitored == "2020-12-13")
+
+# Create right row for 2x2
+fix.2x2.Mesquite1 <- monitor.sub |> 
+  filter(Site == "Mesquite") |> 
+  filter(Date_Monitored == "2020-12-12")
+
 
 # 2. PlotMix conflict for Plot 233
 # Extract differing rows
@@ -202,7 +217,7 @@ filter(monitor.2x2, Site == "Mesquite", Date_Monitored == "2021-10-10", Plot == 
 
 # Figure out which version is correct
 filter(monitor.sub, Site == "Mesquite", Plot == "233") # PlotMix should be None
-filter(monitor.2x2, Site == "Mesquite", Plot == "233")
+filter(monitor.2x2, Site == "Mesquite", Plot == "233") # 2x2 is right
 
 # Create correct row
 fix.Mesquite2 <- filter(monitor.sub, Site == "Mesquite", Date_Monitored == "2021-10-10", Plot == "233")
@@ -277,6 +292,14 @@ count(filter(monitor.2x2, Site == "Pleasant"), Treatment) # includes "Seed only"
 # Create correct rows
 #   Subplot data already correct; no fix needed
 
+# Create wrong row that needs to be corrected for 2x2
+wrong.2x2.Pleasant <- filter(monitor.diff, Site == "Pleasant")
+
+# Create right row for 2x2
+fix.2x2.Pleasant <- monitor.sub |> 
+  filter(Date_Monitored %in% wrong.2x2.Pleasant$Date_Monitored,
+         Plot %in% wrong.2x2.Pleasant$Plot)
+
 
 
 # Preserve ----------------------------------------------------------------
@@ -294,6 +317,17 @@ count(filter(monitor.2x2, Site == "Preserve"), Date_Seeded) # 2019-09-25, 2019-1
 # Create correct rows
 #   Subplot data already correct; no fix needed
 
+# Create wrong row that needs to be corrected for 2x2
+wrong.2x2.Preserve1 <- monitor.diff |> 
+  filter(Site == "Preserve",
+         Date_Seeded == "2019-09-25")
+
+# Create right row for 2x2
+fix.2x2.Preserve1 <- monitor.sub |> 
+  filter(Date_Monitored %in% wrong.2x2.Preserve1$Date_Monitored,
+         Plot %in% wrong.2x2.Preserve1$Plot)
+
+
 
 # 2. Treatment conflicting
 # Extract differing rows
@@ -307,11 +341,20 @@ count(filter(monitor.2x2, Site == "Preserve"), Treatment)
 fix.Preserve <- filter(monitor.sub, Site == "Preserve", Treatment == "Seed only")
 fix.Preserve$Treatment <- "Seed"
 
+# Create wrong row that needs to be corrected for 2x2
+wrong.2x2.Preserve2 <- filter(monitor.diff, Site == "Preserve", Treatment == "Seed only")
+
+# Create right row for 2x2
+fix.2x2.Preserve2 <- monitor.sub |> 
+  filter(Site == "Preserve") |> 
+  filter(Date_Monitored %in% wrong.2x2.Preserve2$Date_Monitored,
+         Plot %in% wrong.2x2.Preserve2$Plot) |> 
+  filter(Treatment == "Seed")
+
 
 
 
 # Roosevelt ---------------------------------------------------------------
-
 
 # Roosevelt (Sonoran Central): 2 issues
 
@@ -326,6 +369,17 @@ count(filter(monitor.2x2, Site == "Roosevelt"), Date_Seeded) # 2019-09-22, 2019-
 # Create correct rows
 #   Subplot data already correct; no fix needed
 
+# Create wrong row that needs to be corrected for 2x2
+wrong.2x2.Roosevelt1 <- monitor.diff |> 
+  filter(Site == "Roosevelt",
+         Date_Seeded == "2019-09-22")
+
+# Create right row for 2x2
+fix.2x2.Roosevelt1 <- monitor.sub |> 
+  filter(Date_Monitored %in% wrong.2x2.Roosevelt1$Date_Monitored,
+         Plot %in% wrong.2x2.Roosevelt1$Plot)
+
+
 
 # 2. Treatment conflicting
 # Determine differences
@@ -338,6 +392,16 @@ count(filter(monitor.2x2, Site == "Roosevelt"), Treatment)
 # Create correct rows
 fix.Roosevelt <- filter(monitor.sub, Site == "Roosevelt", Treatment == "Seed only")
 fix.Roosevelt$Treatment <- "Seed"
+
+# Create wrong row that needs to be corrected for 2x2
+wrong.2x2.Roosevelt2 <- filter(monitor.diff, Site == "Roosevelt", Treatment == "Seed only")
+
+# Create right row for 2x2
+fix.2x2.Roosevelt2 <- monitor.sub |> 
+  filter(Site == "Roosevelt") |> 
+  filter(Date_Monitored %in% wrong.2x2.Roosevelt2$Date_Monitored,
+         Plot %in% wrong.2x2.Roosevelt2$Plot) |> 
+  filter(Treatment == "Seed")
 
 
 
@@ -357,6 +421,17 @@ count(filter(monitor.2x2, Site == "SCC"), Date_Seeded) # 2019-09-21, 2019-11-21
 # Create correct rows
 #   Subplot data already correct; no fix needed
 
+# Create wrong row that needs to be corrected for 2x2
+wrong.2x2.SCC1 <- monitor.diff |> 
+  filter(Site == "SCC",
+         Date_Seeded == "2019-09-21")
+
+# Create right row for 2x2
+fix.2x2.SCC1 <- monitor.sub |> 
+  filter(Date_Monitored %in% wrong.2x2.SCC1$Date_Monitored,
+         Plot %in% wrong.2x2.SCC1$Plot)
+
+
 
 # 2. Treatment conflicting
 # Determine differences
@@ -369,6 +444,17 @@ count(filter(monitor.2x2, Site == "SCC"), Treatment)
 # Create correct rows
 fix.SCC <- filter(monitor.sub, Site == "SCC", Treatment == "Seed only")
 fix.SCC$Treatment <- "Seed"
+
+# Create wrong row that needs to be corrected for 2x2
+wrong.2x2.SCC2 <- filter(monitor.diff, Site == "SCC", Treatment == "Seed only")
+
+# Create right row for 2x2
+fix.2x2.SCC2 <- monitor.sub |> 
+  filter(Site == "SCC") |> 
+  filter(Date_Monitored %in% wrong.2x2.SCC2$Date_Monitored,
+         Plot %in% wrong.2x2.SCC2$Plot) |> 
+  filter(Treatment == "Seed")
+
 
 
 
@@ -418,7 +504,8 @@ fix.all <- bind_rows(fix.AVRCD,
                      fix.SCC,
                      fix.Salt_Desert)
 
-# Replace monitor info from subplot data with correct info
+# Subplot data
+#   Replace monitor info from subplot data with correct info
 monitor.correct <- monitor.sub |> 
   filter(!MonitorID %in% fix.all$MonitorID) |> 
   bind_rows(fix.all) |> 
@@ -426,9 +513,45 @@ monitor.correct <- monitor.sub |>
 
 nrow(monitor.correct) == nrow(monitor.sub)
 
-# Write to CSV
+#   Write to CSV
 write_csv(monitor.correct,
           file = "data/cleaned/corrected-monitoring-info_clean.csv")
 
+
+# 2x2 plot data
+wrong.2x2 <- bind_rows(wrong.2x2.FlyingM,
+                       wrong.2x2.Mesquite,
+                       wrong.2x2.Pleasant,
+                       wrong.2x2.Preserve1,
+                       wrong.2x2.Preserve2,
+                       wrong.2x2.Roosevelt1,
+                       wrong.2x2.Roosevelt2,
+                       wrong.2x2.SCC1,
+                       wrong.2x2.SCC2)
+
+fix.2x2 <- bind_rows(fix.2x2.FlyingM,
+                     fix.2x2.Mesquite1,
+                     fix.2x2.Pleasant,
+                     fix.2x2.Preserve1,
+                     fix.2x2.Preserve2,
+                     fix.2x2.Roosevelt1,
+                     fix.2x2.Roosevelt2,
+                     fix.2x2.SCC1,
+                     fix.2x2.SCC2)
+
+nrow(wrong.2x2) == nrow(fix.2x2)
+
+
+# Write csv of wrong 2x2 monitor data for later 2x2 data wrangling
+write_csv(wrong.2x2,
+          file = "data/raw/02_2x2-wrong-monitor-events.csv")
+
+
+# Write csv of corrected 2x2 monitor data
+write_csv(fix.2x2,
+          file = "data/raw/02_2x2-wrong-monitor-events-corrected.csv")
+
+  
+  
 
 save.image("RData/02_correct-monitoring-info.RData")

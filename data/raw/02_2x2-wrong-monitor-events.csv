@@ -1,49 +1,4 @@
 Region,Site,Date_Seeded,Date_Monitored,Plot,Treatment,PlotMix,MonitorID
-Mojave,AVRCD,2020-03-17,2020-04-30,14,Seed,Cool,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,1,ConMod,Cool,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,2,Mulch,Cool,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,3,Mulch,Warm,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,4,Pellets,Cool,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,5,Pits,Cool,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,6,Mulch,Cool,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,7,Seed,Cool,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,8,Pellets,Warm,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,9,Pits,Warm,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,10,Mulch,Warm,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,11,Pits,Cool,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,12,Seed,Warm,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,13,Control,None,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,14,Seed,Cool,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,15,Pellets,Cool,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,16,Pits,Warm,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,17,Control,None,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,18,Control,None,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,19,Pellets,Warm,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,20,ConMod,Warm,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,21,Pellets,Cool,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,22,ConMod,Cool,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,23,Mulch,Cool,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,24,Seed,Warm,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,25,ConMod,Warm,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,26,ConMod,Cool,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,27,Seed,Cool,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,28,Pits,Cool,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,29,Seed,Warm,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,30,ConMod,Warm,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,31,Seed,Cool,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,32,Control,None,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,33,Pellets,Warm,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,34,Pits,Warm,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,35,Mulch,Warm,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,36,ConMod,Cool,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,37,Pellets,Cool,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,38,Mulch,Cool,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,39,Seed,Warm,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,40,Pits,Cool,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,41,ConMod,Warm,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,42,Pellets,Warm,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,43,Pits,Warm,NA
-Mojave,AVRCD,2020-03-17,2021-04-06,44,Mulch,Warm,NA
 Colorado Plateau,FlyingM,2018-07-25,2019-06-13,36,Pits,Med-Warm,NA
 Chihuahuan,Mesquite,2020-08-05,2020-12-13,201,Mulch,Warm,NA
 Chihuahuan,Mesquite,2020-08-05,2020-12-13,202,Pits,Warm,NA
@@ -81,10 +36,6 @@ Chihuahuan,Mesquite,2020-08-05,2020-12-13,233,Control,None,NA
 Chihuahuan,Mesquite,2020-08-05,2020-12-13,234,Seed,Medium,NA
 Chihuahuan,Mesquite,2020-08-05,2020-12-13,235,Mulch,Medium,NA
 Chihuahuan,Mesquite,2020-08-05,2020-12-13,236,ConMod,Medium,NA
-Chihuahuan,Mesquite,2020-08-05,2021-10-10,233,Control,None,NA
-Chihuahuan,Mesquite,2020-08-05,2021-10-10,234,Seed,Medium,NA
-Chihuahuan,Mesquite,2020-08-05,2021-10-10,235,Mulch,Medium,NA
-Sonoran SE,Patagonia,2019-08-09,2021-03-12,33,ConMod,Medium,NA
 Sonoran Central,Pleasant,2019-12-19,2021-04-02,4,Seed only,Warm,NA
 Sonoran Central,Pleasant,2019-12-19,2021-04-02,8,Seed only,Cool,NA
 Sonoran Central,Pleasant,2019-12-19,2021-04-02,12,Seed only,Warm,NA
@@ -241,4 +192,3 @@ Sonoran Central,SCC,2019-11-21,2021-03-31,35,Seed only,Warm,NA
 Sonoran Central,SCC,2019-11-21,2021-10-13,16,Seed only,Warm,NA
 Sonoran Central,SCC,2019-11-21,2021-10-13,25,Seed only,Warm,NA
 Sonoran Central,SCC,2019-11-21,2021-10-13,35,Seed only,Warm,NA
-Utah,Salt_Desert,2018-10-31,2019-03-29,33,Pits,Med-Warm,NA

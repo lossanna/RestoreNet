@@ -17,7 +17,7 @@ species.in <- read_csv("data/cleaned/p2x2_species-list_location-independent_clea
 species.de <- read_csv("data/cleaned/p2x2_species-list_location-dependent_clean.csv")
 mix <- read_xlsx("data/raw/from-Master_seed-mix_LO.xlsx", sheet = "with-site_R")
 monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
-subplot.clean <- read_csv("data/cleaned/subplot-data_clean.csv")
+p2x2.monitor.wrong <- read_csv("data/raw/02_2x2-wrong-monitor-events.csv")
 
 
 # Organize columns and correct monitoring info ----------------------------
@@ -33,9 +33,16 @@ p2x2.wide <- p2x2.raw %>%
     str_detect(p2x2.raw$Site, c("29_Palms|AVRCD")) ~ "Mojave",
     str_detect(p2x2.raw$Site, c("Creosote|Mesquite")) ~ "Chihuahuan",
     str_detect(p2x2.raw$Site, c("SRER|Patagonia")) ~ "Sonoran SE",
-    str_detect(p2x2.raw$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central",
-    TRUE ~ "unk"))
+    str_detect(p2x2.raw$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central"))
 
+# Fix monitoring info
+p2x2.monitor <- p2x2.wide |> 
+  select(Region, Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix, raw.row) 
+
+wrong.raw.row <- left_join(p2x2.monitor.wrong, p2x2.monitor) 
+
+monitor.fix <- p2x2.monitor |> 
+  filter()
 
 
 
