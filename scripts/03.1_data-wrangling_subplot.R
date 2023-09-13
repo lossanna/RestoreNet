@@ -13,7 +13,6 @@ library(tidyverse)
 subplot.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllSubplotData")
 species.in <- read_csv("data/cleaned/subplot_species-list_location-independent_clean.csv")
 species.de <- read_csv("data/cleaned/01_subplot_species-list_location-dependent_clean.csv")
-species.de.all <- read_csv("data/cleaned/species-list_location-dependent_clean.csv")
 mix <- read_xlsx("data/raw/from-Master_seed-mix_LO.xlsx", sheet = "with-site_R")
 monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
 
@@ -128,14 +127,7 @@ subplot <- bind_rows(subplot.in, subplot.de) %>%
   arrange(raw.row)
 
 # Check that there the same number of observations as the original subplot data
-nrow(subplot) == nrow(subplot.raw) # something is wrong
-
-dup.rawrow <- count(subplot, raw.row) |> 
-  filter(n > 1) |> 
-  arrange(desc(n))
-
-subplot.dup <- subplot |> 
-  filter(raw.row %in% dup.rawrow$raw.row)
+nrow(subplot) == nrow(subplot.raw) 
 
 
 
@@ -151,14 +143,6 @@ subplot.inva %>%
 
 # Fix Eragrostis curvula - mark all observations as "No" for Seeded col
 subplot$SpeciesSeeded[subplot$Name == "Eragrostis curvula"] <- "No"
-
-
-
-# Check again for NA codes ------------------------------------------------
-
-filter(subplot, is.na(Code)) # no NA codes
-filter(subplot, is.na(Name)) # no NA names
-
 
 
 
@@ -183,13 +167,17 @@ subplot <- subplot %>%
 # Add corrected monitoring info with left_join()
 subplot <- left_join(subplot, monitor.info)
 subplot <- subplot %>% 
-  select(Site, Region, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix,
+  select(Region, Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix,
          CodeOriginal, Code, Name, Native, Duration, Lifeform, Count, Height,
          SpeciesSeeded, raw.row, MonitorID) # reorder cols
 
 # Check all cols for NAs
 apply(subplot, 2, anyNA) 
 
+
+# Save intermediate subplot with correct monitoring info, Native/Duration/Lifeform
+#   but not SeededSpecies yet addressed
+subplot1 <- subplot
 
 
 # Address seeded species codes not in mix ---------------------------------
@@ -203,11 +191,12 @@ unique(subplot$SpeciesSeeded)
 subplot.seeded <- subplot %>% 
   filter(SpeciesSeeded %in% c("Yes", "Y", "y", "Yes?"))
 
-setdiff(unique(subplot.seeded$CodeOriginal), unique(mix$CodeOriginal)) # discrepancies exist
+setdiff(unique(subplot.seeded$Code), unique(mix$CodeOriginal)) # discrepancies exist
+#   For mix, CodeOriginal would be the same as Code (all codes were correct)
 
 species.seeded.not.in.mix <- subplot.seeded |> 
-  filter(CodeOriginal %in% 
-           setdiff(unique(subplot.seeded$CodeOriginal), unique(mix$CodeOriginal))) |> 
+  filter(Code %in% 
+           setdiff(unique(subplot.seeded$Code), unique(mix$CodeOriginal))) |> 
   select(Site, Region, PlotMix, CodeOriginal, Code, Name, Native, Duration, Lifeform,
          SpeciesSeeded) |> 
   distinct(.keep_all = TRUE) |> 
@@ -225,10 +214,11 @@ write_csv(species.seeded.not.in.mix,
 species.seeded.not.in.mix <- read_xlsx("data/raw/03.1b_edited-species-seeded1_corrected-seeded-not-in-mix_subplot.xlsx")
 
 
-# Species seeded and in mix
+# Species seeded and in (a) mix
+#   Need to look at manually because mixes are site-specific
 species.seeded.in.mix <- subplot.seeded |> 
   filter(SpeciesSeeded %in% c("Yes", "Y", "y", "Yes?"),
-         !CodeOriginal %in% species.seeded.not.in.mix$CodeOriginal) |> 
+         !Code %in% species.seeded.not.in.mix$Code) |> 
   select(Site, Region, PlotMix, CodeOriginal, Code, Name, Native, Duration, Lifeform,
          SpeciesSeeded) |> 
   distinct(.keep_all = TRUE) |> 
@@ -236,7 +226,7 @@ species.seeded.in.mix <- subplot.seeded |>
   arrange(Site) |> 
   arrange(Region)
 
-# OUTPUT: create list of species marked seeded but not in mix
+# OUTPUT: create list of species marked seeded and in mix
 write_csv(species.seeded.in.mix,
           file = "data/raw/03.1a_output-species-seeded2_seeded-in-mix_subplot.csv")
 
@@ -245,6 +235,9 @@ write_csv(species.seeded.in.mix,
 #   Incorrect ones corrected
 species.seeded.in.mix <- read_xlsx("data/raw/03.1b_edited-species-seeded2_corrected-seeded-in-mix_subplot.xlsx")
 
+# Remove duplicates that resulted from standardizing "yes" 
+species.seeded.in.mix <- species.seeded.in.mix |> 
+  distinct(.keep_all = TRUE)
 
 
 # Species marked NA or unknown
@@ -291,7 +284,7 @@ write_csv(species.no.seeded,
 species.no.seeded <- read_xlsx("data/raw/03.1b_edited-species-seeded4_corrected-not-seeded_subplot.xlsx")
 
 
-# Compile list of correct species metadata
+# Compile list of correct SpeciesSeeded
 #   Correct SpeciesSeeded status based on PlotMix and Site
 seeded.correct <- bind_rows(species.seeded.in.mix,
                             species.seeded.not.in.mix,
@@ -304,7 +297,12 @@ seeded.correct <- bind_rows(species.seeded.in.mix,
   arrange(Region) |> 
   arrange(desc(SpeciesSeeded))
 
+#   Look for duplicates
+
+
 setdiff(unique(subplot$Code), unique(seeded.correct$Code))
+
+
 
 
 # Assign corrected species metadata to subplot data

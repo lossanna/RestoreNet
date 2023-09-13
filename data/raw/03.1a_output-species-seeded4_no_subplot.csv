@@ -514,9 +514,9 @@ Pleasant,Sonoran Central,None,BRRU2,BRRU2,Bromus rubens,Introduced,Annual,Grass,
 Pleasant,Sonoran Central,Cool,BRRU2,BRRU2,Bromus rubens,Introduced,Annual,Grass,No
 Pleasant,Sonoran Central,None,CACI2,CACI2,Calandrinia ciliata,Native,Annual,Forb,No
 Pleasant,Sonoran Central,Cool,CACI2,CACI2,Calandrinia ciliata,Native,Annual,Forb,No
-Pleasant,Sonoran Central,None,EUAB,EUAB,Chamaesyce abramsiana,Native,Annual,Forb,No
-Pleasant,Sonoran Central,Warm,EUAB,EUAB,Chamaesyce abramsiana,Native,Annual,Forb,No
-Pleasant,Sonoran Central,Cool,EUAB,EUAB,Chamaesyce abramsiana,Native,Annual,Forb,No
+Pleasant,Sonoran Central,None,EUAB,CHAB2,Chamaesyce abramsiana,Native,Annual,Forb,No
+Pleasant,Sonoran Central,Warm,EUAB,CHAB2,Chamaesyce abramsiana,Native,Annual,Forb,No
+Pleasant,Sonoran Central,Cool,EUAB,CHAB2,Chamaesyce abramsiana,Native,Annual,Forb,No
 Pleasant,Sonoran Central,Cool,CRCO34,CRCO34,Crassula connata,Native,Annual,Forb,No
 Pleasant,Sonoran Central,None,ERCI6,ERCI6,Erodium cicutarium,Introduced,Annual,Forb,No
 Pleasant,Sonoran Central,Cool,ERCI6,ERCI6,Erodium cicutarium,Introduced,Annual,Forb,No
@@ -568,6 +568,9 @@ Preserve,Sonoran Central,Warm,BRRU2,BRRU2,Bromus rubens,Introduced,Annual,Grass,
 Preserve,Sonoran Central,Cool,CHPO12,CHPO12,Chamaesyce polycarpa,Native,Unknown,Forb,No
 Preserve,Sonoran Central,Warm,CHPO12,CHPO12,Chamaesyce polycarpa,Native,Unknown,Forb,No
 Preserve,Sonoran Central,None,CHPO12,CHPO12,Chamaesyce polycarpa,Native,Unknown,Forb,No
+Preserve,Sonoran Central,Cool,EUPO3,CHPO12,Chamaesyce polycarpa,Native,Unknown,Forb,No
+Preserve,Sonoran Central,Warm,EUPO3,CHPO12,Chamaesyce polycarpa,Native,Unknown,Forb,No
+Preserve,Sonoran Central,None,EUPO3,CHPO12,Chamaesyce polycarpa,Native,Unknown,Forb,No
 Preserve,Sonoran Central,Warm,CHBR,CHBR,Chorizanthe brevicornu,Native,Annual,Forb,No
 Preserve,Sonoran Central,Cool,CRCO34,CRCO34,Crassula connata,Native,Annual,Forb,No
 Preserve,Sonoran Central,Warm,CRCO34,CRCO34,Crassula connata,Native,Annual,Forb,No
@@ -639,8 +642,9 @@ Roosevelt,Sonoran Central,Cool,BRRU2,BRRU2,Bromus rubens,Introduced,Annual,Grass
 Roosevelt,Sonoran Central,Warm,BRRU2,BRRU2,Bromus rubens,Introduced,Annual,Grass,No
 Roosevelt,Sonoran Central,None,BRRU2,BRRU2,Bromus rubens,Introduced,Annual,Grass,No
 Roosevelt,Sonoran Central,Warm,CHAL11,CHAL11,Chamaesyce albomarginata,Native,Perennial,Forb,No
-Roosevelt,Sonoran Central,Warm,CHPO12,CHPO12,Chamaesyce polycarpa,Native,Unknown,Forb,No
+Roosevelt,Sonoran Central,Warm,EUPO3,CHPO12,Chamaesyce polycarpa,Native,Unknown,Forb,No
 Roosevelt,Sonoran Central,Cool,CHPO12,CHPO12,Chamaesyce polycarpa,Native,Unknown,Forb,No
+Roosevelt,Sonoran Central,Warm,CHPO12,CHPO12,Chamaesyce polycarpa,Native,Unknown,Forb,No
 Roosevelt,Sonoran Central,Warm,CRCO34,CRCO34,Crassula connata,Native,Annual,Forb,No
 Roosevelt,Sonoran Central,Cool,CRYPT,CRYPT.Roosevelt,"Cryptantha spp., Roosevelt",Native,Unknown,Forb,No
 Roosevelt,Sonoran Central,Warm,CRYPT,CRYPT.Roosevelt,"Cryptantha spp., Roosevelt",Native,Unknown,Forb,No
@@ -987,7 +991,7 @@ Salt_Desert,Utah,Cool-Med,SPGR2,SPGR2,Sphaeralcea grossulariifolia,Native,Perenn
 Salt_Desert,Utah,Med-Warm,SPGR2,SPGR2,Sphaeralcea grossulariifolia,Native,Perennial,Forb,No
 Salt_Desert,Utah,Med-Warm,UNFO4,UNFO4.Salt_Desert,"Unknown forb 4, Salt_Desert",Unknown,Unknown,Forb,No
 Salt_Desert,Utah,Cool-Med,UNFO4,UNFO4.Salt_Desert,"Unknown forb 4, Salt_Desert",Unknown,Unknown,Forb,No
-Salt_Desert,Utah,Med-Warm,UNFO.12166.assigned,UNFO.12166.assigned.Salt_Desert,"Unknown forb with assigned code, and manually entered, Salt_Desert",Unknown,Unknown,Forb,No
+Salt_Desert,Utah,Med-Warm,UNFO.12166.Salt_Desert,UNFO.12166.Salt_Desert,"Unknown forb, not seeded",Unknown,Unknown,Forb,No
 Salt_Desert,Utah,None,UNGR1,UNGR1.Salt_Desert,"Unknown grass 1, Salt_Desert",Unknown,Unknown,Grass,No
 Salt_Desert,Utah,Cool-Med,UNGR1,UNGR1.Salt_Desert,"Unknown grass 1, Salt_Desert",Unknown,Unknown,Grass,No
 Salt_Desert,Utah,Med-Warm,UNGR1,UNGR1.Salt_Desert,"Unknown grass 1, Salt_Desert",Unknown,Unknown,Grass,No
@@ -1017,7 +1021,7 @@ UtahPJ,Utah,Cool-Med,ERRA3,ERRA3,Eriogonum racemosum,Native,Perennial,Forb,No
 UtahPJ,Utah,None,ERRA3,ERRA3,Eriogonum racemosum,Native,Perennial,Forb,No
 UtahPJ,Utah,None,GUSA2,GUSA2,Gutierrezia sarothrae,Native,Perennial,Shrub,No
 UtahPJ,Utah,Cool-Med,GUSA2,GUSA2,Gutierrezia sarothrae,Native,Perennial,Shrub,No
-UtahPJ,Utah,Cool,HEBO,HEBO,Hedysarum boreale,Native,Perennial,Forb,No
+UtahPJ,Utah,Cool,S-HEBO,HEBO,Hedysarum boreale,Native,Perennial,Forb,No
 UtahPJ,Utah,Cool,HECO26,HECO26,Hesperostipa comata,Native,Perennial,Grass,No
 UtahPJ,Utah,None,MIGR,MIGR,Microsteris gracilis,Native,Annual,Forb,No
 UtahPJ,Utah,Cool-Med,MIGR,MIGR,Microsteris gracilis,Native,Annual,Forb,No

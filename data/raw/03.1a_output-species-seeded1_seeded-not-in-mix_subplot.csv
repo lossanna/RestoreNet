@@ -14,7 +14,7 @@ AguaFria,Colorado Plateau,Warm,UNGR,UNGR.AguaFria,"Unknown grass, AguaFria",Nati
 AguaFria,Colorado Plateau,Med-Warm,UNGR,UNGR.AguaFria,"Unknown grass, AguaFria",Native,Unknown,Grass,Yes
 BabbittPJ,Colorado Plateau,Cool,ELSPP,ELSPP.BabbittPJ,"Elymus spp., BabbittPJ",Native,Unknown,Grass,Yes
 BabbittPJ,Colorado Plateau,Cool-Med,ELSPP,ELSPP.BabbittPJ,"Elymus spp., BabbittPJ",Native,Unknown,Grass,Yes
-BabbittPJ,Colorado Plateau,Cool,SUNGR,SUNGR.BabbittPJ,"Seeded unknown grass (?), BabbittPJ",Native,Unknown,Shrub,Yes
+BabbittPJ,Colorado Plateau,Cool,SUNGR,SUNGR.BabbittPJ,"Seeded unknown grass (?), BabbittPJ",Native,Unknown,Grass,Yes
 BabbittPJ,Colorado Plateau,Cool-Med,UNFO1,UNFO1.BabbittPJ,"Unknown forb 1, BabbittPJ",Native,Unknown,Forb,Yes
 BabbittPJ,Colorado Plateau,Cool,UNGR1,UNGR1.BabbittPJ,"Unknown grass 1, BabbittPJ",Native,Unknown,Grass,Yes
 BabbittPJ,Colorado Plateau,Cool-Med,UNGR1,UNGR1.BabbittPJ,"Unknown grass 1, BabbittPJ",Native,Unknown,Grass,Yes
@@ -52,8 +52,8 @@ Spiderweb,Colorado Plateau,Med-Warm,UNFO,UNFO.Spiderweb,"Unknown forb, Spiderweb
 Spiderweb,Colorado Plateau,Med-Warm,UNGR,UNGR.Spiderweb,"Unknown grass, Spiderweb",Native,Unknown,Grass,Yes
 Spiderweb,Colorado Plateau,Warm,UNGR,UNGR.Spiderweb,"Unknown grass, Spiderweb",Native,Unknown,Grass,Yes
 Spiderweb,Colorado Plateau,Warm,BOSPP,BOSPP.Spiderweb,"local Bouteloua species (unknown), Spiderweb",Native,Unknown,Grass,Yes
-TLE,Colorado Plateau,Warm,SUNGR,SUNGR.TLE,"Seeded unknown grass (?), TLE",Native,Unknown,Shrub,Yes
-TLE,Colorado Plateau,Cool,SUNGR,SUNGR.TLE,"Seeded unknown grass (?), TLE",Native,Unknown,Shrub,Yes
+TLE,Colorado Plateau,Warm,SUNGR,SUNGR.TLE,"Seeded unknown grass (?), TLE",Native,Unknown,Grass,Yes
+TLE,Colorado Plateau,Cool,SUNGR,SUNGR.TLE,"Seeded unknown grass (?), TLE",Native,Unknown,Grass,Yes
 TLE,Colorado Plateau,Cool,UNGR,UNGR.TLE,"Unknown grass, TLE",Native,Unknown,Grass,Yes
 29_Palms,Mojave,Cool,STISPP,STISPP.29_Palms,"Stipa spp., 29_Palms",Native,Unknown,Grass,Yes
 SRER,Sonoran SE,Warm,BOUSPP,BOUSPP.SRER,"Bouteloua spp., SRER",Native,Unknown,Grass,Yes?
