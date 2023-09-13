@@ -1,8 +1,11 @@
 # Created: 2022-12-07
-# Last updated: 2023-09-09
+# Last updated: 2023-09-12
 
-# Purpose: create clean data table for 2x2 plot data, with corrected and standardized species 
-#   information, and monitoring and plot information.
+# Purpose: Create 2 clean data tables for 2x2 plot data: one with cover data and one with
+#   the list of species present for each monitoring event.
+#  Ensure corrected and standardized species information, and monitoring and plot information,
+#   and SpeciesSeeded column based on site-specific seed mixes and plot.
+
 
 library(readxl)
 library(tidyverse)
@@ -10,16 +13,14 @@ library(tidyverse)
 # Load data ---------------------------------------------------------------
 
 p2x2.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllPlotData")
-subplot.clean <- read_csv("data/cleaned/subplot-data_clean.csv")
-species.in <- read_csv("data/cleaned/species-list_location-independent_clean.csv")
-species.de <- read_csv("data/cleaned/species-list_location-dependent_clean.csv")
-p2x2.codes.dup <- read_csv("data/raw/01a_output-species6_2x2-codes_need-duplicate-rows.csv")
+species.in <- read_csv("data/cleaned/p2x2_species-list_location-independent_clean.csv")
+species.de <- read_csv("data/cleaned/p2x2_species-list_location-dependent_clean.csv")
 mix <- read_xlsx("data/raw/from-Master_seed-mix_LO.xlsx", sheet = "with-site_R")
 monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
+subplot.clean <- read_csv("data/cleaned/subplot-data_clean.csv")
 
 
-
-# Organize columns and add monitoring info based on subplot data ----------
+# Organize columns and correct monitoring info ----------------------------
 
 # Add raw.row and Region cols
 p2x2.wide <- p2x2.raw %>% 
@@ -34,22 +35,39 @@ p2x2.wide <- p2x2.raw %>%
     str_detect(p2x2.raw$Site, c("SRER|Patagonia")) ~ "Sonoran SE",
     str_detect(p2x2.raw$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central",
     TRUE ~ "unk"))
-  
-# Inspect Additional_species_in_plot cols
+
+
+
+
+# Create cover table
+p2x2.cover <- p2x2.wide |> 
+  select(-starts_with("Additional"))
+
+
+# Create species_present table
+#   Inspect Additional_species_in_plot cols
 unique(p2x2.wide$Additional_Species_In_Plot...22)
 unique(p2x2.wide$Additional_Species_In_Plot...21)
 unique(p2x2.wide$Additional_Species_In_Plot...20)
 unique(p2x2.wide$Additional_Species_In_Plot...19) # observations in 19 and smaller
 
-# Drop empty Additional_species_in_plot cols
+#   Drop empty Additional_species_in_plot cols
 p2x2.wide <- p2x2.wide %>% 
   select(-Additional_Species_In_Plot...22, -Additional_Species_In_Plot...21,
          -Additional_Species_In_Plot...20)
 
-# Change Date_Seeded to 7/18 for all of FlyingM
-p2x2.wide <- p2x2.wide %>% 
-  mutate(Date_Seeded = as.Date(Date_Seeded)) %>% 
-  mutate(Date_Seeded = if_else(Site == "FlyingM", as.Date("2018-07-18"), Date_Seeded))
+# Remove cover columns
+p2x2.sp.present <- p2x2.wide |> 
+  select(-Seeded_Cover, Total_Veg_Cover)
+
+
+
+# Assign MonitorID to cover & species_present -----------------------------
+
+
+
+
+
 
 # Add MonitorID based on subplot data
 subplot <- subplot.clean %>% 

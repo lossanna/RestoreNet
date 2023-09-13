@@ -81,15 +81,18 @@ monitor.diff <- monitor.2x2 %>%
   filter(is.na(MonitorID)) %>% 
   arrange(Site) 
 
-# Remove line of all NA at the bottom
-monitor.diff <- monitor.diff %>% 
-  filter(!is.na(Site))
 
 # Need to manually inspect monitor.diff for differences by site, then write df of 
 #   corresponding rows using subplot monitoring info
 # Compare monitor.diff (2x2 monitoring info) values with relevant obs from 
 #   subplot monitoring info to determine correct value
 # Correct subplot info when needed; use subplot data as base because it has the monitoring ID attached
+
+
+# Write csv of wrong 2x2 monitor data for later 2x2 data wrangling
+write_csv(monitor.diff,
+          file = "data/raw/02_2x2-wrong-monitor-events.csv")
+
 
 
 
@@ -426,7 +429,6 @@ nrow(monitor.correct) == nrow(monitor.sub)
 # Write to CSV
 write_csv(monitor.correct,
           file = "data/cleaned/corrected-monitoring-info_clean.csv")
-
 
 
 save.image("RData/02_correct-monitoring-info.RData")
