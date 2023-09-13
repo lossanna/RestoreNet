@@ -17,7 +17,8 @@ species.in <- read_csv("data/cleaned/p2x2_species-list_location-independent_clea
 species.de <- read_csv("data/cleaned/p2x2_species-list_location-dependent_clean.csv")
 mix <- read_xlsx("data/raw/from-Master_seed-mix_LO.xlsx", sheet = "with-site_R")
 monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
-p2x2.monitor.wrong <- read_csv("data/raw/02_2x2-wrong-monitor-events.csv")
+monitor.wrong <- read_csv("data/raw/02_2x2-wrong-monitor-events.csv")
+monitor.fixed <- read_csv("data/raw/02_2x2-wrong-monitor-events-corrected.csv")
 
 
 # Organize columns and correct monitoring info ----------------------------
@@ -36,15 +37,38 @@ p2x2.wide <- p2x2.raw %>%
     str_detect(p2x2.raw$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central"))
 
 # Fix monitoring info
+#   Separate out monitoring info
 p2x2.monitor <- p2x2.wide |> 
   select(Region, Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix, raw.row) 
 
-wrong.raw.row <- left_join(p2x2.monitor.wrong, p2x2.monitor) 
+#   Find raw.row number of events that need to be fixed
+wrong.raw.row <- left_join(monitor.wrong, p2x2.monitor) 
 
-monitor.fix <- p2x2.monitor |> 
-  filter()
+#   Attach raw.row to corrected monitoring info
+monitor.assign <- monitor.fixed
+monitor.assign$raw.row <- wrong.raw.row$raw.row
+
+#   Separate monitor info that doesn't need to be fixed
+p2x2.monitor <- p2x2.monitor |> 
+  filter(!raw.row %in% monitor.assign$raw.row) |> 
+  left_join(monitor.info)
+
+#   Add corrected monitor info for complete list
+p2x2.monitor <- bind_rows(p2x2.monitor, monitor.assign) |> 
+  arrange(MonitorID)
+
+#   Check for matching lengths
+nrow(p2x2.monitor) == nrow(p2x2.raw)
 
 
+# Attach correct monitoring info to p2x2 data
+p2x2.wide <- p2x2.wide[ , -c(1:6)]
+p2x2.wide <- left_join(p2x2.monitor, p2x2.wide)
+
+
+
+
+# pick up here
 
 # Create cover table
 p2x2.cover <- p2x2.wide |> 
