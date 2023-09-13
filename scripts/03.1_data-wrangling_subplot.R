@@ -2,8 +2,9 @@
 # Last updated: 2023-09-12
 
 # Purpose: Create clean data table for subplot data, with corrected and standardized species information,
-#   and monitoring and plot information. 
-#   Essentially, add corrected metadata to subplot data.
+#   and monitoring and plot information, and correct SpeciesSeeded column based on each site-specific
+#     seed mix and plot. 
+#   Essentially, add corrected metadata to subplot data, and correct SpeciesSeeded column.
 
 library(readxl)
 library(tidyverse)
