@@ -180,7 +180,10 @@ apply(subplot, 2, anyNA)
 subplot1 <- subplot
 
 
-# Address seeded species codes not in mix ---------------------------------
+
+# Correct SpeciesSeeded column --------------------------------------------
+
+# Address seeded species codes not in mix 
 
 # Examine possible SpeciesSeeded values
 #   then deal with each separately in own section
@@ -297,12 +300,48 @@ seeded.correct <- bind_rows(species.seeded.in.mix,
   arrange(Region) |> 
   arrange(desc(SpeciesSeeded))
 
-#   Look for duplicates
+#   Look for duplicates with conflicting SpeciesSeeded info
+seeded.correct.dup.codes <- seeded.correct[duplicated(seeded.correct[ , 1:9]), ] # this only gets
+#                                                       half of the duplicates, not both
+seeded.correct.dup <- seeded.correct |> 
+  filter(Code %in% seeded.correct.dup.codes$Code) |> 
+  arrange(PlotMix) |> 
+  arrange(Code) |> 
+  arrange(Site) # this gets ones that also aren't
+#     duplicates, they are the same code but different plots or sites (I couldn't figure out
+#                                                   how to get both duplicates in their own df)
+
+# OUTPUT: list of codes with conflicting SpeciesSeeded
+#   list also includes ones that are not duplicates
+write_csv(seeded.correct.dup,
+          file = "data/raw/03.1a_output-species-seeded5_conflicting-SpeciesSeeded.csv")
+
+# EDITED: manually add Retain column to indicate if rows should be retained or not
+#   Retained: ones that are not actually duplicates/conflicts; ones marked "No" for SpeciesSeeded
+seeded.correct.dup <- read_xlsx("data/raw/03.1b_edited-species-seeded5_conflicting-SpeciesSeeded-fixed.xlsx")
+
+# Create correct df of codes that had duplicates (including rows that weren't actually duplicates)
+seeded.correct.fixed <- seeded.correct.dup |> 
+  filter(Retain == 1) |> 
+  select(-Retain)
+
+# Remove all codes that have been fixed and add back the fixed ones
+seeded.correct <- seeded.correct |> 
+  filter(!Code %in% seeded.correct.fixed$Code) |> 
+  bind_rows(seeded.correct.fixed) |> 
+  arrange(Code) |> 
+  arrange(Site) |> 
+  arrange(Region)
 
 
-setdiff(unique(subplot$Code), unique(seeded.correct$Code))
+# Look for codes that exist in subplot data but not in seeded.correct
+setdiff(unique(subplot$Code), unique(seeded.correct$Code)) # code was manually added earlier in script
+seeded.correct.add <- subplot |> 
+  filter(Code %in% setdiff(unique(subplot$Code), unique(seeded.correct$Code))) |> 
+  select(Region, Site, PlotMix, CodeOriginal, Code, Name, Native, Duration, Lifeform)
 
-
+# Add UNFO.12166 to seeded.correct list
+seeded.correct <- bind_rows(seeded.correct, seeded.correct.add)
 
 
 # Assign corrected species metadata to subplot data

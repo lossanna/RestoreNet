@@ -1,0 +1,60 @@
+Site,Region,PlotMix,CodeOriginal,Code,Name,Native,Duration,Lifeform,SpeciesSeeded
+AguaFria,Colorado Plateau,Med-Warm,UNGR,UNGR.AguaFria,"Unknown grass, AguaFria",Native,Unknown,Grass,Yes
+AguaFria,Colorado Plateau,Med-Warm,UNGR,UNGR.AguaFria,"Unknown grass, AguaFria",Native,Unknown,Grass,No
+AguaFria,Colorado Plateau,Warm,UNGR,UNGR.AguaFria,"Unknown grass, AguaFria",Native,Unknown,Grass,Yes
+AguaFria,Colorado Plateau,Warm,UNGR,UNGR.AguaFria,"Unknown grass, AguaFria",Native,Unknown,Grass,No
+AguaFria,Colorado Plateau,Med-Warm,UNGR1,UNGR1.AguaFria,"Unknown grass 1, AguaFria",Native,Unknown,Grass,Yes
+AguaFria,Colorado Plateau,Warm,UNGR1,UNGR1.AguaFria,"Unknown grass 1, AguaFria",Native,Unknown,Grass,Yes
+AguaFria,Colorado Plateau,Warm,UNGR1,UNGR1.AguaFria,"Unknown grass 1, AguaFria",Native,Unknown,Grass,No
+AguaFria,Colorado Plateau,Med-Warm,UNGR3,UNGR3.AguaFria,"Unknown grass 3, AguaFria",Native,Unknown,Grass,No
+AguaFria,Colorado Plateau,None,UNGR3,UNGR3.AguaFria,"Unknown grass 3, AguaFria",Native,Unknown,Grass,No
+AguaFria,Colorado Plateau,Warm,UNGR3,UNGR3.AguaFria,"Unknown grass 3, AguaFria",Native,Unknown,Grass,Yes
+AguaFria,Colorado Plateau,Warm,UNGR3,UNGR3.AguaFria,"Unknown grass 3, AguaFria",Native,Unknown,Grass,No
+BabbittPJ,Colorado Plateau,Cool,UNFO1,UNFO1.BabbittPJ,"Unknown forb 1, BabbittPJ",Native,Unknown,Forb,No
+BabbittPJ,Colorado Plateau,Cool-Med,UNFO1,UNFO1.BabbittPJ,"Unknown forb 1, BabbittPJ",Native,Unknown,Forb,Yes
+BabbittPJ,Colorado Plateau,Cool-Med,UNFO1,UNFO1.BabbittPJ,"Unknown forb 1, BabbittPJ",Native,Unknown,Forb,No
+BarTBar,Colorado Plateau,Cool-Med,UNFO9,UNFO9.BarTBar,"Unknown forb 9, BarTBar",Native,Unknown,Forb,No
+BarTBar,Colorado Plateau,Med-Warm,UNFO9,UNFO9.BarTBar,"Unknown forb 9, BarTBar",Native,Unknown,Forb,Yes
+BarTBar,Colorado Plateau,Med-Warm,UNFO9,UNFO9.BarTBar,"Unknown forb 9, BarTBar",Native,Unknown,Forb,No
+BarTBar,Colorado Plateau,None,UNFO9,UNFO9.BarTBar,"Unknown forb 9, BarTBar",Native,Unknown,Forb,No
+BarTBar,Colorado Plateau,Cool-Med,UNGR,UNGR.BarTBar,"Unknown grass, BarTBar",Native,Unknown,Grass,Yes
+BarTBar,Colorado Plateau,Cool-Med,UNGR,UNGR.BarTBar,"Unknown grass, BarTBar",Native,Unknown,Grass,No
+BarTBar,Colorado Plateau,Med-Warm,UNGR,UNGR.BarTBar,"Unknown grass, BarTBar",Native,Unknown,Grass,Yes
+BarTBar,Colorado Plateau,Med-Warm,UNGR,UNGR.BarTBar,"Unknown grass, BarTBar",Native,Unknown,Grass,No
+BarTBar,Colorado Plateau,None,UNGR,UNGR.BarTBar,"Unknown grass, BarTBar",Native,Unknown,Grass,No
+FlyingM,Colorado Plateau,Cool-Med,UNGR,UNGR.FlyingM,"Unknown grass, FlyingM",Native,Unknown,Grass,Yes
+FlyingM,Colorado Plateau,Cool-Med,UNGR,UNGR.FlyingM,"Unknown grass, FlyingM",Native,Unknown,Grass,No
+FlyingM,Colorado Plateau,Med-Warm,UNGR,UNGR.FlyingM,"Unknown grass, FlyingM",Native,Unknown,Grass,Yes
+FlyingM,Colorado Plateau,Med-Warm,UNGR,UNGR.FlyingM,"Unknown grass, FlyingM",Native,Unknown,Grass,No
+FlyingM,Colorado Plateau,None,UNGR,UNGR.FlyingM,"Unknown grass, FlyingM",Native,Unknown,Grass,No
+MOWE,Colorado Plateau,Med-Warm,UNGR2,UNGR2.MOWE,"Unknown grass 2, MOWE",Native,Unknown,Grass,Yes
+MOWE,Colorado Plateau,Med-Warm,UNGR2,UNGR2.MOWE,"Unknown grass 2, MOWE",Native,Unknown,Grass,No
+MOWE,Colorado Plateau,None,UNGR2,UNGR2.MOWE,"Unknown grass 2, MOWE",Native,Unknown,Grass,No
+MOWE,Colorado Plateau,Warm,UNGR2,UNGR2.MOWE,"Unknown grass 2, MOWE",Native,Unknown,Grass,Yes
+MOWE,Colorado Plateau,Warm,UNGR2,UNGR2.MOWE,"Unknown grass 2, MOWE",Native,Unknown,Grass,No
+Mesquite,Chihuahuan,Medium,Unkforb,Unkforb.Mesquite,"Unknown forb, Mesquite",Native,Unknown,Forb,No
+Mesquite,Chihuahuan,Warm,Unkforb,Unkforb.Mesquite,"Unknown forb, Mesquite",Native,Unknown,Forb,Yes
+Mesquite,Chihuahuan,Warm,Unkforb,Unkforb.Mesquite,"Unknown forb, Mesquite",Native,Unknown,Forb,No
+Mesquite,Chihuahuan,Medium,Unkgrass,Unkgrass.Mesquite,"Unknown grass, Mesquite",Native,Unknown,Grass,Yes
+Mesquite,Chihuahuan,Medium,Unkgrass,Unkgrass.Mesquite,"Unknown grass, Mesquite",Native,Unknown,Grass,No
+Mesquite,Chihuahuan,Warm,Unkgrass,Unkgrass.Mesquite,"Unknown grass, Mesquite",Native,Unknown,Grass,Yes
+Mesquite,Chihuahuan,Warm,Unkgrass,Unkgrass.Mesquite,"Unknown grass, Mesquite",Native,Unknown,Grass,No
+PEFO,Colorado Plateau,Med-Warm,UNGR,UNGR.PEFO,"Unknown grass, PEFO",Native,Unknown,Grass,Yes
+PEFO,Colorado Plateau,Med-Warm,UNGR,UNGR.PEFO,"Unknown grass, PEFO",Native,Unknown,Grass,No
+PEFO,Colorado Plateau,Warm,UNGR,UNGR.PEFO,"Unknown grass, PEFO",Native,Unknown,Grass,Yes
+PEFO,Colorado Plateau,Med-Warm,UNGR1,UNGR1.PEFO,"Unknown grass 1, PEFO",Native,Unknown,Grass,Yes
+PEFO,Colorado Plateau,Med-Warm,UNGR1,UNGR1.PEFO,"Unknown grass 1, PEFO",Native,Unknown,Grass,No
+PEFO,Colorado Plateau,Warm,UNGR1,UNGR1.PEFO,"Unknown grass 1, PEFO",Native,Unknown,Grass,Yes
+PEFO,Colorado Plateau,Warm,UNGR1,UNGR1.PEFO,"Unknown grass 1, PEFO",Native,Unknown,Grass,No
+PEFO,Colorado Plateau,Med-Warm,UNGR3,UNGR3.PEFO,"Unknown grass 3, PEFO",Native,Unknown,Grass,Yes
+PEFO,Colorado Plateau,Med-Warm,UNGR3,UNGR3.PEFO,"Unknown grass 3, PEFO",Native,Unknown,Grass,No
+PEFO,Colorado Plateau,Warm,UNGR3,UNGR3.PEFO,"Unknown grass 3, PEFO",Native,Unknown,Grass,Yes
+PEFO,Colorado Plateau,Warm,UNGR3,UNGR3.PEFO,"Unknown grass 3, PEFO",Native,Unknown,Grass,No
+Spiderweb,Colorado Plateau,Med-Warm,UNGR,UNGR.Spiderweb,"Unknown grass, Spiderweb",Native,Unknown,Grass,Yes
+Spiderweb,Colorado Plateau,Med-Warm,UNGR,UNGR.Spiderweb,"Unknown grass, Spiderweb",Native,Unknown,Grass,No
+Spiderweb,Colorado Plateau,Warm,UNGR,UNGR.Spiderweb,"Unknown grass, Spiderweb",Native,Unknown,Grass,Yes
+Spiderweb,Colorado Plateau,Warm,UNGR,UNGR.Spiderweb,"Unknown grass, Spiderweb",Native,Unknown,Grass,No
+TLE,Colorado Plateau,Cool,UNGR,UNGR.TLE,"Unknown grass, TLE",Native,Unknown,Grass,Yes
+TLE,Colorado Plateau,Cool,UNGR,UNGR.TLE,"Unknown grass, TLE",Native,Unknown,Grass,No
+TLE,Colorado Plateau,None,UNGR,UNGR.TLE,"Unknown grass, TLE",Native,Unknown,Grass,No
+TLE,Colorado Plateau,Warm,UNGR,UNGR.TLE,"Unknown grass, TLE",Native,Unknown,Grass,No
