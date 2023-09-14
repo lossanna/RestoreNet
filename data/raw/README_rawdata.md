@@ -1,5 +1,5 @@
 Created: 2022-11-28  
-Last updated: 2023-09-09
+Last updated: 2023-09-14
   
 Notes about raw data for RAMPS RestoreNet project.
 
@@ -138,37 +138,47 @@ File naming notes:
 `03.1a_output-species-seeded1_seeded-not-in-mix_subplot.csv`
 - List of species from `subplot` data originally marked as seeded but do not appear on seed mix list, as matched by `CodeOriginal`.
 
-`03.1a_output-species-seeded2_unk_subplot.csv`
+`03.1a_output-species-seeded2_seeded-in-mix_subplot.csv`
+- List of species from `subplot` data marked seeded and in at least one of the seed mixes. Need to look at each manually because seed mixes are site-specific.
+
+`03.1a_output-species-seeded3_unk_subplot.csv`
 - List of species from `subplot` data originally marked as either unknown or NA for seeding status.
 
-`03.1a_output-species-seeded3_no_subplot.csv`
+`03.1a_output-species-seeded4_no_subplot.csv`
 - List of species from `subplot` data originally marked as not seeded.
 
-`03.1b_output-species-seeded1_corrected-seeded-not-in-mix_subplot.xlsx`
+`03.1a_output-species-seeded5_conflicting-SpeciesSeeded.csv`
+- After having in theory compiled lists based off of all possible original values from `SpeciesSeeded` column, there were still some conflicts, creating duplicate rows (only `SpeciesSeeded` was conflicting). I couldn't figure out a way to extract all of the duplicate rows, not just half of them, so I filtered the entire list based on `Code`. This also brought in some rows that weren't actually conflicting duplicates, but were codes from a different mix. All of them were unknowns, and the conflict occurred because in some rows in the raw `subplot` data they were marked as seeded, but sometimes they were marked as not seeded.
+
+
+
+`03.1b_edited-species-seeded1_corrected-seeded-not-in-mix_subplot.xlsx`
 - `SpeciesSeeded` column corrected based on seed mixes listed in `from-Master_seed-mix_LO.xlsx`. 
 - Unknowns originally marked as seeded remained marked as seeded.
 - Only changed status if the plant was identified to genus level. Cells that are changed are highlighted.
 
-`03.1b_edited-species-seeded2_unk-corrected_subplot.xlsx`
+`03.1b_edited-species-seeded2_corrected-seeded-in-mix_subplot.xlsx`
+- `SpeciesSeeded` column corrected based on site-specific seed mixes. Usually discrepancies are because the `PlotMix` column is conflicting (species weren't included in both warm and cool mixes, so there can only be one for any of them per site).
+
+`03.1b_edited-species-seeded3_unk-corrected_subplot.xlsx`
 - Entire `SpeciesSeeded` column edited to either `No`, `Yes`, or `0`.
-- `0` assigned if `Code` was `0`, which indicates there was no plant for observation.
+- `0` assigned if `Code` was `0`, which indicates there was no plant for observation. Unknowns marked as not seeded.
+
+`03.1b_edited-species-seeded4_corrected-not-seeded_subplot.xlsx`
+- `SpeciesSeeded` column corrected based on site-specific seed mixes. This spreadsheet has 1077 rows and I honestly just went through all of them (most of them did not need to be changed, though).
+
+`03.1b_edited-species-seeded5_conflicting-SpeciesSeeded-fixed.xlsx`
+- This list contained rows with conflicting `SpeciesSeeded` information, and a few rows that were not conflicts but was just the same `Code` in a different `PlotMix`. I manually made a new column `Retain` to manually mark which conflicting duplicate rows should be dropped. Because they were all unknowns, I marked them all as not seeded, removing the conflicting duplicate row that said they were seeded.
+
+
 
 ## From `03.2_2x2.R`
-`03.2a_output-wrangling-2x2_1monitor-info-to-be-fixed.csv`
-- Table of monitoring events from `2x2` data with information that conflicts with `subplot` data and must be corrected manually.
-- Output written directly from R and edited in a new file.
+`03.2a_output-species-seeded1_in-mix-need-assignment.csv`
+- List of `2x2` species (from site-specific plot mixes) not assigned a `SpeciesSeeded` status from the `subplot` data that existed in at least one seed mix. All species not in a seed mix were assigned not seeded, but I also manually looked over the codes and retained a few from SRER that referenced possibly seeded species.
 
-`03.2b_edited-wrangling-2x2_1monitor-info-fixed.xlsx`
-- Shortened version of the `corrected` tab of `02b_edited-monitor_conflicting-monitoring-info-resolved.xlsx`; includes only events that need to be fixed for 2x2 data.
+`03.2b_edited-species-seeded1_SpeciesSeeded-in-mix-assigned.xlsx`
+- Manually edited to assign `SpeciesSeeded` based on site-specific seed mixes.
 
-## Need to be dealt with
-`output-wrangling-2x2_2need-duplicate-rows.csv`
-- A subset of the `2x2` data for codes that need duplicate rows because the code refers to more than one species.
-- Output written directly from R and edited in a new file.
-
-`edited-wrangling-2x2_2duplicate-rows-added.csv`
-- A subset of the `2x2` data for original codes that need duplicate rows because the code refers to more than one species.
-- Manually added extra rows based on what was needed, and added a new Code that connects to species lists, based on definitions and species information listed in `output-species6_2x2-codes_need-duplicate-rows.csv`.
 
 ## From Farrell papers	
 `Farrell_2020_EcologicalApplications_table1.xlsx`
@@ -193,8 +203,8 @@ File naming notes:
 
 ## Other
 `edited-monitor_conflicting-monitoring-info-resolved.xlsx`
-- Originally from 02.R script, but then I redid the script on 2023-09-09 so I don't need to do manual edits anymore. I wrote justifications here, though, so I thought I would save the file. All the changes should be the same.
+- Originally from `02.R` script, but then I redid the script on 2023-09-09 so I don't need to do manual edits anymore. I wrote justifications here, though, so I thought I would save the file. All the changes should be the same.
 - Spreadsheet of monitoring events with conflicting information between the `subplot` and `2x2` data. Monitoring information refers to the columns `Site`, `Date_Seeded`, `Date_Monitored`, `Plot`, `Treatment`, and `PlotMix`. Each monitoring event (for each plot) is given an ID number (`MonitorID`), unrelated to the data actually collected from the subplot or 2x2 m plot.
 - Converted to an Excel file to manually edit so I could highlight changes and add comments.
-- `comparison` tab manually edited to highlight correct values in green, and wrong values in yellow. Comments inserted to give brief explanation of how this decision was made. Justifications also written in comments in `02_correct-monitoring-info.R` script.
+- `comparison` tab manually edited to highlight correct values in green, and wrong values in yellow. Comments inserted to give brief explanation of how this decision was made. Justifications also written in comments in `02_correct-monitoring-info.R` script. There is no code to create this output anymore, because I changed the script to better explain changes in the script, so as not to rely on an Excel sheet.
 - `corrected` tab manually created to have table of only correct information to read back in. 	
