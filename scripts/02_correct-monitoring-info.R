@@ -1,5 +1,5 @@
 # Created: 2022-12-09
-# Last updated: 2023-09-09
+# Last updated: 2023-09-14
 
 # Purpose: In comparing the monitoring information from the subplot vs. 2x2 plot data, 
 #   there were discrepancies, but there should be only one correct version. 
@@ -37,7 +37,8 @@ subplot <- subplot %>%
     str_detect(subplot$Site, c("Creosote|Mesquite")) ~ "Chihuahuan",
     str_detect(subplot$Site, c("SRER|Patagonia")) ~ "Sonoran SE",
     str_detect(subplot$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central")) |> 
-  select(Region, Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix)
+  select(Region, Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix) %>% 
+  mutate(across(everything(), as.character))
 
 
 # Set up 2x2 plot data ----------------------------------------------------
@@ -57,7 +58,8 @@ p2x2 <- p2x2 |>
     str_detect(p2x2$Site, c("Creosote|Mesquite")) ~ "Chihuahuan",
     str_detect(p2x2$Site, c("SRER|Patagonia")) ~ "Sonoran SE",
     str_detect(p2x2$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central"))   |> 
-  select(Region, Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix)
+  select(Region, Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix) %>% 
+  mutate(across(everything(), as.character))
 
 
 # Assign MonitorID --------------------------------------------------------
@@ -74,9 +76,10 @@ monitor.2x2 <- p2x2 %>%
   left_join(monitor.sub)
 
 
+
 # Examine conflicts between subplot & 2x2 monitoring info -----------------
 
-# Examine differences by looking at NAs
+# Examine differences by looking at NAs formed from left_join()
 monitor.diff <- monitor.2x2 %>% 
   filter(is.na(MonitorID)) %>% 
   arrange(Site) 
@@ -87,6 +90,7 @@ monitor.diff <- monitor.2x2 %>%
 # Compare monitor.diff (2x2 monitoring info) values with relevant obs from 
 #   subplot monitoring info to determine correct value
 # Correct subplot info when needed; use subplot data as base because it has the monitoring ID attached
+# Make dfs of wrong and correct 2x2 monitoring data for later data wrangling
 
 
 
@@ -494,6 +498,53 @@ fix.Salt_Desert$Plot <- "33"
 
 
 
+# Look for any last instances of "Seed only" ------------------------------
+
+#    These may not have shown up in monitor.diff because both suplot and 2x2
+#     monitoring info may be matching but both wrong
+
+dim(filter(monitor.diff, Treatment == "Seed only")) # 48 conflicts where subplot was right and 2x2 was wrong
+count(subplot, Treatment) # 16 instances to be fixed in subplot data
+count(p2x2, Treatment) # 64 instances to be fixed in 2x2 data
+
+# Find which 2x2 events need fixing
+filter(p2x2, Treatment == "Seed only") |> 
+  count(Site) # 16 instances to be fixed at Pleasant, Preserve, Roosevelt, and SCC
+
+# 2x2 events already been accounted for (48 total, missing 16)
+dim(wrong.2x2.Pleasant) # 16, missing none
+dim(wrong.2x2.Preserve2) # 9, missing 7
+dim(wrong.2x2.Roosevelt2) # 12, missing 4
+dim(wrong.2x2.SCC2) # 11, missing 5
+
+# See which are missing by Site and Date_Monitored
+count(wrong.2x2.Preserve2, Date_Monitored) # 2021-10-06 missing ones
+count(wrong.2x2.Roosevelt2, Date_Monitored) # 2021-10-08 missing ones
+count(wrong.2x2.SCC2, Date_Monitored) # 2021-10-13  missing ones
+
+# Compare with subplot events that needed to be fixed
+bind_rows(fix.Roosevelt, fix.Preserve, fix.SCC) |> 
+  filter(Treatment == "Seed") # these are the same events missing from 2x2 fixes
+
+
+# Create wrong row for 2x2 to be corrected
+wrong.2x2.seedonly <- bind_rows(
+  filter(p2x2, Site == "Roosevelt", 
+         Date_Monitored %in% fix.Roosevelt$Date_Monitored, 
+         Plot %in% fix.Roosevelt$Plot),
+  filter(p2x2, Site == "Preserve", 
+         Date_Monitored %in% fix.Preserve$Date_Monitored,
+         Plot %in% fix.Preserve$Plot),
+  filter(p2x2, Site == "SCC", 
+         Date_Monitored %in% fix.SCC$Date_Monitored,
+         Plot %in% fix.SCC$Plot))
+
+# Create right row for 2x2
+fix.2x2.seedonly <- bind_rows(fix.Roosevelt, fix.Preserve, fix.SCC)
+  
+
+
+
 # Combine correct monitoring info -----------------------------------------
 
 fix.all <- bind_rows(fix.AVRCD,
@@ -527,7 +578,8 @@ wrong.2x2 <- bind_rows(wrong.2x2.FlyingM,
                        wrong.2x2.Roosevelt1,
                        wrong.2x2.Roosevelt2,
                        wrong.2x2.SCC1,
-                       wrong.2x2.SCC2)
+                       wrong.2x2.SCC2,
+                       wrong.2x2.seedonly)
 
 fix.2x2 <- bind_rows(fix.2x2.FlyingM,
                      fix.2x2.Mesquite1,
@@ -537,7 +589,8 @@ fix.2x2 <- bind_rows(fix.2x2.FlyingM,
                      fix.2x2.Roosevelt1,
                      fix.2x2.Roosevelt2,
                      fix.2x2.SCC1,
-                     fix.2x2.SCC2)
+                     fix.2x2.SCC2,
+                     fix.2x2.seedonly)
 
 nrow(wrong.2x2) == nrow(fix.2x2)
 

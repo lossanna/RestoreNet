@@ -52,6 +52,8 @@ monitor.assign$raw.row <- wrong.raw.row$raw.row
 p2x2.monitor <- p2x2.monitor |> 
   filter(!raw.row %in% monitor.assign$raw.row) |> 
   left_join(monitor.info)
+p2x2.monitor |> 
+  filter(is.na(MonitorID))
 
 #   Add corrected monitor info for complete list
 p2x2.monitor <- bind_rows(p2x2.monitor, monitor.assign) |> 
@@ -67,8 +69,7 @@ p2x2.wide <- left_join(p2x2.monitor, p2x2.wide)
 
 
 
-
-# pick up here
+# Create cover table ------------------------------------------------------
 
 # Create cover table
 p2x2.cover <- p2x2.wide |> 
