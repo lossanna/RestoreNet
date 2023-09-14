@@ -1,5 +1,5 @@
 # Created: 2022-12-07
-# Last updated: 2023-09-12
+# Last updated: 2023-09-14
 
 # Purpose: Create 2 clean data tables for 2x2 plot data: one with cover data and one with
 #   the list of species present for each monitoring event.
@@ -19,6 +19,8 @@ mix <- read_xlsx("data/raw/from-Master_seed-mix_LO.xlsx", sheet = "with-site_R")
 monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
 monitor.wrong <- read_csv("data/raw/02_2x2-wrong-monitor-events.csv")
 monitor.fixed <- read_csv("data/raw/02_2x2-wrong-monitor-events-corrected.csv")
+subplot <- read_csv("data/cleaned/subplot-data_clean.csv")
+
 
 
 # Organize columns and correct monitoring info ----------------------------
@@ -53,7 +55,7 @@ p2x2.monitor <- p2x2.monitor |>
   filter(!raw.row %in% monitor.assign$raw.row) |> 
   left_join(monitor.info)
 p2x2.monitor |> 
-  filter(is.na(MonitorID))
+  filter(is.na(MonitorID)) # all assigned MonitorID
 
 #   Add corrected monitor info for complete list
 p2x2.monitor <- bind_rows(p2x2.monitor, monitor.assign) |> 
@@ -72,152 +74,67 @@ p2x2.wide <- left_join(p2x2.monitor, p2x2.wide)
 # Create cover table ------------------------------------------------------
 
 # Create cover table
-p2x2.cover <- p2x2.wide |> 
-  select(-starts_with("Additional"))
+cover <- p2x2.wide |> 
+  select(-starts_with("Additional")) 
 
 
-# Create species_present table
-#   Inspect Additional_species_in_plot cols
+# Change Seeded_Cover and Total_Veg_Cover to numeric
+#   See possible values of Seeded_Cover
+unique(cover$Seeded_Cover)
+
+#   Replace TR and 0/TR with 0.5
+cover$Seeded_Cover[cover$Seeded_Cover == "TR"] <- 0.5
+cover$Seeded_Cover[cover$Seeded_Cover == "0/TR"] <- 0.5
+
+#   Replace "NA" with logical NA
+cover$Seeded_Cover[cover$Seeded_Cover == "NA"] <- NA
+
+#   Convert Seeded_Cover to numeric
+cover$Seeded_Cover <- as.numeric(cover$Seeded_Cover)
+
+
+#   See possible values of Total_Veg_Cover
+unique(cover$Total_Veg_Cover)
+
+#   Replace TR with 0.5
+cover$Total_Veg_Cover[cover$Total_Veg_Cover == "TR"] <- 0.5
+
+# Replace "NA" with logical NA
+cover$Total_Veg_Cover[cover$Total_Veg_Cover == "NA"] <- NA
+
+# Convert Seeded_Cover to numeric
+cover$Total_Veg_Cover <- as.numeric(cover$Total_Veg_Cover)
+
+# Add "Not_Seeded_Cover" column
+cover$Not_Seeded_Cover <- cover$Total_Veg_Cover - cover$Seeded_Cover
+summary(cover$Not_Seeded_Cover) # creates negative values
+
+cover.neg.notseed <- cover |> 
+  filter(Not_Seeded_Cover < 0)
+
+
+
+# Create present_species table --------------------------------------------
+
+# Inspect Additional_species_in_plot cols
 unique(p2x2.wide$Additional_Species_In_Plot...22)
 unique(p2x2.wide$Additional_Species_In_Plot...21)
 unique(p2x2.wide$Additional_Species_In_Plot...20)
 unique(p2x2.wide$Additional_Species_In_Plot...19) # observations in 19 and smaller
 
-#   Drop empty Additional_species_in_plot cols
+# Drop empty Additional_species_in_plot cols
 p2x2.wide <- p2x2.wide %>% 
   select(-Additional_Species_In_Plot...22, -Additional_Species_In_Plot...21,
          -Additional_Species_In_Plot...20)
 
 # Remove cover columns
-p2x2.sp.present <- p2x2.wide |> 
-  select(-Seeded_Cover, Total_Veg_Cover)
-
-
-
-# Assign MonitorID to cover & species_present -----------------------------
-
-
-
-
-
-
-# Add MonitorID based on subplot data
-subplot <- subplot.clean %>% 
-  select(Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix, MonitorID) 
-
-p2x2.wide <- left_join(p2x2.wide, subplot)
-
-# Check for all cols for NAs
-apply(p2x2.wide, 2, anyNA)
-to.drop <- p2x2.wide %>% # remove completely empty rows (not counting raw.row, Region, or MonitorID cols)
-  filter(is.na(Site) & is.na(Date_Seeded) & is.na(Date_Monitored) & is.na(Plot) &
-           is.na(Treatment) & is.na(PlotMix))
-#   for some reason, a bunch of all-NA rows were added when reading in Master.xlsx AllPlotData
-p2x2.wide <- p2x2.wide %>% 
-  filter(!raw.row %in% to.drop$raw.row)
-rm(to.drop)
-apply(p2x2.wide, 2, anyNA)
-#   Total_Veg_Cover has NAs because sometimes that data was not recorded in the field
-#   Additional_Species cols have NAs because not all observations had >1 additional species in plot
-#   MonitorID has NAs because of conflicts between subplot and 2x2 monitoring info, so no MonitorID could be assigned
-
-
-
-
-# Correct monitoring info -------------------------------------------------
-
-# Check NA codes and MonitorID
-#  NA are due to differences in monitoring info between 2x2 and subplot,
-#    which is why no MonitorID was created after left_join()
-p2x2.monitorid.na <- p2x2.wide %>% 
-  filter(is.na(MonitorID))
-
-# Extract distinct monitoring events without MonitorID
-monitor.diff <- p2x2.monitorid.na %>% 
-  select(Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix) %>% 
-  distinct(.keep_all = TRUE) %>% 
-  arrange(Site)
-
-# OUTPUT: creat list of events that need MonitorID assigned
-write_csv(monitor.diff,
-          file = "data/raw/03.2a_output-wrangling-2x2_1monitor-info-to-be-fixed.csv")
-
-
-# EDITED: 
-#  This is a shortened version of 02b_monitor-edited1_conflicting-monitoring-info-resolved.xlsx,
-#     with only the ones where 2x2 was wrong included
-monitor.fix <- read_xlsx("data/raw/03.2b_edited-wrangling-2x2_1monitor-info-fixed.xlsx")
-
-# Assign MonitorID based on fixed monitoring info
-monitor.fix <- left_join(monitor.fix, monitor.info)
-filter(monitor.fix, is.na(MonitorID)) # all assigned MonitorID
-
-# Add MonitorID to monitor.diff to match with original (incorrect) values in 2x2 data
-monitor.diff$MonitorID <- monitor.fix$MonitorID
-
-# Convert monitor.diff cols to character, to be able to left_join()
-monitor.diff <- monitor.diff %>% 
-  mutate(across(everything(), as.character))
-
-# Add MonitorID to p2x2 data that was missing MonitorID
-p2x2.monitor.fix <- p2x2.monitorid.na %>% 
-  select(-MonitorID) %>% 
-  left_join(monitor.diff)
-filter(p2x2.monitor.fix, is.na(MonitorID)) # all assigned MonitorID
-
-# Convert monitor.fix cols to character, to be able to left_join()
-monitor.fix <- monitor.fix %>% 
-  mutate(across(everything(), as.character))
-
-# Fix the monitoring info in p2x2 data now there is a MonitorID to join by
-p2x2.monitor.fix <- p2x2.monitor.fix %>% 
-  select(-Date_Seeded, -Date_Monitored, -Plot, -Treatment, -PlotMix) %>% # remove incorrect monitoring info
-  left_join(monitor.fix)
-
-# Combine fixed p2x2 data with p2x2 data already correct
-p2x2.long.monitor.fixed <- p2x2.long.intermediate %>% 
-  filter(!raw.row %in% p2x2.monitor.fix$raw.row) %>% # remove old incorrect rows
-  bind_rows(p2x2.monitor.fix) %>% # add fixed rows
-  select(Site, Region, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix,
-         Code, Seeded_Cover, Total_Veg_Cover, raw.row, source, MonitorID) # reorder cols
-
-# Convert cols back to date/numermic if needed
-p2x2.long.monitor.fixed <- p2x2.long.monitor.fixed %>% 
-  mutate(Date_Seeded = as.Date(Date_Seeded),
-         Date_Monitored = as.Date(Date_Monitored),
-         raw.row = as.numeric(raw.row),
-         Plot = as.numeric(Plot),
-         MonitorID = as.numeric(MonitorID))
-
-# Check all cols for NAs
-apply(p2x2.long.monitor.fixed, 2, anyNA) 
-
-# Status: p2x2.long.monitor.fixed has corrected motoring info and MonitorID for 
-# all observations, but codes that refer to more than one species have not yet
-# been handled.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+present_species <- p2x2.wide |> 
+  select(-Seeded_Cover, -Total_Veg_Cover)
 
 
 # Pivot species columns
-p2x2.long.intermediate <- p2x2.wide %>% 
-  mutate(across(everything(), as.character)) %>% 
-  pivot_longer(c(starts_with("Additional")), names_to = "source", values_to = "Code") %>% 
+present_species <- present_species %>% 
+  pivot_longer(c(starts_with("Additional")), names_to = "source", values_to = "CodeOriginal") %>% 
   distinct(.keep_all = TRUE) %>% 
   mutate(source = case_when(
     source == "Additional_Species_In_Plot...12" ~ "add1",
@@ -229,123 +146,154 @@ p2x2.long.intermediate <- p2x2.wide %>%
     source == "Additional_Species_In_Plot...18" ~ "add7",
     source == "Additional_Species_In_Plot...19" ~ "add8",
     TRUE ~ source)) %>% 
-  filter(Code != "0")
+  filter(CodeOriginal != "0")
 
 # Check all cols for NAs
-apply(p2x2.long.intermediate, 2, anyNA) 
-#  NA MonitorID created because of conflicts between subplot and 2x2 monitoring info
-
-# Status: p2x2.long.intermediate has MonitorID applied to observations with correct monitoring info,
-#   and empty Additional_Species observations created from pivot_longer() have been removed,
-#   but there is incorrect monitoring info, and codes that refer to more than one species have not
-#   yet been handled.
+apply(present_species, 2, anyNA) 
 
 
 
+# Attach species info to present_species table ----------------------------
+
+#   Handle location-dependent and location-independent separately. Also handle
+#     codes that need duplicate rows separately.
+
+# Unique CodeOriginal
+species.in.unique <- species.in |> 
+  filter(NeedsItsDuplicate == "No")
+
+species.de.unique <- species.de |> 
+  filter(NeedsItsDuplicate == "No")
+
+
+# Location independent, no duplicate
+ps.in.unq <- present_species |> 
+  filter(CodeOriginal %in% species.in.unique$CodeOriginal)
+
+ps.in.unq <- left_join(ps.in.unq, species.in.unique) 
+
+
+# Location dependent, no duplicate
+ps.de.unq <- present_species |> 
+  filter(CodeOriginal %in% species.de.unique$CodeOriginal)
+
+ps.de.unq <- left_join(ps.de.unq, species.de.unique)
 
 
 
+# Non-unique CodeOriginal
+species.in.dup <- species.in |> 
+  filter(NeedsItsDuplicate == "Yes")
 
-# Correct codes -----------------------------------------------------------
-
-# Goal: handle observations of additional species in plot (not subplot)
-# Workflow:
-#   manually add extra rows for codes that need duplicate rows because codes refer to more than one species
-#   make Code and CodeOriginal cols, standardize codes, and add species info to 2x2 data
-#   combine additional species and subplot species obs, and standardize codes
+species.de.dup <- species.de |> 
+  filter(NeedsItsDuplicate == "Yes")
 
 
-# Handle additional species observations ----------------------------------
+# Location independent with duplicate
+ps.in.dup <- present_species |> 
+  filter(CodeOriginal %in% species.in.dup$CodeOriginal)
 
-p2x2.add <- p2x2.long.monitor.fixed %>% 
-  rename(CodeOriginal = Code)
-
-# Extract codes that need duplicate rows, to add duplicates manually
-p2x2.add.dup <- p2x2.add %>% 
-  filter(CodeOriginal %in% p2x2.codes.dup$CodeOriginal) %>% 
-  arrange(CodeOriginal)
-
-write_csv(p2x2.add.dup,
-          file = "data/raw/output-wrangling-2x2_2need-duplicate-rows.csv")
-
-#### edited manually to add correct duplicate rows #################
-  # consult edited-species5_codes-missing-2x2plot.csv to see what codes are duplicates/multiple rows
-p2x2.add.dup <- read_csv("data/raw/edited-wrangling-2x2_2duplicate-rows-added.csv")
-
-p2x2.add.dup <- p2x2.add.dup %>% 
-  mutate(Total_Veg_Cover = as.character(p2x2.add.dup$Total_Veg_Cover)) # correct the col class to match p2x2.long.intermediate
+ps.in.dup <- left_join(ps.in.dup, species.in.dup) 
 
 
-# Standard Code and CodeOriginal cols for non-duplicates 
-# Add Code.Site to location-dependent non-duplicate rows
-  # obs that need duplicate rows already have Code.Site as Code, because it was manually entered
+# Location dependent with duplicate
+ps.de.dup <- present_species |> 
+  filter(CodeOriginal %in% species.de.dup$CodeOriginal)
 
-# Remove codes for duplicate rows that were fixed separately
-p2x2.add.single <- p2x2.add %>% 
-  filter(!CodeOriginal %in% p2x2.add.dup$CodeOriginal) 
+ps.de.dup <- left_join(ps.de.dup, species.de.dup) 
 
-# Separate out location-dependent
-p2x2.add.single.de <- p2x2.add.single %>% 
-  filter(CodeOriginal %in% species.de$CodeOriginal)
 
-# Add Code col (Code.Site) to location-dependent
-p2x2.add.single.de$Code <- apply(p2x2.add.single.de[ , c("CodeOriginal", "Site")], 1, paste, collapse = ".")
-
-# Add Code col to location-independent and combine with location-dependent
-p2x2.add.single <- p2x2.add.single %>% 
-  mutate(Code = p2x2.add.single$CodeOriginal) %>% # add Code col
-  filter(!CodeOriginal %in% species.de$CodeOriginal) %>% # remove location-dependent because they have incorrect Codes
-  bind_rows(p2x2.add.single.de) %>% # add location-dependent with correct codes
-  select(Site, Region, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix,
-         CodeOriginal, Code, Seeded_Cover, Total_Veg_Cover, raw.row, source, MonitorID) # reorder cols
-
-# Combine all additional species obs
-p2x2.add <- bind_rows(p2x2.add.dup, p2x2.add.single) %>% 
+# Combine
+present_species <- bind_rows(ps.in.unq, ps.de.unq, ps.in.dup, ps.de.dup) |> 
   arrange(MonitorID)
 
-# Check all cols for NAs
-apply(p2x2.add, 2, anyNA) # some observations are missing Total_Veg_Cover because that data was not collected
-
-# Status: p2x2.add has correct monitoring info and Code and CodeOriginal cols for all observations of
-  # additional species (not subplot observations), and empty Additional_Species rows of "0" are removed.
-  # Duplicate rows have been added for all codes that refer to multiple species, to capture all species observations.
+ps1 <- present_species
 
 
-# Correct codes for p2x2.add ----------------------------------------------
 
-# Check for incorrect codes
-setdiff(p2x2.add$CodeOriginal, c(species.de$CodeOriginal, species.in$CodeOriginal))
+# Create SpeciesSeeded column ---------------------------------------------
 
-filter(p2x2.add, Code == "S-PASM")
-filter(p2x2.add, Code == "S-HEBO")
-filter(p2x2.add, Code == "SPAMA")
-filter(p2x2.add, Code == "ARPU6")
-filter(p2x2.add, Code == "EUPO3")
+# Extract info from subplot data
+seeded.subplot <- subplot |> 
+  select(Region, Site, PlotMix, CodeOriginal, Code, SpeciesSeeded) |> 
+  distinct(.keep_all = TRUE)
 
 
-subplot$Code[subplot$Code == "S-PASM"] <- "PASM"
-subplot$Code[subplot$Code == "S-HEBO"] <- "HEBO"
-subplot$Code[subplot$Code == "SPAMA"] <- "SPAM2"
-subplot$Code[subplot$Code == "ARPUP6"] <- "ARPU9"
-subplot$Code[subplot$Code == "EUPO3"] <- "CHPO12"
+# Attach subplot info to present_species
+present_species <- left_join(ps1, seeded.subplot)
 
-# Standardize codes 
-p2x2.add <- 
-
-# Combine subplot and additional and standardize codes --------------------
-
-p2x2 <- bind_rows(p2x2.add) %>% 
-  arrange(MonitorID)
-
-# Check all cols for NAs
-apply(p2x2, 2, anyNA) 
+# Inspect those without SpeciesSeeded assignment
+ps.ss.na <- present_species |> 
+  filter(is.na(SpeciesSeeded)) |> 
+  select(Region, Site, PlotMix, CodeOriginal, Code, Name, SpeciesSeeded) |> 
+  distinct(.keep_all = TRUE) |> 
+  arrange(Code) |> 
+  arrange(Site) |> 
+  arrange(Region)
 
 
-# Remove rows with NA code 
-  # these were assigned NA because of conflicting monitoring info, and the correct obs have already been retained
+# Those not in seed mix were not seeded regardless of plot
+ps.ss.not.in.mix <- ps.ss.na |> 
+  filter(!Code %in% mix$CodeOriginal) |> 
+  arrange(Code) |> 
+  arrange(Site) |> 
+  arrange(Region)
 
-# Standardize codes (corrections derived from 02.1_data-wrangling_subplot.R)
-filter(p2x2, is.na(Code))
+# Some SRER codes should be inspected manually
+#   Code does not match exactly, but mentions something to species level
+ps.ss.not.in.mix |> 
+  filter(str_detect(Code, "BOCU|PLJA"))
+
+ps.ss.not.in.mix <- ps.ss.not.in.mix |> 
+  filter(!str_detect(Code, "BOCU|PLJA")) |> 
+  mutate(SpeciesSeeded = "No") 
+
+# Manually inspect species that exist in (a) seed mix
+ps.ss.mix <- ps.ss.na |> 
+  filter(!Code %in% ps.ss.not.in.mix$Code)
+
+# OUTPUT: list of species that need SpeciesSeeded assignment
+write_csv(ps.ss.mix,
+          file = "data/raw/03.2a_output-species-seeded1_in-mix-need-assignment.csv")
+
+# EDITED: manually check if the species was seeded based on site-specific plot mix
+ps.ss.mix <- read_xlsx("data/raw/03.2b_edited-species-seeded1_SpeciesSeeded-in-mix-assigned.xlsx")
+
+# Combine
+ps.ss.assigned <- bind_rows(ps.ss.not.in.mix, ps.ss.mix)
+nrow(ps.ss.assigned) == nrow(ps.ss.na)
+
+
+# Assign SpeciesSeeded to present_species
+ps.ss <- present_species |> 
+  filter(is.na(SpeciesSeeded)) |> 
+  left_join(ps.ss.assigned)
+
+# Compile all with correct SeededSpecies
+present_species <- present_species |> 
+  filter(!is.na(SpeciesSeeded)) |> 
+  bind_rows(ps.ss)
+
+ps2 <- present_species
+
+
+
+# Combine with subplot to get all species present -------------------------
+
+#   Currently present_species is only the additional species not found in subplot
+
+# Add subplot species
+subplot.species <- subplot |> 
+  select(-Count, -Height, -raw.row)
+
+present_species <- ps2 |> 
+  select(-raw.row, -source, -NeedsItsDuplicate, -DuplicateNum)
+
+present_species <- bind_rows(present_species, subplot.species) |> 
+  distinct(.keep_all = TRUE) |> 
+  arrange(Code) |> 
+  arrange(MonitorID) 
+  
 
 
 save.image("RData/02.2_data-wrangling_2x2.RData")
