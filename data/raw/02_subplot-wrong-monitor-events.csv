@@ -1,0 +1,32 @@
+Region,Site,Date_Seeded,Date_Monitored,Plot,Treatment,PlotMix,MonitorID
+Colorado Plateau,BarTBar,2018-07-25,2019-04-16,33,Mulch,Med-Warm,1006
+Colorado Plateau,Spiderweb,2020-07-21,2021-09-29,29,Mulch,Med-Warm,3235
+Utah,UtahPJ,2018-10-29,2019-04-26,29,Pits,Cool-Med,3952
+Utah,UtahPJ,2018-10-29,2019-05-16,29,Pits,Cool-Med,4026
+Utah,UtahPJ,2018-10-29,2019-07-02,29,Pits,Cool-Med,4245
+Utah,UtahPJ,2018-10-29,2019-04-26,34,ConMod,Cool,3958
+Utah,UtahPJ,2018-10-29,2019-05-16,34,ConMod,Cool,4032
+Utah,UtahPJ,2018-10-29,2019-05-29,34,ConMod,Cool,4141
+Utah,UtahPJ,2018-10-29,2019-07-02,34,ConMod,Cool,4251
+Utah,CRC,2018-10-17,2019-07-24,4,Con/Mod,Med-Warm,4257
+Utah,CRC,2018-10-17,2019-07-24,7,Con/Mod,Cool-Med,4260
+Utah,CRC,2018-10-17,2019-07-24,15,Con/Mod,Med-Warm,4268
+Utah,CRC,2018-10-17,2019-07-24,20,Con/Mod,Cool-Med,4273
+Utah,CRC,2018-10-17,2019-07-24,22,Con/Mod,Med-Warm,4275
+Utah,CRC,2018-10-17,2019-07-24,29,Con/Mod,Med-Warm,4282
+Utah,CRC,2018-10-17,2019-07-24,35,Con/Mod,Cool-Med,4288
+Utah,UtahPJ,2018-10-29,2019-08-06,3,Con/Mod,Cool-Med,4292
+Utah,UtahPJ,2018-10-29,2019-08-06,8,Con/Mod,Cool,4297
+Utah,UtahPJ,2018-10-29,2019-08-06,14,Con/Mod,Cool-Med,4303
+Utah,UtahPJ,2018-10-29,2019-08-06,18,Con/Mod,Cool,4307
+Utah,UtahPJ,2018-10-29,2019-08-06,22,Con/Mod,Cool-Med,4311
+Utah,UtahPJ,2018-10-29,2019-08-06,27,Con/Mod,Cool,4316
+Utah,UtahPJ,2018-10-29,2019-08-06,31,Con/Mod,Cool-Med,4320
+Utah,Salt_Desert,2018-10-31,2019-08-07,4,Con/Mod,Cool-Med,4329
+Utah,Salt_Desert,2018-10-31,2019-08-07,6,Con/Mod,Med-Warm,4331
+Utah,Salt_Desert,2018-10-31,2019-08-07,11,Con/Mod,Cool-Med,4336
+Utah,Salt_Desert,2018-10-31,2019-08-07,16,Con/Mod,Med-Warm,4341
+Utah,Salt_Desert,2018-10-31,2019-08-07,17,Con/Mod,Cool-Med,4342
+Utah,Salt_Desert,2018-10-31,2019-08-07,23,Con/Mod,Med-Warm,4348
+Utah,Salt_Desert,2018-10-31,2019-08-07,28,Con/Mod,Cool-Med,4353
+Utah,Salt_Desert,2018-10-31,2019-08-07,36,Con/Mod,Med-Warm,4361

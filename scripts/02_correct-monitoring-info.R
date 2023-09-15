@@ -10,6 +10,9 @@
 #   at each time point (Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix cols),
 #   without taking into account any actual data collection (species present or species measurements).
 
+# Wrote out separate tables of incorrect events and correct events (with correct MonitorID) that must be
+#   fixed in subplot and 2x2 data during data wrangling.
+
 
 library(readxl)
 library(tidyverse)
@@ -564,10 +567,446 @@ monitor.correct <- monitor.sub |>
 
 nrow(monitor.correct) == nrow(monitor.sub)
 
-#   Write to CSV
-write_csv(monitor.correct,
-          file = "data/cleaned/corrected-monitoring-info_clean.csv")
+#   This is not technically all the correct monitoring info, though, because there were
+#     a few problems with the subplot data info (examined and fixed below)
 
+
+
+# Characteristics of each site --------------------------------------------
+
+# Look for mistakes in subplot data by examining each site 
+
+unique(monitor.correct$Site)
+
+
+# Number of plots
+#   CO Plateau all have normal 36 plots
+unique(filter(monitor.correct, Site == "AguaFria")$Plot)
+unique(filter(monitor.correct, Site == "BabbittPJ")$Plot)
+unique(filter(monitor.correct, Site == "BarTBar")$Plot)
+unique(filter(monitor.correct, Site == "FlyingM")$Plot)
+unique(filter(monitor.correct, Site == "MOWE")$Plot)
+unique(filter(monitor.correct, Site == "PEFO")$Plot)
+unique(filter(monitor.correct, Site == "Spiderweb")$Plot)
+unique(filter(monitor.correct, Site == "TLE")$Plot)
+
+#   Mojave have 8 extra plots, 37-44
+unique(filter(monitor.correct, Site == "29_Palms")$Plot)
+unique(filter(monitor.correct, Site == "AVRCD")$Plot)
+
+monitor.correct |> 
+  filter(Site == "29_Palms",
+         Plot %in% c("37", "38", "39", "40", "41", "42", "43", "44"))
+
+#   Utah all have normal 36
+unique(filter(monitor.correct, Site == "CRC")$Plot)
+unique(filter(monitor.correct, Site == "UtahPJ")$Plot)
+unique(filter(monitor.correct, Site == "Salt_Desert")$Plot)
+
+#   Sonoran SE all have normal 36
+unique(filter(monitor.correct, Site == "SRER")$Plot)
+unique(filter(monitor.correct, Site == "Patagonia")$Plot)
+
+#   Sonoran Central all have normal 36
+unique(filter(monitor.correct, Site == "Roosevelt")$Plot)
+unique(filter(monitor.correct, Site == "Preserve")$Plot)
+unique(filter(monitor.correct, Site == "Pleasant")$Plot)
+unique(filter(monitor.correct, Site == "SCC")$Plot)
+
+#   Chihuahuan have normal 36, but are named starting with 2
+unique(filter(monitor.correct, Site == "Creosote")$Plot)
+unique(filter(monitor.correct, Site == "Mesquite")$Plot)
+
+
+# Number of times plots were measured
+plots <- count(monitor.correct, Plot) 
+#   all seem to have the same number of events as many others except Plots 33, 29, 34
+
+
+# Number of monitoring events
+
+# CO Plateau
+#   Some sites were seeded twice, once in July/Aug of 2018 and again in July/Aug of 2020
+#     BabbittPJ, BarTBar, FlyingM, MOWE, PEFO, Spiderweb
+# AguaFria 
+#   7 monitoring dates, fall 2018 to summer 2019
+aguafria <- monitor.correct |> 
+  filter(Site == "AguaFria") |> 
+  count(Date_Monitored) |> 
+  rename(Plots_Monitored = n)
+aguafria
+
+# BabbittPJ
+#   15 monitoring dates, summer/fall 2018 to fall/winter 2021
+#   2 seeding dates
+babbittpj <- monitor.correct |> 
+  filter(Site == "BabbittPJ") |> 
+  count(Date_Monitored) |> 
+  rename(Plots_Monitored = n)
+babbittpj
+monitor.correct |> 
+  filter(Site == "BabbittPJ") |> 
+  count(Date_Seeded) 
+
+# BarTBar
+#   14 monitoring dates, fall 2018 to summer 2021
+#   2 seeding dates 
+bartbar <- monitor.correct |> 
+  filter(Site == "BarTBar") |> 
+  count(Date_Monitored) |> 
+  rename(Plots_Monitored = n)
+bartbar
+monitor.correct |> 
+  filter(Site == "BarTBar") |> 
+  count(Date_Seeded) 
+monitor.correct |> 
+  filter(Site == "BarTBar") |> 
+  filter(Date_Monitored == "2019-04-16") |> 
+  print(n = 37) # Plot 33 is listed twice
+
+# FlyingM
+#   14 monitoring dates, fall 2018 to fall/winter 2021
+#   2 seeding dates
+flyingm <- monitor.correct |> 
+  filter(Site == "FlyingM") |> 
+  count(Date_Monitored) |> 
+  rename(Plots_Monitored = n)
+flyingm
+monitor.correct |> 
+  filter(Site == "FlyingM") |> 
+  count(Date_Seeded) 
+
+# MOWE
+#   12 monitoring dates, fall 2018 to summer 2021
+#   2 seeding dates
+mowe <- monitor.correct |> 
+  filter(Site == "MOWE") |> 
+  count(Date_Monitored) |> 
+  rename(Plots_Monitored = n)
+mowe
+monitor.correct |> 
+  filter(Site == "MOWE") |> 
+  count(Date_Seeded) 
+
+# PEFO
+#   13 monitoring dates, fall 2018 to summer 2021
+#   2 seeding dates
+pefo <- monitor.correct |> 
+  filter(Site == "PEFO") |> 
+  count(Date_Monitored) |> 
+  rename(Plots_Monitored = n)
+pefo
+monitor.correct |> 
+  filter(Site == "PEFO") |> 
+  count(Date_Seeded) 
+
+# Spiderweb
+#   13 monitoring dates, fall 2018 to fall 2021
+#   2 seeding dates
+spiderweb <- monitor.correct |> 
+  filter(Site == "Spiderweb") |> 
+  count(Date_Monitored) |> 
+  rename(Plots_Monitored = n)
+spiderweb
+monitor.correct |> 
+  filter(Site == "Spiderweb") |> 
+  count(Date_Seeded) 
+monitor.correct |> 
+  filter(Site == "Spiderweb") |> 
+  filter(Date_Monitored == "2021-09-29") |> 
+  print(n = 37) # Plot 29 is listed twice
+
+
+# TLE
+#   4 monitoring dates, fall 2019 to summer 2021
+tle <- monitor.correct |> 
+  filter(Site == "TLE") |> 
+  count(Date_Monitored) |> 
+  rename(Plots_Monitored = n)
+tle
+
+
+# Mojave
+# 29_Palms
+#   2 monitoring dates, spring 2020, spring 2021
+s29_palms <- monitor.correct |> 
+  filter(Site == "29_Palms") |> 
+  count(Date_Monitored) |> 
+  rename(Plots_Monitored = n)
+s29_palms
+
+# AVRCD
+#   2 monitoring dates, spring 2020, spring 2021
+avrcd <- monitor.correct |> 
+  filter(Site == "AVRCD") |> 
+  count(Date_Monitored) |> 
+  rename(Plots_Monitored = n)
+avrcd
+
+
+# Utah
+# CRC
+#   10 monitoring dates, fall/winter 2018 to summer 2021
+crc <- monitor.correct |> 
+  filter(Site == "CRC") |> 
+  count(Date_Monitored) |> 
+  rename(Plots_Monitored = n)
+crc
+
+# UtahPJ
+#   8 monitoring events, fall/winter 2018 to summer 2021
+utahpj <- monitor.correct |> 
+  filter(Site == "UtahPJ") |> 
+  count(Date_Monitored) |> 
+  rename(Plots_Monitored = n)
+utahpj
+monitor.correct |> 
+  filter(Site == "UtahPJ") |> 
+  filter(Date_Monitored == "2019-04-26") |> 
+  print(n = 38) # Plots 29 and 34 is listed twice
+monitor.correct |> 
+  filter(Site == "UtahPJ") |> 
+  filter(Date_Monitored == "2019-05-16") |> 
+  print(n = 38) # Plots 29 and 34 is listed twice
+monitor.correct |> 
+  filter(Site == "UtahPJ") |> 
+  filter(Date_Monitored == "2019-05-29") |> 
+  print(n = 37) # Plot 34 is listed twice
+monitor.correct |> 
+  filter(Site == "UtahPJ") |> 
+  filter(Date_Monitored == "2019-07-02") |> 
+  print(n = 38) # Plots 29 and 34 is listed twice
+
+# Salt_Desert
+#   9 monitoring events, fall/winter 2018 to summer 2021
+salt_desert <- monitor.correct |> 
+  filter(Site == "Salt_Desert") |> 
+  count(Date_Monitored) |> 
+  rename(Plots_Monitored = n)
+salt_desert
+
+
+# Sonoran SE
+# SRER
+#   5 monitoring dates, fall/winter 2019 to fall 2021
+srer <- monitor.correct |> 
+  filter(Site == "SRER") |> 
+  count(Date_Monitored) |> 
+  rename(Plots_Monitored = n)
+srer
+
+# Patagonia
+#   5 monitoring dates, fall/winter 2019 to fall 2021
+patagonia <- monitor.correct |> 
+  filter(Site == "Patagonia") |> 
+  count(Date_Monitored) |> 
+  rename(Plots_Monitored = n)
+patagonia
+
+
+
+# Sonoran Central
+# Roosevelt
+#   4 monitoring dates, spring 2020 to fall 2021
+roosevelt <- monitor.correct |> 
+  filter(Site == "Roosevelt") |> 
+  count(Date_Monitored) |> 
+  rename(Plots_Monitored = n)
+roosevelt
+
+# SCC
+#   4 monitoring dates, spring 2020 to fall 2021
+scc <- monitor.correct |> 
+  filter(Site == "SCC") |> 
+  count(Date_Monitored) |> 
+  rename(Plots_Monitored = n)
+scc
+
+# Pleasant
+#   4 monitoring dates, spring 2020 to fall 2021
+pleasant <- monitor.correct |> 
+  filter(Site == "Pleasant") |> 
+  count(Date_Monitored) |> 
+  rename(Plots_Monitored = n)
+pleasant
+
+# Preserve
+#   4 monitoring dates, spring 2020 to fall 2021
+preserve <- monitor.correct |> 
+  filter(Site == "Preserve") |> 
+  count(Date_Monitored) |> 
+  rename(Plots_Monitored = n)
+preserve
+
+
+# Chihuahuan
+# Creosote
+#   7 monitoring dates, fall 2020 to fall 2021
+creosote <- monitor.correct |> 
+  filter(Site == "Creosote") |> 
+  count(Date_Monitored) |> 
+  rename(Plots_Monitored = n)
+creosote
+
+# Mesquite
+#   6 monitoring dates, fall 2020 to fall 2021
+mesquite <- monitor.correct |> 
+  filter(Site == "Mesquite") |> 
+  count(Date_Monitored) |> 
+  rename(Plots_Monitored = n)
+mesquite
+
+
+
+# Resolve plot conflicts --------------------------------------------------
+
+
+# Create wrong and correct rows by site
+
+# BarTBar
+monitor.correct |> 
+  filter(Site == "BarTBar",
+         Plot == "33") |> 
+  count(Treatment)
+
+#   Create wrong and correct rows
+wrong.BarTBar <- monitor.correct |> 
+  filter(Site == "BarTBar",
+         Plot == "33",
+         Treatment == "Mulch")
+wrong.BarTBar
+monitor.correct |> 
+  filter(Site == "BarTBar",
+         Plot == "33",
+         Treatment == "ConMod",
+         Date_Monitored == "2019-04-16")
+fix.BarTBar <- wrong.BarTBar |> 
+  mutate(Treatment = "ConMod",
+         MonitorID = 1005)
+
+
+# Spiderweb
+monitor.correct |> 
+  filter(Site == "Spiderweb",
+         Plot == "29") |> 
+  count(PlotMix)
+
+#   Create wrong and correct rows
+wrong.Spiderweb <- monitor.correct |> 
+  filter(Site == "Spiderweb",
+         Plot == "29",
+         PlotMix == "Med-Warm")
+wrong.Spiderweb
+monitor.correct |> 
+  filter(Site == "Spiderweb",
+         Plot == "29",
+         PlotMix == "Warm",
+         Date_Monitored == "2021-09-29")
+fix.Spiderweb <- wrong.Spiderweb |> 
+  mutate(PlotMix = "Warm",
+         MonitorID = 3234)
+fix.Spiderweb
+
+
+# UtahPJ
+#   Plot 29
+monitor.correct |> 
+  filter(Site == "UtahPJ",
+         Plot == "29") |> 
+  count(Treatment)
+
+#   Create wrong and correct rows
+wrong.UtahPJ1 <- monitor.correct |> 
+  filter(Site == "UtahPJ",
+         Plot == "29",
+         Treatment == "Pits")
+wrong.UtahPJ1
+monitor.correct |> 
+  filter(Site == "UtahPJ",
+         Plot == "29",
+         Treatment == "Mulch",
+         Date_Monitored %in% wrong.UtahPJ1$Date_Monitored)
+fix.UtahPJ1 <- wrong.UtahPJ1 |> 
+  mutate(Treatment = "Mulch",
+         MonitorID = c(3951, 4025, 4244))
+fix.UtahPJ1
+
+#   Plot 34
+monitor.correct |> 
+  filter(Site == "UtahPJ",
+         Plot == "34") |> 
+  count(Treatment) # Probably supposed to be Control?
+
+monitor.correct |> 
+  filter(Site == "UtahPJ",
+         Plot == "34") |> 
+  count(PlotMix) # probably should be None
+
+monitor.correct |> 
+  filter(Site == "UtahPJ") |> 
+  count(Treatment)
+monitor.correct |> 
+  filter(Site == "Salt_Desert") |> 
+  count(Treatment) # compare with correct version
+#   There should be 36 control in total; Plot 34 should be Control (and PlotMix should be None)
+
+#   Create wrong and correct rows
+wrong.UtahPJ2 <- monitor.correct |> 
+  filter(Site == "UtahPJ",
+         Plot == "34",
+         Treatment == "ConMod")
+wrong.UtahPJ2
+monitor.correct |> 
+  filter(Site == "UtahPJ",
+         Plot == "34",
+         Treatment == "Control",
+         Date_Monitored %in% wrong.UtahPJ2$Date_Monitored)
+fix.UtahPJ2 <- wrong.UtahPJ2 |> 
+  mutate(Treatment = "Control",
+         PlotMix = "None",
+         MonitorID = c(3957, 4031, 4140, 4250))
+fix.UtahPJ2
+
+
+# Standardize PlotMix and Treatment spelling ------------------------------
+
+# Treatment
+unique(monitor.correct$Treatment)
+
+wrong.conmod <- monitor.correct |> 
+  filter(Treatment == "Con/Mod")
+
+fix.conmod <- wrong.conmod |> 
+  mutate(Treatment = "ComMod")
+
+
+# PlotMix
+unique(monitor.correct$PlotMix)
+#   no fix needed
+
+
+
+# Make subplot tables -----------------------------------------------------
+
+# Compile
+wrong.sub <- bind_rows(wrong.BarTBar, wrong.Spiderweb, wrong.UtahPJ1, wrong.UtahPJ2, wrong.conmod)
+fix.sub <- bind_rows(fix.BarTBar, fix.Spiderweb, fix.UtahPJ1, fix.UtahPJ2, fix.conmod)
+
+nrow(wrong.sub) == nrow(fix.sub)
+
+
+# Write csv of wrong subplot monitor data for later subplot data wrangling
+write_csv(wrong.sub,
+          file = "data/raw/02_subplot-wrong-monitor-events.csv")
+
+
+# Write csv of corrected subplot monitor data
+write_csv(fix.sub,
+          file = "data/raw/02_subplot-wrong-monitor-events-corrected.csv")
+
+
+
+# Make 2x2 tables ---------------------------------------------------------
 
 # 2x2 plot data
 wrong.2x2 <- bind_rows(wrong.2x2.FlyingM,
@@ -604,7 +1043,26 @@ write_csv(wrong.2x2,
 write_csv(fix.2x2,
           file = "data/raw/02_2x2-wrong-monitor-events-corrected.csv")
 
-  
+
+
+# All correct monitoring info ---------------------------------------------
+
+# Remove MonitorIDs with wrong plot information
+monitor.correct <- monitor.correct |> 
+  filter(!MonitorID %in% wrong.sub$MonitorID) |> 
+  bind_rows(fix.conmod) |>  # add back corrected ConMod rows; Plot conflicts were duplicates, 
+#                                 but ConMod rows should be replaced
+  arrange(MonitorID)
+
+
+# Check for whole number
+(nrow(monitor.correct) - (8 * 4))/ 36
+#   subtract out 8 extra plots at Mojave sites * 4 sampling events at Mojave sites
+
+# Write to csv
+write_csv(monitor.correct,
+          file = "data/cleaned/corrected-monitoring-info_clean.csv")
+
   
 
 save.image("RData/02_correct-monitoring-info.RData")

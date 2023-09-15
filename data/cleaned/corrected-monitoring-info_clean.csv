@@ -1004,7 +1004,6 @@ Colorado Plateau,BarTBar,2018-07-25,2019-04-16,30,Pits,Cool-Med,1002
 Colorado Plateau,BarTBar,2018-07-25,2019-04-16,31,Seed,Cool-Med,1003
 Colorado Plateau,BarTBar,2018-07-25,2019-04-16,32,Mulch,Med-Warm,1004
 Colorado Plateau,BarTBar,2018-07-25,2019-04-16,33,ConMod,Med-Warm,1005
-Colorado Plateau,BarTBar,2018-07-25,2019-04-16,33,Mulch,Med-Warm,1006
 Colorado Plateau,BarTBar,2018-07-25,2019-04-16,34,Seed,Med-Warm,1007
 Colorado Plateau,BarTBar,2018-07-25,2019-04-16,35,Control,None,1008
 Colorado Plateau,BarTBar,2018-07-25,2019-04-16,36,Pits,Med-Warm,1009
@@ -3233,7 +3232,6 @@ Colorado Plateau,Spiderweb,2020-07-21,2021-09-29,26,Mulch,Warm,3231
 Colorado Plateau,Spiderweb,2020-07-21,2021-09-29,27,Seed,Warm,3232
 Colorado Plateau,Spiderweb,2020-07-21,2021-09-29,28,Mulch,Med-Warm,3233
 Colorado Plateau,Spiderweb,2020-07-21,2021-09-29,29,Mulch,Warm,3234
-Colorado Plateau,Spiderweb,2020-07-21,2021-09-29,29,Mulch,Med-Warm,3235
 Colorado Plateau,Spiderweb,2020-07-21,2021-09-29,30,Seed,Med-Warm,3236
 Colorado Plateau,Spiderweb,2020-07-21,2021-09-29,31,Control,None,3237
 Colorado Plateau,Spiderweb,2020-07-21,2021-09-29,32,Seed,Warm,3238
@@ -3950,13 +3948,11 @@ Utah,UtahPJ,2018-10-29,2019-04-26,26,Pits,Cool,3948
 Utah,UtahPJ,2018-10-29,2019-04-26,27,ConMod,Cool,3949
 Utah,UtahPJ,2018-10-29,2019-04-26,28,Pits,Cool-Med,3950
 Utah,UtahPJ,2018-10-29,2019-04-26,29,Mulch,Cool-Med,3951
-Utah,UtahPJ,2018-10-29,2019-04-26,29,Pits,Cool-Med,3952
 Utah,UtahPJ,2018-10-29,2019-04-26,30,Seed,Cool-Med,3953
 Utah,UtahPJ,2018-10-29,2019-04-26,31,ConMod,Cool-Med,3954
 Utah,UtahPJ,2018-10-29,2019-04-26,32,Pits,Cool,3955
 Utah,UtahPJ,2018-10-29,2019-04-26,33,ConMod,Cool,3956
 Utah,UtahPJ,2018-10-29,2019-04-26,34,Control,None,3957
-Utah,UtahPJ,2018-10-29,2019-04-26,34,ConMod,Cool,3958
 Utah,UtahPJ,2018-10-29,2019-04-26,35,Seed,Cool,3959
 Utah,UtahPJ,2018-10-29,2019-04-26,36,Mulch,Cool,3960
 Utah,Salt_Desert,2018-10-31,2019-05-09,1,Mulch,Cool-Med,3961
@@ -4024,13 +4020,11 @@ Utah,UtahPJ,2018-10-29,2019-05-16,26,Pits,Cool,4022
 Utah,UtahPJ,2018-10-29,2019-05-16,27,ConMod,Cool,4023
 Utah,UtahPJ,2018-10-29,2019-05-16,28,Pits,Cool-Med,4024
 Utah,UtahPJ,2018-10-29,2019-05-16,29,Mulch,Cool-Med,4025
-Utah,UtahPJ,2018-10-29,2019-05-16,29,Pits,Cool-Med,4026
 Utah,UtahPJ,2018-10-29,2019-05-16,30,Seed,Cool-Med,4027
 Utah,UtahPJ,2018-10-29,2019-05-16,31,ConMod,Cool-Med,4028
 Utah,UtahPJ,2018-10-29,2019-05-16,32,Pits,Cool,4029
 Utah,UtahPJ,2018-10-29,2019-05-16,33,ConMod,Cool,4030
 Utah,UtahPJ,2018-10-29,2019-05-16,34,Control,None,4031
-Utah,UtahPJ,2018-10-29,2019-05-16,34,ConMod,Cool,4032
 Utah,UtahPJ,2018-10-29,2019-05-16,35,Seed,Cool,4033
 Utah,UtahPJ,2018-10-29,2019-05-16,36,Mulch,Cool,4034
 Utah,CRC,2018-10-17,2019-05-17,1,Seed,Med-Warm,4035
@@ -4139,7 +4133,6 @@ Utah,UtahPJ,2018-10-29,2019-05-29,31,ConMod,Cool-Med,4137
 Utah,UtahPJ,2018-10-29,2019-05-29,32,Pits,Cool,4138
 Utah,UtahPJ,2018-10-29,2019-05-29,33,ConMod,Cool,4139
 Utah,UtahPJ,2018-10-29,2019-05-29,34,Control,None,4140
-Utah,UtahPJ,2018-10-29,2019-05-29,34,ConMod,Cool,4141
 Utah,UtahPJ,2018-10-29,2019-05-29,35,Seed,Cool,4142
 Utah,UtahPJ,2018-10-29,2019-05-29,36,Mulch,Cool,4143
 Utah,CRC,2018-10-17,2019-06-13,1,Seed,Med-Warm,4144
@@ -4243,22 +4236,20 @@ Utah,UtahPJ,2018-10-29,2019-07-02,26,Pits,Cool,4241
 Utah,UtahPJ,2018-10-29,2019-07-02,27,ConMod,Cool,4242
 Utah,UtahPJ,2018-10-29,2019-07-02,28,Pits,Cool-Med,4243
 Utah,UtahPJ,2018-10-29,2019-07-02,29,Mulch,Cool-Med,4244
-Utah,UtahPJ,2018-10-29,2019-07-02,29,Pits,Cool-Med,4245
 Utah,UtahPJ,2018-10-29,2019-07-02,30,Seed,Cool-Med,4246
 Utah,UtahPJ,2018-10-29,2019-07-02,31,ConMod,Cool-Med,4247
 Utah,UtahPJ,2018-10-29,2019-07-02,32,Pits,Cool,4248
 Utah,UtahPJ,2018-10-29,2019-07-02,33,ConMod,Cool,4249
 Utah,UtahPJ,2018-10-29,2019-07-02,34,Control,None,4250
-Utah,UtahPJ,2018-10-29,2019-07-02,34,ConMod,Cool,4251
 Utah,UtahPJ,2018-10-29,2019-07-02,35,Seed,Cool,4252
 Utah,UtahPJ,2018-10-29,2019-07-02,36,Mulch,Cool,4253
 Utah,CRC,2018-10-17,2019-07-24,1,Seed,Med-Warm,4254
 Utah,CRC,2018-10-17,2019-07-24,2,Pits,Med-Warm,4255
 Utah,CRC,2018-10-17,2019-07-24,3,Mulch,Med-Warm,4256
-Utah,CRC,2018-10-17,2019-07-24,4,Con/Mod,Med-Warm,4257
+Utah,CRC,2018-10-17,2019-07-24,4,ComMod,Med-Warm,4257
 Utah,CRC,2018-10-17,2019-07-24,5,Control,None,4258
 Utah,CRC,2018-10-17,2019-07-24,6,Mulch,Cool-Med,4259
-Utah,CRC,2018-10-17,2019-07-24,7,Con/Mod,Cool-Med,4260
+Utah,CRC,2018-10-17,2019-07-24,7,ComMod,Cool-Med,4260
 Utah,CRC,2018-10-17,2019-07-24,8,Mulch,Med-Warm,4261
 Utah,CRC,2018-10-17,2019-07-24,9,Pits,Cool-Med,4262
 Utah,CRC,2018-10-17,2019-07-24,10,Seed,Cool-Med,4263
@@ -4266,59 +4257,59 @@ Utah,CRC,2018-10-17,2019-07-24,11,Pits,Med-Warm,4264
 Utah,CRC,2018-10-17,2019-07-24,12,Mulch,Cool-Med,4265
 Utah,CRC,2018-10-17,2019-07-24,13,Seed,Med-Warm,4266
 Utah,CRC,2018-10-17,2019-07-24,14,Pits,Cool-Med,4267
-Utah,CRC,2018-10-17,2019-07-24,15,Con/Mod,Med-Warm,4268
+Utah,CRC,2018-10-17,2019-07-24,15,ComMod,Med-Warm,4268
 Utah,CRC,2018-10-17,2019-07-24,16,Seed,Cool-Med,4269
 Utah,CRC,2018-10-17,2019-07-24,17,Mulch,Med-Warm,4270
 Utah,CRC,2018-10-17,2019-07-24,18,Control,None,4271
 Utah,CRC,2018-10-17,2019-07-24,19,Pits,Med-Warm,4272
-Utah,CRC,2018-10-17,2019-07-24,20,Con/Mod,Cool-Med,4273
+Utah,CRC,2018-10-17,2019-07-24,20,ComMod,Cool-Med,4273
 Utah,CRC,2018-10-17,2019-07-24,21,Mulch,Cool-Med,4274
-Utah,CRC,2018-10-17,2019-07-24,22,Con/Mod,Med-Warm,4275
+Utah,CRC,2018-10-17,2019-07-24,22,ComMod,Med-Warm,4275
 Utah,CRC,2018-10-17,2019-07-24,23,Control,None,4276
 Utah,CRC,2018-10-17,2019-07-24,24,Seed,Med-Warm,4277
 Utah,CRC,2018-10-17,2019-07-24,25,Pits,Cool-Med,4278
 Utah,CRC,2018-10-17,2019-07-24,26,ConMod,Cool-Med,4279
 Utah,CRC,2018-10-17,2019-07-24,27,Mulch,Med-Warm,4280
 Utah,CRC,2018-10-17,2019-07-24,28,Seed,Cool-Med,4281
-Utah,CRC,2018-10-17,2019-07-24,29,Con/Mod,Med-Warm,4282
+Utah,CRC,2018-10-17,2019-07-24,29,ComMod,Med-Warm,4282
 Utah,CRC,2018-10-17,2019-07-24,30,Seed,Med-Warm,4283
 Utah,CRC,2018-10-17,2019-07-24,31,Mulch,Cool-Med,4284
 Utah,CRC,2018-10-17,2019-07-24,32,Pits,Med-Warm,4285
 Utah,CRC,2018-10-17,2019-07-24,33,Control,None,4286
 Utah,CRC,2018-10-17,2019-07-24,34,Seed,Cool-Med,4287
-Utah,CRC,2018-10-17,2019-07-24,35,Con/Mod,Cool-Med,4288
+Utah,CRC,2018-10-17,2019-07-24,35,ComMod,Cool-Med,4288
 Utah,CRC,2018-10-17,2019-07-24,36,Pits,Cool-Med,4289
 Utah,UtahPJ,2018-10-29,2019-08-06,1,Pits,Cool-Med,4290
 Utah,UtahPJ,2018-10-29,2019-08-06,2,Control,None,4291
-Utah,UtahPJ,2018-10-29,2019-08-06,3,Con/Mod,Cool-Med,4292
+Utah,UtahPJ,2018-10-29,2019-08-06,3,ComMod,Cool-Med,4292
 Utah,UtahPJ,2018-10-29,2019-08-06,4,Seed,Cool-Med,4293
 Utah,UtahPJ,2018-10-29,2019-08-06,5,Mulch,Cool-Med,4294
 Utah,UtahPJ,2018-10-29,2019-08-06,6,Pits,Cool,4295
 Utah,UtahPJ,2018-10-29,2019-08-06,7,Mulch,Cool,4296
-Utah,UtahPJ,2018-10-29,2019-08-06,8,Con/Mod,Cool,4297
+Utah,UtahPJ,2018-10-29,2019-08-06,8,ComMod,Cool,4297
 Utah,UtahPJ,2018-10-29,2019-08-06,9,Seed,Cool,4298
 Utah,UtahPJ,2018-10-29,2019-08-06,10,Pits,Cool-Med,4299
 Utah,UtahPJ,2018-10-29,2019-08-06,11,Control,None,4300
 Utah,UtahPJ,2018-10-29,2019-08-06,12,Mulch,Cool-Med,4301
 Utah,UtahPJ,2018-10-29,2019-08-06,13,Seed,Cool-Med,4302
-Utah,UtahPJ,2018-10-29,2019-08-06,14,Con/Mod,Cool-Med,4303
+Utah,UtahPJ,2018-10-29,2019-08-06,14,ComMod,Cool-Med,4303
 Utah,UtahPJ,2018-10-29,2019-08-06,15,Pits,Cool,4304
 Utah,UtahPJ,2018-10-29,2019-08-06,16,Mulch,Cool,4305
 Utah,UtahPJ,2018-10-29,2019-08-06,17,Seed,Cool,4306
-Utah,UtahPJ,2018-10-29,2019-08-06,18,Con/Mod,Cool,4307
+Utah,UtahPJ,2018-10-29,2019-08-06,18,ComMod,Cool,4307
 Utah,UtahPJ,2018-10-29,2019-08-06,19,Control,None,4308
 Utah,UtahPJ,2018-10-29,2019-08-06,20,Mulch,Cool-Med,4309
 Utah,UtahPJ,2018-10-29,2019-08-06,21,Seed,Cool-Med,4310
-Utah,UtahPJ,2018-10-29,2019-08-06,22,Con/Mod,Cool-Med,4311
+Utah,UtahPJ,2018-10-29,2019-08-06,22,ComMod,Cool-Med,4311
 Utah,UtahPJ,2018-10-29,2019-08-06,23,Pits,Cool-Med,4312
 Utah,UtahPJ,2018-10-29,2019-08-06,24,Mulch,Cool,4313
 Utah,UtahPJ,2018-10-29,2019-08-06,25,Seed,Cool,4314
 Utah,UtahPJ,2018-10-29,2019-08-06,26,Pits,Cool,4315
-Utah,UtahPJ,2018-10-29,2019-08-06,27,Con/Mod,Cool,4316
+Utah,UtahPJ,2018-10-29,2019-08-06,27,ComMod,Cool,4316
 Utah,UtahPJ,2018-10-29,2019-08-06,28,Pits,Cool-Med,4317
 Utah,UtahPJ,2018-10-29,2019-08-06,29,Mulch,Cool-Med,4318
 Utah,UtahPJ,2018-10-29,2019-08-06,30,Seed,Cool-Med,4319
-Utah,UtahPJ,2018-10-29,2019-08-06,31,Con/Mod,Cool-Med,4320
+Utah,UtahPJ,2018-10-29,2019-08-06,31,ComMod,Cool-Med,4320
 Utah,UtahPJ,2018-10-29,2019-08-06,32,Pits,Cool,4321
 Utah,UtahPJ,2018-10-29,2019-08-06,33,ConMod,Cool,4322
 Utah,UtahPJ,2018-10-29,2019-08-06,34,Control,None,4323
@@ -4327,31 +4318,31 @@ Utah,UtahPJ,2018-10-29,2019-08-06,36,Mulch,Cool,4325
 Utah,Salt_Desert,2018-10-31,2019-08-07,1,Mulch,Cool-Med,4326
 Utah,Salt_Desert,2018-10-31,2019-08-07,2,Seed,Cool-Med,4327
 Utah,Salt_Desert,2018-10-31,2019-08-07,3,Control,None,4328
-Utah,Salt_Desert,2018-10-31,2019-08-07,4,Con/Mod,Cool-Med,4329
+Utah,Salt_Desert,2018-10-31,2019-08-07,4,ComMod,Cool-Med,4329
 Utah,Salt_Desert,2018-10-31,2019-08-07,5,Pits,Cool-Med,4330
-Utah,Salt_Desert,2018-10-31,2019-08-07,6,Con/Mod,Med-Warm,4331
+Utah,Salt_Desert,2018-10-31,2019-08-07,6,ComMod,Med-Warm,4331
 Utah,Salt_Desert,2018-10-31,2019-08-07,7,Mulch,Med-Warm,4332
 Utah,Salt_Desert,2018-10-31,2019-08-07,8,Seed,Med-Warm,4333
 Utah,Salt_Desert,2018-10-31,2019-08-07,9,Seed,Cool-Med,4334
 Utah,Salt_Desert,2018-10-31,2019-08-07,10,Pits,Med-Warm,4335
-Utah,Salt_Desert,2018-10-31,2019-08-07,11,Con/Mod,Cool-Med,4336
+Utah,Salt_Desert,2018-10-31,2019-08-07,11,ComMod,Cool-Med,4336
 Utah,Salt_Desert,2018-10-31,2019-08-07,12,Pits,Cool-Med,4337
 Utah,Salt_Desert,2018-10-31,2019-08-07,13,Mulch,Cool-Med,4338
 Utah,Salt_Desert,2018-10-31,2019-08-07,14,Control,None,4339
 Utah,Salt_Desert,2018-10-31,2019-08-07,15,Seed,Med-Warm,4340
-Utah,Salt_Desert,2018-10-31,2019-08-07,16,Con/Mod,Med-Warm,4341
-Utah,Salt_Desert,2018-10-31,2019-08-07,17,Con/Mod,Cool-Med,4342
+Utah,Salt_Desert,2018-10-31,2019-08-07,16,ComMod,Med-Warm,4341
+Utah,Salt_Desert,2018-10-31,2019-08-07,17,ComMod,Cool-Med,4342
 Utah,Salt_Desert,2018-10-31,2019-08-07,18,Pits,Med-Warm,4343
 Utah,Salt_Desert,2018-10-31,2019-08-07,19,Seed,Cool-Med,4344
 Utah,Salt_Desert,2018-10-31,2019-08-07,20,Mulch,Med-Warm,4345
 Utah,Salt_Desert,2018-10-31,2019-08-07,21,Control,None,4346
 Utah,Salt_Desert,2018-10-31,2019-08-07,22,Seed,Med-Warm,4347
-Utah,Salt_Desert,2018-10-31,2019-08-07,23,Con/Mod,Med-Warm,4348
+Utah,Salt_Desert,2018-10-31,2019-08-07,23,ComMod,Med-Warm,4348
 Utah,Salt_Desert,2018-10-31,2019-08-07,24,Pits,Cool-Med,4349
 Utah,Salt_Desert,2018-10-31,2019-08-07,25,Mulch,Cool-Med,4350
 Utah,Salt_Desert,2018-10-31,2019-08-07,26,Pits,Med-Warm,4351
 Utah,Salt_Desert,2018-10-31,2019-08-07,27,Mulch,Med-Warm,4352
-Utah,Salt_Desert,2018-10-31,2019-08-07,28,Con/Mod,Cool-Med,4353
+Utah,Salt_Desert,2018-10-31,2019-08-07,28,ComMod,Cool-Med,4353
 Utah,Salt_Desert,2018-10-31,2019-08-07,29,Seed,Cool-Med,4354
 Utah,Salt_Desert,2018-10-31,2019-08-07,30,Pits,Cool-Med,4355
 Utah,Salt_Desert,2018-10-31,2019-08-07,31,Control,None,4356
@@ -4359,7 +4350,7 @@ Utah,Salt_Desert,2018-10-31,2019-08-07,32,Mulch,Cool-Med,4357
 Utah,Salt_Desert,2018-10-31,2019-08-07,33,Pits,Med-Warm,4358
 Utah,Salt_Desert,2018-10-31,2019-08-07,34,Mulch,Med-Warm,4359
 Utah,Salt_Desert,2018-10-31,2019-08-07,35,Seed,Med-Warm,4360
-Utah,Salt_Desert,2018-10-31,2019-08-07,36,Con/Mod,Med-Warm,4361
+Utah,Salt_Desert,2018-10-31,2019-08-07,36,ComMod,Med-Warm,4361
 Utah,CRC,2018-10-17,2021-06-28,1,Seed,Med-Warm,4362
 Utah,CRC,2018-10-17,2021-06-28,2,Pits,Med-Warm,4363
 Utah,CRC,2018-10-17,2021-06-28,3,Mulch,Med-Warm,4364

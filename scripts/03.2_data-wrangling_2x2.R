@@ -296,4 +296,47 @@ present_species <- bind_rows(present_species, subplot.species) |>
   
 
 
+# Create table of species richness ----------------------------------------
+
+#   This is the number of species present at each plot during each monitoring event, 
+#     without taking the species themselves or their abundance into account.
+
+# Some Utah plots did not have additional species in plot recorded; note this
+
+no.add.recorded <- monitor.info |>
+  mutate(Date_Monitored = as.character(Date_Monitored)) |> 
+  filter(Date_Monitored %in% c("2018-11-02", "2018-11-16", "2018-11-27",
+                               "2018-11-28", "2018-12-11", "2018-12-12",
+                               "2019-03-22", "2019-03-29", "2019-04-05",
+                               "2019-04-19", "2019-04-25", "2019-04-26",
+                               "2019-05-09", "2019-05-16", "2019-05-17",
+                               "2019-05-28", "2019-05-29", "2019-06-13",
+                               "2019-07-01", "2019-07-02", "2019-07-24",
+                               "2019-08-06", "2019-08-07")) |> 
+  filter(Region == "Utah")
+count(no.add.recorded, Plot) |> 
+  print(n = 40) # Plot 34, Plot 39 have extra
+
+no.add.recorded |> 
+  count(Date_Monitored) |> 
+  print(n = 23)
+
+x <- no.add.recorded |> 
+  filter(Date_Monitored == "2019-05-29")
+
+count(monitor.info, Plot) |> 
+  print(n = 100)
+  
+present_species <- present_species |> 
+  mutate(Additional_species_recorded = case_when(
+    Date_Monitored == no.add.recorded ~ "No additional recorded",
+    TRUE ~ "Additional recorded"))
+
+count(present_species, Additional_species_recorded)
+
+richness <- present_species |> 
+  group_by(Region, Site, Date_Monitored, Plot, Treatment, PlotMix, MonitorID)
+
+
+
 save.image("RData/02.2_data-wrangling_2x2.RData")
