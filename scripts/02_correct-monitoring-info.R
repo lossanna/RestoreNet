@@ -1,5 +1,5 @@
 # Created: 2022-12-09
-# Last updated: 2023-09-14
+# Last updated: 2023-09-18
 
 # Purpose: In comparing the monitoring information from the subplot vs. 2x2 plot data, 
 #   there were discrepancies, but there should be only one correct version. 
@@ -1065,12 +1065,12 @@ nrow(wrong.sub) == nrow(fix.sub)
 
 # Write csv of wrong subplot monitor data for later subplot data wrangling
 write_csv(wrong.sub,
-          file = "data/raw/02_subplot-wrong-monitor-events.csv")
+          file = "data/data-wrangling-intermediate/02_subplot-wrong-monitor-events.csv")
 
 
 # Write csv of corrected subplot monitor data
 write_csv(fix.sub,
-          file = "data/raw/02_subplot-wrong-monitor-events-corrected.csv")
+          file = "data/data-wrangling-intermediate/02_subplot-wrong-monitor-events-corrected.csv")
 
 
 
@@ -1104,12 +1104,12 @@ nrow(wrong.2x2) == nrow(fix.2x2)
 
 # Write csv of wrong 2x2 monitor data for later 2x2 data wrangling
 write_csv(wrong.2x2,
-          file = "data/raw/02_2x2-wrong-monitor-events.csv")
+          file = "data/data-wrangling-intermediate/02_2x2-wrong-monitor-events.csv")
 
 
 # Write csv of corrected 2x2 monitor data
 write_csv(fix.2x2,
-          file = "data/raw/02_2x2-wrong-monitor-events-corrected.csv")
+          file = "data/data-wrangling-intermediate/02_2x2-wrong-monitor-events-corrected.csv")
 
 
 

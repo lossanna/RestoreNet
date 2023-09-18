@@ -1,5 +1,5 @@
 # Created: 2022-12-07
-# Last updated: 2023-09-14
+# Last updated: 2023-09-18
 
 # Purpose: Create 2 clean data tables for 2x2 plot data: one with cover data and one with
 #   the list of species present for each monitoring event.
@@ -16,9 +16,9 @@ p2x2.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "All
 species.in <- read_csv("data/cleaned/p2x2_species-list_location-independent_clean.csv")
 species.de <- read_csv("data/cleaned/p2x2_species-list_location-dependent_clean.csv")
 mix <- read_xlsx("data/raw/from-Master_seed-mix_LO.xlsx", sheet = "with-site_R")
-monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
-monitor.wrong <- read_csv("data/raw/02_2x2-wrong-monitor-events.csv")
-monitor.fixed <- read_csv("data/raw/02_2x2-wrong-monitor-events-corrected.csv")
+monitor.info <- read_csv("data/cleanedS/corrected-monitoring-info_clean.csv")
+monitor.wrong <- read_csv("data/data-wrangling-intermediate/02_2x2-wrong-monitor-events.csv")
+monitor.fixed <- read_csv("data/data-wrangling-intermediate/02_2x2-wrong-monitor-events-corrected.csv")
 subplot <- read_csv("data/cleaned/subplot-data_clean.csv")
 
 
@@ -254,10 +254,10 @@ ps.ss.mix <- ps.ss.na |>
 
 # OUTPUT: list of species that need SpeciesSeeded assignment
 write_csv(ps.ss.mix,
-          file = "data/raw/03.2a_output-species-seeded1_in-mix-need-assignment.csv")
+          file = "data/data-wrangling-intermediate/03.2a_output-species-seeded1_in-mix-need-assignment.csv")
 
 # EDITED: manually check if the species was seeded based on site-specific plot mix
-ps.ss.mix <- read_xlsx("data/raw/03.2b_edited-species-seeded1_SpeciesSeeded-in-mix-assigned.xlsx")
+ps.ss.mix <- read_xlsx("data/data-wrangling-intermediate/03.2b_edited-species-seeded1_SpeciesSeeded-in-mix-assigned.xlsx")
 
 # Combine
 ps.ss.assigned <- bind_rows(ps.ss.not.in.mix, ps.ss.mix)

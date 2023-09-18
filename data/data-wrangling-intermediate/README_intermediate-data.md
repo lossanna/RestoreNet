@@ -1,7 +1,7 @@
-Created: 2022-11-28  
-Last updated: 2023-09-14
+Created: 2023-09-18  
+Last updated: 2023-09-18
   
-Notes about raw data for RAMPS RestoreNet project.
+Notes about `output` and `edited` intermediate data files created in data cleaning for RAMPS RestoreNet project.
 
 Types of data:
 - Species lists: include columns `Code`, `Name`, and information like `Native` (native/introduced), `Duration` (annual/perennial), and `Lifeform` (grass/forb/shrub). 
@@ -178,33 +178,3 @@ File naming notes:
 
 `03.2b_edited-species-seeded1_SpeciesSeeded-in-mix-assigned.xlsx`
 - Manually edited to assign `SpeciesSeeded` based on site-specific seed mixes.
-
-
-## From Farrell papers	
-`Farrell_2020_EcologicalApplications_table1.xlsx`
-- Adapted from Table 1 of H. Farrell's manuscript (in review), with coordinates taken from the `Site_Information` tab of `Master.xlsx`
-
-## Master data
-`from-Master_seed-mix_LO.xlsx`
-- Two tabs: `from-Master.xlsx` and `with-site`.
-- `from-Master.xlsx` is directly from the `Seed Mixes` tab of `Master.xlsx`, but codes have been alphabetized within each region. It was read into `01_curate-species-list.R` script to compare codes (`CodeOriginal`) with those from `from-Master_species-list-with-native-status_LO.xlsx` and `subplot` data.
-- `with-site` tab has been edited to correct seed mixes for each specific site, as confirmed by Farrell 2023, Havrilla 2020, monitoring event data, and what was originally listed in `Master.xlsx`. This lis is used during manual check and corrections of the `SpeciesSeeded` column for the `subplot` data.
-
-`from-Master_species-list-with-native-status_LO.xlsx`
-- Adapted from the `Species_Definitions` tab of `Master.xlsx`.
-- Manually added the `Native` column based on USDA Plants database, and did small corrections to spelling of scientific names.
-- I did not change any species codes, as they relate directly to the `Master` data (the original `subplot` and `2x2` data).
-- Used to be read into `01.R`.
-
-`Master Germination Data 2022.xlsx`
-- Received from Hannah Farrell via email. I believe this is what she used to write her paper, which is currently in review.
-- File will not be modified in any way.  
-
-
-## Other
-`edited-monitor_conflicting-monitoring-info-resolved.xlsx`
-- Originally from `02.R` script, but then I redid the script on 2023-09-09 so I don't need to do manual edits anymore. I wrote justifications here, though, so I thought I would save the file. All the changes should be the same.
-- Spreadsheet of monitoring events with conflicting information between the `subplot` and `2x2` data. Monitoring information refers to the columns `Site`, `Date_Seeded`, `Date_Monitored`, `Plot`, `Treatment`, and `PlotMix`. Each monitoring event (for each plot) is given an ID number (`MonitorID`), unrelated to the data actually collected from the subplot or 2x2 m plot.
-- Converted to an Excel file to manually edit so I could highlight changes and add comments.
-- `comparison` tab manually edited to highlight correct values in green, and wrong values in yellow. Comments inserted to give brief explanation of how this decision was made. Justifications also written in comments in `02_correct-monitoring-info.R` script. There is no code to create this output anymore, because I changed the script to better explain changes in the script, so as not to rely on an Excel sheet.
-- `corrected` tab manually created to have table of only correct information to read back in. 	
