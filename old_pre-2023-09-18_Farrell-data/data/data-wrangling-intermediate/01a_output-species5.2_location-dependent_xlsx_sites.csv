@@ -1,0 +1,165 @@
+CodeOriginal,Region,Site
+ACASPP,Sonoran SE,SRER
+AMASPP,Colorado Plateau,BarTBar
+AMBSPP,Colorado Plateau,BabbittPJ
+ANOSPP,Sonoran SE,SRER
+ARISPP,Sonoran SE,SRER
+ARISPP,Sonoran SE,Patagonia
+ARSPP,Colorado Plateau,BarTBar
+ASTSPP,Sonoran SE,SRER
+ATSP,Colorado Plateau,PEFO
+BOSPP,Colorado Plateau,AguaFria
+BOSPP,Colorado Plateau,BarTBar
+BOSPP,Colorado Plateau,FlyingM
+BOSPP,Colorado Plateau,PEFO
+BOSPP,Colorado Plateau,Spiderweb
+BOUSPP,Sonoran SE,SRER
+BRASPP,Sonoran SE,SRER
+CALSPP,Sonoran SE,Patagonia
+CHAMA,Chihuahuan,Creosote
+CHAMA,Chihuahuan,Mesquite
+CHASPP,Mojave,29_Palms
+CHEN,Colorado Plateau,BabbittPJ
+CHEN,Colorado Plateau,TLE
+CHEN,Colorado Plateau,MOWE
+CHESPP,Sonoran SE,Patagonia
+CRYPT,Sonoran Central,Roosevelt
+CRYSPP,Mojave,29_Palms
+CRYSPP,Mojave,AVRCD
+CRYSPP,Sonoran SE,SRER
+DRABA,Utah,UtahPJ
+ELSPP,Colorado Plateau,AguaFria
+ELSPP,Colorado Plateau,BabbittPJ
+ELSPP,Colorado Plateau,FlyingM
+ERASPP,Sonoran SE,Patagonia
+ERISP,Colorado Plateau,BarTBar
+ERISP,Colorado Plateau,PEFO
+Eriogonum,Chihuahuan,Creosote
+GILSPP,Colorado Plateau,Spiderweb
+GILSPP,Mojave,29_Palms
+HESP,Colorado Plateau,BabbittPJ
+HESP,Colorado Plateau,FlyingM
+LEPSPP,Mojave,29_Palms
+LUPSPP,Sonoran SE,SRER
+LUSPP,Colorado Plateau,AguaFria
+MACSPP,Colorado Plateau,TLE
+MENSPP,Colorado Plateau,PEFO
+MENSPP,Mojave,29_Palms
+MENSPP,Sonoran SE,SRER
+MENSPP,Sonoran SE,Patagonia
+OESP,Colorado Plateau,BarTBar
+PANSPP,Sonoran SE,SRER
+PECSPP,Mojave,29_Palms
+PHSPP,Colorado Plateau,BabbittPJ
+PLASPP,Sonoran SE,SRER
+PORSPP,Colorado Plateau,BarTBar
+PORSPP,Colorado Plateau,FlyingM
+PORSPP,Colorado Plateau,PEFO
+PORSPP,Sonoran SE,Patagonia
+SIDSPP,Sonoran SE,SRER
+SOSP,Colorado Plateau,FlyingM
+SPSP,Colorado Plateau,AguaFria
+SPSP,Colorado Plateau,BarTBar
+SPSP,Colorado Plateau,FlyingM
+SPSP,Colorado Plateau,TLE
+SPSP,Utah,UtahPJ
+STISPP,Mojave,29_Palms
+UNDPF,Sonoran SE,SRER
+UNDSF,Sonoran SE,SRER
+UNFO1,Colorado Plateau,AguaFria
+UNFO1,Colorado Plateau,BabbittPJ
+UNFO1,Colorado Plateau,FlyingM
+UNFO1,Colorado Plateau,MOWE
+UNFO1,Colorado Plateau,PEFO
+UNFO1,Mojave,29_Palms
+UNFO1,Sonoran SE,SRER
+UNFO1,Sonoran SE,Patagonia
+UNFO1A,Sonoran SE,Patagonia
+UNFO2,Colorado Plateau,AguaFria
+UNFO2,Colorado Plateau,FlyingM
+UNFO2,Colorado Plateau,MOWE
+UNFO2,Colorado Plateau,Spiderweb
+UNFO2,Colorado Plateau,TLE
+UNFO2,Mojave,29_Palms
+UNFO2,Sonoran SE,Patagonia
+UNFO2,Utah,CRC
+UNFO2,Utah,UtahPJ
+UNFO3,Colorado Plateau,AguaFria
+UNFO3,Colorado Plateau,BarTBar
+UNFO3,Colorado Plateau,FlyingM
+UNFO3,Colorado Plateau,Spiderweb
+UNFO3,Sonoran SE,Patagonia
+UNFO3,Sonoran SE,SRER
+UNFO3,Utah,UtahPJ
+UNFO3,Utah,CRC
+UNFO4,Colorado Plateau,AguaFria
+UNFO4,Colorado Plateau,BarTBar
+UNFO4,Colorado Plateau,FlyingM
+UNFO4,Colorado Plateau,MOWE
+UNFO4,Sonoran SE,SRER
+UNFO4,Utah,Salt_Desert
+UNFO4,Utah,UtahPJ
+UNFO5,Colorado Plateau,AguaFria
+UNFO5,Colorado Plateau,FlyingM
+UNFO5,Colorado Plateau,MOWE
+UNFO5,Colorado Plateau,Spiderweb
+UNFO5,Sonoran SE,Patagonia
+UNFO5,Utah,UtahPJ
+UNFO6,Colorado Plateau,AguaFria
+UNFO6,Colorado Plateau,FlyingM
+UNFO6,Colorado Plateau,Spiderweb
+UNFO6,Sonoran SE,Patagonia
+UNFO6,Sonoran SE,SRER
+UNFO6,Utah,UtahPJ
+UNFO_P_1,Sonoran SE,Patagonia
+UNFO_P_2,Sonoran SE,Patagonia
+UNFO_P_3,Sonoran SE,Patagonia
+UNFO_P_4,Sonoran SE,Patagonia
+UNFO_P_5,Sonoran SE,Patagonia
+UNFO_P_6,Sonoran SE,Patagonia
+UNFO_P_7,Sonoran SE,Patagonia
+UNFO_S_1,Sonoran SE,SRER
+UNFO_S_3,Sonoran SE,SRER
+UNFO_S_4,Sonoran SE,SRER
+UNFO_S_5,Sonoran SE,SRER
+UNFO_S_7,Sonoran SE,SRER
+UNFS,Sonoran SE,Patagonia
+UNGR1,Colorado Plateau,AguaFria
+UNGR1,Colorado Plateau,BabbittPJ
+UNGR1,Colorado Plateau,FlyingM
+UNGR1,Colorado Plateau,MOWE
+UNGR1,Colorado Plateau,PEFO
+UNGR1,Sonoran SE,Patagonia
+UNGR1,Sonoran SE,SRER
+UNGR1,Utah,UtahPJ
+UNGR1,Utah,Salt_Desert
+UNGRS1,Sonoran SE,SRER
+UNGRS1,Sonoran SE,Patagonia
+UNGRS2,Sonoran SE,Patagonia
+UNGRS3,Sonoran SE,Patagonia
+UNGR_P_1,Sonoran SE,Patagonia
+UNGR_S_1,Sonoran SE,SRER
+UNGR_S_2,Sonoran SE,SRER
+UNK brown,Sonoran Central,SCC
+UNK heart,Sonoran Central,Preserve
+UNSFF,Sonoran SE,SRER
+UNSH,Colorado Plateau,BarTBar
+Unk bunchGrass #1,Sonoran Central,Pleasant
+Unk grass,Sonoran Central,SCC
+Unk heart,Sonoran Central,Preserve
+Unk sp.,Sonoran Central,Pleasant
+Unk sp.,Sonoran Central,SCC
+UnkATCA,Chihuahuan,Mesquite
+Unkcrypt,Chihuahuan,Creosote
+Unkfabaceae,Chihuahuan,Creosote
+Unkforb,Chihuahuan,Creosote
+Unkforb,Chihuahuan,Mesquite
+Unkforb1,Chihuahuan,Creosote
+Unkgrass,Chihuahuan,Creosote
+Unkgrass,Chihuahuan,Mesquite
+Unkgrass2,Chihuahuan,Creosote
+Unksalsola,Chihuahuan,Creosote
+Unksporo,Chihuahuan,Creosote
+Unksporo,Chihuahuan,Mesquite
+Unksporob,Chihuahuan,Mesquite
+unk grass 2,Sonoran Central,Roosevelt

@@ -1,0 +1,98 @@
+Region,Site,Date_Seeded,Date_Monitored,Plot,Treatment,PlotMix,MonitorID
+Mojave,AVRCD,2020-03-17,2020-04-30,14,Seed,Warm,3372
+Mojave,AVRCD,2021-03-17,2021-04-06,1,ConMod,Cool,3447
+Mojave,AVRCD,2021-03-17,2021-04-06,2,Mulch,Cool,3448
+Mojave,AVRCD,2021-03-17,2021-04-06,3,Mulch,Warm,3449
+Mojave,AVRCD,2021-03-17,2021-04-06,4,Pellets,Cool,3450
+Mojave,AVRCD,2021-03-17,2021-04-06,5,Pits,Cool,3451
+Mojave,AVRCD,2021-03-17,2021-04-06,6,Mulch,Cool,3452
+Mojave,AVRCD,2021-03-17,2021-04-06,7,Seed,Cool,3453
+Mojave,AVRCD,2021-03-17,2021-04-06,8,Pellets,Warm,3454
+Mojave,AVRCD,2021-03-17,2021-04-06,9,Pits,Warm,3455
+Mojave,AVRCD,2021-03-17,2021-04-06,10,Mulch,Warm,3456
+Mojave,AVRCD,2021-03-17,2021-04-06,11,Pits,Cool,3457
+Mojave,AVRCD,2021-03-17,2021-04-06,12,Seed,Warm,3458
+Mojave,AVRCD,2021-03-17,2021-04-06,13,Control,None,3459
+Mojave,AVRCD,2021-03-17,2021-04-06,14,Seed,Cool,3460
+Mojave,AVRCD,2021-03-17,2021-04-06,15,Pellets,Cool,3461
+Mojave,AVRCD,2021-03-17,2021-04-06,16,Pits,Warm,3462
+Mojave,AVRCD,2021-03-17,2021-04-06,17,Control,None,3463
+Mojave,AVRCD,2021-03-17,2021-04-06,18,Control,None,3464
+Mojave,AVRCD,2021-03-17,2021-04-06,19,Pellets,Warm,3465
+Mojave,AVRCD,2021-03-17,2021-04-06,20,ConMod,Warm,3466
+Mojave,AVRCD,2021-03-17,2021-04-06,21,Pellets,Cool,3467
+Mojave,AVRCD,2021-03-17,2021-04-06,22,ConMod,Cool,3468
+Mojave,AVRCD,2021-03-17,2021-04-06,23,Mulch,Cool,3469
+Mojave,AVRCD,2021-03-17,2021-04-06,24,Seed,Warm,3470
+Mojave,AVRCD,2021-03-17,2021-04-06,25,ConMod,Warm,3471
+Mojave,AVRCD,2021-03-17,2021-04-06,26,ConMod,Cool,3472
+Mojave,AVRCD,2021-03-17,2021-04-06,27,Seed,Cool,3473
+Mojave,AVRCD,2021-03-17,2021-04-06,28,Pits,Cool,3474
+Mojave,AVRCD,2021-03-17,2021-04-06,29,Seed,Warm,3475
+Mojave,AVRCD,2021-03-17,2021-04-06,30,ConMod,Warm,3476
+Mojave,AVRCD,2021-03-17,2021-04-06,31,Seed,Cool,3477
+Mojave,AVRCD,2021-03-17,2021-04-06,32,Control,None,3478
+Mojave,AVRCD,2021-03-17,2021-04-06,33,Pellets,Warm,3479
+Mojave,AVRCD,2021-03-17,2021-04-06,34,Pits,Warm,3480
+Mojave,AVRCD,2021-03-17,2021-04-06,35,Mulch,Warm,3481
+Mojave,AVRCD,2021-03-17,2021-04-06,36,ConMod,Cool,3482
+Mojave,AVRCD,2021-03-17,2021-04-06,37,Pellets,Cool,3483
+Mojave,AVRCD,2021-03-17,2021-04-06,38,Mulch,Cool,3484
+Mojave,AVRCD,2021-03-17,2021-04-06,39,Seed,Warm,3485
+Mojave,AVRCD,2021-03-17,2021-04-06,40,Pits,Cool,3486
+Mojave,AVRCD,2021-03-17,2021-04-06,41,ConMod,Warm,3487
+Mojave,AVRCD,2021-03-17,2021-04-06,42,Pellets,Warm,3488
+Mojave,AVRCD,2021-03-17,2021-04-06,43,Pits,Warm,3489
+Mojave,AVRCD,2021-03-17,2021-04-06,44,Mulch,Warm,3490
+Colorado Plateau,BarTBar,2018-07-25,2019-04-16,33,Mulch,Med-Warm,1006
+Utah,CRC,2018-10-17,2019-07-24,4,Con/Mod,Med-Warm,4257
+Utah,CRC,2018-10-17,2019-07-24,7,Con/Mod,Cool-Med,4260
+Utah,CRC,2018-10-17,2019-07-24,15,Con/Mod,Med-Warm,4268
+Utah,CRC,2018-10-17,2019-07-24,20,Con/Mod,Cool-Med,4273
+Utah,CRC,2018-10-17,2019-07-24,22,Con/Mod,Med-Warm,4275
+Utah,CRC,2018-10-17,2019-07-24,29,Con/Mod,Med-Warm,4282
+Utah,CRC,2018-10-17,2019-07-24,35,Con/Mod,Cool-Med,4288
+Utah,UtahPJ,2018-10-29,2019-08-06,3,Con/Mod,Cool-Med,4292
+Utah,UtahPJ,2018-10-29,2019-08-06,8,Con/Mod,Cool,4297
+Utah,UtahPJ,2018-10-29,2019-08-06,14,Con/Mod,Cool-Med,4303
+Utah,UtahPJ,2018-10-29,2019-08-06,18,Con/Mod,Cool,4307
+Utah,UtahPJ,2018-10-29,2019-08-06,22,Con/Mod,Cool-Med,4311
+Utah,UtahPJ,2018-10-29,2019-08-06,27,Con/Mod,Cool,4316
+Utah,UtahPJ,2018-10-29,2019-08-06,31,Con/Mod,Cool-Med,4320
+Utah,Salt_Desert,2018-10-31,2019-08-07,4,Con/Mod,Cool-Med,4329
+Utah,Salt_Desert,2018-10-31,2019-08-07,6,Con/Mod,Med-Warm,4331
+Utah,Salt_Desert,2018-10-31,2019-08-07,11,Con/Mod,Cool-Med,4336
+Utah,Salt_Desert,2018-10-31,2019-08-07,16,Con/Mod,Med-Warm,4341
+Utah,Salt_Desert,2018-10-31,2019-08-07,17,Con/Mod,Cool-Med,4342
+Utah,Salt_Desert,2018-10-31,2019-08-07,23,Con/Mod,Med-Warm,4348
+Utah,Salt_Desert,2018-10-31,2019-08-07,28,Con/Mod,Cool-Med,4353
+Utah,Salt_Desert,2018-10-31,2019-08-07,36,Con/Mod,Med-Warm,4361
+Chihuahuan,Mesquite,2020-08-05,2021-10-10,233,Control,Medium,5870
+Chihuahuan,Mesquite,2020-08-05,2021-10-10,234,Mulch,Warm,5871
+Chihuahuan,Mesquite,2020-08-05,2021-10-10,235,Seed,Medium,5872
+Sonoran SE,Patagonia,2019-08-09,2021-03-12,33,`ConMod,Medium,4754
+Sonoran Central,Preserve,2019-11-25,2021-10-06,2,Seed only,Cool,5371
+Sonoran Central,Preserve,2019-11-25,2021-10-06,6,Seed only,Warm,5375
+Sonoran Central,Preserve,2019-11-25,2021-10-06,10,Seed only,Cool,5379
+Sonoran Central,Preserve,2019-11-25,2021-10-06,15,Seed only,Cool,5384
+Sonoran Central,Preserve,2019-11-25,2021-10-06,21,Seed only,Warm,5390
+Sonoran Central,Preserve,2019-11-25,2021-10-06,23,Seed only,Cool,5392
+Sonoran Central,Preserve,2019-11-25,2021-10-06,32,Seed only,Warm,5401
+Sonoran Central,Roosevelt,2019-11-22,2021-10-08,7,Seed only,Warm,5304
+Sonoran Central,Roosevelt,2019-11-22,2021-10-08,11,Seed only,Cool,5308
+Sonoran Central,Roosevelt,2019-11-22,2021-10-08,20,Seed only,Cool,5317
+Sonoran Central,Roosevelt,2019-11-22,2021-10-08,36,Seed only,Warm,5333
+Utah,Salt_Desert,2018-10-31,2019-03-29,32,Pits,Med-Warm,3811
+Sonoran Central,SCC,2019-11-21,2021-10-13,4,Seed only,Cool,5337
+Sonoran Central,SCC,2019-11-21,2021-10-13,8,Seed only,Warm,5341
+Sonoran Central,SCC,2019-11-21,2021-10-13,13,Seed only,Cool,5346
+Sonoran Central,SCC,2019-11-21,2021-10-13,22,Seed only,Cool,5355
+Sonoran Central,SCC,2019-11-21,2021-10-13,32,Seed only,Cool,5365
+Colorado Plateau,Spiderweb,2020-07-21,2021-09-29,29,Mulch,Med-Warm,3235
+Utah,UtahPJ,2018-10-29,2019-04-26,29,Pits,Cool-Med,3952
+Utah,UtahPJ,2018-10-29,2019-05-16,29,Pits,Cool-Med,4026
+Utah,UtahPJ,2018-10-29,2019-07-02,29,Pits,Cool-Med,4245
+Utah,UtahPJ,2018-10-29,2019-04-26,34,ConMod,Cool,3958
+Utah,UtahPJ,2018-10-29,2019-05-16,34,ConMod,Cool,4032
+Utah,UtahPJ,2018-10-29,2019-05-29,34,ConMod,Cool,4141
+Utah,UtahPJ,2018-10-29,2019-07-02,34,ConMod,Cool,4251
