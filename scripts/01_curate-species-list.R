@@ -133,8 +133,7 @@ species.m.unk <- species.raw %>%
 
 #   Ones missing from original master species list
 sub.missing.unk <- sub.missing %>%
-  filter(str_detect(sub.missing$Name, "Unk|unk|spp.|sp.|Could be")) %>% 
-  filter(CodeOriginal != "VEPEX2") |> 
+  filter(str_detect(sub.missing$Name, "Unk|unk|spp.")) %>% 
   arrange(Region) %>% 
   arrange(CodeOriginal)
 
@@ -153,9 +152,9 @@ species.m.known <- species.raw %>%
 
 #   Ones missing from original master species list
 sub.missing.known <- sub.missing %>% # ones missing from original master list (.xlsx)
-  filter(!str_detect(sub.missing$Name, "Unk|unk|spp.|sp.|Could be")) %>% 
-  bind_rows(VEPEX2) |> 
+  filter(!str_detect(sub.missing$Name, "Unk|unk|spp.")) %>% 
   select(-Region, -Site) %>% 
+  distinct(.keep_all = TRUE) |> 
   arrange(CodeOriginal)
 
 
@@ -212,7 +211,7 @@ species.m.known <- species.m.known %>%
 
 unique(species.m.known$Lifeform) # Lifeform names have been standardized
 
-# Compile list of lifeform information thus far
+# Compile list of lifeform information thus far from master
 lifeform.known <- species.m.known %>% 
   filter(!is.na(Lifeform)) %>% 
   select(CodeOriginal, Name, Lifeform) %>% 
@@ -259,7 +258,6 @@ head(species.m.known)
 #     and add row of all 0s for empty plots
 species.m.known <- read_csv("data/data-wrangling-intermediate/01b_edited-species4_xlsx_native-lifeform-duration.csv")
 head(species.m.known)
-
 
 
 # Add species from subplot data not in master

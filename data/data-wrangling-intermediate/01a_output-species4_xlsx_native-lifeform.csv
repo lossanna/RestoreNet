@@ -189,7 +189,7 @@ PHYSA,Physalis,Unknown,Forb
 PLANT,Plantago,Unknown,Forb
 PLAR,Plagiobothrys arizonicus,Native,Forb
 PLJA,Pleuraphis jamesii,Native,Grass
-PLMU3,Pleuraphis mutica,Native,Grass
+PLMU3,Pleuraphis mutica,Native,NA
 PLOV,Plantago ovata,Native,Forb
 PLPA2,Plantago patagonica,Native,Forb
 PLPR3,Plagiobothrys pringlei,Native,Forb
@@ -236,6 +236,7 @@ TRPI,Tradescantia pinetorum,Native,Forb
 TRTE,Tribulus terrestris,Introduced,Forb
 URLI5,Microseris lindleyi,Native,Forb
 VEEN,Verbesina encelioides,Native,Forb
+VEPEX2,Veronica peregrina ssp. xalapensis,Native,Forb
 VUOC,Vulpia octoflora,Native,Grass
 YUEL,Yucca elata,Native,Shrub
 ZIGR,Zinnia grandiflora,Native,Forb

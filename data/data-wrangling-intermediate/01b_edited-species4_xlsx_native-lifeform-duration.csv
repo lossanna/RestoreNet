@@ -2,7 +2,6 @@ CodeOriginal,Name,Native,Duration,Lifeform
 ABPA3,Abutilon parvulum,Native,Perennial,Forb
 ACHY,Achnatherum hymenoides,Native,Perennial,Grass
 ACMI2,Achillea millefolium,Native/Unknown,Perennial,Forb
-ACMIS,Acmispon (Lotus),Native,Unknown,Forb
 ACNA2,Acourtia nana,Native,Perennial,Forb
 ALIN,Allionia incarnata,Native,Unknown,Forb
 AMCH3,Ammocodon chenopodioides,Native,Perennial,Forb
@@ -63,7 +62,6 @@ CHFR3,Chenopodium fremontii,Native,Annual,Forb
 CHHY3,Chamaesyce hyssopifolia,Native,Unknown,Forb
 CHIN2,Chenopodium incanum,Native,Annual,Forb
 CHPO12,Chamaesyce polycarpa,Native,Unknown,Forb
-CHTE2,Chorispora tenella,Introduced,Annual,Forb
 CHVI4,Chloris virgata,Native,Annual,Grass
 CHWA,Chenopodium watsonii,Native,Annual,Forb
 CLLU2,Cleome lutea,Native,Annual,Forb
@@ -117,7 +115,6 @@ EUAB,Chamaesyce abramsiana,Native,Annual,Forb
 EUME3,Chamaesyce melanadenia,Native,Perennial,Forb
 EUPO3,Chamaesyce polycarpa,Native,Unknown,Forb
 EVAR,Evolvulus arizonicus,Native,Perennial,Forb
-GILSPP2,Very similar to GIsp 1 but slightly more serated leaves and flowers are purple/pink instead of blueish/white,Unknown,Unknown,Forb
 GIST,Gilia stellata,Native,Annual,Forb
 GLGO,Glandularia gooddingii,Native,Perennial,Forb
 GNPA,Gnaphalium palustre,Native,Annual,Forb
@@ -126,7 +123,6 @@ HAGL,Halogeton glomeratus,Introduced,Annual,Forb
 HAPAA,Harpagonella palmeri,Native,Annual,Forb
 HEBO,Hedysarum boreale,Native,Perennial,Forb
 HECI,Helianthus ciliaris,Native,Perennial,Forb
-HECO26,Hesperostipa comata,Native,Perennial,Grass
 HEHIC,Herniaria hirsuta,Introduced,Annual,Forb
 HEMU3,Heliomeris multiflora,Native,Perennial,Forb
 HIIN3,Hirschfeldia incana,Introduced,Unknown,Forb
@@ -147,7 +143,6 @@ LECI4,Leymus cinereus,Native,Perennial,Grass
 LEFR2,Lepidium fremontii,Native,Perennial,Shrub
 LELA,Lepidium lasiocarpum,Native,Annual,Forb
 LEPA6,Leptochloa panicea,Native,Unknown,Grass
-LEPISP,Lepidium sp.,Unknown,Unknown,Forb
 LETH2,Lepidium thurberi,Native,Annual,Forb
 LIBI2,Linanthus bigelovii,Native,Annual,Forb
 LILE3,Linum lewisii,Native,Perennial,Forb
@@ -159,7 +154,6 @@ LOSA,Lotus salsuginosus,Native,Annual,Forb
 LOSQ,Loeflingia squarrosa,Native,Annual,Forb
 LOSTT,Lotus strigosus,Native,Annual,Forb
 LUCO,Lupinus concinnus,Native,Annual,Forb
-LUSP2,Lupinus sparsiflorus,Native,Annual,Forb
 MAAF,Malcolmia africana,Introduced,Annual,Forb
 MADI6,Matricaria discoidea,Introduced,Annual,Forb
 MAGL3,Malacothrix glabrata,Native,Annual,Forb
@@ -176,7 +170,6 @@ MOCE,Mollugo cerviana,Introduced,Annual,Forb
 MONU,Monolepis nuttalliana,Native,Annual,Forb
 MOVE,Mollugo verticillata,Native,Annual,Forb
 MUPO2,Muhlenbergia porteri,Native,Perennial,Grass
-NAHI,Nama hispidum,Native,Annual,Forb
 ONPI,Oncosiphon piluliferum,Introduced,Annual,Forb
 PACA6,Panicum capillare,Native,Annual,Grass
 PAHI5,Panicum hirticaule,Native,Annual,Grass
@@ -192,7 +185,6 @@ PERE,Pectocarya recurvata,Native,Annual,Forb
 PHDI,Phacelia distans,Native,Unknown,Forb
 PHLO2,Phlox longifolia,Native,Perennial,Forb
 PHYSA,Physalis,Unknown,Unknown,Forb
-PHYSR,Physaria sp.,Unknown,Unknown,Forb
 PLANT,Plantago,Unknown,Unknown,Forb
 PLAR,Plagiobothrys arizonicus,Native,Annual,Forb
 PLJA,Pleuraphis jamesii,Native,Perennial,Grass
@@ -206,10 +198,8 @@ POPI3,Portulaca pilosa,Native,Unknown,Forb
 POSE,Poa secunda,Native,Perennial,Grass
 POUM,Portulaca umbraticola,Native,Annual,Forb
 PRGL2,Prosopis glandulosa,Native,Perennial,Shrub
-PROACASPP,Mesquite/Acacia species,Native/Unknown,Perennial,Shrub
 PRVE,Prosopis velutina,Native,Perennial,Shrub
 PSCA11,Pseudognaphalium canescens,Native,Unknown,Forb
-PSSP6,Pseudoroegneria spicata,Native,Perennial,Grass
 SAAB,Sanvitalia abertii,Native,Annual,Forb
 SACO6,Salvia columbariae,Native,Annual,Forb
 SARE3,Salvia reflexa,Native,Annual,Forb
@@ -225,7 +215,6 @@ SIAL2,Sisymbrium altissimum,Introduced,Annual,Forb
 SIAN2,Silene antirrhina,Native,Annual,Forb
 SIIR,Sisymbrium irio,Introduced,Annual,Forb
 SINE,Sida neomexicana,Native,Perennial,Forb
-SISYM,Sisymbrium sp.,Unknown,Unknown,Forb
 SOEL,Solanum elaeagnifolium,Native,Perennial,Forb
 SOOL,Sonchus oleraceus,Introduced,Annual,Forb
 SORO,Solanum rostratum,Native,Annual,Forb
@@ -237,7 +226,6 @@ SPCR,Sporobolus cryptandrus,Native,Perennial,Grass
 SPEC2,Spermolepis echinata,Native,Annual,Forb
 SPGR2,Sphaeralcea grossulariifolia,Native,Perennial,Forb
 STGN,Stylocline gnaphalioides,Native,Annual,Forb
-STSP3,Stipa speciosa,Native,Perennial,Grass
 TAPO5,Talinum polygaloides,Native,Perennial,Forb
 TILA2,Tidestromia lanuginosa,Native,Annual,Forb
 TOIN,Townsendia incana,Native,Unknown,Forb
