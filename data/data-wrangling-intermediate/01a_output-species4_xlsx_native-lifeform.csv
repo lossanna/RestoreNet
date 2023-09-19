@@ -2,7 +2,6 @@ CodeOriginal,Name,Native,Lifeform
 ABPA3,Abutilon parvulum,Native,Forb
 ACHY,Achnatherum hymenoides,Native,Grass
 ACMI2,Achillea millefolium,Native/Unknown,Forb
-ACMIS,Acmispon (Lotus),Native,Forb
 ACNA2,Acourtia nana,Native,Forb
 ALIN,Allionia incarnata,Native,Forb
 AMCH3,Ammocodon chenopodioides,Native,Forb
@@ -64,7 +63,6 @@ CHFR3,Chenopodium fremontii,Native,Forb
 CHHY3,Chamaesyce hyssopifolia,Native,Forb
 CHIN2,Chenopodium incanum,Native,Forb
 CHPO12,Chamaesyce polycarpa,Native,Forb
-CHTE2,Chorispora tenella,Introduced,Forb
 CHVI4,Chloris virgata,Native,Grass
 CHWA,Chenopodium watsonii,Native,Forb
 CLLU2,Cleome lutea,Native,Forb
@@ -104,7 +102,6 @@ ERER2,Eriastrum eremicum,Native,Forb
 ERFA2,Eriogonum fasciculatum,Native,Shrub
 ERIAS,Eriastrum,Native,Forb
 ERIN4,Eriogonum inflatum,Native,Forb
-ERIOG,Eriogonum sp.,Unknown,Forb
 ERLA12,Ericameria laricifolia,Native,Shrub
 ERLE,Eragrostis lehmanniana,Introduced,Grass
 ERPA11,Eriogonum palmerianum,Native,Forb
@@ -119,7 +116,6 @@ EUAB,Chamaesyce abramsiana,Native,Forb
 EUME3,Chamaesyce melanadenia,Native,Forb
 EUPO3,Chamaesyce polycarpa,Native,Forb
 EVAR,Evolvulus arizonicus,Native,Forb
-GILSPP2,Very similar to GIsp 1 but slightly more serated leaves and flowers are purple/pink instead of blueish/white,Unknown,Forb
 GIST,Gilia stellata,Native,Forb
 GLGO,Glandularia gooddingii,Native,Forb
 GNPA,Gnaphalium palustre,Native,Forb
@@ -128,7 +124,6 @@ HAGL,Halogeton glomeratus,Introduced,Forb
 HAPAA,Harpagonella palmeri,Native,Forb
 HEBO,Hedysarum boreale,Native,Forb
 HECI,Helianthus ciliaris,Native,Forb
-HECO26,Hesperostipa comata,Native,Grass
 HEHIC,Herniaria hirsuta,Introduced,Forb
 HEMU3,Heliomeris multiflora,Native,Forb
 HIIN3,Hirschfeldia incana,Introduced,Forb
@@ -149,7 +144,6 @@ LECI4,Leymus cinereus,Native,Grass
 LEFR2,Lepidium fremontii,Native,Forb
 LELA,Lepidium lasiocarpum,Native,Forb
 LEPA6,Leptochloa panicea,Native,Grass
-LEPISP,Lepidium sp.,Unknown,Forb
 LETH2,Lepidium thurberi,Native,Forb
 LIBI2,Linanthus bigelovii,Native,Forb
 LILE3,Linum lewisii,Native,Forb
@@ -161,7 +155,6 @@ LOSA,Lotus salsuginosus,Native,Forb
 LOSQ,Loeflingia squarrosa,Native,Forb
 LOSTT,Lotus strigosus,Native,Forb
 LUCO,Lupinus concinnus,Native,Forb
-LUSP2,Lupinus sparsiflorus,Native,Forb
 MAAF,Malcolmia africana,Introduced,Forb
 MADI6,Matricaria discoidea,Introduced,Forb
 MAGL3,Malacothrix glabrata,Native,Forb
@@ -178,7 +171,6 @@ MOCE,Mollugo cerviana,Introduced,Forb
 MONU,Monolepis nuttalliana,Native,Forb
 MOVE,Mollugo verticillata,Native,Forb
 MUPO2,Muhlenbergia porteri,Native,Grass
-NAHI,Nama hispidum,Native,Forb
 ONPI,Oncosiphon piluliferum,Introduced,Forb
 PACA6,Panicum capillare,Native,Grass
 PAHI5,Panicum hirticaule,Native,Grass
@@ -194,7 +186,6 @@ PERE,Pectocarya recurvata,Native,Forb
 PHDI,Phacelia distans,Native,Forb
 PHLO2,Phlox longifolia,Native,Forb
 PHYSA,Physalis,Unknown,Forb
-PHYSR,Physaria sp.,Unknown,Forb
 PLANT,Plantago,Unknown,Forb
 PLAR,Plagiobothrys arizonicus,Native,Forb
 PLJA,Pleuraphis jamesii,Native,Grass
@@ -208,10 +199,8 @@ POPI3,Portulaca pilosa,Native,Forb
 POSE,Poa secunda,Native,Grass
 POUM,Portulaca umbraticola,Native,Forb
 PRGL2,Prosopis glandulosa,Native,Forb
-PROACASPP,Mesquite/Acacia species,Native/Unknown,Shrub
 PRVE,Prosopis velutina,Native,Shrub
 PSCA11,Pseudognaphalium canescens,Native,Forb
-PSSP6,Pseudoroegneria spicata,Native,Grass
 SAAB,Sanvitalia abertii,Native,Forb
 SACO6,Salvia columbariae,Native,Forb
 SARE3,Salvia reflexa,Native,Forb
@@ -228,7 +217,6 @@ SIAL2,Sisymbrium altissimum,Introduced,Forb
 SIAN2,Silene antirrhina,Native,Forb
 SIIR,Sisymbrium irio,Introduced,Forb
 SINE,Sida neomexicana,Native,Forb
-SISYM,Sisymbrium sp.,Unknown,Forb
 SOEL,Solanum elaeagnifolium,Native,Forb
 SOOL,Sonchus oleraceus,Introduced,Forb
 SORO,Solanum rostratum,Native,Forb
@@ -240,17 +228,14 @@ SPCR,Sporobolus cryptandrus,Native,Grass
 SPEC2,Spermolepis echinata,Native,Forb
 SPGR2,Sphaeralcea grossulariifolia,Native,Forb
 STGN,Stylocline gnaphalioides,Native,Forb
-STSP3,Stipa speciosa,Native,Grass
 TAPO5,Talinum polygaloides,Native,Forb
 TILA2,Tidestromia lanuginosa,Native,Forb
 TOIN,Townsendia incana,Native,Forb
 TRMU,Tridens muticus,Native,Grass
 TRPI,Tradescantia pinetorum,Native,Forb
 TRTE,Tribulus terrestris,Introduced,Forb
-Trifolium,Trifolum sp.,Unknown,Forb
 URLI5,Microseris lindleyi,Native,Forb
 VEEN,Verbesina encelioides,Native,Forb
-VEPEX2,Veronica peregrina ssp. xalapensis,Native,Forb
 VUOC,Vulpia octoflora,Native,Grass
 YUEL,Yucca elata,Native,Shrub
 ZIGR,Zinnia grandiflora,Native,Forb

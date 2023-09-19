@@ -126,28 +126,35 @@ head(sub.missing)
 # Unknowns (location-dependent) 
 #   From original master species list
 species.m.unk <- species.raw %>%
-  filter(str_detect(species.raw$Name, "Unk|unk|spp.|Could be")) %>% 
+  filter(str_detect(species.raw$Name, "Unk|unk|spp.|sp.|Could be")) %>% 
+  filter(CodeOriginal != "VEPEX2") |>  # name contains "ssp." but it is a known
   arrange(Region) %>% 
   arrange(CodeOriginal)
 
 #   Ones missing from original master species list
 sub.missing.unk <- sub.missing %>%
-  filter(str_detect(sub.missing$Name, "Unk|unk|spp.|Could be")) %>% 
+  filter(str_detect(sub.missing$Name, "Unk|unk|spp.|sp.|Could be")) %>% 
+  filter(CodeOriginal != "VEPEX2") |> 
   arrange(Region) %>% 
   arrange(CodeOriginal)
 
 
 # Knowns (location-independent)
 #   From original master species list
+VEPEX2 <- species.raw |> 
+  filter(CodeOriginal == "VEPEX2") # make separate row because it contains "ssp." but isn't an unknown
+
 species.m.known <- species.raw %>%
-  filter(!str_detect(species.raw$Name, "Unk|unk|spp.|Could be")) %>% 
+  filter(!str_detect(species.raw$Name, "Unk|unk|spp.|sp.|Could be")) %>% 
+  bind_rows(VEPEX2) |> 
   select(-Region) %>% 
   arrange(CodeOriginal) |> 
   distinct(.keep_all = TRUE)
 
 #   Ones missing from original master species list
 sub.missing.known <- sub.missing %>% # ones missing from original master list (.xlsx)
-  filter(!str_detect(sub.missing$Name, "Unk|unk|spp.|Could be")) %>% 
+  filter(!str_detect(sub.missing$Name, "Unk|unk|spp.|sp.|Could be")) %>% 
+  bind_rows(VEPEX2) |> 
   select(-Region, -Site) %>% 
   arrange(CodeOriginal)
 
@@ -617,7 +624,7 @@ setdiff(de.overlap$Name, de.overlap$Name_2x2)
 de.overlap.name <- de.overlap |> 
   filter(Name != Name_2x2)
 #  manually check and see that subplot names are generally more detailed, 
-#   or correct in matching with master species list; subplot Names should be used
+#   or correct in matching with master species list (Chaenactis); subplot Names should be used
 
 #   Native status
 identical(de.overlap$Native, de.overlap$Native_2x2)
@@ -670,7 +677,7 @@ setdiff(colnames(species.2x2.in), colnames(species.subplot.in)) # columns are th
 species.in <- bind_rows(species.2x2.in, species.subplot.in) %>% 
   distinct(.keep_all = TRUE) %>% 
   arrange(Name) %>% 
-  arrange(Code)
+  arrange(CodeOriginal)
 
 # Look for codes previously standardized, now that we have added 2x2 data
 species.in %>% 

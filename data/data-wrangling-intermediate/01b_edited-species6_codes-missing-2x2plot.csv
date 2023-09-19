@@ -94,7 +94,7 @@ Sonoran SE,Patagonia,Couple small to medium ARPUs throughout and a couple small 
 Sonoran SE,Patagonia,Couple small to medium ARPUs throughout and a couple small SECOs in N half of the plot typically hidden under/using ERCU as a shade plant,Yes,3,ERCU2,Eragrostis curvula,Introduced,Perennial,Grass,independent
 Colorado Plateau,PEFO,Cymopterus,No,0,Cymopterus,Cymopterus spp.,Native,Perennial,Forb,independent
 Colorado Plateau,Spiderweb,DASPUL,No,0,DASPUL,Unknown DASPUL,Unknown,Unknown,Unknown,dependent
-Sonoran Central,Roosevelt,DINE2,No,0,DINE2,Argythamnia neomexicana,N,Unknown,Forb,independent
+Sonoran Central,Roosevelt,DINE2,No,0,DINE2,Argythamnia neomexicana,Native,Unknown,Forb,independent
 Utah,UtahPJ,Dormant shrubs,No,0,SHRUBdor,Dormant shrubs,Unknown,Perennial,Shrub,dependent
 Colorado Plateau,BabbittPJ,ELEL5 (seeded),No,0,ELEL5,Elymus elymoides,Native,Perennial,Grass,independent
 Colorado Plateau,BabbittPJ,ELEL5 (unseeded),No,0,ELEL5,Elymus elymoides,Native,Perennial,Grass,independent
@@ -107,9 +107,9 @@ Colorado Plateau,PEFO,ELSPP,No,0,ELSPP,Elymus spp.,Native/Unknown,Unknown,Grass,
 Colorado Plateau,BabbittPJ,ELTR7 (seeded),No,0,ELTR7,Elymus trachycaulus,Native,Perennial,Grass,independent
 Colorado Plateau,BabbittPJ,ELWA,No,0,ELWA2,Elymus wawawaiensis,Native,Perennial,Grass,independent
 Colorado Plateau,BabbittPJ,ELWA2 (seeded),No,0,ELWA2,Elymus wawawaiensis,Native,Perennial,Grass,independent
-Colorado Plateau,MOWE,ERCI,No,0,ERCI,Eragrostis cilianensis,Introduced,Annual,Grass,independent
-Sonoran Central,Preserve,ERCI,No,0,ERCI2,Eragrostis ciliaris,Introduced,Annual,Grass,independent
-Chihuahuan,Creosote,ERCI,No,0,ERCI,Eragrostis cilianensis,Introduced,Annual,Grass,independent
+Colorado Plateau,MOWE,ERCI,No,0,ERCI,Eragrostis cilianensis,Introduced,Annual,Grass,dependent
+Sonoran Central,Preserve,ERCI,No,0,ERCI2,Eragrostis ciliaris,Introduced,Annual,Grass,dependent
+Chihuahuan,Creosote,ERCI,No,0,ERCI,Eragrostis cilianensis,Introduced,Annual,Grass,dependent
 Sonoran Central,Preserve,ERDED4,No,0,ERDED4,Eriogonum deflexum,Native,Annual,Forb,independent
 Utah,UtahPJ,ERIGSPP,No,0,ERIGSPP,Unknown ERIG (?),Unknown,Unknown,Unknown,dependent
 Colorado Plateau,BarTBar,ERISP,No,0,ERISP,Eriogonum spp.,Native,Unknown,Forb,dependent
