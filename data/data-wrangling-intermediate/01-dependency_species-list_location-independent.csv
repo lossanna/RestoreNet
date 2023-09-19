@@ -3,6 +3,7 @@ CodeOriginal,Code,Name,Native,Duration,Lifeform
 ABPA3,ABPA3,Abutilon parvulum,Native,Perennial,Forb
 ACHY,ACHY,Achnatherum hymenoides,Native,Perennial,Grass
 ACMI2,ACMI2,Achillea millefolium,Native/Unknown,Perennial,Forb
+ACMIS,ACMIS,Acmispon (Lotus),Native,Annual,Forb
 ACNA2,ACNA2,Acourtia nana,Native,Perennial,Forb
 ALIN,ALIN,Allionia incarnata,Native,Unknown,Forb
 AMCH3,AMCH3,Ammocodon chenopodioides,Native,Perennial,Forb
@@ -66,6 +67,7 @@ CHFR3,CHFR3,Chenopodium fremontii,Native,Annual,Forb
 CHHY3,CHHY3,Chamaesyce hyssopifolia,Native,Unknown,Forb
 CHIN2,CHIN2,Chenopodium incanum,Native,Annual,Forb
 CHPO12,CHPO12,Chamaesyce polycarpa,Native,Unknown,Forb
+CHTE2,CHTE2,Chorispora tenella,Introduced,Annual,Forb
 CHVI4,CHVI4,Chloris virgata,Native,Annual,Grass
 CHWA,CHWA,Chenopodium watsonii,Native,Annual,Forb
 CLLU2,CLLU2,Cleome lutea,Native,Annual,Forb
@@ -127,6 +129,7 @@ HAGL,HAGL,Halogeton glomeratus,Introduced,Annual,Forb
 HAPAA,HAPAA,Harpagonella palmeri,Native,Annual,Forb
 HEBO,HEBO,Hedysarum boreale,Native,Perennial,Forb
 HECI,HECI,Helianthus ciliaris,Native,Perennial,Forb
+HECO26,HECO26,Hesperostipa comata,Native,Perennial,Grass
 HEHIC,HEHIC,Herniaria hirsuta,Introduced,Annual,Forb
 HEMU3,HEMU3,Heliomeris multiflora,Native,Perennial,Forb
 HIIN3,HIIN3,Hirschfeldia incana,Introduced,Unknown,Forb
@@ -160,6 +163,7 @@ LOSQ,LOSQ,Loeflingia squarrosa,Native,Annual,Forb
 LOSTT,LOSTT,Lotus strigosus,Native,Annual,Forb
 LUCO,LUCO,Lupinus concinnus,Native,Annual,Forb
 LUSP,LUSP,Lupinus sparsiflorus (?),Native,Annual,Forb
+LUSP2,LUSP2,Lupinus sparsiflorus,Native,Annual,Forb
 MAAF,MAAF,Malcolmia africana,Introduced,Annual,Forb
 MADI6,MADI6,Matricaria discoidea,Introduced,Annual,Forb
 MAGL3,MAGL3,Malacothrix glabrata,Native,Annual,Forb
@@ -176,6 +180,7 @@ MOCE,MOCE,Mollugo cerviana,Introduced,Annual,Forb
 MONU,MONU,Monolepis nuttalliana,Native,Annual,Forb
 MOVE,MOVE,Mollugo verticillata,Native,Annual,Forb
 MUPO2,MUPO2,Muhlenbergia porteri,Native,Perennial,Grass
+NAHI,NAHI,Nama hispidum,Native,Annual,Forb
 ONPI,ONPI,Oncosiphon piluliferum,Introduced,Annual,Forb
 PACA6,PACA6,Panicum capillare,Native,Annual,Grass
 PAHI5,PAHI5,Panicum hirticaule,Native,Annual,Grass
@@ -208,6 +213,7 @@ POUM,POUM,Portulaca umbraticola,Native,Annual,Forb
 PRGL2,PRGL2,Prosopis glandulosa,Native,Perennial,Shrub
 PRVE,PRVE,Prosopis velutina,Native,Perennial,Shrub
 PSCA11,PSCA11,Pseudognaphalium canescens,Native,Unknown,Forb
+PSSP6,PSSP6,Pseudoroegneria spicata,Native,Perennial,Grass
 S-HEBO,HEBO,Hedysarum boreale,Native,Perennial,Forb
 S-PASM,PASM,Pascopyrum smithii,Native,Perennial,Grass
 SAAB,SAAB,Sanvitalia abertii,Native,Annual,Forb
@@ -238,6 +244,7 @@ SPEC2,SPEC2,Spermolepis echinata,Native,Annual,Forb
 SPGR2,SPGR2,Sphaeralcea grossulariifolia,Native,Perennial,Forb
 STGN,STGN,Stylocline gnaphalioides,Native,Annual,Forb
 STMI2,STMI2,Stylocline micropoides,Native,Annual,Forb
+STSP3,STSP3,Stipa speciosa,Native,Perennial,Grass
 TAPO5,TAPO5,Talinum polygaloides,Native,Perennial,Forb
 TILA2,TILA2,Tidestromia lanuginosa,Native,Annual,Forb
 TOIN,TOIN,Townsendia incana,Native,Unknown,Forb

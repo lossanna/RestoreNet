@@ -2,6 +2,7 @@ CodeOriginal,Name,Native,Lifeform
 ABPA3,Abutilon parvulum,Native,Forb
 ACHY,Achnatherum hymenoides,Native,Grass
 ACMI2,Achillea millefolium,Native/Unknown,Forb
+ACMIS,Acmispon (Lotus),Native,Forb
 ACNA2,Acourtia nana,Native,Forb
 ALIN,Allionia incarnata,Native,Forb
 AMCH3,Ammocodon chenopodioides,Native,Forb
@@ -63,6 +64,7 @@ CHFR3,Chenopodium fremontii,Native,Forb
 CHHY3,Chamaesyce hyssopifolia,Native,Forb
 CHIN2,Chenopodium incanum,Native,Forb
 CHPO12,Chamaesyce polycarpa,Native,Forb
+CHTE2,Chorispora tenella,Introduced,Forb
 CHVI4,Chloris virgata,Native,Grass
 CHWA,Chenopodium watsonii,Native,Forb
 CLLU2,Cleome lutea,Native,Forb
@@ -85,7 +87,7 @@ DEPI,Descurainia pinnata,Native,Forb
 DESO2,Descurainia sophia,Introduced,Forb
 DICA14,Dichelostemma capitatum,Native,Forb
 DICA8,Digitaria californica,Native,Grass
-DRCU,Draba cuneifolia,Native,Forb
+DRCU,Draba cuneifolia,Native,NA
 DRCUI,Draba cuneifolia,Native,Forb
 ELEL5,Elymus elymoides,Native,Grass
 ELTR7,Elymus trachycaulus,Native,Grass
@@ -124,6 +126,7 @@ HAGL,Halogeton glomeratus,Introduced,Forb
 HAPAA,Harpagonella palmeri,Native,Forb
 HEBO,Hedysarum boreale,Native,Forb
 HECI,Helianthus ciliaris,Native,Forb
+HECO26,Hesperostipa comata,Native,Grass
 HEHIC,Herniaria hirsuta,Introduced,Forb
 HEMU3,Heliomeris multiflora,Native,Forb
 HIIN3,Hirschfeldia incana,Introduced,Forb
@@ -155,6 +158,7 @@ LOSA,Lotus salsuginosus,Native,Forb
 LOSQ,Loeflingia squarrosa,Native,Forb
 LOSTT,Lotus strigosus,Native,Forb
 LUCO,Lupinus concinnus,Native,Forb
+LUSP2,Lupinus sparsiflorus,Native,Forb
 MAAF,Malcolmia africana,Introduced,Forb
 MADI6,Matricaria discoidea,Introduced,Forb
 MAGL3,Malacothrix glabrata,Native,Forb
@@ -171,6 +175,7 @@ MOCE,Mollugo cerviana,Introduced,Forb
 MONU,Monolepis nuttalliana,Native,Forb
 MOVE,Mollugo verticillata,Native,Forb
 MUPO2,Muhlenbergia porteri,Native,Grass
+NAHI,Nama hispidum,Native,Forb
 ONPI,Oncosiphon piluliferum,Introduced,Forb
 PACA6,Panicum capillare,Native,Grass
 PAHI5,Panicum hirticaule,Native,Grass
@@ -189,7 +194,7 @@ PHYSA,Physalis,Unknown,Forb
 PLANT,Plantago,Unknown,Forb
 PLAR,Plagiobothrys arizonicus,Native,Forb
 PLJA,Pleuraphis jamesii,Native,Grass
-PLMU3,Pleuraphis mutica,Native,NA
+PLMU3,Pleuraphis mutica,Native,Grass
 PLOV,Plantago ovata,Native,Forb
 PLPA2,Plantago patagonica,Native,Forb
 PLPR3,Plagiobothrys pringlei,Native,Forb
@@ -201,6 +206,7 @@ POUM,Portulaca umbraticola,Native,Forb
 PRGL2,Prosopis glandulosa,Native,Forb
 PRVE,Prosopis velutina,Native,Shrub
 PSCA11,Pseudognaphalium canescens,Native,Forb
+PSSP6,Pseudoroegneria spicata,Native,Grass
 SAAB,Sanvitalia abertii,Native,Forb
 SACO6,Salvia columbariae,Native,Forb
 SARE3,Salvia reflexa,Native,Forb
@@ -228,6 +234,7 @@ SPCR,Sporobolus cryptandrus,Native,Grass
 SPEC2,Spermolepis echinata,Native,Forb
 SPGR2,Sphaeralcea grossulariifolia,Native,Forb
 STGN,Stylocline gnaphalioides,Native,Forb
+STSP3,Stipa speciosa,Native,Grass
 TAPO5,Talinum polygaloides,Native,Forb
 TILA2,Tidestromia lanuginosa,Native,Forb
 TOIN,Townsendia incana,Native,Forb

@@ -126,14 +126,14 @@ head(sub.missing)
 # Unknowns (location-dependent) 
 #   From original master species list
 species.m.unk <- species.raw %>%
-  filter(str_detect(species.raw$Name, "Unk|unk|spp.|sp.|Could be")) %>% 
+  filter(str_detect(species.raw$Name, "Unk|unk|spp\\.|sp\\.|Could be|Very similar to GIsp 1")) %>% 
   filter(CodeOriginal != "VEPEX2") |>  # name contains "ssp." but it is a known
   arrange(Region) %>% 
   arrange(CodeOriginal)
 
 #   Ones missing from original master species list
 sub.missing.unk <- sub.missing %>%
-  filter(str_detect(sub.missing$Name, "Unk|unk|spp.")) %>% 
+  filter(str_detect(sub.missing$Name, "Unk|unk|spp\\.")) %>% 
   arrange(Region) %>% 
   arrange(CodeOriginal)
 
@@ -144,7 +144,7 @@ VEPEX2 <- species.raw |>
   filter(CodeOriginal == "VEPEX2") # make separate row because it contains "ssp." but isn't an unknown
 
 species.m.known <- species.raw %>%
-  filter(!str_detect(species.raw$Name, "Unk|unk|spp.|sp.|Could be")) %>% 
+  filter(!str_detect(species.raw$Name, "Unk|unk|spp\\.|sp\\.|Could be|Very similar to GIsp 1")) %>% 
   bind_rows(VEPEX2) |> 
   select(-Region) %>% 
   arrange(CodeOriginal) |> 
@@ -152,7 +152,7 @@ species.m.known <- species.raw %>%
 
 #   Ones missing from original master species list
 sub.missing.known <- sub.missing %>% # ones missing from original master list (.xlsx)
-  filter(!str_detect(sub.missing$Name, "Unk|unk|spp.")) %>% 
+  filter(!str_detect(sub.missing$Name, "Unk|unk|spp\\.")) %>% 
   select(-Region, -Site) %>% 
   distinct(.keep_all = TRUE) |> 
   arrange(CodeOriginal)
@@ -199,23 +199,10 @@ length(unique(subplot.in.lifeform$CodeOriginal)) == nrow(subplot.in.lifeform)
 # Add subplot lifeform information to working species list
 species.m.known <- left_join(species.m.known, subplot.in.lifeform) 
 
-# Standardize Lifeform to Grass/Forb/Shrub
-unique(species.m.known$Lifeform)
-
-species.m.known <- species.m.known %>% 
-  mutate(Lifeform = case_when(
-    str_detect(species.m.known$Lifeform, "shrub") ~ "Shrub",
-    str_detect(species.m.known$Lifeform, "forb") ~ "Forb",
-    species.m.known$Lifeform == "NA" ~ NA,
-    TRUE ~ species.m.known$Lifeform))
-
-unique(species.m.known$Lifeform) # Lifeform names have been standardized
-
 # Compile list of lifeform information thus far from master
 lifeform.known <- species.m.known %>% 
   filter(!is.na(Lifeform)) %>% 
   select(CodeOriginal, Name, Lifeform) %>% 
-  distinct(.keep_all = TRUE) %>% 
   arrange(CodeOriginal)
 
 # Add missing lifeform information to working species list
@@ -223,7 +210,6 @@ lifeform.known <- species.m.known %>%
 lifeform.na <- species.m.known %>% 
   filter(is.na(Lifeform)) %>% 
   select(CodeOriginal, Name, Lifeform) %>% 
-  distinct(.keep_all = TRUE) %>% 
   arrange(CodeOriginal)
 
 write_csv(lifeform.na,
@@ -241,6 +227,24 @@ lifeform.known <- bind_rows(lifeform.known, lifeform.na.edit)
 species.m.known <- species.m.known |> 
   select(-Lifeform) |> # must remove Lifeform col so left_join() does not conflict
   left_join(lifeform.known)
+
+
+# Standardize Lifeform to Grass/Forb/Shrub
+unique(species.m.known$Lifeform)
+
+species.m.known <- species.m.known %>% 
+  mutate(Lifeform = case_when(
+    str_detect(species.m.known$Lifeform, "shrub") ~ "Shrub",
+    str_detect(species.m.known$Lifeform, "forb") ~ "Forb",
+    species.m.known$Lifeform == "NA" ~ NA,
+    TRUE ~ species.m.known$Lifeform))
+
+unique(species.m.known$Lifeform) # Lifeform names have been standardized
+
+
+
+
+
 
 
 
