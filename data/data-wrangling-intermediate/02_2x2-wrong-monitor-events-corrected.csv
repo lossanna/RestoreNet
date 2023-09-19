@@ -1,210 +1,258 @@
 Region,Site,Date_Seeded,Date_Monitored,Plot,Treatment,PlotMix,MonitorID
+Mojave,29_Palms,2021-12-19,2022-04-15,1,Seed,Cool,6348
+Mojave,29_Palms,2020-03-13,2022-04-15,2,Pellets,Cool,6349
+Mojave,29_Palms,2021-12-19,2022-04-15,3,Mulch,Cool,6350
+Mojave,29_Palms,2021-12-19,2022-04-15,4,ConMod,Cool,6351
+Mojave,29_Palms,2021-12-19,2022-04-15,5,Seed,Warm,6352
+Mojave,29_Palms,2021-12-19,2022-04-15,6,Pits,Cool,6353
+Mojave,29_Palms,2020-03-13,2022-04-15,7,Pellets,Warm,6354
+Mojave,29_Palms,2021-12-19,2022-04-15,8,ConMod,Warm,6355
+Mojave,29_Palms,2021-12-19,2022-04-15,9,Seed,Cool,6356
+Mojave,29_Palms,2021-12-19,2022-04-15,10,Mulch,Warm,6357
+Mojave,29_Palms,2021-12-19,2022-04-15,11,Pits,Warm,6358
+Mojave,29_Palms,2021-12-19,2022-04-15,12,Mulch,Cool,6359
+Mojave,29_Palms,2021-12-19,2022-04-15,13,ConMod,Cool,6360
+Mojave,29_Palms,2021-12-19,2022-04-15,14,Seed,Warm,6361
+Mojave,29_Palms,2020-03-13,2022-04-15,15,Pellets,Cool,6362
+Mojave,29_Palms,2021-12-19,2022-04-15,16,Pits,Cool,6363
+Mojave,29_Palms,2021-12-19,2022-04-15,17,Control,None,6364
+Mojave,29_Palms,2021-12-19,2022-04-15,18,ConMod,Warm,6365
+Mojave,29_Palms,2021-12-19,2022-04-15,19,Pits,Warm,6366
+Mojave,29_Palms,2021-12-19,2022-04-15,20,Mulch,Warm,6367
+Mojave,29_Palms,2021-12-19,2022-04-15,21,Control,None,6368
+Mojave,29_Palms,2020-03-13,2022-04-15,22,Pellets,Warm,6369
+Mojave,29_Palms,2021-12-19,2022-04-15,23,ConMod,Cool,6370
+Mojave,29_Palms,2020-03-13,2022-04-15,24,Pellets,Cool,6371
+Mojave,29_Palms,2021-12-19,2022-04-15,25,Control,None,6372
+Mojave,29_Palms,2021-12-19,2022-04-15,26,Seed,Cool,6373
+Mojave,29_Palms,2021-12-19,2022-04-15,27,Pits,Cool,6374
+Mojave,29_Palms,2021-12-19,2022-04-15,28,Mulch,Cool,6375
+Mojave,29_Palms,2020-03-13,2022-04-15,29,Pellets,Warm,6376
+Mojave,29_Palms,2021-12-19,2022-04-15,30,Mulch,Warm,6377
+Mojave,29_Palms,2020-03-13,2022-04-15,31,Pellets,Cool,6378
+Mojave,29_Palms,2021-12-19,2022-04-15,32,Pits,Warm,6379
+Mojave,29_Palms,2021-12-19,2022-04-15,33,ConMod,Warm,6380
+Mojave,29_Palms,2021-12-19,2022-04-15,34,Seed,Warm,6381
+Mojave,29_Palms,2021-12-19,2022-04-15,35,Pits,Cool,6382
+Mojave,29_Palms,2021-12-19,2022-04-15,36,Mulch,Cool,6383
+Mojave,29_Palms,2020-03-13,2022-04-15,37,Pellets,Warm,6384
+Mojave,29_Palms,2021-12-19,2022-04-15,38,Control,None,6385
+Mojave,29_Palms,2021-12-19,2022-04-15,39,ConMod,Cool,6386
+Mojave,29_Palms,2021-12-19,2022-04-15,40,Mulch,Warm,6387
+Mojave,29_Palms,2021-12-19,2022-04-15,41,Pits,Warm,6388
+Mojave,29_Palms,2021-12-19,2022-04-15,42,Seed,Cool,6389
+Mojave,29_Palms,2021-12-19,2022-04-15,43,ConMod,Warm,6390
+Mojave,29_Palms,2021-12-19,2022-04-15,44,Seed,Warm,6391
+Mojave,AVRCD,2022-01-15,2022-04-13,2,Mulch,Cool,6392
+Mojave,AVRCD,2022-01-15,2022-04-13,44,Mulch,Warm,6393
 Colorado Plateau,FlyingM,2018-07-18,2019-06-12,36,Pits,Med-Warm,1405
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,201,Mulch,Warm,5766
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,202,Pits,Warm,5767
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,203,Seed,Medium,5768
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,204,ConMod,Warm,5769
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,205,Mulch,Medium,5770
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,206,Control,None,5771
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,207,Mulch,Warm,5772
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,208,Pits,Medium,5773
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,209,ConMod,Medium,5774
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,210,Mulch,Medium,5775
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,211,Pits,Warm,5776
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,212,Seed,Warm,5777
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,213,ConMod,Warm,5778
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,214,Mulch,Warm,5779
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,215,Seed,Medium,5780
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,216,ConMod,Medium,5781
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,217,Pits,Medium,5782
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,218,Control,None,5783
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,219,Seed,Warm,5784
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,220,Control,None,5785
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,221,ConMod,Warm,5786
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,222,Pits,Warm,5787
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,223,Seed,Medium,5788
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,224,Mulch,Medium,5789
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,225,Pits,Medium,5790
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,226,Seed,Warm,5791
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,227,Mulch,Warm,5792
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,228,ConMod,Medium,5793
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,229,Pits,Warm,5794
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,230,Seed,Warm,5795
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,231,Pits,Medium,5796
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,232,ConMod,Warm,5797
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,233,Control,None,5798
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,234,Seed,Medium,5799
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,235,Mulch,Medium,5800
-Chihuahuan,Mesquite,2020-08-05,2020-12-12,236,ConMod,Medium,5801
-Sonoran Central,Pleasant,2019-12-19,2021-04-02,4,Seed,Warm,5121
-Sonoran Central,Pleasant,2019-12-19,2021-04-02,8,Seed,Cool,5125
-Sonoran Central,Pleasant,2019-12-19,2021-04-02,12,Seed,Warm,5129
-Sonoran Central,Pleasant,2019-12-19,2021-04-02,15,Seed,Cool,5132
-Sonoran Central,Pleasant,2019-12-19,2021-04-02,22,Seed,Warm,5139
-Sonoran Central,Pleasant,2019-12-19,2021-04-02,23,Seed,Cool,5140
-Sonoran Central,Pleasant,2019-12-19,2021-04-02,30,Seed,Warm,5147
-Sonoran Central,Pleasant,2019-12-19,2021-04-02,32,Seed,Cool,5149
-Sonoran Central,Pleasant,2019-12-19,2021-10-04,4,Seed,Warm,5265
-Sonoran Central,Pleasant,2019-12-19,2021-10-04,8,Seed,Cool,5269
-Sonoran Central,Pleasant,2019-12-19,2021-10-04,12,Seed,Warm,5273
-Sonoran Central,Pleasant,2019-12-19,2021-10-04,15,Seed,Cool,5276
-Sonoran Central,Pleasant,2019-12-19,2021-10-04,22,Seed,Warm,5283
-Sonoran Central,Pleasant,2019-12-19,2021-10-04,23,Seed,Cool,5284
-Sonoran Central,Pleasant,2019-12-19,2021-10-04,30,Seed,Warm,5291
-Sonoran Central,Pleasant,2019-12-19,2021-10-04,32,Seed,Cool,5293
-Sonoran Central,Preserve,2019-11-25,2020-03-26,1,Mulch,Cool,4866
-Sonoran Central,Preserve,2019-11-25,2020-03-26,2,Seed,Cool,4867
-Sonoran Central,Preserve,2019-11-25,2020-03-26,3,Pits,Cool,4868
-Sonoran Central,Preserve,2019-11-25,2020-03-26,4,ConMod,Cool,4869
-Sonoran Central,Preserve,2019-11-25,2020-03-26,5,Control,None,4870
-Sonoran Central,Preserve,2019-11-25,2020-03-26,6,Seed,Warm,4871
-Sonoran Central,Preserve,2019-11-25,2020-03-26,7,Pits,Warm,4872
-Sonoran Central,Preserve,2019-11-25,2020-03-26,8,Control,None,4873
-Sonoran Central,Preserve,2019-11-25,2020-03-26,9,Mulch,Warm,4874
-Sonoran Central,Preserve,2019-11-25,2020-03-26,10,Seed,Cool,4875
-Sonoran Central,Preserve,2019-11-25,2020-03-26,11,Seed,Warm,4876
-Sonoran Central,Preserve,2019-11-25,2020-03-26,12,ConMod,Warm,4877
-Sonoran Central,Preserve,2019-11-25,2020-03-26,13,Mulch,Cool,4878
-Sonoran Central,Preserve,2019-11-25,2020-03-26,14,ConMod,Cool,4879
-Sonoran Central,Preserve,2019-11-25,2020-03-26,15,Seed,Cool,4880
-Sonoran Central,Preserve,2019-11-25,2020-03-26,16,Pits,Cool,4881
-Sonoran Central,Preserve,2019-11-25,2020-03-26,17,ConMod,Warm,4882
-Sonoran Central,Preserve,2019-11-25,2020-03-26,18,Pits,Warm,4883
-Sonoran Central,Preserve,2019-11-25,2020-03-26,19,Mulch,Warm,4884
-Sonoran Central,Preserve,2019-11-25,2020-03-26,20,ConMod,Cool,4885
-Sonoran Central,Preserve,2019-11-25,2020-03-26,21,Seed,Warm,4886
-Sonoran Central,Preserve,2019-11-25,2020-03-26,22,Pits,Cool,4887
-Sonoran Central,Preserve,2019-11-25,2020-03-26,23,Seed,Cool,4888
-Sonoran Central,Preserve,2019-11-25,2020-03-26,24,ConMod,Warm,4889
-Sonoran Central,Preserve,2019-11-25,2020-03-26,25,Mulch,Cool,4890
-Sonoran Central,Preserve,2019-11-25,2020-03-26,26,ConMod,Cool,4891
-Sonoran Central,Preserve,2019-11-25,2020-03-26,27,Pits,Warm,4892
-Sonoran Central,Preserve,2019-11-25,2020-03-26,28,Mulch,Warm,4893
-Sonoran Central,Preserve,2019-11-25,2020-03-26,29,Control,None,4894
-Sonoran Central,Preserve,2019-11-25,2020-03-26,30,Pits,Cool,4895
-Sonoran Central,Preserve,2019-11-25,2020-03-26,31,Mulch,Cool,4896
-Sonoran Central,Preserve,2019-11-25,2020-03-26,32,Seed,Warm,4897
-Sonoran Central,Preserve,2019-11-25,2020-03-26,33,Mulch,Warm,4898
-Sonoran Central,Preserve,2019-11-25,2020-03-26,34,ConMod,Warm,4899
-Sonoran Central,Preserve,2019-11-25,2020-03-26,35,Control,None,4900
-Sonoran Central,Preserve,2019-11-25,2020-03-26,36,Pits,Warm,4901
-Sonoran Central,Preserve,2019-11-25,2021-03-30,2,Seed,Cool,5155
-Sonoran Central,Preserve,2019-11-25,2021-03-30,6,Seed,Warm,5159
-Sonoran Central,Preserve,2019-11-25,2021-03-30,10,Seed,Cool,5163
-Sonoran Central,Preserve,2019-11-25,2021-03-30,11,Seed,Warm,5164
-Sonoran Central,Preserve,2019-11-25,2021-03-30,15,Seed,Cool,5168
-Sonoran Central,Preserve,2019-11-25,2021-03-30,21,Seed,Warm,5174
-Sonoran Central,Preserve,2019-11-25,2021-03-30,23,Seed,Cool,5176
-Sonoran Central,Preserve,2019-11-25,2021-03-30,32,Seed,Warm,5185
-Sonoran Central,Preserve,2019-11-25,2021-10-06,11,Seed,Warm,5380
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,1,Pits,Cool,4830
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,2,Seed,Cool,4831
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,3,ConMod,Cool,4832
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,4,Mulch,Cool,4833
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,5,Pits,Warm,4834
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,6,ConMod,Warm,4835
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,7,Seed,Warm,4836
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,8,Pits,Cool,4837
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,9,Control,None,4838
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,10,ConMod,Warm,4839
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,11,Seed,Cool,4840
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,12,Control,None,4841
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,13,Pits,Warm,4842
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,14,Mulch,Warm,4843
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,15,ConMod,Cool,4844
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,16,Seed,Warm,4845
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,17,Pits,Cool,4846
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,18,Mulch,Cool,4847
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,19,ConMod,Cool,4848
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,20,Seed,Cool,4849
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,21,Pits,Warm,4850
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,22,Mulch,Warm,4851
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,23,Mulch,Cool,4852
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,24,ConMod,Warm,4853
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,25,Control,None,4854
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,26,Mulch,Warm,4855
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,27,Pits,Cool,4856
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,28,ConMod,Cool,4857
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,29,Mulch,Cool,4858
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,30,Seed,Warm,4859
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,31,Mulch,Warm,4860
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,32,ConMod,Warm,4861
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,33,Pits,Warm,4862
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,34,Seed,Cool,4863
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,35,Control,None,4864
-Sonoran Central,Roosevelt,2019-11-22,2020-03-25,36,Seed,Warm,4865
-Sonoran Central,Roosevelt,2019-11-22,2021-04-01,2,Seed,Cool,5191
-Sonoran Central,Roosevelt,2019-11-22,2021-04-01,7,Seed,Warm,5196
-Sonoran Central,Roosevelt,2019-11-22,2021-04-01,11,Seed,Cool,5200
-Sonoran Central,Roosevelt,2019-11-22,2021-04-01,16,Seed,Warm,5205
-Sonoran Central,Roosevelt,2019-11-22,2021-04-01,20,Seed,Cool,5209
-Sonoran Central,Roosevelt,2019-11-22,2021-04-01,30,Seed,Warm,5219
-Sonoran Central,Roosevelt,2019-11-22,2021-04-01,34,Seed,Cool,5223
-Sonoran Central,Roosevelt,2019-11-22,2021-04-01,36,Seed,Warm,5225
-Sonoran Central,Roosevelt,2019-11-22,2021-10-08,2,Seed,Cool,5299
-Sonoran Central,Roosevelt,2019-11-22,2021-10-08,16,Seed,Warm,5313
-Sonoran Central,Roosevelt,2019-11-22,2021-10-08,30,Seed,Warm,5327
-Sonoran Central,Roosevelt,2019-11-22,2021-10-08,34,Seed,Cool,5331
-Sonoran Central,SCC,2019-11-21,2020-03-27,1,Mulch,Cool,4902
-Sonoran Central,SCC,2019-11-21,2020-03-27,2,ConMod,Cool,4903
-Sonoran Central,SCC,2019-11-21,2020-03-27,3,Control,None,4904
-Sonoran Central,SCC,2019-11-21,2020-03-27,4,Seed,Cool,4905
-Sonoran Central,SCC,2019-11-21,2020-03-27,5,Pits,Cool,4906
-Sonoran Central,SCC,2019-11-21,2020-03-27,6,ConMod,Warm,4907
-Sonoran Central,SCC,2019-11-21,2020-03-27,7,Mulch,Warm,4908
-Sonoran Central,SCC,2019-11-21,2020-03-27,8,Seed,Warm,4909
-Sonoran Central,SCC,2019-11-21,2020-03-27,9,Mulch,Cool,4910
-Sonoran Central,SCC,2019-11-21,2020-03-27,10,Pits,Warm,4911
-Sonoran Central,SCC,2019-11-21,2020-03-27,11,ConMod,Cool,4912
-Sonoran Central,SCC,2019-11-21,2020-03-27,12,Control,None,4913
-Sonoran Central,SCC,2019-11-21,2020-03-27,13,Seed,Cool,4914
-Sonoran Central,SCC,2019-11-21,2020-03-27,14,ConMod,Warm,4915
-Sonoran Central,SCC,2019-11-21,2020-03-27,15,Control,None,4916
-Sonoran Central,SCC,2019-11-21,2020-03-27,16,Seed,Warm,4917
-Sonoran Central,SCC,2019-11-21,2020-03-27,17,Mulch,Warm,4918
-Sonoran Central,SCC,2019-11-21,2020-03-27,18,Pits,Cool,4919
-Sonoran Central,SCC,2019-11-21,2020-03-27,19,Mulch,Cool,4920
-Sonoran Central,SCC,2019-11-21,2020-03-27,20,ConMod,Cool,4921
-Sonoran Central,SCC,2019-11-21,2020-03-27,21,Pits,Warm,4922
-Sonoran Central,SCC,2019-11-21,2020-03-27,22,Seed,Cool,4923
-Sonoran Central,SCC,2019-11-21,2020-03-27,23,ConMod,Warm,4924
-Sonoran Central,SCC,2019-11-21,2020-03-27,24,Pits,Cool,4925
-Sonoran Central,SCC,2019-11-21,2020-03-27,25,Seed,Warm,4926
-Sonoran Central,SCC,2019-11-21,2020-03-27,26,ConMod,Cool,4927
-Sonoran Central,SCC,2019-11-21,2020-03-27,27,Mulch,Warm,4928
-Sonoran Central,SCC,2019-11-21,2020-03-27,28,Pits,Warm,4929
-Sonoran Central,SCC,2019-11-21,2020-03-27,29,Control,None,4930
-Sonoran Central,SCC,2019-11-21,2020-03-27,30,Mulch,Cool,4931
-Sonoran Central,SCC,2019-11-21,2020-03-27,31,Pits,Cool,4932
-Sonoran Central,SCC,2019-11-21,2020-03-27,32,Seed,Cool,4933
-Sonoran Central,SCC,2019-11-21,2020-03-27,33,ConMod,Warm,4934
-Sonoran Central,SCC,2019-11-21,2020-03-27,34,Mulch,Warm,4935
-Sonoran Central,SCC,2019-11-21,2020-03-27,35,Seed,Warm,4936
-Sonoran Central,SCC,2019-11-21,2020-03-27,36,Pits,Warm,4937
-Sonoran Central,SCC,2019-11-21,2021-03-31,4,Seed,Cool,5229
-Sonoran Central,SCC,2019-11-21,2021-03-31,8,Seed,Warm,5233
-Sonoran Central,SCC,2019-11-21,2021-03-31,13,Seed,Cool,5238
-Sonoran Central,SCC,2019-11-21,2021-03-31,16,Seed,Warm,5241
-Sonoran Central,SCC,2019-11-21,2021-03-31,22,Seed,Cool,5247
-Sonoran Central,SCC,2019-11-21,2021-03-31,25,Seed,Warm,5250
-Sonoran Central,SCC,2019-11-21,2021-03-31,32,Seed,Cool,5257
-Sonoran Central,SCC,2019-11-21,2021-03-31,35,Seed,Warm,5260
-Sonoran Central,SCC,2019-11-21,2021-10-13,16,Seed,Warm,5349
-Sonoran Central,SCC,2019-11-21,2021-10-13,25,Seed,Warm,5358
-Sonoran Central,SCC,2019-11-21,2021-10-13,35,Seed,Warm,5368
-Sonoran Central,Roosevelt,2019-11-22,2021-10-08,7,Seed,Warm,5304
-Sonoran Central,Roosevelt,2019-11-22,2021-10-08,11,Seed,Cool,5308
-Sonoran Central,Roosevelt,2019-11-22,2021-10-08,20,Seed,Cool,5317
-Sonoran Central,Roosevelt,2019-11-22,2021-10-08,36,Seed,Warm,5333
-Sonoran Central,Preserve,2019-11-25,2021-10-06,2,Seed,Cool,5371
-Sonoran Central,Preserve,2019-11-25,2021-10-06,6,Seed,Warm,5375
-Sonoran Central,Preserve,2019-11-25,2021-10-06,10,Seed,Cool,5379
-Sonoran Central,Preserve,2019-11-25,2021-10-06,15,Seed,Cool,5384
-Sonoran Central,Preserve,2019-11-25,2021-10-06,21,Seed,Warm,5390
-Sonoran Central,Preserve,2019-11-25,2021-10-06,23,Seed,Cool,5392
-Sonoran Central,Preserve,2019-11-25,2021-10-06,32,Seed,Warm,5401
-Sonoran Central,SCC,2019-11-21,2021-10-13,4,Seed,Cool,5337
-Sonoran Central,SCC,2019-11-21,2021-10-13,8,Seed,Warm,5341
-Sonoran Central,SCC,2019-11-21,2021-10-13,13,Seed,Cool,5346
-Sonoran Central,SCC,2019-11-21,2021-10-13,22,Seed,Cool,5355
-Sonoran Central,SCC,2019-11-21,2021-10-13,32,Seed,Cool,5365
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,201,Mulch,Warm,6054
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,202,Pits,Warm,6055
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,203,Seed,Medium,6056
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,204,ConMod,Warm,6057
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,205,Mulch,Medium,6058
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,206,Control,None,6059
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,207,Mulch,Warm,6060
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,208,Pits,Medium,6061
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,209,ConMod,Medium,6062
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,210,Mulch,Medium,6063
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,211,Pits,Warm,6064
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,212,Seed,Warm,6065
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,213,ConMod,Warm,6066
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,214,Mulch,Warm,6067
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,215,Seed,Medium,6068
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,216,ConMod,Medium,6069
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,217,Pits,Medium,6070
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,218,Control,None,6071
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,219,Seed,Warm,6072
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,220,Control,None,6073
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,221,ConMod,Warm,6074
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,222,Pits,Warm,6075
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,223,Seed,Medium,6076
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,224,Mulch,Medium,6077
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,225,Pits,Medium,6078
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,226,Seed,Warm,6079
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,227,Mulch,Warm,6080
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,228,ConMod,Medium,6081
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,229,Pits,Warm,6082
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,230,Seed,Warm,6083
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,231,Pits,Medium,6084
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,232,ConMod,Warm,6085
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,233,Control,None,6086
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,234,Seed,Medium,6087
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,235,Mulch,Medium,6088
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,236,ConMod,Medium,6089
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,1,ConMod,Warm,3315
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,2,Pits,Warm,3316
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,3,Seed,Warm,3317
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,4,Mulch,Warm,3318
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,5,ConMod,Med-Warm,3319
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,6,Control,None,3320
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,7,Pits,Med-Warm,3321
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,8,Seed,Med-Warm,3322
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,9,Mulch,Med-Warm,3323
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,10,Seed,Warm,3324
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,11,ConMod,Warm,3325
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,12,Mulch,Warm,3326
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,13,ConMod,Med-Warm,3327
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,14,Control,None,3328
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,15,Pits,Warm,3329
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,16,ConMod,Warm,3330
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,17,Mulch,Med-Warm,3331
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,18,Mulch,Med-Warm,3332
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,19,Seed,Warm,3333
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,20,Mulch,Med-Warm,3334
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,21,ConMod,Med-Warm,3335
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,22,Control,None,3336
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,23,Mulch,Warm,3337
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,24,Seed,Med-Warm,3338
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,25,Pits,Warm,3339
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,26,Seed,Warm,3340
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,27,Mulch,Med-Warm,3341
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,28,ConMod,Warm,3342
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,29,Pits,Med-Warm,3343
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,30,Control,None,3344
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,31,Pits,Warm,3345
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,32,ConMod,Med-Warm,3346
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,33,Mulch,Warm,3347
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,34,Pits,Med-Warm,3348
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,35,Seed,Med-Warm,3349
+Colorado Plateau,PEFO,2020-07-23,2022-04-12,36,Mulch,Med-Warm,3350
+Sonoran Central,Preserve,2019-11-25,2020-03-26,1,Mulch,Cool,5154
+Sonoran Central,Preserve,2019-11-25,2020-03-26,2,Seed,Cool,5155
+Sonoran Central,Preserve,2019-11-25,2020-03-26,3,Pits,Cool,5156
+Sonoran Central,Preserve,2019-11-25,2020-03-26,4,ConMod,Cool,5157
+Sonoran Central,Preserve,2019-11-25,2020-03-26,5,Control,None,5158
+Sonoran Central,Preserve,2019-11-25,2020-03-26,6,Seed,Warm,5159
+Sonoran Central,Preserve,2019-11-25,2020-03-26,7,Pits,Warm,5160
+Sonoran Central,Preserve,2019-11-25,2020-03-26,8,Control,None,5161
+Sonoran Central,Preserve,2019-11-25,2020-03-26,9,Mulch,Warm,5162
+Sonoran Central,Preserve,2019-11-25,2020-03-26,10,Seed,Cool,5163
+Sonoran Central,Preserve,2019-11-25,2020-03-26,11,Seed,Warm,5164
+Sonoran Central,Preserve,2019-11-25,2020-03-26,12,ConMod,Warm,5165
+Sonoran Central,Preserve,2019-11-25,2020-03-26,13,Mulch,Cool,5166
+Sonoran Central,Preserve,2019-11-25,2020-03-26,14,ConMod,Cool,5167
+Sonoran Central,Preserve,2019-11-25,2020-03-26,15,Seed,Cool,5168
+Sonoran Central,Preserve,2019-11-25,2020-03-26,16,Pits,Cool,5169
+Sonoran Central,Preserve,2019-11-25,2020-03-26,17,ConMod,Warm,5170
+Sonoran Central,Preserve,2019-11-25,2020-03-26,18,Pits,Warm,5171
+Sonoran Central,Preserve,2019-11-25,2020-03-26,19,Mulch,Warm,5172
+Sonoran Central,Preserve,2019-11-25,2020-03-26,20,ConMod,Cool,5173
+Sonoran Central,Preserve,2019-11-25,2020-03-26,21,Seed,Warm,5174
+Sonoran Central,Preserve,2019-11-25,2020-03-26,22,Pits,Cool,5175
+Sonoran Central,Preserve,2019-11-25,2020-03-26,23,Seed,Cool,5176
+Sonoran Central,Preserve,2019-11-25,2020-03-26,24,ConMod,Warm,5177
+Sonoran Central,Preserve,2019-11-25,2020-03-26,25,Mulch,Cool,5178
+Sonoran Central,Preserve,2019-11-25,2020-03-26,26,ConMod,Cool,5179
+Sonoran Central,Preserve,2019-11-25,2020-03-26,27,Pits,Warm,5180
+Sonoran Central,Preserve,2019-11-25,2020-03-26,28,Mulch,Warm,5181
+Sonoran Central,Preserve,2019-11-25,2020-03-26,29,Control,None,5182
+Sonoran Central,Preserve,2019-11-25,2020-03-26,30,Pits,Cool,5183
+Sonoran Central,Preserve,2019-11-25,2020-03-26,31,Mulch,Cool,5184
+Sonoran Central,Preserve,2019-11-25,2020-03-26,32,Seed,Warm,5185
+Sonoran Central,Preserve,2019-11-25,2020-03-26,33,Mulch,Warm,5186
+Sonoran Central,Preserve,2019-11-25,2020-03-26,34,ConMod,Warm,5187
+Sonoran Central,Preserve,2019-11-25,2020-03-26,35,Control,None,5188
+Sonoran Central,Preserve,2019-11-25,2020-03-26,36,Pits,Warm,5189
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,1,Pits,Cool,5118
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,2,Seed,Cool,5119
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,3,ConMod,Cool,5120
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,4,Mulch,Cool,5121
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,5,Pits,Warm,5122
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,6,ConMod,Warm,5123
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,7,Seed,Warm,5124
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,8,Pits,Cool,5125
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,9,Control,None,5126
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,10,ConMod,Warm,5127
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,11,Seed,Cool,5128
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,12,Control,None,5129
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,13,Pits,Warm,5130
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,14,Mulch,Warm,5131
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,15,ConMod,Cool,5132
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,16,Seed,Warm,5133
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,17,Pits,Cool,5134
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,18,Mulch,Cool,5135
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,19,ConMod,Cool,5136
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,20,Seed,Cool,5137
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,21,Pits,Warm,5138
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,22,Mulch,Warm,5139
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,23,Mulch,Cool,5140
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,24,ConMod,Warm,5141
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,25,Control,None,5142
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,26,Mulch,Warm,5143
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,27,Pits,Cool,5144
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,28,ConMod,Cool,5145
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,29,Mulch,Cool,5146
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,30,Seed,Warm,5147
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,31,Mulch,Warm,5148
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,32,ConMod,Warm,5149
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,33,Pits,Warm,5150
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,34,Seed,Cool,5151
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,35,Control,None,5152
+Sonoran Central,Roosevelt,2019-11-22,2020-03-25,36,Seed,Warm,5153
+Sonoran Central,SCC,2019-11-21,2020-03-27,1,Mulch,Cool,5190
+Sonoran Central,SCC,2019-11-21,2020-03-27,2,ConMod,Cool,5191
+Sonoran Central,SCC,2019-11-21,2020-03-27,3,Control,None,5192
+Sonoran Central,SCC,2019-11-21,2020-03-27,4,Seed,Cool,5193
+Sonoran Central,SCC,2019-11-21,2020-03-27,5,Pits,Cool,5194
+Sonoran Central,SCC,2019-11-21,2020-03-27,6,ConMod,Warm,5195
+Sonoran Central,SCC,2019-11-21,2020-03-27,7,Mulch,Warm,5196
+Sonoran Central,SCC,2019-11-21,2020-03-27,8,Seed,Warm,5197
+Sonoran Central,SCC,2019-11-21,2020-03-27,9,Mulch,Cool,5198
+Sonoran Central,SCC,2019-11-21,2020-03-27,10,Pits,Warm,5199
+Sonoran Central,SCC,2019-11-21,2020-03-27,11,ConMod,Cool,5200
+Sonoran Central,SCC,2019-11-21,2020-03-27,12,Control,None,5201
+Sonoran Central,SCC,2019-11-21,2020-03-27,13,Seed,Cool,5202
+Sonoran Central,SCC,2019-11-21,2020-03-27,14,ConMod,Warm,5203
+Sonoran Central,SCC,2019-11-21,2020-03-27,15,Control,None,5204
+Sonoran Central,SCC,2019-11-21,2020-03-27,16,Seed,Warm,5205
+Sonoran Central,SCC,2019-11-21,2020-03-27,17,Mulch,Warm,5206
+Sonoran Central,SCC,2019-11-21,2020-03-27,18,Pits,Cool,5207
+Sonoran Central,SCC,2019-11-21,2020-03-27,19,Mulch,Cool,5208
+Sonoran Central,SCC,2019-11-21,2020-03-27,20,ConMod,Cool,5209
+Sonoran Central,SCC,2019-11-21,2020-03-27,21,Pits,Warm,5210
+Sonoran Central,SCC,2019-11-21,2020-03-27,22,Seed,Cool,5211
+Sonoran Central,SCC,2019-11-21,2020-03-27,23,ConMod,Warm,5212
+Sonoran Central,SCC,2019-11-21,2020-03-27,24,Pits,Cool,5213
+Sonoran Central,SCC,2019-11-21,2020-03-27,25,Seed,Warm,5214
+Sonoran Central,SCC,2019-11-21,2020-03-27,26,ConMod,Cool,5215
+Sonoran Central,SCC,2019-11-21,2020-03-27,27,Mulch,Warm,5216
+Sonoran Central,SCC,2019-11-21,2020-03-27,28,Pits,Warm,5217
+Sonoran Central,SCC,2019-11-21,2020-03-27,29,Control,None,5218
+Sonoran Central,SCC,2019-11-21,2020-03-27,30,Mulch,Cool,5219
+Sonoran Central,SCC,2019-11-21,2020-03-27,31,Pits,Cool,5220
+Sonoran Central,SCC,2019-11-21,2020-03-27,32,Seed,Cool,5221
+Sonoran Central,SCC,2019-11-21,2020-03-27,33,ConMod,Warm,5222
+Sonoran Central,SCC,2019-11-21,2020-03-27,34,Mulch,Warm,5223
+Sonoran Central,SCC,2019-11-21,2020-03-27,35,Seed,Warm,5224
+Sonoran Central,SCC,2019-11-21,2020-03-27,36,Pits,Warm,5225
+Utah,CRC,2018-10-17,2019-07-24,4,ComMod,Med-Warm,4473
+Utah,CRC,2018-10-17,2019-07-24,7,ComMod,Cool-Med,4476
+Utah,CRC,2018-10-17,2019-07-24,15,ComMod,Med-Warm,4484
+Utah,CRC,2018-10-17,2019-07-24,20,ComMod,Cool-Med,4489
+Utah,CRC,2018-10-17,2019-07-24,22,ComMod,Med-Warm,4491
+Utah,CRC,2018-10-17,2019-07-24,29,ComMod,Med-Warm,4498
+Utah,CRC,2018-10-17,2019-07-24,35,ComMod,Cool-Med,4504
+Utah,UtahPJ,2018-10-29,2019-08-06,3,ComMod,Cool-Med,4508
+Utah,UtahPJ,2018-10-29,2019-08-06,8,ComMod,Cool,4513
+Utah,UtahPJ,2018-10-29,2019-08-06,14,ComMod,Cool-Med,4519
+Utah,UtahPJ,2018-10-29,2019-08-06,18,ComMod,Cool,4523
+Utah,UtahPJ,2018-10-29,2019-08-06,22,ComMod,Cool-Med,4527
+Utah,UtahPJ,2018-10-29,2019-08-06,27,ComMod,Cool,4532
+Utah,UtahPJ,2018-10-29,2019-08-06,31,ComMod,Cool-Med,4536
+Utah,Salt_Desert,2018-10-31,2019-08-07,4,ComMod,Cool-Med,4545
+Utah,Salt_Desert,2018-10-31,2019-08-07,6,ComMod,Med-Warm,4547
+Utah,Salt_Desert,2018-10-31,2019-08-07,11,ComMod,Cool-Med,4552
+Utah,Salt_Desert,2018-10-31,2019-08-07,16,ComMod,Med-Warm,4557
+Utah,Salt_Desert,2018-10-31,2019-08-07,17,ComMod,Cool-Med,4558
+Utah,Salt_Desert,2018-10-31,2019-08-07,23,ComMod,Med-Warm,4564
+Utah,Salt_Desert,2018-10-31,2019-08-07,28,ComMod,Cool-Med,4569
+Utah,Salt_Desert,2018-10-31,2019-08-07,36,ComMod,Med-Warm,4577
+Sonoran Central,Pleasant,2019-12-19,2023-03-24,4,Seed,Warm,6315
+Sonoran Central,Pleasant,2019-12-19,2023-03-24,8,Seed,Cool,6319
+Sonoran Central,Pleasant,2019-12-19,2023-03-24,12,Seed,Warm,6323
+Sonoran Central,Pleasant,2019-12-19,2023-03-24,15,Seed,Cool,6326
+Sonoran Central,Pleasant,2019-12-19,2023-03-24,22,Seed,Warm,6333
+Sonoran Central,Pleasant,2019-12-19,2023-03-24,23,Seed,Cool,6334
+Sonoran Central,Pleasant,2019-12-19,2023-03-24,30,Seed,Warm,6341
+Sonoran Central,Pleasant,2019-12-19,2023-03-24,32,Seed,Cool,6343
