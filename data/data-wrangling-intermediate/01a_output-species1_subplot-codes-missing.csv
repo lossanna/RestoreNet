@@ -1,13 +1,18 @@
 Region,Site,CodeOriginal
+Sonoran Central,Roosevelt,ANOC2
 Chihuahuan,Mesquite,ATCA
 Colorado Plateau,FlyingM,AmaranthusSpp
 Chihuahuan,Mesquite,BAHI
+Sonoran SE,SRER,CRYSPP 1
+Sonoran SE,SRER,CRYSPP 2
+Sonoran SE,SRER,CRYSPP2
+Colorado Plateau,BarTBar,DACA
 Sonoran SE,SRER,DeadStem
-Sonoran Central,Preserve,ERDI2
 Utah,UtahPJ,ERIGSPP
-Sonoran SE,Patagonia,ERISPP
 Utah,UtahPJ,Eriogonum sp.
 Sonoran SE,SRER,FESSPP
+Sonoran SE,SRER,GILSPP 1
+Sonoran SE,SRER,GILSPP 2
 Utah,CRC,LILE
 Colorado Plateau,AguaFria,LUSP
 Chihuahuan,Mesquite,PAHI7
@@ -30,13 +35,14 @@ Utah,CRC,S-UNGR4
 Utah,UtahPJ,S-UNGR4
 Utah,UtahPJ,S-UNGR5
 Chihuahuan,Mesquite,SEBA2
+Sonoran Central,Preserve,STMI2
 Colorado Plateau,TLE,SUNGR
 Colorado Plateau,BabbittPJ,SUNGR
-Chihuahuan,Mesquite,Trifolium
 Colorado Plateau,PEFO,UCHEN1
 Colorado Plateau,PEFO,UCHEN2
 Colorado Plateau,FlyingM,UNFO
 Colorado Plateau,Spiderweb,UNFO
+Sonoran SE,SRER,UNFO-5
 Utah,UtahPJ,UNFO10
 Utah,UtahPJ,UNFO11
 Colorado Plateau,BarTBar,UNFO12
@@ -77,7 +83,12 @@ Colorado Plateau,MOWE,UNGR4
 Utah,Salt_Desert,UNGR4
 Utah,UtahPJ,UNGR4
 Colorado Plateau,AguaFria,UNGR5
+Sonoran SE,SRER,UNGRS-1
 Chihuahuan,Mesquite,UNK Fuzzy astr
+Sonoran Central,SCC,UNK brown
+Sonoran Central,Preserve,UNK heart
+Colorado Plateau,PEFO,UNKM
 Chihuahuan,Mesquite,UnkForb
 Chihuahuan,Creosote,UnkForb1
 Chihuahuan,Mesquite,Unkaster
+Sonoran Central,Roosevelt,unk grass 2

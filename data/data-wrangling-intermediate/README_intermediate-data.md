@@ -66,13 +66,13 @@ File naming notes:
 
 
 `01b_edited-species1_subplot-codes-missing.csv`
-- List of codes included in the raw `subplot` data, but are missing from the the original master species list (`master-species_native.xlsx`).
+- List of codes included in the raw `subplot` data, but are missing from the the original master species list (`from-Master-species-list-with-native-status_LO.xlsx`).
 - Manually edited to add plant name, duration, and lifeform based on USDA Plants.
 - Not divided by location dependence, but ones that will be location-dependent (unknowns) have sites added to the name.
 - Edited list is the same length as output list.
 
 `01b_edited-species2_subplot-lifeform-info-corrected.csv`
-- List of codes and their lifeform information, as taken from the `subplot` data. I deleted rows with incorrect information, so there would be only one assignment per `CodeOriginal`.
+- List of codes and their lifeform information, as taken from the `subplot` data. I deleted rows with incorrect information, so there would be only one assignment per `CodeOriginal` (this includes standardized spelling of Grass/Forb/Shrub).
 
 `01b_edited-species3_xlsx_lifeform-na.csv`
 - List of species originally without lifeform information. Subset of codes is taken only codes from the `master-species_native.xlsx`
@@ -93,6 +93,7 @@ File naming notes:
 - List of location-dependent species (unknowns), listed first by the ones from master species list that lack site data, and then by location-dependent codes from the raw `subplot` data, whose native/duration/lifeform information was already manually added in `01b_edited-species1_subplot-codes-missing_native-duration-lifeform.csv`.
 - Manually added site information for the unknowns from the master list (first section) based on site information in the subplot data, which sometimes included adding multiple rows because the same code occurred at different sites. Codes have not been changed, and will be changed in the cleaned data through data wrangling (`03.1_data-wrangling_subplot.R` and `03.2_data-wrangling_2x2.R`).
 	+ Sometimes codes were listed in the master species list that didn't occur in the `subplot` data, and therefore didn't have any site information. They are not included here, but are included later when looking at `2x2` codes in `species6.csv`.
+- Same number of rows as `output-species5.2`, plus the manually added row from obsevations missing codes (see below).
 - Manually added assigned codes for subplot observations that were missing codes, as noted in `03.1_data-wrangling_subplot.R` (there is just one in row 12166).
 - Edited list is not the same length as either output list, because some codes in `5.1.csv` weren't in the subplot data, so they weren't included, and some codes had multiple locations according to `5.2.csv`.
 

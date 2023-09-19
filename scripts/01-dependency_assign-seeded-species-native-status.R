@@ -1,5 +1,5 @@
-# Created: 2022-12-09
-# Last updated: 2023-09-06
+# Created: 2023-09-18
+# Last updated: 2023-09-18
 
 # Purpose: in merging the species data with the subplot data (actual observations), we see that some unknown
 #   species were seeded, and therefore native, but it is impossible to know this without first producing
@@ -17,9 +17,9 @@ library(tidyverse)
 
 # Load data ---------------------------------------------------------------
 
-species.in.intermed <- read_csv("data/raw/01-dependency_species-list_location-independent.csv")
-species.de.intermed <- read_csv("data/raw/01-dependency_species-list_location-dependent.csv")
-subplot.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllSubplotData")
+species.in.intermed <- read_csv("data/data-wrangling-intermediate/01-dependency_species-list_location-independent.csv")
+species.de.intermed <- read_csv("data/data-wrangling-intermediate/01-dependency_species-list_location-dependent.csv")
+subplot.raw <- read_xlsx("data/raw/2023-09-15_Master 1.0 Germination Data_raw.xlsx", sheet = "AllSubplotData")
 
 
 # Set up subplot data -----------------------------------------------------
@@ -79,9 +79,9 @@ seeded.marked.notnative <- subplot.seeded %>%
   arrange(Name)
 seeded.marked.notnative
 
-# Remove Eragrostis curvula, because it is non-native and not seeded
+# Remove ERCU2 & ERCI6 because they are non-native and not seeded
 seeded.marked.notnative <- seeded.marked.notnative %>% 
-  filter(Name != "Eragrostis curvula")
+  filter(!Code %in% c("ERCU2", "ERCI6"))
 
 # Write list of names to CSV for 01_curate-species-list.R
   # Codes are already location-specific

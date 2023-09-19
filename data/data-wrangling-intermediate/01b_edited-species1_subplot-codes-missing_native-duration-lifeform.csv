@@ -1,13 +1,18 @@
 Region,Site,CodeOriginal,Name,Native,Duration,Lifeform
+Sonoran Central,Roosevelt,ANOC2,Androsace occidentalis,Native,Annual,Forb
+Chihuahuan,Mesquite,ATCA,Atriplex californica,Native,Perennial,Forb
 Colorado Plateau,FlyingM,AmaranthusSpp,Amaranthus spp.,Unknown,Unknown,Forb
 Chihuahuan,Mesquite,ATCA,"Unknown ATCA (but not Atriplex, a grass?)",Unknown,Unknown,Grass
 Chihuahuan,Mesquite,BAHI,Balsamorhiza hookeri,Native,Perennial,Forb
+Sonoran SE,SRER,CRYSPP 1,Cryptantha spp. 1,Native,Unknown,Forb
+Sonoran SE,SRER,CRYSPP 2,Cryptantha spp. 2,Native,Unknown,Forb
+Sonoran SE,SRER,CRYSPP2,Cryptantha spp. 3,Native,Unknown,Forb
+Colorado Plateau,BarTBar,DACA,Dalea candida,Native,Perennial,Forb
 Sonoran SE,SRER,DeadStem,Dead stem,Unknown,Unknown,Forb
-Sonoran Central,Preserve,ERDI2,Eriastrum diffusum,Native,Annual,Forb
 Utah,UtahPJ,ERIGSPP,Unknown ERIG (?),Unknown,Unknown,Forb
 Utah,UtahPJ,Eriogonum sp.,Erigonum spp.,Native,Unknown,Forb
-Sonoran SE,Patagonia,ERISPP,Eriastrum or Erigonum spp. (?),Native,Unknown,Forb
-Sonoran SE,SRER,FESSPP,FES (fescue?) spp.,Unknown,Unknown,Grass
+Sonoran SE,SRER,GILSPP 1,Gilia spp. 1,Unknown,Unknown,Forb
+Sonoran SE,SRER,GILSPP 2,Gilia spp. 2,Unknown,Unknown,Forb
 Utah,CRC,LILE,Leptosiphon lemmonii,Native,Annual,Forb
 Colorado Plateau,AguaFria,LUSP,Lupinus sparsiflorus (?),Native,Annual,Forb
 Chihuahuan,Mesquite,PAHI7,Oplismenus hirtellus (Panicum hirtellum),Introduced,Perennial,Grass
@@ -30,13 +35,14 @@ Utah,CRC,S-UNGR4,Seeded unknown grass 4,Native,Unknown,Grass
 Utah,UtahPJ,S-UNGR4,Seeded unknown grass 4,Native,Unknown,Grass
 Utah,UtahPJ,S-UNGR5,Seeded unknown grass 5,Native,Unknown,Grass
 Chihuahuan,Mesquite,SEBA2,Senna bacillaris,Native,Perennial,Shrub
+Sonoran Central,Preserve,STMI2,Stylocline micropoides,Native,Annual,Forb
 Colorado Plateau,TLE,SUNGR,Seeded unknown grass (?),Native,Unknown,Shrub
 Colorado Plateau,BabbittPJ,SUNGR,Seeded unknown grass (?),Native,Unknown,Shrub
-Chihuahuan,Mesquite,Trifolium,Trifolium spp.,Unknown,Unknown,Forb
 Colorado Plateau,PEFO,UCHEN1,Unknown UCHEN1 (?),Unknown,Unknown,Unknown
 Colorado Plateau,PEFO,UCHEN2,Unknown UCHEN2 (?),Unknown,Unknown,Unknown
 Colorado Plateau,FlyingM,UNFO,Unknown forb,Unknown,Unknown,Forb
 Colorado Plateau,Spiderweb,UNFO,Unknown forb,Unknown,Unknown,Forb
+Sonoran SE,SRER,UNFO-5,Unknown forb 5,Unknown,Unknown,Forb
 Utah,UtahPJ,UNFO10,Unknown forb 10,Unknown,Unknown,Forb
 Utah,UtahPJ,UNFO11,Unknown forb 11,Unknown,Unknown,Forb
 Colorado Plateau,BarTBar,UNFO12,Unknown forb 12,Unknown,Unknown,Forb
@@ -77,7 +83,12 @@ Colorado Plateau,MOWE,UNGR4,Unknown grass 4,Unknown,Unknown,Grass
 Utah,Salt_Desert,UNGR4,Unknown grass 4,Unknown,Unknown,Grass
 Utah,UtahPJ,UNGR4,Unknown grass 4,Unknown,Unknown,Grass
 Colorado Plateau,AguaFria,UNGR5,Unknown grass 5,Unknown,Unknown,Grass
+Sonoran SE,SRER,UNGRS-1,Unknown grass 6,Unknown,Unknown,Grass
 Chihuahuan,Mesquite,UNK Fuzzy astr,Unknown fuzzy aster,Unknown,Unknown,Forb
+Sonoran Central,SCC,UNK brown,Unknown brown,Unknown,Unknown,Unknown
+Sonoran Central,Preserve,UNK heart,Unknown forb with heart-shaped cotyledon; possibly MAPA5 (although that species not seen growing there),Unknown,Unknown,Forb
+Colorado Plateau,PEFO,UNKM,Unknown M,Unknown,Unknown,Unknown
 Chihuahuan,Mesquite,Unkaster,Unknown aster,Unknown,Unknown,Forb
 Chihuahuan,Mesquite,UnkForb,Unknown forb,Unknown,Unknown,Forb
 Chihuahuan,Creosote,UnkForb1,Unknown forb 1,Unknown,Unknown,Forb
+Sonoran Central,Roosevelt,unk grass 2,Unknown grass 2,Unknown,Unknown,Grass

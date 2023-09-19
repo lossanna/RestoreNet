@@ -13,6 +13,7 @@ BOSPP,Colorado Plateau,BarTBar
 BOSPP,Colorado Plateau,FlyingM
 BOSPP,Colorado Plateau,PEFO
 BOSPP,Colorado Plateau,Spiderweb
+BOSPP,Colorado Plateau,MOWE
 BOUSPP,Sonoran SE,SRER
 BRASPP,Sonoran SE,SRER
 CALSPP,Sonoran SE,Patagonia
@@ -24,6 +25,8 @@ CHEN,Colorado Plateau,TLE
 CHEN,Colorado Plateau,MOWE
 CHESPP,Sonoran SE,Patagonia
 CRYPT,Sonoran Central,Roosevelt
+CRYPT,Sonoran Central,Pleasant
+CRYSPP,Colorado Plateau,PEFO
 CRYSPP,Mojave,29_Palms
 CRYSPP,Mojave,AVRCD
 CRYSPP,Sonoran SE,SRER
@@ -32,11 +35,14 @@ ELSPP,Colorado Plateau,AguaFria
 ELSPP,Colorado Plateau,BabbittPJ
 ELSPP,Colorado Plateau,FlyingM
 ERASPP,Sonoran SE,Patagonia
+ERIASPP,Sonoran SE,SRER
 ERISP,Colorado Plateau,BarTBar
 ERISP,Colorado Plateau,PEFO
+ERISPP,Sonoran SE,Patagonia
 Eriogonum,Chihuahuan,Creosote
 GILSPP,Colorado Plateau,Spiderweb
 GILSPP,Mojave,29_Palms
+GILSPP,Sonoran SE,SRER
 HESP,Colorado Plateau,BabbittPJ
 HESP,Colorado Plateau,FlyingM
 LEPSPP,Mojave,29_Palms
@@ -57,6 +63,7 @@ PORSPP,Colorado Plateau,FlyingM
 PORSPP,Colorado Plateau,PEFO
 PORSPP,Sonoran SE,Patagonia
 SIDSPP,Sonoran SE,SRER
+SIDSPP,Sonoran SE,Patagonia
 SOSP,Colorado Plateau,FlyingM
 SPSP,Colorado Plateau,AguaFria
 SPSP,Colorado Plateau,BarTBar
@@ -66,11 +73,17 @@ SPSP,Utah,UtahPJ
 STISPP,Mojave,29_Palms
 UNDPF,Sonoran SE,SRER
 UNDSF,Sonoran SE,SRER
+UNFO-1,Sonoran SE,SRER
+UNFO-1,Sonoran SE,Patagonia
+UNFO-2,Sonoran SE,SRER
+UNFO-3,Sonoran SE,SRER
+UNFO-4,Sonoran SE,SRER
 UNFO1,Colorado Plateau,AguaFria
 UNFO1,Colorado Plateau,BabbittPJ
 UNFO1,Colorado Plateau,FlyingM
 UNFO1,Colorado Plateau,MOWE
 UNFO1,Colorado Plateau,PEFO
+UNFO1,Colorado Plateau,BarTBar
 UNFO1,Mojave,29_Palms
 UNFO1,Sonoran SE,SRER
 UNFO1,Sonoran SE,Patagonia
@@ -140,10 +153,9 @@ UNGRS3,Sonoran SE,Patagonia
 UNGR_P_1,Sonoran SE,Patagonia
 UNGR_S_1,Sonoran SE,SRER
 UNGR_S_2,Sonoran SE,SRER
-UNK brown,Sonoran Central,SCC
-UNK heart,Sonoran Central,Preserve
 UNSFF,Sonoran SE,SRER
 UNSH,Colorado Plateau,BarTBar
+UNSHR-1,Sonoran SE,Patagonia
 Unk bunchGrass #1,Sonoran Central,Pleasant
 Unk grass,Sonoran Central,SCC
 Unk heart,Sonoran Central,Preserve
@@ -162,4 +174,3 @@ Unksalsola,Chihuahuan,Creosote
 Unksporo,Chihuahuan,Creosote
 Unksporo,Chihuahuan,Mesquite
 Unksporob,Chihuahuan,Mesquite
-unk grass 2,Sonoran Central,Roosevelt

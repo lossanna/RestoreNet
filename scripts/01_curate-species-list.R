@@ -1,4 +1,4 @@
-# Created: 2022-11-28
+# Created: 2023-09-18
 # Last updated: 2023-09-18
 
 # Purpose: Curate a complete species list with Code, Code Original, Name, Native, Duration, Lifeform info.
@@ -16,11 +16,12 @@
 
 # Workflow:
 #   Start with species list (from-Master_species-list-with-native-status_LO) adapted from
-#     Master Germination Data 2022.xlsx, and codes from subplot data not included in species list.
+#     `2023-09-15 Master 1.0 Germination Data_raw.xlsx`, and codes from subplot data not included in species list.
 #     Started with these because it makes sense to start from the original species list, and because
 #     subplot data had information about lifeform with observation.
 #   Create location-independent and location-dependent lists from species list and subplot data.
 #   Then add codes from 2x2 data.
+#   Data wrangling (including species info assignment) will be handled separately for 2x2 and subplot data.
 
 
 
@@ -29,8 +30,8 @@ library(tidyverse)
 
 # Load data ---------------------------------------------------------------
 
-subplot.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllSubplotData")
-plot.2x2.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllPlotData")
+subplot.raw <- read_xlsx("data/raw/2023-09-15_Master 1.0 Germination Data_raw.xlsx", sheet = "AllSubplotData")
+plot.2x2.raw <- read_xlsx("data/raw/2023-09-15_Master 1.0 Germination Data_raw.xlsx", sheet = "AllPlotData")
 species.raw <- read_xlsx("data/raw/from-Master_species-list-with-native-status_LO.xlsx")
 mix <- read_xlsx("data/raw/from-Master_seed-mix_LO.xlsx", sheet = "with-site_R")
 
@@ -110,6 +111,8 @@ write_csv(subplot.missing,
 head(subplot.missing)
 
 # EDITED: manually edit new file to add Name, Native, Lifeform, and Duration cols
+#   I assumed DACA from CO Plateau was DACA7, because only DACA7 appears in the CO Plateau tabs of Master.xlsx,
+#     so I think this was a typo (and no other species has code similar to DACA).
 sub.missing <- read_csv("data/data-wrangling-intermediate/01b_edited-species1_subplot-codes-missing_native-duration-lifeform.csv")
 head(sub.missing)
 
@@ -154,13 +157,14 @@ sub.missing.known <- sub.missing %>% # ones missing from original master list (.
 # Location-independent species from master list & subplot data ------------
 
 
-# Add lifeform to species/subplot list ------------------------------------
+# Add lifeform to master/subplot list -------------------------------------
 
 # Extract lifeform information from subplot data for knowns from Master.xlsx
 subplot.in.lifeform <- subplot %>% 
   select(CodeOriginal, Functional_Group) %>% 
   distinct(.keep_all = TRUE) %>% 
-  rename(Lifeform = Functional_Group)
+  rename(Lifeform = Functional_Group) |> 
+  arrange(CodeOriginal)
 
 # Correct codes with conflicting lifeform info
 sub.in.lifeform.duplicate <- count(subplot.in.lifeform, CodeOriginal) |> 
@@ -175,15 +179,19 @@ write_csv(subplot.in.lifeform.inspect,
           file = "data/data-wrangling-intermediate/01a_output-species2_subplot-lifeform-info.csv")
 
 # EDITED: delete incorrect rows so there is only one lifeform assignment per code
+#   Fix conflicting lifeform according to USDA Plants
+#   Standardize spelling of lifeform to Grass, Forb, or Shrub
 subplot.in.duplicate <- read_csv("data/data-wrangling-intermediate/01b_edited-species2_subplot-lifeform-info-corrected.csv")
 
 subplot.in.lifeform <- subplot.in.lifeform |> 
   filter(!CodeOriginal %in% subplot.in.duplicate$CodeOriginal) |> 
-  bind_rows(subplot.in.duplicate)
+  bind_rows(subplot.in.duplicate) |> 
+  arrange(CodeOriginal)
+length(unique(subplot.in.lifeform$CodeOriginal)) == nrow(subplot.in.lifeform)
 
 
 # Add subplot lifeform information to working species list
-species.m.known <- left_join(species.m.known, subplot.in.lifeform)
+species.m.known <- left_join(species.m.known, subplot.in.lifeform) 
 
 # Standardize Lifeform to Grass/Forb/Shrub
 unique(species.m.known$Lifeform)
@@ -191,11 +199,11 @@ unique(species.m.known$Lifeform)
 species.m.known <- species.m.known %>% 
   mutate(Lifeform = case_when(
     str_detect(species.m.known$Lifeform, "shrub") ~ "Shrub",
+    str_detect(species.m.known$Lifeform, "forb") ~ "Forb",
+    species.m.known$Lifeform == "NA" ~ NA,
     TRUE ~ species.m.known$Lifeform))
 
-unique(species.m.known$Lifeform) # Lifeform names have been standardized, with NAs
-species.m.known$Lifeform[species.m.known$Lifeform == "NA"] <- NA # convert to real (logical) NA
-unique(species.m.known$Lifeform) # lifeform has been standardized
+unique(species.m.known$Lifeform) # Lifeform names have been standardized
 
 # Compile list of lifeform information thus far
 lifeform.known <- species.m.known %>% 
@@ -281,7 +289,7 @@ mix.codes # codes need to match ones from seed mix
 # Create df standardized codes based on USDA Plants
 codes.standardized.in <- codes.fix.in %>% 
   filter(Code %in% c(mix.codes$CodeOriginal, "CHPO12", "SIAL2")) %>% 
-  mutate(CodeOriginal = c("ARPUP6", "BOER", "EUPO3", "S-HEBO", "S-PASM", "SIAL", "SPAMA")) 
+  mutate(CodeOriginal = c("ARPUP6", "BOER", "EUPO3", "DACA", "S-HEBO", "S-PASM", "SIAL", "SPAMA")) 
 
 # Remove wrong codes from species list and add correct ones
 species.in <- species.in %>% 
@@ -311,7 +319,7 @@ names.fix.in # look at master species list for clarification
 #   Check for ERCI in subplot and 2x2 data
 filter(subplot, CodeOriginal == "ERCI")
 filter(p2x2.codes, CodeOriginal == "ERCI")
-# ERCI is actually now location-dependent
+#     ERCI is actually now location-dependent because it means different things in different regions
 
 # For now, remove both
 species.in <- species.in |> 
@@ -322,7 +330,8 @@ species.in <- species.in |>
 length(unique(species.in$CodeOriginal)) == nrow(species.in) # TRUE, all codes in species list are unique
 
 
-# Check for absent information (NAs; "0" is okay)
+# Check for absent information (NAs)
+#   "0" is okay
 unique(species.in$Native)
 unique(species.in$Duration)
 unique(species.in$Lifeform)
@@ -364,9 +373,22 @@ sites.m.unk <- subplot %>%
   arrange(CodeOriginal)
 write_csv(sites.m.unk,
           file = "data/data-wrangling-intermediate/01a_output-species5.2_location-dependent_xlsx_sites.csv")
-head(sites.m.unk) # use for reference to connect codes to sites
+head(sites.m.unk) # include these rows
+
+# Look for NA codes that were observations in subplot data
+filter(subplot, is.na(CodeOriginal)) |> 
+  select(Site, `Seeded(Yes/No)`, Functional_Group, Seedling_Count, Average_Height_mm, raw.row) # raw.row 9728, 12576
+#   Row 9728 is an observation of nothing (0)
+#   Row 12576 is an observation of an actual plant
+#     add this to edited5 as extra row; assign it a CodeOriginal and then manually change CodeOriginal 
+#     during data wrangling (03.1_data-wrangling_subplot.R)
 
 # EDITED: manually add/correct Site, Native, Duration, and Lifeform cols
+#   Use 5.1 as skeleton to edit
+#   Delete rows that do not appear in subplot data (don't appear in output-species5.2)
+#   Create extra rows for unknowns (they are defined by Region but need a row for each Site), as cross-referenced 
+#     with output-species5.2
+#   Manually add row for NA code that was actually an observation of a plant
 species.de <- read_csv("data/data-wrangling-intermediate/01b_edited-species5_location-dependent_native-duration-lifeform.csv")
 head(species.de)
 
@@ -522,14 +544,16 @@ p2x2.codes.dup |>
   filter(LocationDependence == "dependent")
 #   one that starts with "SW conmod is" is split
 dup.split <- p2x2.codes.dup |> 
-  filter(str_detect(CodeOriginal, "SW conmod is"))
+  filter(str_detect(CodeOriginal, "SW conmod is") | str_detect(CodeOriginal, "Possible SPCR along"))
 dup.split
 dup.split$CodeOriginal 
-#   split location dependence makes sense; one is blue grama, and one is possible PEPA
+#   split location dependence makes sense; for one of them one is blue grama, and one is possible PEPA,
+#     and for the other one is SPCR and one is possible PEPA
 
 # Split one now now longer needs its duplicate row because they will be in separate lists
 #   Change NeedsItsDuplicate to "No"
 p2x2.codes.missing$NeedsItsDuplicate[str_detect(p2x2.codes.missing$CodeOriginal, "SW conmod is")] <- "No"
+p2x2.codes.missing$NeedsItsDuplicate[str_detect(p2x2.codes.missing$CodeOriginal, "Possible SPCR along")] <- "No"
 
 
 
