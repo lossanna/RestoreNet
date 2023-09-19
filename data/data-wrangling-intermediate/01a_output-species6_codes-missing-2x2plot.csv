@@ -95,6 +95,7 @@ Sonoran Central,Preserve,ERCI
 Chihuahuan,Creosote,ERCI
 Sonoran Central,Preserve,ERDED4
 Utah,UtahPJ,ERIGSPP
+Sonoran Central,Pleasant,ERIOG
 Colorado Plateau,PEFO,ERISP
 Colorado Plateau,BarTBar,ERISP
 Colorado Plateau,BarTBar,ERISPP
@@ -111,6 +112,7 @@ Colorado Plateau,BabbittPJ,HESP
 Colorado Plateau,FlyingM,HESP
 Colorado Plateau,PEFO,HOIN
 Colorado Plateau,MOWE,HYVE
+Sonoran Central,Pleasant,LEPISP
 Mojave,29_Palms,LEPSPP
 Colorado Plateau,AguaFria,LUSPP
 Colorado Plateau,PEFO,LUSPP
@@ -161,6 +163,7 @@ Colorado Plateau,BabbittPJ,PASM (maybe)
 Mojave,29_Palms,PECSPP
 Sonoran SE,SRER,PEPA (possibly)
 Colorado Plateau,BabbittPJ,PHSPP
+Sonoran Central,Pleasant,PHYSR
 Colorado Plateau,BarTBar,PORSPP
 Colorado Plateau,PEFO,PORSPP
 Colorado Plateau,BabbittPJ,PSSP6 (maybe)
@@ -198,6 +201,7 @@ Colorado Plateau,FlyingM,SALRE
 Colorado Plateau,FlyingM,SARE
 Colorado Plateau,BarTBar,SATR
 Mojave,29_Palms,SCHSPP
+Sonoran Central,Pleasant,SISYM
 Colorado Plateau,BabbittPJ,SPSP
 Colorado Plateau,BarTBar,SPSP
 Colorado Plateau,FlyingM,SPSP

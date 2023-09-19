@@ -1,6 +1,5 @@
 CodeOriginal,Region,Site
 ACASPP,Sonoran SE,SRER
-ACMIS,Sonoran Central,Pleasant
 AMASPP,Colorado Plateau,BarTBar
 AMBSPP,Colorado Plateau,BabbittPJ
 ANOSPP,Sonoran SE,SRER
@@ -25,8 +24,6 @@ CHEN,Colorado Plateau,BabbittPJ
 CHEN,Colorado Plateau,TLE
 CHEN,Colorado Plateau,MOWE
 CHESPP,Sonoran SE,Patagonia
-CHTE2,Colorado Plateau,MOWE
-CHTE2,Utah,CRC
 CRYPT,Sonoran Central,Roosevelt
 CRYPT,Sonoran Central,Pleasant
 CRYSPP,Colorado Plateau,PEFO
@@ -47,16 +44,10 @@ Eriogonum,Chihuahuan,Creosote
 GILSPP,Colorado Plateau,Spiderweb
 GILSPP,Mojave,29_Palms
 GILSPP,Sonoran SE,SRER
-HECO26,Colorado Plateau,BabbittPJ
-HECO26,Utah,UtahPJ
 HESP,Colorado Plateau,BabbittPJ
 HESP,Colorado Plateau,FlyingM
 LEPSPP,Mojave,29_Palms
 LUPSPP,Sonoran SE,SRER
-LUSP2,Sonoran Central,Roosevelt
-LUSP2,Sonoran Central,Preserve
-LUSP2,Sonoran Central,SCC
-LUSP2,Sonoran Central,Pleasant
 LUSPP,Colorado Plateau,AguaFria
 MACSPP,Colorado Plateau,TLE
 MENSPP,Colorado Plateau,PEFO
@@ -82,7 +73,6 @@ SPSP,Colorado Plateau,FlyingM
 SPSP,Colorado Plateau,TLE
 SPSP,Utah,UtahPJ
 STISPP,Mojave,29_Palms
-STSP3,Mojave,AVRCD
 Trifolium,Chihuahuan,Mesquite
 UNDPF,Sonoran SE,SRER
 UNDSF,Sonoran SE,SRER

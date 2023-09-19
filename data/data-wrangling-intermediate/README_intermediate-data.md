@@ -76,15 +76,18 @@ Notes about `output` and `edited` intermediate data files created in data cleani
 - Columns: `Region`, `Site`, `CodeOriginal`.
 
 #### `01a_output-species7_location-independent-final-check.csv`
-- Final manual check of codes for location-independent species list. Changed values are highlighted and explained in comment.
+- Final manual check of codes for location-independent species list. 
+- Columns: `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`.
 
 #### `01a_output-species8_location-dependent-final-check.csv`
 - Final manual check of codes for location-dependent species list. Changed values are highlighted and explained in comment.
+- Columns: `Region`, `Site`, `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`.
 
 #### `01a_output-species9_p2x2-location-independent-need-duplicate-number.csv`
 - List of location-independent codes that need duplicate rows from `2x2` with corrected/finalized species info (created in `edited-species7.csv`). List needs `DuplicateNum` column added, which is easiest to do manually (rather than trying to write a vector in R, which I initially tried to do but it didn't work lol).
 - Duplicate rows needed because a single original code mentions multiple species; hence, the same code will need multiple rows to describe all the information. All duplicate rows needed are included in this table. `subplot` data doesn't need any duplicate rows.
-- Location-dependent rows that needed duplicates were handled solely in R (there were only 5).
+- Location-dependent rows that needed duplicates were handled solely in R (there were only 4).
+- Columns: `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`. `NeedsItsDuplicate`.
 
 ### Edited
 #### `01b_edited-species1_subplot-codes-missing.csv`
@@ -140,15 +143,20 @@ Notes about `output` and `edited` intermediate data files created in data cleani
 - Columns: `Region`, `Site`, `CodeOriginal`, `NeedsItsDuplicate` (added), `DuplicateNum` (added), `Code` (added), `Name` (added), `Native` (added), `Duration` (added), `Lifeform` (added), `LocationDependence` (added).
 
 #### `01b_edited-species7_location-independent-final-fix.xlsx`
-- Final fixes to  location-independent species list. All that was changed was the `Code` of a couple of species (ELEL5 and SPAM2) because they had wrong numbers for some reason.
+- Final fixes to  location-independent species list. Changes are noted as comments in Excel sheet (standardized codes to be the same as USDA Plants ones).
+- Row length: edited is the same length as output.
+- Columns: `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`.
 
 #### `01b_edited-species8_location-dependent-final-fix.xlsx`
-- Final fixes to  location-dependent species list. Removed duplicates so there would only be one row per `Code`, unless the `CodeOriginal` was different. Changes are listed in a textbook in the Excel file.
+- Final fixes to  location-dependent species list. Changed native status for a few unknowns after cross-referencing master species list.
+- Columns: `Region`, `Site`, `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`.
 
 #### `01b_edited-species9_p2x2-location-independent-duplicate-number-added.csv`
 - List of location-independent codes that need duplicate rows from `2x2` with corrected/finalized species info (created in `edited-species7.csv`). Manually added `DuplicateNum` column.
 - Duplicate rows needed because a single original code mentions multiple species; hence, the same code will need multiple rows to describe all the information. All duplicate rows needed are included in this table. `subplot` data doesn't need any duplicate rows.
-- Location-dependent rows that needed duplicates were handled solely in R (there were only 5).
+- Location-dependent rows that needed duplicates were handled solely in R (there were only 4).
+- Row length: edited list has the same number of rows as output.
+- Columns: `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`. `NeedsItsDuplicate`, `DuplicateNum` (added).
 
 
 ## From `01-dependency.R`

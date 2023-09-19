@@ -1,5 +1,5 @@
 # Created: 2023-09-18
-# Last updated: 2023-09-18
+# Last updated: 2023-09-19
 
 # Purpose: Curate a complete species list with Code, Code Original, Name, Native, Duration, Lifeform info.
 #   Two lists must be created, a location-independent version (known species), and a 
@@ -322,15 +322,18 @@ names.fix.in <- species.in %>%
   filter(CodeOriginal %in% filter(species.in, duplicated(CodeOriginal))$CodeOriginal) %>% 
   arrange(CodeOriginal) 
 names.fix.in # look at master species list for clarification
-# Cross-referencing original species list from master shows that ERCI referred to correct species
-#   (Eragrostis cilianensis) at Sonoran Central, but referred to E. ciliaris at Chihuahuan
+# Cross-referencing original species list from master shows that ERCI referred to Eragrostis cilianensis 
+#   at Sonoran Central and Co Plateau, but referred to E. ciliaris at Chihuahuan
+#   USDA codes:
+#     ERCI = Eragrostis cilianensis
+#     ERCI2 = Eragrostis ciliaris
 
 #   Check for ERCI in subplot and 2x2 data
 filter(subplot, CodeOriginal == "ERCI")
 filter(p2x2.codes, CodeOriginal == "ERCI")
 #     ERCI is actually now location-dependent because it means different things in different regions
 
-# For now, remove both
+# For now, remove all
 species.in <- species.in |> 
   filter(CodeOriginal != "ERCI")
 
@@ -370,7 +373,7 @@ species.de <- bind_rows(species.m.unk, sub.missing.unk)
 # OUTPUT: write to CSV to fill in information for species.m.unk
 write_csv(species.de,
           file = "data/data-wrangling-intermediate/01a_output-species5.1_location-dependent.csv")
-head(species.de) # skeleton to edit
+head(species.de) # contains Name & Native
 
 # OUTPUT: extract Site information for species.m.unk to add to location-dependent list
 #   and write to CSV
@@ -382,7 +385,7 @@ sites.m.unk <- subplot %>%
   arrange(CodeOriginal)
 write_csv(sites.m.unk,
           file = "data/data-wrangling-intermediate/01a_output-species5.2_location-dependent_xlsx_sites.csv")
-head(sites.m.unk) # include these rows
+head(sites.m.unk) # contains Site
 
 # Look for NA codes that were observations in subplot data
 filter(subplot, is.na(CodeOriginal)) |> 
@@ -394,36 +397,12 @@ filter(subplot, is.na(CodeOriginal)) |>
 
 # EDITED: manually add/correct Site, Native, Duration, and Lifeform cols
 #   Use 5.1 as skeleton to edit
-#   Delete rows that do not appear in subplot data (don't appear in output-species5.2)
+#   Delete rows that do not appear in subplot data (don't appear in output-species5.2.csv)
 #   Create extra rows for unknowns (they are defined by Region but need a row for each Site), as cross-referenced 
-#     with output-species5.2
+#     with output-species5.2.csv)
 #   Manually add row for NA code that was actually an observation of a plant
 species.de <- read_csv("data/data-wrangling-intermediate/01b_edited-species5_location-dependent_native-duration-lifeform.csv")
 head(species.de)
-
-
-# Add ERCI
-#   ERCI = ERCI at Sonoran Central, ERCI = ERCI2 at Chihuahuan
-erci.soc <- names.fix.in[1, ]
-erci.soc <- rbind(erci.soc, erci.soc, erci.soc, erci.soc)
-erci.soc <- erci.soc |> 
-  mutate(Region = "Chihuahuan",
-         Site = c("Preserve", "SCC", "Roosevelt", "Pleasant")) |> 
-  select(-Code)
-
-erci.chi <- names.fix.in[2, ]
-erci.chi <- rbind(erci.chi, erci.chi)
-erci.chi <- erci.chi |> 
-  mutate(Region = "Sonoran Central",
-         Site = c("Creosote", "Mesquite"),
-         Code = "ERCI2") |> 
-  select(-Code)
-
-
-species.de <- bind_rows(species.de, erci.soc, erci.chi) |> 
-  arrange(Region) |> 
-  arrange(CodeOriginal)
-
 
 
 # Renane code & name for lo-depen -----------------------------------------
@@ -433,6 +412,7 @@ species.de$Name <- apply(species.de[ , c("Name", "Site")], 1, paste, collapse = 
 
 # Create new Code col that has the site info
 species.de$Code <- apply(species.de[ , c("CodeOriginal", "Site")], 1, paste, collapse = ".")
+
 
 # Look for overlapping codes between location-dependent and independent 
 intersect(species.de$CodeOriginal, species.in$CodeOriginal) # should be 0
@@ -536,6 +516,8 @@ head(p2x2.codes.missing)
 #   Create multiple rows for codes that mention more than one species (happens only at SRER and Patagonia)
 #   These codes are technically location-specific, but because they are only used at one location,
 #     they can be considered location independent
+#   Cross reference ambiguous codes with master species list and notes from raw 2x2 data
+#   Changed CRES1 to CRES11 because there's no such thing as CRES1 and CRES11 was seeded at the site
 p2x2.codes.missing <- read_csv("data/data-wrangling-intermediate/01b_edited-species6_codes-missing-2x2plot.csv")
 head(p2x2.codes.missing)
 
@@ -546,23 +528,12 @@ p2x2.codes.dup <- p2x2.codes.missing |>
 
 # Location dependence
 count(p2x2.codes.dup, LocationDependence) # most are location-independent
-#   but there's an odd number, which means that one of the codes got split between
-#     location dependent vs independent
 
 p2x2.codes.dup |> 
-  filter(LocationDependence == "dependent")
-#   one that starts with "SW conmod is" is split
-dup.split <- p2x2.codes.dup |> 
-  filter(str_detect(CodeOriginal, "SW conmod is") | str_detect(CodeOriginal, "Possible SPCR along"))
-dup.split
-dup.split$CodeOriginal 
-#   split location dependence makes sense; for one of them one is blue grama, and one is possible PEPA,
-#     and for the other one is SPCR and one is possible PEPA
+  filter(LocationDependence == "dependent") |> 
+  select(Site, CodeOriginal)
+#   both codes refer to only location-dependent species
 
-# Split one now now longer needs its duplicate row because they will be in separate lists
-#   Change NeedsItsDuplicate to "No"
-p2x2.codes.missing$NeedsItsDuplicate[str_detect(p2x2.codes.missing$CodeOriginal, "SW conmod is")] <- "No"
-p2x2.codes.missing$NeedsItsDuplicate[str_detect(p2x2.codes.missing$CodeOriginal, "Possible SPCR along")] <- "No"
 
 
 
@@ -714,12 +685,16 @@ setdiff(colnames(species.2x2.de), colnames(species.subplot.de)) # columns are th
 species.de <- bind_rows(species.2x2.de, species.subplot.de) %>% 
   distinct(.keep_all = TRUE) %>% 
   arrange(Name) %>% 
-  arrange(CodeOriginal) |> 
-  arrange(Site)
+  arrange(Code) |> 
+  arrange(Site) |> 
+  arrange(Region)
 
 # Look for codes previously standardized, now that we have added 2x2 data
 species.de %>% 
   filter(Code %in% codes.standardized.in$CodeOriginal) # no old codes show up
+
+count(species.de, Code) |> 
+   filter(n > 1)
 
 # OUTPUT: Final manual check of location-dependent species list; look for duplicate codes
 write_csv(species.de,
@@ -728,10 +703,6 @@ write_csv(species.de,
 # EDITED: remove rows that are (functionally) duplicates
 #   See Excel file textbox for changes
 species.de <- read_xlsx("data/data-wrangling-intermediate/01b_edited-species8_location-dependent-final-fix.xlsx")
-
-species.de %>% 
-  filter(Code %in% filter(species.de, duplicated(Code))$Code) %>% 
-  arrange(Code) # SRER duplicates are okay because CodeOriginal is different
 
 # Write to csv
 write_csv(species.de,
@@ -765,7 +736,7 @@ subplot.codes.de %>%
   arrange(Code) # no duplicates
 
 write_csv(subplot.codes.de,
-          file = "data/cleaned/01_subplot_species-list_location-dependent_clean.csv")
+          file = "data/cleaned/subplot_species-list_location-dependent_clean.csv")
 
 
 
@@ -833,8 +804,8 @@ p2x2.codes.de.dup <- p2x2.codes.de.dup |>
   select(-LocationDependence) # remove col to prepare to bind rows
 
 
-# Add columns to non-duplicate codes and then compile list
-p2x2.codes.de <-species.de %>% 
+# Add NeedsItsDuplicate and DuplicateNum columns to non-duplicate codes and then compile list
+p2x2.codes.de <- species.de %>% 
   filter(CodeOriginal %in% p2x2.codes$CodeOriginal) |> 
   filter(!CodeOriginal %in% p2x2.codes.de.dup$CodeOriginal) |> 
   mutate(NeedsItsDuplicate = "No",

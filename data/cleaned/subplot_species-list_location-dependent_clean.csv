@@ -1,33 +1,20 @@
 Region,Site,CodeOriginal,Code,Name,Native,Duration,Lifeform
-Chihuahuan,Creosote,ACCH,ACCH.Creosote,"Unknown ACCH, Creosote",Unknown,Unknown,Unknown
-Chihuahuan,Creosote,ASTRAG,ASTRAG.Creosote,"Astragalus spp., Creosote",Native/Unknown,Unknown,Forb
 Chihuahuan,Creosote,CHAMA,CHAMA.Creosote,"Chamaesyce spp., Creosote",Native,Unknown,Forb
-Chihuahuan,Creosote,ERCI,ERCI.Creosote,"Eragrostis cilianensis, Creosote",Introduced,Annual,Grass
 Chihuahuan,Creosote,Eriogonum,Eriogonum.Creosote,"Eriogonum spp., Creosote",Native,Unknown,Forb
-Chihuahuan,Creosote,Lesquerella sp.,LESSPP.Creosote,"Lesquerella spp., Creosote",Native,Unknown,Forb
-Chihuahuan,Creosote,Unkastr2,Unkastr2.Creosote,"Unknown aster 2, Creosote",Unknown,Unknown,Forb
 Chihuahuan,Creosote,Unkcrypt,Unkcrypt.Creosote,"Cryptantha spp., Creosote",Native,Unknown,Forb
 Chihuahuan,Creosote,Unkfabaceae,Unkfabaceae.Creosote,"Unknown fabaceae, Creosote",Unknown,Unknown,Forb
 Chihuahuan,Creosote,Unkforb,Unkforb.Creosote,"Unknown forb, Creosote",Unknown,Unknown,Forb
 Chihuahuan,Creosote,Unkforb1,Unkforb1.Creosote,"Unknown forb, Creosote",Unknown,Unknown,Forb
-Chihuahuan,Creosote,Unkforb3,Unkforb3.Creosote,"Unknown forb3, Creosote",Native/Unknown,Unknown,Forb
 Chihuahuan,Creosote,Unkgrass,Unkgrass.Creosote,"Unknown grass, Creosote",Unknown,Unknown,Grass
-Chihuahuan,Creosote,Unkgrass1,Unkgrass1.Creosote,"Unknown grass1, Creosote",Unknown,Unknown,Grass
 Chihuahuan,Creosote,Unkgrass2,Unkgrass2.Creosote,"Unknown grass 2, Creosote",Unknown,Unknown,Grass
 Chihuahuan,Creosote,Unksalsola,Unksalsola.Creosote,"Unknown forb; A very small (tiny really) forb germinant that has linear leaves like a small Salsola would. Unlikely to be salsola but best way to distinguish it from other unks., Creosote",Unknown,Unknown,Forb
 Chihuahuan,Creosote,Unksporo,Unksporo.Creosote,"Unknown grass; Sporobolus and Eragrostis, Creosote",Unknown,Unknown,Grass
-Chihuahuan,Mesquite,ASTRAG,ASTRAG.Mesquite,"Astragalus spp., Mesquite",Native/Unknown,Unknown,Forb
 Chihuahuan,Mesquite,CHAMA,CHAMA.Mesquite,"Chamaesyce spp., Mesquite",Native,Unknown,Forb
 Chihuahuan,Mesquite,Trifolium,Trifolium.Mesquite,"Trifolium sp., Mesquite",Unknown,Unknown,Forb
-Chihuahuan,Mesquite,Unk Grass,Unk Grass.Mesquite,"Unknown grass, Mesquite",Native,Unknown,Grass
 Chihuahuan,Mesquite,UnkATCA,UnkATCA.Mesquite,"Unknown shrub; Possible Atriplex canescens, Mesquite",Native,Perennial,Shrub
 Chihuahuan,Mesquite,Unkforb,Unkforb.Mesquite,"Unknown forb, Mesquite",Native,Unknown,Forb
 Chihuahuan,Mesquite,Unkforb1,Unkforb1.Mesquite,"Unknown forb1, Mesquite",Unknown,Unknown,Forb
-Chihuahuan,Mesquite,Unkforbgreen,Unkforbgreen.Mesquite,"Unknown forbgreen, Mesquite",Unknown,Unknown,Forb
-Chihuahuan,Mesquite,Unkforbwavy,Unkforbwavy.Mesquite,"Unknown forbwavy, Mesquite",Unknown,Unknown,Forb
-Chihuahuan,Mesquite,Unkfuzzyaster,Unkfuzzyaster.Mesquite,"Unknown fuzzyaster, Mesquite",Unknown,Unknown,Forb
 Chihuahuan,Mesquite,Unkgrass,Unkgrass.Mesquite,"Unknown grass, Mesquite",Native,Unknown,Grass
-Chihuahuan,Mesquite,Unkhairygrass,Unkhairygrass.Mesquite,"Unknown hairy grass, Mesquite",Unknown,Unknown,Grass
 Chihuahuan,Mesquite,Unksporo,Unksporo.Mesquite,"Unknown grass; Sporobolus and Eragrostis, Mesquite",Unknown,Unknown,Grass
 Chihuahuan,Mesquite,Unksporob,Unksporob.Mesquite,"Sporobolus spp., Mesquite",Native,Unknown,Grass
 Colorado Plateau,AguaFria,BOSPP,BOSPP.AguaFria,"local Bouteloua species (unknown), AguaFria",Native,Unknown,Grass
@@ -46,19 +33,14 @@ Colorado Plateau,AguaFria,UNGR5,UNGR5.AguaFria,"Unknown grass 5, AguaFria",Unkno
 Colorado Plateau,BabbittPJ,AMBSPP,AMBSPP.BabbittPJ,"Ambrosia spp., BabbittPJ",Native/Unknown,Unknown,Forb
 Colorado Plateau,BabbittPJ,BOSPP,BOSPP.BabbittPJ,"Bouteloua spp., BabbittPJ",Native,Unknown,Grass
 Colorado Plateau,BabbittPJ,CHEN,CHEN.BabbittPJ,"Unknown chenopod, BabbittPJ",Native/Unknown,Unknown,Forb
-Colorado Plateau,BabbittPJ,ELSP,ELSP.BabbittPJ,"Elymus spp., BabbittPJ",Native/Unknown,Unknown,Grass
 Colorado Plateau,BabbittPJ,ELSPP,ELSPP.BabbittPJ,"Elymus spp., BabbittPJ",Native,Unknown,Grass
-Colorado Plateau,BabbittPJ,ELSP (seeded),ELSPse.BabbittPJ,"Seeded Elymus spp., BabbittPJ",Native,Unknown,Grass
-Colorado Plateau,BabbittPJ,HCI,HCI.BabbittPJ,"Unknown HCI (?), BabbittPJ",Unknown,Unknown,Unknown
 Colorado Plateau,BabbittPJ,HESP,HESP.BabbittPJ,"Heliomeris spp., BabbittPJ",Native,Unknown,Forb
 Colorado Plateau,BabbittPJ,PHSPP,PHSPP.BabbittPJ,"Phacelia spp., BabbittPJ",Native,Unknown,Forb
 Colorado Plateau,BabbittPJ,SPSP,SPSP.BabbittPJ,"Sphaeralcea spp., BabbittPJ",Native/Unknown,Unknown,Forb
 Colorado Plateau,BabbittPJ,SUNGR,SUNGR.BabbittPJ,"Seeded unknown grass, BabbittPJ",Native,Unknown,Grass
-Colorado Plateau,BabbittPJ,UNAM,UNAM.BabbittPJ,"Unknown UNAM, BabbittPJ",Unknown,Unknown,Unknown
 Colorado Plateau,BabbittPJ,UNFO1,UNFO1.BabbittPJ,"Unknown forb 1, BabbittPJ",Native,Unknown,Forb
 Colorado Plateau,BabbittPJ,UNGR,UNGR.BabbittPJ,"Unknown grass, BabbittPJ",Unknown,Unknown,Grass
 Colorado Plateau,BabbittPJ,UNGR1,UNGR1.BabbittPJ,"Unknown grass 1, BabbittPJ",Native,Unknown,Grass
-Colorado Plateau,BabbittPJ,UnkAster,UnkAster.BabbittPJ,"Unknown aster, BabbittPJ",Unknown,Unknown,Forb
 Colorado Plateau,BarTBar,AMASPP,AMASPP.BarTBar,"Amaranthus spp., BarTBar",Native/Unknown,Unknown,Forb
 Colorado Plateau,BarTBar,ARSPP,ARSPP.BarTBar,"Artemisia spp., BarTBar",Native/Unknown,Perennial,Shrub
 Colorado Plateau,BarTBar,ATSP,ATSP.BarTBar,"Atriplex spp., BarTBar",Native/Unknown,Perennial,Shrub
@@ -72,8 +54,6 @@ Colorado Plateau,BarTBar,SPSP,SPSP.BarTBar,"Sphaeralcea spp., BarTBar",Native/Un
 Colorado Plateau,BarTBar,UNFO1,UNFO1.BarTBar,"Unknown forb 1, BarTBar",Unknown,Unknown,Forb
 Colorado Plateau,BarTBar,UNFO12,UNFO12.BarTBar,"Unknown forb 12, BarTBar",Unknown,Unknown,Forb
 Colorado Plateau,BarTBar,UNFO13,UNFO13.BarTBar,"Unknown forb 13, BarTBar",Unknown,Unknown,Forb
-Colorado Plateau,BarTBar,UNFO15,UNFO15.BarTBar,"Unknown forb 15, BarTBar",Unknown,Unknown,Forb
-Colorado Plateau,BarTBar,UNFO18,UNFO18.BarTBar,"Unknown forb 18, BarTBar",Unknown,Unknown,Forb
 Colorado Plateau,BarTBar,UNFO2,UNFO2.BarTBar,"Unknown forb 2, BarTBar",Unknown,Unknown,Forb
 Colorado Plateau,BarTBar,UNFO3,UNFO3.BarTBar,"Unknown forb 3, BarTBar",Unknown,Unknown,Forb
 Colorado Plateau,BarTBar,UNFO4,UNFO4.BarTBar,"Unknown forb 4, BarTBar",Unknown,Unknown,Forb
@@ -82,13 +62,11 @@ Colorado Plateau,BarTBar,UNGR,UNGR.BarTBar,"Unknown grass, BarTBar",Unknown,Unkn
 Colorado Plateau,BarTBar,UNSH,UNSH.BarTBar,"Unknown shrub, BarTBar",Unknown,Perennial,Shrub
 Colorado Plateau,FlyingM,AMASPP,AMASPP.FlyingM,"Amaranthus spp., FlyingM",Native/Unknown,Unknown,Forb
 Colorado Plateau,FlyingM,ATSP,ATSP.FlyingM,"Atriplex spp., FlyingM",Native/Unknown,Perennial,Shrub
-Colorado Plateau,FlyingM,ATSPP,ATSPP.FlyingM,"Atriplex spp., FlyingM",Native/Unknown,Perennial,Shrub
 Colorado Plateau,FlyingM,AmaranthusSpp,AmaranthusSpp.FlyingM,"Amaranthus spp., FlyingM",Native/Unknown,Unknown,Forb
 Colorado Plateau,FlyingM,BOSPP,BOSPP.FlyingM,"local Bouteloua species (unknown), FlyingM",Native,Unknown,Grass
 Colorado Plateau,FlyingM,ELSPP,ELSPP.FlyingM,"Elymus spp., FlyingM",Native/Unknown,Unknown,Grass
 Colorado Plateau,FlyingM,HESP,HESP.FlyingM,"Heliomeris spp., FlyingM",Native,Unknown,Forb
 Colorado Plateau,FlyingM,PORSPP,PORSPP.FlyingM,"Portulaca spp., FlyingM",Native,Unknown,Forb
-Colorado Plateau,FlyingM,SALRE,SALRE.FlyingM,"Unknown SALRE, FlyingM",Unknown,Unknown,Unknown
 Colorado Plateau,FlyingM,SOSP,SOSP.FlyingM,"Solanum spp., FlyingM",Native,Unknown,Forb
 Colorado Plateau,FlyingM,SPSP,SPSP.FlyingM,"Sphaeralcea spp., FlyingM",Native/Unknown,Unknown,Forb
 Colorado Plateau,FlyingM,UNFO1,UNFO1.FlyingM,"Unknown forb 1, FlyingM",Unknown,Unknown,Forb
@@ -101,10 +79,8 @@ Colorado Plateau,FlyingM,UNFO6,UNFO6.FlyingM,"Unknown forb 6, FlyingM",Unknown,U
 Colorado Plateau,FlyingM,UNFO7,UNFO7.FlyingM,"Unknown forb 7, FlyingM",Unknown,Unknown,Forb
 Colorado Plateau,FlyingM,UNGR,UNGR.FlyingM,"Unknown grass, FlyingM",Unknown,Unknown,Grass
 Colorado Plateau,FlyingM,UNGR1,UNGR1.FlyingM,"Unknown grass 1, FlyingM",Unknown,Unknown,Grass
-Colorado Plateau,FlyingM,UNGRs,UNGRs.FlyingM,"Unknown grass, FlyingM",Unknown,Unknown,Grass
 Colorado Plateau,MOWE,BOSPP,BOSPP.MOWE,"local Bouteloua species (unknown), MOWE",Native,Unknown,Grass
 Colorado Plateau,MOWE,CHEN,CHEN.MOWE,"Unknown chenopod, MOWE",Native/Unknown,Unknown,Forb
-Colorado Plateau,MOWE,ERCI,ERCI.MOWE,"Eragrostis cilianensis, MOWE",Introduced,Annual,Grass
 Colorado Plateau,MOWE,SPSP,SPSP.MOWE,"Sphaeralcea spp., MOWE",Native/Unknown,Unknown,Forb
 Colorado Plateau,MOWE,SUNGR,SUNGR.MOWE,"Seeded unknown grass, MOWE",Native,Unknown,Grass
 Colorado Plateau,MOWE,UNFO1,UNFO1.MOWE,"Unknown forb 1, MOWE",Unknown,Unknown,Forb
@@ -126,7 +102,6 @@ Colorado Plateau,PEFO,MENSPP,MENSPP.PEFO,"Mentzelia spp., PEFO",Native,Unknown,F
 Colorado Plateau,PEFO,PORSPP,PORSPP.PEFO,"Portulaca spp., PEFO",Native,Unknown,Forb
 Colorado Plateau,PEFO,SPSP,SPSP.PEFO,"Sphaeralcea spp., PEFO",Native/Unknown,Unknown,Forb
 Colorado Plateau,PEFO,SUNGR,SUNGR.PEFO,"Seeded unknown grass, PEFO",Native,Unknown,Grass
-Colorado Plateau,PEFO,SUNGR1,SUNGR1.PEFO,"Seeded unknown grass 1, PEFO",Native,Unknown,Grass
 Colorado Plateau,PEFO,UNFO1,UNFO1.PEFO,"Unknown forb 1, PEFO",Unknown,Unknown,Forb
 Colorado Plateau,PEFO,UNFO2,UNFO2.PEFO,"Unknown forb 2, PEFO",Unknown,Unknown,Forb
 Colorado Plateau,PEFO,UNGR,UNGR.PEFO,"Unknown grass, PEFO",Unknown,Unknown,Grass
@@ -134,13 +109,8 @@ Colorado Plateau,PEFO,UNGR1,UNGR1.PEFO,"Unknown grass 1, PEFO",Native,Unknown,Gr
 Colorado Plateau,PEFO,UNGR2,UNGR2.PEFO,"Unknown grass 2, PEFO",Unknown,Unknown,Grass
 Colorado Plateau,PEFO,UNKM,UNKM.PEFO,"Unknown M, PEFO",Unknown,Unknown,Unknown
 Colorado Plateau,PEFO,Unkaster,Unkaster.PEFO,"Unknown aster, PEFO",Unknown,Unknown,Forb
-Colorado Plateau,Spiderweb,ALNI,ALNI.Spiderweb,"Unknown ALNI, Spiderweb",Unknown,Unknown,Unknown
 Colorado Plateau,Spiderweb,BOSPP,BOSPP.Spiderweb,"local Bouteloua species (unknown), Spiderweb",Native,Unknown,Grass
-Colorado Plateau,Spiderweb,CLESP,CLESP.Spiderweb,"Unknown chenopod, Spiderweb",Native/Unknown,Unknown,Forb
-Colorado Plateau,Spiderweb,DASPUL,DASPUL.Spiderweb,"Unknown DASPUL, Spiderweb",Unknown,Unknown,Unknown
 Colorado Plateau,Spiderweb,GILSPP,GILSPP.Spiderweb,"Gilia spp., Spiderweb",Native,Unknown,Forb
-Colorado Plateau,Spiderweb,Sporobolus,SPOspp.Spiderweb,"Sporobolus spp., Spiderweb",Native,Unknown,Grass
-Colorado Plateau,Spiderweb,SUNFO,SUNFO.Spiderweb,"Seeded unknown forb, Spiderweb",Native,Unknown,Forb
 Colorado Plateau,Spiderweb,SUNGR,SUNGR.Spiderweb,"Seeded unknown grass, Spiderweb",Native,Unknown,Grass
 Colorado Plateau,Spiderweb,UNFO,UNFO.Spiderweb,"Unknown forb, Spiderweb",Unknown,Unknown,Forb
 Colorado Plateau,Spiderweb,UNFO2,UNFO2.Spiderweb,"Unknown forb 2, Spiderweb",Native,Unknown,Forb
@@ -152,7 +122,6 @@ Colorado Plateau,Spiderweb,UNFO8,UNFO8.Spiderweb,"Unknown forb 8, Spiderweb",Unk
 Colorado Plateau,Spiderweb,UNFO9,UNFO9.Spiderweb,"Unknown forb 9, Spiderweb",Unknown,Unknown,Forb
 Colorado Plateau,Spiderweb,UNGR,UNGR.Spiderweb,"Unknown grass, Spiderweb",Unknown,Unknown,Grass
 Colorado Plateau,Spiderweb,UNGR5,UNGR5.Spiderweb,"Unknown grass 5, Spiderweb",Unknown,Unknown,Grass
-Colorado Plateau,Spiderweb,UNK_AMARANTH,UNK_AMARANTH.Spiderweb,"Unknown Amaranth, Spiderweb",Unknown,Unknown,Forb
 Colorado Plateau,TLE,ATSP,ATSP.TLE,"Atriplex spp., TLE",Native/Unknown,Perennial,Shrub
 Colorado Plateau,TLE,CHEN,CHEN.TLE,"Unknown chenopod, TLE",Native/Unknown,Unknown,Forb
 Colorado Plateau,TLE,MACSPP,MACSPP.TLE,"Machaeranthera spp., TLE",Native,Unknown,Forb
@@ -167,35 +136,22 @@ Mojave,29_Palms,GILSPP,GILSPP.29_Palms,"Gilia spp., 29_Palms",Native,Unknown,For
 Mojave,29_Palms,LEPSPP,LEPSPP.29_Palms,"Lepidium spp., 29_Palms",Native/Unknown,Unknown,Forb
 Mojave,29_Palms,MENSPP,MENSPP.29_Palms,"Mentzelia spp., 29_Palms",Native,Unknown,Forb
 Mojave,29_Palms,PECSPP,PECSPP.29_Palms,"Pectocarya spp., 29_Palms",Native,Unknown,Forb
-Mojave,29_Palms,SCHSPP,SCHSPP.29_Palms,"Unknown SCH spp., 29_Palms",Unknown,Unknown,Unknown
 Mojave,29_Palms,STISPP,STISPP.29_Palms,"Stipa spp., 29_Palms",Native,Unknown,Grass
 Mojave,29_Palms,UNFO1,UNFO1.29_Palms,"Unknown forb 1, 29_Palms",Unknown,Unknown,Forb
 Mojave,29_Palms,UNFO2,UNFO2.29_Palms,"Unknown forb 2, 29_Palms",Unknown,Unknown,Forb
 Mojave,AVRCD,CRYSPP,CRYSPP.AVRCD,"Cryptantha spp., AVRCD",Native,Unknown,Forb
-Mojave,AVRCD,EUPSPP,EUPSPP.AVRCD,"Euphorbia spp., AVRCD",Native/Unknown,Unknown,Forb
 Sonoran Central,Pleasant,CRYPT,CRYPT.Pleasant,"Cryptantha spp., Pleasant",Native,Unknown,Forb
 Sonoran Central,Pleasant,ERIOG,ERIOG.Pleasant,"Eriogonum spp., Pleasant",Native,Unknown,Forb
-Sonoran Central,Pleasant,LEPISP,LEPSPP.Pleasant,"Lepidium spp., Pleasant",Native/Unknown,Unknown,Forb
-Sonoran Central,Pleasant,PHYSR,PHYSR.Pleasant,"Physaria sp., Pleasant",Native,Unknown,Forb
-Sonoran Central,Pleasant,SISYM,SISYM.Pleasant,"Sisymbrium sp., Pleasant",Unknown,Unknown,Forb
 Sonoran Central,Pleasant,Unk bunchGrass #1,Unk bunchGrass #1.Pleasant,"Could be BOCU, Pleasant",Unknown,Unknown,Grass
-Sonoran Central,Pleasant,Unk forb,Unk forb.Pleasant,"Unknown forb, Pleasant",Unknown,Unknown,Forb
 Sonoran Central,Pleasant,Unk grass,Unk grass.Pleasant,"Unknown grass, Pleasant",Unknown,Unknown,Grass
 Sonoran Central,Pleasant,Unk sp.,Unk sp..Pleasant,"Unknown species, Pleasant",Unknown,Unknown,Unknown
 Sonoran Central,Preserve,CRYPT,CRYPT.Preserve,"Cryptantha spp., Preserve",Native,Unknown,Forb
-Sonoran Central,Preserve,ERCI,ERCI2.Preserve,"Eragrostis ciliaris, Preserve",Introduced,Annual,Grass
 Sonoran Central,Preserve,UNK heart,UNK heart.Preserve,"Unknown  heart, Preserve",Unknown,Unknown,Forb
-Sonoran Central,Preserve,Unk dark,Unk dark.Preserve,"Unknown dark, Preserve",Native/Unknown,Unknown,Forb
 Sonoran Central,Preserve,Unk heart,Unk heart.Preserve,"Unknown forb with heart-shaped cotyledon; possibly MAPA5 (although that species not seen growing there), Preserve",Unknown,Unknown,Forb
 Sonoran Central,Roosevelt,CRYPT,CRYPT.Roosevelt,"Cryptantha spp., Roosevelt",Native,Unknown,Forb
-Sonoran Central,Roosevelt,Unk grass 1,Unk grass 1.Roosevelt,"Unknown grass, Roosevelt",Unknown,Unknown,Grass
-Sonoran Central,Roosevelt,unk forb,unk forb.Roosevelt,"Unknown forb, Roosevelt",Unknown,Unknown,Forb
-Sonoran Central,Roosevelt,unk grass 1,unk grass 1.Roosevelt,"Unknown grass, Roosevelt",Unknown,Unknown,Grass
 Sonoran Central,SCC,Unk grass,Unk grass.SCC,"Unknown likely associated with warm seed mix, SCC",Native,Unknown,Grass
 Sonoran Central,SCC,Unk sp.,Unk sp..SCC,"Unknown species, SCC",Unknown,Unknown,Unknown
-Sonoran Central,SCC,unk grass,unk grass.SCC,"Unknown grass, SCC",Unknown,Unknown,Grass
 Sonoran SE,Patagonia,ARISPP,ARISPP.Patagonia,"Aristida spp., Patagonia",Native,Unknown,Grass
-Sonoran SE,Patagonia,Possibly a BOER if not than other BOsp. possibly BOGR,BOspp.Patagonia,"Bouteloua spp., Patagonia",Native,Unknown,Grass
 Sonoran SE,Patagonia,CALSPP,CALSPP.Patagonia,"Calandrinia spp., Patagonia",Native,Unknown,Forb
 Sonoran SE,Patagonia,CHESPP,CHESPP.Patagonia,"Chenopodium spp., Patagonia",Unknown,Unknown,Forb
 Sonoran SE,Patagonia,ERASPP,ERASPP.Patagonia,"Eragrostis spp., ERCU or ERLE, Patagonia",Introduced,Unknown,Grass
@@ -228,20 +184,8 @@ Sonoran SE,Patagonia,UNSHR-1,UNSHR-1.Patagonia,"Unknown shrub (Patagonia); mesqu
 Sonoran SE,SRER,ACASPP,ACASPP.SRER,"Acalypha spp., SRER",Native/Unknown,Unknown,Forb
 Sonoran SE,SRER,ANOSPP,ANOSPP.SRER,"Anoda spp., SRER",Native,Unknown,Forb
 Sonoran SE,SRER,ARISPP,ARISPP.SRER,"Aristida spp., SRER",Native,Unknown,Grass
-Sonoran SE,SRER,Potentially 3 or 4 BOCU (1 certainty) and possibly an ARPU (2) or othe ARsp. hard to be certain because all the grasses have been grazed down to nubs,ARPUspp.SRER,"Aristida spp., SRER",Native,Unknown,Grass
-Sonoran SE,SRER,Some possible ARPUs (2 certainty) or ARsp. (ARTE). Mostly dried still or grazed down.,ARPUspp.SRER,"Aristida spp., SRER",Native,Unknown,Grass
-Sonoran SE,SRER,Some type of Aristida possibly and ARPU and maybe 1 small maybe BOCU near subplot that's been grazed down,ARPUspp.SRER,"Aristida spp., SRER",Native,Unknown,Grass
 Sonoran SE,SRER,ASTSPP,ASTSPP.SRER,"Astragalus spp., SRER",Native/Unknown,Unknown,Forb
-Sonoran SE,SRER,1 Possible PLJA (1 out of 3 on certainty) on south border as well as some BOCUs (might be BOER but probably BOCU or other BOsp.) Mostly grazed,BOCU/BOER4.SRER,"BOCUs, or might be BOER4, SRER",Native,Perennial,Grass
-Sonoran SE,SRER,BOCUs up to this point could also possibly be slender grama BORE or purple BORA,BOCU/BORE/BORA.SRER,"Bouteloua curtipendula/repens/radicosa (spp.), SRER",Native,Perennial,Grass
-Sonoran SE,SRER,BOsp. a lot of possibly BOCU but could also be BORE or BORA,BOCU/BORE/BORA.SRER,"Bouteloua curtipendula/repens/radicosa (spp.), SRER",Native,Perennial,Grass
-Sonoran SE,SRER,"Couple of small possible BOER but no tillers, seeds, or culms yet to be certain if different Bouteloua than 0%",BOSPP.SRER,"Bouteloua spp., SRER",Native,Unknown,Grass
-Sonoran SE,SRER,"Couple possible little BOCUs (no seed heads, tiller, culms to verify)",BOSPP.SRER,"Bouteloua spp., SRER",Native,Unknown,Grass
 Sonoran SE,SRER,BOUSPP,BOUSPP.SRER,"Bouteloua spp., SRER",Native,Unknown,Grass
-Sonoran SE,SRER,Possible Boutelouas not sure if BOER because they've been grazed down,BOspp.SRER,"Bouteloua spp., SRER",Native,Unknown,Grass
-Sonoran SE,SRER,Possibly 3 small BOER (1 certainty) or other BOsp.,BOspp.SRER,"Bouteloua spp., SRER",Native,Unknown,Grass
-Sonoran SE,SRER,Some type of Aristida possibly and ARPU and maybe 1 small maybe BOCU near subplot that's been grazed down,BOspp.SRER,"Bouteloua spp., SRER",Native,Unknown,Grass
-Sonoran SE,SRER,"There are a couple possible small BOERs but no seed, tillers, culms, to help ID but if not BOER and a different bouteloa species than 0%",BOspp.SRER,"Bouteloua spp., SRER",Native,Unknown,Grass
 Sonoran SE,SRER,BRASPP,BRASPP.SRER,"Brassica spp. (likely DEPI), SRER",Native/Unknown,Unknown,Forb
 Sonoran SE,SRER,CRYSPP,CRYSPP.SRER,"Cryptantha spp., SRER",Native,Unknown,Forb
 Sonoran SE,SRER,ERASPP,ERASPP.SRER,"Eragrostis spp., ERCU or ERLE, SRER",Introduced,Unknown,Grass
@@ -250,7 +194,6 @@ Sonoran SE,SRER,LUPSPP,LUPSPP.SRER,"Lupinus spp., SRER",Unknown,Unknown,Forb
 Sonoran SE,SRER,MENSPP,MENSPP.SRER,"Mentzelia spp., SRER",Native,Unknown,Forb
 Sonoran SE,SRER,PANSPP,PANSPP.SRER,"Panicum spp., SRER",Native,Unknown,Grass
 Sonoran SE,SRER,PLASPP,PLASPP.SRER,"Plantago spp., SRER",Unknown,Unknown,Forb
-Sonoran SE,SRER,1 Possible PLJA (1 out of 3 on certainty) on south border as well as some BOCUs (might be BOER but probably BOCU or other BOsp.) Mostly grazed,PLJAspp.SRER,"Possibly Pleuraphis jamesii, SRER",Native,Perennial,Grass
 Sonoran SE,SRER,SIDSPP,SIDSPP.SRER,"Sida spp., SRER",Native/Unknown,Unknown,Forb
 Sonoran SE,SRER,UNDPF,UNDPF.SRER,"Unknown dead pod forb, SRER",Unknown,Unknown,Forb
 Sonoran SE,SRER,UNDSF,UNDSF.SRER,"Unknown dead spikey forb, SRER",Unknown,Unknown,Forb
@@ -267,7 +210,6 @@ Sonoran SE,SRER,UNFO_S_3,UNFO_S_3.SRER,"Unknown forb; Fuzzy green penately arran
 Sonoran SE,SRER,UNFO_S_4,UNFO_S_4.SRER,"Unknown forb; Super tiny, very spikey, pinately lobed, possible cryptantha or plagiobothrys (Spring 2021), SRER",Native/Unknown,Unknown,Forb
 Sonoran SE,SRER,UNFO_S_5,UNFO_S_5.SRER,"Unknown forb; Silky hairy fuzzy, straight leaves, no prominent veination, pseudognaphalium? (Spring 2021), SRER",Unknown,Unknown,Forb
 Sonoran SE,SRER,UNFO_S_7,UNFO_S_7.SRER,"Unknown forb; ""artichoke head"", stem leaves alternate, basal rosette, possibly cryptantha? (Spring 2021), SRER",Native/Unknown,Unknown,Forb
-Sonoran SE,SRER,UNGR-2 possibly a Bouteloua (BOCU?) Maybe PLJA? (never seen),UNGR-2.SRER,"Unknown grass 2 possibly a Bouteloua (BOCU?) Maybe PLJA? (never seen), SRER",Native/Unknown,Unknown,Grass
 Sonoran SE,SRER,UNGR,UNGR.SRER,"Unknown grass, SRER",Unknown,Unknown,Grass
 Sonoran SE,SRER,UNGR1,UNGR1.SRER,"Unknown grass (SantaRita); Possibly BOER or Aristida spp (so likely unseeded), SRER",Native,Unknown,Grass
 Sonoran SE,SRER,UNGRS1,UNGRS1.SRER,"Unknown grass (Patagonia);Unk. grass seedling, bunchy, possible lovegrass?, SRER",Unknown,Unknown,Grass
@@ -276,14 +218,10 @@ Sonoran SE,SRER,UNGR_S_2,UNGR_S_2.SRER,"Unknown grass; Possibly a BOCU or anothe
 Sonoran SE,SRER,UNSFF,UNSFF.SRER,"Unknown shrubby fuzzy forb, munched down, SRER",Unknown,Unknown,Forb
 Utah,CRC,UNFO2,UNFO2.CRC,"Unknown forb 2, CRC",Unknown,Unknown,Forb
 Utah,CRC,UNFO3,UNFO3.CRC,"Unknown forb 3, CRC",Unknown,Unknown,Forb
-Utah,CRC,"Lots of unknown grasses, potentially S-PASM",UNKGR.CRC,"Lots of unknown grasses, potentially S-PASM, CRC",Native/Unknown,Unknown,Grass
-Utah,Salt_Desert,UNFO.12576.assigned,UNFO.12576.assigned.Salt_Desert,"Unknown forb with assigned code, and manually entered, Salt_Desert",Unknown,Unknown,Forb
 Utah,Salt_Desert,UNFO4,UNFO4.Salt_Desert,"Unknown forb 4, Salt_Desert",Unknown,Unknown,Forb
 Utah,Salt_Desert,UNGR1,UNGR1.Salt_Desert,"Unknown grass 1, Salt_Desert",Unknown,Unknown,Grass
 Utah,UtahPJ,DRABA,DRABA.UtahPJ,"Draba spp., UtahPJ",Native/Unknown,Unknown,Forb
 Utah,UtahPJ,ERIGSPP,ERIGSPP.UtahPJ,"Eriogonum spp., UtahPJ",Native,Unknown,Forb
-Utah,UtahPJ,Regrowth,Regrowth.UtahPJ,"Regrowth of unknown spp., UtahPJ",Unknown,Unknown,Unknown
-Utah,UtahPJ,Dormant shrubs,SHRUBdor.UtahPJ,"Dormant shrubs, UtahPJ",Native/Unknown,Perennial,Shrub
 Utah,UtahPJ,SPSP,SPSP.UtahPJ,"Sphaeralcea spp., UtahPJ",Native/Unknown,Unknown,Forb
 Utah,UtahPJ,UNFO2,UNFO2.UtahPJ,"Unknown forb 2, UtahPJ",Unknown,Unknown,Forb
 Utah,UtahPJ,UNFO3,UNFO3.UtahPJ,"Unknown forb 3, UtahPJ",Unknown,Unknown,Forb

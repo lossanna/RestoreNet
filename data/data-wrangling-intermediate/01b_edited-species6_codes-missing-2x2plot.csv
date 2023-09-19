@@ -23,8 +23,8 @@ Sonoran SE,Patagonia,A few possible small SPCRs and a couple MATA seedlings all 
 Sonoran SE,Patagonia,A few possible small SPCRs and a couple MATA seedlings all in the pits,Yes,2,MATA2,Machaeranthera tanacetifolia,Native,Annual,Forb,independent
 Chihuahuan,Creosote,ACCH,No,0,ACCH,Unknown ACCH,Unknown,Unknown,Unknown,dependent
 Colorado Plateau,Spiderweb,ALNI,No,0,ALNI,Unknown ALNI,Unknown,Unknown,Unknown,dependent
-Colorado Plateau,BarTBar,AMASPP,No,0,AMASPP,Amaranthus spp.,Unknown,Unknown,Forb,dependent
-Colorado Plateau,FlyingM,AMASPP,No,0,AMASPP,Amaranthus spp.,Unknown,Unknown,Forb,dependent
+Colorado Plateau,BarTBar,AMASPP,No,0,AMASPP,Amaranthus spp.,Native/Unknown,Unknown,Forb,dependent
+Colorado Plateau,FlyingM,AMASPP,No,0,AMASPP,Amaranthus spp.,Native/Unknown,Unknown,Forb,dependent
 Sonoran SE,SRER,ARISPP,No,0,ARISPP,Aristida spp.,Native,Unknown,Grass,dependent
 Sonoran SE,Patagonia,ARPU a few individuals,No,0,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
 Sonoran SE,Patagonia,ARPU a few small tufts and 1 taller,No,0,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
@@ -39,13 +39,13 @@ Sonoran SE,Patagonia,ARPU multiple individuals,No,0,ARPU9,Aristida purpurea,Nati
 Sonoran SE,Patagonia,ARPU numerous individuals,No,0,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
 Sonoran SE,Patagonia,ARPU small tufts and a tall individual,No,0,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
 Colorado Plateau,BarTBar,ARSPP,No,0,ARSPP,Artemisia spp.,Native/Unknown,Perennial,Shrub,dependent
-Chihuahuan,Creosote,ASTRAG,No,0,ASTRAG,Astragalus spp.,Unknown,Unknown,Forb,dependent
-Chihuahuan,Mesquite,ASTRAG,No,0,ASTRAG,Astragalus spp.,Unknown,Unknown,Forb,dependent
+Chihuahuan,Creosote,ASTRAG,No,0,ASTRAG,Astragalus spp.,Native/Unknown,Unknown,Forb,dependent
+Chihuahuan,Mesquite,ASTRAG,No,0,ASTRAG,Astragalus spp.,Native/Unknown,Unknown,Forb,dependent
 Colorado Plateau,BarTBar,ATSP,No,0,ATSP,Atriplex spp.,Native/Unknown,Perennial,Shrub,dependent
 Colorado Plateau,FlyingM,ATSP,No,0,ATSP,Atriplex spp.,Native/Unknown,Perennial,Shrub,dependent
 Colorado Plateau,TLE,ATSP,No,0,ATSP,Atriplex spp.,Native/Unknown,Perennial,Shrub,dependent
 Colorado Plateau,FlyingM,ATSPP,No,0,ATSPP,Atriplex spp.,Native/Unknown,Perennial,Shrub,dependent
-Colorado Plateau,FlyingM,AmaranthusSpp,No,0,AmaranthusSpp,Amaranthus spp.,Unknown,Unknown,Forb,dependent
+Colorado Plateau,FlyingM,AmaranthusSpp,No,0,AmaranthusSpp,Amaranthus spp.,Native/Unknown,Unknown,Forb,dependent
 Sonoran SE,SRER,Aristida species between the northeast and southeast pits possibly an ARPU if not than seeded species cover would be 0%,No,0,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
 Colorado Plateau,Patagonia,At least 10 ARPUs throughout small to large in size,No,0,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
 Sonoran SE,SRER,BOCU just outside NE corner with a little overhang and possibly in,No,0,0,0,0,0,0,independent
@@ -74,7 +74,7 @@ Colorado Plateau,BabbittPJ,CHEN,No,0,CHEN,Unknown chenopod,Native/Unknown,Unknow
 Colorado Plateau,MOWE,CHEN,No,0,CHEN,Unknown chenopod,Native/Unknown,Unknown,Forb,dependent
 Colorado Plateau,PEFO,CHEN,No,0,CHEN,Unknown chenopod,Native/Unknown,Unknown,Forb,dependent
 Colorado Plateau,Spiderweb,CLESP,No,0,CLESP,Unknown chenopod,Native/Unknown,Unknown,Forb,dependent
-Mojave,AVRCD,CRSE1,No,0,CRSE1,Croton or Cryptantha spp. (?),Native/Unknown,Unknown,Forb,dependent
+Mojave,AVRCD,CRSE1,No,0,CRSE11,Croton setigerus,Native,Annual,Forb,independent
 Sonoran Central,Preserve,CRYPT,No,0,CRYPT,Cryptantha spp.,Native,Unknown,Forb,dependent
 Sonoran Central,Roosevelt,CRYPT,No,0,CRYPT,Cryptantha spp.,Native,Unknown,Forb,dependent
 Sonoran Central,Pleasant,CRYPT,No,0,CRYPT,Cryptantha spp.,Native,Unknown,Forb,dependent
@@ -95,11 +95,11 @@ Sonoran SE,Patagonia,Couple small to medium ARPUs throughout and a couple small 
 Colorado Plateau,PEFO,Cymopterus,No,0,Cymopterus,Cymopterus spp.,Native,Perennial,Forb,independent
 Colorado Plateau,Spiderweb,DASPUL,No,0,DASPUL,Unknown DASPUL,Unknown,Unknown,Unknown,dependent
 Sonoran Central,Roosevelt,DINE2,No,0,DINE2,Argythamnia neomexicana,Native,Unknown,Forb,independent
-Utah,UtahPJ,Dormant shrubs,No,0,SHRUBdor,Dormant shrubs,Unknown,Perennial,Shrub,dependent
+Utah,UtahPJ,Dormant shrubs,No,0,SHRUBdor,Dormant shrubs,Native/Unknown,Perennial,Shrub,dependent
 Colorado Plateau,BabbittPJ,ELEL5 (seeded),No,0,ELEL5,Elymus elymoides,Native,Perennial,Grass,independent
 Colorado Plateau,BabbittPJ,ELEL5 (unseeded),No,0,ELEL5,Elymus elymoides,Native,Perennial,Grass,independent
 Colorado Plateau,BabbittPJ,ELSP,No,0,ELSP,Elymus spp.,Native/Unknown,Unknown,Grass,dependent
-Colorado Plateau,BabbittPJ,ELSP (seeded),No,0,ELSPse,seeded Elymus spp.,Native,Unknown,Grass,dependent
+Colorado Plateau,BabbittPJ,ELSP (seeded),No,0,ELSPse,Seeded Elymus spp.,Native,Unknown,Grass,dependent
 Colorado Plateau,AguaFria,ELSPP,No,0,ELSPP,Elymus spp.,Native/Unknown,Unknown,Grass,dependent
 Colorado Plateau,BabbittPJ,ELSPP,No,0,ELSPP,Elymus spp.,Native/Unknown,Unknown,Grass,dependent
 Colorado Plateau,FlyingM,ELSPP,No,0,ELSPP,Elymus spp.,Native/Unknown,Unknown,Grass,dependent
@@ -111,11 +111,12 @@ Colorado Plateau,MOWE,ERCI,No,0,ERCI,Eragrostis cilianensis,Introduced,Annual,Gr
 Sonoran Central,Preserve,ERCI,No,0,ERCI2,Eragrostis ciliaris,Introduced,Annual,Grass,dependent
 Chihuahuan,Creosote,ERCI,No,0,ERCI,Eragrostis cilianensis,Introduced,Annual,Grass,dependent
 Sonoran Central,Preserve,ERDED4,No,0,ERDED4,Eriogonum deflexum,Native,Annual,Forb,independent
-Utah,UtahPJ,ERIGSPP,No,0,ERIGSPP,Unknown ERIG (?),Unknown,Unknown,Unknown,dependent
+Utah,UtahPJ,ERIGSPP,No,0,ERIGSPP,Eriogonum spp.,Native,Unknown,Forb,dependent
+Sonoran Central,Pleasant,ERIOG,No,0,ERIOG,Eriogonum spp.,Native,Unknown,Forb,dependent
 Colorado Plateau,BarTBar,ERISP,No,0,ERISP,Eriogonum spp.,Native,Unknown,Forb,dependent
 Colorado Plateau,PEFO,ERISP,No,0,ERISP,Eriogonum spp.,Native,Unknown,Forb,dependent
 Colorado Plateau,BarTBar,ERISPP,No,0,ERISPP,Eriogonum spp.,Native,Unknown,Forb,dependent
-Mojave,AVRCD,EUPSPP,No,0,EUPSPP,Euphorbia spp.,Unknown,Unknown,Forb,dependent
+Mojave,AVRCD,EUPSPP,No,0,EUPSPP,Euphorbia spp.,Native/Unknown,Unknown,Forb,dependent
 Chihuahuan,Creosote,Eriogonum,No,0,Eriogonum,Eriogonum spp.,Native,Unknown,Forb,dependent
 Sonoran SE,SRER,Extra large BOCU,No,0,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
 Sonoran SE,SRER,Extra large BOER in S half and medium sized one next to NE plot  corner that partially hangs in and at least 2 small ones within the plot as well,No,0,BOER4,Bouteloua eriopoda,Native,Perennial,Grass,independent
@@ -129,14 +130,15 @@ Colorado Plateau,BabbittPJ,HESP,No,0,HESP,Heliomeris spp.,Native,Unknown,Forb,de
 Colorado Plateau,FlyingM,HESP,No,0,HESP,Heliomeris spp.,Native,Unknown,Forb,dependent
 Colorado Plateau,PEFO,HOIN,No,0,HOIN2,Hordeum intercedens,Native,Annual,Grass,independent
 Colorado Plateau,MOWE,HYVE,No,0,HYVE,Hybanthus verticillatus,Native,Perennial,Forb,independent
+Sonoran Central,Pleasant,LEPISP,No,0,LEPSPP,Lepidium spp.,Native/Unknown,Unknown,Forb,dependent
 Mojave,29_Palms,LEPSPP,No,0,LEPSPP,Lepidium spp.,Native/Unknown,Unknown,Forb,dependent
-Colorado Plateau,AguaFria,LUSPP,No,0,LUSPP,Lupinus spp.,Unknown,Unknown,Forb,dependent
+Colorado Plateau,AguaFria,LUSPP,No,0,LUSPP,Lupinus spp.,Native/Unknown,Unknown,Forb,dependent
 Colorado Plateau,PEFO,LUSPP,No,0,LUSPP,Lupinus spp.,Native/Unknown,Unknown,Forb,dependent
 Sonoran SE,Patagonia,Large BOCU in the southeast with a few small ones throughout and about 5 ARPUs small to large in size that're mostly near the conmods,Yes,1,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
 Sonoran SE,Patagonia,Large BOCU in the southeast with a few small ones throughout and about 5 ARPUs small to large in size that're mostly near the conmods,Yes,2,ARPU9,Aristida purpurea,Native,Unknown,Grass,independent
 Sonoran SE,SRER,Large and medium BOCUs in plot,No,0,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
 Chihuahuan,Creosote,Lesquerella sp.,No,0,LESSPP,Lesquerella spp.,Native,Unknown,Forb,dependent
-Utah,CRC,"Lots of unknown grasses, potentially S-PASM",No,0,UNKGR,"Lots of unknown grasses, potentially S-PASM",Unknown,Unknown,Grass,dependent
+Utah,CRC,"Lots of unknown grasses, potentially S-PASM",No,0,UNKGR,"Lots of unknown grasses, potentially S-PASM",Native/Unknown,Unknown,Grass,dependent
 Colorado Plateau,TLE,MACSPP,No,0,MACSPP,Machaeranthera spp.,Native,Unknown,Forb,dependent
 Sonoran SE,Patagonia,MATA is the SW corner,No,0,MATA2,Machaeranthera tanacetifolia,Native,Annual,Forb,independent
 Sonoran SE,Patagonia,MATA seedling in southwest section,No,0,MATA2,Machaeranthera tanacetifolia,Native,Annual,Forb,independent
@@ -163,8 +165,6 @@ Sonoran SE,Patagonia,"Multiple ARPUs small to large sized throughout, possible A
 Sonoran SE,Patagonia,"Multiple ARPUs small to large sized throughout, possible ACHY in the SE pit, and a couple teeny tiny SECOs in/around some of the pits",Yes,3,SECO10,Senna covesii,Native,Perennial,Forb,independent
 Sonoran SE,SRER,Multiple BOCU's medium-large and a possible medium sized ARPU,Yes,1,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
 Sonoran SE,SRER,Multiple BOCU's medium-large and a possible medium sized ARPU,Yes,2,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
-Sonoran SE,SRER,Multiple med to extra large BOCUs and a few small to large ARPUs,Yes,1,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
-Sonoran SE,SRER,Multiple med to extra large BOCUs and a few small to large ARPUs,Yes,2,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
 Sonoran SE,SRER,Multiple BOCUS and a couple possible ARPUs throughout,Yes,1,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
 Sonoran SE,SRER,Multiple BOCUS and a couple possible ARPUs throughout,Yes,2,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
 Sonoran SE,SRER,Multiple BOCUs throughout,No,0,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
@@ -188,7 +188,7 @@ Sonoran SE,Patagonia,Multiple medium to large ARPUs and BOCUs (mostly ARPUs) as 
 Sonoran SE,Patagonia,Multiple medium to large ARPUs and BOCUs along the northeast edge,Yes,1,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
 Sonoran SE,Patagonia,Multiple medium to large ARPUs and BOCUs along the northeast edge,Yes,2,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
 Sonoran SE,Patagonia,"Multiple medium to large ARPUs and possibly and ACHY seedling in the southeast pit (wirey, narrow, clasping blades)",Yes,1,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
-Sonoran SE,Patagonia,"Multiple medium to large ARPUs and possibly and ACHY seedling in the southeast pit (wirey, narrow, clasping blades)",Yes,1,ACHY,Achnatherum hymenoides,Native,Perennial,Grass,independent
+Sonoran SE,Patagonia,"Multiple medium to large ARPUs and possibly and ACHY seedling in the southeast pit (wirey, narrow, clasping blades)",Yes,2,ACHY,Achnatherum hymenoides,Native,Perennial,Grass,independent
 Sonoran SE,Patagonia,Multiple medium to large ARPUs throughout and a couple small BOCUs near and among the conmods,Yes,1,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
 Sonoran SE,Patagonia,Multiple medium to large ARPUs throughout and a couple small BOCUs near and among the conmods,Yes,2,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
 Sonoran SE,Patagonia,Multiple small to large ARPUs throughout along with a large BAMU in center and a medium sized BOCU in the NW section,Yes,1,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
@@ -213,8 +213,9 @@ Utah,UtahPJ,Not recorded,No,0,0,0,0,0,0,independent
 Colorado Plateau,BarTBar,OESP,No,0,OESP,Oenothera spachiana,Native,Annual,Forb,independent
 Colorado Plateau,BabbittPJ,PASM (maybe),No,0,PASM,Pascopyrum smithii,Native,Perennial,Grass,independent
 Mojave,29_Palms,PECSPP,No,0,PECSPP,Pectocarya spp.,Native,Unknown,Forb,dependent
-Sonoran SE,SRER,PEPA (possibly),No,0,PEPAspp,Unknown PEPA,Unknown,Unknown,Unknown,dependent
+Sonoran SE,SRER,PEPA (possibly),No,0,PEPA8,Penstemon palmeri,Native,Perennial,Forb,independent
 Colorado Plateau,BabbittPJ,PHSPP,No,0,PHSPP,Phacelia spp.,Native,Unknown,Forb,dependent
+Sonoran Central,Pleasant,PHYSR,No,0,PHYSR,Physaria sp.,Native,Unknown,Forb,dependent
 Colorado Plateau,BarTBar,PORSPP,No,0,PORSPP,Portulaca spp.,Native,Unknown,Forb,dependent
 Colorado Plateau,PEFO,PORSPP,No,0,PORSPP,Portulaca spp.,Native,Unknown,Forb,dependent
 Colorado Plateau,BabbittPJ,PSSP6 (maybe),No,0,PSSP6,Pseudoroegneria spicata,Native,Perennial,Grass,independent
@@ -224,21 +225,20 @@ Sonoran SE,Patagonia,Possible ACHY near southwest corner (2 certainty) and about
 Sonoran SE,SRER,"Possible ARPUs, SECO seedling in subplot",Yes,1,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
 Sonoran SE,SRER,"Possible ARPUs, SECO seedling in subplot",Yes,2,SECO10,Senna covesii,Native,Perennial,Forb,independent
 Sonoran SE,SRER,Possible BOCUs but not in this mix,No,0,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
+Sonoran SE,SRER,Possible Boutelouas not sure if BOER because they've been grazed down,No,0,BOspp,Bouteloua spp.,Native,Unknown,Grass,dependent
 Sonoran SE,SRER,Possible MATA seedling species in suplot and in the NW pit if not than 0% seeded species cover,No,0,MATA2,Machaeranthera tanacetifolia,Native,Annual,Forb,independent
 Sonoran SE,Patagonia,Possible MATA seedlings in the northwest pit and possibly a SPCR seedling but if neither than seeded species cover would be 0%,Yes,1,MATA2,Machaeranthera tanacetifolia,Native,Annual,Forb,independent
 Sonoran SE,Patagonia,Possible MATA seedlings in the northwest pit and possibly a SPCR seedling but if neither than seeded species cover would be 0%,Yes,2,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass,independent
 Sonoran SE,SRER,Possible Poa secunda POSE just outside of NE plot corner but not in/overhanging yet due to small size,No,0,0,0,0,0,0,independent
 Utah,CRC,Possible S-PASM seedlings,No,0,PASM,Pascopyrum smithii,Native,Perennial,Grass,independent
 Sonoran SE,SRER,Possible SPCR along the northeast edge as well as a possible PEPA seedling next to the subplot if neither than 0% seeded cover,Yes,1,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass,independent
-Sonoran SE,SRER,Possible SPCR along the northeast edge as well as a possible PEPA seedling next to the subplot if neither than 0% seeded cover,Yes,2,PEPAspp,Unknown PEPA,Unknown,Unknown,Unknown,dependent
-Utah,CRC,Possible S-PASM seedlings,No,0,PASM,Pascopyrum smithii,Native,Perennial,Grass,independent
+Sonoran SE,SRER,Possible SPCR along the northeast edge as well as a possible PEPA seedling next to the subplot if neither than 0% seeded cover,Yes,2,PEPA8,Penstemon palmeri,Native,Perennial,Forb,independent
 Sonoran SE,Patagonia,"Possible SPCR in subplot, Blue not Black grama",Yes,1,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass,independent
 Sonoran SE,Patagonia,"Possible SPCR in subplot, Blue not Black grama",Yes,2,BOGR2,Bouteloua gracilis,Native,Perennial,Grass,independent
-Sonoran SE,SRER,Possible Boutelouas not sure if BOER because they've been grazed down,No,0,BOspp,Bouteloua spp.,Native,Unknown,Grass,dependent
+Sonoran SE,Patagonia,"Possible couple small ASTUs along with multiple medium to extra large ARPUs, possibly a few BAMU seedlings as well as a couple tiny to small SECOs throughout",Yes,1,ASTU,Asclepias tuberosa,Native,Perennial,Forb,independent
 Sonoran SE,Patagonia,"Possible couple small ASTUs along with multiple medium to extra large ARPUs, possibly a few BAMU seedlings as well as a couple tiny to small SECOs throughout",Yes,2,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
 Sonoran SE,Patagonia,"Possible couple small ASTUs along with multiple medium to extra large ARPUs, possibly a few BAMU seedlings as well as a couple tiny to small SECOs throughout",Yes,3,BAMU,Baileya multiradiata,Native,Unknown,Forb,independent
 Sonoran SE,Patagonia,"Possible couple small ASTUs along with multiple medium to extra large ARPUs, possibly a few BAMU seedlings as well as a couple tiny to small SECOs throughout",Yes,4,SECO10,Senna covesii,Native,Perennial,Forb,independent
-Sonoran SE,Patagonia,"Possible couple small ASTUs along with multiple medium to extra large ARPUs, possibly a few BAMU seedlings as well as a couple tiny to small SECOs throughout",Yes,1,ASTU,Asclepias tuberosa,Native,Perennial,Forb,independent
 Sonoran SE,Patagonia,"Possible small SPCR near middle of the east edge (no tiller, culm, or seed heads but fuzziness/hairs at the ligule) and possible POSE next to the subplot (all leaf blades and midvein on bottome) if not than 0% seeded species cover",Yes,1,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass,independent
 Sonoran SE,Patagonia,"Possible small SPCR near middle of the east edge (no tiller, culm, or seed heads but fuzziness/hairs at the ligule) and possible POSE next to the subplot (all leaf blades and midvein on bottome) if not than 0% seeded species cover",Yes,2,POSE,Poa secunda,Native,Perennial,Grass,independent
 Sonoran SE,SRER,Possible young BOCU and ARPU but no seed heads yet therfor unsure ifit is than seeded species cover is 1% but if not it's trace amount because of a few SECOs all found in or near pits,Yes,1,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
@@ -258,8 +258,8 @@ Sonoran SE,Patagonia,"Possibly small POSE and SPCR in the S half of the plot, BL
 Sonoran SE,Patagonia,"Possibly small POSE and SPCR in the S half of the plot, BLUE grama not BLACK",Yes,2,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass,independent
 Sonoran SE,Patagonia,"Possibly small POSE and SPCR in the S half of the plot, BLUE grama not BLACK",Yes,3,BOGR2,Bouteloua gracilis,Native,Perennial,Grass,independent
 Sonoran SE,SRER,Possibly two SPCRs (or possibly POSEs?) near the southwest and northwest (No sead heads yet but membraneous ligule with hair and blades at an almost 90 degrees fro the stems however if neither than the seeded species cover would be 0%,No,0,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass,independent
-Sonoran SE,SRER,Potentially 3 or 4 BOCU (1 certainty) and possibly an ARPU (2) or othe ARsp. hard to be certain because all the grasses have been grazed down to nubs,No,2,ARPUspp,Aristida spp.,Native,Unknown,Grass,dependent
 Sonoran SE,SRER,Potentially 3 or 4 BOCU (1 certainty) and possibly an ARPU (2) or othe ARsp. hard to be certain because all the grasses have been grazed down to nubs,No,1,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
+Sonoran SE,SRER,Potentially 3 or 4 BOCU (1 certainty) and possibly an ARPU (2) or othe ARsp. hard to be certain because all the grasses have been grazed down to nubs,No,2,ARPUspp,Aristida spp.,Native,Unknown,Grass,dependent
 Sonoran SE,SRER,Probable BOCUs with apparent grazing,No,0,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
 Sonoran SE,SRER,Quite a few small tp extra large BOCUs throughout along with a possible ASTU,Yes,1,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
 Sonoran SE,SRER,Quite a few small tp extra large BOCUs throughout along with a possible ASTU,Yes,2,ASTU,Asclepias tuberosa,Native,Perennial,Forb,independent
@@ -269,6 +269,7 @@ Colorado Plateau,FlyingM,SALRE,No,0,SALRE,Unknown SALRE,Unknown,Unknown,Unknown,
 Colorado Plateau,FlyingM,SARE,No,0,SARE3,Salvia reflexa,Native,Annual,Forb,independent
 Colorado Plateau,BarTBar,SATR,No,0,SATR12,Salsola tragus,Introduced,Annual,Forb,independent
 Mojave,29_Palms,SCHSPP,No,0,SCHSPP,Unknown SCH spp.,Unknown,Unknown,Unknown,dependent
+Sonoran Central,Pleasant,SISYM,No,0,SISYM,Sisymbrium sp.,Unknown,Unknown,Forb,dependent
 Colorado Plateau,BabbittPJ,SPSP,No,0,SPSP,Sphaeralcea spp.,Native/Unknown,Unknown,Forb,dependent
 Colorado Plateau,BarTBar,SPSP,No,0,SPSP,Sphaeralcea spp.,Native/Unknown,Unknown,Forb,dependent
 Colorado Plateau,FlyingM,SPSP,No,0,SPSP,Sphaeralcea spp.,Native/Unknown,Unknown,Forb,dependent
@@ -283,8 +284,8 @@ Colorado Plateau,PEFO,SUNGR,No,0,SUNGR,Seeded unknown grass,Native,Unknown,Grass
 Colorado Plateau,Spiderweb,SUNGR,No,0,SUNGR,Seeded unknown grass,Native,Unknown,Grass,dependent
 Colorado Plateau,TLE,SUNGR,No,0,SUNGR,Seeded unknown grass,Native,Unknown,Grass,dependent
 Colorado Plateau,PEFO,SUNGR1,No,0,SUNGR1,Seeded unknown grass 1,Native,Unknown,Grass,dependent
-Sonoran SE,Patagonia,SW conmod is overgrown with Blue grama but NO black grama but thee's a possible young PEPA by the NW conmod,Yes,2,PEPAspp,Unknown PEPA,Unknown,Unknown,Unknown,dependent
 Sonoran SE,Patagonia,SW conmod is overgrown with Blue grama but NO black grama but thee's a possible young PEPA by the NW conmod,Yes,1,BOGR2,Bouteloua gracilis,Native,Perennial,Grass,independent
+Sonoran SE,Patagonia,SW conmod is overgrown with Blue grama but NO black grama but thee's a possible young PEPA by the NW conmod,Yes,2,PEPA8,Penstemon palmeri,Native,Perennial,Forb,independent
 Sonoran SE,SRER,Small POSE near SW pit,No,0,POSE,Poa secunda,Native,Perennial,Grass,independent
 Sonoran SE,Patagonia,Small to large ARPUs and BOCUs along with a couple small SECOs as well as a possible PLMU in the middle (rough feeling and membranous ligule but no seed heads),Yes,1,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
 Sonoran SE,Patagonia,Small to large ARPUs and BOCUs along with a couple small SECOs as well as a possible PLMU in the middle (rough feeling and membranous ligule but no seed heads),Yes,2,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
@@ -311,7 +312,7 @@ Sonoran SE,SRER,Some type of Aristida possibly and ARPU and maybe 1 small maybe 
 Sonoran SE,Patagonia,Southwest pit has 1 BAMU and 4 small ARPUs. Northwest pit has 2 medium and 2 small ARPUs and 1 dreid up SECO. There are a few more small to medium sized ARPUs throughout,Yes,1,BAMU,Baileya multiradiata,Native,Unknown,Forb,independent
 Sonoran SE,Patagonia,Southwest pit has 1 BAMU and 4 small ARPUs. Northwest pit has 2 medium and 2 small ARPUs and 1 dreid up SECO. There are a few more small to medium sized ARPUs throughout,Yes,2,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
 Sonoran SE,Patagonia,Southwest pit has 1 BAMU and 4 small ARPUs. Northwest pit has 2 medium and 2 small ARPUs and 1 dreid up SECO. There are a few more small to medium sized ARPUs throughout,Yes,3,SECO10,Senna covesii,Native,Perennial,Forb,independent
-Colorado Plateau,Spiderweb,Sporobolus,No,0,SPOspp,Sporobolus spp.,Unknown,Unknown,Grass,dependent
+Colorado Plateau,Spiderweb,Sporobolus,No,0,SPOspp,Sporobolus spp.,Native,Unknown,Grass,dependent
 Sonoran SE,SRER,"There are a couple possible small BOERs but no seed, tillers, culms, to help ID but if not BOER and a different bouteloa species than 0%",No,0,BOspp,Bouteloua spp.,Native,Unknown,Grass,dependent
 Sonoran SE,SRER,There're a couple possible tiny MATA seedlings in some of the pits if not MATA than 0% (too small to ID for sure),No,0,MATA2,Machaeranthera tanacetifolia,Native,Annual,Forb,independent
 Sonoran SE,Patagonia,There're a couple potential MATA seedlings near/under a couple of the larger grass bunches however if not MATA than 0% seeded species cover,No,0,MATA2,Machaeranthera tanacetifolia,Native,Annual,Forb,independent
@@ -359,7 +360,7 @@ Colorado Plateau,PEFO,UNGR,No,0,UNGR,Unknown grass,Unknown,Unknown,Grass,depende
 Colorado Plateau,Spiderweb,UNGR,No,0,UNGR,Unknown grass,Unknown,Unknown,Grass,dependent
 Sonoran SE,SRER,UNGR,No,0,UNGR,Unknown grass,Unknown,Unknown,Grass,dependent
 Colorado Plateau,TLE,UNGR,No,0,UNGR,Unknown grass,Unknown,Unknown,Grass,dependent
-Sonoran SE,SRER,UNGR-2 possibly a Bouteloua (BOCU?) Maybe PLJA? (never seen),No,0,UNGR-2 ,Unknown grass 2 possibly a Bouteloua (BOCU?) Maybe PLJA? (never seen),Unknown,Unknown,Grass,dependent
+Sonoran SE,SRER,UNGR-2 possibly a Bouteloua (BOCU?) Maybe PLJA? (never seen),No,0,UNGR-2 ,Unknown grass 2 possibly a Bouteloua (BOCU?) Maybe PLJA? (never seen),Native/Unknown,Unknown,Grass,dependent
 Colorado Plateau,PEFO,UNGR1,No,0,UNGR1,Unknown grass 1,Unknown,Unknown,Grass,dependent
 Colorado Plateau,MOWE,UNGR2,No,0,UNGR2,Unknown grass 2,Unknown,Unknown,Grass,dependent
 Colorado Plateau,PEFO,UNGR2,No,0,UNGR2,Unknown grass 2,Unknown,Unknown,Grass,dependent

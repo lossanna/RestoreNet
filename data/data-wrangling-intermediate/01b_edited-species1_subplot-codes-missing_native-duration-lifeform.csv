@@ -1,7 +1,7 @@
 Region,Site,CodeOriginal,Name,Native,Duration,Lifeform
 Sonoran Central,Roosevelt,ANOC2,Androsace occidentalis,Native,Annual,Forb
 Chihuahuan,Mesquite,ATCA,Atriplex californica,Native,Perennial,Forb
-Colorado Plateau,FlyingM,AmaranthusSpp,Amaranthus spp.,Unknown,Unknown,Forb
+Colorado Plateau,FlyingM,AmaranthusSpp,Amaranthus spp.,Native/Unknown,Unknown,Forb
 Chihuahuan,Mesquite,ATCA,"Unknown ATCA (but not Atriplex, a grass?)",Unknown,Unknown,Grass
 Chihuahuan,Mesquite,BAHI,Balsamorhiza hookeri,Native,Perennial,Forb
 Sonoran SE,SRER,CRYSPP 1,Cryptantha spp. 1,Native,Unknown,Forb
@@ -9,10 +9,10 @@ Sonoran SE,SRER,CRYSPP 2,Cryptantha spp. 2,Native,Unknown,Forb
 Sonoran SE,SRER,CRYSPP2,Cryptantha spp. 3,Native,Unknown,Forb
 Colorado Plateau,BarTBar,DACA,Dalea candida,Native,Perennial,Forb
 Sonoran SE,SRER,DeadStem,Dead stem,Unknown,Unknown,Forb
-Utah,UtahPJ,ERIGSPP,Unknown ERIG (?),Unknown,Unknown,Forb
+Utah,UtahPJ,ERIGSPP,Erigonum spp.,Native,Unknown,Forb
 Utah,UtahPJ,Eriogonum sp.,Erigonum spp.,Native,Unknown,Forb
-Sonoran SE,SRER,GILSPP 1,Gilia spp. 1,Unknown,Unknown,Forb
-Sonoran SE,SRER,GILSPP 2,Gilia spp. 2,Unknown,Unknown,Forb
+Sonoran SE,SRER,GILSPP 1,Gilia spp. 1,Native,Unknown,Forb
+Sonoran SE,SRER,GILSPP 2,Gilia spp. 2,Native,Unknown,Forb
 Utah,CRC,LILE,Leptosiphon lemmonii,Native,Annual,Forb
 Colorado Plateau,AguaFria,LUSP,Lupinus sparsiflorus (?),Native,Annual,Forb
 Chihuahuan,Mesquite,PAHI7,Oplismenus hirtellus (Panicum hirtellum),Introduced,Perennial,Grass

@@ -23,7 +23,7 @@ A few possible small SPCRs and a couple MATA seedlings all in the pits,SPCR,Spor
 ABPA3,ABPA3,Abutilon parvulum,Native,Perennial,Forb
 ACHY,ACHY,Achnatherum hymenoides,Native,Perennial,Grass
 ACMI2,ACMI2,Achillea millefolium,Native,Perennial,Forb
-ACMIS,ACMIS,Acmispon (Lotus),Native,Unknown,Forb
+ACMIS,ACMIS,Acmispon (Lotus),Native,Annual,Forb
 ACNA2,ACNA2,Acourtia nana,Native,Perennial,Forb
 ALIN,ALIN,Allionia incarnata,Native,Unknown,Forb
 AMCH3,AMCH3,Ammocodon chenopodioides,Native,Perennial,Forb
@@ -125,6 +125,7 @@ CRCO34,CRCO34,Crassula connata,Native,Annual,Forb
 CRCR3,CRCR3,Cryptantha crassisepala,Native,Annual,Forb
 CRIN8,CRIN8,Cryptantha intermedia,Native,Annual,Forb
 CRPO5,CRPO5,Croton pottsii,Native,Perennial,Forb
+CRSE1,CRSE11,Croton setigerus,Native,Annual,Forb
 CRSE11,CRSE11,Croton setigerus,Native,Annual,Forb
 CYAC,CYAC,Cymopterus acaulis,Native,Perennial,Forb
 Conmods are starting to lose shape and are partially flopping over with a high amount of debris/dirt buildup. SW conmod is partially buried,0,0,0,0,0
@@ -167,7 +168,6 @@ ERER2,ERER2,Eriastrum eremicum,Native,Annual,Forb
 ERFA2,ERFA2,Eriogonum fasciculatum,Native,Perennial,Forb
 ERIAS,ERIAS,Eriastrum,Native,Unknown,Forb
 ERIN4,ERIN4,Eriogonum inflatum,Native,Unknown,Forb
-ERIOG,ERIOG,Eriogonum sp.,Unknown,Unknown,Forb
 ERLA12,ERLA12,Ericameria laricifolia,Native,Perennial,Shrub
 ERLE,ERLE,Eragrostis lehmanniana,Introduced,Perennial,Grass
 ERPA11,ERPA11,Eriogonum palmerianum,Native,Annual,Forb
@@ -187,7 +187,6 @@ Extra large BOER in S half and medium sized one next to NE plot  corner that par
 Extra large to medium large BOCUs throughout and at least 2 tiny SECO near/in SE pit and NE/subplot pit,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
 Extra large to medium large BOCUs throughout and at least 2 tiny SECO near/in SE pit and NE/subplot pit,SECO10,Senna covesii,Native,Perennial,Forb
 Few small to medium ARPUs spaced throughout,ARPU9,Aristida purpurea,Native,Perennial,Grass
-GILSPP2,GILSPP2,Very similar to GIsp 1 but slightly more serated leaves and flowers are purple/pink instead of blueish/white,Unknown,Unknown,Forb
 GIST,GIST,Gilia stellata,Native,Annual,Forb
 GLGO,GLGO,Glandularia gooddingii,Native,Perennial,Forb
 GNPA,GNPA,Gnaphalium palustre,Native,Annual,Forb
@@ -220,7 +219,6 @@ LECI4,LECI4,Leymus cinereus,Native,Perennial,Grass
 LEFR2,LEFR2,Lepidium fremontii,Native,Perennial,Shrub
 LELA,LELA,Lepidium lasiocarpum,Native,Annual,Forb
 LEPA6,LEPA6,Leptochloa panicea,Native,Unknown,Grass
-LEPISP,LEPISP,Lepidium sp.,Unknown,Unknown,Forb
 LETH2,LETH2,Lepidium thurberi,Native,Annual,Forb
 LIBI2,LIBI2,Linanthus bigelovii,Native,Annual,Forb
 LILE,LILE,Leptosiphon lemmonii,Native,Annual,Forb
@@ -332,6 +330,7 @@ PASM,PASM,Pascopyrum smithii,Native,Perennial,Grass
 PASM (maybe),PASM,Pascopyrum smithii,Native,Perennial,Grass
 PECTO,PECTO,Pectocarya,Native,Annual,Forb
 PEHE,PEHE,Pectocarya heterocarpa,Native,Annual,Forb
+PEPA (possibly),PEPA8,Penstemon palmeri,Native,Perennial,Forb
 PEPA2,PEPA2,Pectis papposa,Native,Annual,Forb
 PEPA8,PEPA8,Penstemon palmeri,Native,Perennial,Forb
 PEPE26,PEPE26,Pectocarya penicillata,Native,Annual,Forb
@@ -341,7 +340,6 @@ PHDI,PHDI,Phacelia distans,Native,Unknown,Forb
 PHLO2,PHLO2,Phlox longifolia,Native,Perennial,Forb
 PHNE3,PHNE3,Phacelia neomexicana,Native,Annual,Forb
 PHYSA,PHYSA,Physalis,Unknown,Unknown,Forb
-PHYSR,PHYSR,Physaria sp.,Unknown,Unknown,Forb
 PLANT,PLANT,Plantago,Unknown,Unknown,Forb
 PLAR,PLAR,Plagiobothrys arizonicus,Native,Annual,Forb
 PLJA,PLJA,Pleuraphis jamesii,Native,Perennial,Grass
@@ -355,7 +353,6 @@ POPI3,POPI3,Portulaca pilosa,Native,Unknown,Forb
 POSE,POSE,Poa secunda,Native,Perennial,Grass
 POUM,POUM,Portulaca umbraticola,Native,Annual,Forb
 PRGL2,PRGL2,Prosopis glandulosa,Native,Perennial,Shrub
-PROACASPP,PROACASPP,Mesquite/Acacia species,Native/Unknown,Perennial,Shrub
 PRVE,PRVE,Prosopis velutina,Native,Perennial,Shrub
 PSCA11,PSCA11,Pseudognaphalium canescens,Native,Unknown,Forb
 PSSP6,PSSP6,Pseudoroegneria spicata,Native,Perennial,Grass
@@ -371,6 +368,7 @@ Possible MATA seedlings in the northwest pit and possibly a SPCR seedling but if
 Possible MATA seedlings in the northwest pit and possibly a SPCR seedling but if neither than seeded species cover would be 0%,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass
 Possible Poa secunda POSE just outside of NE plot corner but not in/overhanging yet due to small size,0,0,0,0,0
 Possible S-PASM seedlings,PASM,Pascopyrum smithii,Native,Perennial,Grass
+Possible SPCR along the northeast edge as well as a possible PEPA seedling next to the subplot if neither than 0% seeded cover,PEPA8,Penstemon palmeri,Native,Perennial,Forb
 Possible SPCR along the northeast edge as well as a possible PEPA seedling next to the subplot if neither than 0% seeded cover,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass
 "Possible SPCR in subplot, Blue not Black grama",BOGR2,Bouteloua gracilis,Native,Perennial,Grass
 "Possible SPCR in subplot, Blue not Black grama",SPCR,Sporobolus cryptandrus,Native,Perennial,Grass
@@ -420,7 +418,6 @@ SIAL2,SIAL2,Sisymbrium altissimum,Introduced,Annual,Forb
 SIAN2,SIAN2,Silene antirrhina,Native,Annual,Forb
 SIIR,SIIR,Sisymbrium irio,Introduced,Annual,Forb
 SINE,SINE,Sida neomexicana,Native,Perennial,Forb
-SISYM,SISYM,Sisymbrium sp.,Unknown,Unknown,Forb
 SOEL,SOEL,Solanum elaeagnifolium,Native,Perennial,Forb
 SOOL,SOOL,Sonchus oleraceus,Introduced,Annual,Forb
 SORO,SORO,Solanum rostratum,Native,Annual,Forb
@@ -435,6 +432,7 @@ STGN,STGN,Stylocline gnaphalioides,Native,Annual,Forb
 STMI2,STMI2,Stylocline micropoides,Native,Annual,Forb
 STSP3,STSP3,Stipa speciosa,Native,Perennial,Grass
 SW conmod is overgrown with Blue grama but NO black grama but thee's a possible young PEPA by the NW conmod,BOGR2,Bouteloua gracilis,Native,Perennial,Grass
+SW conmod is overgrown with Blue grama but NO black grama but thee's a possible young PEPA by the NW conmod,PEPA8,Penstemon palmeri,Native,Perennial,Forb
 Small POSE near SW pit,POSE,Poa secunda,Native,Perennial,Grass
 Small to large ARPUs and BOCUs along with a couple small SECOs as well as a possible PLMU in the middle (rough feeling and membranous ligule but no seed heads),ARPU9,Aristida purpurea,Native,Perennial,Grass
 Small to large ARPUs and BOCUs along with a couple small SECOs as well as a possible PLMU in the middle (rough feeling and membranous ligule but no seed heads),BOCU,Bouteloua curtipendula,Native,Perennial,Grass

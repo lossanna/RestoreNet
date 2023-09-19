@@ -26,25 +26,20 @@ Colorado Plateau,MOWE,CHEN.MOWE,CHEN,"Unknown chenopod, MOWE",Native/Unknown,Unk
 Sonoran SE,Patagonia,CHESPP.Patagonia,CHESPP,"Chenopodium spp., Patagonia",Unknown,Unknown,Forb
 Sonoran Central,Roosevelt,CRYPT.Roosevelt,CRYPT,"Cryptantha spp., Roosevelt",Native,Unknown,Forb
 Sonoran Central,Pleasant,CRYPT.Pleasant,CRYPT,"Cryptantha spp., Pleasant",Native,Unknown,Forb
-Colorado Plateau,PEFO,CRYSPP.PEFO,CRYSPP,"Cryptantha spp., PEFO",Native,Unknown,Forb
 Mojave,29_Palms,CRYSPP.29_Palms,CRYSPP,"Cryptantha spp., 29_Palms",Native,Unknown,Forb
 Mojave,AVRCD,CRYSPP.AVRCD,CRYSPP,"Cryptantha spp., AVRCD",Native,Unknown,Forb
 Sonoran SE,SRER,CRYSPP.SRER,CRYSPP,"Cryptantha spp., SRER",Native,Unknown,Forb
+Colorado Plateau,PEFO,CRYSPP.PEFO,CRYSPP,"Cryptantha spp., PEFO",Native,Unknown,Forb
 Utah,UtahPJ,DRABA.UtahPJ,DRABA,"Draba spp., UtahPJ",Native/Unknown,Unknown,Forb
 Colorado Plateau,AguaFria,ELSPP.AguaFria,ELSPP,"Elymus spp., AguaFria",Native/Unknown,Unknown,Grass
 Colorado Plateau,BabbittPJ,ELSPP.BabbittPJ,ELSPP,"Elymus spp., BabbittPJ",Native/Unknown,Unknown,Grass
 Colorado Plateau,FlyingM,ELSPP.FlyingM,ELSPP,"Elymus spp., FlyingM",Native/Unknown,Unknown,Grass
-Sonoran SE,Patagonia,ERASPP.Patagonia,ERASPP,"Eragrostis spp., ERCU or ERLE, Patagonia",Unknown,Unknown,Grass
-Sonoran SE,SRER,ERASPP.SRER,ERASPP,"Eragrostis spp., ERCU or ERLE, SRER",Unknown,Unknown,Grass
-Chihuahuan,Preserve,ERCI.Preserve,ERCI,"Eragrostis cilianensis, Preserve",Introduced,Annual,Grass
-Chihuahuan,SCC,ERCI.SCC,ERCI,"Eragrostis cilianensis, SCC",Introduced,Annual,Grass
-Chihuahuan,Roosevelt,ERCI.Roosevelt,ERCI,"Eragrostis cilianensis, Roosevelt",Introduced,Annual,Grass
-Chihuahuan,Pleasant,ERCI.Pleasant,ERCI,"Eragrostis cilianensis, Pleasant",Introduced,Annual,Grass
-Sonoran Central,Creosote,ERCI.Creosote,ERCI,"Eragrostis ciliaris, Creosote",Introduced,Annual,Grass
-Sonoran Central,Mesquite,ERCI.Mesquite,ERCI,"Eragrostis ciliaris, Mesquite",Introduced,Annual,Grass
+Sonoran SE,Patagonia,ERASPP.Patagonia,ERASPP,"Eragrostis spp., ERCU or ERLE, Patagonia",Introduced,Unknown,Grass
+Sonoran SE,SRER,ERASPP.SRER,ERASPP,"Eragrostis spp., ERCU or ERLE, SRER",Introduced,Unknown,Grass
+Sonoran Central,Pleasant,ERIOG.Pleasant,ERIOG,"Eriogonum spp., Pleasant",Native,Unknown,Forb
 Colorado Plateau,BarTBar,ERISP.BarTBar,ERISP,"Eriogonum spp., BarTBar",Native,Unknown,Forb
 Colorado Plateau,PEFO,ERISP.PEFO,ERISP,"Eriogonum spp., PEFO",Native,Unknown,Forb
-Sonoran SE,Patagonia,ERISPP.Patagonia,ERISPP,"Erigeron spp., Patagonia",Unknown,Unknown,Forb
+Sonoran SE,Patagonia,ERISPP.Patagonia,ERISPP,"Erigeron spp., Patagonia",Native,Unknown,Forb
 Chihuahuan,Creosote,Eriogonum.Creosote,Eriogonum,"Eriogonum spp., Creosote",Native,Unknown,Forb
 Colorado Plateau,Spiderweb,GILSPP.Spiderweb,GILSPP,"Gilia spp., Spiderweb",Native,Unknown,Forb
 Mojave,29_Palms,GILSPP.29_Palms,GILSPP,"Gilia spp., 29_Palms",Native,Unknown,Forb
@@ -68,6 +63,7 @@ Colorado Plateau,BarTBar,PORSPP.BarTBar,PORSPP,"Portulaca spp., BarTBar",Native,
 Colorado Plateau,FlyingM,PORSPP.FlyingM,PORSPP,"Portulaca spp., FlyingM",Native,Unknown,Forb
 Colorado Plateau,PEFO,PORSPP.PEFO,PORSPP,"Portulaca spp., PEFO",Native,Unknown,Forb
 Sonoran SE,Patagonia,PORSPP.Patagonia,PORSPP,"Portulaca spp., Patagonia",Native,Unknown,Forb
+Sonoran SE,Patagonia,PROACASPP.Patagonia,PROACASPP,"Mesquite/Acacia spp., Patagonia",Native/Unknown,Perennial,Shrub
 Sonoran SE,Patagonia,SIDSPP.Patagonia,SIDSPP,"Sida spp., Patagonia",Native/Unknown,Unknown,Forb
 Sonoran SE,SRER,SIDSPP.SRER,SIDSPP,"Sida spp., SRER",Native/Unknown,Unknown,Forb
 Colorado Plateau,FlyingM,SOSP.FlyingM,SOSP,"Solanum spp., FlyingM",Native/Unknown,Unknown,Forb
@@ -77,6 +73,7 @@ Colorado Plateau,FlyingM,SPSP.FlyingM,SPSP,"Sphaeralcea spp., FlyingM",Native/Un
 Colorado Plateau,TLE,SPSP.TLE,SPSP,"Sphaeralcea spp., TLE",Native/Unknown,Unknown,Forb
 Utah,UtahPJ,SPSP.UtahPJ,SPSP,"Sphaeralcea spp., UtahPJ",Native/Unknown,Unknown,Forb
 Mojave,29_Palms,STISPP.29_Palms,STISPP,"Stipa spp., 29_Palms",Native/Unknown,Unknown,Grass
+Chihuahuan,Mesquite,Trifolium.Mesquite,Trifolium,"Trifolium sp., Mesquite",Unknown,Unknown,Forb
 Sonoran SE,SRER,UNDPF.SRER,UNDPF,"Unknown dead pod forb, SRER",Unknown,Unknown,Forb
 Sonoran SE,SRER,UNDSF.SRER,UNDSF,"Unknown dead spikey forb, SRER",Unknown,Unknown,Forb
 Sonoran SE,Patagonia,UNFO-1.Patagonia,UNFO-1,"Unknown forb (Patagonia); Soft and fuzzy/hairy, serated leaves with middle vein underneath on bottom side of the leaf, pickle smell, Patagonia",Unknown,Unknown,Forb
@@ -84,17 +81,16 @@ Sonoran SE,SRER,UNFO-1.SRER,UNFO-1,"Unknown forb (SRER); Umbilliferae family, th
 Sonoran SE,SRER,UNFO-2.SRER,UNFO-2,"Unknown forb (SRER); Super hairy almost spikey looking with pinately lobed leaves, SRER",Unknown,Unknown,Forb
 Sonoran SE,SRER,UNFO-3.SRER,UNFO-3,"Unknown forb (SRER); Androsace species (or possibly a cynquifoil), small basal leaves typically with a reddish color, with a reddish long thin stem, with artichoke head-like tops, SRER",Unknown,Unknown,Forb
 Sonoran SE,SRER,UNFO-4.SRER,UNFO-4,"Unknown forb (SRER); Possibly a Linum species (Flax), basal rosette, narrow rounded leaves opposite along and close to an upright stem, SRER",Unknown,Unknown,Forb
-Utah,Salt_Desert,UNFO.12576.assigned.Salt_Desert,UNFO.12576.assigned,"Unknown forb with assigned code, and manually entered, Salt_Desert",Unknown,Unknown,Forb
 Colorado Plateau,AguaFria,UNFO1.AguaFria,UNFO1,"Unknown forb 1, AguaFria",Unknown,Unknown,Forb
 Colorado Plateau,BabbittPJ,UNFO1.BabbittPJ,UNFO1,"Unknown forb 1, BabbittPJ",Unknown,Unknown,Forb
 Colorado Plateau,FlyingM,UNFO1.FlyingM,UNFO1,"Unknown forb 1, FlyingM",Unknown,Unknown,Forb
 Colorado Plateau,MOWE,UNFO1.MOWE,UNFO1,"Unknown forb 1, MOWE",Unknown,Unknown,Forb
 Colorado Plateau,PEFO,UNFO1.PEFO,UNFO1,"Unknown forb 1, PEFO",Unknown,Unknown,Forb
+Colorado Plateau,BarTBar,UNFO1.BarTBar,UNFO1,"Unknown forb 1, BarTBar",Unknown,Unknown,Forb
 Mojave,29_Palms,UNFO1.29_Palms,UNFO1,"Unknown forb 1, 29_Palms",Unknown,Unknown,Forb
 Sonoran SE,Patagonia,UNFO1.Patagonia,UNFO1,"Unknown forb (Patagonia and SRER are same); upright mustard with tiny blueish flower, Patagonia",Unknown,Unknown,Forb
 Sonoran SE,SRER,UNFO1.SRER,UNFO1,"Unknown forb (Patagonia and SRER are same); upright mustard with tiny blueish flower, SRER",Unknown,Unknown,Forb
 Sonoran SE,Patagonia,UNFO1A.Patagonia,UNFO1A,"Unknown forb (Patagonia, Nov 2019); Darker Green, 5 petals radiating out, Patagonia",Unknown,Unknown,Forb
-Colorado Plateau,PEFO,UNFO2.PEFO,UNFO2,"Unknown forb 2, PEFO",Unknown,Unknown,Forb
 Colorado Plateau,AguaFria,UNFO2.AguaFria,UNFO2,"Unknown forb 2, AguaFria",Unknown,Unknown,Forb
 Colorado Plateau,FlyingM,UNFO2.FlyingM,UNFO2,"Unknown forb 2, FlyingM",Unknown,Unknown,Forb
 Colorado Plateau,MOWE,UNFO2.MOWE,UNFO2,"Unknown forb 2, MOWE",Unknown,Unknown,Forb
@@ -132,17 +128,17 @@ Sonoran SE,Patagonia,UNFO6.Patagonia,UNFO6,"Unknown forb; green, young, radiatin
 Sonoran SE,SRER,UNFO6.SRER,UNFO6,"Unknown forb (SRER); Very small, long slender leaves, fuzzy, leaf toothed around margins. Possibly Heterotheca grandiflora, SRER",Unknown,Unknown,Forb
 Utah,UtahPJ,UNFO6.UtahPJ,UNFO6,"Unknown forb 6, UtahPJ",Unknown,Unknown,Forb
 Sonoran SE,Patagonia,UNFO_P_1.Patagonia,UNFO_P_1,"Unknown forb; small reddish purple rosette with ovate leaves (Spring 2021), Patagonia",Unknown,Unknown,Forb
-Sonoran SE,Patagonia,UNFO_P_2.Patagonia,UNFO_P_2,"Unknown forb; Pinated leaves, upright rosette, lighter green, Ambrosia?  (Spring 2021), Patagonia",Unknown,Unknown,Forb
+Sonoran SE,Patagonia,UNFO_P_2.Patagonia,UNFO_P_2,"Unknown forb; Pinated leaves, upright rosette, lighter green, Ambrosia?  (Spring 2021), Patagonia",Native/Unknown,Unknown,Forb
 Sonoran SE,Patagonia,UNFO_P_3.Patagonia,UNFO_P_3,"Unknown forb; Fabeacea (pea), long and spindly (Spring 2021), Patagonia",Unknown,Unknown,Forb
-Sonoran SE,Patagonia,UNFO_P_4.Patagonia,UNFO_P_4,"Unkown forb; Unknown Fabeacea (Pea), short and fuzzy, chunky, Acmispon Brachycarpus? (Spring 2021), Patagonia",Unknown,Unknown,Forb
-Sonoran SE,Patagonia,UNFO_P_5.Patagonia,UNFO_P_5,"Unknown forb; Prominent mid-vein, leaf doesn't completely surround/there's good amount of petiole, ovate leaves that're slightly speckled, oenothera? (Spring 2021), Patagonia",Unknown,Unknown,Forb
+Sonoran SE,Patagonia,UNFO_P_4.Patagonia,UNFO_P_4,"Unkown forb; Unknown Fabeacea (Pea), short and fuzzy, chunky, Acmispon Brachycarpus? (Spring 2021), Patagonia",Native/Unknown,Unknown,Forb
+Sonoran SE,Patagonia,UNFO_P_5.Patagonia,UNFO_P_5,"Unknown forb; Prominent mid-vein, leaf doesn't completely surround/there's good amount of petiole, ovate leaves that're slightly speckled, oenothera? (Spring 2021), Patagonia",Native/Unknown,Unknown,Forb
 Sonoran SE,Patagonia,UNFO_P_6.Patagonia,UNFO_P_6,"Unknown forb; Super tiny, red thin stem like SAIB but the top leaves are compounded with 3 leaflets, Amaranthaceae? (Spring 2021), Patagonia",Unknown,Unknown,Forb
 Sonoran SE,Patagonia,UNFO_P_7.Patagonia,UNFO_P_7,"Unknown forb; Rosette leaves slightly fuzzy and silvery light green. simple leaves, smells like bandaids (Spring 2021), Patagonia",Unknown,Unknown,Forb
 Sonoran SE,SRER,UNFO_S_1.SRER,UNFO_S_1,"Unknown forb; Purple vine, sagitate leaves (Spring 2021), SRER",Unknown,Unknown,Forb
-Sonoran SE,SRER,UNFO_S_3.SRER,UNFO_S_3,"Unknown forb; Fuzzy green penately arranged leaflets, partially pinated lobes ""thick poppy"" possibly an ambrosia (Spring 2021), SRER",Unknown,Unknown,Forb
-Sonoran SE,SRER,UNFO_S_4.SRER,UNFO_S_4,"Unknown forb; Super tiny, very spikey, pinately lobed, possible cryptantha or plagiobothrys (Spring 2021), SRER",Unknown,Unknown,Forb
+Sonoran SE,SRER,UNFO_S_3.SRER,UNFO_S_3,"Unknown forb; Fuzzy green penately arranged leaflets, partially pinated lobes ""thick poppy"" possibly an ambrosia (Spring 2021), SRER",Native/Unknown,Unknown,Forb
+Sonoran SE,SRER,UNFO_S_4.SRER,UNFO_S_4,"Unknown forb; Super tiny, very spikey, pinately lobed, possible cryptantha or plagiobothrys (Spring 2021), SRER",Native/Unknown,Unknown,Forb
 Sonoran SE,SRER,UNFO_S_5.SRER,UNFO_S_5,"Unknown forb; Silky hairy fuzzy, straight leaves, no prominent veination, pseudognaphalium? (Spring 2021), SRER",Unknown,Unknown,Forb
-Sonoran SE,SRER,UNFO_S_7.SRER,UNFO_S_7,"Unknown forb; ""artichoke head"", stem leaves alternate, basal rosette, possibly cryptantha? (Spring 2021), SRER",Unknown,Unknown,Forb
+Sonoran SE,SRER,UNFO_S_7.SRER,UNFO_S_7,"Unknown forb; ""artichoke head"", stem leaves alternate, basal rosette, possibly cryptantha? (Spring 2021), SRER",Native/Unknown,Unknown,Forb
 Sonoran SE,Patagonia,UNFS.Patagonia,UNFS,"Unknown forb seedling, Patagonia",Unknown,Unknown,Forb
 Colorado Plateau,AguaFria,UNGR1.AguaFria,UNGR1,"Unknown grass 1, AguaFria",Unknown,Unknown,Grass
 Colorado Plateau,BabbittPJ,UNGR1.BabbittPJ,UNGR1,"Unknown grass 1, BabbittPJ",Unknown,Unknown,Grass
@@ -150,15 +146,15 @@ Colorado Plateau,FlyingM,UNGR1.FlyingM,UNGR1,"Unknown grass 1, FlyingM",Unknown,
 Colorado Plateau,MOWE,UNGR1.MOWE,UNGR1,"Unknown grass 1, MOWE",Unknown,Unknown,Grass
 Colorado Plateau,PEFO,UNGR1.PEFO,UNGR1,"Unknown grass 1, PEFO",Unknown,Unknown,Grass
 Sonoran SE,Patagonia,UNGR1.Patagonia,UNGR1,"Unknown grass 1, Patagonia",Unknown,Unknown,Grass
-Sonoran SE,SRER,UNGR1.SRER,UNGR1,"Unknown grass (SantaRita); Possibly BOER or Aristida spp (so likely unseeded), SRER",Unknown,Unknown,Grass
+Sonoran SE,SRER,UNGR1.SRER,UNGR1,"Unknown grass (SantaRita); Possibly BOER or Aristida spp (so likely unseeded), SRER",Native,Unknown,Grass
 Utah,UtahPJ,UNGR1.UtahPJ,UNGR1,"Unknown grass 1, UtahPJ",Unknown,Unknown,Grass
 Utah,Salt_Desert,UNGR1.Salt_Desert,UNGR1,"Unknown grass 1, Salt_Desert",Unknown,Unknown,Grass
 Sonoran SE,SRER,UNGRS1.SRER,UNGRS1,"Unknown grass (Patagonia);Unk. grass seedling, bunchy, possible lovegrass?, SRER",Unknown,Unknown,Grass
-Sonoran SE,Patagonia,UNGRS1.Patagonia,UNGRS1,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes, Patagonia",Unknown,Unknown,Grass
+Sonoran SE,Patagonia,UNGRS1.Patagonia,UNGRS1,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes, Patagonia",Native/Unknown,Unknown,Grass
 Sonoran SE,Patagonia,UNGRS2.Patagonia,UNGRS2,"Unknown grass (Patagonia); Unk grass seedling, leaf divided early like BOGR, possible lovegrass?, Patagonia",Unknown,Unknown,Grass
-Sonoran SE,Patagonia,UNGRS3.Patagonia,UNGRS3,"Unknown grass (Patagonia); Lighter green, thin leaves, possible threeawn?, Patagonia",Unknown,Unknown,Grass
-Sonoran SE,Patagonia,UNGR_P_1.Patagonia,UNGR_P_1,"Unknown grass; Possibly small ARIsp. (Spring 2021), Patagonia",Unknown,Unknown,Grass
-Sonoran SE,SRER,UNGR_S_1.SRER,UNGR_S_1,"Unknown grass; Grass seedling short erose ligule slight chance ARPU because of 45 degree leaf or possibly a Vulpia sp. like VUOC (Spring 2021), SRER",Unknown,Unknown,Grass
+Sonoran SE,Patagonia,UNGRS3.Patagonia,UNGRS3,"Unknown grass (Patagonia); Lighter green, thin leaves, possible threeawn?, Patagonia",Native,Unknown,Grass
+Sonoran SE,Patagonia,UNGR_P_1.Patagonia,UNGR_P_1,"Unknown grass; Possibly small ARIsp. (Spring 2021), Patagonia",Native,Unknown,Grass
+Sonoran SE,SRER,UNGR_S_1.SRER,UNGR_S_1,"Unknown grass; Grass seedling short erose ligule slight chance ARPU because of 45 degree leaf or possibly a Vulpia sp. like VUOC (Spring 2021), SRER",Native/Unknown,Unknown,Grass
 Sonoran SE,SRER,UNGR_S_2.SRER,UNGR_S_2,"Unknown grass; Possibly a BOCU or another Bouteloua (Spring 2021), SRER",Native,Unknown,Grass
 Sonoran SE,SRER,UNSFF.SRER,UNSFF,"Unknown shrubby fuzzy forb, munched down, SRER",Unknown,Unknown,Forb
 Colorado Plateau,BarTBar,UNSH.BarTBar,UNSH,"Unknown shrub, BarTBar",Unknown,Perennial,Shrub
@@ -180,4 +176,5 @@ Chihuahuan,Creosote,Unkgrass2.Creosote,Unkgrass2,"Unknown grass 2, Creosote",Unk
 Chihuahuan,Creosote,Unksalsola.Creosote,Unksalsola,"Unknown forb; A very small (tiny really) forb germinant that has linear leaves like a small Salsola would. Unlikely to be salsola but best way to distinguish it from other unks., Creosote",Unknown,Unknown,Forb
 Chihuahuan,Creosote,Unksporo.Creosote,Unksporo,"Unknown grass; Sporobolus and Eragrostis, Creosote",Unknown,Unknown,Grass
 Chihuahuan,Mesquite,Unksporo.Mesquite,Unksporo,"Unknown grass; Sporobolus and Eragrostis, Mesquite",Unknown,Unknown,Grass
-Chihuahuan,Mesquite,Unksporob.Mesquite,Unksporob,"Sporobolus spp., Mesquite",Unknown,Unknown,Grass
+Chihuahuan,Mesquite,Unksporob.Mesquite,Unksporob,"Sporobolus spp., Mesquite",Native,Unknown,Grass
+Utah,Salt_Desert,UNFO.12576.assigned.Salt_Desert,UNFO.12576.assigned,"Unknown forb with assigned code, and manually entered, Salt_Desert",Unknown,Unknown,Forb

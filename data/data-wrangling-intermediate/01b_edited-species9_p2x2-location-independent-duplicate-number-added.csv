@@ -5,17 +5,23 @@ CodeOriginal,Code,Name,Native,Duration,Lifeform,NeedsItsDuplicate,DuplicateNum
 3 individual ARPUs  and a BOCU,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,Yes,2
 A couple BOCUs and a couple potential BOCU nubs and a possible ARPU,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,1
 A couple BOCUs and a couple potential BOCU nubs and a possible ARPU,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,Yes,2
+A couple BOCUs and a possible ARPU,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,1
+A couple BOCUs and a possible ARPU,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,Yes,2
 "A couple small SECOs mostly near conmods and possiblya young POSE near SE conmod, Also decent size patch (~1% cover) of SECO just near/outside N edge",POSE,Poa secunda,Native,Perennial,Grass,Yes,1
 "A couple small SECOs mostly near conmods and possiblya young POSE near SE conmod, Also decent size patch (~1% cover) of SECO just near/outside N edge",SECO10,Senna covesii,Native,Perennial,Forb,Yes,2
 A few ARPUs and young BOCUs mostly near/in the south half except for a smaller ARPU in the northwest and a BAMU just north of subplot,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,1
 A few ARPUs and young BOCUs mostly near/in the south half except for a smaller ARPU in the northwest and a BAMU just north of subplot,BAMU,Baileya multiradiata,Native,Unknown,Forb,Yes,2
 A few ARPUs and young BOCUs mostly near/in the south half except for a smaller ARPU in the northwest and a BAMU just north of subplot,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,Yes,3
+A few possible small SPCRs and a couple MATA seedlings all in the pits,MATA2,Machaeranthera tanacetifolia,Native,Annual,Forb,Yes,1
+A few possible small SPCRs and a couple MATA seedlings all in the pits,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass,Yes,2
 ARPU about 5 individuals and an individual BAMU resprouting at base,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,1
 ARPU about 5 individuals and an individual BAMU resprouting at base,BAMU,Baileya multiradiata,Native,Unknown,Forb,Yes,2
 "ARPU many individuals, BAMU 1 individual, PLMU (2) 1 individual, ACHY (2) 1 individual",ACHY,Achnatherum hymenoides,Native,Perennial,Grass,Yes,1
 "ARPU many individuals, BAMU 1 individual, PLMU (2) 1 individual, ACHY (2) 1 individual",ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,2
 "ARPU many individuals, BAMU 1 individual, PLMU (2) 1 individual, ACHY (2) 1 individual",BAMU,Baileya multiradiata,Native,Unknown,Forb,Yes,3
 "ARPU many individuals, BAMU 1 individual, PLMU (2) 1 individual, ACHY (2) 1 individual",PLMU3,Pleuraphis mutica,Native,Perennial,Grass,Yes,4
+BOCU partially in/on the west edge of the plot and a possible ARPU,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,1
+BOCU partially in/on the west edge of the plot and a possible ARPU,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,Yes,2
 Couple medium sized ARPUs (not completely sure 2/3 on certainty of ID) and a large BOCU right next to the NW plot marker rooted just outside of the plot but some overhangs into the plot,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,1
 Couple medium sized ARPUs (not completely sure 2/3 on certainty of ID) and a large BOCU right next to the NW plot marker rooted just outside of the plot but some overhangs into the plot,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,Yes,2
 Couple small to medium ARPUs throughout and a couple small SECOs in N half of the plot typically hidden under/using ERCU as a shade plant,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,1
@@ -34,43 +40,78 @@ Medium sized BOCU and ARPU,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,Ye
 Medium to large ARPUs throughout and a couple small and medium BOCUs near the N conmods and a few teeny tiny SECOs near conmods as well,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,1
 Medium to large ARPUs throughout and a couple small and medium BOCUs near the N conmods and a few teeny tiny SECOs near conmods as well,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,Yes,2
 Medium to large ARPUs throughout and a couple small and medium BOCUs near the N conmods and a few teeny tiny SECOs near conmods as well,SECO10,Senna covesii,Native,Perennial,Forb,Yes,3
+Multipke medium to large ARPUs and BOCUs as well as a BAMU in the northeast corner but it doesnt have any new/living growth yet,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,1
+Multipke medium to large ARPUs and BOCUs as well as a BAMU in the northeast corner but it doesnt have any new/living growth yet,BAMU,Baileya multiradiata,Native,Unknown,Forb,Yes,2
+Multipke medium to large ARPUs and BOCUs as well as a BAMU in the northeast corner but it doesnt have any new/living growth yet,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,Yes,3
 "Multiple ARPUs small to large sized throughout, possible ACHY in the SE pit, and a couple teeny tiny SECOs in/around some of the pits",ACHY,Achnatherum hymenoides,Native,Perennial,Grass,Yes,1
 "Multiple ARPUs small to large sized throughout, possible ACHY in the SE pit, and a couple teeny tiny SECOs in/around some of the pits",ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,2
 "Multiple ARPUs small to large sized throughout, possible ACHY in the SE pit, and a couple teeny tiny SECOs in/around some of the pits",SECO10,Senna covesii,Native,Perennial,Forb,Yes,3
 Multiple BOCU's medium-large and a possible medium sized ARPU,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,1
 Multiple BOCU's medium-large and a possible medium sized ARPU,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,Yes,3
+Multiple BOCUS and a couple possible ARPUs throughout,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,1
+Multiple BOCUS and a couple possible ARPUs throughout,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,Yes,2
 Multiple med to extra large BOCUs and a few small to large ARPUs,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,1
 Multiple med to extra large BOCUs and a few small to large ARPUs,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,Yes,3
 Multiple medium to extra large ARPUs and large BAMU along the N edge of the plot along with possible tiny seedlings in same pits,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,1
 Multiple medium to extra large ARPUs and large BAMU along the N edge of the plot along with possible tiny seedlings in same pits,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,Yes,3
+Multiple medium to extra large ARPUs throught and SECo in the northwest corner under an ERCU,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,1
+Multiple medium to extra large ARPUs throught and SECo in the northwest corner under an ERCU,ERCU2,Eragrostis curvula,Introduced,Perennial,Grass,Yes,2
+Multiple medium to extra large ARPUs throught and SECo in the northwest corner under an ERCU,SECO10,Senna covesii,Native,Perennial,Forb,Yes,3
+Multiple medium to extra large BOCUs and ARPUs throughout but mostly near and aroudn conmods,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,1
+Multiple medium to extra large BOCUs and ARPUs throughout but mostly near and aroudn conmods,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,Yes,2
 Multiple medium to large ARPU and small/medium BOCU near the NE corner and a couple tiny SECOs,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,1
 Multiple medium to large ARPU and small/medium BOCU near the NE corner and a couple tiny SECOs,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,Yes,2
 Multiple medium to large ARPU and small/medium BOCU near the NE corner and a couple tiny SECOs,SECO10,Senna covesii,Native,Perennial,Forb,Yes,3
+Multiple medium to large ARPUs and BOCUs (mostly ARPUs) as well as a possible PLMU in the center of the plot,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,1
+Multiple medium to large ARPUs and BOCUs (mostly ARPUs) as well as a possible PLMU in the center of the plot,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,Yes,2
+Multiple medium to large ARPUs and BOCUs (mostly ARPUs) as well as a possible PLMU in the center of the plot,PLMU3,Pleuraphis mutica,Native,Perennial,Grass,Yes,3
+Multiple medium to large ARPUs and BOCUs along the northeast edge,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,1
+Multiple medium to large ARPUs and BOCUs along the northeast edge,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,Yes,2
+"Multiple medium to large ARPUs and possibly and ACHY seedling in the southeast pit (wirey, narrow, clasping blades)",ACHY,Achnatherum hymenoides,Native,Perennial,Grass,Yes,1
+"Multiple medium to large ARPUs and possibly and ACHY seedling in the southeast pit (wirey, narrow, clasping blades)",ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,2
+Multiple medium to large ARPUs throughout and a couple small BOCUs near and among the conmods,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,1
+Multiple medium to large ARPUs throughout and a couple small BOCUs near and among the conmods,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,Yes,2
 Multiple small to large ARPUs throughout along with a large BAMU in center and a medium sized BOCU in the NW section,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,1
 Multiple small to large ARPUs throughout along with a large BAMU in center and a medium sized BOCU in the NW section,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,Yes,2
+Multiple small to large sized ARPUs spread throughout and a medium sized BOCU in the northwest corner,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,1
+Multiple small to large sized ARPUs spread throughout and a medium sized BOCU in the northwest corner,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,Yes,2
 Multiple small to medium ARPUs and BOCUs along with a possible PLMU (rough feeling leaves and similar seeds) with a couple small/medium BAMU that are in or near the N half of the pits and a couple small SECO seedlings sprinkled throughout,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,1
 Multiple small to medium ARPUs and BOCUs along with a possible PLMU (rough feeling leaves and similar seeds) with a couple small/medium BAMU that are in or near the N half of the pits and a couple small SECO seedlings sprinkled throughout,BAMU,Baileya multiradiata,Native,Unknown,Forb,Yes,2
 Multiple small to medium ARPUs and BOCUs along with a possible PLMU (rough feeling leaves and similar seeds) with a couple small/medium BAMU that are in or near the N half of the pits and a couple small SECO seedlings sprinkled throughout,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,Yes,3
 Multiple small to medium ARPUs and BOCUs along with a possible PLMU (rough feeling leaves and similar seeds) with a couple small/medium BAMU that are in or near the N half of the pits and a couple small SECO seedlings sprinkled throughout,PLMU3,Pleuraphis mutica,Native,Perennial,Grass,Yes,4
 Multiple small to medium ARPUs and BOCUs along with a possible PLMU (rough feeling leaves and similar seeds) with a couple small/medium BAMU that are in or near the N half of the pits and a couple small SECO seedlings sprinkled throughout,SECO10,Senna covesii,Native,Perennial,Forb,Yes,5
+"No new growth or green vegetation on SECO in the northwest pit but still there, there's a BAMU in the southwest pit as well, possibly ACHY in the south half of the plot, multiple medium to large sized ARPUs mostly in and/or near pits but not all",ACHY,Achnatherum hymenoides,Native,Perennial,Grass,Yes,1
+"No new growth or green vegetation on SECO in the northwest pit but still there, there's a BAMU in the southwest pit as well, possibly ACHY in the south half of the plot, multiple medium to large sized ARPUs mostly in and/or near pits but not all",ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,2
+"No new growth or green vegetation on SECO in the northwest pit but still there, there's a BAMU in the southwest pit as well, possibly ACHY in the south half of the plot, multiple medium to large sized ARPUs mostly in and/or near pits but not all",BAMU,Baileya multiradiata,Native,Unknown,Forb,Yes,3
+"No new growth or green vegetation on SECO in the northwest pit but still there, there's a BAMU in the southwest pit as well, possibly ACHY in the south half of the plot, multiple medium to large sized ARPUs mostly in and/or near pits but not all",SECO10,Senna covesii,Native,Perennial,Forb,Yes,4
 Possible ACHY near southwest corner (2 certainty) and about 10 ARPU small to medium in size with 2 of them next to the subplot but not quite in,ACHY,Achnatherum hymenoides,Native,Perennial,Grass,Yes,1
 Possible ACHY near southwest corner (2 certainty) and about 10 ARPU small to medium in size with 2 of them next to the subplot but not quite in,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,2
 "Possible ARPUs, SECO seedling in subplot",ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,1
 "Possible ARPUs, SECO seedling in subplot",SECO10,Senna covesii,Native,Perennial,Forb,Yes,2
+Possible MATA seedlings in the northwest pit and possibly a SPCR seedling but if neither than seeded species cover would be 0%,MATA2,Machaeranthera tanacetifolia,Native,Annual,Forb,Yes,1
+Possible MATA seedlings in the northwest pit and possibly a SPCR seedling but if neither than seeded species cover would be 0%,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass,Yes,2
+Possible SPCR along the northeast edge as well as a possible PEPA seedling next to the subplot if neither than 0% seeded cover,PEPA8,Penstemon palmeri,Native,Perennial,Forb,Yes,1
+Possible SPCR along the northeast edge as well as a possible PEPA seedling next to the subplot if neither than 0% seeded cover,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass,Yes,2
 "Possible SPCR in subplot, Blue not Black grama",BOGR2,Bouteloua gracilis,Native,Perennial,Grass,Yes,1
 "Possible SPCR in subplot, Blue not Black grama",SPCR,Sporobolus cryptandrus,Native,Perennial,Grass,Yes,2
 "Possible couple small ASTUs along with multiple medium to extra large ARPUs, possibly a few BAMU seedlings as well as a couple tiny to small SECOs throughout",ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,1
 "Possible couple small ASTUs along with multiple medium to extra large ARPUs, possibly a few BAMU seedlings as well as a couple tiny to small SECOs throughout",ASTU,Asclepias tuberosa,Native,Perennial,Forb,Yes,2
 "Possible couple small ASTUs along with multiple medium to extra large ARPUs, possibly a few BAMU seedlings as well as a couple tiny to small SECOs throughout",BAMU,Baileya multiradiata,Native,Unknown,Forb,Yes,3
 "Possible couple small ASTUs along with multiple medium to extra large ARPUs, possibly a few BAMU seedlings as well as a couple tiny to small SECOs throughout",SECO10,Senna covesii,Native,Perennial,Forb,Yes,4
+"Possible small SPCR near middle of the east edge (no tiller, culm, or seed heads but fuzziness/hairs at the ligule) and possible POSE next to the subplot (all leaf blades and midvein on bottome) if not than 0% seeded species cover",POSE,Poa secunda,Native,Perennial,Grass,Yes,1
+"Possible small SPCR near middle of the east edge (no tiller, culm, or seed heads but fuzziness/hairs at the ligule) and possible POSE next to the subplot (all leaf blades and midvein on bottome) if not than 0% seeded species cover",SPCR,Sporobolus cryptandrus,Native,Perennial,Grass,Yes,2
 Possible young BOCU and ARPU but no seed heads yet therfor unsure ifit is than seeded species cover is 1% but if not it's trace amount because of a few SECOs all found in or near pits,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,1
 Possible young BOCU and ARPU but no seed heads yet therfor unsure ifit is than seeded species cover is 1% but if not it's trace amount because of a few SECOs all found in or near pits,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,Yes,2
 Possible young BOCU and ARPU but no seed heads yet therfor unsure ifit is than seeded species cover is 1% but if not it's trace amount because of a few SECOs all found in or near pits,SECO10,Senna covesii,Native,Perennial,Forb,Yes,3
+Possibly a couple of MATA seedlings and possibly a SPCR seedling in the subplot,MATA2,Machaeranthera tanacetifolia,Native,Annual,Forb,Yes,1
+Possibly a couple of MATA seedlings and possibly a SPCR seedling in the subplot,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass,Yes,2
 "Possibly small POSE and SPCR in the S half of the plot, BLUE grama not BLACK",BOGR2,Bouteloua gracilis,Native,Perennial,Grass,Yes,1
 "Possibly small POSE and SPCR in the S half of the plot, BLUE grama not BLACK",POSE,Poa secunda,Native,Perennial,Grass,Yes,2
 "Possibly small POSE and SPCR in the S half of the plot, BLUE grama not BLACK",SPCR,Sporobolus cryptandrus,Native,Perennial,Grass,Yes,3
 Quite a few small tp extra large BOCUs throughout along with a possible ASTU,ASTU,Asclepias tuberosa,Native,Perennial,Forb,Yes,1
 Quite a few small tp extra large BOCUs throughout along with a possible ASTU,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,Yes,2
+SW conmod is overgrown with Blue grama but NO black grama but thee's a possible young PEPA by the NW conmod,BOGR2,Bouteloua gracilis,Native,Perennial,Grass,Yes,1
+SW conmod is overgrown with Blue grama but NO black grama but thee's a possible young PEPA by the NW conmod,PEPA8,Penstemon palmeri,Native,Perennial,Forb,Yes,2
 Small to large ARPUs and BOCUs along with a couple small SECOs as well as a possible PLMU in the middle (rough feeling and membranous ligule but no seed heads),ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,1
 Small to large ARPUs and BOCUs along with a couple small SECOs as well as a possible PLMU in the middle (rough feeling and membranous ligule but no seed heads),BOCU,Bouteloua curtipendula,Native,Perennial,Grass,Yes,2
 Small to large ARPUs and BOCUs along with a couple small SECOs as well as a possible PLMU in the middle (rough feeling and membranous ligule but no seed heads),PLMU3,Pleuraphis mutica,Native,Perennial,Grass,Yes,3
@@ -85,6 +126,10 @@ Small to medium ARPUs throughout and small/medium BAMU near the NE edge,ARPU9,Ar
 Small to medium ARPUs throughout and small/medium BAMU near the NE edge,BAMU,Baileya multiradiata,Native,Unknown,Forb,Yes,2
 Small/medium to large ARPUs and small to large BOCU throughout,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,1
 Small/medium to large ARPUs and small to large BOCU throughout,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,Yes,2
+"Some possible BOCUs but no seed heads, tillers, culms to verify ID yet but if all are BOCUs than it's 2% seeded species cover however if none are than there are a few SECOs throught mostly found in/near the pits",BOCU,Bouteloua curtipendula,Native,Perennial,Grass,Yes,1
+"Some possible BOCUs but no seed heads, tillers, culms to verify ID yet but if all are BOCUs than it's 2% seeded species cover however if none are than there are a few SECOs throught mostly found in/near the pits",SECO10,Senna covesii,Native,Perennial,Forb,Yes,2
 Southwest pit has 1 BAMU and 4 small ARPUs. Northwest pit has 2 medium and 2 small ARPUs and 1 dreid up SECO. There are a few more small to medium sized ARPUs throughout,ARPU9,Aristida purpurea,Native,Perennial,Grass,Yes,1
 Southwest pit has 1 BAMU and 4 small ARPUs. Northwest pit has 2 medium and 2 small ARPUs and 1 dreid up SECO. There are a few more small to medium sized ARPUs throughout,BAMU,Baileya multiradiata,Native,Unknown,Forb,Yes,2
 Southwest pit has 1 BAMU and 4 small ARPUs. Northwest pit has 2 medium and 2 small ARPUs and 1 dreid up SECO. There are a few more small to medium sized ARPUs throughout,SECO10,Senna covesii,Native,Perennial,Forb,Yes,3
+There're multiple BOCUs and a couple possible SECO seedlings,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,Yes,1
+There're multiple BOCUs and a couple possible SECO seedlings,SECO10,Senna covesii,Native,Perennial,Forb,Yes,2
