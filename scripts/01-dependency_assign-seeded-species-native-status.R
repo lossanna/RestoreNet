@@ -1,5 +1,5 @@
 # Created: 2023-09-18
-# Last updated: 2023-09-18
+# Last updated: 2023-09-19
 
 # Purpose: in merging the species data with the subplot data (actual observations), we see that some unknown
 #   species were seeded, and therefore native, but it is impossible to know this without first producing
@@ -86,7 +86,7 @@ seeded.marked.notnative <- seeded.marked.notnative %>%
 # Write list of names to CSV for 01_curate-species-list.R
   # Codes are already location-specific
 write_csv(seeded.marked.notnative,
-          file = "data/raw/01-dependency_seeded-species-to-be-marked-native.csv")
+          file = "data/data-wrangling-intermediate/01-dependency_seeded-species-to-be-marked-native.csv")
 
 
 

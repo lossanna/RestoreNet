@@ -17,8 +17,8 @@ library(tidyverse)
 
 # Load data ---------------------------------------------------------------
 
-species.in.intermed <- read_csv("old_pre-2023-09-18_Farrell-data/data/raw/01-dependency_species-list_location-independent.csv")
-species.de.intermed <- read_csv("old_pre-2023-09-18_Farrell-data/data/raw/01-dependency_species-list_location-dependent.csv")
+species.in.intermed <- read_csv("old_pre-2023-09-18_Farrell-data/data/data-wrangling-intermediate/01-dependency_species-list_location-independent.csv")
+species.de.intermed <- read_csv("old_pre-2023-09-18_Farrell-data/data/data-wrangling-intermediate/01-dependency_species-list_location-dependent.csv")
 subplot.raw <- read_xlsx("old_pre-2023-09-18_Farrell-data/data/raw/Master Germination Data 2022.xlsx", sheet = "AllSubplotData")
 
 
@@ -86,7 +86,7 @@ seeded.marked.notnative <- seeded.marked.notnative %>%
 # Write list of names to CSV for 01_curate-species-list.R
   # Codes are already location-specific
 write_csv(seeded.marked.notnative,
-          file = "old_pre-2023-09-18_Farrell-data/data/raw/01-dependency_seeded-species-to-be-marked-native.csv")
+          file = "old_pre-2023-09-18_Farrell-data/data/data-wrangling-intermediate/01-dependency_seeded-species-to-be-marked-native.csv")
 
 
 
