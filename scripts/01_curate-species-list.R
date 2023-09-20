@@ -121,6 +121,9 @@ head(subplot.missing)
 # EDITED: manually edit new file to add Name, Native, Lifeform, and Duration cols
 #   I assumed DACA from CO Plateau was DACA7, because only DACA7 appears in the CO Plateau tabs of Master.xlsx,
 #     so I think this was a typo (and no other species has code similar to DACA).
+#   I also assumed ATCA was ATCA2  at Mesquite, because ATCA2 was seeded there and ATCA
+#     is generally only found in California, according to USDA Plants. In the subplot data,
+#     the observation of AVCA was also marked seeded.
 sub.missing <- read_csv("data/data-wrangling-intermediate/01b_edited-species1_subplot-codes-missing_native-duration-lifeform.csv")
 head(sub.missing)
 
@@ -301,7 +304,7 @@ mix.codes # codes need to match ones from seed mix
 # Create df standardized codes based on USDA Plants
 codes.standardized.in <- codes.fix.in %>% 
   filter(Code %in% c(mix.codes$CodeOriginal, "CHPO12", "SIAL2")) %>% 
-  mutate(CodeOriginal = c("ARPUP6", "BOER", "EUPO3", "DACA", "S-HEBO", "S-PASM", "SIAL", "SPAMA")) 
+  mutate(CodeOriginal = c("ARPUP6", "ATCA", "BOER", "EUPO3", "DACA", "S-HEBO", "S-PASM", "SIAL", "SPAMA")) 
 
 # Remove wrong codes from species list and add correct ones
 species.in <- species.in %>% 

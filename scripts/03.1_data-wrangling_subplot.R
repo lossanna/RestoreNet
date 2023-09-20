@@ -18,6 +18,7 @@ mix <- read_xlsx("data/raw/from-Master_seed-mix_LO.xlsx", sheet = "with-site_R")
 monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
 monitor.wrong <- read_csv("data/data-wrangling-intermediate/02_subplot-wrong-monitor-events.csv")
 monitor.fixed <- read_csv("data/data-wrangling-intermediate/02_subplot-wrong-monitor-events-corrected.csv")
+monitorID.replace <- read_csv("data/data-wrangling-intermediate/02_MonitorID-replacements.csv")
 
 
 # Organize columns --------------------------------------------------------
@@ -170,42 +171,25 @@ nrow(subplot.monitor) == nrow(subplot.raw)
 
 
 # Attach correct monitoring info to subplot data
-subplot.wide <- subplot.wide[ , -c(1:6)]
-subplot.wide <- left_join(subplot.monitor, subplot.wide)
+subplot <- subplot[ , -c(1:6)]
+subplot <- left_join(subplot, subplot.monitor)
 
 
+# Replace null MonitorIDs with correct ones
+subplot.IDreplace <- subplot |> 
+  filter(MonitorID %in% monitorID.replace$MonitorID_old) |> 
+  rename(MonitorID_old = MonitorID) |> 
+  left_join(monitorID.replace) |> 
+  select(-MonitorID_old) |> 
+  rename(MonitorID = MonitorID_replace)
 
+subplot <- subplot |> 
+  filter(!raw.row %in% subplot.IDreplace$raw.row) |> 
+  bind_rows(subplot.IDreplace) |> 
+  arrange(raw.row)
 
-
-
-
-
-
-
-
-
-# Create df of original (incorrect) monitoring data to generate MonitorID for subplot data
-  # to match correct monitoring data (monitor.info) with left_join()
-monitor.assign <- subplot %>% 
-  select(Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix) %>% 
-  distinct(.keep_all = TRUE) 
-monitor.assign <- monitor.assign %>% 
-  mutate(MonitorID = 1:nrow(monitor.assign)) # monitor.assign is in same row order as monitor.info
-
-# Add MonitorID to subplot data
-subplot <- left_join(subplot, monitor.assign)
-filter(subplot, is.na(MonitorID)) # all assigned MonitorID
-
-# Remove monitoring info from subplot data because some of it is wrong
-subplot <- subplot %>% 
-  select(-Date_Seeded, -Date_Monitored, -Plot, -Treatment, -PlotMix)
-
-# Add corrected monitoring info with left_join()
-subplot <- left_join(subplot, monitor.info)
-subplot <- subplot %>% 
-  select(Region, Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix,
-         CodeOriginal, Code, Name, Native, Duration, Lifeform, Count, Height,
-         SpeciesSeeded, raw.row, MonitorID) # reorder cols
+# Check for matching lengths
+nrow(subplot) == nrow(subplot.raw)
 
 # Check all cols for NAs
 apply(subplot, 2, anyNA) 
@@ -231,7 +215,6 @@ subplot.seeded <- subplot %>%
   filter(SpeciesSeeded %in% c("Yes", "Y", "y", "Yes?"))
 
 setdiff(unique(subplot.seeded$Code), unique(mix$CodeOriginal)) # discrepancies exist
-#   For mix, CodeOriginal would be the same as Code (all codes were correct)
 
 species.seeded.not.in.mix <- subplot.seeded |> 
   filter(Code %in% 
