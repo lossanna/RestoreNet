@@ -491,8 +491,9 @@ fix.2x2.SCC <- monitor.sub |>
 
 # SRER --------------------------------------------------------------------
 
-# SRER (Sonoran SE):
+# SRER (Sonoran SE): 1 issue
 
+# 
 # Extract differing rows
 filter(monitor.diff, Site == "SRER")
 filter(monitor.sub, Site == "SRER", Date_Monitored == "2022-03-23") # does not include Plot 12
@@ -1060,6 +1061,7 @@ wrong.sub <- bind_rows(wrong.sub.AVRCD,
                        wrong.sub.Patagonia,
                        wrong.sub.Salt_Desert,
                        wrong.sub.Spiderweb,
+                       wrong.sub.SRER,
                        wrong.sub.UtahPJ1,
                        wrong.sub.UtahPJ2,
                        wrong.conmod,
@@ -1071,6 +1073,7 @@ fix.sub <- bind_rows(fix.sub.AVRCD,
                      fix.sub.Patagonia,
                      fix.sub.Salt_Desert,
                      fix.sub.Spiderweb,
+                     fix.sub.SRER,
                      fix.sub.UtahPJ1,
                      fix.sub.UtahPJ2,
                      fix.conmod,
