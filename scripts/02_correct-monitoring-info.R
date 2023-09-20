@@ -861,6 +861,10 @@ monitor.correct |>
 
 # Create wrong and correct rows by site
 #   These are plots listed twice, and there is already a correct version with a MonitorID
+#   The rows with wrong monitoring information have MonitorIDs that will become null
+#   But must keep original MonitorID to connect wrong and fix dfs
+#     fix dfs will have correct monitoring info but a MonitorID that needs to be replaced
+#   Fixing the MonitorID will have to happen after left_joins to fix the monitoring info
 
 # BarTBar
 monitor.correct |> 
@@ -880,9 +884,10 @@ monitor.correct |>
          Treatment == "ConMod",
          Date_Monitored == "2019-04-16")
 fix.sub.BarTBar <- wrong.sub.BarTBar |> 
-  mutate(Treatment = "ConMod",
-         MonitorID = 1005)
-fix.sub.BarTBar
+  mutate(Treatment = "ConMod")
+fix.sub.BarTBar # has old MonitorID to be able to connect to incorrect rows
+replaceID.BarTBar <- data.frame(MonitorID_old = 1006,
+                                MonitorID_replace = 1005)
 
 
 # Spiderweb
@@ -903,9 +908,10 @@ monitor.correct |>
          PlotMix == "Warm",
          Date_Monitored == "2021-09-29")
 fix.sub.Spiderweb <- wrong.sub.Spiderweb |> 
-  mutate(PlotMix = "Warm",
-         MonitorID = 3234)
+  mutate(PlotMix = "Warm")
 fix.sub.Spiderweb
+replaceID.Spiderweb <- data.frame(MonitorID_old = 3235,
+                                MonitorID_replace = 3234)
 
 
 # UtahPJ
@@ -927,9 +933,11 @@ monitor.correct |>
          Treatment == "Mulch",
          Date_Monitored %in% wrong.sub.UtahPJ1$Date_Monitored)
 fix.sub.UtahPJ1 <- wrong.sub.UtahPJ1 |> 
-  mutate(Treatment = "Mulch",
-         MonitorID = c(4167, 4241, 4460))
+  mutate(Treatment = "Mulch")
 fix.sub.UtahPJ1
+replaceID.UtahPJ1 <- data.frame(MonitorID_old = wrong.sub.UtahPJ1$MonitorID,
+                                  MonitorID_replace = c(4167, 4241, 4460))
+
 
 #   Plot 34
 monitor.correct |> 
@@ -963,9 +971,15 @@ monitor.correct |>
          Date_Monitored %in% wrong.sub.UtahPJ2$Date_Monitored)
 fix.sub.UtahPJ2 <- wrong.sub.UtahPJ2 |> 
   mutate(Treatment = "Control",
-         PlotMix = "None",
-         MonitorID = c(4173, 4247, 4356, 4466))
+         PlotMix = "None")
 fix.sub.UtahPJ2
+replaceID.UtahPJ2 <- data.frame(MonitorID_old = wrong.sub.UtahPJ2$MonitorID,
+                                MonitorID_replace = c(4173, 4247, 4356, 4466))
+
+# Combine replaceID
+replaceID <- bind_rows(replaceID.BarTBar, replaceID.Spiderweb, 
+                       replaceID.UtahPJ1, replaceID.UtahPJ2)
+
 
 
 
@@ -1115,7 +1129,9 @@ write_csv(fix.2x2,
 
 
 
-
+# Write csv of MonitorIDs that need to be replaced
+write_csv(replaceID,
+          file = "data/data-wrangling-intermediate/02_MonitorID-replacements.csv")
 
   
 

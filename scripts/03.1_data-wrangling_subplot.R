@@ -121,13 +121,7 @@ subplot <- bind_rows(subplot.in, subplot.de) %>%
 # Check that there the same number of observations as the original subplot data
 nrow(subplot) == nrow(subplot.raw) 
 
-in.de.conflicts <- subplot |> 
-  count(raw.row) |> 
-  filter(n > 1) |> 
-  arrange(desc(n))
 
-in.de.conflicts <- subplot |> 
-  filter(raw.row %in% in.de.conflicts$raw.row)
 
 # Check if Introduced plants were marked as Seeded ------------------------
 
@@ -139,8 +133,9 @@ unique(subplot.inva$SpeciesSeeded) # something is mislabeled; no introduced spec
 subplot.inva %>% 
   filter(SpeciesSeeded == "Yes") # Eragrostis curvula was not seeded
 
-# Fix Eragrostis curvula - mark all observations as "No" for Seeded col
+# Fix ERCU2 and ERCI6 - mark all observations as "No" for Seeded col
 subplot$SpeciesSeeded[subplot$Name == "Eragrostis curvula"] <- "No"
+subplot$SpeciesSeeded[subplot$Name == "Erodium cicutarium"] <- "No"
 
 
 
@@ -148,14 +143,15 @@ subplot$SpeciesSeeded[subplot$Name == "Eragrostis curvula"] <- "No"
 
 # Separate out monitoring info
 subplot.monitor <- subplot |> 
-  select(Region, Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix, raw.row) |> 
-  distinct(.keep_all = TRUE)
+  select(Region, Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix, raw.row) 
 
 # Find raw.row number of events that need to be fixed
 wrong.raw.row <- left_join(monitor.wrong, subplot.monitor) 
 
 # Attach raw.row to corrected monitoring info
-monitor.assign <- monitor.fixed
+#   some events that need to be fixed have multiple rows in subplot data
+monitor.assign <- data.frame(MonitorID = wrong.raw.row$MonitorID)
+monitor.assign <- left_join(monitor.assign, monitor.fixed)
 monitor.assign$raw.row <- wrong.raw.row$raw.row
 
 #   Separate monitor info that doesn't need to be fixed
