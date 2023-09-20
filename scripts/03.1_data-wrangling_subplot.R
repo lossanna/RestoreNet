@@ -14,7 +14,6 @@ library(tidyverse)
 subplot.raw <- read_xlsx("data/raw/2023-09-15_Master 1.0 Germination Data_raw.xlsx", sheet = "AllSubplotData")
 species.in <- read_csv("data/cleaned/subplot_species-list_location-independent_clean.csv")
 species.de <- read_csv("data/cleaned/subplot_species-list_location-dependent_clean.csv")
-species.de.all <- read_csv("data/cleaned/species-list_location-dependent_clean.csv")
 mix <- read_xlsx("data/raw/from-Master_seed-mix_LO.xlsx", sheet = "with-site_R")
 monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
 monitor.wrong <- read_csv("data/data-wrangling-intermediate/02_subplot-wrong-monitor-events.csv")
@@ -84,9 +83,6 @@ filter(subplot, is.na(CodeOriginal)) # no NAs
 sub.codes <- c(species.de$CodeOriginal, species.in$CodeOriginal)
 setdiff(subplot$CodeOriginal, sub.codes) # should be 0
 
-species.de.all |> 
-  filter(CodeOriginal %in% setdiff(subplot$CodeOriginal, sub.codes))
-
 
 
 # Add species info for location-dependent ---------------------------------
@@ -94,6 +90,17 @@ species.de.all |>
 # Separate out location-dependent observations
 subplot.de <- subplot %>% 
   filter(CodeOriginal %in% species.de$CodeOriginal)
+
+# Manually change CodeOriginal for UNGRS1.SRER for spring 2022 observations
+ungrs1.srer.22 <- subplot.de |> 
+  mutate(Date_Monitored = as.character(Date_Monitored)) |> 
+  filter(Site == "SRER",
+         str_detect(Date_Monitored, "2022"),
+         str_detect(CodeOriginal, "UNGRS"))
+
+species.de |> 
+  filter(Site == "SRER",
+         str_detect(CodeOriginal, "UNGRS"))
 
 # Add species info
 subplot.de <- left_join(subplot.de, species.de)
