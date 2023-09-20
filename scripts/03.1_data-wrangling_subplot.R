@@ -91,17 +91,6 @@ setdiff(subplot$CodeOriginal, sub.codes) # should be 0
 subplot.de <- subplot %>% 
   filter(CodeOriginal %in% species.de$CodeOriginal)
 
-# Manually change CodeOriginal for UNGRS1.SRER for spring 2022 observations
-ungrs1.srer.22 <- subplot.de |> 
-  mutate(Date_Monitored = as.character(Date_Monitored)) |> 
-  filter(Site == "SRER",
-         str_detect(Date_Monitored, "2022"),
-         str_detect(CodeOriginal, "UNGRS"))
-
-species.de |> 
-  filter(Site == "SRER",
-         str_detect(CodeOriginal, "UNGRS"))
-
 # Add species info
 subplot.de <- left_join(subplot.de, species.de)
 
