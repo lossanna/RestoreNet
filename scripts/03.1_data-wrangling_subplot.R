@@ -96,7 +96,7 @@ subplot.de <- left_join(subplot.de, species.de)
 
 # Check for NA codes
 filter(subplot.de, is.na(Code)) # no NAs
-apply(subplot.de, 2, anyNA) # NAs for Count, Height, SpeciesSeeded inherent to data
+apply(subplot.de, 2, anyNA) # NAs for Count, Height, SpeciesSeeded are inherent to data
 
 
 
@@ -121,7 +121,13 @@ subplot <- bind_rows(subplot.in, subplot.de) %>%
 # Check that there the same number of observations as the original subplot data
 nrow(subplot) == nrow(subplot.raw) 
 
+in.de.conflicts <- subplot |> 
+  count(raw.row) |> 
+  filter(n > 1) |> 
+  arrange(desc(n))
 
+in.de.conflicts <- subplot |> 
+  filter(raw.row %in% in.de.conflicts$raw.row)
 
 # Check if Introduced plants were marked as Seeded ------------------------
 
