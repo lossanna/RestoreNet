@@ -1,5 +1,5 @@
 Created: 2023-09-18  
-Last updated: 2023-09-19
+Last updated: 2023-09-20
   
 Notes about `output` and `edited` intermediate data files created in data cleaning for RAMPS RestoreNet project.
 
@@ -62,8 +62,8 @@ Notes about `output` and `edited` intermediate data files created in data cleani
 - Columns: `CodeOriginal`, `Name`, `Native`, `Lifeform`.
 
 #### `01a_output-species5.1_location-dependent.csv`
-- List of codes for location-dependent species in `subplot` data. Site, duration, and lifeform information is already filled out for the codes that were missing from the master species list (had been manually input into `edited-species1.csv`).
-- Site, duration, and lifeform information is not yet entered for codes that were included in the master species list.
+- List of codes for location-dependent species in `subplot` data. First part is from master species list, and is missing site, duration, and lifeform information. Second part is from codes in the `subplot` data missing from the master species list. Site, duration, and lifeform information is already filled out for these (had been manually input into `edited-species1.csv`).
+- `output-species5.1.csv` is used as a skeleton to fill in the missing information for the species in the master list.
 - Columns: `CodeOriginal`, `Name`, `Native`, `Region`, `Site` (partially filled out), `Duration` (partially filled out), `Lifeform` (partially filled out).
 
 #### `01a_output-species5.2_location-dependent_xlsx_sites`
@@ -120,12 +120,16 @@ Notes about `output` and `edited` intermediate data files created in data cleani
 - Columns: `CodeOriginal`, `Name`, `Native`, `Duration` (added), `Lifeform`.
 
 #### `01b_edited-species5_location-dependent_native-duration-lifeform.csv`
-- List of location-dependent species (unknowns) from master species list and the raw `subplot` data.
+- List of `subplot` location-dependent codes.
 	- Unknowns from master species list lack site, duration, and lifeform information. `Duration` and `Lifeform` are assigned according to USDA Plants, and `Site` comes from `output-species5.2.csv`.
 	- Unknowns from the subplot data that were not in the master species list contain all information because all information was added in `edited-species1.csv`.
-- `edited-species5.csv` has the same number of rows as `output-species5.2.csv`, plus the manually added row from observations missing codes (see below).
 - Manually added a row for a subplot observation that has an NA code but is an actual observation of a plant (there is just one in row 12576).
-- Row length: edited is 1 row more than `output-species5.2.csv` (due to manually added row).
+- Add rows when there are species with the same code and name at different sites within the same region. 
+- Delete duplicate rows of the same species with the same codes at the same sites but with different names and retain the more specific name (this happens because there were were multiple entries in the master species list).
+	- Unkcrypt and Unksalsola at Creosote
+	- Unksporob at Mesquite
+	- UNGRS1 at SRER is a different situation because name descriptions are very different, but can be linked to year; will deal with in data wrangling.
+- Row length: edited is longer than either output, because rows needed to be added for species with the same code and name, but at different sites within the same region.
 - Columns: `CodeOriginal`, `Name`, `Native`, `Region`, `Site` (edited), `Duration` (edited), `Lifeform` (edited).
 
 #### `01b_edited-species6_codes-missing-2x2plot.csv`
@@ -173,6 +177,16 @@ Notes about `output` and `edited` intermediate data files created in data cleani
 - Table of location-independent species before native status of select seeded species was fixed. Produced in `01.R` and needed for `01-dependency.R`.
 
 
+
+## From `02_correct-monitoring-info.R`
+ - No output/edited pairs.
+ - Wrong events are used to match with `raw.row` of either `subplot` or `2x2` data, to know which rows to remove and replace.
+ - Corrected events are linked to the `raw.row` because the lists are in identical order (the fix is the same row as the wrong event).
+
+`02_2x2-wrong-monitor-events.csv`  
+`02_2x2-wrong-monitor-events-corrected.csv`  
+`02_subplot-wrong-monitor-events.csv`  
+`02_subplot-wrong-monitor-events-corrected.csv`
 
 
 

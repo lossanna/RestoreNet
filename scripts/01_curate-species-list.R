@@ -1,5 +1,5 @@
 # Created: 2023-09-18
-# Last updated: 2023-09-19
+# Last updated: 2023-09-20
 
 # Purpose: Curate a complete species list with Code, Code Original, Name, Native, Duration, Lifeform info.
 #   Two lists must be created, a location-independent version (known species), and a 
@@ -66,6 +66,10 @@ subplot <- subplot.raw %>%
     raw.row = 1:nrow(subplot.raw)) %>% 
   rename(CodeOriginal = Species_Code)
 
+subplot.codes <- subplot |> 
+  select(CodeOriginal, Region, Site) |> 
+  distinct(.keep_all = TRUE)
+
 # Add Region column
 p2x2 <- plot.2x2.raw |> 
   mutate(Region = case_when(
@@ -75,6 +79,9 @@ p2x2 <- plot.2x2.raw |>
     str_detect(plot.2x2.raw$Site, c("Creosote|Mesquite")) ~ "Chihuahuan",
     str_detect(plot.2x2.raw$Site, c("SRER|Patagonia")) ~ "Sonoran SE",
     str_detect(plot.2x2.raw$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central"))
+
+p2x2.code.cols <- plot.2x2.raw |> 
+  select(starts_with("Additional"))
 
 # Compile 2x2 codes
 p2x2.codes <- p2x2 %>% 
@@ -86,6 +93,7 @@ p2x2.codes <- p2x2 %>%
   arrange(CodeOriginal)
 
 
+
 # Assign names to codes in subplot data but not species list --------------
 
 #   This is dealing with codes that are present in the subplot data, but not present in 
@@ -95,6 +103,9 @@ p2x2.codes <- p2x2 %>%
 
 # Extract missing codes
 codes.missing.sub <- setdiff(subplot$CodeOriginal, species.raw$CodeOriginal)
+
+subplot |> 
+  filter(CodeOriginal == "UNK Fuzzy astr")
 
 # Narrow columns and remove duplicates for missing subplot data
 subplot.missing <- subplot %>%
@@ -243,11 +254,6 @@ unique(species.m.known$Lifeform) # Lifeform names have been standardized
 
 
 
-
-
-
-
-
 # Add duration to species/subplot list ------------------------------------
 
 #   All duration information needed to be added manually from USDA Plants.
@@ -362,13 +368,17 @@ head(species.in)
 
 
 
+# Location-dependent species for subplot ----------------------------------
 
-
-# Location-dependent species from master list & subplot -------------------
+#   Site information is necessary for unknowns, but only provided for codes in subplot
+#     or 2x2 codes. There might be some codes that were in the master species list
+#     but never used in either the subplot or 2x2 data, and those codes will not be included
+#     because there is no site information (and they aren't necessary).
 
 # Combine location-dependent species 
 #   from master species list and from subplot data
-species.de <- bind_rows(species.m.unk, sub.missing.unk)
+species.de <- bind_rows(species.m.unk, sub.missing.unk) |> 
+  filter(CodeOriginal %in% subplot$CodeOriginal)
 
 # OUTPUT: write to CSV to fill in information for species.m.unk
 write_csv(species.de,
@@ -387,10 +397,15 @@ write_csv(sites.m.unk,
           file = "data/data-wrangling-intermediate/01a_output-species5.2_location-dependent_xlsx_sites.csv")
 head(sites.m.unk) # contains Site
 
+filter(species.m.unk, CodeOriginal == "ASTRAG")
+filter(subplot, CodeOriginal == "ASTRAG")
+
 # Look for NA codes that were observations in subplot data
 filter(subplot, is.na(CodeOriginal)) |> 
   select(Site, `Seeded(Yes/No)`, Functional_Group, Seedling_Count, Average_Height_mm, raw.row) # raw.row 9728, 12576
-#   Row 9728 is an observation of nothing (0)
+filter(subplot, CodeOriginal == "NA")|> 
+  select(Site, `Seeded(Yes/No)`, Functional_Group, Seedling_Count, Average_Height_mm, raw.row) # raw.row 8610
+#   Rows 8610 and 9728 are observations of nothing (0)
 #   Row 12576 is an observation of an actual plant
 #     add this to edited5 as extra row; assign it a CodeOriginal and then manually change CodeOriginal 
 #     during data wrangling (03.1_data-wrangling_subplot.R)
@@ -403,6 +418,7 @@ filter(subplot, is.na(CodeOriginal)) |>
 #   Manually add row for NA code that was actually an observation of a plant
 species.de <- read_csv("data/data-wrangling-intermediate/01b_edited-species5_location-dependent_native-duration-lifeform.csv")
 head(species.de)
+
 
 
 # Renane code & name for lo-depen -----------------------------------------
@@ -423,7 +439,16 @@ species.de <- species.de |>
   
 
 # Check for unique codes
-length(unique(species.de$Code)) == nrow(species.de) # all codes in species list are unique
+species.de |> 
+  count(Code) |> 
+  filter(n > 1) |> 
+  arrange(desc(n))
+species.de |> 
+  filter(Code == "UNGRS1.SRER") |> 
+  select(Code, Name, Native) # UNGRS1.SRER is a duplicate but needs
+#     both rows. Will link the correct information by year for spring 2022 during
+#     data wrangling.
+
 intersect(species.de$CodeOriginal, species.in$CodeOriginal) 
 intersect(species.de$Code, species.in$CodeOriginal) 
 #   location-dependent codes are also unique from location-dependent ones, both original code and new code with site info
@@ -693,9 +718,6 @@ species.de <- bind_rows(species.2x2.de, species.subplot.de) %>%
 species.de %>% 
   filter(Code %in% codes.standardized.in$CodeOriginal) # no old codes show up
 
-count(species.de, Code) |> 
-   filter(n > 1)
-
 # OUTPUT: Final manual check of location-dependent species list; look for duplicate codes
 write_csv(species.de,
           file = "data/data-wrangling-intermediate/01a_output-species8_location-dependent-final-check.csv")
@@ -730,6 +752,10 @@ write_csv(subplot.codes.in,
 # Location-dependent codes
 subplot.codes.de <- species.de %>% 
   filter(CodeOriginal %in% subplot$CodeOriginal)
+
+unfo.12576 <- species.de |> 
+  filter(CodeOriginal == "UNFO.12576.assigned")
+subplot.codes.de <- bind_rows(subplot.codes.de, unfo.12576) # add back in manually assigned code
 
 subplot.codes.de %>% 
   filter(Code %in% filter(subplot.codes.de, duplicated(Code))$Code) %>% 

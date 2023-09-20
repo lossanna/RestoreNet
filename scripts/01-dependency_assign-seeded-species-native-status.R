@@ -1,5 +1,5 @@
 # Created: 2023-09-18
-# Last updated: 2023-09-19
+# Last updated: 2023-09-20
 
 # Purpose: in merging the species data with the subplot data (actual observations), we see that some unknown
 #   species were seeded, and therefore native, but it is impossible to know this without first producing
@@ -48,16 +48,21 @@ subplot <- subplot %>%
 subplot.in <- subplot %>% 
   filter(CodeOriginal %in% species.in.intermed$CodeOriginal)
 
-subplot.in <- left_join(subplot.in, species.in.intermed)
+subplot.in <- left_join(subplot.in, species.in.intermed) |> 
+  select(Site, CodeOriginal, Seeded, Region, Code, Name, Native, Duration, Lifeform) |> 
+  distinct(.keep_all = TRUE)
 
 # Location dependent
-subplot.de <-subplot %>% 
-  filter(CodeOriginal %in% species.de.intermed$CodeOriginal)
+subplot.de.seeded <-subplot %>% 
+  filter(CodeOriginal %in% species.de.intermed$CodeOriginal) |> 
+  filter(Seeded == "Yes") |> 
+  select(Site, CodeOriginal, Seeded) |> 
+  distinct(.keep_all = TRUE)
 
-subplot.de <- left_join(subplot.de, species.de.intermed)
+subplot.de.seeded <- left_join(subplot.de.seeded, species.de.intermed)
 
 # Combine
-subplot <- bind_rows(subplot.in, subplot.de)
+subplot <- bind_rows(subplot.in, subplot.de.seeded)
 
 
 
@@ -77,7 +82,8 @@ seeded.marked.notnative <- subplot.seeded %>%
   select(Code, Name) %>% 
   distinct(.keep_all = TRUE) %>% 
   arrange(Name)
-seeded.marked.notnative
+seeded.marked.notnative |> 
+  print(n = 30)
 
 # Remove ERCU2 & ERCI6 because they are non-native and not seeded
 seeded.marked.notnative <- seeded.marked.notnative %>% 

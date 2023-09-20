@@ -5,7 +5,6 @@ AMBSPP,Ambrosia spp.,Native/Unknown,Colorado Plateau,NA,NA,NA
 ANOSPP,Anoda spp.,Native,Sonoran SE,NA,NA,NA
 ARISPP,Aristida spp.,Native,Sonoran SE,NA,NA,NA
 ARSPP,Artemisia spp.,Native/Unknown,Colorado Plateau,NA,NA,NA
-ASTRAG,Astragalus spp.,Native/Unknown,Chihuahuan,NA,NA,NA
 ASTSPP,Astragalus spp.,Native/Unknown,Sonoran SE,NA,NA,NA
 ATSP,Atriplex spp.,Native/Unknown,Colorado Plateau,NA,NA,NA
 BOSPP,local Bouteloua species (unknown),Native,Colorado Plateau,NA,NA,NA
@@ -16,8 +15,6 @@ CHAMA,Chamaesyce spp.,Native,Chihuahuan,NA,NA,NA
 CHASPP,Chaenactis spp.,Native,Mojave,NA,NA,NA
 CHEN,Unknown chenopod,Native/Unknown,Colorado Plateau,NA,NA,NA
 CHESPP,Chenopodium spp.,Unknown,Sonoran SE,NA,NA,NA
-CHSPP,Chamaesyce spp.,Unknown,Sonoran Central,NA,NA,NA
-CLESP,Cleome spp.,Native/Unknown,Colorado Plateau,NA,NA,NA
 CRYPT,Cryptantha spp.,Native,Sonoran Central,NA,NA,NA
 CRYSPP,Cryptantha spp.,Native,Colorado Plateau,NA,NA,NA
 CRYSPP,Cryptantha spp.,Native,Mojave,NA,NA,NA
@@ -29,14 +26,11 @@ ERIASPP,Eriastrum spp.,Native,Sonoran SE,NA,NA,NA
 ERIOG,Eriogonum sp.,Native,Sonoran Central,NA,NA,NA
 ERISP,Eriogonum spp.,Native,Colorado Plateau,NA,NA,NA
 ERISPP,Erigeron spp.,Native,Sonoran SE,NA,NA,NA
-EUPSPP,Euphorbia spp.,Native/Unknown,Mojave,NA,NA,NA
 Eriogonum,Eriogonum spp.,Native,Chihuahuan,NA,NA,NA
 GILSPP,Gilia spp.,Native,Colorado Plateau,NA,NA,NA
 GILSPP,Gilia spp.,Native,Mojave,NA,NA,NA
 GILSPP,Gilia spp.,Native,Sonoran SE,NA,NA,NA
-GILSPP2,Very similar to GIsp 1 but slightly more serated leaves and flowers are purple/pink instead of blueish/white,Native,Sonoran SE,NA,NA,NA
 HESP,Heliomeris spp.,Native,Colorado Plateau,NA,NA,NA
-LEPISP,Lepidium sp.,Unknown,Sonoran Central,NA,NA,NA
 LEPSPP,Lepidium spp.,Native/Unknown,Mojave,NA,NA,NA
 LUPSPP,Lupinus spp.,Native/Unknown,Sonoran SE,NA,NA,NA
 LUSPP,Lupinus spp.,Native/Unknown,Colorado Plateau,NA,NA,NA
@@ -47,14 +41,11 @@ OESP,Oenothera spp.,Native/Unknown,Colorado Plateau,NA,NA,NA
 PANSPP,Panicum spp.,Native,Sonoran SE,NA,NA,NA
 PECSPP,Pectocarya spp.,Native,Mojave,NA,NA,NA
 PHSPP,Phacelia spp.,Native,Colorado Plateau,NA,NA,NA
-PHYSR,Physaria sp.,Native,Sonoran Central,NA,NA,NA
 PLASPP,Plantago spp.,Unknown,Sonoran SE,NA,NA,NA
 PORSPP,Portulaca spp.,Native,Colorado Plateau,NA,NA,NA
 PORSPP,Portulaca spp.,Native,Sonoran SE,NA,NA,NA
 PROACASPP,Mesquite/Acacia spp.,Native/Unknown,Sonoran SE,NA,NA,NA
-PROBO,Proboscidea spp.,Native,Chihuahuan,NA,NA,NA
 SIDSPP,Sida spp.,Native/Unknown,Sonoran SE,NA,NA,NA
-SISYM,Sisymbrium sp.,Unknown,Sonoran Central,NA,NA,NA
 SOSP,Solanum spp.,Native/Unknown,Colorado Plateau,NA,NA,NA
 SPSP,Sphaeralcea spp.,Native/Unknown,Colorado Plateau,NA,NA,NA
 SPSP,Sphaeralcea spp.,Native/Unknown,Utah,NA,NA,NA
@@ -94,7 +85,7 @@ UNFS,Unknown forb seedling,Unknown,Sonoran SE,NA,NA,NA
 UNGR1,Unknown grass (SantaRita); Possibly BOER or Aristida spp (so likely unseeded),Native,Sonoran SE,NA,NA,NA
 UNGRS1,"Unknown grass (Patagonia);Unk. grass seedling, bunchy, possible lovegrass?",Unknown,Sonoran SE,NA,NA,NA
 UNGRS1,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes",Native/Unknown,Sonoran SE,NA,NA,NA
-UNGRS1,"Unknown grass seedling (SRER), but most likely ERLE",Introduced,Sonoran SE,NA,NA,NA
+UNGRS1,"Unknown grass seedling (SRER), but most likely ERLE, spring 2022",Introduced,Sonoran SE,NA,NA,NA
 UNGRS2,"Unknown grass (Patagonia); Unk grass seedling, leaf divided early like BOGR, possible lovegrass?",Unknown,Sonoran SE,NA,NA,NA
 UNGRS3,"Unknown grass (Patagonia); Lighter green, thin leaves, possible threeawn?",Native,Sonoran SE,NA,NA,NA
 UNGR_P_1,Unknown grass; Possibly small ARIsp. (Spring 2021),Native,Sonoran SE,NA,NA,NA
@@ -103,49 +94,32 @@ UNGR_S_2,Unknown grass; Possibly a BOCU or another Bouteloua (Spring 2021),Nativ
 UNSFF,"Unknown shrubby fuzzy forb, munched down",Unknown,Sonoran SE,NA,NA,NA
 UNSH,Unknown shrub,Unknown,Colorado Plateau,NA,NA,NA
 UNSHR-1,Unknown shrub (Patagonia); mesquite or acacia,Native,Sonoran SE,NA,NA,NA
-Unk brown,Unknown brown,Unknown,Sonoran Central,NA,NA,NA
 Unk bunchGrass #1,Could be BOCU,Native/Unknown,Sonoran Central,NA,NA,NA
-Unk dark,Unknown with dark hairy leaf and dark margin; resembles BAMU,Native/Unknown,Sonoran Central,NA,NA,NA
-Unk forb,Unknown forb,Unknown,Sonoran Central,NA,NA,NA
 Unk grass,Unknown likely associated with warm seed mix,Native/Unknown,Sonoran Central,NA,NA,NA
-Unk grass 1,Unknown grass 1,Unknown,Sonoran Central,NA,NA,NA
-Unk grass 2,Unknown grass 2,Unknown,Sonoran Central,NA,NA,NA
 Unk heart,Unknown forb with heart-shaped cotyledon; possibly MAPA5 (although that species not seen growing there),Unknown,Sonoran Central,NA,NA,NA
 Unk sp.,Unknown species,Unknown,Sonoran Central,NA,NA,NA
 UnkATCA,Unknown shrub; Possible Atriplex canescens,Native/Unknown,Chihuahuan,NA,NA,NA
-Unkastr2,Unknown aster,Unknown,Chihuahuan,NA,NA,NA
 Unkcrypt,"Unknown forb; Tiniest of forbs that while can distinguish from other species, cannot ID bc no distinguishing characteristics. Looks like it could turn into a cryptantha? But maybe not.",Native/Unknown,Chihuahuan,NA,NA,NA
 Unkcrypt,Cryptantha spp.,Native,Chihuahuan,NA,NA,NA
 Unkfabaceae,Unknown fabaceae,Unknown,Chihuahuan,NA,NA,NA
 Unkforb,"Unknown forb; Like the generic ""Unkgrass"" unkforb is an unknown forb that has no distinguishing characteristics other than being a forb, thus a few are lumped into this category.",Unknown,Chihuahuan,NA,NA,NA
 Unkforb,Unknown forb,Unknown,Chihuahuan,NA,NA,NA
 Unkforb1,Unknown forb,Unknown,Chihuahuan,NA,NA,NA
-Unkforb3,"Unknown forb;  Looks like annual poppy from genus Eschscholzia, but so super tiny can't quite tell. Only one observed in all plots.",Native/Unknown,Chihuahuan,NA,NA,NA
-Unkforb3,Unknown forb,Unknown,Chihuahuan,NA,NA,NA
-Unkforbgreen,Unknown forb;  A non descript forb (photo available) that is only found one time for one plant (MESQ-201),Unknown,Chihuahuan,NA,NA,NA
-Unkforbgreen,Unknown forb,Unknown,Chihuahuan,NA,NA,NA
-Unkforbwavy,"Unknown forb; A distinctly different plant with pale, hairy, wavy leaves. Different than other species, photo to be submitted to botanist.",Unknown,Chihuahuan,NA,NA,NA
-Unkforbwavy,Unknown forb,Unknown,Chihuahuan,NA,NA,NA
-Unkfuzzyaster,Unknown aster,Unknown,Chihuahuan,NA,NA,NA
 Unkgrass,Unknown grass; A small unknown grass that has no disstinguishing characteristics and cannot be parsed out from other Unkgrass species.,Unknown,Chihuahuan,NA,NA,NA
 Unkgrass,Unknown grass,Unknown,Chihuahuan,NA,NA,NA
-Unkgrass1,Unknown grass,Unknown,Chihuahuan,NA,NA,NA
 Unkgrass2,Unknown grass,Unknown,Chihuahuan,NA,NA,NA
-Unkgrass4,Unknown grass,Unknown,Chihuahuan,NA,NA,NA
-Unkhairygrass,Unknown grass,Unknown,Chihuahuan,NA,NA,NA
-Unkperennial grass,Unknown grass,Unknown,Chihuahuan,NA,NA,NA
 Unksalsola,Unknown forb; A very small (tiny really) forb germinant that has linear leaves like a small Salsola would. Unlikely to be salsola but best way to distinguish it from other unks.,Unknown,Chihuahuan,NA,NA,NA
 Unksalsola,Unknown forb,Unknown,Chihuahuan,NA,NA,NA
 Unksporo,Unknown grass; Sporobolus and Eragrostis,Unknown,Chihuahuan,NA,NA,NA
 Unksporob,Unknown grass; Unknown (Seeed plants) that look like they are in the Sporobolus genus (with distinct first cotyledons). So small cannot be sure but only way to distinguish between other grasses at this tiny stage.,Native,Chihuahuan,NA,NA,NA
 Unksporob,Sporobolus spp.,Native,Chihuahuan,NA,NA,NA
-ATCA,"Unknown ATCA (but not Atriplex, a grass?)",Unknown,Chihuahuan,Mesquite,Unknown,Grass
 AmaranthusSpp,Amaranthus spp.,Native/Unknown,Colorado Plateau,FlyingM,Unknown,Forb
 CRYSPP 1,Cryptantha spp. 1,Native,Sonoran SE,SRER,Unknown,Forb
 CRYSPP 2,Cryptantha spp. 2,Native,Sonoran SE,SRER,Unknown,Forb
 CRYSPP2,Cryptantha spp. 3,Native,Sonoran SE,SRER,Unknown,Forb
 ERIGSPP,Erigonum spp.,Native,Utah,UtahPJ,Unknown,Forb
 Eriogonum sp.,Erigonum spp.,Native,Utah,UtahPJ,Unknown,Forb
+FESSPP,Fescue spp.,Native,Sonoran SE,SRER,Unknown,Grass
 GILSPP 1,Gilia spp. 1,Native,Sonoran SE,SRER,Unknown,Forb
 GILSPP 2,Gilia spp. 2,Native,Sonoran SE,SRER,Unknown,Forb
 S-UNFO2,Seeded unknown forb 2,Native,Utah,CRC,Unknown,Forb

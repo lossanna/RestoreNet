@@ -1,5 +1,5 @@
-# Created: 2022-11-29
-# Last updated: 2023-09-18
+# Created: 2023-09-18
+# Last updated: 2023-09-20
 
 # Purpose: Create clean data table for subplot data, with corrected and standardized species information,
 #   and monitoring and plot information, and correct SpeciesSeeded column based on each site-specific
@@ -11,9 +11,10 @@ library(tidyverse)
 
 # Load data ---------------------------------------------------------------
 
-subplot.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllSubplotData")
+subplot.raw <- read_xlsx("data/raw/2023-09-15_Master 1.0 Germination Data_raw.xlsx", sheet = "AllSubplotData")
 species.in <- read_csv("data/cleaned/subplot_species-list_location-independent_clean.csv")
-species.de <- read_csv("data/cleaned/01_subplot_species-list_location-dependent_clean.csv")
+species.de <- read_csv("data/cleaned/subplot_species-list_location-dependent_clean.csv")
+species.de.all <- read_csv("data/cleaned/species-list_location-dependent_clean.csv")
 mix <- read_xlsx("data/raw/from-Master_seed-mix_LO.xlsx", sheet = "with-site_R")
 monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
 monitor.wrong <- read_csv("data/data-wrangling-intermediate/02_subplot-wrong-monitor-events.csv")
@@ -58,31 +59,22 @@ subplot <- subplot %>%
 # Handle NA codes ---------------------------------------------------------
 
 # Extract NA codes
-filter(subplot, is.na(CodeOriginal)) # raw.row 8610, 9318, 12166
+filter(subplot, is.na(CodeOriginal)) # raw.row 8610, 9728, 12576
 
-# Rows 8610 and 9318 are observations for empty plots; Code should be 0
+# Rows 8610 and 9728 are observations for empty plots; Code should be 0
 subplot$CodeOriginal[subplot$raw.row == 8610] <- "0"
-subplot$CodeOriginal[subplot$raw.row == 9318] <- "0"
+subplot$CodeOriginal[subplot$raw.row == 9728] <- "0"
 
 # Examine non-empty subplots (12166)
-subplot.raw[12166, ]
-subplot.raw[12166, c("Species_Code", "Functional_Group", "Seeded(Yes/No)", "Notes")]
-#   No notes for 12166, but a functional group was listed; not seeded, and probably an unknown
+subplot.raw[12576, ]
+subplot.raw[12576, c("Species_Code", "Functional_Group", "Seeded(Yes/No)", "Notes")]
+#   No notes for 12576, but a functional group was listed; not seeded, and probably an unknown
 
-# Assign location-dependent code for 12166
-subplot$CodeOriginal[subplot$raw.row == 12166] <- "UNFO.12166.Salt_Desert"
+# Assign location-dependent code for 12576 (developed in 02.R)
+species.de |> 
+  filter(CodeOriginal == "UNFO.12576.assigned")
+subplot$CodeOriginal[subplot$raw.row == 12576] <- "UNFO.12576.assigned"
 
-# Add code to subplot species.de list
-subplot.raw[12166, c("Site", "Species_Code", "Functional_Group", "Seeded(Yes/No)")]
-unfo12166 <- data.frame(Region = "Utah",
-                        Site = "Salt_Desert",
-                        CodeOriginal = "UNFO.12166.Salt_Desert",
-                        Code = "UNFO.12166.Salt_Desert",
-                        Name = "Unknown forb, not seeded",
-                        Native = "Unknown",
-                        Duration = "Unknown",
-                        Lifeform = "Forb")
-species.de <- bind_rows(species.de, unfo12166)
 
 # Check again for NA codes
 filter(subplot, is.na(CodeOriginal)) # no NAs
@@ -92,6 +84,8 @@ filter(subplot, is.na(CodeOriginal)) # no NAs
 sub.codes <- c(species.de$CodeOriginal, species.in$CodeOriginal)
 setdiff(subplot$CodeOriginal, sub.codes) # should be 0
 
+species.de.all |> 
+  filter(CodeOriginal %in% setdiff(subplot$CodeOriginal, sub.codes))
 
 
 
