@@ -124,6 +124,7 @@ head(subplot.missing)
 #   I also assumed ATCA was ATCA2  at Mesquite, because ATCA2 was seeded there and ATCA
 #     is generally only found in California, according to USDA Plants. In the subplot data,
 #     the observation of AVCA was also marked seeded.
+#   Also I assumed LILE was LILE3 at CRC because it was marked as seeded and LILE3 was in seed mix
 sub.missing <- read_csv("data/data-wrangling-intermediate/01b_edited-species1_subplot-codes-missing_native-duration-lifeform.csv")
 head(sub.missing)
 
@@ -291,7 +292,7 @@ codes.fix.in <- species.in %>%
   filter(Name %in% filter(species.in, duplicated(Name))$Name) %>% 
   distinct(.keep_all = TRUE) %>% 
   arrange(Name) 
-codes.fix.in
+print(codes.fix.in, n = 24)
 
 # Compare codes with those from seed mix
 mix.codes <- mix %>% 
@@ -304,7 +305,7 @@ mix.codes # codes need to match ones from seed mix
 # Create df standardized codes based on USDA Plants
 codes.standardized.in <- codes.fix.in %>% 
   filter(Code %in% c(mix.codes$CodeOriginal, "CHPO12", "SIAL2")) %>% 
-  mutate(CodeOriginal = c("ARPUP6", "ATCA", "BOER", "EUPO3", "DACA", "S-HEBO", "S-PASM", "SIAL", "SPAMA")) 
+  mutate(CodeOriginal = c("ARPUP6", "ATCA", "BOER", "EUPO3", "DACA", "S-HEBO", "LILE", "S-PASM", "SIAL", "SPAMA")) 
 
 # Remove wrong codes from species list and add correct ones
 species.in <- species.in %>% 

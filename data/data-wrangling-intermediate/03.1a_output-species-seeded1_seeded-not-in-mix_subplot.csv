@@ -1,5 +1,4 @@
 Site,Region,PlotMix,CodeOriginal,Code,Name,Native,Duration,Lifeform,SpeciesSeeded
-Mesquite,Chihuahuan,Warm,ATCA,ATCA,Atriplex californica,Native,Perennial,Forb,Yes
 Mesquite,Chihuahuan,Warm,Unksporob,Unksporob.Mesquite,"Sporobolus spp., Mesquite",Native,Unknown,Grass,Yes
 Mesquite,Chihuahuan,Medium,Unksporob,Unksporob.Mesquite,"Sporobolus spp., Mesquite",Native,Unknown,Grass,Yes
 Mesquite,Chihuahuan,Warm,Unkforb,Unkforb.Mesquite,"Unknown forb, Mesquite",Native,Unknown,Forb,Yes
@@ -60,7 +59,7 @@ AVRCD,Mojave,Cool,AMIN3,AMMEI2,Amsinckia menziesii,Native,Annual,Forb,Yes
 AVRCD,Mojave,Warm,LACA7,LACA7,Lasthenia californica,Native,Unknown,Forb,Yes
 AVRCD,Mojave,Cool,PEPE26,PEPE26,Pectocarya penicillata,Native,Annual,Forb,Yes
 SRER,Sonoran SE,Warm,BOUSPP,BOUSPP.SRER,"Bouteloua spp., SRER",Native,Unknown,Grass,Yes?
-CRC,Utah,Cool-Med,LILE,LILE,Leptosiphon lemmonii,Native,Annual,Forb,Yes
+CRC,Utah,Cool-Med,LILE,LILE29,Leptosiphon lemmonii,Native,Annual,Forb,Yes
 CRC,Utah,Cool-Med,S-UNFO2,S-UNFO2.CRC,"Seeded unknown forb 2, CRC",Native,Unknown,Forb,Yes
 CRC,Utah,Med-Warm,S-UNGR1,S-UNGR1.CRC,"Seeded unknown grass 1, CRC",Native,Unknown,Grass,Yes
 CRC,Utah,Cool-Med,S-UNGR1,S-UNGR1.CRC,"Seeded unknown grass 1, CRC",Native,Unknown,Grass,Yes

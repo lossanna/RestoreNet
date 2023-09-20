@@ -1,7 +1,7 @@
 Site,Region,PlotMix,CodeOriginal,Code,Name,Native,Duration,Lifeform,SpeciesSeeded
 Creosote,Chihuahuan,Warm,BAMU,BAMU,Baileya multiradiata,Native,Unknown,Forb,Yes
 Creosote,Chihuahuan,Medium,BAMU,BAMU,Baileya multiradiata,Native,Unknown,Forb,Yes
-Mesquite,Chihuahuan,Warm,ATCA,ATCA,Atriplex californica,Native,Perennial,Forb,Yes
+Mesquite,Chihuahuan,Warm,ATCA,ATCA2,Atriplex canescens,Native,Perennial,Shrub,Yes
 Mesquite,Chihuahuan,Warm,BAMU,BAMU,Baileya multiradiata,Native,Unknown,Forb,Yes
 AguaFria,Colorado Plateau,Warm,ACHY,ACHY,Achnatherum hymenoides,Native,Perennial,Grass,Yes
 AguaFria,Colorado Plateau,Warm,ASTU,ASTU,Asclepias tuberosa,Native,Perennial,Forb,Yes
