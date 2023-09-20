@@ -397,9 +397,6 @@ write_csv(sites.m.unk,
           file = "data/data-wrangling-intermediate/01a_output-species5.2_location-dependent_xlsx_sites.csv")
 head(sites.m.unk) # contains Site
 
-filter(species.m.unk, CodeOriginal == "ASTRAG")
-filter(subplot, CodeOriginal == "ASTRAG")
-
 # Look for NA codes that were observations in subplot data
 filter(subplot, is.na(CodeOriginal)) |> 
   select(Site, `Seeded(Yes/No)`, Functional_Group, Seedling_Count, Average_Height_mm, raw.row) # raw.row 9728, 12576
@@ -438,17 +435,49 @@ species.de <- species.de |>
   select(Region, Site, Code, CodeOriginal, Name, Native, Duration, Lifeform)
   
 
-# Check for unique codes
+# Check for duplicate codes in species list
 species.de |> 
   count(Code) |> 
   filter(n > 1) |> 
   arrange(desc(n))
+
+# 2 instances of UNGRS1.SRER
+#   but based on name, one applies to spring 2022
 species.de |> 
   filter(Code == "UNGRS1.SRER") |> 
-  select(Code, Name, Native) # UNGRS1.SRER is a duplicate but needs
-#     both rows. Will link the correct information by year for spring 2022 during
-#     data wrangling.
+  select(Code, Name, Native)
 
+#   Look for UNGRS1 in spring 2022 in subplot data
+subplot |> 
+  mutate(Date_Monitored = as.character(Date_Monitored)) |> 
+  filter(Site == "SRER",
+         str_detect(Date_Monitored, "2022"),
+         str_detect(CodeOriginal, "UNGRS"))  # CodeOriginal is actually UNGRS-1
+
+#   Look for UNGRS-1 at SRER in species list
+species.de |> 
+  filter(Site == "SRER",
+         CodeOriginal == "UNGRS-1")
+
+#   Change Code & CodeOriginal of UNGRS1 from spring 2022 to UNGRS-1 
+species.de |> 
+  filter(Code == "UNGRS1.SRER") |> 
+  select(Code, Name, Native, Duration, Lifeform)
+species.de$CodeOriginal[str_detect(species.de$Name, "most likely ERLE, spring 2022")] <- "UNGRS-1"
+species.de$Code[str_detect(species.de$Name, "most likely ERLE, spring 2022")] <- "UNGRS-1.SRER"
+
+
+#   Remove old UNGRS-1 row
+species.de <- species.de |> 
+  filter(Name != "Unknown grass 1, SRER")
+
+#   Check to see it was removed
+species.de |> 
+  filter(Site == "SRER",
+         CodeOriginal == "UNGRS-1")
+
+
+# Check for unique codes with lo-depen and lo-indepen
 intersect(species.de$CodeOriginal, species.in$CodeOriginal) 
 intersect(species.de$Code, species.in$CodeOriginal) 
 #   location-dependent codes are also unique from location-dependent ones, both original code and new code with site info

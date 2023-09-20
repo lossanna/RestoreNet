@@ -23,6 +23,7 @@ Chihuahuan,Mesquite,Unksporo,Unksporo.Mesquite,"Unknown grass; Sporobolus and Er
 Chihuahuan,Mesquite,Unksporob,Unksporob.Mesquite,"Sporobolus spp., Mesquite",Native,Unknown,Grass
 Colorado Plateau,AguaFria,BOSPP,BOSPP.AguaFria,"local Bouteloua species (unknown), AguaFria",Native,Unknown,Grass
 Colorado Plateau,AguaFria,ELSPP,ELSPP.AguaFria,"Elymus spp., AguaFria",Native/Unknown,Unknown,Grass
+Colorado Plateau,AguaFria,LUSP,LUSP.AguaFria,"Lupinus spp., AguaFria",Native/Unknown,Unknown,Forb
 Colorado Plateau,AguaFria,LUSPP,LUSPP.AguaFria,"Lupinus spp., AguaFria",Native/Unknown,Unknown,Forb
 Colorado Plateau,AguaFria,SPSP,SPSP.AguaFria,"Sphaeralcea spp., AguaFria",Native/Unknown,Unknown,Forb
 Colorado Plateau,AguaFria,UNFO1,UNFO1.AguaFria,"Unknown forb 1, AguaFria",Unknown,Unknown,Forb
@@ -240,9 +241,8 @@ Sonoran SE,SRER,UNFO_S_5,UNFO_S_5.SRER,"Unknown forb; Silky hairy fuzzy, straigh
 Sonoran SE,SRER,UNFO_S_7,UNFO_S_7.SRER,"Unknown forb; ""artichoke head"", stem leaves alternate, basal rosette, possibly cryptantha? (Spring 2021), SRER",Native/Unknown,Unknown,Forb
 Sonoran SE,SRER,UNGR,UNGR.SRER,"Unknown grass, SRER",Unknown,Unknown,Grass
 Sonoran SE,SRER,UNGR1,UNGR1.SRER,"Unknown grass (SantaRita); Possibly BOER or Aristida spp (so likely unseeded), SRER",Native,Unknown,Grass
-Sonoran SE,SRER,UNGRS-1,UNGRS-1.SRER,"Unknown grass 6, SRER",Unknown,Unknown,Grass
+Sonoran SE,SRER,UNGRS-1,UNGRS-1.SRER,"Unknown grass seedling (SRER), but most likely ERLE, spring 2022, SRER",Introduced,Unknown,Grass
 Sonoran SE,SRER,UNGRS1,UNGRS1.SRER,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes, SRER",Native/Unknown,Unknown,Grass
-Sonoran SE,SRER,UNGRS1,UNGRS1.SRER,"Unknown grass seedling (SRER), but most likely ERLE, spring 2022, SRER",Introduced,Unknown,Grass
 Sonoran SE,SRER,UNGR_S_1,UNGR_S_1.SRER,"Unknown grass; Grass seedling short erose ligule slight chance ARPU because of 45 degree leaf or possibly a Vulpia sp. like VUOC (Spring 2021), SRER",Native/Unknown,Unknown,Grass
 Sonoran SE,SRER,UNGR_S_2,UNGR_S_2.SRER,"Unknown grass; Possibly a BOCU or another Bouteloua (Spring 2021), SRER",Native,Unknown,Grass
 Sonoran SE,SRER,UNSFF,UNSFF.SRER,"Unknown shrubby fuzzy forb, munched down, SRER",Unknown,Unknown,Forb

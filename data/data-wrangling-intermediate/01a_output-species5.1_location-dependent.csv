@@ -122,6 +122,7 @@ Eriogonum sp.,Erigonum spp.,Native,Utah,UtahPJ,Unknown,Forb
 FESSPP,Fescue spp.,Native,Sonoran SE,SRER,Unknown,Grass
 GILSPP 1,Gilia spp. 1,Native,Sonoran SE,SRER,Unknown,Forb
 GILSPP 2,Gilia spp. 2,Native,Sonoran SE,SRER,Unknown,Forb
+LUSP,Lupinus spp.,Native/Unknown,Colorado Plateau,AguaFria,Unknown,Forb
 S-UNFO2,Seeded unknown forb 2,Native,Utah,CRC,Unknown,Forb
 S-UNFO2,Seeded unknown forb 2,Native,Utah,Salt_Desert,Unknown,Forb
 S-UNGR1,Seeded unknown grass 1,Native,Utah,CRC,Unknown,Grass
@@ -135,10 +136,10 @@ S-UNGR3,Seeded unknown grass 3,Native,Utah,UtahPJ,Unknown,Grass
 S-UNGR4,Seeded unknown grass 4,Native,Utah,CRC,Unknown,Grass
 S-UNGR4,Seeded unknown grass 4,Native,Utah,UtahPJ,Unknown,Grass
 S-UNGR5,Seeded unknown grass 5,Native,Utah,UtahPJ,Unknown,Grass
-SUNGR,Seeded unknown grass (?),Native,Colorado Plateau,TLE,Unknown,Shrub
-SUNGR,Seeded unknown grass (?),Native,Colorado Plateau,BabbittPJ,Unknown,Shrub
-UCHEN1,Unknown UCHEN1 (?),Unknown,Colorado Plateau,PEFO,Unknown,Unknown
-UCHEN2,Unknown UCHEN2 (?),Unknown,Colorado Plateau,PEFO,Unknown,Unknown
+SUNGR,Seeded unknown grass,Native,Colorado Plateau,TLE,Unknown,Shrub
+SUNGR,Seeded unknown grass,Native,Colorado Plateau,BabbittPJ,Unknown,Shrub
+UCHEN1,Unknown chenopod 1,Unknown,Colorado Plateau,PEFO,Unknown,Forb
+UCHEN2,Unknown chenopod 2,Unknown,Colorado Plateau,PEFO,Unknown,Forb
 UNFO,Unknown forb,Unknown,Colorado Plateau,FlyingM,Unknown,Forb
 UNFO,Unknown forb,Unknown,Colorado Plateau,Spiderweb,Unknown,Forb
 UNFO-5,Unknown forb 5,Unknown,Sonoran SE,SRER,Unknown,Forb
@@ -182,7 +183,7 @@ UNGR4,Unknown grass 4,Unknown,Colorado Plateau,MOWE,Unknown,Grass
 UNGR4,Unknown grass 4,Unknown,Utah,Salt_Desert,Unknown,Grass
 UNGR4,Unknown grass 4,Unknown,Utah,UtahPJ,Unknown,Grass
 UNGR5,Unknown grass 5,Unknown,Colorado Plateau,AguaFria,Unknown,Grass
-UNGRS-1,Unknown grass 6,Unknown,Sonoran SE,SRER,Unknown,Grass
+UNGRS-1,Unknown grass 1,Unknown,Sonoran SE,SRER,Unknown,Grass
 UNK Fuzzy astr,Unknown fuzzy aster,Unknown,Chihuahuan,Mesquite,Unknown,Forb
 UNK brown,Unknown brown,Unknown,Sonoran Central,SCC,Unknown,Unknown
 UNK heart,Unknown forb with heart-shaped cotyledon; possibly MAPA5 (although that species not seen growing there),Unknown,Sonoran Central,Preserve,Unknown,Forb

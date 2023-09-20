@@ -14,7 +14,7 @@ Sonoran SE,SRER,FESSPP,Fescue spp.,Native,Unknown,Grass
 Sonoran SE,SRER,GILSPP 1,Gilia spp. 1,Native,Unknown,Forb
 Sonoran SE,SRER,GILSPP 2,Gilia spp. 2,Native,Unknown,Forb
 Utah,CRC,LILE,Leptosiphon lemmonii,Native,Annual,Forb
-Colorado Plateau,AguaFria,LUSP,Lupinus sparsiflorus (?),Native,Annual,Forb
+Colorado Plateau,AguaFria,LUSP,Lupinus spp.,Native/Unknown,Unknown,Forb
 Chihuahuan,Mesquite,PAHI7,Oplismenus hirtellus (Panicum hirtellum),Introduced,Perennial,Grass
 Colorado Plateau,BabbittPJ,PHNE3,Phacelia neomexicana,Native,Annual,Forb
 Utah,UtahPJ,S-HEBO,Hedysarum boreale,Native,Perennial,Forb
@@ -36,10 +36,10 @@ Utah,UtahPJ,S-UNGR4,Seeded unknown grass 4,Native,Unknown,Grass
 Utah,UtahPJ,S-UNGR5,Seeded unknown grass 5,Native,Unknown,Grass
 Chihuahuan,Mesquite,SEBA2,Senna bacillaris,Native,Perennial,Shrub
 Sonoran Central,Preserve,STMI2,Stylocline micropoides,Native,Annual,Forb
-Colorado Plateau,TLE,SUNGR,Seeded unknown grass (?),Native,Unknown,Shrub
-Colorado Plateau,BabbittPJ,SUNGR,Seeded unknown grass (?),Native,Unknown,Shrub
-Colorado Plateau,PEFO,UCHEN1,Unknown UCHEN1 (?),Unknown,Unknown,Unknown
-Colorado Plateau,PEFO,UCHEN2,Unknown UCHEN2 (?),Unknown,Unknown,Unknown
+Colorado Plateau,TLE,SUNGR,Seeded unknown grass,Native,Unknown,Shrub
+Colorado Plateau,BabbittPJ,SUNGR,Seeded unknown grass,Native,Unknown,Shrub
+Colorado Plateau,PEFO,UCHEN1,Unknown chenopod 1,Unknown,Unknown,Forb
+Colorado Plateau,PEFO,UCHEN2,Unknown chenopod 2,Unknown,Unknown,Forb
 Colorado Plateau,FlyingM,UNFO,Unknown forb,Unknown,Unknown,Forb
 Colorado Plateau,Spiderweb,UNFO,Unknown forb,Unknown,Unknown,Forb
 Sonoran SE,SRER,UNFO-5,Unknown forb 5,Unknown,Unknown,Forb
@@ -83,7 +83,7 @@ Colorado Plateau,MOWE,UNGR4,Unknown grass 4,Unknown,Unknown,Grass
 Utah,Salt_Desert,UNGR4,Unknown grass 4,Unknown,Unknown,Grass
 Utah,UtahPJ,UNGR4,Unknown grass 4,Unknown,Unknown,Grass
 Colorado Plateau,AguaFria,UNGR5,Unknown grass 5,Unknown,Unknown,Grass
-Sonoran SE,SRER,UNGRS-1,Unknown grass 6,Unknown,Unknown,Grass
+Sonoran SE,SRER,UNGRS-1,Unknown grass 1,Unknown,Unknown,Grass
 Chihuahuan,Mesquite,UNK Fuzzy astr,Unknown fuzzy aster,Unknown,Unknown,Forb
 Sonoran Central,SCC,UNK brown,Unknown brown,Unknown,Unknown,Unknown
 Sonoran Central,Preserve,UNK heart,Unknown forb with heart-shaped cotyledon; possibly MAPA5 (although that species not seen growing there),Unknown,Unknown,Forb

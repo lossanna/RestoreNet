@@ -36,6 +36,7 @@ Chihuahuan,Mesquite,Unksporo,Unksporo.Mesquite,"Unknown grass; Sporobolus and Er
 Chihuahuan,Mesquite,Unksporob,Unksporob.Mesquite,"Unknown grass; Unknown (Seeed plants) that look like they are in the Sporobolus genus (with distinct first cotyledons). So small cannot be sure but only way to distinguish between other grasses at this tiny stage., Mesquite",Native,Unknown,Grass
 Colorado Plateau,AguaFria,BOSPP,BOSPP.AguaFria,"local Bouteloua species (unknown), AguaFria",Native,Unknown,Grass
 Colorado Plateau,AguaFria,ELSPP,ELSPP.AguaFria,"Elymus spp., AguaFria",Native/Unknown,Unknown,Grass
+Colorado Plateau,AguaFria,LUSP,LUSP.AguaFria,"Lupinus spp., AguaFria",Native/Unknown,Unknown,Forb
 Colorado Plateau,AguaFria,LUSPP,LUSPP.AguaFria,"Lupinus spp., AguaFria",Native/Unknown,Unknown,Forb
 Colorado Plateau,AguaFria,SPSP,SPSP.AguaFria,"Sphaeralcea spp., AguaFria",Native/Unknown,Unknown,Forb
 Colorado Plateau,AguaFria,UNFO1,UNFO1.AguaFria,"Unknown forb 1, AguaFria",Unknown,Unknown,Forb
@@ -61,7 +62,7 @@ Colorado Plateau,BabbittPJ,HCI,HCI.BabbittPJ,"Unknown HCI (?), BabbittPJ",Unknow
 Colorado Plateau,BabbittPJ,HESP,HESP.BabbittPJ,"Heliomeris spp., BabbittPJ",Native,Unknown,Forb
 Colorado Plateau,BabbittPJ,PHSPP,PHSPP.BabbittPJ,"Phacelia spp., BabbittPJ",Native,Unknown,Forb
 Colorado Plateau,BabbittPJ,SPSP,SPSP.BabbittPJ,"Sphaeralcea spp., BabbittPJ",Native/Unknown,Unknown,Forb
-Colorado Plateau,BabbittPJ,SUNGR,SUNGR.BabbittPJ,"Seeded unknown grass (?), BabbittPJ",Native,Unknown,Grass
+Colorado Plateau,BabbittPJ,SUNGR,SUNGR.BabbittPJ,"Seeded unknown grass, BabbittPJ",Native,Unknown,Grass
 Colorado Plateau,BabbittPJ,UNAM,UNAM.BabbittPJ,"Unknown UNAM, BabbittPJ",Unknown,Unknown,Unknown
 Colorado Plateau,BabbittPJ,UNFO1,UNFO1.BabbittPJ,"Unknown forb 1, BabbittPJ",Native,Unknown,Forb
 Colorado Plateau,BabbittPJ,UNGR,UNGR.BabbittPJ,"Unknown grass, BabbittPJ",Native,Unknown,Grass
@@ -141,8 +142,8 @@ Colorado Plateau,PEFO,PORSPP,PORSPP.PEFO,"Portulaca spp., PEFO",Native,Unknown,F
 Colorado Plateau,PEFO,SPSP,SPSP.PEFO,"Sphaeralcea spp., PEFO",Native/Unknown,Unknown,Forb
 Colorado Plateau,PEFO,SUNGR,SUNGR.PEFO,"Seeded unknown grass, PEFO",Native,Unknown,Grass
 Colorado Plateau,PEFO,SUNGR1,SUNGR1.PEFO,"Seeded unknown grass 1, PEFO",Native,Unknown,Grass
-Colorado Plateau,PEFO,UCHEN1,UCHEN1.PEFO,"Unknown UCHEN1 (?), PEFO",Unknown,Unknown,Unknown
-Colorado Plateau,PEFO,UCHEN2,UCHEN2.PEFO,"Unknown UCHEN2 (?), PEFO",Unknown,Unknown,Unknown
+Colorado Plateau,PEFO,UCHEN1,UCHEN1.PEFO,"Unknown chenopod 1, PEFO",Unknown,Unknown,Forb
+Colorado Plateau,PEFO,UCHEN2,UCHEN2.PEFO,"Unknown chenopod 2, PEFO",Unknown,Unknown,Forb
 Colorado Plateau,PEFO,UNFO1,UNFO1.PEFO,"Unknown forb 1, PEFO",Unknown,Unknown,Forb
 Colorado Plateau,PEFO,UNFO2,UNFO2.PEFO,"Unknown forb 2, PEFO",Unknown,Unknown,Forb
 Colorado Plateau,PEFO,UNGR,UNGR.PEFO,"Unknown grass, PEFO",Native,Unknown,Grass
@@ -174,7 +175,7 @@ Colorado Plateau,TLE,ATSP,ATSP.TLE,"Atriplex spp., TLE",Native/Unknown,Perennial
 Colorado Plateau,TLE,CHEN,CHEN.TLE,"Unknown chenopod, TLE",Native/Unknown,Unknown,Forb
 Colorado Plateau,TLE,MACSPP,MACSPP.TLE,"Machaeranthera spp., TLE",Native,Unknown,Forb
 Colorado Plateau,TLE,SPSP,SPSP.TLE,"Sphaeralcea spp., TLE",Native/Unknown,Unknown,Forb
-Colorado Plateau,TLE,SUNGR,SUNGR.TLE,"Seeded unknown grass (?), TLE",Native,Unknown,Grass
+Colorado Plateau,TLE,SUNGR,SUNGR.TLE,"Seeded unknown grass, TLE",Native,Unknown,Grass
 Colorado Plateau,TLE,UNFO1,UNFO1.TLE,"Unknown forb 1, TLE",Unknown,Unknown,Forb
 Colorado Plateau,TLE,UNFO2,UNFO2.TLE,"Unknown forb 2, TLE",Unknown,Unknown,Forb
 Colorado Plateau,TLE,UNGR,UNGR.TLE,"Unknown grass, TLE",Native,Unknown,Grass
@@ -298,9 +299,8 @@ Sonoran SE,SRER,UNFO_S_7,UNFO_S_7.SRER,"Unknown forb; ""artichoke head"", stem l
 Sonoran SE,SRER,UNGR-2 possibly a Bouteloua (BOCU?) Maybe PLJA? (never seen),UNGR-2.SRER,"Unknown grass 2 possibly a Bouteloua (BOCU?) Maybe PLJA? (never seen), SRER",Native/Unknown,Unknown,Grass
 Sonoran SE,SRER,UNGR,UNGR.SRER,"Unknown grass, SRER",Unknown,Unknown,Grass
 Sonoran SE,SRER,UNGR1,UNGR1.SRER,"Unknown grass (SantaRita); Possibly BOER or Aristida spp (so likely unseeded), SRER",Native,Unknown,Grass
-Sonoran SE,SRER,UNGRS-1,UNGRS-1.SRER,"Unknown grass 6, SRER",Unknown,Unknown,Grass
+Sonoran SE,SRER,UNGRS-1,UNGRS-1.SRER,"Unknown grass seedling (SRER), but most likely ERLE, spring 2022, SRER",Introduced,Unknown,Grass
 Sonoran SE,SRER,UNGRS1,UNGRS1.SRER,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes, SRER",Native/Unknown,Unknown,Grass
-Sonoran SE,SRER,UNGRS1,UNGRS1.SRER,"Unknown grass seedling (SRER), but most likely ERLE, spring 2022, SRER",Introduced,Unknown,Grass
 Sonoran SE,SRER,UNGR_S_1,UNGR_S_1.SRER,"Unknown grass; Grass seedling short erose ligule slight chance ARPU because of 45 degree leaf or possibly a Vulpia sp. like VUOC (Spring 2021), SRER",Native/Unknown,Unknown,Grass
 Sonoran SE,SRER,UNGR_S_2,UNGR_S_2.SRER,"Unknown grass; Possibly a BOCU or another Bouteloua (Spring 2021), SRER",Native,Unknown,Grass
 Sonoran SE,SRER,UNSFF,UNSFF.SRER,"Unknown shrubby fuzzy forb, munched down, SRER",Unknown,Unknown,Forb

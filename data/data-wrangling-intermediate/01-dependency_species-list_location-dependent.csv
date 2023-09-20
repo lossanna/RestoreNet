@@ -151,7 +151,7 @@ Utah,UtahPJ,UNGR1.UtahPJ,UNGR1,"Unknown grass 1, UtahPJ",Unknown,Unknown,Grass
 Utah,Salt_Desert,UNGR1.Salt_Desert,UNGR1,"Unknown grass 1, Salt_Desert",Unknown,Unknown,Grass
 Sonoran SE,Patagonia,UNGRS1.Patagonia,UNGRS1,"Unknown grass (Patagonia);Unk. grass seedling, bunchy, possible lovegrass?, Patagonia",Unknown,Unknown,Grass
 Sonoran SE,SRER,UNGRS1.SRER,UNGRS1,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes, SRER",Native/Unknown,Unknown,Grass
-Sonoran SE,SRER,UNGRS1.SRER,UNGRS1,"Unknown grass seedling (SRER), but most likely ERLE, spring 2022, SRER",Introduced,Unknown,Grass
+Sonoran SE,SRER,UNGRS-1.SRER,UNGRS-1,"Unknown grass seedling (SRER), but most likely ERLE, spring 2022, SRER",Introduced,Unknown,Grass
 Sonoran SE,Patagonia,UNGRS2.Patagonia,UNGRS2,"Unknown grass (Patagonia); Unk grass seedling, leaf divided early like BOGR, possible lovegrass?, Patagonia",Unknown,Unknown,Grass
 Sonoran SE,Patagonia,UNGRS3.Patagonia,UNGRS3,"Unknown grass (Patagonia); Lighter green, thin leaves, possible threeawn?, Patagonia",Native,Unknown,Grass
 Sonoran SE,Patagonia,UNGR_P_1.Patagonia,UNGR_P_1,"Unknown grass; Possibly small ARIsp. (Spring 2021), Patagonia",Native,Unknown,Grass
@@ -187,6 +187,7 @@ Utah,UtahPJ,Eriogonum sp..UtahPJ,Eriogonum sp.,"Erigonum spp., UtahPJ",Native,Un
 Sonoran SE,SRER,FESSPP.SRER,FESSPP,"Fescue spp., SRER",Native,Unknown,Grass
 Sonoran SE,SRER,GILSPP 1.SRER,GILSPP 1,"Gilia spp. 1, SRER",Native,Unknown,Forb
 Sonoran SE,SRER,GILSPP 2.SRER,GILSPP 2,"Gilia spp. 2, SRER",Native,Unknown,Forb
+Colorado Plateau,AguaFria,LUSP.AguaFria,LUSP,"Lupinus spp., AguaFria",Native/Unknown,Unknown,Forb
 Utah,CRC,S-UNFO2.CRC,S-UNFO2,"Seeded unknown forb 2, CRC",Native,Unknown,Forb
 Utah,Salt_Desert,S-UNFO2.Salt_Desert,S-UNFO2,"Seeded unknown forb 2, Salt_Desert",Native,Unknown,Forb
 Utah,CRC,S-UNGR1.CRC,S-UNGR1,"Seeded unknown grass 1, CRC",Native,Unknown,Grass
@@ -200,10 +201,10 @@ Utah,UtahPJ,S-UNGR3.UtahPJ,S-UNGR3,"Seeded unknown grass 3, UtahPJ",Native,Unkno
 Utah,CRC,S-UNGR4.CRC,S-UNGR4,"Seeded unknown grass 4, CRC",Native,Unknown,Grass
 Utah,UtahPJ,S-UNGR4.UtahPJ,S-UNGR4,"Seeded unknown grass 4, UtahPJ",Native,Unknown,Grass
 Utah,UtahPJ,S-UNGR5.UtahPJ,S-UNGR5,"Seeded unknown grass 5, UtahPJ",Native,Unknown,Grass
-Colorado Plateau,TLE,SUNGR.TLE,SUNGR,"Seeded unknown grass (?), TLE",Native,Unknown,Grass
-Colorado Plateau,BabbittPJ,SUNGR.BabbittPJ,SUNGR,"Seeded unknown grass (?), BabbittPJ",Native,Unknown,Grass
-Colorado Plateau,PEFO,UCHEN1.PEFO,UCHEN1,"Unknown UCHEN1 (?), PEFO",Unknown,Unknown,Unknown
-Colorado Plateau,PEFO,UCHEN2.PEFO,UCHEN2,"Unknown UCHEN2 (?), PEFO",Unknown,Unknown,Unknown
+Colorado Plateau,TLE,SUNGR.TLE,SUNGR,"Seeded unknown grass, TLE",Native,Unknown,Grass
+Colorado Plateau,BabbittPJ,SUNGR.BabbittPJ,SUNGR,"Seeded unknown grass, BabbittPJ",Native,Unknown,Grass
+Colorado Plateau,PEFO,UCHEN1.PEFO,UCHEN1,"Unknown chenopod 1, PEFO",Unknown,Unknown,Forb
+Colorado Plateau,PEFO,UCHEN2.PEFO,UCHEN2,"Unknown chenopod 2, PEFO",Unknown,Unknown,Forb
 Colorado Plateau,FlyingM,UNFO.FlyingM,UNFO,"Unknown forb, FlyingM",Unknown,Unknown,Forb
 Colorado Plateau,Spiderweb,UNFO.Spiderweb,UNFO,"Unknown forb, Spiderweb",Unknown,Unknown,Forb
 Sonoran SE,SRER,UNFO-5.SRER,UNFO-5,"Unknown forb 5, SRER",Unknown,Unknown,Forb
@@ -247,7 +248,6 @@ Colorado Plateau,MOWE,UNGR4.MOWE,UNGR4,"Unknown grass 4, MOWE",Unknown,Unknown,G
 Utah,Salt_Desert,UNGR4.Salt_Desert,UNGR4,"Unknown grass 4, Salt_Desert",Unknown,Unknown,Grass
 Utah,UtahPJ,UNGR4.UtahPJ,UNGR4,"Unknown grass 4, UtahPJ",Unknown,Unknown,Grass
 Colorado Plateau,AguaFria,UNGR5.AguaFria,UNGR5,"Unknown grass 5, AguaFria",Unknown,Unknown,Grass
-Sonoran SE,SRER,UNGRS-1.SRER,UNGRS-1,"Unknown grass 6, SRER",Unknown,Unknown,Grass
 Chihuahuan,Mesquite,UNK Fuzzy astr.Mesquite,UNK Fuzzy astr,"Unknown fuzzy aster, Mesquite",Unknown,Unknown,Forb
 Sonoran Central,SCC,UNK brown.SCC,UNK brown,"Unknown brown, SCC",Unknown,Unknown,Unknown
 Sonoran Central,Preserve,UNK heart.Preserve,UNK heart,"Unknown forb with heart-shaped cotyledon; possibly MAPA5 (although that species not seen growing there), Preserve",Unknown,Unknown,Forb
