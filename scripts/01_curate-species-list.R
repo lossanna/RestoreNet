@@ -104,9 +104,6 @@ p2x2.codes <- p2x2 %>%
 # Extract missing codes
 codes.missing.sub <- setdiff(subplot$CodeOriginal, species.raw$CodeOriginal)
 
-subplot |> 
-  filter(CodeOriginal == "UNK Fuzzy astr")
-
 # Narrow columns and remove duplicates for missing subplot data
 subplot.missing <- subplot %>%
   filter(CodeOriginal %in% codes.missing.sub) %>% 
