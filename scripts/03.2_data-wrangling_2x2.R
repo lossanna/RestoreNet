@@ -1,5 +1,5 @@
-# Created: 2022-12-07
-# Last updated: 2023-09-18
+# Created: 2023-09-18
+# Last updated: 2023-09-21
 
 # Purpose: Create 2 clean data tables for 2x2 plot data: one with cover data and one with
 #   the list of species present for each monitoring event.
@@ -12,13 +12,14 @@ library(tidyverse)
 
 # Load data ---------------------------------------------------------------
 
-p2x2.raw <- read_xlsx("data/raw/Master Germination Data 2022.xlsx", sheet = "AllPlotData")
+p2x2.raw <- read_xlsx("data/raw/2023-09-15_Master 1.0 Germination Data_raw.xlsx", sheet = "AllPlotData")
 species.in <- read_csv("data/cleaned/p2x2_species-list_location-independent_clean.csv")
 species.de <- read_csv("data/cleaned/p2x2_species-list_location-dependent_clean.csv")
 mix <- read_xlsx("data/raw/from-Master_seed-mix_LO.xlsx", sheet = "with-site_R")
-monitor.info <- read_csv("data/cleanedS/corrected-monitoring-info_clean.csv")
+monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
 monitor.wrong <- read_csv("data/data-wrangling-intermediate/02_2x2-wrong-monitor-events.csv")
 monitor.fixed <- read_csv("data/data-wrangling-intermediate/02_2x2-wrong-monitor-events-corrected.csv")
+monitorID.replace <- read_csv("data/data-wrangling-intermediate/02_MonitorID-replacements.csv")
 subplot <- read_csv("data/cleaned/subplot-data_clean.csv")
 
 
@@ -46,9 +47,12 @@ p2x2.monitor <- p2x2.wide |>
 #   Find raw.row number of events that need to be fixed
 wrong.raw.row <- left_join(monitor.wrong, p2x2.monitor) 
 
-#   Attach raw.row to corrected monitoring info
-monitor.assign <- monitor.fixed
+# Attach raw.row to corrected monitoring info
+#   some events that need to be fixed have multiple rows in subplot data
+monitor.assign <- data.frame(MonitorID = wrong.raw.row$MonitorID)
+monitor.assign <- left_join(monitor.assign, monitor.fixed)
 monitor.assign$raw.row <- wrong.raw.row$raw.row
+
 
 #   Separate monitor info that doesn't need to be fixed
 p2x2.monitor <- p2x2.monitor |> 
@@ -69,12 +73,13 @@ nrow(p2x2.monitor) == nrow(p2x2.raw)
 p2x2.wide <- p2x2.wide[ , -c(1:6)]
 p2x2.wide <- left_join(p2x2.monitor, p2x2.wide)
 
+p2x2.wide.full <- p2x2.wide
 
 
 # Create cover table ------------------------------------------------------
 
 # Create cover table
-cover <- p2x2.wide |> 
+cover <- p2x2.wide.full |> 
   select(-starts_with("Additional")) 
 
 
@@ -82,9 +87,12 @@ cover <- p2x2.wide |>
 #   See possible values of Seeded_Cover
 unique(cover$Seeded_Cover)
 
-#   Replace TR and 0/TR with 0.5
+#   Replace TR and 0/TR with 0.5 and remove asterisks
 cover$Seeded_Cover[cover$Seeded_Cover == "TR"] <- 0.5
 cover$Seeded_Cover[cover$Seeded_Cover == "0/TR"] <- 0.5
+cover$Seeded_Cover[cover$Seeded_Cover == "TR*"] <- 0.5
+cover$Seeded_Cover[cover$Seeded_Cover == "1*"] <- 1
+cover$Seeded_Cover[cover$Seeded_Cover == "2*"] <- 2
 
 #   Replace "NA" with logical NA
 cover$Seeded_Cover[cover$Seeded_Cover == "NA"] <- NA
@@ -117,6 +125,12 @@ cover.neg.notseed <- cover |>
 # Create present_species table --------------------------------------------
 
 # Inspect Additional_species_in_plot cols
+unique(p2x2.wide$Additional_Species_In_Plot...28)
+unique(p2x2.wide$Additional_Species_In_Plot...27)
+unique(p2x2.wide$Additional_Species_In_Plot...26)
+unique(p2x2.wide$Additional_Species_In_Plot...25)
+unique(p2x2.wide$Additional_Species_In_Plot...24)
+unique(p2x2.wide$Additional_Species_In_Plot...23)
 unique(p2x2.wide$Additional_Species_In_Plot...22)
 unique(p2x2.wide$Additional_Species_In_Plot...21)
 unique(p2x2.wide$Additional_Species_In_Plot...20)
@@ -124,7 +138,14 @@ unique(p2x2.wide$Additional_Species_In_Plot...19) # observations in 19 and small
 
 # Drop empty Additional_species_in_plot cols
 p2x2.wide <- p2x2.wide %>% 
-  select(-Additional_Species_In_Plot...22, -Additional_Species_In_Plot...21,
+  select(-Additional_Species_In_Plot...28,
+         -Additional_Species_In_Plot...27,
+         -Additional_Species_In_Plot...26,
+         -Additional_Species_In_Plot...25,
+         -Additional_Species_In_Plot...24,
+         -Additional_Species_In_Plot...23,
+         -Additional_Species_In_Plot...22, 
+         -Additional_Species_In_Plot...21,
          -Additional_Species_In_Plot...20)
 
 # Remove cover columns
@@ -232,7 +253,7 @@ ps.ss.na <- present_species |>
   arrange(Region)
 
 
-# Those not in seed mix were not seeded regardless of plot
+# Those not in seed mix were not seeded regardless of site or plot
 ps.ss.not.in.mix <- ps.ss.na |> 
   filter(!Code %in% mix$CodeOriginal) |> 
   arrange(Code) |> 
@@ -315,7 +336,7 @@ no.add.recorded <- monitor.info |>
                                "2019-08-06", "2019-08-07")) |> 
   filter(Region == "Utah")
 count(no.add.recorded, Plot) |> 
-  print(n = 40) # Plot 34, Plot 39 have extra
+  print(n = 40)
 
 no.add.recorded |> 
   count(Date_Monitored) |> 

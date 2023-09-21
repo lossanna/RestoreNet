@@ -22,8 +22,10 @@ Colorado Plateau,BabbittPJ,Cool,PASM (maybe),PASM,Pascopyrum smithii,NA
 Colorado Plateau,BabbittPJ,None,PASM,PASM,Pascopyrum smithii,NA
 Colorado Plateau,BabbittPJ,Cool,PSSP6 (maybe),PSSP6,Pseudoroegneria spicata,NA
 Colorado Plateau,BabbittPJ,Cool,SPGR2,SPGR2,Sphaeralcea grossulariifolia,NA
-Colorado Plateau,BarTBar,Med-Warm,ATCA2,ATCA2,Atriplex canescens,NA
+Colorado Plateau,BarTBar,None,ATCA,ATCA2,Atriplex canescens,NA
+Colorado Plateau,BarTBar,Cool-Med,ATCA,ATCA2,Atriplex canescens,NA
 Colorado Plateau,BarTBar,None,LILE3,LILE3,Linum lewisii,NA
+Colorado Plateau,BarTBar,Med-Warm,SPCR,SPCR,Sporobolus cryptandrus,NA
 Colorado Plateau,FlyingM,Med-Warm,ACMI2,ACMI2,Achillea millefolium,NA
 Colorado Plateau,FlyingM,None,ATCA2,ATCA2,Atriplex canescens,NA
 Colorado Plateau,FlyingM,Med-Warm,ATCA2,ATCA2,Atriplex canescens,NA
@@ -32,11 +34,11 @@ Colorado Plateau,FlyingM,None,LILE3,LILE3,Linum lewisii,NA
 Colorado Plateau,FlyingM,Med-Warm,MATA2,MATA2,Machaeranthera tanacetifolia,NA
 Colorado Plateau,FlyingM,Med-Warm,PASM,PASM,Pascopyrum smithii,NA
 Colorado Plateau,FlyingM,Med-Warm,PEPA8,PEPA8,Penstemon palmeri,NA
+Colorado Plateau,FlyingM,Cool-Med,PLJA,PLJA,Pleuraphis jamesii,NA
 Colorado Plateau,FlyingM,Cool-Med,POSE,POSE,Poa secunda,NA
 Colorado Plateau,MOWE,Med-Warm,BAMU,BAMU,Baileya multiradiata,NA
 Colorado Plateau,MOWE,None,BAMU,BAMU,Baileya multiradiata,NA
 Colorado Plateau,MOWE,Med-Warm,SECO10,SECO10,Senna covesii,NA
-Colorado Plateau,MOWE,Warm,SPCR,SPCR,Sporobolus cryptandrus,NA
 Colorado Plateau,PEFO,Warm,ASTU,ASTU,Asclepias tuberosa,NA
 Colorado Plateau,PEFO,Med-Warm,BAMU,BAMU,Baileya multiradiata,NA
 Colorado Plateau,PEFO,Med-Warm,PLJA,PLJA,Pleuraphis jamesii,NA
@@ -50,7 +52,6 @@ Colorado Plateau,Spiderweb,Med-Warm,ACHY,ACHY,Achnatherum hymenoides,NA
 Colorado Plateau,Spiderweb,Med-Warm,ATCA2,ATCA2,Atriplex canescens,NA
 Colorado Plateau,Spiderweb,Warm,LILE3,LILE3,Linum lewisii,NA
 Colorado Plateau,Spiderweb,Med-Warm,LILE3,LILE3,Linum lewisii,NA
-Colorado Plateau,Spiderweb,Warm,PLJA,PLJA,Pleuraphis jamesii,NA
 Colorado Plateau,TLE,Cool,ATCA2,ATCA2,Atriplex canescens,NA
 Colorado Plateau,TLE,None,ATCA2,ATCA2,Atriplex canescens,NA
 Colorado Plateau,TLE,Warm,HECO26,HECO26,Hesperostipa comata,NA
@@ -65,32 +66,21 @@ Mojave,29_Palms,Cool,MILA6,MILA6,Mirabilis laevis,NA
 Mojave,29_Palms,None,PLOV,PLOV,Plantago ovata,NA
 Mojave,AVRCD,Warm,AMDU2,AMDU2,Ambrosia dumosa,NA
 Mojave,AVRCD,Cool,MILA6,MILA6,Mirabilis laevis,NA
-Sonoran Central,Pleasant,Warm,AMDE4,AMDE4,Ambrosia deltoidea,NA
-Sonoran Central,Pleasant,Cool,AMDE4,AMDE4,Ambrosia deltoidea,NA
-Sonoran Central,Pleasant,Warm,ENFA,ENFA,Encelia farinosa,NA
 Sonoran Central,Pleasant,None,LUSP2,LUSP2,Lupinus sparsiflorus,NA
-Sonoran Central,Pleasant,Cool,SECO10,SECO10,Senna covesii,NA
-Sonoran Central,Pleasant,Cool,SPAMA,SPAM2,Sphaeralcea ambigua,NA
-Sonoran Central,Preserve,Cool,AMDE4,AMDE4,Ambrosia deltoidea,NA
 Sonoran Central,Preserve,None,BORO2,BORO2,Bouteloua rothrockii,NA
-Sonoran Central,Preserve,Cool,SPAMA,SPAM2,Sphaeralcea ambigua,NA
-Sonoran Central,Preserve,Cool,SPCR,SPCR,Sporobolus cryptandrus,NA
-Sonoran Central,Roosevelt,Cool,AMDE4,AMDE4,Ambrosia deltoidea,NA
 Sonoran Central,Roosevelt,Warm,BAMU,BAMU,Baileya multiradiata,NA
-Sonoran Central,Roosevelt,Cool,BORO2,BORO2,Bouteloua rothrockii,NA
-Sonoran Central,Roosevelt,Warm,ENFA,ENFA,Encelia farinosa,NA
+Sonoran Central,Roosevelt,Cool,DICA8,DICA8,Digitaria californica,NA
 Sonoran Central,Roosevelt,None,SACO6,SACO6,Salvia columbariae,NA
 Sonoran Central,Roosevelt,Cool,SECO10,SECO10,Senna covesii,NA
-Sonoran Central,Roosevelt,Warm,SPAMA,SPAM2,Sphaeralcea ambigua,NA
 Sonoran Central,SCC,Cool,BORO2,BORO2,Bouteloua rothrockii,NA
-Sonoran Central,SCC,Warm,ENFA,ENFA,Encelia farinosa,NA
-Sonoran Central,SCC,Warm,PLOV,PLOV,Plantago ovata,NA
 Sonoran Central,SCC,Cool,SPAMA,SPAM2,Sphaeralcea ambigua,NA
 Sonoran Central,SCC,Cool,SPCR,SPCR,Sporobolus cryptandrus,NA
 Sonoran SE,Patagonia,Warm,Possible ACHY near southwest corner (2 certainty) and about 10 ARPU small to medium in size with 2 of them next to the subplot but not quite in,ACHY,Achnatherum hymenoides,NA
 Sonoran SE,Patagonia,Warm,"ARPU many individuals, BAMU 1 individual, PLMU (2) 1 individual, ACHY (2) 1 individual",ACHY,Achnatherum hymenoides,NA
 Sonoran SE,Patagonia,Warm,"Medium SECO in/near NW pit with a couple tiny seedlings scattered throughout, medium BAMU in the middle, a few small to medium/large ARPUs sprinkled throughout, possibly a small ACHY in SE section (wirey leaf blades that clasp the stem, hairs at the node, only one seed head but similar to examples)",ACHY,Achnatherum hymenoides,NA
 Sonoran SE,Patagonia,Warm,"Multiple ARPUs small to large sized throughout, possible ACHY in the SE pit, and a couple teeny tiny SECOs in/around some of the pits",ACHY,Achnatherum hymenoides,NA
+Sonoran SE,Patagonia,Warm,"No new growth or green vegetation on SECO in the northwest pit but still there, there's a BAMU in the southwest pit as well, possibly ACHY in the south half of the plot, multiple medium to large sized ARPUs mostly in and/or near pits but not all",ACHY,Achnatherum hymenoides,NA
+Sonoran SE,Patagonia,Warm,"Multiple medium to large ARPUs and possibly and ACHY seedling in the southeast pit (wirey, narrow, clasping blades)",ACHY,Achnatherum hymenoides,NA
 Sonoran SE,Patagonia,Warm,Couple big ARPUs and a few small ones throughout,ARPU9,Aristida purpurea,NA
 Sonoran SE,Patagonia,Warm,Large BOCU in the southeast with a few small ones throughout and about 5 ARPUs small to large in size that're mostly near the conmods,ARPU9,Aristida purpurea,NA
 Sonoran SE,Patagonia,Warm,A few ARPUs and young BOCUs mostly near/in the south half except for a smaller ARPU in the northwest and a BAMU just north of subplot,ARPU9,Aristida purpurea,NA
@@ -123,6 +113,19 @@ Sonoran SE,Patagonia,Warm,"Multiple ARPUs small to large sized throughout, possi
 Sonoran SE,Patagonia,Warm,Small to medium ARPUs throughout and a few tiny to small SECOs mostly near the conmods,ARPU9,Aristida purpurea,NA
 Sonoran SE,Patagonia,Warm,"Possible couple small ASTUs along with multiple medium to extra large ARPUs, possibly a few BAMU seedlings as well as a couple tiny to small SECOs throughout",ARPU9,Aristida purpurea,NA
 Sonoran SE,Patagonia,Warm,Multiple medium to extra large ARPUs and large BAMU along the N edge of the plot along with possible tiny seedlings in same pits,ARPU9,Aristida purpurea,NA
+Sonoran SE,Patagonia,Warm,Multiple medium to large ARPUs and BOCUs along the northeast edge,ARPU9,Aristida purpurea,NA
+Sonoran SE,Patagonia,Warm,Multiple medium to extra large BOCUs and ARPUs throughout but mostly near and aroudn conmods,ARPU9,Aristida purpurea,NA
+Sonoran SE,Patagonia,Warm,Multipke medium to large ARPUs and BOCUs as well as a BAMU in the northeast corner but it doesnt have any new/living growth yet,ARPU9,Aristida purpurea,NA
+Sonoran SE,Patagonia,Warm,Multiple medium to large ARPUs and BOCUs (mostly ARPUs) as well as a possible PLMU in the center of the plot,ARPU9,Aristida purpurea,NA
+Sonoran SE,Patagonia,Warm,Few small to medium ARPUs spaced throughout,ARPU9,Aristida purpurea,NA
+Sonoran SE,Patagonia,Warm,Multiple medium to large ARPUs throughout and a couple small BOCUs near and among the conmods,ARPU9,Aristida purpurea,NA
+Sonoran SE,Patagonia,Warm,Multiple small to large sized ARPUs spread throughout and a medium sized BOCU in the northwest corner,ARPU9,Aristida purpurea,NA
+Sonoran SE,Patagonia,Warm,"No new growth or green vegetation on SECO in the northwest pit but still there, there's a BAMU in the southwest pit as well, possibly ACHY in the south half of the plot, multiple medium to large sized ARPUs mostly in and/or near pits but not all",ARPU9,Aristida purpurea,NA
+Sonoran SE,Patagonia,Warm,Multiple medium to extra large ARPUs mostly in/near conmods,ARPU9,Aristida purpurea,NA
+Sonoran SE,Patagonia,Warm,Multiple medium to extra large ARPUS,ARPU9,Aristida purpurea,NA
+Sonoran SE,Patagonia,Warm,Small to large ARPUs throughout especially in the south half of the plot,ARPU9,Aristida purpurea,NA
+Sonoran SE,Patagonia,Warm,"Multiple medium to large ARPUs and possibly and ACHY seedling in the southeast pit (wirey, narrow, clasping blades)",ARPU9,Aristida purpurea,NA
+Sonoran SE,Patagonia,Warm,Multiple medium to extra large ARPUs throught and SECo in the northwest corner under an ERCU,ARPU9,Aristida purpurea,NA
 Sonoran SE,Patagonia,Warm,"Possible couple small ASTUs along with multiple medium to extra large ARPUs, possibly a few BAMU seedlings as well as a couple tiny to small SECOs throughout",ASTU,Asclepias tuberosa,NA
 Sonoran SE,Patagonia,Warm,A few ARPUs and young BOCUs mostly near/in the south half except for a smaller ARPU in the northwest and a BAMU just north of subplot,BAMU,Baileya multiradiata,NA
 Sonoran SE,Patagonia,Warm,ARPU about 5 individuals and an individual BAMU resprouting at base,BAMU,Baileya multiradiata,NA
@@ -132,6 +135,9 @@ Sonoran SE,Patagonia,Warm,Multiple small to medium ARPUs and BOCUs along with a 
 Sonoran SE,Patagonia,Warm,"Medium SECO in/near NW pit with a couple tiny seedlings scattered throughout, medium BAMU in the middle, a few small to medium/large ARPUs sprinkled throughout, possibly a small ACHY in SE section (wirey leaf blades that clasp the stem, hairs at the node, only one seed head but similar to examples)",BAMU,Baileya multiradiata,NA
 Sonoran SE,Patagonia,Warm,Small to medium ARPUs throughout and small/medium BAMU near the NE edge,BAMU,Baileya multiradiata,NA
 Sonoran SE,Patagonia,Warm,"Possible couple small ASTUs along with multiple medium to extra large ARPUs, possibly a few BAMU seedlings as well as a couple tiny to small SECOs throughout",BAMU,Baileya multiradiata,NA
+Sonoran SE,Patagonia,Warm,Multipke medium to large ARPUs and BOCUs as well as a BAMU in the northeast corner but it doesnt have any new/living growth yet,BAMU,Baileya multiradiata,NA
+Sonoran SE,Patagonia,Warm,"No new growth or green vegetation on SECO in the northwest pit but still there, there's a BAMU in the southwest pit as well, possibly ACHY in the south half of the plot, multiple medium to large sized ARPUs mostly in and/or near pits but not all",BAMU,Baileya multiradiata,NA
+Sonoran SE,Patagonia,Warm,No new growth on the BAMU in the northeast corner yet,BAMU,Baileya multiradiata,NA
 Sonoran SE,Patagonia,Warm,Large BOCU in the southeast with a few small ones throughout and about 5 ARPUs small to large in size that're mostly near the conmods,BOCU,Bouteloua curtipendula,NA
 Sonoran SE,Patagonia,Warm,A few ARPUs and young BOCUs mostly near/in the south half except for a smaller ARPU in the northwest and a BAMU just north of subplot,BOCU,Bouteloua curtipendula,NA
 Sonoran SE,Patagonia,Warm,3 individual ARPUs  and a BOCU,BOCU,Bouteloua curtipendula,NA
@@ -142,6 +148,12 @@ Sonoran SE,Patagonia,Warm,Small to large ARPUs and BOCUs along with a couple sma
 Sonoran SE,Patagonia,Warm,Medium to large ARPUs throughout and a couple small and medium BOCUs near the N conmods and a few teeny tiny SECOs near conmods as well,BOCU,Bouteloua curtipendula,NA
 Sonoran SE,Patagonia,Warm,Multiple small to large ARPUs throughout along with a large BAMU in center and a medium sized BOCU in the NW section,BOCU,Bouteloua curtipendula,NA
 Sonoran SE,Patagonia,Warm,Multiple medium to extra large ARPUs and large BAMU along the N edge of the plot along with possible tiny seedlings in same pits,BOCU,Bouteloua curtipendula,NA
+Sonoran SE,Patagonia,Warm,Multiple medium to large ARPUs and BOCUs along the northeast edge,BOCU,Bouteloua curtipendula,NA
+Sonoran SE,Patagonia,Warm,Multiple medium to extra large BOCUs and ARPUs throughout but mostly near and aroudn conmods,BOCU,Bouteloua curtipendula,NA
+Sonoran SE,Patagonia,Warm,Multipke medium to large ARPUs and BOCUs as well as a BAMU in the northeast corner but it doesnt have any new/living growth yet,BOCU,Bouteloua curtipendula,NA
+Sonoran SE,Patagonia,Warm,Multiple medium to large ARPUs and BOCUs (mostly ARPUs) as well as a possible PLMU in the center of the plot,BOCU,Bouteloua curtipendula,NA
+Sonoran SE,Patagonia,Warm,Multiple medium to large ARPUs throughout and a couple small BOCUs near and among the conmods,BOCU,Bouteloua curtipendula,NA
+Sonoran SE,Patagonia,Warm,Multiple small to large sized ARPUs spread throughout and a medium sized BOCU in the northwest corner,BOCU,Bouteloua curtipendula,NA
 Sonoran SE,Patagonia,Medium,BOER in center/near southwest conmod possibly 5-8,BOER4,Bouteloua eriopoda,NA
 Sonoran SE,Patagonia,Medium,BOER (2 certainty) on edge of the southwest pit,BOER4,Bouteloua eriopoda,NA
 Sonoran SE,Patagonia,Medium,Bouteloua on W edge but almost positive it's BOGR (blue gramma) not BOER (black gramma),BOGR2,Bouteloua gracilis,NA
@@ -153,11 +165,19 @@ Sonoran SE,Patagonia,Medium,More Blue grama Don't confuse with Black,BOGR2,Boute
 Sonoran SE,Patagonia,Medium,KRLA2,KRLA2,Krascheninnikovia lanata,NA
 Sonoran SE,Patagonia,Medium,MATA seedling in southwest section,MATA2,Machaeranthera tanacetifolia,NA
 Sonoran SE,Patagonia,Medium,MATA is the SW corner,MATA2,Machaeranthera tanacetifolia,NA
+Sonoran SE,Patagonia,Medium,There're a couple potential MATA seedlings near/under a couple of the larger grass bunches however if not MATA than 0% seeded species cover,MATA2,Machaeranthera tanacetifolia,NA
+Sonoran SE,Patagonia,Medium,Possible MATA seedlings in the northwest pit and possibly a SPCR seedling but if neither than seeded species cover would be 0%,MATA2,Machaeranthera tanacetifolia,NA
+Sonoran SE,Patagonia,Medium,Possibly a couple of MATA seedlings and possibly a SPCR seedling in the subplot,MATA2,Machaeranthera tanacetifolia,NA
+Sonoran SE,Patagonia,Medium,A few possible small SPCRs and a couple MATA seedlings all in the pits,MATA2,Machaeranthera tanacetifolia,NA
+Sonoran SE,Patagonia,Medium,MATA seedlings in the southeast corner of the plot,MATA2,Machaeranthera tanacetifolia,NA
+Sonoran SE,Patagonia,Medium,SW conmod is overgrown with Blue grama but NO black grama but thee's a possible young PEPA by the NW conmod,PEPA8,Penstemon palmeri,NA
 Sonoran SE,Patagonia,Warm,"ARPU many individuals, BAMU 1 individual, PLMU (2) 1 individual, ACHY (2) 1 individual",PLMU3,Pleuraphis mutica,NA
 Sonoran SE,Patagonia,Warm,Multiple small to medium ARPUs and BOCUs along with a possible PLMU (rough feeling leaves and similar seeds) with a couple small/medium BAMU that are in or near the N half of the pits and a couple small SECO seedlings sprinkled throughout,PLMU3,Pleuraphis mutica,NA
 Sonoran SE,Patagonia,Warm,Small to large ARPUs and BOCUs along with a couple small SECOs as well as a possible PLMU in the middle (rough feeling and membranous ligule but no seed heads),PLMU3,Pleuraphis mutica,NA
+Sonoran SE,Patagonia,Warm,Multiple medium to large ARPUs and BOCUs (mostly ARPUs) as well as a possible PLMU in the center of the plot,PLMU3,Pleuraphis mutica,NA
 Sonoran SE,Patagonia,Medium,Might possibly be a small POSE,POSE,Poa secunda,NA
 Sonoran SE,Patagonia,Medium,"Possibly small POSE and SPCR in the S half of the plot, BLUE grama not BLACK",POSE,Poa secunda,NA
+Sonoran SE,Patagonia,Medium,"Possible small SPCR near middle of the east edge (no tiller, culm, or seed heads but fuzziness/hairs at the ligule) and possible POSE next to the subplot (all leaf blades and midvein on bottome) if not than 0% seeded species cover",POSE,Poa secunda,NA
 Sonoran SE,Patagonia,Warm,Southwest pit has 1 BAMU and 4 small ARPUs. Northwest pit has 2 medium and 2 small ARPUs and 1 dreid up SECO. There are a few more small to medium sized ARPUs throughout,SECO10,Senna covesii,NA
 Sonoran SE,Patagonia,Warm,Multiple medium to large ARPU and small/medium BOCU near the NE corner and a couple tiny SECOs,SECO10,Senna covesii,NA
 Sonoran SE,Patagonia,Warm,Multiple small to medium ARPUs and BOCUs along with a possible PLMU (rough feeling leaves and similar seeds) with a couple small/medium BAMU that are in or near the N half of the pits and a couple small SECO seedlings sprinkled throughout,SECO10,Senna covesii,NA
@@ -171,12 +191,21 @@ Sonoran SE,Patagonia,Warm,Small to large ARPUs throughout along with a tiny baby
 Sonoran SE,Patagonia,Warm,"Multiple ARPUs small to large sized throughout, possible ACHY in the SE pit, and a couple teeny tiny SECOs in/around some of the pits",SECO10,Senna covesii,NA
 Sonoran SE,Patagonia,Warm,Small to medium ARPUs throughout and a few tiny to small SECOs mostly near the conmods,SECO10,Senna covesii,NA
 Sonoran SE,Patagonia,Warm,"Possible couple small ASTUs along with multiple medium to extra large ARPUs, possibly a few BAMU seedlings as well as a couple tiny to small SECOs throughout",SECO10,Senna covesii,NA
+Sonoran SE,Patagonia,Warm,"No new growth or green vegetation on SECO in the northwest pit but still there, there's a BAMU in the southwest pit as well, possibly ACHY in the south half of the plot, multiple medium to large sized ARPUs mostly in and/or near pits but not all",SECO10,Senna covesii,NA
+Sonoran SE,Patagonia,Warm,Multiple medium to extra large ARPUs throught and SECo in the northwest corner under an ERCU,SECO10,Senna covesii,NA
 Sonoran SE,Patagonia,Medium,"Possibly small POSE and SPCR in the S half of the plot, BLUE grama not BLACK",SPCR,Sporobolus cryptandrus,NA
 Sonoran SE,Patagonia,Medium,"Possible SPCR in subplot, Blue not Black grama",SPCR,Sporobolus cryptandrus,NA
 Sonoran SE,Patagonia,Medium,A few possible small SPCR in/around some of the pits,SPCR,Sporobolus cryptandrus,NA
 Sonoran SE,Patagonia,Medium,Possibly a small SPCR in the S half,SPCR,Sporobolus cryptandrus,NA
+Sonoran SE,Patagonia,Medium,"Possible small SPCR near middle of the east edge (no tiller, culm, or seed heads but fuzziness/hairs at the ligule) and possible POSE next to the subplot (all leaf blades and midvein on bottome) if not than 0% seeded species cover",SPCR,Sporobolus cryptandrus,NA
+Sonoran SE,Patagonia,Medium,Possibly a couple of small SPCRs in/near the northeast pit but if not than 0%,SPCR,Sporobolus cryptandrus,NA
+Sonoran SE,Patagonia,Medium,Possible MATA seedlings in the northwest pit and possibly a SPCR seedling but if neither than seeded species cover would be 0%,SPCR,Sporobolus cryptandrus,NA
+Sonoran SE,Patagonia,Medium,Possibly a couple of MATA seedlings and possibly a SPCR seedling in the subplot,SPCR,Sporobolus cryptandrus,NA
+Sonoran SE,Patagonia,Medium,A few possible small SPCRs and a couple MATA seedlings all in the pits,SPCR,Sporobolus cryptandrus,NA
+Sonoran SE,Patagonia,Medium,Possibly a SPCR,SPCR,Sporobolus cryptandrus,NA
 Sonoran SE,SRER,Warm,Some type of Aristida possibly and ARPU and maybe 1 small maybe BOCU near subplot that's been grazed down,ARPU9,Aristida purpurea,NA
 Sonoran SE,SRER,Warm,A couple BOCUs and a couple potential BOCU nubs and a possible ARPU,ARPU9,Aristida purpurea,NA
+Sonoran SE,SRER,Warm,A few possible ARPUs (2 certainty) or other ARsp. (ARTE),ARPU9,Aristida purpurea,NA
 Sonoran SE,SRER,Warm,1 full BOCU (3) in the northwest corner. A couple potentially smaller grazed down ones throughout as well as a couple potential ARPUs (2),ARPU9,Aristida purpurea,NA
 Sonoran SE,SRER,Warm,Multiple BOCU's medium-large and a possible medium sized ARPU,ARPU9,Aristida purpurea,NA
 Sonoran SE,SRER,Warm,Couple medium sized ARPUs (not completely sure 2/3 on certainty of ID) and a large BOCU right next to the NW plot marker rooted just outside of the plot but some overhangs into the plot,ARPU9,Aristida purpurea,NA
@@ -184,6 +213,10 @@ Sonoran SE,SRER,Warm,"Possible ARPUs, SECO seedling in subplot",ARPU9,Aristida p
 Sonoran SE,SRER,Warm,Possible young BOCU and ARPU but no seed heads yet therfor unsure ifit is than seeded species cover is 1% but if not it's trace amount because of a few SECOs all found in or near pits,ARPU9,Aristida purpurea,NA
 Sonoran SE,SRER,Warm,Medium sized BOCU and ARPU,ARPU9,Aristida purpurea,NA
 Sonoran SE,SRER,Warm,Multiple med to extra large BOCUs and a few small to large ARPUs,ARPU9,Aristida purpurea,NA
+Sonoran SE,SRER,Warm,A couple BOCUs and a possible ARPU,ARPU9,Aristida purpurea,NA
+Sonoran SE,SRER,Warm,BOCU partially in/on the west edge of the plot and a possible ARPU,ARPU9,Aristida purpurea,NA
+Sonoran SE,SRER,Warm,Aristida species between the northeast and southeast pits possibly an ARPU if not than seeded species cover would be 0%,ARPU9,Aristida purpurea,NA
+Sonoran SE,SRER,Warm,Multiple BOCUS and a couple possible ARPUs throughout,ARPU9,Aristida purpurea,NA
 Sonoran SE,SRER,Warm,Possibly a young ASTU if not seeded species cover is 0%,ASTU,Asclepias tuberosa,NA
 Sonoran SE,SRER,Warm,Quite a few small tp extra large BOCUs throughout along with a possible ASTU,ASTU,Asclepias tuberosa,NA
 Sonoran SE,SRER,Warm,BAMU,BAMU,Baileya multiradiata,NA
@@ -207,19 +240,38 @@ Sonoran SE,SRER,Warm,Medium sized BOCU and ARPU,BOCU,Bouteloua curtipendula,NA
 Sonoran SE,SRER,Warm,Medium BOCU mostly rooted outside of the SW side of the plot butr partially in with some overhang,BOCU,Bouteloua curtipendula,NA
 Sonoran SE,SRER,Warm,Multiple med to extra large BOCUs and a few small to large ARPUs,BOCU,Bouteloua curtipendula,NA
 Sonoran SE,SRER,Warm,Quite a few small tp extra large BOCUs throughout along with a possible ASTU,BOCU,Bouteloua curtipendula,NA
+Sonoran SE,SRER,Warm,"BOCUs with some new growth, green vegetation",BOCU,Bouteloua curtipendula,NA
+Sonoran SE,SRER,Warm,A couple medium sized BOCU potentails. One is for certain a BOCU if all are not and another Bouteloua species the seeded species cover would be TR,BOCU,Bouteloua curtipendula,NA
+Sonoran SE,SRER,Warm,BOCUs,BOCU,Bouteloua curtipendula,NA
+Sonoran SE,SRER,Warm,"Some possible BOCUs but no seed heads, tillers, culms to verify ID yet but if all are BOCUs than it's 2% seeded species cover however if none are than there are a few SECOs throught mostly found in/near the pits",BOCU,Bouteloua curtipendula,NA
+Sonoran SE,SRER,Warm,Multiple BOCUs throughout,BOCU,Bouteloua curtipendula,NA
+Sonoran SE,SRER,Warm,There're multiple BOCUs and a couple possible SECO seedlings,BOCU,Bouteloua curtipendula,NA
+Sonoran SE,SRER,Warm,A couple BOCUs and a possible ARPU,BOCU,Bouteloua curtipendula,NA
+Sonoran SE,SRER,Warm,BOCU partially in/on the west edge of the plot and a possible ARPU,BOCU,Bouteloua curtipendula,NA
+Sonoran SE,SRER,Warm,Multiple BOCUS and a couple possible ARPUs throughout,BOCU,Bouteloua curtipendula,NA
 Sonoran SE,SRER,Medium,1 Possible PLJA (1 out of 3 on certainty) on south border as well as some BOCUs (might be BOER but probably BOCU or other BOsp.) Mostly grazed,BOCU/BOER4.SRER,"BOCUs, or might be BOER4, SRER",NA
 Sonoran SE,SRER,Medium,BOCUs up to this point could also possibly be slender grama BORE or purple BORA,BOCU/BORE/BORA.SRER,"Bouteloua curtipendula/repens/radicosa (spp.), SRER",NA
 Sonoran SE,SRER,Warm,BOsp. a lot of possibly BOCU but could also be BORE or BORA,BOCU/BORE/BORA.SRER,"Bouteloua curtipendula/repens/radicosa (spp.), SRER",NA
 Sonoran SE,SRER,Medium,Extra large BOER in S half and medium sized one next to NE plot  corner that partially hangs in and at least 2 small ones within the plot as well,BOER4,Bouteloua eriopoda,NA
 Sonoran SE,SRER,Medium,HEMU,HEMU3,Heliomeris multiflora,NA
+Sonoran SE,SRER,Medium,There're a couple possible tiny MATA seedlings in some of the pits if not MATA than 0% (too small to ID for sure),MATA2,Machaeranthera tanacetifolia,NA
+Sonoran SE,SRER,Medium,Possible MATA seedling species in suplot and in the NW pit if not than 0% seeded species cover,MATA2,Machaeranthera tanacetifolia,NA
+Sonoran SE,SRER,Medium,PEPA (possibly),PEPA8,Penstemon palmeri,NA
+Sonoran SE,SRER,Medium,Possible SPCR along the northeast edge as well as a possible PEPA seedling next to the subplot if neither than 0% seeded cover,PEPA8,Penstemon palmeri,NA
 Sonoran SE,SRER,Medium,1 Possible PLJA (1 out of 3 on certainty) on south border as well as some BOCUs (might be BOER but probably BOCU or other BOsp.) Mostly grazed,PLJAspp.SRER,"Possibly Pleuraphis jamesii, SRER",NA
 Sonoran SE,SRER,Warm,"A couple small SECOs mostly near conmods and possiblya young POSE near SE conmod, Also decent size patch (~1% cover) of SECO just near/outside N edge",POSE,Poa secunda,NA
 Sonoran SE,SRER,Medium,Small POSE near SW pit,POSE,Poa secunda,NA
+Sonoran SE,SRER,Medium,"There's a possible POSE (boat/canoe leaf blades, greener than other grasses currently around, it's very basal and tufted too with a membraneous ligule however if it's not than 0% seeded species cover",POSE,Poa secunda,NA
 Sonoran SE,SRER,Warm,"Possible ARPUs, SECO seedling in subplot",SECO10,Senna covesii,NA
 Sonoran SE,SRER,Warm,Possible young BOCU and ARPU but no seed heads yet therfor unsure ifit is than seeded species cover is 1% but if not it's trace amount because of a few SECOs all found in or near pits,SECO10,Senna covesii,NA
 Sonoran SE,SRER,Warm,"A couple small SECOs mostly near conmods and possiblya young POSE near SE conmod, Also decent size patch (~1% cover) of SECO just near/outside N edge",SECO10,Senna covesii,NA
 Sonoran SE,SRER,Warm,Extra large to medium large BOCUs throughout and at least 2 tiny SECO near/in SE pit and NE/subplot pit,SECO10,Senna covesii,NA
+Sonoran SE,SRER,Warm,"Some possible BOCUs but no seed heads, tillers, culms to verify ID yet but if all are BOCUs than it's 2% seeded species cover however if none are than there are a few SECOs throught mostly found in/near the pits",SECO10,Senna covesii,NA
+Sonoran SE,SRER,Warm,There're multiple BOCUs and a couple possible SECO seedlings,SECO10,Senna covesii,NA
 Sonoran SE,SRER,Medium,SPCR,SPCR,Sporobolus cryptandrus,NA
+Sonoran SE,SRER,Medium,Possibly two SPCRs (or possibly POSEs?) near the southwest and northwest (No sead heads yet but membraneous ligule with hair and blades at an almost 90 degrees fro the stems however if neither than the seeded species cover would be 0%,SPCR,Sporobolus cryptandrus,NA
+Sonoran SE,SRER,Medium,There's a possible SPCR along the north edge and southwest near the center however if neither are SPCRs than seeded species cover would be 0%,SPCR,Sporobolus cryptandrus,NA
+Sonoran SE,SRER,Medium,Possible SPCR along the northeast edge as well as a possible PEPA seedling next to the subplot if neither than 0% seeded cover,SPCR,Sporobolus cryptandrus,NA
 Utah,CRC,Cool-Med,Possible S-PASM seedlings,PASM,Pascopyrum smithii,NA
 Utah,Salt_Desert,Cool-Med,PLJA,PLJA,Pleuraphis jamesii,NA
 Utah,Salt_Desert,Med-Warm,PLJA,PLJA,Pleuraphis jamesii,NA
