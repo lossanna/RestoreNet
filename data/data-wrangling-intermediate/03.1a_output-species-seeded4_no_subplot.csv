@@ -116,8 +116,8 @@ AguaFria,Colorado Plateau,None,LEPA6,LEPA6,Leptochloa panicea,Native,Unknown,Gra
 AguaFria,Colorado Plateau,Warm,LEPA6,LEPA6,Leptochloa panicea,Native,Unknown,Grass,No
 AguaFria,Colorado Plateau,Warm,LOSA,LOSA,Lotus salsuginosus,Native,Annual,Forb,No
 AguaFria,Colorado Plateau,None,LOSA,LOSA,Lotus salsuginosus,Native,Annual,Forb,No
-AguaFria,Colorado Plateau,Warm,LUSP,LUSP,Lupinus sparsiflorus (?),Native,Annual,Forb,No
 AguaFria,Colorado Plateau,Warm,LUSPP,LUSPP.AguaFria,"Lupinus spp., AguaFria",Native/Unknown,Unknown,Forb,No
+AguaFria,Colorado Plateau,Warm,LUSP,LUSP.AguaFria,"Lupinus spp., AguaFria",Native/Unknown,Unknown,Forb,No
 AguaFria,Colorado Plateau,Med-Warm,MEOF,MEOF,Melilotus officinalis,Introduced,Unknown,Forb,No
 AguaFria,Colorado Plateau,Warm,PLPA2,PLPA2,Plantago patagonica,Native,Annual,Forb,No
 AguaFria,Colorado Plateau,Med-Warm,PLPA2,PLPA2,Plantago patagonica,Native,Annual,Forb,No
@@ -196,6 +196,7 @@ BarTBar,Colorado Plateau,Cool-Med,ARSPP,ARSPP.BarTBar,"Artemisia spp., BarTBar",
 BarTBar,Colorado Plateau,None,ARSPP,ARSPP.BarTBar,"Artemisia spp., BarTBar",Native/Unknown,Perennial,Shrub,No
 BarTBar,Colorado Plateau,Cool-Med,ATCA2,ATCA2,Atriplex canescens,Native,Perennial,Shrub,No
 BarTBar,Colorado Plateau,None,ATCA2,ATCA2,Atriplex canescens,Native,Perennial,Shrub,No
+BarTBar,Colorado Plateau,Med-Warm,ATCA2,ATCA2,Atriplex canescens,Native,Perennial,Shrub,No
 BarTBar,Colorado Plateau,Med-Warm,CHER2,CHER2,Chaetopappa ericoides,Native,Perennial,Forb,No
 BarTBar,Colorado Plateau,Cool-Med,CHER2,CHER2,Chaetopappa ericoides,Native,Perennial,Forb,No
 BarTBar,Colorado Plateau,Cool-Med,CHAL11,CHAL11,Chamaesyce albomarginata,Native,Perennial,Forb,No
@@ -207,12 +208,16 @@ BarTBar,Colorado Plateau,Med-Warm,DAPU7,DAPU7,Dasyochloa pulchella,Native,Perenn
 BarTBar,Colorado Plateau,Cool-Med,DEPI,DEPI,Descurainia pinnata,Native,Unknown,Forb,No
 BarTBar,Colorado Plateau,None,DEPI,DEPI,Descurainia pinnata,Native,Unknown,Forb,No
 BarTBar,Colorado Plateau,Med-Warm,DEPI,DEPI,Descurainia pinnata,Native,Unknown,Forb,No
+BarTBar,Colorado Plateau,Cool-Med,DESO2,DESO2,Descurainia sophia,Introduced,Annual,Forb,No
+BarTBar,Colorado Plateau,Med-Warm,DESO2,DESO2,Descurainia sophia,Introduced,Annual,Forb,No
 BarTBar,Colorado Plateau,Cool-Med,ERISP,ERISP.BarTBar,"Eriogonum spp., BarTBar",Native,Unknown,Forb,No
 BarTBar,Colorado Plateau,Cool-Med,GUSA2,GUSA2,Gutierrezia sarothrae,Native,Perennial,Shrub,No
 BarTBar,Colorado Plateau,None,GUSA2,GUSA2,Gutierrezia sarothrae,Native,Perennial,Shrub,No
 BarTBar,Colorado Plateau,Med-Warm,GUSA2,GUSA2,Gutierrezia sarothrae,Native,Perennial,Shrub,No
 BarTBar,Colorado Plateau,Cool-Med,KRLA2,KRLA2,Krascheninnikovia lanata,Native,Perennial,Shrub,No
 BarTBar,Colorado Plateau,None,KRLA2,KRLA2,Krascheninnikovia lanata,Native,Perennial,Shrub,No
+BarTBar,Colorado Plateau,Cool-Med,LAOC3,LAOC3,Lappula occidentalis,Native,Annual,Forb,No
+BarTBar,Colorado Plateau,None,LAOC3,LAOC3,Lappula occidentalis,Native,Annual,Forb,No
 BarTBar,Colorado Plateau,Med-Warm,LILE3,LILE3,Linum lewisii,Native,Perennial,Forb,No
 BarTBar,Colorado Plateau,Med-Warm,OESP,OESP.BarTBar,"Oenothera spp., BarTBar",Native/Unknown,Unknown,Forb,No
 BarTBar,Colorado Plateau,Cool-Med,OESP,OESP.BarTBar,"Oenothera spp., BarTBar",Native/Unknown,Unknown,Forb,No
@@ -230,6 +235,8 @@ BarTBar,Colorado Plateau,None,SCMU6,SCMU6,Schkuhria multiflora,Native,Annual,For
 BarTBar,Colorado Plateau,Med-Warm,SPSP,SPSP.BarTBar,"Sphaeralcea spp., BarTBar",Native/Unknown,Unknown,Forb,No
 BarTBar,Colorado Plateau,Cool-Med,SPSP,SPSP.BarTBar,"Sphaeralcea spp., BarTBar",Native/Unknown,Unknown,Forb,No
 BarTBar,Colorado Plateau,None,SPSP,SPSP.BarTBar,"Sphaeralcea spp., BarTBar",Native/Unknown,Unknown,Forb,No
+BarTBar,Colorado Plateau,Cool-Med,UNFO1,UNFO1.BarTBar,"Unknown forb 1, BarTBar",Unknown,Unknown,Forb,No
+BarTBar,Colorado Plateau,Med-Warm,UNFO1,UNFO1.BarTBar,"Unknown forb 1, BarTBar",Unknown,Unknown,Forb,No
 BarTBar,Colorado Plateau,Cool-Med,UNFO12,UNFO12.BarTBar,"Unknown forb 12, BarTBar",Unknown,Unknown,Forb,No
 BarTBar,Colorado Plateau,Med-Warm,UNFO12,UNFO12.BarTBar,"Unknown forb 12, BarTBar",Unknown,Unknown,Forb,No
 BarTBar,Colorado Plateau,Cool-Med,UNFO13,UNFO13.BarTBar,"Unknown forb 13, BarTBar",Unknown,Unknown,Forb,No
@@ -247,31 +254,35 @@ BarTBar,Colorado Plateau,Med-Warm,UNFO8,UNFO8.BarTBar,"Unknown forb 8, BarTBar",
 BarTBar,Colorado Plateau,Med-Warm,UNFO9,UNFO9.BarTBar,"Unknown forb 9, BarTBar",Native,Unknown,Forb,No
 BarTBar,Colorado Plateau,Cool-Med,UNFO9,UNFO9.BarTBar,"Unknown forb 9, BarTBar",Native,Unknown,Forb,No
 BarTBar,Colorado Plateau,None,UNFO9,UNFO9.BarTBar,"Unknown forb 9, BarTBar",Native,Unknown,Forb,No
-BarTBar,Colorado Plateau,Cool-Med,UNGR,UNGR.BarTBar,"Unknown grass, BarTBar",Native,Unknown,Grass,No
-BarTBar,Colorado Plateau,Med-Warm,UNGR,UNGR.BarTBar,"Unknown grass, BarTBar",Native,Unknown,Grass,No
-BarTBar,Colorado Plateau,None,UNGR,UNGR.BarTBar,"Unknown grass, BarTBar",Native,Unknown,Grass,No
+BarTBar,Colorado Plateau,Cool-Med,UNGR,UNGR.BarTBar,"Unknown grass, BarTBar",Unknown,Unknown,Grass,No
+BarTBar,Colorado Plateau,Med-Warm,UNGR,UNGR.BarTBar,"Unknown grass, BarTBar",Unknown,Unknown,Grass,No
+BarTBar,Colorado Plateau,None,UNGR,UNGR.BarTBar,"Unknown grass, BarTBar",Unknown,Unknown,Grass,No
 BarTBar,Colorado Plateau,Cool-Med,UNSH,UNSH.BarTBar,"Unknown shrub, BarTBar",Unknown,Perennial,Shrub,No
 BarTBar,Colorado Plateau,Med-Warm,BOSPP,BOSPP.BarTBar,"local Bouteloua species (unknown), BarTBar",Native,Unknown,Grass,No
 BarTBar,Colorado Plateau,Cool-Med,BOSPP,BOSPP.BarTBar,"local Bouteloua species (unknown), BarTBar",Native,Unknown,Grass,No
 BarTBar,Colorado Plateau,None,BOSPP,BOSPP.BarTBar,"local Bouteloua species (unknown), BarTBar",Native,Unknown,Grass,No
-FlyingM,Colorado Plateau,Cool-Med,AmaranthusSpp,AmaranthusSpp.FlyingM,"Amaranthus spp., FlyingM",Unknown,Unknown,Forb,No
+FlyingM,Colorado Plateau,Cool-Med,AmaranthusSpp,AmaranthusSpp.FlyingM,"Amaranthus spp., FlyingM",Native/Unknown,Unknown,Forb,No
 FlyingM,Colorado Plateau,Cool-Med,ATCA2,ATCA2,Atriplex canescens,Native,Perennial,Shrub,No
 FlyingM,Colorado Plateau,Cool-Med,ATCO,ATCO,Atriplex confertifolia,Native,Perennial,Shrub,No
 FlyingM,Colorado Plateau,Med-Warm,ATCO,ATCO,Atriplex confertifolia,Native,Perennial,Shrub,No
 FlyingM,Colorado Plateau,None,ATCO,ATCO,Atriplex confertifolia,Native,Perennial,Shrub,No
 FlyingM,Colorado Plateau,Med-Warm,BOGR2,BOGR2,Bouteloua gracilis,Native,Perennial,Grass,No
 FlyingM,Colorado Plateau,Med-Warm,CHCO2,CHCO2,Chamaesaracha coronopus,Native,Perennial,Forb,No
+FlyingM,Colorado Plateau,Cool-Med,CHCO2,CHCO2,Chamaesaracha coronopus,Native,Perennial,Forb,No
 FlyingM,Colorado Plateau,Cool-Med,CHWA,CHWA,Chenopodium watsonii,Native,Annual,Forb,No
 FlyingM,Colorado Plateau,Cool-Med,CRCR3,CRCR3,Cryptantha crassisepala,Native,Annual,Forb,No
 FlyingM,Colorado Plateau,Med-Warm,DACA7,DACA7,Dalea candida,Native,Perennial,Forb,No
 FlyingM,Colorado Plateau,Cool-Med,DAPU7,DAPU7,Dasyochloa pulchella,Native,Perennial,Grass,No
 FlyingM,Colorado Plateau,Med-Warm,DAPU7,DAPU7,Dasyochloa pulchella,Native,Perennial,Grass,No
 FlyingM,Colorado Plateau,Med-Warm,DEPI,DEPI,Descurainia pinnata,Native,Unknown,Forb,No
+FlyingM,Colorado Plateau,Med-Warm,DESO2,DESO2,Descurainia sophia,Introduced,Annual,Forb,No
 FlyingM,Colorado Plateau,Med-Warm,ELEL5,ELEL5,Elymus elymoides,Native,Perennial,Grass,No
 FlyingM,Colorado Plateau,Med-Warm,ELSPP,ELSPP.FlyingM,"Elymus spp., FlyingM",Native/Unknown,Unknown,Grass,No
 FlyingM,Colorado Plateau,Cool-Med,HESP,HESP.FlyingM,"Heliomeris spp., FlyingM",Native,Unknown,Forb,No
 FlyingM,Colorado Plateau,Med-Warm,HESP,HESP.FlyingM,"Heliomeris spp., FlyingM",Native,Unknown,Forb,No
 FlyingM,Colorado Plateau,Cool-Med,KRLA2,KRLA2,Krascheninnikovia lanata,Native,Perennial,Shrub,No
+FlyingM,Colorado Plateau,Cool-Med,LAOC3,LAOC3,Lappula occidentalis,Native,Annual,Forb,No
+FlyingM,Colorado Plateau,Med-Warm,LAOC3,LAOC3,Lappula occidentalis,Native,Annual,Forb,No
 FlyingM,Colorado Plateau,Cool-Med,MATA2,MATA2,Machaeranthera tanacetifolia,Native,Annual,Forb,No
 FlyingM,Colorado Plateau,None,MEMO4,MEMO4,Mentzelia montana,Native,Annual,Forb,No
 FlyingM,Colorado Plateau,Med-Warm,MEMO4,MEMO4,Mentzelia montana,Native,Annual,Forb,No
@@ -300,9 +311,9 @@ FlyingM,Colorado Plateau,Cool-Med,UNFO7,UNFO7.FlyingM,"Unknown forb 7, FlyingM",
 FlyingM,Colorado Plateau,Med-Warm,UNFO7,UNFO7.FlyingM,"Unknown forb 7, FlyingM",Unknown,Unknown,Forb,No
 FlyingM,Colorado Plateau,Cool-Med,UNGR1,UNGR1.FlyingM,"Unknown grass 1, FlyingM",Unknown,Unknown,Grass,No
 FlyingM,Colorado Plateau,Med-Warm,UNGR1,UNGR1.FlyingM,"Unknown grass 1, FlyingM",Unknown,Unknown,Grass,No
-FlyingM,Colorado Plateau,Med-Warm,UNGR,UNGR.FlyingM,"Unknown grass, FlyingM",Native,Unknown,Grass,No
-FlyingM,Colorado Plateau,Cool-Med,UNGR,UNGR.FlyingM,"Unknown grass, FlyingM",Native,Unknown,Grass,No
-FlyingM,Colorado Plateau,None,UNGR,UNGR.FlyingM,"Unknown grass, FlyingM",Native,Unknown,Grass,No
+FlyingM,Colorado Plateau,Med-Warm,UNGR,UNGR.FlyingM,"Unknown grass, FlyingM",Unknown,Unknown,Grass,No
+FlyingM,Colorado Plateau,Cool-Med,UNGR,UNGR.FlyingM,"Unknown grass, FlyingM",Unknown,Unknown,Grass,No
+FlyingM,Colorado Plateau,None,UNGR,UNGR.FlyingM,"Unknown grass, FlyingM",Unknown,Unknown,Grass,No
 FlyingM,Colorado Plateau,Cool-Med,VEEN,VEEN,Verbesina encelioides,Native,Annual,Forb,No
 FlyingM,Colorado Plateau,Med-Warm,BOSPP,BOSPP.FlyingM,"local Bouteloua species (unknown), FlyingM",Native,Unknown,Grass,No
 FlyingM,Colorado Plateau,Cool-Med,BOSPP,BOSPP.FlyingM,"local Bouteloua species (unknown), FlyingM",Native,Unknown,Grass,No
@@ -337,6 +348,9 @@ MOWE,Colorado Plateau,Warm,SIAL2,SIAL2,Sisymbrium altissimum,Introduced,Annual,F
 MOWE,Colorado Plateau,Warm,SOEL,SOEL,Solanum elaeagnifolium,Native,Perennial,Forb,No
 MOWE,Colorado Plateau,Med-Warm,SOEL,SOEL,Solanum elaeagnifolium,Native,Perennial,Forb,No
 MOWE,Colorado Plateau,None,SOEL,SOEL,Solanum elaeagnifolium,Native,Perennial,Forb,No
+MOWE,Colorado Plateau,Warm,SPCR,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass,No
+MOWE,Colorado Plateau,Med-Warm,SPCR,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass,No
+MOWE,Colorado Plateau,None,SPCR,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass,No
 MOWE,Colorado Plateau,Warm,TRTE,TRTE,Tribulus terrestris,Introduced,Annual,Forb,No
 MOWE,Colorado Plateau,Med-Warm,TRTE,TRTE,Tribulus terrestris,Introduced,Annual,Forb,No
 MOWE,Colorado Plateau,Warm,CHEN,CHEN.MOWE,"Unknown chenopod, MOWE",Native/Unknown,Unknown,Forb,No
@@ -352,14 +366,15 @@ MOWE,Colorado Plateau,Med-Warm,UNFO5,UNFO5.MOWE,"Unknown forb 5, MOWE",Unknown,U
 MOWE,Colorado Plateau,Warm,UNGR1,UNGR1.MOWE,"Unknown grass 1, MOWE",Unknown,Unknown,Grass,No
 MOWE,Colorado Plateau,None,UNGR1,UNGR1.MOWE,"Unknown grass 1, MOWE",Unknown,Unknown,Grass,No
 MOWE,Colorado Plateau,Med-Warm,UNGR1,UNGR1.MOWE,"Unknown grass 1, MOWE",Unknown,Unknown,Grass,No
-MOWE,Colorado Plateau,Med-Warm,UNGR2,UNGR2.MOWE,"Unknown grass 2, MOWE",Native,Unknown,Grass,No
-MOWE,Colorado Plateau,Warm,UNGR2,UNGR2.MOWE,"Unknown grass 2, MOWE",Native,Unknown,Grass,No
-MOWE,Colorado Plateau,None,UNGR2,UNGR2.MOWE,"Unknown grass 2, MOWE",Native,Unknown,Grass,No
+MOWE,Colorado Plateau,Med-Warm,UNGR2,UNGR2.MOWE,"Unknown grass 2, MOWE",Unknown,Unknown,Grass,No
+MOWE,Colorado Plateau,Warm,UNGR2,UNGR2.MOWE,"Unknown grass 2, MOWE",Unknown,Unknown,Grass,No
+MOWE,Colorado Plateau,None,UNGR2,UNGR2.MOWE,"Unknown grass 2, MOWE",Unknown,Unknown,Grass,No
 MOWE,Colorado Plateau,Warm,UNGR3,UNGR3.MOWE,"Unknown grass 3, MOWE",Unknown,Unknown,Grass,No
 MOWE,Colorado Plateau,None,UNGR3,UNGR3.MOWE,"Unknown grass 3, MOWE",Unknown,Unknown,Grass,No
 MOWE,Colorado Plateau,Med-Warm,UNGR4,UNGR4.MOWE,"Unknown grass 4, MOWE",Unknown,Unknown,Grass,No
 MOWE,Colorado Plateau,Warm,UNGR4,UNGR4.MOWE,"Unknown grass 4, MOWE",Unknown,Unknown,Grass,No
 MOWE,Colorado Plateau,None,UNGR4,UNGR4.MOWE,"Unknown grass 4, MOWE",Unknown,Unknown,Grass,No
+MOWE,Colorado Plateau,Med-Warm,BOSPP,BOSPP.MOWE,"local Bouteloua species (unknown), MOWE",Native,Unknown,Grass,No
 PEFO,Colorado Plateau,Med-Warm,ATCO,ATCO,Atriplex confertifolia,Native,Perennial,Shrub,No
 PEFO,Colorado Plateau,Warm,ATCO,ATCO,Atriplex confertifolia,Native,Perennial,Shrub,No
 PEFO,Colorado Plateau,None,ATCO,ATCO,Atriplex confertifolia,Native,Perennial,Shrub,No
@@ -370,6 +385,9 @@ PEFO,Colorado Plateau,Med-Warm,CHAL11,CHAL11,Chamaesyce albomarginata,Native,Per
 PEFO,Colorado Plateau,Warm,CHAL11,CHAL11,Chamaesyce albomarginata,Native,Perennial,Forb,No
 PEFO,Colorado Plateau,Med-Warm,CRCR3,CRCR3,Cryptantha crassisepala,Native,Annual,Forb,No
 PEFO,Colorado Plateau,None,CRCR3,CRCR3,Cryptantha crassisepala,Native,Annual,Forb,No
+PEFO,Colorado Plateau,Warm,CRYSPP,CRYSPP.PEFO,"Cryptantha spp., PEFO",Native,Unknown,Forb,No
+PEFO,Colorado Plateau,Med-Warm,CRYSPP,CRYSPP.PEFO,"Cryptantha spp., PEFO",Native,Unknown,Forb,No
+PEFO,Colorado Plateau,None,CRYSPP,CRYSPP.PEFO,"Cryptantha spp., PEFO",Native,Unknown,Forb,No
 PEFO,Colorado Plateau,Warm,DEPI,DEPI,Descurainia pinnata,Native,Unknown,Forb,No
 PEFO,Colorado Plateau,Med-Warm,DEPI,DEPI,Descurainia pinnata,Native,Unknown,Forb,No
 PEFO,Colorado Plateau,Warm,ERISP,ERISP.PEFO,"Eriogonum spp., PEFO",Native,Unknown,Forb,No
@@ -377,27 +395,34 @@ PEFO,Colorado Plateau,Med-Warm,GUSA2,GUSA2,Gutierrezia sarothrae,Native,Perennia
 PEFO,Colorado Plateau,Warm,HAGL,HAGL,Halogeton glomeratus,Introduced,Annual,Forb,No
 PEFO,Colorado Plateau,Med-Warm,HAGL,HAGL,Halogeton glomeratus,Introduced,Annual,Forb,No
 PEFO,Colorado Plateau,None,MENSPP,MENSPP.PEFO,"Mentzelia spp., PEFO",Native,Unknown,Forb,No
+PEFO,Colorado Plateau,Warm,MONU,MONU,Monolepis nuttalliana,Native,Annual,Forb,No
+PEFO,Colorado Plateau,Med-Warm,MONU,MONU,Monolepis nuttalliana,Native,Annual,Forb,No
+PEFO,Colorado Plateau,None,MONU,MONU,Monolepis nuttalliana,Native,Annual,Forb,No
 PEFO,Colorado Plateau,Med-Warm,PORSPP,PORSPP.PEFO,"Portulaca spp., PEFO",Native,Unknown,Forb,No
 PEFO,Colorado Plateau,Warm,SATR12,SATR12,Salsola tragus,Introduced,Annual,Forb,No
 PEFO,Colorado Plateau,Med-Warm,SPCR,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass,No
 PEFO,Colorado Plateau,Warm,TOIN,TOIN,Townsendia incana,Native,Unknown,Forb,No
 PEFO,Colorado Plateau,Med-Warm,TOIN,TOIN,Townsendia incana,Native,Unknown,Forb,No
 PEFO,Colorado Plateau,None,TOIN,TOIN,Townsendia incana,Native,Unknown,Forb,No
-PEFO,Colorado Plateau,Warm,UCHEN1,UCHEN1.PEFO,"Unknown UCHEN1 (?), PEFO",Unknown,Unknown,Unknown,No
-PEFO,Colorado Plateau,Med-Warm,UCHEN1,UCHEN1.PEFO,"Unknown UCHEN1 (?), PEFO",Unknown,Unknown,Unknown,No
-PEFO,Colorado Plateau,Med-Warm,UCHEN2,UCHEN2.PEFO,"Unknown UCHEN2 (?), PEFO",Unknown,Unknown,Unknown,No
-PEFO,Colorado Plateau,Warm,UCHEN2,UCHEN2.PEFO,"Unknown UCHEN2 (?), PEFO",Unknown,Unknown,Unknown,No
-PEFO,Colorado Plateau,None,UCHEN2,UCHEN2.PEFO,"Unknown UCHEN2 (?), PEFO",Unknown,Unknown,Unknown,No
+PEFO,Colorado Plateau,Warm,UNKM,UNKM.PEFO,"Unknown M, PEFO",Unknown,Unknown,Unknown,No
+PEFO,Colorado Plateau,Med-Warm,UNKM,UNKM.PEFO,"Unknown M, PEFO",Unknown,Unknown,Unknown,No
+PEFO,Colorado Plateau,Warm,UCHEN1,UCHEN1.PEFO,"Unknown chenopod 1, PEFO",Unknown,Unknown,Forb,No
+PEFO,Colorado Plateau,Med-Warm,UCHEN1,UCHEN1.PEFO,"Unknown chenopod 1, PEFO",Unknown,Unknown,Forb,No
+PEFO,Colorado Plateau,Med-Warm,UCHEN2,UCHEN2.PEFO,"Unknown chenopod 2, PEFO",Unknown,Unknown,Forb,No
+PEFO,Colorado Plateau,Warm,UCHEN2,UCHEN2.PEFO,"Unknown chenopod 2, PEFO",Unknown,Unknown,Forb,No
+PEFO,Colorado Plateau,None,UCHEN2,UCHEN2.PEFO,"Unknown chenopod 2, PEFO",Unknown,Unknown,Forb,No
 PEFO,Colorado Plateau,Warm,UNFO1,UNFO1.PEFO,"Unknown forb 1, PEFO",Unknown,Unknown,Forb,No
 PEFO,Colorado Plateau,Med-Warm,UNFO1,UNFO1.PEFO,"Unknown forb 1, PEFO",Unknown,Unknown,Forb,No
 PEFO,Colorado Plateau,None,UNFO1,UNFO1.PEFO,"Unknown forb 1, PEFO",Unknown,Unknown,Forb,No
 PEFO,Colorado Plateau,Warm,UNGR1,UNGR1.PEFO,"Unknown grass 1, PEFO",Native,Unknown,Grass,No
 PEFO,Colorado Plateau,Med-Warm,UNGR1,UNGR1.PEFO,"Unknown grass 1, PEFO",Native,Unknown,Grass,No
+PEFO,Colorado Plateau,None,UNGR1,UNGR1.PEFO,"Unknown grass 1, PEFO",Native,Unknown,Grass,No
 PEFO,Colorado Plateau,Med-Warm,UNGR3,UNGR3.PEFO,"Unknown grass 3, PEFO",Native,Unknown,Grass,No
 PEFO,Colorado Plateau,Warm,UNGR3,UNGR3.PEFO,"Unknown grass 3, PEFO",Native,Unknown,Grass,No
-PEFO,Colorado Plateau,Med-Warm,UNGR,UNGR.PEFO,"Unknown grass, PEFO",Native,Unknown,Grass,No
+PEFO,Colorado Plateau,Med-Warm,UNGR,UNGR.PEFO,"Unknown grass, PEFO",Unknown,Unknown,Grass,No
 PEFO,Colorado Plateau,Warm,BOSPP,BOSPP.PEFO,"local Bouteloua species (unknown), PEFO",Native,Unknown,Grass,No
 PEFO,Colorado Plateau,Med-Warm,BOSPP,BOSPP.PEFO,"local Bouteloua species (unknown), PEFO",Native,Unknown,Grass,No
+PEFO,Colorado Plateau,None,BOSPP,BOSPP.PEFO,"local Bouteloua species (unknown), PEFO",Native,Unknown,Grass,No
 Spiderweb,Colorado Plateau,Med-Warm,ALIN,ALIN,Allionia incarnata,Native,Unknown,Forb,No
 Spiderweb,Colorado Plateau,Warm,ALIN,ALIN,Allionia incarnata,Native,Unknown,Forb,No
 Spiderweb,Colorado Plateau,Warm,ATCO,ATCO,Atriplex confertifolia,Native,Perennial,Shrub,No
@@ -418,6 +443,7 @@ Spiderweb,Colorado Plateau,None,HAGL,HAGL,Halogeton glomeratus,Introduced,Annual
 Spiderweb,Colorado Plateau,Med-Warm,LOESE2,LOESE2,Loeseliastrum franciscanum,Native,Annual,Forb,No
 Spiderweb,Colorado Plateau,Warm,LOESE2,LOESE2,Loeseliastrum franciscanum,Native,Annual,Forb,No
 Spiderweb,Colorado Plateau,Warm,MAGR10,MAGR10,Machaeranthera gracilis,Native,Annual,Forb,No
+Spiderweb,Colorado Plateau,Med-Warm,PLJA,PLJA,Pleuraphis jamesii,Native,Perennial,Grass,No
 Spiderweb,Colorado Plateau,Med-Warm,SATR12,SATR12,Salsola tragus,Introduced,Annual,Forb,No
 Spiderweb,Colorado Plateau,None,SATR12,SATR12,Salsola tragus,Introduced,Annual,Forb,No
 Spiderweb,Colorado Plateau,Warm,SATR12,SATR12,Salsola tragus,Introduced,Annual,Forb,No
@@ -430,9 +456,10 @@ Spiderweb,Colorado Plateau,Med-Warm,UNFO7,UNFO7.Spiderweb,"Unknown forb 7, Spide
 Spiderweb,Colorado Plateau,Warm,UNFO7,UNFO7.Spiderweb,"Unknown forb 7, Spiderweb",Unknown,Unknown,Forb,No
 Spiderweb,Colorado Plateau,Med-Warm,UNFO8,UNFO8.Spiderweb,"Unknown forb 8, Spiderweb",Unknown,Unknown,Forb,No
 Spiderweb,Colorado Plateau,Warm,UNFO8,UNFO8.Spiderweb,"Unknown forb 8, Spiderweb",Unknown,Unknown,Forb,No
-Spiderweb,Colorado Plateau,Warm,UNGR,UNGR.Spiderweb,"Unknown grass, Spiderweb",Native,Unknown,Grass,No
-Spiderweb,Colorado Plateau,Med-Warm,UNGR,UNGR.Spiderweb,"Unknown grass, Spiderweb",Native,Unknown,Grass,No
+Spiderweb,Colorado Plateau,Warm,UNGR,UNGR.Spiderweb,"Unknown grass, Spiderweb",Unknown,Unknown,Grass,No
+Spiderweb,Colorado Plateau,Med-Warm,UNGR,UNGR.Spiderweb,"Unknown grass, Spiderweb",Unknown,Unknown,Grass,No
 Spiderweb,Colorado Plateau,Warm,BOSPP,BOSPP.Spiderweb,"local Bouteloua species (unknown), Spiderweb",Native,Unknown,Grass,No
+Spiderweb,Colorado Plateau,Med-Warm,BOSPP,BOSPP.Spiderweb,"local Bouteloua species (unknown), Spiderweb",Native,Unknown,Grass,No
 TLE,Colorado Plateau,Warm,ACHY,ACHY,Achnatherum hymenoides,Native,Perennial,Grass,No
 TLE,Colorado Plateau,None,ACHY,ACHY,Achnatherum hymenoides,Native,Perennial,Grass,No
 TLE,Colorado Plateau,Cool,ACHY,ACHY,Achnatherum hymenoides,Native,Perennial,Grass,No
@@ -458,9 +485,9 @@ TLE,Colorado Plateau,Cool,TRTE,TRTE,Tribulus terrestris,Introduced,Annual,Forb,N
 TLE,Colorado Plateau,None,TRTE,TRTE,Tribulus terrestris,Introduced,Annual,Forb,No
 TLE,Colorado Plateau,Warm,CHEN,CHEN.TLE,"Unknown chenopod, TLE",Native/Unknown,Unknown,Forb,No
 TLE,Colorado Plateau,Warm,UNFO2,UNFO2.TLE,"Unknown forb 2, TLE",Unknown,Unknown,Forb,No
-TLE,Colorado Plateau,Warm,UNGR,UNGR.TLE,"Unknown grass, TLE",Native,Unknown,Grass,No
-TLE,Colorado Plateau,None,UNGR,UNGR.TLE,"Unknown grass, TLE",Native,Unknown,Grass,No
-TLE,Colorado Plateau,Cool,UNGR,UNGR.TLE,"Unknown grass, TLE",Native,Unknown,Grass,No
+TLE,Colorado Plateau,Warm,UNGR,UNGR.TLE,"Unknown grass, TLE",Unknown,Unknown,Grass,No
+TLE,Colorado Plateau,None,UNGR,UNGR.TLE,"Unknown grass, TLE",Unknown,Unknown,Grass,No
+TLE,Colorado Plateau,Cool,UNGR,UNGR.TLE,"Unknown grass, TLE",Unknown,Unknown,Grass,No
 29_Palms,Mojave,Warm,CHASPP,CHASPP.29_Palms,"Chaenactis spp., 29_Palms",Native,Unknown,Forb,No
 29_Palms,Mojave,Warm,CRYSPP,CRYSPP.29_Palms,"Cryptantha spp., 29_Palms",Native,Unknown,Forb,No
 29_Palms,Mojave,None,CRYSPP,CRYSPP.29_Palms,"Cryptantha spp., 29_Palms",Native,Unknown,Forb,No
@@ -474,14 +501,22 @@ TLE,Colorado Plateau,Cool,UNGR,UNGR.TLE,"Unknown grass, TLE",Native,Unknown,Gras
 29_Palms,Mojave,Warm,PLOV,PLOV,Plantago ovata,Native,Annual,Forb,No
 29_Palms,Mojave,Warm,SCBA,SCBA,Schismus barbatus,Introduced,Annual,Grass,No
 29_Palms,Mojave,Cool,SCBA,SCBA,Schismus barbatus,Introduced,Annual,Grass,No
+AVRCD,Mojave,Cool,AMIN3,AMMEI2,Amsinckia menziesii,Native,Annual,Forb,No
+AVRCD,Mojave,Warm,AMIN3,AMMEI2,Amsinckia menziesii,Native,Annual,Forb,No
+AVRCD,Mojave,None,AMIN3,AMMEI2,Amsinckia menziesii,Native,Annual,Forb,No
 AVRCD,Mojave,Cool,AMTE3,AMTE3,Amsinckia tessellata,Native,Annual,Forb,No
 AVRCD,Mojave,Warm,AMTE3,AMTE3,Amsinckia tessellata,Native,Annual,Forb,No
 AVRCD,Mojave,None,AMTE3,AMTE3,Amsinckia tessellata,Native,Annual,Forb,No
+AVRCD,Mojave,Cool,BRNI,BRNI,Brassica nigra,Introduced,Annual,Forb,No
+AVRCD,Mojave,None,BRNI,BRNI,Brassica nigra,Introduced,Annual,Forb,No
+AVRCD,Mojave,Warm,BRNI,BRNI,Brassica nigra,Introduced,Annual,Forb,No
 AVRCD,Mojave,None,BRRU2,BRRU2,Bromus rubens,Introduced,Annual,Grass,No
 AVRCD,Mojave,Warm,BRRU2,BRRU2,Bromus rubens,Introduced,Annual,Grass,No
 AVRCD,Mojave,Cool,BRRU2,BRRU2,Bromus rubens,Introduced,Annual,Grass,No
 AVRCD,Mojave,Cool,CRSE11,CRSE11,Croton setigerus,Native,Annual,Forb,No
+AVRCD,Mojave,Warm,CRIN8,CRIN8,Cryptantha intermedia,Native,Annual,Forb,No
 AVRCD,Mojave,Cool,CRYSPP,CRYSPP.AVRCD,"Cryptantha spp., AVRCD",Native,Unknown,Forb,No
+AVRCD,Mojave,Cool,ERFA2,ERFA2,Eriogonum fasciculatum,Native,Perennial,Forb,No
 AVRCD,Mojave,Warm,ERIN4,ERIN4,Eriogonum inflatum,Native,Unknown,Forb,No
 AVRCD,Mojave,Cool,ERCI6,ERCI6,Erodium cicutarium,Introduced,Annual,Forb,No
 AVRCD,Mojave,Warm,ERCI6,ERCI6,Erodium cicutarium,Introduced,Annual,Forb,No
@@ -491,8 +526,13 @@ AVRCD,Mojave,Warm,HIIN3,HIIN3,Hirschfeldia incana,Introduced,Unknown,Forb,No
 AVRCD,Mojave,None,HIIN3,HIIN3,Hirschfeldia incana,Introduced,Unknown,Forb,No
 AVRCD,Mojave,Cool,LACA7,LACA7,Lasthenia californica,Native,Unknown,Forb,No
 AVRCD,Mojave,Warm,LACA7,LACA7,Lasthenia californica,Native,Unknown,Forb,No
+AVRCD,Mojave,None,LACA7,LACA7,Lasthenia californica,Native,Unknown,Forb,No
+AVRCD,Mojave,Cool,LAGL5,LAGL5,Layia glandulosa,Native,Annual,Forb,No
 AVRCD,Mojave,Cool,MADI6,MADI6,Matricaria discoidea,Introduced,Annual,Forb,No
 AVRCD,Mojave,Warm,MADI6,MADI6,Matricaria discoidea,Introduced,Annual,Forb,No
+AVRCD,Mojave,Cool,PEPE26,PEPE26,Pectocarya penicillata,Native,Annual,Forb,No
+AVRCD,Mojave,None,PEPE26,PEPE26,Pectocarya penicillata,Native,Annual,Forb,No
+AVRCD,Mojave,Warm,PEPE26,PEPE26,Pectocarya penicillata,Native,Annual,Forb,No
 AVRCD,Mojave,Cool,PEPL,PEPL,Pectocarya platycarpa,Native,Annual,Forb,No
 AVRCD,Mojave,Warm,PEPL,PEPL,Pectocarya platycarpa,Native,Annual,Forb,No
 AVRCD,Mojave,None,PEPL,PEPL,Pectocarya platycarpa,Native,Annual,Forb,No
@@ -502,37 +542,56 @@ AVRCD,Mojave,None,SCBA,SCBA,Schismus barbatus,Introduced,Annual,Grass,No
 AVRCD,Mojave,Cool,SIAL2,SIAL2,Sisymbrium altissimum,Introduced,Annual,Forb,No
 AVRCD,Mojave,Warm,SIAL2,SIAL2,Sisymbrium altissimum,Introduced,Annual,Forb,No
 AVRCD,Mojave,None,SIAL2,SIAL2,Sisymbrium altissimum,Introduced,Annual,Forb,No
+AVRCD,Mojave,Cool,SIIR,SIIR,Sisymbrium irio,Introduced,Annual,Forb,No
+AVRCD,Mojave,Warm,SIIR,SIIR,Sisymbrium irio,Introduced,Annual,Forb,No
+AVRCD,Mojave,None,SIIR,SIIR,Sisymbrium irio,Introduced,Annual,Forb,No
 AVRCD,Mojave,None,SPAM2,SPAM2,Sphaeralcea ambigua,Native,Perennial,Forb,No
 AVRCD,Mojave,Cool,SPAM2,SPAM2,Sphaeralcea ambigua,Native,Perennial,Forb,No
+AVRCD,Mojave,Cool,STSP3,ACSP12,Stipa speciosa,Native,Perennial,Grass,No
 AVRCD,Mojave,Cool,UNFO2A,UNFO2A.AVRCD,"Unknown forb 2A, AVRCD",Unknown,Unknown,Forb,No
 AVRCD,Mojave,Warm,UNFO2A,UNFO2A.AVRCD,"Unknown forb 2A, AVRCD",Unknown,Unknown,Forb,No
-Pleasant,Sonoran Central,Cool,ACMIS,ACMIS,Acmispon (Lotus),Native,Unknown,Forb,No
+Pleasant,Sonoran Central,Cool,ACMIS,ACMIS,Acmispon (Lotus),Native,Annual,Forb,No
 Pleasant,Sonoran Central,Cool,AMMEI2,AMMEI2,Amsinckia menziesii,Native,Annual,Forb,No
 Pleasant,Sonoran Central,Warm,AMMEI2,AMMEI2,Amsinckia menziesii,Native,Annual,Forb,No
+Pleasant,Sonoran Central,None,AMMEI2,AMMEI2,Amsinckia menziesii,Native,Annual,Forb,No
+Pleasant,Sonoran Central,Cool,ASNU4,ASNU4,Astragalus nuttallianus,Native,Unknown,Forb,No
+Pleasant,Sonoran Central,Warm,ASNU4,ASNU4,Astragalus nuttallianus,Native,Unknown,Forb,No
 Pleasant,Sonoran Central,Warm,BRRU2,BRRU2,Bromus rubens,Introduced,Annual,Grass,No
 Pleasant,Sonoran Central,None,BRRU2,BRRU2,Bromus rubens,Introduced,Annual,Grass,No
 Pleasant,Sonoran Central,Cool,BRRU2,BRRU2,Bromus rubens,Introduced,Annual,Grass,No
 Pleasant,Sonoran Central,None,CACI2,CACI2,Calandrinia ciliata,Native,Annual,Forb,No
 Pleasant,Sonoran Central,Cool,CACI2,CACI2,Calandrinia ciliata,Native,Annual,Forb,No
+Pleasant,Sonoran Central,Warm,CACI2,CACI2,Calandrinia ciliata,Native,Annual,Forb,No
 Pleasant,Sonoran Central,None,EUAB,CHAB2,Chamaesyce abramsiana,Native,Annual,Forb,No
 Pleasant,Sonoran Central,Warm,EUAB,CHAB2,Chamaesyce abramsiana,Native,Annual,Forb,No
 Pleasant,Sonoran Central,Cool,EUAB,CHAB2,Chamaesyce abramsiana,Native,Annual,Forb,No
 Pleasant,Sonoran Central,Cool,CRCO34,CRCO34,Crassula connata,Native,Annual,Forb,No
+Pleasant,Sonoran Central,Cool,CRYPT,CRYPT.Pleasant,"Cryptantha spp., Pleasant",Native,Unknown,Forb,No
+Pleasant,Sonoran Central,Warm,CRYPT,CRYPT.Pleasant,"Cryptantha spp., Pleasant",Native,Unknown,Forb,No
+Pleasant,Sonoran Central,Cool,ERLA12,ERLA12,Ericameria laricifolia,Native,Perennial,Shrub,No
+Pleasant,Sonoran Central,Warm,ERIOG,ERIOG.Pleasant,"Eriogonum spp., Pleasant",Native,Unknown,Forb,No
 Pleasant,Sonoran Central,None,ERCI6,ERCI6,Erodium cicutarium,Introduced,Annual,Forb,No
 Pleasant,Sonoran Central,Cool,ERCI6,ERCI6,Erodium cicutarium,Introduced,Annual,Forb,No
 Pleasant,Sonoran Central,Warm,ERCI6,ERCI6,Erodium cicutarium,Introduced,Annual,Forb,No
 Pleasant,Sonoran Central,Warm,HAPAA,HAPAA,Harpagonella palmeri,Native,Annual,Forb,No
 Pleasant,Sonoran Central,Warm,HEHIC,HEHIC,Herniaria hirsuta,Introduced,Annual,Forb,No
+Pleasant,Sonoran Central,Cool,HEHIC,HEHIC,Herniaria hirsuta,Introduced,Annual,Forb,No
 Pleasant,Sonoran Central,Warm,LELA,LELA,Lepidium lasiocarpum,Native,Annual,Forb,No
 Pleasant,Sonoran Central,Cool,LOAR12,LOAR12,Logfia arizonica,Native,Annual,Forb,No
 Pleasant,Sonoran Central,Warm,LOAR12,LOAR12,Logfia arizonica,Native,Annual,Forb,No
+Pleasant,Sonoran Central,None,LOAR12,LOAR12,Logfia arizonica,Native,Annual,Forb,No
 Pleasant,Sonoran Central,Warm,LOHU2,LOHU2,Lotus humistratus,Native,Annual,Forb,No
 Pleasant,Sonoran Central,None,LOHU2,LOHU2,Lotus humistratus,Native,Annual,Forb,No
+Pleasant,Sonoran Central,Cool,LOHU2,LOHU2,Lotus humistratus,Native,Annual,Forb,No
 Pleasant,Sonoran Central,Cool,LOSTT,LOSTT,Lotus strigosus,Native,Annual,Forb,No
 Pleasant,Sonoran Central,Warm,LUSP2,LUSP2,Lupinus sparsiflorus,Native,Annual,Forb,No
 Pleasant,Sonoran Central,Cool,MAPA5,MAPA5,Malva parviflora,Introduced,Unknown,Forb,No
 Pleasant,Sonoran Central,Warm,MEIN2,MEIN2,Melilotus indicus,Introduced,Annual,Forb,No
 Pleasant,Sonoran Central,Warm,MONU,MONU,Monolepis nuttalliana,Native,Annual,Forb,No
+Pleasant,Sonoran Central,Cool,MONU,MONU,Monolepis nuttalliana,Native,Annual,Forb,No
+Pleasant,Sonoran Central,Warm,PECTO,PECTO,Pectocarya,Native,Annual,Forb,No
+Pleasant,Sonoran Central,Cool,PECTO,PECTO,Pectocarya,Native,Annual,Forb,No
+Pleasant,Sonoran Central,None,PECTO,PECTO,Pectocarya,Native,Annual,Forb,No
 Pleasant,Sonoran Central,Cool,PEHE,PEHE,Pectocarya heterocarpa,Native,Annual,Forb,No
 Pleasant,Sonoran Central,Warm,PEHE,PEHE,Pectocarya heterocarpa,Native,Annual,Forb,No
 Pleasant,Sonoran Central,None,PEHE,PEHE,Pectocarya heterocarpa,Native,Annual,Forb,No
@@ -550,13 +609,18 @@ Pleasant,Sonoran Central,Cool,PLPR3,PLPR3,Plagiobothrys pringlei,Native,Annual,F
 Pleasant,Sonoran Central,None,PLPR3,PLPR3,Plagiobothrys pringlei,Native,Annual,Forb,No
 Pleasant,Sonoran Central,Cool,PLOV,PLOV,Plantago ovata,Native,Annual,Forb,No
 Pleasant,Sonoran Central,None,PLOV,PLOV,Plantago ovata,Native,Annual,Forb,No
+Pleasant,Sonoran Central,Warm,PLPA2,PLPA2,Plantago patagonica,Native,Annual,Forb,No
+Pleasant,Sonoran Central,Cool,PLPA2,PLPA2,Plantago patagonica,Native,Annual,Forb,No
 Pleasant,Sonoran Central,None,SACO6,SACO6,Salvia columbariae,Native,Annual,Forb,No
 Pleasant,Sonoran Central,Warm,SACO6,SACO6,Salvia columbariae,Native,Annual,Forb,No
 Pleasant,Sonoran Central,Warm,SCBA,SCBA,Schismus barbatus,Introduced,Annual,Grass,No
 Pleasant,Sonoran Central,None,SCBA,SCBA,Schismus barbatus,Introduced,Annual,Grass,No
 Pleasant,Sonoran Central,Cool,SCBA,SCBA,Schismus barbatus,Introduced,Annual,Grass,No
+Pleasant,Sonoran Central,Warm,VUOC,VUOC,Vulpia octoflora,Native,Annual,Grass,No
 Preserve,Sonoran Central,Warm,ABPA3,ABPA3,Abutilon parvulum,Native,Perennial,Forb,No
 Preserve,Sonoran Central,None,AMCO3,AMCO3,Ambrosia confertiflora,Native,Perennial,Forb,No
+Preserve,Sonoran Central,Cool,AMSIN,AMSIN,Amsinckia,Native,Annual,Forb,No
+Preserve,Sonoran Central,Warm,AMMEI2,AMMEI2,Amsinckia menziesii,Native,Annual,Forb,No
 Preserve,Sonoran Central,Cool,ARAD,ARAD,Aristida adscensionis,Native,Annual,Grass,No
 Preserve,Sonoran Central,Warm,ARAD,ARAD,Aristida adscensionis,Native,Annual,Grass,No
 Preserve,Sonoran Central,Cool,BOAR,BOAR,Bouteloua aristidoides,Native,Annual,Grass,No
@@ -572,14 +636,20 @@ Preserve,Sonoran Central,Cool,EUPO3,CHPO12,Chamaesyce polycarpa,Native,Unknown,F
 Preserve,Sonoran Central,Warm,EUPO3,CHPO12,Chamaesyce polycarpa,Native,Unknown,Forb,No
 Preserve,Sonoran Central,None,EUPO3,CHPO12,Chamaesyce polycarpa,Native,Unknown,Forb,No
 Preserve,Sonoran Central,Warm,CHBR,CHBR,Chorizanthe brevicornu,Native,Annual,Forb,No
+Preserve,Sonoran Central,Cool,CHBR,CHBR,Chorizanthe brevicornu,Native,Annual,Forb,No
+Preserve,Sonoran Central,None,CHBR,CHBR,Chorizanthe brevicornu,Native,Annual,Forb,No
 Preserve,Sonoran Central,Cool,CRCO34,CRCO34,Crassula connata,Native,Annual,Forb,No
 Preserve,Sonoran Central,Warm,CRCO34,CRCO34,Crassula connata,Native,Annual,Forb,No
 Preserve,Sonoran Central,Warm,CRBA5,CRBA5,Cryptantha barbigera,Native,Annual,Forb,No
+Preserve,Sonoran Central,None,DAPU7,DAPU7,Dasyochloa pulchella,Native,Perennial,Grass,No
+Preserve,Sonoran Central,Warm,DRCUI,DRCUI,Draba cuneifolia var. integrifolia,Native,Annual,Forb,No
 Preserve,Sonoran Central,Cool,ERIAS,ERIAS,Eriastrum,Native,Unknown,Forb,No
 Preserve,Sonoran Central,Warm,ERIAS,ERIAS,Eriastrum,Native,Unknown,Forb,No
 Preserve,Sonoran Central,Cool,ERDI2,ERDI2,Eriastrum diffusum,Native,Annual,Forb,No
 Preserve,Sonoran Central,Warm,ERDI2,ERDI2,Eriastrum diffusum,Native,Annual,Forb,No
 Preserve,Sonoran Central,None,ERDI2,ERDI2,Eriastrum diffusum,Native,Annual,Forb,No
+Preserve,Sonoran Central,Cool,ERER2,ERER2,Eriastrum eremicum,Native,Annual,Forb,No
+Preserve,Sonoran Central,Warm,ERER2,ERER2,Eriastrum eremicum,Native,Annual,Forb,No
 Preserve,Sonoran Central,Cool,ERPA11,ERPA11,Eriogonum palmerianum,Native,Annual,Forb,No
 Preserve,Sonoran Central,Warm,ERPA11,ERPA11,Eriogonum palmerianum,Native,Annual,Forb,No
 Preserve,Sonoran Central,None,ERPA11,ERPA11,Eriogonum palmerianum,Native,Annual,Forb,No
@@ -596,6 +666,7 @@ Preserve,Sonoran Central,Warm,LAGR10,LAGR10,Lasthenia gracilis,Native,Annual,For
 Preserve,Sonoran Central,None,LAGR10,LAGR10,Lasthenia gracilis,Native,Annual,Forb,No
 Preserve,Sonoran Central,Warm,LELA,LELA,Lepidium lasiocarpum,Native,Annual,Forb,No
 Preserve,Sonoran Central,Cool,LELA,LELA,Lepidium lasiocarpum,Native,Annual,Forb,No
+Preserve,Sonoran Central,None,LIBI2,LIBI2,Linanthus bigelovii,Native,Annual,Forb,No
 Preserve,Sonoran Central,Cool,LOSQ,LOSQ,Loeflingia squarrosa,Native,Annual,Forb,No
 Preserve,Sonoran Central,None,LOSQ,LOSQ,Loeflingia squarrosa,Native,Annual,Forb,No
 Preserve,Sonoran Central,Warm,LOSQ,LOSQ,Loeflingia squarrosa,Native,Annual,Forb,No
@@ -608,8 +679,10 @@ Preserve,Sonoran Central,None,LOHU2,LOHU2,Lotus humistratus,Native,Annual,Forb,N
 Preserve,Sonoran Central,Warm,LOSTT,LOSTT,Lotus strigosus,Native,Annual,Forb,No
 Preserve,Sonoran Central,Cool,LOSTT,LOSTT,Lotus strigosus,Native,Annual,Forb,No
 Preserve,Sonoran Central,Warm,LUCO,LUCO,Lupinus concinnus,Native,Annual,Forb,No
+Preserve,Sonoran Central,Cool,LUCO,LUCO,Lupinus concinnus,Native,Annual,Forb,No
 Preserve,Sonoran Central,Warm,LUSP2,LUSP2,Lupinus sparsiflorus,Native,Annual,Forb,No
 Preserve,Sonoran Central,None,PECTO,PECTO,Pectocarya,Native,Annual,Forb,No
+Preserve,Sonoran Central,Warm,PECTO,PECTO,Pectocarya,Native,Annual,Forb,No
 Preserve,Sonoran Central,Cool,PEHE,PEHE,Pectocarya heterocarpa,Native,Annual,Forb,No
 Preserve,Sonoran Central,None,PEHE,PEHE,Pectocarya heterocarpa,Native,Annual,Forb,No
 Preserve,Sonoran Central,Warm,PEHE,PEHE,Pectocarya heterocarpa,Native,Annual,Forb,No
@@ -617,6 +690,7 @@ Preserve,Sonoran Central,Cool,PEPL,PEPL,Pectocarya platycarpa,Native,Annual,Forb
 Preserve,Sonoran Central,None,PEPL,PEPL,Pectocarya platycarpa,Native,Annual,Forb,No
 Preserve,Sonoran Central,Warm,PEPL,PEPL,Pectocarya platycarpa,Native,Annual,Forb,No
 Preserve,Sonoran Central,Cool,PERE,PERE,Pectocarya recurvata,Native,Annual,Forb,No
+Preserve,Sonoran Central,Warm,PERE,PERE,Pectocarya recurvata,Native,Annual,Forb,No
 Preserve,Sonoran Central,Warm,PLAR,PLAR,Plagiobothrys arizonicus,Native,Annual,Forb,No
 Preserve,Sonoran Central,Cool,PLAR,PLAR,Plagiobothrys arizonicus,Native,Annual,Forb,No
 Preserve,Sonoran Central,Cool,PLPR3,PLPR3,Plagiobothrys pringlei,Native,Annual,Forb,No
@@ -624,6 +698,7 @@ Preserve,Sonoran Central,Warm,PLPR3,PLPR3,Plagiobothrys pringlei,Native,Annual,F
 Preserve,Sonoran Central,None,PLPR3,PLPR3,Plagiobothrys pringlei,Native,Annual,Forb,No
 Preserve,Sonoran Central,Cool,PLPA2,PLPA2,Plantago patagonica,Native,Annual,Forb,No
 Preserve,Sonoran Central,Warm,PLPA2,PLPA2,Plantago patagonica,Native,Annual,Forb,No
+Preserve,Sonoran Central,None,PLPA2,PLPA2,Plantago patagonica,Native,Annual,Forb,No
 Preserve,Sonoran Central,Cool,SCBA,SCBA,Schismus barbatus,Introduced,Annual,Grass,No
 Preserve,Sonoran Central,None,SCBA,SCBA,Schismus barbatus,Introduced,Annual,Grass,No
 Preserve,Sonoran Central,Warm,SCBA,SCBA,Schismus barbatus,Introduced,Annual,Grass,No
@@ -631,39 +706,56 @@ Preserve,Sonoran Central,Cool,SIAN2,SIAN2,Silene antirrhina,Native,Annual,Forb,N
 Preserve,Sonoran Central,Cool,STGN,STGN,Stylocline gnaphalioides,Native,Annual,Forb,No
 Preserve,Sonoran Central,None,STGN,STGN,Stylocline gnaphalioides,Native,Annual,Forb,No
 Preserve,Sonoran Central,Warm,STGN,STGN,Stylocline gnaphalioides,Native,Annual,Forb,No
+Preserve,Sonoran Central,Cool,STMI2,STMI2,Stylocline micropoides,Native,Annual,Forb,No
+Preserve,Sonoran Central,None,STMI2,STMI2,Stylocline micropoides,Native,Annual,Forb,No
+Preserve,Sonoran Central,Warm,STMI2,STMI2,Stylocline micropoides,Native,Annual,Forb,No
 Preserve,Sonoran Central,Cool,VUOC,VUOC,Vulpia octoflora,Native,Annual,Grass,No
 Preserve,Sonoran Central,Warm,VUOC,VUOC,Vulpia octoflora,Native,Annual,Grass,No
 Preserve,Sonoran Central,None,VUOC,VUOC,Vulpia octoflora,Native,Annual,Grass,No
 Roosevelt,Sonoran Central,Warm,AMMEI2,AMMEI2,Amsinckia menziesii,Native,Annual,Forb,No
+Roosevelt,Sonoran Central,Cool,AMMEI2,AMMEI2,Amsinckia menziesii,Native,Annual,Forb,No
+Roosevelt,Sonoran Central,Cool,ANOC2,ANOC2,Androsace occidentalis,Native,Annual,Forb,No
+Roosevelt,Sonoran Central,Warm,ANOC2,ANOC2,Androsace occidentalis,Native,Annual,Forb,No
 Roosevelt,Sonoran Central,Warm,ASNU4,ASNU4,Astragalus nuttallianus,Native,Unknown,Forb,No
 Roosevelt,Sonoran Central,None,ASNU4,ASNU4,Astragalus nuttallianus,Native,Unknown,Forb,No
 Roosevelt,Sonoran Central,Cool,ASNU4,ASNU4,Astragalus nuttallianus,Native,Unknown,Forb,No
+Roosevelt,Sonoran Central,Cool,BOIN3,BOIN3,Bowlesia incana,Native,Annual,Forb,No
 Roosevelt,Sonoran Central,Cool,BRRU2,BRRU2,Bromus rubens,Introduced,Annual,Grass,No
 Roosevelt,Sonoran Central,Warm,BRRU2,BRRU2,Bromus rubens,Introduced,Annual,Grass,No
 Roosevelt,Sonoran Central,None,BRRU2,BRRU2,Bromus rubens,Introduced,Annual,Grass,No
 Roosevelt,Sonoran Central,Warm,CHAL11,CHAL11,Chamaesyce albomarginata,Native,Perennial,Forb,No
+Roosevelt,Sonoran Central,Cool,CHAL11,CHAL11,Chamaesyce albomarginata,Native,Perennial,Forb,No
 Roosevelt,Sonoran Central,Warm,EUPO3,CHPO12,Chamaesyce polycarpa,Native,Unknown,Forb,No
 Roosevelt,Sonoran Central,Cool,CHPO12,CHPO12,Chamaesyce polycarpa,Native,Unknown,Forb,No
 Roosevelt,Sonoran Central,Warm,CHPO12,CHPO12,Chamaesyce polycarpa,Native,Unknown,Forb,No
 Roosevelt,Sonoran Central,Warm,CRCO34,CRCO34,Crassula connata,Native,Annual,Forb,No
 Roosevelt,Sonoran Central,Cool,CRYPT,CRYPT.Roosevelt,"Cryptantha spp., Roosevelt",Native,Unknown,Forb,No
 Roosevelt,Sonoran Central,Warm,CRYPT,CRYPT.Roosevelt,"Cryptantha spp., Roosevelt",Native,Unknown,Forb,No
+Roosevelt,Sonoran Central,Cool,DAPU7,DAPU7,Dasyochloa pulchella,Native,Perennial,Grass,No
 Roosevelt,Sonoran Central,Cool,DAPU3,DAPU3,Daucus pusillus,Native,Annual,Forb,No
 Roosevelt,Sonoran Central,Warm,DAPU3,DAPU3,Daucus pusillus,Native,Annual,Forb,No
 Roosevelt,Sonoran Central,Warm,DICA14,DICA14,Dichelostemma capitatum,Native,Perennial,Forb,No
 Roosevelt,Sonoran Central,Cool,DICA14,DICA14,Dichelostemma capitatum,Native,Perennial,Forb,No
 Roosevelt,Sonoran Central,None,DICA14,DICA14,Dichelostemma capitatum,Native,Perennial,Forb,No
+Roosevelt,Sonoran Central,Warm,DRCUI,DRCUI,Draba cuneifolia var. integrifolia,Native,Annual,Forb,No
+Roosevelt,Sonoran Central,Cool,DRCUI,DRCUI,Draba cuneifolia var. integrifolia,Native,Annual,Forb,No
 Roosevelt,Sonoran Central,Cool,ERCI6,ERCI6,Erodium cicutarium,Introduced,Annual,Forb,No
 Roosevelt,Sonoran Central,Warm,ERCI6,ERCI6,Erodium cicutarium,Introduced,Annual,Forb,No
 Roosevelt,Sonoran Central,None,ERCI6,ERCI6,Erodium cicutarium,Introduced,Annual,Forb,No
 Roosevelt,Sonoran Central,Warm,HAPAA,HAPAA,Harpagonella palmeri,Native,Annual,Forb,No
+Roosevelt,Sonoran Central,Cool,HAPAA,HAPAA,Harpagonella palmeri,Native,Annual,Forb,No
 Roosevelt,Sonoran Central,Warm,HEHIC,HEHIC,Herniaria hirsuta,Introduced,Annual,Forb,No
+Roosevelt,Sonoran Central,Cool,HEHIC,HEHIC,Herniaria hirsuta,Introduced,Annual,Forb,No
 Roosevelt,Sonoran Central,Cool,LACA7,LACA7,Lasthenia californica,Native,Unknown,Forb,No
 Roosevelt,Sonoran Central,Warm,LACA7,LACA7,Lasthenia californica,Native,Unknown,Forb,No
 Roosevelt,Sonoran Central,Warm,LAGR10,LAGR10,Lasthenia gracilis,Native,Annual,Forb,No
 Roosevelt,Sonoran Central,Cool,LAGR10,LAGR10,Lasthenia gracilis,Native,Annual,Forb,No
 Roosevelt,Sonoran Central,None,LAGR10,LAGR10,Lasthenia gracilis,Native,Annual,Forb,No
 Roosevelt,Sonoran Central,None,LELA,LELA,Lepidium lasiocarpum,Native,Annual,Forb,No
+Roosevelt,Sonoran Central,Cool,LELA,LELA,Lepidium lasiocarpum,Native,Annual,Forb,No
+Roosevelt,Sonoran Central,Warm,LELA,LELA,Lepidium lasiocarpum,Native,Annual,Forb,No
+Roosevelt,Sonoran Central,Warm,LIBI2,LIBI2,Linanthus bigelovii,Native,Annual,Forb,No
+Roosevelt,Sonoran Central,Cool,LIBI2,LIBI2,Linanthus bigelovii,Native,Annual,Forb,No
 Roosevelt,Sonoran Central,Cool,LOAR12,LOAR12,Logfia arizonica,Native,Annual,Forb,No
 Roosevelt,Sonoran Central,Warm,LOAR12,LOAR12,Logfia arizonica,Native,Annual,Forb,No
 Roosevelt,Sonoran Central,None,LOAR12,LOAR12,Logfia arizonica,Native,Annual,Forb,No
@@ -680,6 +772,7 @@ Roosevelt,Sonoran Central,Cool,PERE,PERE,Pectocarya recurvata,Native,Annual,Forb
 Roosevelt,Sonoran Central,None,PERE,PERE,Pectocarya recurvata,Native,Annual,Forb,No
 Roosevelt,Sonoran Central,Warm,PERE,PERE,Pectocarya recurvata,Native,Annual,Forb,No
 Roosevelt,Sonoran Central,Cool,PLAR,PLAR,Plagiobothrys arizonicus,Native,Annual,Forb,No
+Roosevelt,Sonoran Central,Warm,PLAR,PLAR,Plagiobothrys arizonicus,Native,Annual,Forb,No
 Roosevelt,Sonoran Central,Warm,PLPR3,PLPR3,Plagiobothrys pringlei,Native,Annual,Forb,No
 Roosevelt,Sonoran Central,None,PLPR3,PLPR3,Plagiobothrys pringlei,Native,Annual,Forb,No
 Roosevelt,Sonoran Central,Cool,PLPR3,PLPR3,Plagiobothrys pringlei,Native,Annual,Forb,No
@@ -687,6 +780,7 @@ Roosevelt,Sonoran Central,Warm,PLANT,PLANT,Plantago,Unknown,Unknown,Forb,No
 Roosevelt,Sonoran Central,Warm,PLPA2,PLPA2,Plantago patagonica,Native,Annual,Forb,No
 Roosevelt,Sonoran Central,Cool,PLPA2,PLPA2,Plantago patagonica,Native,Annual,Forb,No
 Roosevelt,Sonoran Central,Cool,POBI,POBI,Poa bigelovii,Native,Annual,Grass,No
+Roosevelt,Sonoran Central,Warm,POBI,POBI,Poa bigelovii,Native,Annual,Grass,No
 Roosevelt,Sonoran Central,Warm,SACO6,SACO6,Salvia columbariae,Native,Annual,Forb,No
 Roosevelt,Sonoran Central,Cool,SCBA,SCBA,Schismus barbatus,Introduced,Annual,Grass,No
 Roosevelt,Sonoran Central,Warm,SCBA,SCBA,Schismus barbatus,Introduced,Annual,Grass,No
@@ -733,11 +827,12 @@ Patagonia,Sonoran SE,Warm,ERLE,ERLE,Eragrostis lehmanniana,Introduced,Perennial,
 Patagonia,Sonoran SE,Warm,ERLE,ERLE,Eragrostis lehmanniana,Introduced,Perennial,Grass,N
 Patagonia,Sonoran SE,Medium,ERLE,ERLE,Eragrostis lehmanniana,Introduced,Perennial,Grass,N
 Patagonia,Sonoran SE,None,ERLE,ERLE,Eragrostis lehmanniana,Introduced,Perennial,Grass,N
-Patagonia,Sonoran SE,Medium,ERASPP,ERASPP.Patagonia,"Eragrostis spp., ERCU or ERLE, Patagonia",Unknown,Unknown,Grass,No
+Patagonia,Sonoran SE,None,ERLE,ERLE,Eragrostis lehmanniana,Introduced,Perennial,Grass,No
+Patagonia,Sonoran SE,Medium,ERASPP,ERASPP.Patagonia,"Eragrostis spp., ERCU or ERLE, Patagonia",Introduced,Unknown,Grass,No
 Patagonia,Sonoran SE,Warm,ERSU,ERSU,Eragrostis superba,Introduced,Perennial,Grass,N
-Patagonia,Sonoran SE,Medium,ERISPP,ERISPP.Patagonia,"Eriastrum or Erigonum spp. (?), Patagonia",Native,Unknown,Forb,No
-Patagonia,Sonoran SE,Warm,ERISPP,ERISPP.Patagonia,"Eriastrum or Erigonum spp. (?), Patagonia",Native,Unknown,Forb,No
-Patagonia,Sonoran SE,Medium,ERISPP,ERISPP.Patagonia,"Eriastrum or Erigonum spp. (?), Patagonia",Native,Unknown,Forb,N
+Patagonia,Sonoran SE,Medium,ERISPP,ERISPP.Patagonia,"Erigeron spp., Patagonia",Native,Unknown,Forb,No
+Patagonia,Sonoran SE,Warm,ERISPP,ERISPP.Patagonia,"Erigeron spp., Patagonia",Native,Unknown,Forb,No
+Patagonia,Sonoran SE,Medium,ERISPP,ERISPP.Patagonia,"Erigeron spp., Patagonia",Native,Unknown,Forb,N
 Patagonia,Sonoran SE,Warm,ERCI6,ERCI6,Erodium cicutarium,Introduced,Annual,Forb,No
 Patagonia,Sonoran SE,Medium,ESCA2,ESCA2,Eschscholzia californica,Native,Unknown,Forb,No
 Patagonia,Sonoran SE,Warm,GLGO,GLGO,Glandularia gooddingii,Native,Perennial,Forb,No
@@ -761,33 +856,37 @@ Patagonia,Sonoran SE,Warm,SATR12,SATR12,Salsola tragus,Introduced,Annual,Forb,N
 Patagonia,Sonoran SE,Medium,SATR12,SATR12,Salsola tragus,Introduced,Annual,Forb,N
 Patagonia,Sonoran SE,Warm,SIAB,SIAB,Sida abutifolia,Introduced,Unknown,Forb,N
 Patagonia,Sonoran SE,Warm,SINE,SINE,Sida neomexicana,Native,Perennial,Forb,No
+Patagonia,Sonoran SE,Medium,SIDSPP,SIDSPP.Patagonia,"Sida spp., Patagonia",Native/Unknown,Unknown,Forb,No
 Patagonia,Sonoran SE,Warm,SORO,SORO,Solanum rostratum,Native,Annual,Forb,N
 Patagonia,Sonoran SE,None,SPCR,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass,No
 Patagonia,Sonoran SE,Medium,TRPI,TRPI,Tradescantia pinetorum,Native,Perennial,Forb,No
 Patagonia,Sonoran SE,Warm,UNFO1,UNFO1.Patagonia,"Unknown forb (Patagonia and SRER are same); upright mustard with tiny blueish flower, Patagonia",Unknown,Unknown,Forb,No
 Patagonia,Sonoran SE,Warm,UNFO5,UNFO5.Patagonia,"Unknown forb (Patagonia); Similar to dandelion, yellow closed flowers, Patagonia",Unknown,Unknown,Forb,No
+Patagonia,Sonoran SE,Medium,UNFO-1,UNFO-1.Patagonia,"Unknown forb (Patagonia); Soft and fuzzy/hairy, serated leaves with middle vein underneath on bottom side of the leaf, pickle smell, Patagonia",Unknown,Unknown,Forb,No
+Patagonia,Sonoran SE,Warm,UNFO-1,UNFO-1.Patagonia,"Unknown forb (Patagonia); Soft and fuzzy/hairy, serated leaves with middle vein underneath on bottom side of the leaf, pickle smell, Patagonia",Unknown,Unknown,Forb,No
 Patagonia,Sonoran SE,Warm,UNFO2,UNFO2.Patagonia,"Unknown forb (Patagonia); low to ground, succulenty, tiny white flowers, similar to purslane, Patagonia",Unknown,Unknown,Forb,No
 Patagonia,Sonoran SE,Medium,UNFO2,UNFO2.Patagonia,"Unknown forb (Patagonia); low to ground, succulenty, tiny white flowers, similar to purslane, Patagonia",Unknown,Unknown,Forb,No
 Patagonia,Sonoran SE,None,UNFO2,UNFO2.Patagonia,"Unknown forb (Patagonia); low to ground, succulenty, tiny white flowers, similar to purslane, Patagonia",Unknown,Unknown,Forb,No
 Patagonia,Sonoran SE,Warm,UNFO3,UNFO3.Patagonia,"Unknown forb (Patagonia); upright mustard with small pods and tiny yellow flowers, Patagonia",Unknown,Unknown,Forb,No
 Patagonia,Sonoran SE,Medium,UNFO3,UNFO3.Patagonia,"Unknown forb (Patagonia); upright mustard with small pods and tiny yellow flowers, Patagonia",Unknown,Unknown,Forb,No
-Patagonia,Sonoran SE,Warm,UNFO1A,UNFO1A.Patagonia,"Unknown forb (Patagonia, Nov 2019) = Darker Green, 5 petals radiating out, Patagonia",Unknown,Unknown,Forb,No
+Patagonia,Sonoran SE,Warm,UNFO1A,UNFO1A.Patagonia,"Unknown forb (Patagonia, Nov 2019); Darker Green, 5 petals radiating out, Patagonia",Unknown,Unknown,Forb,No
 Patagonia,Sonoran SE,Medium,UNFO_P_3,UNFO_P_3.Patagonia,"Unknown forb; Fabeacea (pea), long and spindly (Spring 2021), Patagonia",Unknown,Unknown,Forb,No
-Patagonia,Sonoran SE,Warm,UNFO_P_2,UNFO_P_2.Patagonia,"Unknown forb; Pinated leaves, upright rosette, lighter green, Ambrosia?  (Spring 2021), Patagonia",Unknown,Unknown,Forb,No
-Patagonia,Sonoran SE,Medium,UNFO_P_2,UNFO_P_2.Patagonia,"Unknown forb; Pinated leaves, upright rosette, lighter green, Ambrosia?  (Spring 2021), Patagonia",Unknown,Unknown,Forb,No
-Patagonia,Sonoran SE,Warm,UNFO_P_5,UNFO_P_5.Patagonia,"Unknown forb; Prominent mid-vein, leaf doesn't completely surround/there's good amount of petiole, ovate leaves that're slightly speckled, oenothera? (Spring 2021), Patagonia",Unknown,Unknown,Forb,No
+Patagonia,Sonoran SE,Warm,UNFO_P_2,UNFO_P_2.Patagonia,"Unknown forb; Pinated leaves, upright rosette, lighter green, Ambrosia?  (Spring 2021), Patagonia",Native/Unknown,Unknown,Forb,No
+Patagonia,Sonoran SE,Medium,UNFO_P_2,UNFO_P_2.Patagonia,"Unknown forb; Pinated leaves, upright rosette, lighter green, Ambrosia?  (Spring 2021), Patagonia",Native/Unknown,Unknown,Forb,No
+Patagonia,Sonoran SE,Warm,UNFO_P_5,UNFO_P_5.Patagonia,"Unknown forb; Prominent mid-vein, leaf doesn't completely surround/there's good amount of petiole, ovate leaves that're slightly speckled, oenothera? (Spring 2021), Patagonia",Native/Unknown,Unknown,Forb,No
 Patagonia,Sonoran SE,Medium,UNFO_P_7,UNFO_P_7.Patagonia,"Unknown forb; Rosette leaves slightly fuzzy and silvery light green. simple leaves, smells like bandaids (Spring 2021), Patagonia",Unknown,Unknown,Forb,No
 Patagonia,Sonoran SE,Medium,UNFO6,UNFO6.Patagonia,"Unknown forb; green, young, radiating basal leaves; slightly fuzzy; Patagonia, Patagonia",Unknown,Unknown,Forb,No
 Patagonia,Sonoran SE,Warm,UNFO_P_1,UNFO_P_1.Patagonia,"Unknown forb; small reddish purple rosette with ovate leaves (Spring 2021), Patagonia",Unknown,Unknown,Forb,No
 Patagonia,Sonoran SE,Medium,UNFO_P_1,UNFO_P_1.Patagonia,"Unknown forb; small reddish purple rosette with ovate leaves (Spring 2021), Patagonia",Unknown,Unknown,Forb,No
-Patagonia,Sonoran SE,Warm,UNGRS3,UNGRS3.Patagonia,"Unknown grass (Patagonia); Lighter green, thin leaves, possible threeawn?, Patagonia",Unknown,Unknown,Grass,No
+Patagonia,Sonoran SE,Warm,UNGRS3,UNGRS3.Patagonia,"Unknown grass (Patagonia); Lighter green, thin leaves, possible threeawn?, Patagonia",Native,Unknown,Grass,No
 Patagonia,Sonoran SE,Warm,UNGRS2,UNGRS2.Patagonia,"Unknown grass (Patagonia); Unk grass seedling, leaf divided early like BOGR, possible lovegrass?, Patagonia",Unknown,Unknown,Grass,No
 Patagonia,Sonoran SE,Medium,UNGRS2,UNGRS2.Patagonia,"Unknown grass (Patagonia); Unk grass seedling, leaf divided early like BOGR, possible lovegrass?, Patagonia",Unknown,Unknown,Grass,No
-Patagonia,Sonoran SE,Warm,UNGRS1,UNGRS1.Patagonia,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes, Patagonia",Unknown,Unknown,Grass,No
-Patagonia,Sonoran SE,Medium,UNGRS1,UNGRS1.Patagonia,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes, Patagonia",Unknown,Unknown,Grass,No
-Patagonia,Sonoran SE,None,UNGRS1,UNGRS1.Patagonia,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes, Patagonia",Unknown,Unknown,Grass,No
+Patagonia,Sonoran SE,Warm,UNGRS1,UNGRS1.Patagonia,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes, Patagonia",Native/Unknown,Unknown,Grass,No
+Patagonia,Sonoran SE,Medium,UNGRS1,UNGRS1.Patagonia,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes, Patagonia",Native/Unknown,Unknown,Grass,No
+Patagonia,Sonoran SE,None,UNGRS1,UNGRS1.Patagonia,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes, Patagonia",Native/Unknown,Unknown,Grass,No
 Patagonia,Sonoran SE,Warm,UNGR1,UNGR1.Patagonia,"Unknown grass 1, Patagonia",Unknown,Unknown,Grass,No
-Patagonia,Sonoran SE,Medium,UNFO_P_4,UNFO_P_4.Patagonia,"Unkown forb; Unknown Fabeacea (Pea), short and fuzzy, chunky, Acmispon Brachycarpus? (Spring 2021), Patagonia",Unknown,Unknown,Forb,No
+Patagonia,Sonoran SE,None,UNSHR-1,UNSHR-1.Patagonia,"Unknown shrub (Patagonia); mesquite or acacia, Patagonia",Native,Unknown,Shrub,No
+Patagonia,Sonoran SE,Medium,UNFO_P_4,UNFO_P_4.Patagonia,"Unkown forb; Unknown Fabeacea (Pea), short and fuzzy, chunky, Acmispon Brachycarpus? (Spring 2021), Patagonia",Native/Unknown,Unknown,Forb,No
 SRER,Sonoran SE,Warm,ACASPP,ACASPP.SRER,"Acalypha spp., SRER",Native/Unknown,Unknown,Forb,N
 SRER,Sonoran SE,Medium,ACASPP,ACASPP.SRER,"Acalypha spp., SRER",Native/Unknown,Unknown,Forb,N
 SRER,Sonoran SE,None,ACASPP,ACASPP.SRER,"Acalypha spp., SRER",Native/Unknown,Unknown,Forb,N
@@ -830,6 +929,7 @@ SRER,Sonoran SE,None,BORA,BORA,Bouteloua radicosa,Native,Perennial,Grass,No
 SRER,Sonoran SE,Medium,BOUSPP,BOUSPP.SRER,"Bouteloua spp., SRER",Native,Unknown,Grass,No
 SRER,Sonoran SE,None,BOUSPP,BOUSPP.SRER,"Bouteloua spp., SRER",Native,Unknown,Grass,No
 SRER,Sonoran SE,Warm,BOUSPP,BOUSPP.SRER,"Bouteloua spp., SRER",Native,Unknown,Grass,N
+SRER,Sonoran SE,Warm,BOUSPP,BOUSPP.SRER,"Bouteloua spp., SRER",Native,Unknown,Grass,No
 SRER,Sonoran SE,None,BRASPP,BRASPP.SRER,"Brassica spp. (likely DEPI), SRER",Native/Unknown,Unknown,Forb,No
 SRER,Sonoran SE,Warm,BRASPP,BRASPP.SRER,"Brassica spp. (likely DEPI), SRER",Native/Unknown,Unknown,Forb,No
 SRER,Sonoran SE,Medium,BRASPP,BRASPP.SRER,"Brassica spp. (likely DEPI), SRER",Native/Unknown,Unknown,Forb,No
@@ -843,6 +943,13 @@ SRER,Sonoran SE,Medium,COCA8,COCA8,Coreopsis califonica,Native,Annual,Forb,No
 SRER,Sonoran SE,Warm,CRAN4,CRAN4,Cryptantha angustifolia,Native,Annual,Forb,No
 SRER,Sonoran SE,None,CRAN4,CRAN4,Cryptantha angustifolia,Native,Annual,Forb,No
 SRER,Sonoran SE,Medium,CRAN4,CRAN4,Cryptantha angustifolia,Native,Annual,Forb,No
+SRER,Sonoran SE,Warm,CRYSPP 1,CRYSPP 1.SRER,"Cryptantha spp. 1, SRER",Native,Unknown,Forb,No
+SRER,Sonoran SE,Medium,CRYSPP 1,CRYSPP 1.SRER,"Cryptantha spp. 1, SRER",Native,Unknown,Forb,No
+SRER,Sonoran SE,None,CRYSPP 1,CRYSPP 1.SRER,"Cryptantha spp. 1, SRER",Native,Unknown,Forb,No
+SRER,Sonoran SE,Warm,CRYSPP 2,CRYSPP 2.SRER,"Cryptantha spp. 2, SRER",Native,Unknown,Forb,No
+SRER,Sonoran SE,Medium,CRYSPP 2,CRYSPP 2.SRER,"Cryptantha spp. 2, SRER",Native,Unknown,Forb,No
+SRER,Sonoran SE,None,CRYSPP 2,CRYSPP 2.SRER,"Cryptantha spp. 2, SRER",Native,Unknown,Forb,No
+SRER,Sonoran SE,Medium,CRYSPP2,CRYSPP2.SRER,"Cryptantha spp. 3, SRER",Native,Unknown,Forb,No
 SRER,Sonoran SE,Warm,CRYSPP,CRYSPP.SRER,"Cryptantha spp., SRER",Native,Unknown,Forb,No
 SRER,Sonoran SE,None,CRYSPP,CRYSPP.SRER,"Cryptantha spp., SRER",Native,Unknown,Forb,No
 SRER,Sonoran SE,Medium,CRYSPP,CRYSPP.SRER,"Cryptantha spp., SRER",Native,Unknown,Forb,No
@@ -850,6 +957,8 @@ SRER,Sonoran SE,Medium,DeadStem,DeadStem,Dead stem,Unknown,Unknown,Forb,No
 SRER,Sonoran SE,Warm,DEPI,DEPI,Descurainia pinnata,Native,Unknown,Forb,No
 SRER,Sonoran SE,None,DEPI,DEPI,Descurainia pinnata,Native,Unknown,Forb,No
 SRER,Sonoran SE,Medium,DEPI,DEPI,Descurainia pinnata,Native,Unknown,Forb,No
+SRER,Sonoran SE,Warm,DICA14,DICA14,Dichelostemma capitatum,Native,Perennial,Forb,No
+SRER,Sonoran SE,Medium,DICA14,DICA14,Dichelostemma capitatum,Native,Perennial,Forb,No
 SRER,Sonoran SE,Warm,DICA8,DICA8,Digitaria californica,Native,Perennial,Grass,No
 SRER,Sonoran SE,Medium,DICA8,DICA8,Digitaria californica,Native,Perennial,Grass,No
 SRER,Sonoran SE,Warm,ERLE,ERLE,Eragrostis lehmanniana,Introduced,Perennial,Grass,No
@@ -858,6 +967,12 @@ SRER,Sonoran SE,None,ERLE,ERLE,Eragrostis lehmanniana,Introduced,Perennial,Grass
 SRER,Sonoran SE,Warm,ERLE,ERLE,Eragrostis lehmanniana,Introduced,Perennial,Grass,N
 SRER,Sonoran SE,Medium,ERLE,ERLE,Eragrostis lehmanniana,Introduced,Perennial,Grass,N
 SRER,Sonoran SE,None,ERLE,ERLE,Eragrostis lehmanniana,Introduced,Perennial,Grass,N
+SRER,Sonoran SE,Warm,ERIASPP,ERIASPP.SRER,"Eriastrum spp., SRER",Native,Unknown,Forb,No
+SRER,Sonoran SE,Medium,ERIASPP,ERIASPP.SRER,"Eriastrum spp., SRER",Native,Unknown,Forb,No
+SRER,Sonoran SE,None,ERIASPP,ERIASPP.SRER,"Eriastrum spp., SRER",Native,Unknown,Forb,No
+SRER,Sonoran SE,Medium,ERAB2,ERAB2,Eriogonum abertianum,Native,Annual,Forb,No
+SRER,Sonoran SE,Warm,ERAB2,ERAB2,Eriogonum abertianum,Native,Annual,Forb,No
+SRER,Sonoran SE,None,ERAB2,ERAB2,Eriogonum abertianum,Native,Annual,Forb,No
 SRER,Sonoran SE,Medium,ERPO4,ERPO4,Eriogonum polycladon,Native,Annual,Forb,No
 SRER,Sonoran SE,Warm,ESCA2,ESCA2,Eschscholzia californica,Native,Unknown,Forb,No
 SRER,Sonoran SE,Medium,ESCA2,ESCA2,Eschscholzia californica,Native,Unknown,Forb,No
@@ -866,6 +981,14 @@ SRER,Sonoran SE,Medium,EVAR,EVAR,Evolvulus arizonicus,Native,Perennial,Forb,No
 SRER,Sonoran SE,Warm,EVAR,EVAR,Evolvulus arizonicus,Native,Perennial,Forb,N
 SRER,Sonoran SE,Medium,EVAR,EVAR,Evolvulus arizonicus,Native,Perennial,Forb,N
 SRER,Sonoran SE,None,EVAR,EVAR,Evolvulus arizonicus,Native,Perennial,Forb,N
+SRER,Sonoran SE,Warm,GILSPP 1,GILSPP 1.SRER,"Gilia spp. 1, SRER",Native,Unknown,Forb,No
+SRER,Sonoran SE,Medium,GILSPP 1,GILSPP 1.SRER,"Gilia spp. 1, SRER",Native,Unknown,Forb,No
+SRER,Sonoran SE,None,GILSPP 1,GILSPP 1.SRER,"Gilia spp. 1, SRER",Native,Unknown,Forb,No
+SRER,Sonoran SE,Warm,GILSPP 2,GILSPP 2.SRER,"Gilia spp. 2, SRER",Native,Unknown,Forb,No
+SRER,Sonoran SE,Medium,GILSPP 2,GILSPP 2.SRER,"Gilia spp. 2, SRER",Native,Unknown,Forb,No
+SRER,Sonoran SE,Warm,GILSPP,GILSPP.SRER,"Gilia spp., SRER",Native,Unknown,Forb,No
+SRER,Sonoran SE,Medium,GILSPP,GILSPP.SRER,"Gilia spp., SRER",Native,Unknown,Forb,No
+SRER,Sonoran SE,None,GILSPP,GILSPP.SRER,"Gilia spp., SRER",Native,Unknown,Forb,No
 SRER,Sonoran SE,Warm,GIST,GIST,Gilia stellata,Native,Annual,Forb,No
 SRER,Sonoran SE,None,GIST,GIST,Gilia stellata,Native,Annual,Forb,No
 SRER,Sonoran SE,Medium,GIST,GIST,Gilia stellata,Native,Annual,Forb,No
@@ -874,6 +997,9 @@ SRER,Sonoran SE,Medium,KAGR,KAGR,Kallstroemia grandiflora,Native,Annual,Forb,N
 SRER,Sonoran SE,Warm,LAGL5,LAGL5,Layia glandulosa,Native,Annual,Forb,No
 SRER,Sonoran SE,Warm,LEAU16,LEAU16,Leptosiphon aureus,Native,Annual,Forb,No
 SRER,Sonoran SE,Medium,LEAU16,LEAU16,Leptosiphon aureus,Native,Annual,Forb,No
+SRER,Sonoran SE,Warm,LOGR4,LOGR4,Lotus greenei,Native,Perennial,Forb,No
+SRER,Sonoran SE,Medium,LOGR4,LOGR4,Lotus greenei,Native,Perennial,Forb,No
+SRER,Sonoran SE,None,LOGR4,LOGR4,Lotus greenei,Native,Perennial,Forb,No
 SRER,Sonoran SE,Warm,LUCO,LUCO,Lupinus concinnus,Native,Annual,Forb,No
 SRER,Sonoran SE,Medium,LUCO,LUCO,Lupinus concinnus,Native,Annual,Forb,No
 SRER,Sonoran SE,None,LUCO,LUCO,Lupinus concinnus,Native,Annual,Forb,No
@@ -904,6 +1030,9 @@ SRER,Sonoran SE,None,PANSPP,PANSPP.SRER,"Panicum spp., SRER",Native,Unknown,Gras
 SRER,Sonoran SE,None,PLAR,PLAR,Plagiobothrys arizonicus,Native,Annual,Forb,No
 SRER,Sonoran SE,Warm,PLAR,PLAR,Plagiobothrys arizonicus,Native,Annual,Forb,No
 SRER,Sonoran SE,Medium,PLAR,PLAR,Plagiobothrys arizonicus,Native,Annual,Forb,No
+SRER,Sonoran SE,Warm,PLOV,PLOV,Plantago ovata,Native,Annual,Forb,No
+SRER,Sonoran SE,None,PLOV,PLOV,Plantago ovata,Native,Annual,Forb,No
+SRER,Sonoran SE,Medium,PLOV,PLOV,Plantago ovata,Native,Annual,Forb,No
 SRER,Sonoran SE,Warm,PLASPP,PLASPP.SRER,"Plantago spp., SRER",Unknown,Unknown,Forb,No
 SRER,Sonoran SE,None,PLASPP,PLASPP.SRER,"Plantago spp., SRER",Unknown,Unknown,Forb,No
 SRER,Sonoran SE,Medium,PLASPP,PLASPP.SRER,"Plantago spp., SRER",Unknown,Unknown,Forb,No
@@ -927,6 +1056,9 @@ SRER,Sonoran SE,Medium,SINE,SINE,Sida neomexicana,Native,Perennial,Forb,No
 SRER,Sonoran SE,Warm,SIDSPP,SIDSPP.SRER,"Sida spp., SRER",Native/Unknown,Unknown,Forb,N
 SRER,Sonoran SE,Medium,SIDSPP,SIDSPP.SRER,"Sida spp., SRER",Native/Unknown,Unknown,Forb,N
 SRER,Sonoran SE,None,SIDSPP,SIDSPP.SRER,"Sida spp., SRER",Native/Unknown,Unknown,Forb,N
+SRER,Sonoran SE,Medium,SIDSPP,SIDSPP.SRER,"Sida spp., SRER",Native/Unknown,Unknown,Forb,No
+SRER,Sonoran SE,Warm,SIDSPP,SIDSPP.SRER,"Sida spp., SRER",Native/Unknown,Unknown,Forb,No
+SRER,Sonoran SE,None,SIDSPP,SIDSPP.SRER,"Sida spp., SRER",Native/Unknown,Unknown,Forb,No
 SRER,Sonoran SE,Warm,SPEC2,SPEC2,Spermolepis echinata,Native,Annual,Forb,No
 SRER,Sonoran SE,Warm,TRMU,TRMU,Tridens muticus,Native,Perennial,Grass,N
 SRER,Sonoran SE,Medium,TRMU,TRMU,Tridens muticus,Native,Perennial,Grass,N
@@ -936,6 +1068,18 @@ SRER,Sonoran SE,Medium,UNDPF,UNDPF.SRER,"Unknown dead pod forb, SRER",Unknown,Un
 SRER,Sonoran SE,Warm,UNDPF,UNDPF.SRER,"Unknown dead pod forb, SRER",Unknown,Unknown,Forb,No
 SRER,Sonoran SE,Medium,UNFO1,UNFO1.SRER,"Unknown forb (Patagonia and SRER are same); upright mustard with tiny blueish flower, SRER",Unknown,Unknown,Forb,No
 SRER,Sonoran SE,Warm,UNFO1,UNFO1.SRER,"Unknown forb (Patagonia and SRER are same); upright mustard with tiny blueish flower, SRER",Unknown,Unknown,Forb,No
+SRER,Sonoran SE,Warm,UNFO-3,UNFO-3.SRER,"Unknown forb (SRER); Androsace species (or possibly a cynquifoil), small basal leaves typically with a reddish color, with a reddish long thin stem, with artichoke head-like tops, SRER",Unknown,Unknown,Forb,No
+SRER,Sonoran SE,Medium,UNFO-3,UNFO-3.SRER,"Unknown forb (SRER); Androsace species (or possibly a cynquifoil), small basal leaves typically with a reddish color, with a reddish long thin stem, with artichoke head-like tops, SRER",Unknown,Unknown,Forb,No
+SRER,Sonoran SE,None,UNFO-3,UNFO-3.SRER,"Unknown forb (SRER); Androsace species (or possibly a cynquifoil), small basal leaves typically with a reddish color, with a reddish long thin stem, with artichoke head-like tops, SRER",Unknown,Unknown,Forb,No
+SRER,Sonoran SE,Warm,UNFO-4,UNFO-4.SRER,"Unknown forb (SRER); Possibly a Linum species (Flax), basal rosette, narrow rounded leaves opposite along and close to an upright stem, SRER",Unknown,Unknown,Forb,No
+SRER,Sonoran SE,Medium,UNFO-4,UNFO-4.SRER,"Unknown forb (SRER); Possibly a Linum species (Flax), basal rosette, narrow rounded leaves opposite along and close to an upright stem, SRER",Unknown,Unknown,Forb,No
+SRER,Sonoran SE,None,UNFO-4,UNFO-4.SRER,"Unknown forb (SRER); Possibly a Linum species (Flax), basal rosette, narrow rounded leaves opposite along and close to an upright stem, SRER",Unknown,Unknown,Forb,No
+SRER,Sonoran SE,Warm,UNFO-2,UNFO-2.SRER,"Unknown forb (SRER); Super hairy almost spikey looking with pinately lobed leaves, SRER",Unknown,Unknown,Forb,No
+SRER,Sonoran SE,None,UNFO-2,UNFO-2.SRER,"Unknown forb (SRER); Super hairy almost spikey looking with pinately lobed leaves, SRER",Unknown,Unknown,Forb,No
+SRER,Sonoran SE,Medium,UNFO-2,UNFO-2.SRER,"Unknown forb (SRER); Super hairy almost spikey looking with pinately lobed leaves, SRER",Unknown,Unknown,Forb,No
+SRER,Sonoran SE,Warm,UNFO-1,UNFO-1.SRER,"Unknown forb (SRER); Umbilliferae family, thin lacey divided leaves with small white flowers in umbels at the top, SRER",Unknown,Unknown,Forb,No
+SRER,Sonoran SE,None,UNFO-1,UNFO-1.SRER,"Unknown forb (SRER); Umbilliferae family, thin lacey divided leaves with small white flowers in umbels at the top, SRER",Unknown,Unknown,Forb,No
+SRER,Sonoran SE,Medium,UNFO-1,UNFO-1.SRER,"Unknown forb (SRER); Umbilliferae family, thin lacey divided leaves with small white flowers in umbels at the top, SRER",Unknown,Unknown,Forb,No
 SRER,Sonoran SE,Warm,UNFO6,UNFO6.SRER,"Unknown forb (SRER); Very small, long slender leaves, fuzzy, leaf toothed around margins. Possibly Heterotheca grandiflora, SRER",Unknown,Unknown,Forb,No
 SRER,Sonoran SE,Medium,UNFO6,UNFO6.SRER,"Unknown forb (SRER); Very small, long slender leaves, fuzzy, leaf toothed around margins. Possibly Heterotheca grandiflora, SRER",Unknown,Unknown,Forb,No
 SRER,Sonoran SE,Warm,UNFO3,UNFO3.SRER,"Unknown forb (SRER); tiny reddish basal leaves, star-like petals, SRER",Unknown,Unknown,Forb,No
@@ -944,18 +1088,20 @@ SRER,Sonoran SE,Medium,UNFO3,UNFO3.SRER,"Unknown forb (SRER); tiny reddish basal
 SRER,Sonoran SE,Warm,UNFO4,UNFO4.SRER,"Unknown forb (SRER); very hairy radiating out/up, fuzzy rosettes, SRER",Unknown,Unknown,Forb,No
 SRER,Sonoran SE,None,UNFO4,UNFO4.SRER,"Unknown forb (SRER); very hairy radiating out/up, fuzzy rosettes, SRER",Unknown,Unknown,Forb,No
 SRER,Sonoran SE,Medium,UNFO4,UNFO4.SRER,"Unknown forb (SRER); very hairy radiating out/up, fuzzy rosettes, SRER",Unknown,Unknown,Forb,No
-SRER,Sonoran SE,Warm,UNFO_S_7,UNFO_S_7.SRER,"Unknown forb; ""artichoke head"", stem leaves alternate, basal rosette, possibly cryptantha? (Spring 2021), SRER",Unknown,Unknown,Forb,No
-SRER,Sonoran SE,Medium,UNFO_S_7,UNFO_S_7.SRER,"Unknown forb; ""artichoke head"", stem leaves alternate, basal rosette, possibly cryptantha? (Spring 2021), SRER",Unknown,Unknown,Forb,No
-SRER,Sonoran SE,Warm,UNFO_S_3,UNFO_S_3.SRER,"Unknown forb; Fuzzy green penately arranged leaflets, partially pinated lobes ""thick poppy"" possibly an ambrosia (Spring 2021), SRER",Unknown,Unknown,Forb,No
-SRER,Sonoran SE,Medium,UNFO_S_3,UNFO_S_3.SRER,"Unknown forb; Fuzzy green penately arranged leaflets, partially pinated lobes ""thick poppy"" possibly an ambrosia (Spring 2021), SRER",Unknown,Unknown,Forb,No
-SRER,Sonoran SE,None,UNFO_S_3,UNFO_S_3.SRER,"Unknown forb; Fuzzy green penately arranged leaflets, partially pinated lobes ""thick poppy"" possibly an ambrosia (Spring 2021), SRER",Unknown,Unknown,Forb,No
+SRER,Sonoran SE,Warm,UNFO-5,UNFO-5.SRER,"Unknown forb 5, SRER",Unknown,Unknown,Forb,No
+SRER,Sonoran SE,Warm,UNFO_S_7,UNFO_S_7.SRER,"Unknown forb; ""artichoke head"", stem leaves alternate, basal rosette, possibly cryptantha? (Spring 2021), SRER",Native/Unknown,Unknown,Forb,No
+SRER,Sonoran SE,Medium,UNFO_S_7,UNFO_S_7.SRER,"Unknown forb; ""artichoke head"", stem leaves alternate, basal rosette, possibly cryptantha? (Spring 2021), SRER",Native/Unknown,Unknown,Forb,No
+SRER,Sonoran SE,Warm,UNFO_S_3,UNFO_S_3.SRER,"Unknown forb; Fuzzy green penately arranged leaflets, partially pinated lobes ""thick poppy"" possibly an ambrosia (Spring 2021), SRER",Native/Unknown,Unknown,Forb,No
+SRER,Sonoran SE,Medium,UNFO_S_3,UNFO_S_3.SRER,"Unknown forb; Fuzzy green penately arranged leaflets, partially pinated lobes ""thick poppy"" possibly an ambrosia (Spring 2021), SRER",Native/Unknown,Unknown,Forb,No
+SRER,Sonoran SE,None,UNFO_S_3,UNFO_S_3.SRER,"Unknown forb; Fuzzy green penately arranged leaflets, partially pinated lobes ""thick poppy"" possibly an ambrosia (Spring 2021), SRER",Native/Unknown,Unknown,Forb,No
 SRER,Sonoran SE,Warm,UNFO_S_1,UNFO_S_1.SRER,"Unknown forb; Purple vine, sagitate leaves (Spring 2021), SRER",Unknown,Unknown,Forb,No
 SRER,Sonoran SE,Warm,UNFO_S_5,UNFO_S_5.SRER,"Unknown forb; Silky hairy fuzzy, straight leaves, no prominent veination, pseudognaphalium? (Spring 2021), SRER",Unknown,Unknown,Forb,No
-SRER,Sonoran SE,Warm,UNFO_S_4,UNFO_S_4.SRER,"Unknown forb; Super tiny, very spikey, pinately lobed, possible cryptantha or plagiobothrys (Spring 2021), SRER",Unknown,Unknown,Forb,No
-SRER,Sonoran SE,Warm,UNGRS1,UNGRS1.SRER,"Unknown grass (Patagonia);Unk. grass seedling, bunchy, possible lovegrass?, SRER",Unknown,Unknown,Grass,No
-SRER,Sonoran SE,None,UNGRS1,UNGRS1.SRER,"Unknown grass (Patagonia);Unk. grass seedling, bunchy, possible lovegrass?, SRER",Unknown,Unknown,Grass,No
-SRER,Sonoran SE,Medium,UNGRS1,UNGRS1.SRER,"Unknown grass (Patagonia);Unk. grass seedling, bunchy, possible lovegrass?, SRER",Unknown,Unknown,Grass,No
-SRER,Sonoran SE,Medium,UNGR_S_1,UNGR_S_1.SRER,"Unknown grass; Grass seedling short erose ligule slight chance ARPU because of 45 degree leaf or possibly a Vulpia sp. like VUOC (Spring 2021), SRER",Unknown,Unknown,Grass,No
+SRER,Sonoran SE,Warm,UNFO_S_4,UNFO_S_4.SRER,"Unknown forb; Super tiny, very spikey, pinately lobed, possible cryptantha or plagiobothrys (Spring 2021), SRER",Native/Unknown,Unknown,Forb,No
+SRER,Sonoran SE,Warm,UNGRS1,UNGRS1.SRER,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes, SRER",Native/Unknown,Unknown,Grass,No
+SRER,Sonoran SE,None,UNGRS1,UNGRS1.SRER,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes, SRER",Native/Unknown,Unknown,Grass,No
+SRER,Sonoran SE,Medium,UNGRS1,UNGRS1.SRER,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes, SRER",Native/Unknown,Unknown,Grass,No
+SRER,Sonoran SE,Medium,UNGRS-1,UNGRS-1.SRER,"Unknown grass seedling (SRER), but most likely ERLE, spring 2022, SRER",Introduced,Unknown,Grass,No
+SRER,Sonoran SE,Medium,UNGR_S_1,UNGR_S_1.SRER,"Unknown grass; Grass seedling short erose ligule slight chance ARPU because of 45 degree leaf or possibly a Vulpia sp. like VUOC (Spring 2021), SRER",Native/Unknown,Unknown,Grass,No
 SRER,Sonoran SE,Warm,VUOC,VUOC,Vulpia octoflora,Native,Annual,Grass,No
 SRER,Sonoran SE,Medium,VUOC,VUOC,Vulpia octoflora,Native,Annual,Grass,No
 SRER,Sonoran SE,None,VUOC,VUOC,Vulpia octoflora,Native,Annual,Grass,No
@@ -991,7 +1137,7 @@ Salt_Desert,Utah,Cool-Med,SPGR2,SPGR2,Sphaeralcea grossulariifolia,Native,Perenn
 Salt_Desert,Utah,Med-Warm,SPGR2,SPGR2,Sphaeralcea grossulariifolia,Native,Perennial,Forb,No
 Salt_Desert,Utah,Med-Warm,UNFO4,UNFO4.Salt_Desert,"Unknown forb 4, Salt_Desert",Unknown,Unknown,Forb,No
 Salt_Desert,Utah,Cool-Med,UNFO4,UNFO4.Salt_Desert,"Unknown forb 4, Salt_Desert",Unknown,Unknown,Forb,No
-Salt_Desert,Utah,Med-Warm,UNFO.12166.Salt_Desert,UNFO.12166.Salt_Desert,"Unknown forb, not seeded",Unknown,Unknown,Forb,No
+Salt_Desert,Utah,Med-Warm,UNFO.12576.assigned,UNFO.12576.assigned.Salt_Desert,"Unknown forb with assigned code, and manually entered, Salt_Desert",Unknown,Unknown,Forb,No
 Salt_Desert,Utah,None,UNGR1,UNGR1.Salt_Desert,"Unknown grass 1, Salt_Desert",Unknown,Unknown,Grass,No
 Salt_Desert,Utah,Cool-Med,UNGR1,UNGR1.Salt_Desert,"Unknown grass 1, Salt_Desert",Unknown,Unknown,Grass,No
 Salt_Desert,Utah,Med-Warm,UNGR1,UNGR1.Salt_Desert,"Unknown grass 1, Salt_Desert",Unknown,Unknown,Grass,No
@@ -1019,6 +1165,7 @@ UtahPJ,Utah,Cool,DRABA,DRABA.UtahPJ,"Draba spp., UtahPJ",Native/Unknown,Unknown,
 UtahPJ,Utah,Cool,Eriogonum sp.,Eriogonum sp..UtahPJ,"Erigonum spp., UtahPJ",Native,Unknown,Forb,No
 UtahPJ,Utah,Cool-Med,ERRA3,ERRA3,Eriogonum racemosum,Native,Perennial,Forb,No
 UtahPJ,Utah,None,ERRA3,ERRA3,Eriogonum racemosum,Native,Perennial,Forb,No
+UtahPJ,Utah,Cool-Med,ERIGSPP,ERIGSPP.UtahPJ,"Eriogonum spp., UtahPJ",Native,Unknown,Forb,No
 UtahPJ,Utah,None,GUSA2,GUSA2,Gutierrezia sarothrae,Native,Perennial,Shrub,No
 UtahPJ,Utah,Cool-Med,GUSA2,GUSA2,Gutierrezia sarothrae,Native,Perennial,Shrub,No
 UtahPJ,Utah,Cool,S-HEBO,HEBO,Hedysarum boreale,Native,Perennial,Forb,No
@@ -1046,7 +1193,6 @@ UtahPJ,Utah,Cool,SPGR2,SPGR2,Sphaeralcea grossulariifolia,Native,Perennial,Forb,
 UtahPJ,Utah,None,SPGR2,SPGR2,Sphaeralcea grossulariifolia,Native,Perennial,Forb,No
 UtahPJ,Utah,Cool,SPSP,SPSP.UtahPJ,"Sphaeralcea spp., UtahPJ",Native/Unknown,Unknown,Forb,No
 UtahPJ,Utah,Cool,SPCR,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass,No
-UtahPJ,Utah,Cool-Med,ERIGSPP,ERIGSPP.UtahPJ,"Unknown ERIG (?), UtahPJ",Unknown,Unknown,Unknown,No
 UtahPJ,Utah,Cool,UNFO10,UNFO10.UtahPJ,"Unknown forb 10, UtahPJ",Unknown,Unknown,Forb,No
 UtahPJ,Utah,None,UNFO11,UNFO11.UtahPJ,"Unknown forb 11, UtahPJ",Unknown,Unknown,Forb,No
 UtahPJ,Utah,Cool-Med,UNFO11,UNFO11.UtahPJ,"Unknown forb 11, UtahPJ",Unknown,Unknown,Forb,No

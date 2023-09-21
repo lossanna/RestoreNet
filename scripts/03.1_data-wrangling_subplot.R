@@ -1,5 +1,5 @@
 # Created: 2023-09-18
-# Last updated: 2023-09-20
+# Last updated: 2023-09-21
 
 # Purpose: Create clean data table for subplot data, with corrected and standardized species information,
 #   and monitoring and plot information, and correct SpeciesSeeded column based on each site-specific
@@ -257,7 +257,7 @@ write_csv(species.seeded.in.mix,
 #   Incorrect ones corrected
 species.seeded.in.mix <- read_xlsx("data/data-wrangling-intermediate/03.1b_edited-species-seeded2_corrected-seeded-in-mix_subplot.xlsx")
 
-# Remove duplicates that resulted from standardizing "yes" 
+# Remove duplicates that resulted from standardizing "Yes" 
 species.seeded.in.mix <- species.seeded.in.mix |> 
   distinct(.keep_all = TRUE)
 
@@ -304,6 +304,10 @@ write_csv(species.no.seeded,
 #   Standardize responses so all are in format "Yes"
 #   Incorrect ones corrected
 species.no.seeded <- read_xlsx("data/data-wrangling-intermediate/03.1b_edited-species-seeded4_corrected-not-seeded_subplot.xlsx")
+
+# Remove duplicates that resulted from standardizing "No" 
+species.no.seeded <- species.no.seeded|> 
+  distinct(.keep_all = TRUE)
 
 
 # Compile list of correct SpeciesSeeded
@@ -354,16 +358,10 @@ seeded.correct <- seeded.correct |>
 
 
 # Look for codes that exist in subplot data but not in seeded.correct
-setdiff(unique(subplot$Code), unique(seeded.correct$Code)) # code was manually added earlier in script
-seeded.correct.add <- subplot |> 
-  filter(Code %in% setdiff(unique(subplot$Code), unique(seeded.correct$Code))) |> 
-  select(Region, Site, PlotMix, CodeOriginal, Code, Name, Native, Duration, Lifeform)
-
-# Add UNFO.12166 to seeded.correct list
-seeded.correct <- bind_rows(seeded.correct, seeded.correct.add)
+setdiff(unique(subplot$Code), unique(seeded.correct$Code))
 
 
-# Assign corrected species metadata to subplot data
+# Assign corrected SpeciesSeeded to subplot data
 subplot <- subplot |> 
   select(-SpeciesSeeded)
 subplot <- left_join(subplot, seeded.correct)
