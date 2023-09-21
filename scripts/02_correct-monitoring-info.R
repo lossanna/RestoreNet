@@ -633,8 +633,9 @@ unique(filter(monitor.correct, Site == "Mesquite")$Plot)
 
 
 # Number of times plots were measured
-plots <- count(monitor.correct, Plot) |> 
-  arrange(desc(n))
+count(monitor.correct, Plot) |> 
+  arrange(desc(n)) |> 
+  print(n = 80)
 #   all seem to have the same number of events as many others except Plots 33, 29, 34
 
 
@@ -887,6 +888,11 @@ monitor.correct |>
 fix.sub.BarTBar <- wrong.sub.BarTBar |> 
   mutate(Treatment = "ConMod")
 fix.sub.BarTBar # has old MonitorID to be able to connect to incorrect rows
+monitor.2x2 |> 
+  filter(Site == "BarTBar",
+         Date_Monitored == "2019-04-16",
+         Plot == "33",
+         Treatment == "Mulch") # look for instance in 2x2 data; does not occur
 replaceID.BarTBar <- data.frame(MonitorID_old = 1006,
                                 MonitorID_replace = 1005)
 
@@ -911,8 +917,13 @@ monitor.correct |>
 fix.sub.Spiderweb <- wrong.sub.Spiderweb |> 
   mutate(PlotMix = "Warm")
 fix.sub.Spiderweb
+monitor.2x2 |> 
+  filter(Site == "Spiderweb",
+         Date_Monitored == "2021-09-29",
+         Plot == "29",
+         PlotMix == "Med-Warm") # look for instance in 2x2 data; does not occur
 replaceID.Spiderweb <- data.frame(MonitorID_old = 3235,
-                                MonitorID_replace = 3234)
+                                  MonitorID_replace = 3234)
 
 
 # UtahPJ
@@ -936,8 +947,13 @@ monitor.correct |>
 fix.sub.UtahPJ1 <- wrong.sub.UtahPJ1 |> 
   mutate(Treatment = "Mulch")
 fix.sub.UtahPJ1
+monitor.2x2 |> 
+  filter(Site == "UtahPJ",
+         Plot == "29",
+         Treatment == "Pits") # look for instance in 2x2 data; does not occur
 replaceID.UtahPJ1 <- data.frame(MonitorID_old = wrong.sub.UtahPJ1$MonitorID,
-                                  MonitorID_replace = c(4167, 4241, 4460))
+                                MonitorID_replace = c(4167, 4241, 4460))
+
 
 
 #   Plot 34
@@ -974,6 +990,24 @@ fix.sub.UtahPJ2 <- wrong.sub.UtahPJ2 |>
   mutate(Treatment = "Control",
          PlotMix = "None")
 fix.sub.UtahPJ2
+
+
+#   Look for instances in 2x2 data
+monitor.2x2 |> 
+  filter(Site == "UtahPJ",
+         Plot == "34",
+         Treatment == "ConMod")
+wrong.2x2.UtahPJ <- monitor.2x2 |> 
+  filter(Site == "UtahPJ",
+         Plot == "34",
+         Treatment == "ConMod")
+fix.2x2.UtahPJ <- wrong.2x2.UtahPJ |> 
+  mutate(Treatment = "Control",
+         PlotMix = "None")
+wrong.2x2.UtahPJ
+fix.2x2.UtahPJ
+
+#   Create replacement ID
 replaceID.UtahPJ2 <- data.frame(MonitorID_old = wrong.sub.UtahPJ2$MonitorID,
                                 MonitorID_replace = c(4173, 4247, 4356, 4466))
 
@@ -1095,6 +1129,7 @@ write_csv(fix.sub,
 
 # Make 2x2 tables ---------------------------------------------------------
 
+
 # 2x2 plot data
 wrong.2x2 <- bind_rows(wrong.2x2.29palms,
                        wrong.2x2.AVRCD,
@@ -1104,6 +1139,7 @@ wrong.2x2 <- bind_rows(wrong.2x2.29palms,
                        wrong.2x2.Preserve,
                        wrong.2x2.Roosevelt,
                        wrong.2x2.SCC,
+                       wrong.2x2.UtahPJ,
                        wrong.conmod,
                        wrong.seedonly)
 
@@ -1115,6 +1151,7 @@ fix.2x2 <- bind_rows(add.29palms,
                      fix.2x2.Preserve,
                      fix.2x2.Roosevelt,
                      fix.2x2.SCC,
+                     fix.2x2.UtahPJ,
                      fix.conmod,
                      fix.seedonly)
 
