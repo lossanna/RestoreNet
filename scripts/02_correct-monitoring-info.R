@@ -1,5 +1,5 @@
 # Created: 2023-09-18
-# Last updated: 2023-09-19
+# Last updated: 2023-09-25
 
 # Purpose: In comparing the monitoring information from the subplot vs. 2x2 plot data, 
 #   there were discrepancies, but there should be only one correct version. 
@@ -1035,7 +1035,7 @@ wrong.conmod <- monitor.correct |>
   filter(Treatment == "Con/Mod")
 
 fix.conmod <- wrong.conmod |> 
-  mutate(Treatment = "ComMod")
+  mutate(Treatment = "ConMod")
 
 
 # Seed only
