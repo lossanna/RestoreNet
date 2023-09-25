@@ -583,6 +583,7 @@ nrow(monitor.correct) == nrow(monitor.sub)
 monitor.correct <- bind_rows(monitor.correct, add.29palms, add.AVRCD)
 
 
+
 # Look for mistakes in subplot data ---------------------------------------
 
 #   Before, we had assumed that all the subplot monitoring information that matched the 2x2 data
@@ -639,10 +640,11 @@ count(monitor.correct, Plot) |>
 #   all seem to have the same number of events as many others except Plots 33, 29, 34
 
 
-# Number of monitoring events
+
+# Number of monitoring events and seeding
 
 # CO Plateau
-#   Some sites were seeded twice, once in July/Aug of 2018 and again in July/Aug of 2020
+#   Six sites were seeded twice, once in July/Aug of 2018 and again in July/Aug of 2020:
 #     BabbittPJ, BarTBar, FlyingM, MOWE, PEFO, Spiderweb
 # AguaFria 
 #   7 monitoring dates, fall 2018 to summer 2019
@@ -650,6 +652,9 @@ monitor.correct |>
   filter(Site == "AguaFria") |> 
   count(Date_Monitored) |> 
   rename(Plots_Monitored = n)
+monitor.correct |> 
+  filter(Site == "AguaFria") |> 
+  count(Date_Seeded)
 
 # BabbittPJ
 #   16 monitoring dates, summer/fall 2018 to spring 2022
@@ -725,28 +730,40 @@ monitor.correct |>
   filter(Date_Monitored == "2021-09-29") |> 
   print(n = 37) # Plot 29 is listed twice
 
-
 # TLE
 #   4 monitoring dates, fall 2019 to summer 2021
 monitor.correct |> 
   filter(Site == "TLE") |> 
   count(Date_Monitored) |> 
   rename(Plots_Monitored = n)
+monitor.correct |> 
+  filter(Site == "TLE") |> 
+  count(Date_Seeded)
+
 
 # Mojave
+#   Sites were reseeded in winter 2021/2022
 # 29_Palms
 #   3 monitoring dates, spring 2020, spring 2021, spring 2022
+#   2 seeding dates
 monitor.correct |> 
   filter(Site == "29_Palms") |> 
   count(Date_Monitored) |> 
   rename(Plots_Monitored = n)
+monitor.correct |> 
+  filter(Site == "29_Palms") |> 
+  count(Date_Seeded) 
 
 # AVRCD
 #   3 monitoring dates, spring 2020, spring 2021, spring 2022
+#   2 seeding events (not all plots seeded on same day second time)
 monitor.correct |> 
   filter(Site == "AVRCD") |> 
   count(Date_Monitored) |> 
   rename(Plots_Monitored = n)
+monitor.correct |> 
+  filter(Site == "AVRCD") |> 
+  count(Date_Seeded)
 monitor.correct |> 
   filter(Site == "AVRCD") |> 
   filter(Date_Monitored == "2022-04-13") |> 
@@ -760,6 +777,9 @@ monitor.correct |>
   filter(Site == "CRC") |> 
   count(Date_Monitored) |> 
   rename(Plots_Monitored = n)
+monitor.correct |> 
+  filter(Site == "CRC") |> 
+  count(Date_Seeded)
 
 # UtahPJ
 #   8 monitoring events, fall/winter 2018 to summer 2021
@@ -767,6 +787,9 @@ monitor.correct |>
   filter(Site == "UtahPJ") |> 
   count(Date_Monitored) |> 
   rename(Plots_Monitored = n)
+monitor.correct |> 
+  filter(Site == "UtahPJ") |> 
+  count(Date_Seeded)
 monitor.correct |> 
   filter(Site == "UtahPJ") |> 
   filter(Date_Monitored == "2019-04-26") |> 
@@ -790,6 +813,9 @@ monitor.correct |>
   filter(Site == "Salt_Desert") |> 
   count(Date_Monitored) |> 
   rename(Plots_Monitored = n)
+monitor.correct |> 
+  filter(Site == "Salt_Desert") |> 
+  count(Date_Seeded)
 
 
 # Sonoran SE
@@ -800,6 +826,9 @@ monitor.correct |>
   filter(Site == "SRER") |> 
   count(Date_Monitored) |> 
   rename(Plots_Monitored = n)
+monitor.correct |> 
+  filter(Site == "SRER") |> 
+  count(Date_Seeded)
 
 # Patagonia
 #   6 monitoring events, fall/winter 2019 to spring 2022
@@ -808,7 +837,9 @@ monitor.correct |>
   filter(Site == "Patagonia") |> 
   count(Date_Monitored) |> 
   rename(Plots_Monitored = n)
-
+monitor.correct |> 
+  filter(Site == "Patagonia") |> 
+  count(Date_Seeded)
 
 
 # Sonoran Central
@@ -818,6 +849,9 @@ monitor.correct |>
   filter(Site == "Roosevelt") |> 
   count(Date_Monitored) |> 
   rename(Plots_Monitored = n)
+monitor.correct |> 
+  filter(Site == "Roosevelt") |> 
+  count(Date_Seeded)
 
 # SCC
 #   4 monitoring dates, spring 2020 to fall 2021
@@ -825,6 +859,9 @@ monitor.correct |>
   filter(Site == "SCC") |> 
   count(Date_Monitored) |> 
   rename(Plots_Monitored = n)
+monitor.correct |> 
+  filter(Site == "SCC") |> 
+  count(Date_Seeded)
 
 # Pleasant
 #   6 monitoring dates, spring 2020 to spring 2023
@@ -832,6 +869,9 @@ monitor.correct |>
   filter(Site == "Pleasant") |> 
   count(Date_Monitored) |> 
   rename(Plots_Monitored = n)
+monitor.correct |> 
+  filter(Site == "Pleasant") |> 
+  count(Date_Seeded)
 
 # Preserve
 #   5 monitoring dates, spring 2020 to spring 2022
@@ -839,6 +879,9 @@ monitor.correct |>
   filter(Site == "Preserve") |> 
   count(Date_Monitored) |> 
   rename(Plots_Monitored = n)
+ monitor.correct |> 
+   filter(Site == "Preserve") |> 
+   count(Date_Seeded)
 
 
 # Chihuahuan
@@ -848,6 +891,9 @@ monitor.correct |>
   filter(Site == "Creosote") |> 
   count(Date_Monitored) |> 
   rename(Plots_Monitored = n)
+monitor.correct |> 
+  filter(Site == "Creosote") |> 
+  count(Date_Seeded)
 
 # Mesquite
 #   6 monitoring dates, fall 2020 to fall 2021
@@ -855,6 +901,9 @@ monitor.correct |>
   filter(Site == "Mesquite") |> 
   count(Date_Monitored) |> 
   rename(Plots_Monitored = n)
+monitor.correct |> 
+  filter(Site == "Mesquite") |> 
+  count(Date_Seeded)
 
 
 
