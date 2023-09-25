@@ -742,7 +742,7 @@ monitor.correct |>
 
 
 # Mojave
-#   Sites were reseeded in winter 2021/2022
+#   Both sites were reseeded in winter 2021/2022
 # 29_Palms
 #   3 monitoring dates, spring 2020, spring 2021, spring 2022
 #   2 seeding dates
@@ -904,6 +904,85 @@ monitor.correct |>
 monitor.correct |> 
   filter(Site == "Mesquite") |> 
   count(Date_Seeded)
+
+
+
+# Investigate Date_Seeded for sites seeded twice --------------------------
+
+# If a site was seeded twice, the Date_Seeded should probably reflect the most recent seeding
+#   in relation to Date_Monitored. Look for possible discrepancies.
+# Sites seeded twice: BabbittPJ, BarTBar, FlyingM, MOWE, PEFO, Spiderweb, 29_Palms, AVRCD
+
+seeded.twice <- monitor.correct |> 
+  select(Site, Date_Seeded, Date_Monitored) |> 
+  filter(Site %in% c("BabbittPJ", "BarTBar", "FlyingM", "MOWE", 
+                     "PEFO", "Spiderweb", "29_Palms", "AVRCD")) |> 
+  distinct(.keep_all = TRUE) |> 
+  arrange(Date_Monitored) |> 
+  arrange(Site)
+
+
+# 29_Palms: 1 potential issue
+seeded.twice |> 
+  filter(Site == "29_Palms")
+# 1. old Date_Seeded for recent monitoring
+monitor.correct |> 
+  filter(Site == "29_Palms",
+         Date_Seeded == "2020-03-13",
+         Date_Monitored == "2022-04-15") 
+#    pellets might have just been seeded once; no fix needed                                   
+
+
+# AVRCD: 2 potential issues
+seeded.twice |> 
+  filter(Site == "AVRCD")
+# 1. old Date_Seeded for recent monitoring
+monitor.correct |> 
+  filter(Site == "AVRCD",
+         Date_Seeded == "2020-03-17",
+         Date_Monitored == "2022-04-13")
+#    pellets might have just been seeded once; no fix needed    
+
+# 2. Multiple dates for second seeding
+monitor.correct |> 
+  filter(Site == "AVRCD",
+         Date_Seeded == "2022-01-15")
+monitor.correct |> 
+  filter(Site == "AVRCD",
+         Date_Seeded == "2022-01-17") |> 
+  print(n = 28)
+#   all mulch plots were seeded two days earlier (a Friday); not sure why
+#     this would be the case, but it doesn't look like just a random typo
+
+
+# BabbittPJ: 0 issues
+seeded.twice |> 
+  filter(Site == "BabbittPJ")
+
+# BarTBar: 0 issues
+seeded.twice |> 
+  filter(Site == "BarTBar")
+
+# FlyingM: 0 issues
+seeded.twice |> 
+  filter(Site == "FlyingM")
+
+# MOWE: 0 issues
+seeded.twice |> 
+  filter(Site == "MOWE")
+
+# PEFO: 0 issues
+seeded.twice |> 
+  filter(Site == "PEFO")
+
+# Spiderweb: 0 issues
+seeded.twice |> 
+  filter(Site == "Spiderweb")
+
+
+# Ultimately no changes to Date_Seeded made because possible discrepancies do not
+#   appear to be typos.
+
 
 
 
@@ -1225,3 +1304,4 @@ write_csv(replaceID,
   
 
 save.image("RData/02_correct-monitoring-info.RData")
+
