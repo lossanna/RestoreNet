@@ -1,5 +1,5 @@
 # Created: 2023-09-18
-# Last updated: 2023-09-21
+# Last updated: 2023-09-26
 
 # Purpose: Create clean data table for subplot data, with corrected and standardized species information,
 #   and monitoring and plot information, and correct SpeciesSeeded column based on each site-specific
@@ -228,12 +228,12 @@ species.seeded.not.in.mix <- subplot.seeded |>
 
 # OUTPUT: create list of species marked seeded but not in mix
 write_csv(species.seeded.not.in.mix,
-          file = "data/data-wrangling-intermediate/03.1a_output-species-seeded1_seeded-not-in-mix_subplot.csv")
+          file = "data/data-wrangling-intermediate/04.1a_output-species-seeded1_seeded-not-in-mix_subplot.csv")
 
 # EDITED: manually review and fix SpeciesSeeded status
 #   SpeciesSeeded only corrected if plant was identified to species level and definitely  
 #     not seeded, as well as "local Bouteloua". Unknowns retain original classification.
-species.seeded.not.in.mix <- read_xlsx("data/data-wrangling-intermediate/03.1b_edited-species-seeded1_corrected-seeded-not-in-mix_subplot.xlsx")
+species.seeded.not.in.mix <- read_xlsx("data/data-wrangling-intermediate/04.1b_edited-species-seeded1_corrected-seeded-not-in-mix_subplot.xlsx")
 
 
 # Species seeded and in (a) mix
@@ -250,12 +250,12 @@ species.seeded.in.mix <- subplot.seeded |>
 
 # OUTPUT: create list of species marked seeded and in mix
 write_csv(species.seeded.in.mix,
-          file = "data/data-wrangling-intermediate/03.1a_output-species-seeded2_seeded-in-mix_subplot.csv")
+          file = "data/data-wrangling-intermediate/04.1a_output-species-seeded2_seeded-in-mix_subplot.csv")
 
 # EDITED: manually review and fix SpeciesSeeded status
 #   Standardize responses so all are in format "Yes"
 #   Incorrect ones corrected
-species.seeded.in.mix <- read_xlsx("data/data-wrangling-intermediate/03.1b_edited-species-seeded2_corrected-seeded-in-mix_subplot.xlsx")
+species.seeded.in.mix <- read_xlsx("data/data-wrangling-intermediate/04.1b_edited-species-seeded2_corrected-seeded-in-mix_subplot.xlsx")
 
 # Remove duplicates that resulted from standardizing "Yes" 
 species.seeded.in.mix <- species.seeded.in.mix |> 
@@ -274,13 +274,13 @@ species.unk.seeded <- subplot |>
 
 # OUTPUT: create list of species of unknown seeding status
 write_csv(species.unk.seeded,
-          file = "data/data-wrangling-intermediate/03.1a_output-species-seeded3_unk_subplot.csv")
+          file = "data/data-wrangling-intermediate/04.1a_output-species-seeded3_unk_subplot.csv")
 
 # EDITED: manually review and fix SpeciesSeeded status
 #   Unknowns marked as not seeded.
 #   0 code marked as "0" (no plants were present)
 #  Seeded status changed if identified to species level and it was seeded.
-species.unk.seeded <- read_xlsx("data/data-wrangling-intermediate/03.1b_edited-species-seeded3_unk-corrected_subplot.xlsx")
+species.unk.seeded <- read_xlsx("data/data-wrangling-intermediate/04.1b_edited-species-seeded3_unk-corrected_subplot.xlsx")
 
 
 
@@ -298,12 +298,12 @@ species.no.seeded <- subplot.no |>
 
 # OUTPUT: create list of species marked not seeded
 write_csv(species.no.seeded,
-          "data/data-wrangling-intermediate/03.1a_output-species-seeded4_no_subplot.csv")
+          "data/data-wrangling-intermediate/04.1a_output-species-seeded4_no_subplot.csv")
 
 # EDITED: manually review and fix SpeciesSeeded status
 #   Standardize responses so all are in format "Yes"
 #   Incorrect ones corrected
-species.no.seeded <- read_xlsx("data/data-wrangling-intermediate/03.1b_edited-species-seeded4_corrected-not-seeded_subplot.xlsx")
+species.no.seeded <- read_xlsx("data/data-wrangling-intermediate/04.1b_edited-species-seeded4_corrected-not-seeded_subplot.xlsx")
 
 # Remove duplicates that resulted from standardizing "No" 
 species.no.seeded <- species.no.seeded|> 
@@ -337,11 +337,11 @@ seeded.correct.dup <- seeded.correct |>
 # OUTPUT: list of codes with conflicting SpeciesSeeded
 #   list also includes ones that are not duplicates
 write_csv(seeded.correct.dup,
-          file = "data/data-wrangling-intermediate/03.1a_output-species-seeded5_conflicting-SpeciesSeeded.csv")
+          file = "data/data-wrangling-intermediate/04.1a_output-species-seeded5_conflicting-SpeciesSeeded.csv")
 
 # EDITED: manually add Retain column to indicate if rows should be retained or not
 #   Retained: ones that are not actually duplicates/conflicts; ones marked "No" for SpeciesSeeded
-seeded.correct.dup <- read_xlsx("data/data-wrangling-intermediate/03.1b_edited-species-seeded5_conflicting-SpeciesSeeded-fixed.xlsx")
+seeded.correct.dup <- read_xlsx("data/data-wrangling-intermediate/04.1b_edited-species-seeded5_conflicting-SpeciesSeeded-fixed.xlsx")
 
 # Create correct df of codes that had duplicates (including rows that weren't actually duplicates)
 seeded.correct.fixed <- seeded.correct.dup |> 
@@ -375,4 +375,4 @@ write_csv(subplot,
           file = "data/cleaned/subplot-data_clean.csv")
 
 
-save.image("RData/03.1_data-wrangling_subplot.RData")
+save.image("RData/04.1_data-wrangling_subplot.RData")

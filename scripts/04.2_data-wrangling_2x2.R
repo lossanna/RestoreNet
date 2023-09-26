@@ -275,10 +275,10 @@ ps.ss.mix <- ps.ss.na |>
 
 # OUTPUT: list of species that need SpeciesSeeded assignment
 write_csv(ps.ss.mix,
-          file = "data/data-wrangling-intermediate/03.2a_output-species-seeded1_in-mix-need-assignment.csv")
+          file = "data/data-wrangling-intermediate/04.2a_output-species-seeded1_in-mix-need-assignment.csv")
 
 # EDITED: manually check if the species was seeded based on site-specific plot mix
-ps.ss.mix <- read_xlsx("data/data-wrangling-intermediate/03.2b_edited-species-seeded1_SpeciesSeeded-in-mix-assigned.xlsx")
+ps.ss.mix <- read_xlsx("data/data-wrangling-intermediate/04.2b_edited-species-seeded1_SpeciesSeeded-in-mix-assigned.xlsx")
 
 # Combine
 ps.ss.assigned <- bind_rows(ps.ss.not.in.mix, ps.ss.mix)

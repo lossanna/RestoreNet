@@ -1,5 +1,5 @@
 Created: 2023-09-18  
-Last updated: 2023-09-20
+Last updated: 2023-09-26
   
 Notes about `output` and `edited` intermediate data files created in data cleaning for RAMPS RestoreNet project.
 
@@ -193,70 +193,70 @@ Notes about `output` and `edited` intermediate data files created in data cleani
 
 
 
-## From `03.1_subplot.R`
+## From `04.1_subplot.R`
 ### Output
-#### `03.1a_output-species-seeded1_seeded-not-in-mix_subplot.csv`
+#### `04.1a_output-species-seeded1_seeded-not-in-mix_subplot.csv`
 - List of species from `subplot` data originally marked as seeded but do not appear on the seed mix list, as matched by `CodeOriginal`.
 - Columns: `Site`, `Region`, `PlotMix`, `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`, `SpeciesSeeded`.
 
-#### `03.1a_output-species-seeded2_seeded-in-mix_subplot.csv`
+#### `04.1a_output-species-seeded2_seeded-in-mix_subplot.csv`
 - List of species from `subplot` data marked seeded and in at least one of the seed mixes. Need to look at each manually because seed mixes are site-specific.
 - Columns: `Site`, `Region`, `PlotMix`, `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`, `SpeciesSeeded`.
 
-#### `03.1a_output-species-seeded3_unk_subplot.csv`
+#### `04.1a_output-species-seeded3_unk_subplot.csv`
 - List of species from `subplot` data originally marked as either unknown or NA for seeding status.
 - Columns: `Site`, `Region`, `PlotMix`, `CodeOriginal`, `Code`, `Name`, `SpeciesSeeded`.
 
-#### `03.1a_output-species-seeded4_no_subplot.csv`
+#### `04.1a_output-species-seeded4_no_subplot.csv`
 - List of species from `subplot` data originally marked as not seeded.
 - Columns: `Site`, `Region`, `PlotMix`, `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`, `SpeciesSeeded`.
 
-#### `03.1a_output-species-seeded5_conflicting-SpeciesSeeded.csv`
+#### `04.1a_output-species-seeded5_conflicting-SpeciesSeeded.csv`
 - After having in theory compiled lists based off of all possible original values from `SpeciesSeeded` column, there were still some conflicts, creating duplicate rows (only `SpeciesSeeded` was conflicting). I couldn't figure out a way to extract all of the duplicate rows, not just half of them, so I filtered the entire list based on `Code`. This also brought in some rows that weren't actually conflicting duplicates, but were codes from a different mix. All of them were unknowns, and the conflict occurred because in some rows in the raw `subplot` data they were marked as seeded, but sometimes they were marked as not seeded.
 - Columns: `Site`, `Region`, `PlotMix`, `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`, `SpeciesSeeded`.
 
 
 ### Edited
-#### `03.1b_edited-species-seeded1_corrected-seeded-not-in-mix_subplot.xlsx`
+#### `04.1b_edited-species-seeded1_corrected-seeded-not-in-mix_subplot.xlsx`
 - `SpeciesSeeded` column corrected based on seed mixes listed in `from-Master_seed-mix_LO.xlsx`. 
 - Unknowns originally marked as seeded remained marked as seeded.
 - Only changed status if the plant was identified to genus level. Cells that are changed are highlighted.
 - Row length: edited has the same number of rows as output.
 - Columns: `Site`, `Region`, `PlotMix`, `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`, `SpeciesSeeded` (edited).
 
-#### `03.1b_edited-species-seeded2_corrected-seeded-in-mix_subplot.xlsx`
+#### `04.1b_edited-species-seeded2_corrected-seeded-in-mix_subplot.xlsx`
 - `SpeciesSeeded` column corrected based on site-specific seed mixes. Usually discrepancies are because the `PlotMix` column is conflicting (species weren't included in both warm and cool mixes, so there can only be one for any of them per site, or they were marked seeded in a control plot that didn't receive any seeding).
 - Also standardized `SpeciesSeeded` response to be only "Yes", which created some duplicate rows, but these are retained and dealt with in R.
 - Row length: edited has the same number of rows as output.
 - Columns: `Site`, `Region`, `PlotMix`, `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`, `SpeciesSeeded` (edited).
 
-#### `03.1b_edited-species-seeded3_unk-corrected_subplot.xlsx`
+#### `04.1b_edited-species-seeded3_unk-corrected_subplot.xlsx`
 - Entire `SpeciesSeeded` column edited to either `No`, `Yes`, or `0`.
 - `0` assigned if `Code` was `0`, which indicates there was no plant for observation. Unknowns marked as not seeded (`No`).
 - `Yes` assigned to a few identified to species level if they were in that plot's seed mix.
 - Row length: edited has the same number of rows as output.
 - Columns: `Site`, `Region`, `PlotMix`, `CodeOriginal`, `Code`, `Name`, `SpeciesSeeded` (edited).
 
-#### `03.1b_edited-species-seeded4_corrected-not-seeded_subplot.xlsx`
+#### `04.1b_edited-species-seeded4_corrected-not-seeded_subplot.xlsx`
 - `SpeciesSeeded` column corrected based on site-specific seed mixes. This spreadsheet has 1222 rows and I honestly just went through all of them (most of them did not need to be changed, though).
 - Row length: edited has the same number of rows as output.
 - Columns: `Site`, `Region`, `PlotMix`, `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`, `SpeciesSeeded` (edited).
 
-#### `03.1b_edited-species-seeded5_conflicting-SpeciesSeeded-fixed.xlsx`
+#### `04.1b_edited-species-seeded5_conflicting-SpeciesSeeded-fixed.xlsx`
 - This list contained rows with conflicting `SpeciesSeeded` information, and a few rows that were not conflicts but was just the same `Code` in a different `PlotMix`. I manually made a new column `Retain` to manually mark which conflicting duplicate rows should be dropped. Because they were all unknowns, I marked them all as not seeded, removing the conflicting duplicate row that said they were seeded.
 - Row length: edited has the same number of rows as output.
 - Columns: `Site`, `Region`, `PlotMix`, `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`, `SpeciesSeeded`, `Retain` (added).
 
 
 
-## From `03.2_2x2.R`
+## From `04.2_2x2.R`
 ### Output
-#### `03.2a_output-species-seeded1_in-mix-need-assignment.csv`
+#### `04.2a_output-species-seeded1_in-mix-need-assignment.csv`
 - List of `2x2` species (from site-specific plot mixes) not assigned a `SpeciesSeeded` status from the `subplot` data that existed in at least one seed mix. All species not in a seed mix were assigned not seeded, but I also manually looked over the codes and retained a few from SRER that referenced possibly seeded species.
 - Columns: `Region`, `Site`, `PlotMix`, `CodeOriginal`, `Code`, `Name`, `SpeciesSeeded` (all NAs).
 
 ### Edited
-#### `03.2b_edited-species-seeded1_SpeciesSeeded-in-mix-assigned.xlsx`
+#### `04.2b_edited-species-seeded1_SpeciesSeeded-in-mix-assigned.xlsx`
 - Manually edited to assign `SpeciesSeeded` based on site-specific seed mixes (all assigned either `No` or `Yes`).
 - Row length: edited has the same number of rows as output.
 - Columns: `Region`, `Site`, `PlotMix`, `CodeOriginal`, `Code`, `Name`, `SpeciesSeeded` (edited).
