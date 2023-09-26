@@ -1,8 +1,10 @@
 # Created: 2023-09-25
-# Last updated: 2023-09-25
+# Last updated: 2023-09-26
 
 # Purpose: Investigate discrepancies between my monitoring info and
-#   Hannah Farrell's 2023 dataset. Do not make any changes to any monitoring info.
+#   Hannah Farrell's 2023 dataset, write out list of monitoring events specific
+#   to date and site (not plot).
+# Did not make any changes to my monitoring info after comparing with Farrell's.
 
 
 library(tidyverse)
@@ -213,9 +215,37 @@ filter(h.monitor.site, Site == "Mesquite") # monitored 2020-12-13
 monitor.conflict1 <- filter(monitor.site, Site == "Mesquite", Date_Monitored == "2020-12-12")
 
 
+# Write CSV of monitoring events by site & date ---------------------------
+
+# Add MAP, MAT, and precip manually for conflicting Date_Monitored
+monitor.site$MAP[monitor.site$Site == "Mesquite" & monitor.site$Date_Monitored == as.Date("2020-12-12")] <- 274.76
+monitor.site$MAT[monitor.site$Site == "Mesquite" & monitor.site$Date_Monitored == as.Date("2020-12-12")] <- 15.7
+monitor.site$Cumulative_Precip[monitor.site$Site == "Mesquite" & monitor.site$Date_Monitored == as.Date("2020-12-12")] <- 56.120
+monitor.site$Precip_since_monitor[monitor.site$Site == "Mesquite" & monitor.site$Date_Monitored == as.Date("2020-12-12")] <- 0
+
+# Add MonitorSiteID
+monitor.site <- monitor.site |> 
+  arrange(Date_Monitored) |> 
+  arrange(Site) |> 
+  arrange(Region) |> 
+  mutate(MonitorSiteID = 1:nrow(monitor.site)) |> 
+  rename(Farrell_MAP = MAP,
+         Farrell_MAT = MAT,
+         Farrell_cum_precip = Cumulative_Precip,
+         Farrell_precip_since_monitor = Precip_since_monitor)
+
+# Write to CSV
+write_csv(monitor.site,
+          file = "data/data-wrangling-intermediate/03.1_monitoring-events-by-date-and-site.csv")
+
 
 
 # Compare Treatment, PlotMix, Plot ----------------------------------------
+
+# There is not much point to this section, because I just found some mistakes and differences
+#   with Hannah's data, but I'm not changing any of my monitoring info.
+# This may be useful later if I want to actually use the Farrell subplot data itself,
+#   as there are known issues with all of the seed mix at Creosote marked Warm.
 
 # Narrow down columns
 monitor <- monitor.info |> 
@@ -296,7 +326,7 @@ h.monitor |>
 
 
 # Remove Creosote & Mesquite and check others
-monitor.conflict2 <- monitor.conflict2 |> 
+monitor.conflict2.1 <- monitor.conflict2 |> 
   filter(Region != "Chihuahuan")
 
 
@@ -336,3 +366,6 @@ filter(h.monitor, Site == "Patagonia", Plot == 21)
 filter(monitor, Site == "Patagonia", Date_Monitored == as.Date("2020-10-01"))
 filter(monitor, Site == "Patagonia", Date_Monitored == as.Date("2020-10-04"))
 filter(h.monitor, Site == "Patagonia", Date_Monitored == as.Date("2020-10-01"))
+
+
+save.image("RData/03.1_monitor-info-comparison-with-Farrell-2023.RData")
