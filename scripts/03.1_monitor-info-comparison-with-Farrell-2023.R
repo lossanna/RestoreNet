@@ -132,7 +132,8 @@ monitor.site <- monitor.info |>
   distinct(.keep_all = TRUE)
 
 h.monitor.site <- h.subplot |> 
-  select(Site, MAP, MAT, Cumulative_Precip, Precip_since_monitor,
+  select(Site, Latitude_WGS84, Longitude_WGS84, Elevation_ft, Sand_Category, Clay_Category,
+         MAP, MAT, Cumulative_Precip, Precip_since_monitor,
          Date_Seeded, Date_Monitored) |> 
   distinct(.keep_all = TRUE)
 
@@ -215,6 +216,7 @@ filter(h.monitor.site, Site == "Mesquite") # monitored 2020-12-13
 monitor.conflict1 <- filter(monitor.site, Site == "Mesquite", Date_Monitored == "2020-12-12")
 
 
+
 # Write CSV of monitoring events by site & date ---------------------------
 
 # Add MAP, MAT, and precip manually for conflicting Date_Monitored
@@ -232,7 +234,12 @@ monitor.site <- monitor.site |>
   rename(Farrell_MAP = MAP,
          Farrell_MAT = MAT,
          Farrell_cum_precip = Cumulative_Precip,
-         Farrell_precip_since_monitor = Precip_since_monitor)
+         Farrell_precip_since_monitor = Precip_since_monitor,
+         Farrell_lat = Latitude_WGS84,
+         Farrell_long = Longitude_WGS84,
+         Farrell_sand = Sand_Category,
+         Farrell_clay = Clay_Category,
+         Farrell_elev = Elevation_ft)
 
 # Write to CSV
 write_csv(monitor.site,
