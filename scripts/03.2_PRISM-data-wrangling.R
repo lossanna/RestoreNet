@@ -19,6 +19,8 @@ prism.daily.raw <- read_xlsx("data/data-wrangling-intermediate/03.2_monitoring-e
 prism.normals.raw <- read_xlsx("data/data-wrangling-intermediate/03.2_monitoring-events-with-Farrell-climate-data-and-PRISM-csv-file-name.xlsx",
                            sheet = "normals")
 
+monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
+
 
 # Add complete path to prism.daily columns --------------------------------
 
@@ -132,3 +134,43 @@ compare.normals <- prism.normals |>
          MAT_difference = Farrell_MAT - MAT)
 #   1991-2020 normals (mine) are slightly hotter than 1981-2010 (Hannah's),
 #     which is to be expected. MAP differences are all less than 10 cm.
+
+
+
+# Compile PRISM ppt, MAP, MAT with monitor events -------------------------
+
+# Remove MonitorSiteID 35 because it is a null duplicate
+monitor.site.info <- prism.daily |> 
+  filter(MonitorSiteID != 35) |> 
+  select(Region, Site, Date_Seeded, Date_Monitored, MonitorSiteID,
+         Cum_precip, Since_last_precip)
+
+# Site-specific info, independent of date
+site.info <- prism.normals |> 
+  select(-path_beginning, -normals_file, -Farrell_MAP, -Farrell_MAT) |> 
+  rename(Latitude = Farrell_lat,
+         Longitude = Farrell_long,
+         Elevation_ft = Farrell_elev,
+         Sand_content = Farrell_sand,
+         Clay_content = Farrell_clay)
+
+# Add site-specific info to list with dates
+monitor.site.info <- monitor.site.info |> 
+  left_join(site.info) |> 
+  select(Region, Site, Date_Seeded, Date_Monitored, Latitude,
+          Longitude, Elevation_ft, Sand_content, Clay_content,
+          MAP, MAT, MonitorSiteID, Cum_precip, Since_last_precip)
+
+# Test to make sure monitoring events are not conflicting
+monitor.info |> 
+  left_join(monitor.site.info) |> 
+  filter(is.na(MonitorID)) # no conflicts
+
+
+# Write clean climate data to CSV -----------------------------------------
+
+write_csv(monitor.site.info,
+          file = "data/cleaned/monitoring-events-with-PRISM-climate-data_clean.csv")
+
+
+save.image("RData/03.2_PRISM-data-wrangling.RData")
