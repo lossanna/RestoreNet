@@ -1,0 +1,28 @@
+PRISM Time Series Data
+Location:  Lat: 34.8893   Lon: -109.7594   Elev: 1679m
+"Climate variables: ppt,tmin,tmean,tmax"
+Spatial resolution: 4km
+Period: 2018-11-20 - 2018-12-06
+Dataset: AN81d
+PRISM day definition: 24 hours ending at 1200 UTC on the day shown
+Grid Cell Interpolation: On
+Time series generated: 2023-Sep-27
+Details: http://www.prism.oregonstate.edu/documents/PRISM_datasets.pdf
+Date,ppt (mm),tmin (degrees C),tmean (degrees C),tmax (degrees C)
+2018-11-20,0.00,-7.2,1.9,11.1
+2018-11-21,0.00,-7.4,1.4,10.2
+2018-11-22,0.00,-7.6,3.5,14.5
+2018-11-23,0.00,-3.2,5.5,14.1
+2018-11-24,0.00,-5.5,4.4,14.2
+2018-11-25,0.00,-4.5,6.0,16.5
+2018-11-26,0.00,-6.7,1.1,8.9
+2018-11-27,0.00,-7.6,1.2,10.1
+2018-11-28,0.00,-8.4,2.5,13.4
+2018-11-29,0.00,-3.1,7.9,18.9
+2018-11-30,2.24,-1.4,6.6,14.7
+2018-12-01,0.17,0.8,4.2,7.7
+2018-12-02,0.00,-0.4,4.3,9.1
+2018-12-03,0.00,-8.1,-0.8,6.5
+2018-12-04,0.00,-9.4,-1.9,5.7
+2018-12-05,0.00,-9.5,-2.1,5.3
+2018-12-06,0.00,-9.0,1.2,11.3
