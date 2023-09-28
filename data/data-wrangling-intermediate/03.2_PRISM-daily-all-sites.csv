@@ -5962,7 +5962,6 @@ Date,ppt_mm,tmin,tmean,tmax,Site,Region
 2020-07-20,0,21.3,30.7,40.1,MOWE,Colorado Plateau
 2020-07-21,0,24,29.6,35.1,MOWE,Colorado Plateau
 2020-07-22,1.2,21.9,29.5,37.2,MOWE,Colorado Plateau
-2020-07-22,1.2,21.9,29.5,37.2,MOWE,Colorado Plateau
 2020-07-23,0,21.4,29,36.6,MOWE,Colorado Plateau
 2020-07-24,6.56,18.2,25.9,33.6,MOWE,Colorado Plateau
 2020-07-25,0.32,18.6,26,33.4,MOWE,Colorado Plateau
@@ -7306,7 +7305,6 @@ Date,ppt_mm,tmin,tmean,tmax,Site,Region
 2020-07-20,0,17,26.8,36.6,PEFO,Colorado Plateau
 2020-07-21,0,19.9,28.3,36.8,PEFO,Colorado Plateau
 2020-07-22,0,19.6,26.7,33.9,PEFO,Colorado Plateau
-2020-07-23,0,18.6,24.3,30,PEFO,Colorado Plateau
 2020-07-23,0,18.6,24.3,30,PEFO,Colorado Plateau
 2020-07-24,0.01,17.5,23.5,29.4,PEFO,Colorado Plateau
 2020-07-25,1.1,17.7,22.7,27.6,PEFO,Colorado Plateau

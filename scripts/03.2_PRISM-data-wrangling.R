@@ -450,14 +450,16 @@ daily.FlyingM$Region <- "Colorado Plateau"
 
 #   MOWE
 daily.MOWE <- read.csv(prism.daily$cum_file[77], skip = 10) |> 
-  bind_rows(read.csv(prism.daily$cum_file[80], skip = 10))
+  bind_rows(read.csv(prism.daily$cum_file[80], skip = 10)) |> 
+  distinct(.keep_all = TRUE)
 colnames(daily.MOWE) <- c("Date", "ppt_mm", "tmin", "tmean", "tmax")
 daily.MOWE$Site <- "MOWE"
 daily.MOWE$Region <- "Colorado Plateau"
 
 #   PEFO
 daily.PEFO <- read.csv(prism.daily$cum_file[91], skip = 10) |> 
-  bind_rows(read.csv(prism.daily$cum_file[94], skip = 10))
+  bind_rows(read.csv(prism.daily$cum_file[94], skip = 10)) |> 
+  distinct(.keep_all = TRUE)
 colnames(daily.PEFO) <- c("Date", "ppt_mm", "tmin", "tmean", "tmax")
 daily.PEFO$Site <- "PEFO"
 daily.PEFO$Region <- "Colorado Plateau"
