@@ -141,10 +141,10 @@ compare.normals <- prism.normals |>
 
 # Extract monthly normals for each site
 #   Creosote
-month.normal.Cresosote <- read.csv(prism.normals$normals_file[1], skip = 10)
-colnames(month.normal.Cresosote) <- c("Date", "ppt_mm", "tmin", "tmean", "tmax")
-month.normal.Cresosote$Site <- "Cresosote"
-month.normal.Cresosote$Region <- "Chihuahuan"
+month.normal.Creosote <- read.csv(prism.normals$normals_file[1], skip = 10)
+colnames(month.normal.Creosote) <- c("Date", "ppt_mm", "tmin", "tmean", "tmax")
+month.normal.Creosote$Site <- "Creosote"
+month.normal.Creosote$Region <- "Chihuahuan"
 
 #   Mesquite
 month.normal.Mesquite <- read.csv(prism.normals$normals_file[2], skip = 10)
@@ -271,7 +271,7 @@ month.normal.UtahPJ$Region <- "Utah"
 month.normal <- bind_rows(month.normal.29_Palms, month.normal.AguaFria,
                           month.normal.AVRCD, month.normal.BabbittPJ,
                           month.normal.BarTBar, month.normal.CRC,
-                          month.normal.Cresosote, month.normal.FlyingM,
+                          month.normal.Creosote, month.normal.FlyingM,
                           month.normal.Mesquite, month.normal.MOWE,
                           month.normal.Patagonia, month.normal.PEFO,
                           month.normal.Pleasant, month.normal.Preserve,
@@ -336,10 +336,10 @@ monitor.info |>
 
 # Sites not reseeded
 #   Creosote
-daily.Cresosote <- read.csv(prism.daily$cum_file[7], skip = 10)
-colnames(daily.Cresosote) <- c("Date", "ppt_mm", "tmin", "tmean", "tmax")
-daily.Cresosote$Site <- "Cresosote"
-daily.Cresosote$Region <- "Chihuahuan"
+daily.Creosote <- read.csv(prism.daily$cum_file[7], skip = 10)
+colnames(daily.Creosote) <- c("Date", "ppt_mm", "tmin", "tmean", "tmax")
+daily.Creosote$Site <- "Creosote"
+daily.Creosote$Region <- "Chihuahuan"
 
 #   Mesquite
 daily.Mesquite <- read.csv(prism.daily$cum_file[13], skip = 10)
@@ -476,7 +476,7 @@ daily.Spiderweb$Region <- "Colorado Plateau"
 daily <- bind_rows(daily.29_Palms, daily.AguaFria,
                    daily.AVRCD, daily.BabbittPJ,
                    daily.BarTBar, daily.CRC,
-                   daily.Cresosote, daily.FlyingM,
+                   daily.Creosote, daily.FlyingM,
                    daily.Mesquite, daily.MOWE,
                    daily.Patagonia, daily.PEFO,
                    daily.Pleasant, daily.Preserve,
