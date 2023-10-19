@@ -143,9 +143,24 @@ site.diff.id <- monitor.site.diff |>
   filter(n > 1) # ID 87 & 135
 monitor.diff1 <- monitor.site.diff |> 
   filter(SiteDateID %in% c(87, 135)) 
-#   ID 87 has conflicting Precip_since_monitor
-#   ID 135 has conflicting Clay category
-#   These are both problems in Farrell data
+
+# ID 87 has conflicting Precip_since_monitor
+#   There is really no way to know which one is right, so I'll just go with 145.980
+
+# ID 135 has conflicting Clay category
+monitor.site.diff |> 
+  filter(Site == "Patagonia") |> 
+  count(Clay_Category) # Clay categoruy should be low
+
+# Create df of correct rows for 87 & 135
+monitor.fix1 <- monitor.diff1[c(1, 3), ]
+
+# Replace corrected information
+monitor.site.fix <- monitor.site.diff |> 
+  filter(!SiteDateID %in% c(87, 135)) |> 
+  bind_rows(monitor.fix1) |> 
+  arrange(SiteDateID)
+
 
 # New observations (not included in H. Farrell dataset)
 range(h.monitor.site$Date_Monitored) # last monitor date 2021-06-29
@@ -225,6 +240,28 @@ filter(h.monitor.site, Site == "SRER")  |>
 # No actual conflicts between Farrell's and my monitoring info, except for the 12/12 vs. 12/13
 #   discrepancy, but that doesn't need to be changed/has an explanation for why
 #   they differ.
+
+
+
+# Write CSV of monitoring events by site & date ---------------------------
+
+# Add MAP, MAT, and precip manually for conflicting Date_Monitored
+
+# Add MonitorSiteID
+monitor.site.fix <- monitor.site.fix |> 
+  rename(Farrell_MAP = MAP,
+         Farrell_MAT = MAT,
+         Farrell_cum_precip = Cumulative_Precip,
+         Farrell_precip_since_monitor = Precip_since_monitor,
+         Farrell_lat = Latitude_WGS84,
+         Farrell_long = Longitude_WGS84,
+         Farrell_sand = Sand_Category,
+         Farrell_clay = Clay_Category,
+         Farrell_elev = Elevation_ft)
+
+# Write to CSV
+write_csv(monitor.site.fix,
+          file = "data/data-wrangling-intermediate/03.1_monitoring-events-with-Farrell-climate-data.csv")
 
 
 
