@@ -1,5 +1,5 @@
 # Created: 2023-09-25
-# Last updated: 2023-09-26
+# Last updated: 2023-10-19
 
 # Purpose: Investigate discrepancies between my monitoring info and
 #   Hannah Farrell's 2023 dataset, write out list of monitoring events specific
@@ -13,6 +13,7 @@ library(tidyverse)
 
 h.subplot.raw <- read_csv("data/Farrell_2023_EcologicalApplications_supp_RestoreNetsubpl/RestoreNet_Subplots_Data.csv")
 monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
+monitor.site <- read_csv("data/cleaned/corrected-monitoring-info-by-date-and-site_clean.csv")
 
 
 # Data wrangling ----------------------------------------------------------
@@ -127,10 +128,6 @@ monitor.info <- monitor.info |>
 # Compare Site, Date_Seeded, Date_Monitored -------------------------------
 
 # Narrow down columns
-monitor.site <- monitor.info |> 
-  select(Region, Site, Date_Seeded, Date_Monitored) |> 
-  distinct(.keep_all = TRUE)
-
 h.monitor.site <- h.subplot |> 
   select(Site, Latitude_WGS84, Longitude_WGS84, Elevation_ft, Sand_Category, Clay_Category,
          MAP, MAT, Cumulative_Precip, Precip_since_monitor,
@@ -139,111 +136,96 @@ h.monitor.site <- h.subplot |>
 
 
 # View discrepancies with left_join() that creates NAs
-monitor.site <- left_join(monitor.site, h.monitor.site)
+#   2 rows added with left_join()
+monitor.site.diff <- left_join(monitor.site, h.monitor.site)
 
-monitor.diff1 <- monitor.site |> 
-  filter(is.na(MAP)) |> 
-  arrange(Date_Monitored)
+site.diff.id <- monitor.site.diff |> 
+  count(SiteDateID) |> 
+  filter(n > 1) # ID 87 & 135
+monitor.diff1 <- monitor.site.diff |> 
+  filter(SiteDateID %in% c(87, 135)) 
+#   ID 87 has conflicting Precip_since_monitor
+#   ID 135 has conflicting Clay category
+#   These are both problems in Farrell data
 
 # New observations (not included in H. Farrell dataset)
 range(h.monitor.site$Date_Monitored) # last monitor date 2021-06-29
-monitor.new1 <- monitor.diff1 |> 
+monitor.new1 <- monitor.site.diff |> 
   filter(Date_Monitored > as.Date("2021-06-29"))
 
 # Conflicting monitoring info
-monitor.conflict1 <- monitor.diff1 |> 
+monitor.conflict1 <- monitor.site.diff |> 
   filter(!Date_Monitored %in% monitor.new1$Date_Monitored) |> 
-  arrange(Site)
+  arrange(Site) |> 
+  filter(is.na(MAP))
 
 
 # Compare conflicting monitoring info
 # 29_Palms
 #   Farrell doesn't go past spring 2020 monitoring
 filter(monitor.site, Site == "29_Palms") 
-filter(h.monitor.site, Site == "29_Palms")
+filter(h.monitor.site, Site == "29_Palms") |> 
+  select(Site, Date_Monitored)
 
 # AVRCD
 #   Farrell doesn't go past spring 2020 monitoring
 filter(monitor.site, Site == "AVRCD") 
-filter(h.monitor.site, Site == "AVRCD") 
+filter(h.monitor.site, Site == "AVRCD") |> 
+  select(Site, Date_Monitored)
 
 # Creosote
 #   Farrell doesn't go past winter 2020 monitoring
 filter(monitor.site, Site == "Creosote") 
-filter(h.monitor.site, Site == "Creosote")
+filter(h.monitor.site, Site == "Creosote") |> 
+  select(Site, Date_Monitored)
 
 # Mesquite
 #   Date_Monitored conflicting, and Farrell doesn't go past winter 2020 monitoring
 filter(monitor.site, Site == "Mesquite") # monitored 2020-12-12
-filter(h.monitor.site, Site == "Mesquite") # monitored 2020-12-13
+filter(h.monitor.site, Site == "Mesquite") |> 
+  select(Site, Date_Monitored) # monitored 2020-12-13
+#   the Date_Monitored difference between 12/12 and 12/13 is because I changed everything
+#     to 12/12 02.R because there was no way to know which date was right
 
 # Patagonia
 #   Farrell doesn't go past winter 2020 monitoring
 filter(monitor.site, Site == "Patagonia") 
-filter(h.monitor.site, Site == "Patagonia")
+filter(h.monitor.site, Site == "Patagonia") |> 
+  select(Site, Date_Monitored)
 
 # Pleasant
 #   Farrell doesn't go past fall 2020 monitoring
 filter(monitor.site, Site == "Pleasant") 
-filter(h.monitor.site, Site == "Pleasant")
+filter(h.monitor.site, Site == "Pleasant") |> 
+  select(Site, Date_Monitored)
 
 # Preserve
 #   Farrell doesn't go past fall 2020 monitoring
 filter(monitor.site, Site == "Preserve") 
-filter(h.monitor.site, Site == "Preserve")
+filter(h.monitor.site, Site == "Preserve") |> 
+  select(Site, Date_Monitored)
 
 # Roosevelt
 #   Farrell doesn't go past fall 2020 monitoring
 filter(monitor.site, Site == "Roosevelt") 
-filter(h.monitor.site, Site == "Roosevelt")
+filter(h.monitor.site, Site == "Roosevelt") |> 
+  select(Site, Date_Monitored)
 
 # SCC
 #   Farrell doesn't go past fall 2020 monitoring
 filter(monitor.site, Site == "SCC") 
-filter(h.monitor.site, Site == "SCC")
+filter(h.monitor.site, Site == "SCC")  |> 
+  select(Site, Date_Monitored)
 
 # SRER
 #   Farrell doesn't go past fall 2020 monitoring
 filter(monitor.site, Site == "SRER") 
-filter(h.monitor.site, Site == "SRER")
+filter(h.monitor.site, Site == "SRER")  |> 
+  select(Site, Date_Monitored)
 
-
-# Actual conflicts
-# Mesquite
-filter(monitor.site, Site == "Mesquite") # monitored 2020-12-12
-filter(h.monitor.site, Site == "Mesquite") # monitored 2020-12-13
-
-monitor.conflict1 <- filter(monitor.site, Site == "Mesquite", Date_Monitored == "2020-12-12")
-
-
-
-# Write CSV of monitoring events by site & date ---------------------------
-
-# Add MAP, MAT, and precip manually for conflicting Date_Monitored
-monitor.site$MAP[monitor.site$Site == "Mesquite" & monitor.site$Date_Monitored == as.Date("2020-12-12")] <- 274.76
-monitor.site$MAT[monitor.site$Site == "Mesquite" & monitor.site$Date_Monitored == as.Date("2020-12-12")] <- 15.7
-monitor.site$Cumulative_Precip[monitor.site$Site == "Mesquite" & monitor.site$Date_Monitored == as.Date("2020-12-12")] <- 56.120
-monitor.site$Precip_since_monitor[monitor.site$Site == "Mesquite" & monitor.site$Date_Monitored == as.Date("2020-12-12")] <- 0
-
-# Add MonitorSiteID
-monitor.site <- monitor.site |> 
-  arrange(Date_Monitored) |> 
-  arrange(Site) |> 
-  arrange(Region) |> 
-  mutate(MonitorSiteID = 1:nrow(monitor.site)) |> 
-  rename(Farrell_MAP = MAP,
-         Farrell_MAT = MAT,
-         Farrell_cum_precip = Cumulative_Precip,
-         Farrell_precip_since_monitor = Precip_since_monitor,
-         Farrell_lat = Latitude_WGS84,
-         Farrell_long = Longitude_WGS84,
-         Farrell_sand = Sand_Category,
-         Farrell_clay = Clay_Category,
-         Farrell_elev = Elevation_ft)
-
-# Write to CSV
-write_csv(monitor.site,
-          file = "data/data-wrangling-intermediate/03.1_monitoring-events-by-date-and-site.csv")
+# No actual conflicts between Farrell's and my monitoring info, except for the 12/12 vs. 12/13
+#   discrepancy, but that doesn't need to be changed/has an explanation for why
+#   they differ.
 
 
 
