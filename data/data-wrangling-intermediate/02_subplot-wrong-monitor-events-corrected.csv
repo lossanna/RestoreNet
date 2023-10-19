@@ -1,4 +1,4 @@
-Region,Site,Date_Seeded,Date_Monitored,Plot,Treatment,PlotMix,MonitorID
+Region,Site,Date_Seeded,Date_Monitored,Plot,Treatment,PlotMix,SiteDatePlotID
 Mojave,AVRCD,2020-03-17,2020-04-30,14,Seed,Cool,3588
 Mojave,AVRCD,2020-03-17,2021-04-06,1,ConMod,Cool,3663
 Mojave,AVRCD,2020-03-17,2021-04-06,2,Mulch,Cool,3664

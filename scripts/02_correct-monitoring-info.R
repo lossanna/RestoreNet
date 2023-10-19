@@ -1,17 +1,15 @@
 # Created: 2023-09-18
-# Last updated: 2023-09-25
+# Last updated: 2023-10-19
 
 # Purpose: In comparing the monitoring information from the subplot vs. 2x2 plot data, 
 #   there were discrepancies, but there should be only one correct version. 
 #   This script shows what corrections were made and why, to standardize information 
-#   for all the monitoring events. 
-
-# Monitoring events were assigned a MonitorID, where the ID is unique for each plot monitored 
-#   at each time point (Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix cols),
-#   without taking into account any actual data collection (species present or species measurements).
+#   for all the monitoring events. I also assigned various monitoring IDs to events based on
+#   unique combinations of different columns grouped together. Monitoring IDs do not
+#   take into account any of the actual data collection (species present or species measurements).
 
 # Workflow:
-#   Create initial MonitorID values based on subplot data (sometimes 2x2 data wasn't always recorded if nothing
+#   Create initial SiteDatePlotID based on subplot data (sometimes 2x2 data wasn't always recorded if nothing
 #     was growing).
 #   Examine conflicts between subplot and 2x2 monitoring info by site:
 #     1. Extract differing rows
@@ -21,8 +19,33 @@
 #   Correct any instances of "Seed only" as a Treatment
 #   Look for mistakes in both subplot and 2x2 data (and therefore wasn't previously examined)
 #   Resolve Plot conflicts, and standardize spelling for PlotMix and Treatment
-#   Write out separate tables of incorrect events and correct events (with correct MonitorID) that must be
+#   Write out separate tables of incorrect events and correct events (with correct SiteDatePlotID) that must be
 #     fixed in subplot and 2x2 data during data wrangling.
+
+# Types of monitoring IDs
+#   SiteDatePlotID: Unique combinations of Site, Date_Seeded, Date_Monitored, Plot, Treatment, and Plotmix columns.
+#     This is the most specific monitoring IDs get. Observations have the same ID if they were
+#     plants growing in the same plot, observed on the same day. Values range from 1 to 6393, with
+#     9 null IDs (nulls created because Plot info was wrong and duplicated).
+#   SiteDateID: Unique combinations of Site, Date_Seeded, Date_Monitored columns.
+#     This is used for connecting precipitation data to monitoring events, because precipitation
+#     is measured either as cumulative precip since the last monitoring event, or cumulative precip
+#     since most recent seeding (8 sites were reseeded to repeat experiment). Sometimes the
+#     same SiteDateID does not contain all 36 plots at the site, because sometimes sites took
+#     more than one day to monitor. This specificity is retained in determining precipitation.
+#     Values range from 1 to 188.
+
+# For the most part, for each site there is a single seeding date, 36 plots, and all plots were seeded  
+#   on the same day, and monitored on the same days. There are a few exceptions:
+#   - 6 CO Plateau sites were reseeded to repeat the experiment. I assume this means
+#       plots were plowed up and herbicide applied to start fresh.
+#   - Sonoran SE sites were sometimes not monitored in their entirety (all 36 plots) on the same day.
+#   - Mojave sites had additional treatment of pellets (44 plots total), and all plots 
+#       were reseeded except pellet ones.
+
+# There were 176 monitoring events, where each event is a unique site and monitoring time
+#   (times that took more than one day to monitor all plots counted as the same event).
+
 
 
 library(readxl)
@@ -76,13 +99,13 @@ p2x2 <- p2x2 |>
   mutate(across(everything(), as.character))
 
 
-# Assign MonitorID --------------------------------------------------------
+# Assign SiteDatePlotID ---------------------------------------------------
 
 # Assign monitoring events a (preliminary) ID based on subplot monitoring info
 #   Use subplot monitoring info because some monitoring events were not recorded in 2x2 data
 monitor.sub <- subplot %>% 
   mutate(across(everything(), as.character)) %>% 
-  mutate(MonitorID = 1:nrow(subplot))
+  mutate(SiteDatePlotID = 1:nrow(subplot))
 
 # Add monitoring IDs to 2x2 plot monitoring information
 monitor.2x2 <- p2x2 %>% 
@@ -95,7 +118,7 @@ monitor.2x2 <- p2x2 %>%
 
 # Examine differences by looking at NAs formed from left_join()
 monitor.diff <- monitor.2x2 %>% 
-  filter(is.na(MonitorID)) %>% 
+  filter(is.na(SiteDatePlotID)) %>% 
   arrange(Site) 
 
 
@@ -122,16 +145,16 @@ filter(monitor.sub, Site == "29_Palms", Date_Monitored == "2022-04-15") # nothin
 filter(monitor.2x2, Site == "29_Palms", Date_Monitored == "2022-04-15") # data collected on 2022-04-15
 
 # Figure out which version is correct
-#   Even if subplot data wasn't collected, 2x2 should still get MonitorID
+#   Even if subplot data wasn't collected, 2x2 should still get SiteDatePlotID
 
-# Extract incorrect row for 2x2 wrangling (does not have a MonitorID)
+# Extract incorrect row for 2x2 wrangling (does not have a SiteDatePlotID)
 wrong.2x2.29palms <- filter(monitor.2x2, Site == "29_Palms", Date_Monitored == "2022-04-15")
 
 # Create correct row for subplot and 2x2
-#   Pick up MonitorID where monitor.sub left off
+#   Pick up SiteDatePlotID where monitor.sub left off
 add.29palms <- monitor.diff |> 
   filter(Site == "29_Palms") |> 
-  mutate(MonitorID = 6348:6391)
+  mutate(SiteDatePlotID = 6348:6391)
 
 
 
@@ -187,14 +210,14 @@ filter(monitor.sub, Site == "AVRCD", Plot == "2") # Plot 2 monitored twice
 filter(monitor.2x2, Site == "AVRCD", Plot == "2") # Plot 2 monitored 3 times, also on 2022-04-13
 
 # Figure out which version is correct
-#   2x2 is correct, even if subplots weren't measured there should still be a MonitorID
+#   2x2 is correct, even if subplots weren't measured there should still be a SiteDatePlotID
 
-# Extract incorrect row for 2x2 wrangling (doesn't have a MonitorID)
+# Extract incorrect row for 2x2 wrangling (doesn't have a SiteDatePlotID)
 wrong.2x2.AVRCD1 <- filter(monitor.2x2, Site == "AVRCD", Plot == "2", Date_Monitored == "2022-04-13")
 
-# Create correct subplot and 2x2 row (assign MonitorID)
+# Create correct subplot and 2x2 row (assign SiteDatePlotID)
 add.AVRCD1 <- wrong.2x2.AVRCD1 |> 
-  mutate(MonitorID = 6392)
+  mutate(SiteDatePlotID = 6392)
 
 
 # 4. Plot 44 conflict
@@ -204,14 +227,14 @@ filter(monitor.sub, Site == "AVRCD", Plot == "44") # Plot 44 monitored twice
 filter(monitor.2x2, Site == "AVRCD", Plot == "44") # Plot 44 monitored 3 times, also on 2022-04-13
 
 # Figure out which version is correct
-#   2x2 is correct, even if subplots weren't measured there should still be a MonitorID
+#   2x2 is correct, even if subplots weren't measured there should still be a SiteDatePlotID
 
-# Extract incorrect row for 2x2 wrangling (doesn't have a MonitorID)
+# Extract incorrect row for 2x2 wrangling (doesn't have a SiteDatePlotID)
 wrong.2x2.AVRCD2 <- filter(monitor.2x2, Site == "AVRCD", Plot == "44", Date_Monitored == "2022-04-13")
 
-# Create correct subplot and 2x2 row (assign MonitorID)
+# Create correct subplot and 2x2 row (assign SiteDatePlotID)
 add.AVRCD2 <- wrong.2x2.AVRCD2 |> 
-  mutate(MonitorID = 6393)
+  mutate(SiteDatePlotID = 6393)
 
 
 
@@ -572,9 +595,9 @@ fix.sub.conflict <- bind_rows(fix.sub.AVRCD,
 # Subplot data
 #   Replace monitor info from subplot data with correct info
 monitor.correct <- monitor.sub |> 
-  filter(!MonitorID %in% fix.sub.conflict$MonitorID) |> 
+  filter(!SiteDatePlotID %in% fix.sub.conflict$SiteDatePlotID) |> 
   bind_rows(fix.sub.conflict) |> 
-  arrange(MonitorID)
+  arrange(SiteDatePlotID)
 
 nrow(monitor.correct) == nrow(monitor.sub)
 
@@ -753,10 +776,14 @@ monitor.correct |>
 monitor.correct |> 
   filter(Site == "29_Palms") |> 
   count(Date_Seeded) 
+monitor.correct |> 
+  filter(Site == "29_Palms",
+         Date_Seeded == "2021-12-19",
+         Treatment == "Pellets")
 
 # AVRCD
 #   3 monitoring dates, spring 2020, spring 2021, spring 2022
-#   2 seeding events (not all plots seeded on same day second time)
+#   2 seeding events (not all plots seeded on same day second time, seeded 1/15 and 1/17)
 monitor.correct |> 
   filter(Site == "AVRCD") |> 
   count(Date_Monitored) |> 
@@ -990,11 +1017,11 @@ seeded.twice |>
 
 
 # Create wrong and correct rows by site
-#   These are plots listed twice, and there is already a correct version with a MonitorID
-#   The rows with wrong monitoring information have MonitorIDs that will become null
-#   But must keep original MonitorID to connect wrong and fix dfs
-#     fix dfs will have correct monitoring info but a MonitorID that needs to be replaced
-#   Fixing the MonitorID will have to happen after left_joins to fix the monitoring info
+#   These are plots listed twice, and there is already a correct version with a SiteDatePlotID
+#   The rows with wrong monitoring information have SiteDatePlotIDs that will become null
+#   But must keep original SiteDatePlotID to connect wrong and fix dfs
+#     fix dfs will have correct monitoring info but a SiteDatePlotID that needs to be replaced
+#   Fixing the SiteDatePlotID will have to happen after left_joins to fix the monitoring info
 
 # BarTBar
 monitor.correct |> 
@@ -1015,14 +1042,14 @@ monitor.correct |>
          Date_Monitored == "2019-04-16")
 fix.sub.BarTBar <- wrong.sub.BarTBar |> 
   mutate(Treatment = "ConMod")
-fix.sub.BarTBar # has old MonitorID to be able to connect to incorrect rows
+fix.sub.BarTBar # has old SiteDatePlotID to be able to connect to incorrect rows
 monitor.2x2 |> 
   filter(Site == "BarTBar",
          Date_Monitored == "2019-04-16",
          Plot == "33",
          Treatment == "Mulch") # look for instance in 2x2 data; does not occur
-replaceID.BarTBar <- data.frame(MonitorID_old = 1006,
-                                MonitorID_replace = 1005)
+replaceID.BarTBar <- data.frame(SiteDatePlotID_old = 1006,
+                                SiteDatePlotID_replace = 1005)
 
 
 # Spiderweb
@@ -1050,8 +1077,8 @@ monitor.2x2 |>
          Date_Monitored == "2021-09-29",
          Plot == "29",
          PlotMix == "Med-Warm") # look for instance in 2x2 data; does not occur
-replaceID.Spiderweb <- data.frame(MonitorID_old = 3235,
-                                  MonitorID_replace = 3234)
+replaceID.Spiderweb <- data.frame(SiteDatePlotID_old = 3235,
+                                  SiteDatePlotID_replace = 3234)
 
 
 # UtahPJ
@@ -1079,8 +1106,8 @@ monitor.2x2 |>
   filter(Site == "UtahPJ",
          Plot == "29",
          Treatment == "Pits") # look for instance in 2x2 data; does not occur
-replaceID.UtahPJ1 <- data.frame(MonitorID_old = wrong.sub.UtahPJ1$MonitorID,
-                                MonitorID_replace = c(4167, 4241, 4460))
+replaceID.UtahPJ1 <- data.frame(SiteDatePlotID_old = wrong.sub.UtahPJ1$SiteDatePlotID,
+                                SiteDatePlotID_replace = c(4167, 4241, 4460))
 
 
 
@@ -1136,8 +1163,8 @@ wrong.2x2.UtahPJ
 fix.2x2.UtahPJ
 
 #   Create replacement ID
-replaceID.UtahPJ2 <- data.frame(MonitorID_old = wrong.sub.UtahPJ2$MonitorID,
-                                MonitorID_replace = c(4173, 4247, 4356, 4466))
+replaceID.UtahPJ2 <- data.frame(SiteDatePlotID_old = wrong.sub.UtahPJ2$SiteDatePlotID,
+                                SiteDatePlotID_replace = c(4173, 4247, 4356, 4466))
 
 # Combine replaceID
 replaceID <- bind_rows(replaceID.BarTBar, replaceID.Spiderweb, 
@@ -1187,9 +1214,9 @@ unique(monitor.correct$PlotMix)
 
 # All correct monitoring info ---------------------------------------------
 
-# Remove MonitorIDs with wrong plot information
-#   The plot ones have already existing correct rows with MonitorID and can be removed
-#   The ConMod ones need to be removed and replaced
+# Remove SiteDatePlotIDs with wrong plot information
+#   The wrong Plot ones have already existing correct rows with SiteDatePlotID and can be removed
+#   The wrong ConMod and Seed ones need to be removed and replaced
 wrong.leftover <- bind_rows(wrong.sub.BarTBar, 
                             wrong.sub.Spiderweb, 
                             wrong.sub.UtahPJ1, 
@@ -1198,10 +1225,10 @@ wrong.leftover <- bind_rows(wrong.sub.BarTBar,
                             wrong.seedonly)
 
 monitor.correct <- monitor.correct |> 
-  filter(!MonitorID %in% wrong.leftover$MonitorID) |> 
+  filter(!SiteDatePlotID %in% wrong.leftover$SiteDatePlotID) |> 
   bind_rows(fix.conmod, fix.seedonly) |>  # add back corrected ConMod & Seed rows; Plot conflicts were duplicates, 
-  #                                 but ConMod & Seed rows should be replaced
-  arrange(MonitorID)
+#                                 but ConMod & Seed rows should be replaced
+  arrange(SiteDatePlotID)
 
 
 # Check for whole number
@@ -1297,11 +1324,27 @@ write_csv(fix.2x2,
 
 
 
-# Write csv of MonitorIDs that need to be replaced
+# Write csv of SiteDatePlotIDs that need to be replaced
 write_csv(replaceID,
-          file = "data/data-wrangling-intermediate/02_MonitorID-replacements.csv")
+          file = "data/data-wrangling-intermediate/02_SiteDatePlotID-replacements.csv")
 
-  
+
+
+# Create list of SiteDateID -----------------------------------------------
+
+# Narrow down columns
+monitor.site <- monitor.correct |> 
+  select(Region, Site, Date_Seeded, Date_Monitored) |> 
+  distinct(.keep_all = TRUE)
+
+# Add SiteDateID
+monitor.site <- monitor.site |> 
+  mutate(SiteDateID = 1:nrow(monitor.site))
+
+# Write csv
+write_csv(monitor.site,
+          file = "data/cleaned/corrected-monitoring-info-by-date-and-site_clean.csv")
+
 
 save.image("RData/02_correct-monitoring-info.RData")
 

@@ -1,4 +1,4 @@
-Region,Site,Date_Seeded,Date_Monitored,Plot,Treatment,PlotMix,MonitorID
+Region,Site,Date_Seeded,Date_Monitored,Plot,Treatment,PlotMix,SiteDatePlotID
 Mojave,29_Palms,2021-12-19,2022-04-15,1,Seed,Cool,NA
 Mojave,29_Palms,2020-03-13,2022-04-15,2,Pellets,Cool,NA
 Mojave,29_Palms,2021-12-19,2022-04-15,3,Mulch,Cool,NA

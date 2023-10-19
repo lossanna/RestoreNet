@@ -30,7 +30,85 @@ normals.since.raw <- read_xlsx("data/data-wrangling-intermediate/03.3_months-to-
 normals.cum.raw <- read_xlsx("data/data-wrangling-intermediate/03.3_months-to-include-for-precip-normals-comparison.xlsx",
                                        sheet = "cum")
   
-  
+
+
+# Explore monthly normals -------------------------------------------------
+
+# Order months
+month.normal.graph <- month.normal |> 
+  filter(Date != "Annual") |> 
+  mutate(Date = factor(Date, levels = c("January", "February", "March", "April", "May",
+                                        "June", "July", "August", "September", "October",
+                                        "November", "December")))
+
+# Chihuahuan
+#   Unimodal: most rain in July-Sept
+month.normal.graph |> 
+  filter(Region == "Chihuahuan") |> 
+  ggplot(aes(x = Date, y = ppt_mm, color = Site, group = Site)) +
+  geom_point() +
+  geom_line() +
+  xlab(NULL) +
+  theme_bw() +
+  theme(legend.position = "bottom")
+
+# Colorado Plateau
+#   Biomodal, July-Sept and Dec-March (summer rains slightly greater than winter)
+month.normal.graph |> 
+  filter(Region == "Colorado Plateau") |> 
+  ggplot(aes(x = Date, y = ppt_mm, color = Site, group = Site)) +
+  geom_point() +
+  geom_line() +
+  xlab(NULL) +
+  theme_bw() +
+  theme(legend.position = "bottom")
+
+# Mojave
+#   Unimodal: most rain in Dec-March
+month.normal.graph |> 
+  filter(Region == "Mojave") |> 
+  ggplot(aes(x = Date, y = ppt_mm, color = Site, group = Site)) +
+  geom_point() +
+  geom_line() +
+  xlab(NULL) +
+  theme_bw() +
+  theme(legend.position = "bottom")
+
+# Sonoran Central
+#   Bimodal: July-Sept, Dec-March (summer and winter rains roughly equal)
+month.normal.graph |> 
+  filter(Region == "Sonoran Central") |> 
+  ggplot(aes(x = Date, y = ppt_mm, color = Site, group = Site)) +
+  geom_point() +
+  geom_line() +
+  xlab(NULL) +
+  theme_bw() +
+  theme(legend.position = "bottom")
+
+# Sonoran SE
+#   Slightly bimodal: most rain July-Sept, some rain Dec-March
+month.normal.graph |> 
+  filter(Region == "Sonoran SE") |> 
+  ggplot(aes(x = Date, y = ppt_mm, color = Site, group = Site)) +
+  geom_point() +
+  geom_line() +
+  xlab(NULL) +
+  theme_bw() +
+  theme(legend.position = "bottom")
+
+# Utah
+#   CRC & Salt Desert: Biomodal: July-Oct, March-May
+#   UtahPJ: Biomdal: July-Oct, Dec-Feb
+month.normal.graph |> 
+  filter(Region == "Utah") |> 
+  ggplot(aes(x = Date, y = ppt_mm, color = Site, group = Site)) +
+  geom_point() +
+  geom_line() +
+  xlab(NULL) +
+  theme_bw() +
+  theme(legend.position = "bottom")
+
+
 
 # Precip since last monitoring event --------------------------------------
 
@@ -68,7 +146,7 @@ normals.since <- normals.since |>
 
 # Add normals to actual precip values (Since_last_precip from ppt) to graph together
 #   Rename normals columns to match and add "source" col to note they are normals
-normals.since <- normals.since |> 
+normals.since.bind <- normals.since |> 
   rename(Date_Seeded = Seed_estimate,
          Date_Monitored = Monitor_estimate) |> 
   mutate(source = "normals")
@@ -76,8 +154,13 @@ since.long <- ppt |>
   select(Region, Site, Date_Seeded, Date_Monitored, MonitorSiteID, Since_last_precip) |> 
   rename(ppt_mm = Since_last_precip) |> 
   mutate(source = "actual") |> 
-  bind_rows(normals.since)
+  bind_rows(normals.since.bind)
 
+# Find percent change (deviation from normals)
+since.pc <- ppt |> 
+  select(Region, Site, MonitorSiteID, Date_Seeded, Date_Monitored, Since_last_precip) |> 
+  left_join(normals.since) |> 
+  mutate(perc_change = (Since_last_precip - ppt_mm) / ppt_mm)
 
 
 # Graph
