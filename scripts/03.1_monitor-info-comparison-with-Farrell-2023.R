@@ -140,24 +140,24 @@ monitor.site.diff <- left_join(monitor.site, h.monitor.site)
 
 site.diff.id <- monitor.site.diff |> 
   count(SiteDateID) |> 
-  filter(n > 1) # ID 87 & 135
+  filter(n > 1) # ID 34 & 143
 monitor.diff1 <- monitor.site.diff |> 
-  filter(SiteDateID %in% c(87, 135)) 
+  filter(SiteDateID %in% c(34, 143)) 
 
-# ID 87 has conflicting Precip_since_monitor
+# ID 34 has conflicting Precip_since_monitor
 #   There is really no way to know which one is right, so I'll just go with 145.980
 
-# ID 135 has conflicting Clay category
+# ID 143 has conflicting Clay category
 monitor.site.diff |> 
   filter(Site == "Patagonia") |> 
-  count(Clay_Category) # Clay categoruy should be low
+  count(Clay_Category) # Clay category should be low
 
-# Create df of correct rows for 87 & 135
+# Create df of correct rows for 34 & 143
 monitor.fix1 <- monitor.diff1[c(1, 3), ]
 
 # Replace corrected information
 monitor.site.fix <- monitor.site.diff |> 
-  filter(!SiteDateID %in% c(87, 135)) |> 
+  filter(!SiteDateID %in% c(34, 143)) |> 
   bind_rows(monitor.fix1) |> 
   arrange(SiteDateID)
 
