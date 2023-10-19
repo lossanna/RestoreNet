@@ -19,6 +19,7 @@
 
 library(tidyverse)
 library(readxl)
+library(scales)
 
 # Load data ---------------------------------------------------------------
 
@@ -112,7 +113,8 @@ month.normal.graph |>
 
 # Precip since last monitoring event --------------------------------------
 
-# Data wrangling
+
+# Since_last data wrangling -----------------------------------------------
 
 # pivot_longer() and convert NAs to 0 (blank cells are 0)
 normals.since <- normals.since.raw |> 
@@ -138,11 +140,11 @@ normals.since <- normals.since |>
 # Sum normals precip
 normals.since <- normals.since |> 
   select(-Date_Seeded, -Date_Monitored) |> 
-  mutate(MonitorSiteID = as.character(MonitorSiteID)) |> 
-  group_by(Region, Site, MonitorSiteID, Seed_estimate, Monitor_estimate) |> 
+  mutate(SiteDateID = as.character(SiteDateID)) |> 
+  group_by(Region, Site, SiteDateID, Seed_estimate, Monitor_estimate) |> 
   summarise(ppt_mm = sum(ppt_mm),
             .groups = "keep") |> 
-  mutate(MonitorSiteID = as.numeric(MonitorSiteID)) 
+  mutate(SiteDateID = as.numeric(SiteDateID)) 
 
 # Add normals to actual precip values (Since_last_precip from ppt) to graph together
 #   Rename normals columns to match and add "source" col to note they are normals
@@ -151,19 +153,20 @@ normals.since.bind <- normals.since |>
          Date_Monitored = Monitor_estimate) |> 
   mutate(source = "normals")
 since.long <- ppt |> 
-  select(Region, Site, Date_Seeded, Date_Monitored, MonitorSiteID, Since_last_precip) |> 
+  select(Region, Site, Date_Seeded, Date_Monitored, SiteDateID, Since_last_precip) |> 
   rename(ppt_mm = Since_last_precip) |> 
   mutate(source = "actual") |> 
   bind_rows(normals.since.bind)
 
 # Find percent change (deviation from normals)
 since.pc <- ppt |> 
-  select(Region, Site, MonitorSiteID, Date_Seeded, Date_Monitored, Since_last_precip) |> 
+  select(Region, Site, SiteDateID, Date_Seeded, Date_Monitored, Since_last_precip) |> 
   left_join(normals.since) |> 
   mutate(perc_change = (Since_last_precip - ppt_mm) / ppt_mm)
 
 
-# Graph
+
+# Since_last graph --------------------------------------------------------
 
 # All sites
 since.long |> 
@@ -175,7 +178,34 @@ since.long |>
   theme_bw() +
   theme(legend.position = "bottom") 
 
+since.pc |> 
+  filter(perc_change != Inf) |> 
+  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  xlab(NULL) +
+  theme_bw() +
+  scale_y_continuous(labels = percent)
+
+since.pc |> 
+  filter(perc_change != Inf,
+         Region !="Mojave") |> 
+  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  xlab(NULL) +
+  theme_bw() +
+  scale_y_continuous(labels = percent) +
+  geom_hline(yintercept = 0,
+             linetype = "dashed",
+             color = "red")
+
+
+  
 # By Region
+# Sonoran Central
 since.long |> 
   filter(Region == "Sonoran Central") |> 
   ggplot(aes(x = Date_Monitored, y = ppt_mm, color = source)) +
@@ -186,6 +216,21 @@ since.long |>
   theme_bw() +
   theme(legend.position = "bottom") 
 
+since.pc |> 
+  filter(perc_change != Inf) |> 
+  filter(Region == "Sonoran Central") |> 
+  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  xlab(NULL) +
+  theme_bw() +
+  scale_y_continuous(labels = percent) +
+  geom_hline(yintercept = 0,
+             linetype = "dashed",
+             color = "red")
+
+# Sonoran SE
 since.long |> 
   filter(Region == "Sonoran SE") |> 
   ggplot(aes(x = Date_Monitored, y = ppt_mm, color = source)) +
@@ -196,16 +241,21 @@ since.long |>
   theme_bw() +
   theme(legend.position = "bottom") 
 
-since.long |> 
-  filter(Region == "Mojave") |> 
-  ggplot(aes(x = Date_Monitored, y = ppt_mm, color = source)) +
+since.pc |> 
+  filter(perc_change != Inf) |> 
+  filter(Region == "Sonoran SE") |> 
+  ggplot(aes(x = Date_Monitored, y = perc_change)) +
   geom_point() +
   geom_line() +
   facet_wrap(~Site) +
   xlab(NULL) +
   theme_bw() +
-  theme(legend.position = "bottom") 
+  scale_y_continuous(labels = percent) +
+  geom_hline(yintercept = 0,
+             linetype = "dashed",
+             color = "red")
 
+# Chihuahuan
 since.long |> 
   filter(Region == "Chihuahuan") |> 
   ggplot(aes(x = Date_Monitored, y = ppt_mm, color = source)) +
@@ -216,6 +266,46 @@ since.long |>
   theme_bw() +
   theme(legend.position = "bottom")
 
+since.pc |> 
+  filter(perc_change != Inf) |> 
+  filter(Region == "Chihuahuan") |> 
+  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  xlab(NULL) +
+  theme_bw() +
+  scale_y_continuous(labels = percent) +
+  geom_hline(yintercept = 0,
+             linetype = "dashed",
+             color = "red")
+
+# Mojave
+since.long |> 
+  filter(Region == "Mojave") |> 
+  ggplot(aes(x = Date_Monitored, y = ppt_mm, color = source)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  xlab(NULL) +
+  theme_bw() +
+  theme(legend.position = "bottom") 
+
+since.pc |> 
+  filter(perc_change != Inf) |> 
+  filter(Region == "Mojave") |> 
+  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  xlab(NULL) +
+  theme_bw() +
+  scale_y_continuous(labels = percent) +
+  geom_hline(yintercept = 0,
+             linetype = "dashed",
+             color = "red")
+
+# Utah
 since.long |> 
   filter(Region == "Utah") |> 
   ggplot(aes(x = Date_Monitored, y = ppt_mm, color = source)) +
@@ -226,6 +316,21 @@ since.long |>
   theme_bw() +
   theme(legend.position = "bottom") 
 
+since.pc |> 
+  filter(perc_change != Inf) |> 
+  filter(Region == "Utah") |> 
+  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  xlab(NULL) +
+  theme_bw() +
+  scale_y_continuous(labels = percent) +
+  geom_hline(yintercept = 0,
+             linetype = "dashed",
+             color = "red")
+
+# Colorado Plateau
 since.long |> 
   filter(Region == "Colorado Plateau") |> 
   ggplot(aes(x = Date_Monitored, y = ppt_mm, color = source)) +
@@ -236,12 +341,43 @@ since.long |>
   theme_bw() +
   theme(legend.position = "bottom") 
 
+since.pc |> 
+  filter(perc_change != Inf) |> 
+  filter(Region == "Colorado Plateau") |> 
+  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  xlab(NULL) +
+  theme_bw() +
+  scale_y_continuous(labels = percent) +
+  geom_hline(yintercept = 0,
+             linetype = "dashed",
+             color = "red")
+
+since.pc |> 
+  filter(perc_change != Inf,
+         Site != "MOWE") |> 
+  filter(Region == "Colorado Plateau") |> 
+  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  xlab(NULL) +
+  theme_bw() +
+  scale_y_continuous(labels = percent) +
+  geom_hline(yintercept = 0,
+             linetype = "dashed",
+             color = "red")
+
+
+
 
 
 # Cumulative precip since seeding -----------------------------------------
 
 
-# Data wrangling
+# Cumulative data wrangling -----------------------------------------------
 
 # pivot_longer() and convert NAs to 0 (blank cells are 0)
 normals.cum <- normals.cum.raw |> 
@@ -267,27 +403,34 @@ normals.cum <- normals.cum |>
 # Sum normals precip
 normals.cum <- normals.cum |> 
   select(-Date_Seeded, -Date_Monitored) |> 
-  mutate(MonitorSiteID = as.character(MonitorSiteID)) |> 
-  group_by(Region, Site, MonitorSiteID, Seed_estimate, Monitor_estimate) |> 
+  mutate(SiteDateID = as.character(SiteDateID)) |> 
+  group_by(Region, Site, SiteDateID, Seed_estimate, Monitor_estimate) |> 
   summarise(ppt_mm = sum(ppt_mm),
             .groups = "keep") |> 
-  mutate(MonitorSiteID = as.numeric(MonitorSiteID)) 
+  mutate(SiteDateID = as.numeric(SiteDateID)) 
 
-# Add normals to actual precip values (cum_last_precip from ppt) to graph together
+# Add normals to actual precip values (Cum_precip from ppt) to graph together
 #   Rename normals columns to match and add "source" col to note they are normals
-normals.cum <- normals.cum |> 
+normals.cum.bind <- normals.cum |> 
   rename(Date_Seeded = Seed_estimate,
          Date_Monitored = Monitor_estimate) |> 
   mutate(source = "normals")
 cum.long <- ppt |> 
-  select(Region, Site, Date_Seeded, Date_Monitored, MonitorSiteID, Cum_precip) |> 
+  select(Region, Site, Date_Seeded, Date_Monitored, SiteDateID, Cum_precip) |> 
   rename(ppt_mm = Cum_precip) |> 
   mutate(source = "actual") |> 
-  bind_rows(normals.cum)
+  bind_rows(normals.cum.bind)
+
+# Find percent change (deviation from normals)
+cum.pc <- ppt |> 
+  select(Region, Site, SiteDateID, Date_Seeded, Date_Monitored, Cum_precip) |> 
+  left_join(normals.cum) |> 
+  mutate(perc_change = (Cum_precip - ppt_mm) / ppt_mm)
 
 
 
-# Graph
+
+# Cumulative graph --------------------------------------------------------
 
 # All sites
 cum.long |> 
@@ -299,7 +442,34 @@ cum.long |>
   theme_bw() +
   theme(legend.position = "bottom") 
 
+cum.pc |> 
+  filter(perc_change != Inf) |> 
+  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  xlab(NULL) +
+  theme_bw() +
+  scale_y_continuous(labels = percent)
+
+cum.pc |> 
+  filter(perc_change != Inf,
+         Region !="Mojave") |> 
+  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  xlab(NULL) +
+  theme_bw() +
+  scale_y_continuous(labels = percent) +
+  geom_hline(yintercept = 0,
+             linetype = "dashed",
+             color = "red")
+
+
+
 # By Region
+# Sonoran Central
 cum.long |> 
   filter(Region == "Sonoran Central") |> 
   ggplot(aes(x = Date_Monitored, y = ppt_mm, color = source)) +
@@ -310,6 +480,21 @@ cum.long |>
   theme_bw() +
   theme(legend.position = "bottom") 
 
+cum.pc |> 
+  filter(perc_change != Inf) |> 
+  filter(Region == "Sonoran Central") |> 
+  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  xlab(NULL) +
+  theme_bw() +
+  scale_y_continuous(labels = percent) +
+  geom_hline(yintercept = 0,
+             linetype = "dashed",
+             color = "red")
+
+# Sonoran SE
 cum.long |> 
   filter(Region == "Sonoran SE") |> 
   ggplot(aes(x = Date_Monitored, y = ppt_mm, color = source)) +
@@ -320,6 +505,46 @@ cum.long |>
   theme_bw() +
   theme(legend.position = "bottom") 
 
+cum.pc |> 
+  filter(perc_change != Inf) |> 
+  filter(Region == "Sonoran SE") |> 
+  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  xlab(NULL) +
+  theme_bw() +
+  scale_y_continuous(labels = percent) +
+  geom_hline(yintercept = 0,
+             linetype = "dashed",
+             color = "red")
+
+# Chihuahuan
+cum.long |> 
+  filter(Region == "Chihuahuan") |> 
+  ggplot(aes(x = Date_Monitored, y = ppt_mm, color = source)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  xlab(NULL) +
+  theme_bw() +
+  theme(legend.position = "bottom")
+
+cum.pc |> 
+  filter(perc_change != Inf) |> 
+  filter(Region == "Chihuahuan") |> 
+  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  xlab(NULL) +
+  theme_bw() +
+  scale_y_continuous(labels = percent) +
+  geom_hline(yintercept = 0,
+             linetype = "dashed",
+             color = "red")
+
+# Mojave
 cum.long |> 
   filter(Region == "Mojave") |> 
   ggplot(aes(x = Date_Monitored, y = ppt_mm, color = source)) +
@@ -330,6 +555,21 @@ cum.long |>
   theme_bw() +
   theme(legend.position = "bottom") 
 
+cum.pc |> 
+  filter(perc_change != Inf) |> 
+  filter(Region == "Mojave") |> 
+  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  xlab(NULL) +
+  theme_bw() +
+  scale_y_continuous(labels = percent) +
+  geom_hline(yintercept = 0,
+             linetype = "dashed",
+             color = "red")
+
+# Utah
 cum.long |> 
   filter(Region == "Utah") |> 
   ggplot(aes(x = Date_Monitored, y = ppt_mm, color = source)) +
@@ -340,16 +580,21 @@ cum.long |>
   theme_bw() +
   theme(legend.position = "bottom") 
 
-cum.long |> 
-  filter(Region == "Chihuahuan") |> 
-  ggplot(aes(x = Date_Monitored, y = ppt_mm, color = source)) +
+cum.pc |> 
+  filter(perc_change != Inf) |> 
+  filter(Region == "Utah") |> 
+  ggplot(aes(x = Date_Monitored, y = perc_change)) +
   geom_point() +
   geom_line() +
   facet_wrap(~Site) +
   xlab(NULL) +
   theme_bw() +
-  theme(legend.position = "bottom") 
+  scale_y_continuous(labels = percent) +
+  geom_hline(yintercept = 0,
+             linetype = "dashed",
+             color = "red")
 
+# Colorado Plateau
 cum.long |> 
   filter(Region == "Colorado Plateau") |> 
   ggplot(aes(x = Date_Monitored, y = ppt_mm, color = source)) +
@@ -359,6 +604,20 @@ cum.long |>
   xlab(NULL) +
   theme_bw() +
   theme(legend.position = "bottom") 
+
+cum.pc |> 
+  filter(perc_change != Inf) |> 
+  filter(Region == "Colorado Plateau") |> 
+  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  xlab(NULL) +
+  theme_bw() +
+  scale_y_continuous(labels = percent) +
+  geom_hline(yintercept = 0,
+             linetype = "dashed",
+             color = "red")
 
 
 
