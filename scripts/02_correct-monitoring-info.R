@@ -1339,6 +1339,9 @@ monitor.site <- monitor.correct |>
 
 # Add SiteDateID
 monitor.site <- monitor.site |> 
+  arrange(Date_Monitored) |> 
+  arrange(Site) |> 
+  arrange(Region) |> 
   mutate(SiteDateID = 1:nrow(monitor.site))
 
 # Write csv
