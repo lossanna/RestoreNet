@@ -2,7 +2,7 @@
 # Last updated: 2023-10-19
 
 # Purpose: Investigate discrepancies between my monitoring info and
-#   Hannah Farrell's 2023 dataset.
+#   Hannah Farrell's 2023 dataset, and write out list of SiteDateID with Farrell climate data.
 # Did not make any changes to my monitoring info after comparing with Farrell's.
 
 
