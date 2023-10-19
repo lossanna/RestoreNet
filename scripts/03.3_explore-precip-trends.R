@@ -1,7 +1,20 @@
 # Created: 2023-09-28
-# Last updated: 2023-09-28
+# Last updated: 2023-10-19
 
-# Purpose: Explore precip trends
+# Purpose: Explore precip trends. Compare actual precip values (from PRISM daily values, see 03.2.R)
+#   with 30-year normals. Actual precip is recorded as either cumulative precip
+#   since seeding, or cumulative precip since the previous monitoring event. Because the time
+#   interval between monitoring events and seeding differs by site, and because normals are
+#   site- and and month-specific, each site must be dealt with on an individual basis 
+#   to determine which normals months should be included for a (roughly equal) comparison.
+
+# Normals must be "rounded" to the start of the month, the end of the month,
+#   or mid-month, because normals are reported as annual or monthly. Hence, while the actual 
+#   precip experienced is defined to the day, comparable normals are defined to the
+#   half month. This also assumes that an even amount of rain falls in the first and
+#   second half of the month, and sometimes for sites monitored every 2 weeks the dates round
+#   such that there is assumed to be no interval, and therefore no precip (for normals). 
+#   See 03.3.xlsx README tab for more explanation.
 
 
 library(tidyverse)
@@ -12,132 +25,258 @@ library(readxl)
 ppt <- read_csv("data/cleaned/monitoring-events-with-PRISM-climate-data_clean.csv")
 month.normal <- read_csv("data/data-wrangling-intermediate/03.2_PRISM-month-normals-all-sites.csv")
 daily <- read_csv("data/data-wrangling-intermediate/03.2_PRISM-daily-all-sites.csv")
-normals.include.raw <- read_xlsx("data/data-wrangling-intermediate/03.3_months-to-include-for-precip-normals-comparison.xlsx")
+normals.since.raw <- read_xlsx("data/data-wrangling-intermediate/03.3_months-to-include-for-precip-normals-comparison.xlsx",
+                                       sheet = "since_last")
+normals.cum.raw <- read_xlsx("data/data-wrangling-intermediate/03.3_months-to-include-for-precip-normals-comparison.xlsx",
+                                       sheet = "cum")
   
   
 
-# Explore precip since last monitor trends --------------------------------
+# Precip since last monitoring event --------------------------------------
 
-# With MAP as horizontal line
-ppt |> 
-  ggplot(aes(x = Date_Monitored, y = Since_last_precip)) +
-  geom_point() +
-  geom_line() +
-  facet_wrap(~Site) +
-  geom_hline(aes(yintercept = ppt$MAP),
-             color = "blue",
-             linetype = "dashed")
-#   29_Palms, AVRCD, Creosote, Mesquite didn't have 3 point variation
-#     (either low-high-low or high-low-high)
+# Data wrangling
 
-
-
-# Create summer/winter normals --------------------------------------------
-
-# To better compare with precip since last monitoring event, separate half the
-#   year as winter and half as summer
-
-season.normal <- month.normal |> 
-  filter(Date != "Annual") %>%
-  mutate(Season = case_when(
-    Date %in% c("May", "June", "July", "August", "September", "October") ~ "Summer",
-    Date %in% c("November", "December", "January", "February", "March", "April") ~ "Winter")) %>%
-  group_by(Site, Season) %>%
-  summarize(season.precip = sum(ppt_mm),
-            .groups = "keep") %>%
-  pivot_wider(names_from = Season, values_from = season.precip) %>%
-  ungroup()
-
-# Add to ppt data
-ppt.season <- ppt |> 
-  left_join(season.normal)
-
-
-# Graph
-ppt |> 
-  ggplot(aes(x = Date_Monitored, y = Since_last_precip)) +
-  geom_point() +
-  geom_line() +
-  facet_wrap(~Site) +
-  geom_hline(aes(yintercept = ppt.season$Summer),
-             color = "red",
-             linetype = "dashed") +
-  geom_hline(aes(yintercept = ppt.season$Winter),
-             color = "blue",
-             linetype = "dashed")
-
-
-
-# Event-specific normals comparison ---------------------------------------
-
-# Because the time interval between monitoring events and the points are cumulative,
-#   to best compare with month normals, they also must be summed over the same
-#   time intervals. I made a table of which months should be included for which
-#   monitoring events in Excel (normals.include.raw).
-
-# pivot_longer()
-normals.include <- normals.include.raw |> 
-  select(-Month_estimate) |> 
-  pivot_longer(cols = c("January", "February", "March", "April", "May",
+# pivot_longer() and convert NAs to 0 (blank cells are 0)
+normals.since <- normals.since.raw |> 
+  select(-Seed_month_estimate, -Monitor_month_estimate) |> 
+  pivot_longer(cols = c("Annual", "January", "February", "March", "April", "May",
                         "June", "July", "August", "September", "October",
                         "November", "December"),
-              names_to = "Month",
-              values_to = "include") |> 
-    filter(!is.na(include)) |> 
-  select(-include) 
+              names_to = "Date",
+              values_to = "include") 
+normals.since$include[is.na(normals.since$include)] <- 0
 
-# Reformat month normals df to left_join()
-month.normal.add <- month.normal |> 
-  filter(Date != "Annual") |> 
-  rename(Month = Date)
+# Add normals values
+normals.since <- normals.since |> 
+  left_join(month.normal) |> 
+  select(-tmin, -tmax, -tmean) 
 
-# Add month normals
-normals.include <- left_join(normals.include, month.normal.add)
-
+# Multiply include * ppt_mm for new ppt_mm value
+#   "include" column is the amount of times that month/annual should be included
+normals.since <- normals.since |> 
+  mutate(ppt_mm = include * ppt_mm) |> 
+  select(-include)
 
 # Sum normals precip
-normals.ppt <- normals.include |> 
-  select(-tmin, -tmax, -tmean ,-Date_Seeded, -Date_Monitored) |> 
+normals.since <- normals.since |> 
+  select(-Date_Seeded, -Date_Monitored) |> 
   mutate(MonitorSiteID = as.character(MonitorSiteID)) |> 
-  rename(Date_Monitored = Date_normals) |> 
-  group_by(Region, Site, Date_Monitored, MonitorSiteID) |> 
-  summarise(ppt = sum(ppt_mm),
+  group_by(Region, Site, MonitorSiteID, Seed_estimate, Monitor_estimate) |> 
+  summarise(ppt_mm = sum(ppt_mm),
             .groups = "keep") |> 
-  mutate(MonitorSiteID = as.numeric(MonitorSiteID)) |> 
-  mutate(source = "normals")
+  mutate(MonitorSiteID = as.numeric(MonitorSiteID)) 
 
-# Narrow down columns to add normals to Since_last_precip to graph together
-normals.ppt.long <- ppt |> 
-  select(Region, Site, Date_Monitored, MonitorSiteID, Since_last_precip) |> 
-  rename(ppt = Since_last_precip) |> 
+# Add normals to actual precip values (Since_last_precip from ppt) to graph together
+#   Rename normals columns to match and add "source" col to note they are normals
+normals.since <- normals.since |> 
+  rename(Date_Seeded = Seed_estimate,
+         Date_Monitored = Monitor_estimate) |> 
+  mutate(source = "normals")
+since.long <- ppt |> 
+  select(Region, Site, Date_Seeded, Date_Monitored, MonitorSiteID, Since_last_precip) |> 
+  rename(ppt_mm = Since_last_precip) |> 
   mutate(source = "actual") |> 
-  bind_rows(normals.ppt)
+  bind_rows(normals.since)
+
+
 
 # Graph
-normals.ppt.long |> 
-  ggplot(aes(x = Date_Monitored, y = ppt, color = source)) +
+
+# All sites
+since.long |> 
+  ggplot(aes(x = Date_Monitored, y = ppt_mm, color = source)) +
   geom_point() +
   geom_line() +
   facet_wrap(~Site) +
-  theme(legend.position = "none")
+  xlab(NULL) +
+  theme_bw() +
+  theme(legend.position = "bottom") 
 
-normals.ppt.long |> 
+# By Region
+since.long |> 
   filter(Region == "Sonoran Central") |> 
-  ggplot(aes(x = Date_Monitored, y = ppt, color = source)) +
+  ggplot(aes(x = Date_Monitored, y = ppt_mm, color = source)) +
   geom_point() +
   geom_line() +
   facet_wrap(~Site) +
-  theme(legend.position = "none")
+  xlab(NULL) +
+  theme_bw() +
+  theme(legend.position = "bottom") 
 
-
-
-
-# Explore cumulative precip trends ----------------------------------------
-
-# Cumulative
-ppt |> 
-  ggplot(aes(x = Date_Monitored, y = Cum_precip)) +
+since.long |> 
+  filter(Region == "Sonoran SE") |> 
+  ggplot(aes(x = Date_Monitored, y = ppt_mm, color = source)) +
   geom_point() +
   geom_line() +
-  facet_wrap(~Site) 
+  facet_wrap(~Site) +
+  xlab(NULL) +
+  theme_bw() +
+  theme(legend.position = "bottom") 
 
+since.long |> 
+  filter(Region == "Mojave") |> 
+  ggplot(aes(x = Date_Monitored, y = ppt_mm, color = source)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  xlab(NULL) +
+  theme_bw() +
+  theme(legend.position = "bottom") 
+
+since.long |> 
+  filter(Region == "Chihuahuan") |> 
+  ggplot(aes(x = Date_Monitored, y = ppt_mm, color = source)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  xlab(NULL) +
+  theme_bw() +
+  theme(legend.position = "bottom")
+
+since.long |> 
+  filter(Region == "Utah") |> 
+  ggplot(aes(x = Date_Monitored, y = ppt_mm, color = source)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  xlab(NULL) +
+  theme_bw() +
+  theme(legend.position = "bottom") 
+
+since.long |> 
+  filter(Region == "Colorado Plateau") |> 
+  ggplot(aes(x = Date_Monitored, y = ppt_mm, color = source)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  xlab(NULL) +
+  theme_bw() +
+  theme(legend.position = "bottom") 
+
+
+
+# Cumulative precip since seeding -----------------------------------------
+
+
+# Data wrangling
+
+# pivot_longer() and convert NAs to 0 (blank cells are 0)
+normals.cum <- normals.cum.raw |> 
+  select(-Seed_month_estimate, -Monitor_month_estimate) |> 
+  pivot_longer(cols = c("Annual", "January", "February", "March", "April", "May",
+                        "June", "July", "August", "September", "October",
+                        "November", "December"),
+               names_to = "Date",
+               values_to = "include") 
+normals.cum$include[is.na(normals.cum$include)] <- 0
+
+# Add normals values
+normals.cum <- normals.cum |> 
+  left_join(month.normal) |> 
+  select(-tmin, -tmax, -tmean) 
+
+# Multiply include * ppt_mm for new ppt_mm value
+#   "include" column is the amount of times that month/annual should be included
+normals.cum <- normals.cum |> 
+  mutate(ppt_mm = include * ppt_mm) |> 
+  select(-include)
+
+# Sum normals precip
+normals.cum <- normals.cum |> 
+  select(-Date_Seeded, -Date_Monitored) |> 
+  mutate(MonitorSiteID = as.character(MonitorSiteID)) |> 
+  group_by(Region, Site, MonitorSiteID, Seed_estimate, Monitor_estimate) |> 
+  summarise(ppt_mm = sum(ppt_mm),
+            .groups = "keep") |> 
+  mutate(MonitorSiteID = as.numeric(MonitorSiteID)) 
+
+# Add normals to actual precip values (cum_last_precip from ppt) to graph together
+#   Rename normals columns to match and add "source" col to note they are normals
+normals.cum <- normals.cum |> 
+  rename(Date_Seeded = Seed_estimate,
+         Date_Monitored = Monitor_estimate) |> 
+  mutate(source = "normals")
+cum.long <- ppt |> 
+  select(Region, Site, Date_Seeded, Date_Monitored, MonitorSiteID, Cum_precip) |> 
+  rename(ppt_mm = Cum_precip) |> 
+  mutate(source = "actual") |> 
+  bind_rows(normals.cum)
+
+
+
+# Graph
+
+# All sites
+cum.long |> 
+  ggplot(aes(x = Date_Monitored, y = ppt_mm, color = source)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  xlab(NULL) +
+  theme_bw() +
+  theme(legend.position = "bottom") 
+
+# By Region
+cum.long |> 
+  filter(Region == "Sonoran Central") |> 
+  ggplot(aes(x = Date_Monitored, y = ppt_mm, color = source)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  xlab(NULL) +
+  theme_bw() +
+  theme(legend.position = "bottom") 
+
+cum.long |> 
+  filter(Region == "Sonoran SE") |> 
+  ggplot(aes(x = Date_Monitored, y = ppt_mm, color = source)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  xlab(NULL) +
+  theme_bw() +
+  theme(legend.position = "bottom") 
+
+cum.long |> 
+  filter(Region == "Mojave") |> 
+  ggplot(aes(x = Date_Monitored, y = ppt_mm, color = source)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  xlab(NULL) +
+  theme_bw() +
+  theme(legend.position = "bottom") 
+
+cum.long |> 
+  filter(Region == "Utah") |> 
+  ggplot(aes(x = Date_Monitored, y = ppt_mm, color = source)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  xlab(NULL) +
+  theme_bw() +
+  theme(legend.position = "bottom") 
+
+cum.long |> 
+  filter(Region == "Chihuahuan") |> 
+  ggplot(aes(x = Date_Monitored, y = ppt_mm, color = source)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  xlab(NULL) +
+  theme_bw() +
+  theme(legend.position = "bottom") 
+
+cum.long |> 
+  filter(Region == "Colorado Plateau") |> 
+  ggplot(aes(x = Date_Monitored, y = ppt_mm, color = source)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  xlab(NULL) +
+  theme_bw() +
+  theme(legend.position = "bottom") 
+
+
+
+save.image("RData/03.3_explore-precip-trends.RData")
