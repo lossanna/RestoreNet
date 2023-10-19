@@ -1,5 +1,5 @@
 # Created: 2023-09-27
-# Last updated: 2023-09-28
+# Last updated: 2023-10-19
 
 # Purpose: Compile climate data gathered from PRISM and compare to 
 #   Farrell 2023 data (specifically cumulative precipitation, precipitation
@@ -20,13 +20,14 @@ prism.normals.raw <- read_xlsx("data/data-wrangling-intermediate/03.2_monitoring
                            sheet = "normals")
 
 monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
+monitor.site <- read_csv("data/cleaned/corrected-monitoring-info-by-date-and-site_clean.csv")
+
 
 
 # Add complete path to prism.daily columns --------------------------------
 
-# Drop null ID 145 and add complete path to file names
+# Add complete path to file names
 prism.daily <- prism.daily.raw |> 
-  filter(!is.na(cum_file)) |> 
   mutate(cum_file = paste0(path_beginning, "/", cum_file),
          since_last_file = paste0(path_beginning, "/", since_last_file))
 
@@ -39,7 +40,7 @@ prism.normals <- prism.normals.raw |>
 
 # Add columns of cumulative precip and precip since last monitoring events based
 #   on PRISM data. I downloaded a file from PRISM based on the relevant specifications,
-#   and it can be used to calculate the precip values for each MonitorSiteID.
+#   and it can be used to calculate the precip values for each SiteDateID.
 # Write a function to process the CSVs, and then iterative over for each row.
 
 
@@ -64,10 +65,11 @@ prism.daily <- prism.daily %>%
   mutate(Since_last_precip = map_dbl(since_last_file, process_csv))
 
 
+
 # Compare precip values ---------------------------------------------------
 
 compare.ppt <- prism.daily |> 
-  select(Region, Site, Date_Seeded, Date_Monitored, MonitorSiteID, Farrell_cum_precip,
+  select(Region, Site, Date_Seeded, Date_Monitored, SiteDateID, Farrell_cum_precip,
          Cum_precip, Farrell_precip_since_monitor, Since_last_precip) |> 
   mutate(Cum_difference = Farrell_cum_precip - Cum_precip,
          Since_difference = Farrell_precip_since_monitor - Since_last_precip)
@@ -77,8 +79,8 @@ summary(compare.ppt$Cum_difference)
 summary(compare.ppt$Since_difference)
 
 compare.ppt.inspect <- compare.ppt |> 
-  filter(abs(Cum_difference) > 10 | abs(Since_difference) > 10)
-#   There are only 18 instances where my PRISM data differs by more than 10 mm of precip
+  filter(abs(Cum_difference) > 20 | abs(Since_difference) > 20)
+#   There are only 22 instances where my PRISM data differs by more than 20 mm of precip
 #     when compared with Hannah's.
 #   They overall seem similar, so I will proceed with my values.
 
@@ -286,10 +288,9 @@ month.normal <- bind_rows(month.normal.29_Palms, month.normal.AguaFria,
 
 # Compile PRISM ppt, MAP, MAT with monitor events -------------------------
 
-# Remove MonitorSiteID 35 because it is a null duplicate
+# Narrow columns
 monitor.site.info <- prism.daily |> 
-  filter(MonitorSiteID != 35) |> 
-  select(Region, Site, Date_Seeded, Date_Monitored, MonitorSiteID,
+  select(Region, Site, Date_Seeded, Date_Monitored, SiteDateID,
          Cum_precip, Since_last_precip)
 
 # Site-specific info, independent of date
@@ -306,20 +307,26 @@ monitor.site.info <- monitor.site.info |>
   left_join(site.info) |> 
   select(Region, Site, Date_Seeded, Date_Monitored, Latitude,
           Longitude, Elevation_ft, Sand_content, Clay_content,
-          MAP, MAT, MonitorSiteID, Cum_precip, Since_last_precip)
+          MAP, MAT, SiteDateID, Cum_precip, Since_last_precip)
 
 # Test to make sure monitoring events are not conflicting
 monitor.info |> 
   left_join(monitor.site.info) |> 
-  filter(is.na(MonitorID)) # no conflicts
+  filter(is.na(SiteDatePlotID)) # no conflicts
 
 
 
 # Compile daily values for each site --------------------------------------
 
+# Make a table of precip data from PRISM for every day of the experiment:
+#   Compile total of all precip values used without duplicates
+#   (the separate PRISM files have a lot of overlap).
+
 # For sites that were not reseeded, the file of cumulative precipitation of the
 #   last monitoring event contains all the days. 
-# For 6 sites that were reseeded, some sites have no gap in time 
+# For the Mojave plots that were reseeded, the last monitoring event still contains
+#   all of the days, because some plots were not reseeded.
+# For the 6 CO Plateau sites that were reseeded, some sites have no gap in time 
 #   (sites were monitored and then reseeded in the same day), 
 #   and some sites have a small gap in time (a few days missing from when 
 #   it was monitored, and then reseeded a few days later):
@@ -354,73 +361,73 @@ daily.AguaFria$Site <- "AguaFria"
 daily.AguaFria$Region <- "Colorado Plateau"
 
 #   TLE
-daily.TLE <- read.csv(prism.daily$cum_file[112], skip = 10)
+daily.TLE <- read.csv(prism.daily$cum_file[111], skip = 10)
 colnames(daily.TLE) <- c("Date", "ppt_mm", "tmin", "tmean", "tmax")
 daily.TLE$Site <- "TLE"
 daily.TLE$Region <- "Colorado Plateau"
 
 #   29_Palms
-daily.29_Palms <- read.csv(prism.daily$cum_file[116], skip = 10)
+daily.29_Palms <- read.csv(prism.daily$cum_file[115], skip = 10)
 colnames(daily.29_Palms) <- c("Date", "ppt_mm", "tmin", "tmean", "tmax")
 daily.29_Palms$Site <- "29_Palms"
 daily.29_Palms$Region <- "Mojave"
 
 #   AVRCD
-daily.AVRCD <- read.csv(prism.daily$cum_file[121], skip = 10)
+daily.AVRCD <- read.csv(prism.daily$cum_file[120], skip = 10)
 colnames(daily.AVRCD) <- c("Date", "ppt_mm", "tmin", "tmean", "tmax")
 daily.AVRCD$Site <- "AVRCD"
 daily.AVRCD$Region <- "Mojave"
 
 #   Pleasant
-daily.Pleasant <- read.csv(prism.daily$cum_file[127], skip = 10)
+daily.Pleasant <- read.csv(prism.daily$cum_file[126], skip = 10)
 colnames(daily.Pleasant) <- c("Date", "ppt_mm", "tmin", "tmean", "tmax")
 daily.Pleasant$Site <- "Pleasant"
 daily.Pleasant$Region <- "Sonoran Central"
 
 #   Preserve
-daily.Preserve <- read.csv(prism.daily$cum_file[132], skip = 10)
+daily.Preserve <- read.csv(prism.daily$cum_file[131], skip = 10)
 colnames(daily.Preserve) <- c("Date", "ppt_mm", "tmin", "tmean", "tmax")
 daily.Preserve$Site <- "Preserve"
 daily.Preserve$Region <- "Sonoran Central"
 
 #   Roosevelt
-daily.Roosevelt <- read.csv(prism.daily$cum_file[137], skip = 10)
+daily.Roosevelt <- read.csv(prism.daily$cum_file[136], skip = 10)
 colnames(daily.Roosevelt) <- c("Date", "ppt_mm", "tmin", "tmean", "tmax")
 daily.Roosevelt$Site <- "Roosevelt"
 daily.Roosevelt$Region <- "Sonoran Central"
 
 #   SCC
-daily.SCC <- read.csv(prism.daily$cum_file[141], skip = 10)
+daily.SCC <- read.csv(prism.daily$cum_file[140], skip = 10)
 colnames(daily.SCC) <- c("Date", "ppt_mm", "tmin", "tmean", "tmax")
 daily.SCC$Site <- "SCC"
 daily.SCC$Region <- "Sonoran Central"
 
 #   Patagonia
-daily.Patagonia <- read.csv(prism.daily$cum_file[150], skip = 10)
+daily.Patagonia <- read.csv(prism.daily$cum_file[149], skip = 10)
 colnames(daily.Patagonia) <- c("Date", "ppt_mm", "tmin", "tmean", "tmax")
 daily.Patagonia$Site <- "Patagonia"
 daily.Patagonia$Region <- "Sonoran SE"
 
 #   SRER
-daily.SRER <- read.csv(prism.daily$cum_file[162], skip = 10)
+daily.SRER <- read.csv(prism.daily$cum_file[161], skip = 10)
 colnames(daily.SRER) <- c("Date", "ppt_mm", "tmin", "tmean", "tmax")
 daily.SRER$Site <- "SRER"
 daily.SRER$Region <- "Sonoran SE"
 
 #   CRC
-daily.CRC <- read.csv(prism.daily$cum_file[172], skip = 10)
+daily.CRC <- read.csv(prism.daily$cum_file[171], skip = 10)
 colnames(daily.CRC) <- c("Date", "ppt_mm", "tmin", "tmean", "tmax")
 daily.CRC$Site <- "CRC"
 daily.CRC$Region <- "Utah"
 
 #   Salt_Desert
-daily.Salt_Desert <- read.csv(prism.daily$cum_file[181], skip = 10)
+daily.Salt_Desert <- read.csv(prism.daily$cum_file[180], skip = 10)
 colnames(daily.Salt_Desert) <- c("Date", "ppt_mm", "tmin", "tmean", "tmax")
 daily.Salt_Desert$Site <- "Salt_Desert"
 daily.Salt_Desert$Region <- "Utah"
 
 #   UtahPJ
-daily.UtahPJ <- read.csv(prism.daily$cum_file[189], skip = 10)
+daily.UtahPJ <- read.csv(prism.daily$cum_file[188], skip = 10)
 colnames(daily.UtahPJ) <- c("Date", "ppt_mm", "tmin", "tmean", "tmax")
 daily.UtahPJ$Site <- "UtahPJ"
 daily.UtahPJ$Region <- "Utah"
@@ -429,44 +436,44 @@ daily.UtahPJ$Region <- "Utah"
 # Sites that were reseeded
 #   BabbittPJ
 daily.BabbittPJ <- read.csv(prism.daily$cum_file[32], skip = 10) |> 
-  bind_rows(read.csv(prism.daily$cum_file[37], skip = 10))
+  bind_rows(read.csv(prism.daily$cum_file[36], skip = 10))
 colnames(daily.BabbittPJ) <- c("Date", "ppt_mm", "tmin", "tmean", "tmax")
 daily.BabbittPJ$Site <- "BabbittPJ"
 daily.BabbittPJ$Region <- "Colorado Plateau"
 
 #   BarTBar
-daily.BarTBar <- read.csv(prism.daily$cum_file[49], skip = 10) |> 
-  bind_rows(read.csv(prism.daily$cum_file[52], skip = 10))
+daily.BarTBar <- read.csv(prism.daily$cum_file[48], skip = 10) |> 
+  bind_rows(read.csv(prism.daily$cum_file[51], skip = 10))
 colnames(daily.BarTBar) <- c("Date", "ppt_mm", "tmin", "tmean", "tmax")
 daily.BarTBar$Site <- "BarTBar"
 daily.BarTBar$Region <- "Colorado Plateau"
 
 #   FlyingM
-daily.FlyingM <- read.csv(prism.daily$cum_file[63], skip = 10) |> 
-  bind_rows(read.csv(prism.daily$cum_file[67], skip = 10))
+daily.FlyingM <- read.csv(prism.daily$cum_file[62], skip = 10) |> 
+  bind_rows(read.csv(prism.daily$cum_file[66], skip = 10))
 colnames(daily.FlyingM) <- c("Date", "ppt_mm", "tmin", "tmean", "tmax")
 daily.FlyingM$Site <- "FlyingM"
 daily.FlyingM$Region <- "Colorado Plateau"
 
 #   MOWE
-daily.MOWE <- read.csv(prism.daily$cum_file[77], skip = 10) |> 
-  bind_rows(read.csv(prism.daily$cum_file[80], skip = 10)) |> 
+daily.MOWE <- read.csv(prism.daily$cum_file[76], skip = 10) |> 
+  bind_rows(read.csv(prism.daily$cum_file[79], skip = 10)) |> 
   distinct(.keep_all = TRUE)
 colnames(daily.MOWE) <- c("Date", "ppt_mm", "tmin", "tmean", "tmax")
 daily.MOWE$Site <- "MOWE"
 daily.MOWE$Region <- "Colorado Plateau"
 
 #   PEFO
-daily.PEFO <- read.csv(prism.daily$cum_file[91], skip = 10) |> 
-  bind_rows(read.csv(prism.daily$cum_file[94], skip = 10)) |> 
+daily.PEFO <- read.csv(prism.daily$cum_file[90], skip = 10) |> 
+  bind_rows(read.csv(prism.daily$cum_file[93], skip = 10)) |> 
   distinct(.keep_all = TRUE)
 colnames(daily.PEFO) <- c("Date", "ppt_mm", "tmin", "tmean", "tmax")
 daily.PEFO$Site <- "PEFO"
 daily.PEFO$Region <- "Colorado Plateau"
 
 #   Spiderweb
-daily.Spiderweb <- read.csv(prism.daily$cum_file[104], skip = 10) |> 
-  bind_rows(read.csv(prism.daily$cum_file[108], skip = 10))
+daily.Spiderweb <- read.csv(prism.daily$cum_file[103], skip = 10) |> 
+  bind_rows(read.csv(prism.daily$cum_file[107], skip = 10))
 colnames(daily.Spiderweb) <- c("Date", "ppt_mm", "tmin", "tmean", "tmax")
 daily.Spiderweb$Site <- "Spiderweb"
 daily.Spiderweb$Region <- "Colorado Plateau"
