@@ -2,8 +2,7 @@
 # Last updated: 2023-10-19
 
 # Purpose: Investigate discrepancies between my monitoring info and
-#   Hannah Farrell's 2023 dataset, write out list of monitoring events specific
-#   to date and site (not plot).
+#   Hannah Farrell's 2023 dataset.
 # Did not make any changes to my monitoring info after comparing with Farrell's.
 
 
