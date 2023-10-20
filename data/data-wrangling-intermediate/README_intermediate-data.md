@@ -1,5 +1,5 @@
 Created: 2023-09-18  
-Last updated: 2023-09-26
+Last updated: 2023-10-20
   
 Notes about `output` and `edited` intermediate data files created in data cleaning for RAMPS RestoreNet project.
 
@@ -43,7 +43,7 @@ Notes about `output` and `edited` intermediate data files created in data cleani
 
 # Directory
 
-## From `01.R`
+## From `01_curate-species-list.R`
 ### Output
 #### `01a_output-species1_subplot-codes-missing.csv`
 - List of codes included in the `subplot` data, but are missing from the the original master species list.
@@ -165,6 +165,7 @@ Notes about `output` and `edited` intermediate data files created in data cleani
 
 
 ## From `01-dependency.R`
+### Written out
 #### `01-dependency_seeded-species-to-be-marked-native.csv`
 - List of seeded species marked as seeded in the `subplot` data, and are therefore native, but were not marked as such in `master-species_native.xlsx`. 
 - Produced in `01-dependency_assign-seeded-species-native-status.R` and needed for `01_curate-species-list.R`.
@@ -185,6 +186,7 @@ Notes about `output` and `edited` intermediate data files created in data cleani
  - Corrected events are linked to the `raw.row` because the lists are in identical order (the fix is the same row as the wrong event).
  - Lastly, a few SiteDatePlotID values were rendered null because they were duplicates of others that had correct monitoring info, but the wrong/old SiteDatePlotID is needed to link the wrong and fixed rows to each other. After all the monitoring info is correct (Region, Site, CodeOriginal, Code, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix), then the SiteDatePlotID can be corrected.
 
+### Written out
 `02_2x2-wrong-monitor-events.csv`  
 `02_2x2-wrong-monitor-events-corrected.csv`  
 `02_SiteDatePlotID-replacements.csv`
@@ -192,8 +194,46 @@ Notes about `output` and `edited` intermediate data files created in data cleani
 `02_subplot-wrong-monitor-events-corrected.csv`
 
 
+## From `03.1_monitor-info-comparison.R`
+- No output/edited pair.
 
-## From `04.1_subplot.R`
+### Written out
+#### `03.1_monitoring-events-with-Farrell-climate-data.csv`
+- Table of monitoring information by site and date with climate/abiotic information from Farrell (2023) *Ecological Applications* data added. 
+- Used to make `03.2_monitoring-events-with-Farrell-climate-data-and-PRISM-csv-file-name.xlsx`.
+
+
+
+## From `03.2_PRISM-data-wrangling.R`
+- No output/edited pairs.
+
+### Read in
+#### `03.2_monitoring-events-with-Farrell-climate-data-and-PRISM-csv-file-name.xlsx`
+- Excel file that I started from the `03.2.R` intermediate csv, and then added the columns `path_beginning`, `cum_file`, and `since_file`. Spreadsheet has two tabs, `daily` (actual precip experienced during the  experiment) and `normals` (30-year normal averages). This is used to connect the correct file path name to the Region/Site/Date_Seeded/Date_Monitored information.
+- Two individual PRISM files were downloaded using the Explorer tool and the coordinates Farrell provided for every date monitoring occurred. One file covers the time interval of the previous to current monitoring date (`since_file`), and one file covers the time interval from the time of seeding to the current monitoring date (`cum_file`).
+- See the textbox in the Excel file for more details.
+
+### Written out
+#### `03.2_PRISM-daily-all-sites.csv`
+- All of the daily PRISM data used to calculate precipitation since last monitoring event, and cumulative precipitation since seeding (the two ways we are measuring precip here, as Farrell did). This is to have the data all in one place, rather than a million separate files that I originally downloaded.
+
+#### `03.2_PRISM-month-normals-all-sites.csv`
+- 30-year normals of precip, max temp, min, temp, and average temp for all sites. Normals are given as monthly values, and an annual value.
+- Original files I downloaded from PRISM were for each site individually; this is a compilation of all normals.
+
+
+
+## From `03.3_explore-precip-trends`
+- No output/edited pair.
+
+### Read in
+#### `03.3_months-to-include-for-precip-normals-comparison.xlsx`
+- Excel file of monitoring information, and which months to include when creating normals of comparable interval to the interval between monitoring events, or since seeding. See `README` tab for more details.
+- Separate tabs for intervals between monitoring events (`since_last`), and since seeding (`cum`).
+- Started out with information from `02_corrected-monitoring-info-by-date-and-site_clean.csv` (Region, Site, Date_Seeded, Date_Monitored, SiteDateID), and then I added columns to "round" the dates to the beginning, middle or end of the month to make comparable intervals, since normals were given at a monthly resolution.
+
+
+## From `04.1_data-wrangling_subplot.R`
 ### Output
 #### `04.1a_output-species-seeded1_seeded-not-in-mix_subplot.csv`
 - List of species from `subplot` data originally marked as seeded but do not appear on the seed mix list, as matched by `CodeOriginal`.
@@ -260,7 +300,7 @@ Notes about `output` and `edited` intermediate data files created in data cleani
 
 
 
-## From `04.2_2x2.R`
+## From `04.2_data-wrangling_2x2.R`
 ### Output
 #### `04.2a_output-species-seeded1_in-mix-need-assignment.csv`
 - List of `2x2` species (from site-specific plot mixes) not assigned a `SpeciesSeeded` status from the `subplot` data that existed in at least one seed mix. All species not in a seed mix were assigned not seeded, but I also manually looked over the codes and retained a few from SRER that referenced possibly seeded species.
