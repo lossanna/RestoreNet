@@ -305,9 +305,9 @@ site.info <- prism.normals |>
 # Add site-specific info to list with dates
 monitor.site.info <- monitor.site.info |> 
   left_join(site.info) |> 
-  select(Region, Site, Date_Seeded, Date_Monitored, Latitude,
+  select(Region, Site, Date_Seeded, Date_Monitored, SiteDateID, Latitude,
           Longitude, Elevation_ft, Sand_content, Clay_content,
-          MAP, MAT, SiteDateID, Cum_precip, Since_last_precip)
+          MAP, MAT, Cum_precip, Since_last_precip)
 
 # Test to make sure monitoring events are not conflicting
 monitor.info |> 
