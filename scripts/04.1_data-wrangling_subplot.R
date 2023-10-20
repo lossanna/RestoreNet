@@ -263,9 +263,9 @@ species.seeded.in.mix <- species.seeded.in.mix |>
   distinct(.keep_all = TRUE)
 
 
-# Species marked NA or unknown
+# Species marked Unknown
 species.unk.seeded <- subplot |> 
-  filter(SpeciesSeeded %in% c("?", "Unk", "UNK", NA)) |> 
+  filter(SpeciesSeeded %in% c("?", "Unk", "UNK")) |> 
   select(Site, Region, PlotMix, CodeOriginal, Code, Name, Native, Duration, Lifeform,
          SpeciesSeeded) |> 
   distinct(.keep_all = TRUE) |> 
@@ -285,6 +285,29 @@ species.unk.seeded <- read_xlsx("data/data-wrangling-intermediate/04.1b_edited-s
 
 
 
+# Species marked NA
+species.na.seeded <- subplot |> 
+  filter(is.na(SpeciesSeeded)) |> 
+  select(Site, Region, PlotMix, CodeOriginal, Code, Name, Native, Duration, Lifeform,
+         SpeciesSeeded) |> 
+  distinct(.keep_all = TRUE) |> 
+  arrange(Name) |> 
+  arrange(Site) |> 
+  arrange(Region)
+
+# OUTPUT: create list of species of NA seeding status
+write_csv(species.na.seeded,
+          file = "data/data-wrangling-intermediate/04.1a_output-species-seeded4_NA_subplot.csv")
+
+# EDITED: manually review and fix SpeciesSeeded status
+#   Unknowns marked as not seeded.
+#   0 code marked as "0" (no plants were present)
+#  Seeded status changed if identified to species level and it was seeded.
+species.na.seeded <- read_xlsx("data/data-wrangling-intermediate/04.1b_edited-species-seeded4_NA-corrected_subplot.xlsx")
+
+
+
+
 # Species marked not seeded
 subplot.no <- subplot |> 
   filter(SpeciesSeeded %in% c("No", "N"))
@@ -299,12 +322,12 @@ species.no.seeded <- subplot.no |>
 
 # OUTPUT: create list of species marked not seeded
 write_csv(species.no.seeded,
-          "data/data-wrangling-intermediate/04.1a_output-species-seeded4_no_subplot.csv")
+          "data/data-wrangling-intermediate/04.1a_output-species-seeded5_no_subplot.csv")
 
 # EDITED: manually review and fix SpeciesSeeded status
 #   Standardize responses so all are in format "Yes"
 #   Incorrect ones corrected
-species.no.seeded <- read_xlsx("data/data-wrangling-intermediate/04.1b_edited-species-seeded4_corrected-not-seeded_subplot.xlsx")
+species.no.seeded <- read_xlsx("data/data-wrangling-intermediate/04.1b_edited-species-seeded5_corrected-not-seeded_subplot.xlsx")
 
 # Remove duplicates that resulted from standardizing "No" 
 species.no.seeded <- species.no.seeded|> 
@@ -316,6 +339,7 @@ species.no.seeded <- species.no.seeded|>
 seeded.correct <- bind_rows(species.seeded.in.mix,
                             species.seeded.not.in.mix,
                             species.unk.seeded,
+                            species.na.seeded,
                             species.no.seeded) |> 
   distinct(.keep_all = TRUE) |> 
   arrange(PlotMix) |> 
@@ -338,11 +362,11 @@ seeded.correct.dup <- seeded.correct |>
 # OUTPUT: list of codes with conflicting SpeciesSeeded
 #   list also includes ones that are not duplicates
 write_csv(seeded.correct.dup,
-          file = "data/data-wrangling-intermediate/04.1a_output-species-seeded5_conflicting-SpeciesSeeded.csv")
+          file = "data/data-wrangling-intermediate/04.1a_output-species-seeded6_conflicting-SpeciesSeeded.csv")
 
 # EDITED: manually add Retain column to indicate if rows should be retained or not
 #   Retained: ones that are not actually duplicates/conflicts; ones marked "No" for SpeciesSeeded
-seeded.correct.dup <- read_xlsx("data/data-wrangling-intermediate/04.1b_edited-species-seeded5_conflicting-SpeciesSeeded-fixed.xlsx")
+seeded.correct.dup <- read_xlsx("data/data-wrangling-intermediate/04.1b_edited-species-seeded6_conflicting-SpeciesSeeded-fixed.xlsx")
 
 # Create correct df of codes that had duplicates (including rows that weren't actually duplicates)
 seeded.correct.fixed <- seeded.correct.dup |> 
@@ -369,6 +393,29 @@ subplot <- left_join(subplot, seeded.correct)
 
 nrow(subplot) == nrow(subplot.raw)
 
+
+# Save intermediate subplot with correct SeededSpecies,
+#   but Source not yet addressed
+subplot2 <- subplot
+
+
+
+# Add Source column -------------------------------------------------------
+
+# Because plants couldn't always be identified to the species level, H. Farrell
+#   grouped them by Native_Recruited, Invasive, and Seeded. 
+
+unique(subplot$Native)
+unique(subplot$SpeciesSeeded)
+
+x <- filter(subplot, is.na(SpeciesSeeded))
+unique(x$CodeOriginal)
+
+# Create Source column
+subplot <- subplot |> 
+  mutate(Source = case_when(
+    
+  ))
 
 
 
