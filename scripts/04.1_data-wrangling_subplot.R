@@ -1,5 +1,5 @@
 # Created: 2023-09-18
-# Last updated: 2023-09-26
+# Last updated: 2023-10-20
 
 # Purpose: Create clean data table for subplot data, with corrected and standardized species information,
 #   and monitoring and plot information, and correct SpeciesSeeded column based on each site-specific
@@ -18,7 +18,8 @@ mix <- read_xlsx("data/raw/from-Master_seed-mix_LO.xlsx", sheet = "with-site_R")
 monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
 monitor.wrong <- read_csv("data/data-wrangling-intermediate/02_subplot-wrong-monitor-events.csv")
 monitor.fixed <- read_csv("data/data-wrangling-intermediate/02_subplot-wrong-monitor-events-corrected.csv")
-monitorID.replace <- read_csv("data/data-wrangling-intermediate/02_MonitorID-replacements.csv")
+SiteDatePlotID.replace <- read_csv("data/data-wrangling-intermediate/02_SiteDatePlotID-replacements.csv")
+monitor.site <- read_csv("data/cleaned/corrected-monitoring-info-by-date-and-site_clean.csv")
 
 
 # Organize columns --------------------------------------------------------
@@ -132,7 +133,7 @@ subplot.inva <- subplot %>%
   distinct(.keep_all = TRUE)
 unique(subplot.inva$SpeciesSeeded) # something is mislabeled; no introduced species were seeded
 subplot.inva %>% 
-  filter(SpeciesSeeded == "Yes") # Eragrostis curvula was not seeded
+  filter(SpeciesSeeded == "Yes")
 
 # Fix ERCU2 and ERCI6 - mark all observations as "No" for Seeded col
 subplot$SpeciesSeeded[subplot$Name == "Eragrostis curvula"] <- "No"
@@ -151,20 +152,20 @@ wrong.raw.row <- left_join(monitor.wrong, subplot.monitor)
 
 # Attach raw.row to corrected monitoring info
 #   some events that need to be fixed have multiple rows in subplot data
-monitor.assign <- data.frame(MonitorID = wrong.raw.row$MonitorID)
+monitor.assign <- data.frame(SiteDatePlotID = wrong.raw.row$SiteDatePlotID)
 monitor.assign <- left_join(monitor.assign, monitor.fixed)
 monitor.assign$raw.row <- wrong.raw.row$raw.row
 
-#   Separate monitor info that doesn't need to be fixed
+#   Separate monitor info that doesn't need to be fixed and add SiteDatePlotID
 subplot.monitor <- subplot.monitor |> 
   filter(!raw.row %in% monitor.assign$raw.row) |> 
   left_join(monitor.info)
 subplot.monitor |> 
-  filter(is.na(MonitorID)) # all assigned MonitorID
+  filter(is.na(SiteDatePlotID)) # all assigned SiteDatePlotID
 
 #   Add corrected monitor info for complete list
 subplot.monitor <- bind_rows(subplot.monitor, monitor.assign) |> 
-  arrange(MonitorID)
+  arrange(SiteDatePlotID)
 
 #   Check for matching lengths
 nrow(subplot.monitor) == nrow(subplot.raw)
@@ -175,13 +176,13 @@ subplot <- subplot[ , -c(1:6)]
 subplot <- left_join(subplot, subplot.monitor)
 
 
-# Replace null MonitorIDs with correct ones
+# Replace null SiteDatePlotIDs with correct ones
 subplot.IDreplace <- subplot |> 
-  filter(MonitorID %in% monitorID.replace$MonitorID_old) |> 
-  rename(MonitorID_old = MonitorID) |> 
-  left_join(monitorID.replace) |> 
-  select(-MonitorID_old) |> 
-  rename(MonitorID = MonitorID_replace)
+  filter(SiteDatePlotID %in% SiteDatePlotID.replace$SiteDatePlotID_old) |> 
+  rename(SiteDatePlotID_old = SiteDatePlotID) |> 
+  left_join(SiteDatePlotID.replace) |> 
+  select(-SiteDatePlotID_old) |> 
+  rename(SiteDatePlotID = SiteDatePlotID_replace)
 
 subplot <- subplot |> 
   filter(!raw.row %in% subplot.IDreplace$raw.row) |> 
@@ -358,7 +359,7 @@ seeded.correct <- seeded.correct |>
 
 
 # Look for codes that exist in subplot data but not in seeded.correct
-setdiff(unique(subplot$Code), unique(seeded.correct$Code))
+setdiff(unique(subplot$Code), unique(seeded.correct$Code)) # should be 0
 
 
 # Assign corrected SpeciesSeeded to subplot data
@@ -367,6 +368,20 @@ subplot <- subplot |>
 subplot <- left_join(subplot, seeded.correct)
 
 nrow(subplot) == nrow(subplot.raw)
+
+
+
+
+# Add SiteDateID ----------------------------------------------------------
+
+subplot <- subplot |> 
+  left_join(monitor.site) |> 
+  select(Region, Site, Date_Seeded, Date_Monitored, SiteDateID,
+         Plot, Treatment, PlotMix, SiteDatePlotID,
+         CodeOriginal, Code, Name, Native, Duration, Lifeform, SpeciesSeeded,
+         Count, Height, raw.row) |> 
+  arrange(SiteDatePlotID) |> 
+  arrange(SiteDateID)
 
 
 # Write clean subplot data to csv -----------------------------------------
