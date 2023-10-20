@@ -12,14 +12,14 @@ library(tidyverse)
 # Load data ---------------------------------------------------------------
 
 subplot.raw <- read_xlsx("data/raw/2023-09-15_Master 1.0 Germination Data_raw.xlsx", sheet = "AllSubplotData")
-species.in <- read_csv("data/cleaned/subplot_species-list_location-independent_clean.csv")
-species.de <- read_csv("data/cleaned/subplot_species-list_location-dependent_clean.csv")
+species.in <- read_csv("data/cleaned/01_subplot_species-list_location-independent_clean.csv")
+species.de <- read_csv("data/cleaned/01_subplot_species-list_location-dependent_clean.csv")
 mix <- read_xlsx("data/raw/from-Master_seed-mix_LO.xlsx", sheet = "with-site_R")
-monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
+monitor.info <- read_csv("data/cleaned/02_corrected-monitoring-info_clean.csv")
 monitor.wrong <- read_csv("data/data-wrangling-intermediate/02_subplot-wrong-monitor-events.csv")
 monitor.fixed <- read_csv("data/data-wrangling-intermediate/02_subplot-wrong-monitor-events-corrected.csv")
 SiteDatePlotID.replace <- read_csv("data/data-wrangling-intermediate/02_SiteDatePlotID-replacements.csv")
-monitor.site <- read_csv("data/cleaned/corrected-monitoring-info-by-date-and-site_clean.csv")
+monitor.site <- read_csv("data/cleaned/02_corrected-monitoring-info-by-date-and-site_clean.csv")
 
 
 # Organize columns --------------------------------------------------------
@@ -434,7 +434,7 @@ subplot <- subplot |>
 # Write clean subplot data to csv -----------------------------------------
 
 write_csv(subplot,
-          file = "data/cleaned/subplot-data_clean.csv")
+          file = "data/cleaned/04.1_subplot-data_clean.csv")
 
 
 save.image("RData/04.1_data-wrangling_subplot.RData")

@@ -182,6 +182,7 @@ Notes about `output` and `edited` intermediate data files created in data cleani
 
 ## From `02_correct-monitoring-info.R`
  - No output/edited pairs.
+ - Used in `04.1_data-wrangling_subplot.R` and `04.2_data-wrangling_2x2.R`.
  - Lists of wrong events are used to match with `raw.row` of either `subplot` or `2x2` data, to know which rows to remove and replace.
  - Corrected events are linked to the `raw.row` because the lists are in identical order (the fix is the same row as the wrong event).
  - Lastly, a few SiteDatePlotID values were rendered null because they were duplicates of others that had correct monitoring info, but the wrong/old SiteDatePlotID is needed to link the wrong and fixed rows to each other. After all the monitoring info is correct (Region, Site, CodeOriginal, Code, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix), then the SiteDatePlotID can be corrected.
@@ -212,15 +213,6 @@ Notes about `output` and `edited` intermediate data files created in data cleani
 - Excel file that I started from the `03.2.R` intermediate csv, and then added the columns `path_beginning`, `cum_file`, and `since_file`. Spreadsheet has two tabs, `daily` (actual precip experienced during the  experiment) and `normals` (30-year normal averages). This is used to connect the correct file path name to the Region/Site/Date_Seeded/Date_Monitored information.
 - Two individual PRISM files were downloaded using the Explorer tool and the coordinates Farrell provided for every date monitoring occurred. One file covers the time interval of the previous to current monitoring date (`since_file`), and one file covers the time interval from the time of seeding to the current monitoring date (`cum_file`).
 - See the textbox in the Excel file for more details.
-
-### Written out
-#### `03.2_PRISM-daily-all-sites.csv`
-- All of the daily PRISM data used to calculate precipitation since last monitoring event, and cumulative precipitation since seeding (the two ways we are measuring precip here, as Farrell did). This is to have the data all in one place, rather than a million separate files that I originally downloaded.
-
-#### `03.2_PRISM-month-normals-all-sites.csv`
-- 30-year normals of precip, max temp, min, temp, and average temp for all sites. Normals are given as monthly values, and an annual value.
-- Original files I downloaded from PRISM were for each site individually; this is a compilation of all normals.
-
 
 
 ## From `03.3_explore-precip-trends`

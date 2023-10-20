@@ -1,5 +1,5 @@
 # Created: 2023-09-18
-# Last updated: 2023-10-19
+# Last updated: 2023-10-20
 
 # Purpose: In comparing the monitoring information from the subplot vs. 2x2 plot data, 
 #   there were discrepancies, but there should be only one correct version. 
@@ -1237,7 +1237,7 @@ monitor.correct <- monitor.correct |>
 
 # Write to csv
 write_csv(monitor.correct,
-          file = "data/cleaned/corrected-monitoring-info_clean.csv")
+          file = "data/cleaned/02_corrected-monitoring-info_clean.csv")
 
 
 
@@ -1346,7 +1346,7 @@ monitor.site <- monitor.site |>
 
 # Write csv
 write_csv(monitor.site,
-          file = "data/cleaned/corrected-monitoring-info-by-date-and-site_clean.csv")
+          file = "data/cleaned/02_corrected-monitoring-info-by-date-and-site_clean.csv")
 
 
 save.image("RData/02_correct-monitoring-info.RData")

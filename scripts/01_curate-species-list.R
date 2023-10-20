@@ -1,5 +1,5 @@
 # Created: 2023-09-18
-# Last updated: 2023-09-20
+# Last updated: 2023-10-20
 
 # Purpose: Curate a complete species list with Code, Code Original, Name, Native, Duration, Lifeform info.
 #   Two lists must be created, a location-independent version (known species), and a 
@@ -722,7 +722,7 @@ species.in <- read_xlsx("data/data-wrangling-intermediate/01b_edited-species7_lo
 
 # Write to csv
 write_csv(species.in,
-          file = "data/cleaned/species-list_location-independent_clean.csv")
+          file = "data/cleaned/01_species-list_location-independent_clean.csv")
 
 
 
@@ -758,7 +758,7 @@ species.de <- read_xlsx("data/data-wrangling-intermediate/01b_edited-species8_lo
 
 # Write to csv
 write_csv(species.de,
-          file = "data/cleaned/species-list_location-dependent_clean.csv")
+          file = "data/cleaned/01_species-list_location-dependent_clean.csv")
 
 
 
@@ -776,7 +776,7 @@ subplot.codes.in %>%
   arrange(CodeOriginal) # no duplicates
 
 write_csv(subplot.codes.in,
-          file = "data/cleaned/subplot_species-list_location-independent_clean.csv")
+          file = "data/cleaned/01_subplot_species-list_location-independent_clean.csv")
 
 
 # Location-dependent codes
@@ -792,7 +792,7 @@ subplot.codes.de %>%
   arrange(Code) # no duplicates
 
 write_csv(subplot.codes.de,
-          file = "data/cleaned/subplot_species-list_location-dependent_clean.csv")
+          file = "data/cleaned/01_subplot_species-list_location-dependent_clean.csv")
 
 
 
@@ -830,7 +830,7 @@ p2x2.codes.in <- p2x2.codes.in |>
 
 # Write to csv
 write_csv(p2x2.codes.in,
-          file = "data/cleaned/p2x2_species-list_location-independent_clean.csv")
+          file = "data/cleaned/01_p2x2_species-list_location-independent_clean.csv")
 
 
 
@@ -871,7 +871,7 @@ p2x2.codes.de <- species.de %>%
 
 # Write to csv
 write_csv(p2x2.codes.de,
-          file = "data/cleaned/p2x2_species-list_location-dependent_clean.csv")
+          file = "data/cleaned/01_p2x2_species-list_location-dependent_clean.csv")
 
 
 

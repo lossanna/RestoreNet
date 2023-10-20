@@ -1,5 +1,5 @@
 # Created: 2023-09-28
-# Last updated: 2023-10-19
+# Last updated: 2023-10-20
 
 # Purpose: Explore precip trends. Compare actual precip values (from PRISM daily values, see 03.2.R)
 #   with 30-year normals. Actual precip is recorded as either cumulative precip
@@ -23,9 +23,9 @@ library(scales)
 
 # Load data ---------------------------------------------------------------
 
-ppt <- read_csv("data/cleaned/monitoring-events-with-PRISM-climate-data_clean.csv")
-month.normal <- read_csv("data/data-wrangling-intermediate/03.2_PRISM-month-normals-all-sites.csv")
-daily <- read_csv("data/data-wrangling-intermediate/03.2_PRISM-daily-all-sites.csv")
+ppt <- read_csv("data/cleaned/03.2_monitoring-events-with-PRISM-climate-data_clean.csv")
+month.normal <- read_csv("data/cleaned/03.2_PRISM-month-normals-all-sites_clean.csv")
+daily <- read_csv("data/cleaned/03.2_PRISM-daily-all-sites_clean.csv")
 normals.since.raw <- read_xlsx("data/data-wrangling-intermediate/03.3_months-to-include-for-precip-normals-comparison.xlsx",
                                        sheet = "since_last")
 normals.cum.raw <- read_xlsx("data/data-wrangling-intermediate/03.3_months-to-include-for-precip-normals-comparison.xlsx",

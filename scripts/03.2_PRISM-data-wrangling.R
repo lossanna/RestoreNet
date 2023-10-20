@@ -1,5 +1,5 @@
 # Created: 2023-09-27
-# Last updated: 2023-10-19
+# Last updated: 2023-10-20
 
 # Purpose: Compile climate data gathered from PRISM and compare to 
 #   Farrell 2023 data (specifically cumulative precipitation, precipitation
@@ -19,8 +19,8 @@ prism.daily.raw <- read_xlsx("data/data-wrangling-intermediate/03.2_monitoring-e
 prism.normals.raw <- read_xlsx("data/data-wrangling-intermediate/03.2_monitoring-events-with-Farrell-climate-data-and-PRISM-csv-file-name.xlsx",
                            sheet = "normals")
 
-monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
-monitor.site <- read_csv("data/cleaned/corrected-monitoring-info-by-date-and-site_clean.csv")
+monitor.info <- read_csv("data/cleaned/02_corrected-monitoring-info_clean.csv")
+monitor.site <- read_csv("data/cleaned/02_corrected-monitoring-info-by-date-and-site_clean.csv")
 
 
 
@@ -501,17 +501,17 @@ daily <- bind_rows(daily.29_Palms, daily.AguaFria,
 
 # Monitor info with climate data
 write_csv(monitor.site.info,
-          file = "data/cleaned/monitoring-events-with-PRISM-climate-data_clean.csv")
+          file = "data/cleaned/03.2_monitoring-events-with-PRISM-climate-data_clean.csv")
 
 
 # Monthly normals
 write_csv(month.normal,
-          file = "data/data-wrangling-intermediate/03.2_PRISM-month-normals-all-sites.csv")
+          file = "data/cleaned/03.2_PRISM-month-normals-all-sites_clean.csv")
 
 
 # Daily values
 write_csv(daily,
-          file = "data/data-wrangling-intermediate/03.2_PRISM-daily-all-sites.csv")
+          file = "data/cleaned/03.2_PRISM-daily-all-sites_clean.csv")
 
 
 
