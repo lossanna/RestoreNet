@@ -1,5 +1,5 @@
 # Created: 2023-09-18
-# Last updated: 2023-09-21
+# Last updated: 2023-10-20
 
 # Purpose: Create 2 clean data tables for 2x2 plot data: one with cover data and one with
 #   the list of species present for each monitoring event.
@@ -19,7 +19,8 @@ mix <- read_xlsx("data/raw/from-Master_seed-mix_LO.xlsx", sheet = "with-site_R")
 monitor.info <- read_csv("data/cleaned/corrected-monitoring-info_clean.csv")
 monitor.wrong <- read_csv("data/data-wrangling-intermediate/02_2x2-wrong-monitor-events.csv")
 monitor.fixed <- read_csv("data/data-wrangling-intermediate/02_2x2-wrong-monitor-events-corrected.csv")
-monitorID.replace <- read_csv("data/data-wrangling-intermediate/02_MonitorID-replacements.csv")
+SiteDatePlotID.replace <- read_csv("data/data-wrangling-intermediate/02_SiteDatePlotID-replacements.csv")
+monitor.site <- read_csv("data/cleaned/corrected-monitoring-info-by-date-and-site_clean.csv")
 subplot <- read_csv("data/cleaned/subplot-data_clean.csv")
 
 
@@ -49,7 +50,7 @@ wrong.raw.row <- left_join(monitor.wrong, p2x2.monitor)
 
 # Attach raw.row to corrected monitoring info
 #   some events that need to be fixed have multiple rows in subplot data
-monitor.assign <- data.frame(MonitorID = wrong.raw.row$MonitorID)
+monitor.assign <- data.frame(SiteDatePlotID = wrong.raw.row$SiteDatePlotID)
 monitor.assign <- left_join(monitor.assign, monitor.fixed)
 monitor.assign$raw.row <- wrong.raw.row$raw.row
 
@@ -59,11 +60,11 @@ p2x2.monitor <- p2x2.monitor |>
   filter(!raw.row %in% monitor.assign$raw.row) |> 
   left_join(monitor.info)
 p2x2.monitor |> 
-  filter(is.na(MonitorID)) # all assigned MonitorID
+  filter(is.na(SiteDatePlotID)) # all assigned SiteDatePlotID
 
 #   Add corrected monitor info for complete list
 p2x2.monitor <- bind_rows(p2x2.monitor, monitor.assign) |> 
-  arrange(MonitorID)
+  arrange(SiteDatePlotID)
 
 #   Check for matching lengths
 nrow(p2x2.monitor) == nrow(p2x2.raw)
@@ -72,6 +73,9 @@ nrow(p2x2.monitor) == nrow(p2x2.raw)
 # Attach correct monitoring info to p2x2 data
 p2x2.wide <- p2x2.wide[ , -c(1:6)]
 p2x2.wide <- left_join(p2x2.monitor, p2x2.wide)
+
+# Add SiteDateID
+p2x2.wide <- left_join(p2x2.wide, monitor.site)
 
 p2x2.wide.full <- p2x2.wide
 
@@ -226,7 +230,7 @@ ps.de.dup <- left_join(ps.de.dup, species.de.dup)
 
 # Combine
 present_species <- bind_rows(ps.in.unq, ps.de.unq, ps.in.dup, ps.de.dup) |> 
-  arrange(MonitorID)
+  arrange(SiteDatePlotID)
 
 ps1 <- present_species
 
@@ -313,7 +317,8 @@ present_species <- ps2 |>
 present_species <- bind_rows(present_species, subplot.species) |> 
   distinct(.keep_all = TRUE) |> 
   arrange(Code) |> 
-  arrange(MonitorID) 
+  arrange(SiteDatePlotID) |> 
+  arrange(SiteDateID)
   
 
 
@@ -322,7 +327,11 @@ present_species <- bind_rows(present_species, subplot.species) |>
 #   This is the number of species present at each plot during each monitoring event, 
 #     without taking the species themselves or their abundance into account.
 
-# Some Utah plots did not have additional species in plot recorded; note this
+# Most Utah plots did not have additional species in plot recorded; note this
+#   Only 2x2 plots that did have additional species recorded:
+#     CRC, monitored 2021-06-28
+#     Salt_Desert, monitored 2021-06-29
+#     UtahPJ, monitored 2021-06-29
 
 no.add.recorded <- monitor.info |>
   mutate(Date_Monitored = as.character(Date_Monitored)) |> 
@@ -335,29 +344,25 @@ no.add.recorded <- monitor.info |>
                                "2019-07-01", "2019-07-02", "2019-07-24",
                                "2019-08-06", "2019-08-07")) |> 
   filter(Region == "Utah")
-count(no.add.recorded, Plot) |> 
-  print(n = 40)
 
-no.add.recorded |> 
-  count(Date_Monitored) |> 
-  print(n = 23)
 
-x <- no.add.recorded |> 
-  filter(Date_Monitored == "2019-05-29")
 
-count(monitor.info, Plot) |> 
-  print(n = 100)
-  
-present_species <- present_species |> 
-  mutate(Additional_species_recorded = case_when(
-    Date_Monitored == no.add.recorded ~ "No additional recorded",
-    TRUE ~ "Additional recorded"))
+## I have not actually figured out the richness thing at all lol
 
-count(present_species, Additional_species_recorded)
-
+# Find species richness (excluding all Utah sites)
+#   Calculate richness for plots that had plants
 richness <- present_species |> 
-  group_by(Region, Site, Date_Monitored, Plot, Treatment, PlotMix, MonitorID)
+  filter(Region != "Utah",
+         Code != "0") |> 
+  group_by(Region, Site, Date_Monitored, SiteDateID, Plot, Treatment, PlotMix, SiteDatePlotID) |> 
+  summarise(Richness = n_distinct(Code),
+            .groups = "keep")
+
+#   Add in the plots/observations with 0 plants
+p2x2.id.0 <- setdiff(p2x2.wide.full$SiteDatePlotID, richness$SiteDatePlotID)
+richness.add <- monitor.info |> 
+  filter(SiteDatePlotID %in% p2x2.id.0)
 
 
 
-save.image("RData/02.2_data-wrangling_2x2.RData")
+save.image("RData/04.2_data-wrangling_2x2.RData")
