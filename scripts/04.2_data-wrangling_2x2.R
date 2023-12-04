@@ -1,5 +1,5 @@
 # Created: 2023-09-18
-# Last updated: 2023-10-20
+# Last updated: 2023-12-04
 
 # Purpose: Create 2 clean data tables for 2x2 plot data: one with cover data and one with
 #   the list of species present for each monitoring event.
@@ -128,6 +128,8 @@ cover.neg.notseed <- cover |>
 
 # Create present_species table --------------------------------------------
 
+# Create table, pivot to long so each code is a row
+
 # Inspect Additional_species_in_plot cols
 unique(p2x2.wide$Additional_Species_In_Plot...28)
 unique(p2x2.wide$Additional_Species_In_Plot...27)
@@ -176,11 +178,15 @@ present_species <- present_species %>%
 # Check all cols for NAs
 apply(present_species, 2, anyNA) 
 
+# Pivoted to long form with CodeOriginal only, no other species info added yet
+ps0 <- present_species
+
 
 
 # Attach species info to present_species table ----------------------------
 
-#   Handle location-dependent and location-independent separately. Also handle
+# Connect CodeOriginal to species info from species lists
+#   Handle location-dependent and location-independent separately; also handle
 #     codes that need duplicate rows separately.
 
 # Unique CodeOriginal
@@ -232,11 +238,15 @@ ps.de.dup <- left_join(ps.de.dup, species.de.dup)
 present_species <- bind_rows(ps.in.unq, ps.de.unq, ps.in.dup, ps.de.dup) |> 
   arrange(SiteDatePlotID)
 
-ps1 <- present_species
+# Species info added, NeedsItsDuplicate column dealt with, includes p2x2 additional species only
+ps1 <- present_species 
 
 
 
 # Create SpeciesSeeded column ---------------------------------------------
+
+# Create corrected SpeciesSeeded column based on site-specific and 
+#   plot-specific (cool/warm/none) seed mixes
 
 # Extract info from subplot data
 seeded.subplot <- subplot |> 
@@ -260,6 +270,7 @@ ps.ss.na <- present_species |>
 # Those not in seed mix were not seeded regardless of site or plot
 ps.ss.not.in.mix <- ps.ss.na |> 
   filter(!Code %in% mix$CodeOriginal) |> 
+  mutate(SpeciesSeeded = "No") |> 
   arrange(Code) |> 
   arrange(Site) |> 
   arrange(Region)
@@ -299,17 +310,23 @@ present_species <- present_species |>
   filter(!is.na(SpeciesSeeded)) |> 
   bind_rows(ps.ss)
 
-ps2 <- present_species
+# Add column to denote where observation is coming from
+present_species$ObsSource <- "2x2"
+
+# Species info and correct SpeciesSeeded for additional p2x2 species only
+ps2 <- present_species 
 
 
 
 # Combine with subplot to get all species present -------------------------
 
-#   Currently present_species is only the additional species not found in subplot
+# Currently present_species is only the additional species not found in subplot;
+#   add subplot observations, which already have correct SpeciesSeeded and species info
 
 # Add subplot species
 subplot.species <- subplot |> 
   select(-Count, -Height, -raw.row)
+subplot.species$ObsSource <- "subplot"
 
 present_species <- ps2 |> 
   select(-raw.row, -source, -NeedsItsDuplicate, -DuplicateNum)
@@ -319,7 +336,12 @@ present_species <- bind_rows(present_species, subplot.species) |>
   arrange(Code) |> 
   arrange(SiteDatePlotID) |> 
   arrange(SiteDateID)
-  
+
+# All species present in plot with correct species info and SpeciesSeeded
+ps3 <- present_species 
+
+
+
 
 
 # Create table of species richness ----------------------------------------
