@@ -1,5 +1,5 @@
 # Created: 2023-09-18
-# Last updated: 2023-10-20
+# Last updated: 2023-12-04
 
 # Purpose: In comparing the monitoring information from the subplot vs. 2x2 plot data, 
 #   there were discrepancies, but there should be only one correct version. 
@@ -23,11 +23,13 @@
 #     fixed in subplot and 2x2 data during data wrangling.
 
 # Types of monitoring IDs
-#   SiteDatePlotID: Unique combinations of Site, Date_Seeded, Date_Monitored, Plot, Treatment, and Plotmix columns.
+#   SiteDatePlotID: 6384 total, values of 1-6393
+#     Unique combinations of Site, Date_Seeded, Date_Monitored, Plot, Treatment, and Plotmix columns.
 #     This is the most specific monitoring IDs get. Observations have the same ID if they were
 #     plants growing in the same plot, observed on the same day. Values range from 1 to 6393, with
 #     9 null IDs (nulls created because Plot info was wrong and duplicated).
-#   SiteDateID: Unique combinations of Site, Date_Seeded, Date_Monitored columns.
+#   SiteDateID: 188 total, values of 1-188
+#     Unique combinations of Site, Date_Seeded, Date_Monitored columns.
 #     This is used for connecting precipitation data to monitoring events, because precipitation
 #     is measured either as cumulative precip since the last monitoring event, or cumulative precip
 #     since most recent seeding (8 sites were reseeded to repeat experiment). Sometimes the
