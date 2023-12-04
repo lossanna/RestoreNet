@@ -1,10 +1,11 @@
 # Created: 2023-09-18
-# Last updated: 2023-10-20
+# Last updated: 2023-12-04
 
 # Purpose: Create clean data table for subplot data, with corrected and standardized species information,
 #   and monitoring and plot information, and correct SpeciesSeeded column based on each site-specific
 #     seed mix and plot. 
-#   Essentially, add corrected metadata to subplot data, and correct SpeciesSeeded column.
+#   Essentially, add corrected metadata from 01.R and 02.R to subplot data, 
+#     correct SpeciesSeeded column, and add PlantSource column.
 
 library(readxl)
 library(tidyverse)
@@ -189,11 +190,25 @@ subplot <- subplot |>
   bind_rows(subplot.IDreplace) |> 
   arrange(raw.row)
 
+
 # Check for matching lengths
 nrow(subplot) == nrow(subplot.raw)
 
 # Check all cols for NAs
 apply(subplot, 2, anyNA) 
+
+
+# Check for all SiteDatePlotIDs
+nrow(monitor.info) # 6384 IDs
+length(unique(subplot$SiteDatePlotID)) == nrow(monitor.info)
+length(unique(subplot$SiteDatePlotID)) # 6338
+
+SiteDatePlotID.missing <- monitor.info |> 
+  filter(!SiteDatePlotID %in% subplot$SiteDatePlotID)
+#   The 46 missing IDs come from AVRCD and 29_Palms. I have manually checked and found
+#     that data for 2 subplots at AVRCD were not recorded during the 2022-04-13 monitoring event,
+#     and that at 29_Palms, all 44 of the  2x2m plots were monitored, but there is no 
+#     corresponding subplot data.
 
 
 # Save intermediate subplot with correct monitoring info, Native/Duration/Lifeform
@@ -279,8 +294,6 @@ write_csv(species.unk.seeded,
 
 # EDITED: manually review and fix SpeciesSeeded status
 #   Unknowns marked as not seeded.
-#   0 code marked as "0" (no plants were present)
-#  Seeded status changed if identified to species level and it was seeded.
 species.unk.seeded <- read_xlsx("data/data-wrangling-intermediate/04.1b_edited-species-seeded3_unk-corrected_subplot.xlsx")
 
 
@@ -381,6 +394,8 @@ seeded.correct <- seeded.correct |>
   arrange(Site) |> 
   arrange(Region)
 
+# Check possible values of SpeciesSeeded
+unique(seeded.correct$SpeciesSeeded) # should be 0, Yes, No
 
 # Look for codes that exist in subplot data but not in seeded.correct
 setdiff(unique(subplot$Code), unique(seeded.correct$Code)) # should be 0
@@ -394,13 +409,29 @@ subplot <- left_join(subplot, seeded.correct)
 nrow(subplot) == nrow(subplot.raw)
 
 
+# Look for NAs
+unique(subplot$SpeciesSeeded)
+sub.spec.na <- subplot |> 
+  filter(is.na(SpeciesSeeded))
+sub.spec.na
+seeded.correct.subspec.na <- seeded.correct |> 
+  filter(Code %in% sub.spec.na$Code)
+# Not sure why this Seeded unknown grass from TLE isn't working with left_join()
+#   but it was seeded, so assign it as Yes for SpeciesSeeded
+subplot <- subplot |> 
+  mutate(SpeciesSeeded = case_when(
+    Code == "SUNGR.TLE" ~ "Yes",
+    TRUE ~ SpeciesSeeded))
+unique(subplot$SpeciesSeeded) # standardized to "No", "Yes", and "0"
+
+
 # Save intermediate subplot with correct SeededSpecies,
-#   but Source not yet addressed
+#   but PlantSource not yet addressed
 subplot2 <- subplot
 
 
 
-# Add Source column -------------------------------------------------------
+# Add PlantSource column --------------------------------------------------
 
 # Because plants couldn't always be identified to the species level, H. Farrell
 #   grouped them by Native_Recruited, Invasive, and Seeded. 
@@ -408,15 +439,21 @@ subplot2 <- subplot
 unique(subplot$Native)
 unique(subplot$SpeciesSeeded)
 
-x <- filter(subplot, is.na(SpeciesSeeded))
-unique(x$CodeOriginal)
+subplot <- subplot |> 
+  mutate(PlantSource = paste0(subplot$Native, "_", subplot$SpeciesSeeded))
+unique(subplot$PlantSource)
 
 # Create Source column
 subplot <- subplot |> 
-  mutate(Source = case_when(
-    
-  ))
-
+  mutate(PlantSource = case_when(
+    PlantSource == "0_0" ~ "0",
+    PlantSource == "Unknown_No" ~ "Unknown_recruit",
+    PlantSource == "Native_No" ~ "Native_recruit",
+    PlantSource == "Introduced_No" ~ "Introduced/Invasive",
+    PlantSource == "Native_Yes" ~ "Seeded",
+    PlantSource == "Native/Unknown_No" ~ "Likely native_recruit",
+    PlantSource == "Unknown_Yes" ~ "Seeded"))
+unique(subplot$PlantSource)
 
 
 # Add SiteDateID ----------------------------------------------------------
@@ -425,7 +462,7 @@ subplot <- subplot |>
   left_join(monitor.site) |> 
   select(Region, Site, Date_Seeded, Date_Monitored, SiteDateID,
          Plot, Treatment, PlotMix, SiteDatePlotID,
-         CodeOriginal, Code, Name, Native, Duration, Lifeform, SpeciesSeeded,
+         CodeOriginal, Code, Name, Native, Duration, Lifeform, SpeciesSeeded, PlantSource,
          Count, Height, raw.row) |> 
   arrange(SiteDatePlotID) |> 
   arrange(SiteDateID)
@@ -438,3 +475,4 @@ write_csv(subplot,
 
 
 save.image("RData/04.1_data-wrangling_subplot.RData")
+

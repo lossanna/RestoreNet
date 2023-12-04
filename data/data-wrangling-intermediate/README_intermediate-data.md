@@ -116,8 +116,7 @@ Notes about `output` and `edited` intermediate data files created in data cleani
 - List of codes taken from master species list. Species have native and lifeform information, but need duration information added.
 - Manually edited to add plant duration, based on USDA Plants.
 - Manually edited to resolve conflicting/misspelled names for BOAR and SATR12 to remove duplicates.
-- Manually add a row of all 0s to mark observations of plots that had no plants.
-- Row length: edited list is 1 row less than output list (2 rows removed and one row added).
+- Row length: edited list is 2 rows less than output list (2 rows removed).
 - Columns: `CodeOriginal`, `Name`, `Native`, `Duration` (added), `Lifeform`.
 
 #### `01b_edited-species5_location-dependent_native-duration-lifeform.csv`
@@ -268,8 +267,7 @@ Notes about `output` and `edited` intermediate data files created in data cleani
 
 #### `04.1b_edited-species-seeded3_unk-corrected_subplot.xlsx`
 - Entire `SpeciesSeeded` column edited to either `No`, `Yes`, or `0`.
-- `0` assigned if `Code` was `0`, which indicates there was no plant for observation. Unknowns marked as not seeded (`No`).
-- `Yes` assigned to a few identified to species level if they were in that plot's seed mix.
+- Unknowns marked as not seeded (`No`).
 - Row length: edited has the same number of rows as output.
 - Columns: `Site`, `Region`, `PlotMix`, `CodeOriginal`, `Code`, `Name`, `SpeciesSeeded` (edited).
 

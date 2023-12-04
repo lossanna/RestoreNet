@@ -5,6 +5,8 @@
 #   the list of species present for each monitoring event.
 #  Ensure corrected and standardized species information, and monitoring and plot information,
 #   and SpeciesSeeded column based on site-specific seed mixes and plot.
+# Note that a lot of the Utah plots did not have Additional Species in Plot recorded, but did
+#   have cover data.
 
 
 library(readxl)
@@ -77,13 +79,15 @@ p2x2.wide <- left_join(p2x2.monitor, p2x2.wide)
 # Add SiteDateID
 p2x2.wide <- left_join(p2x2.wide, monitor.site)
 
-p2x2.wide.full <- p2x2.wide
+# Monitoring info corrected; cover values have not been yet
+p2x2.wide0 <- p2x2.wide  
+
 
 
 # Create cover table ------------------------------------------------------
 
 # Create cover table
-cover <- p2x2.wide.full |> 
+cover <- p2x2.wide0 |> 
   select(-starts_with("Additional")) 
 
 
@@ -143,7 +147,7 @@ unique(p2x2.wide$Additional_Species_In_Plot...20)
 unique(p2x2.wide$Additional_Species_In_Plot...19) # observations in 19 and smaller
 
 # Drop empty Additional_species_in_plot cols
-p2x2.wide <- p2x2.wide %>% 
+p2x2.wide <- p2x2.wide0 %>% 
   select(-Additional_Species_In_Plot...28,
          -Additional_Species_In_Plot...27,
          -Additional_Species_In_Plot...26,
@@ -246,7 +250,7 @@ ps1 <- present_species
 # Create SpeciesSeeded column ---------------------------------------------
 
 # Create corrected SpeciesSeeded column based on site-specific and 
-#   plot-specific (cool/warm/none) seed mixes
+#   plot-specific (cool/warm/none) seed mixes.
 
 # Extract info from subplot data
 seeded.subplot <- subplot |> 
@@ -318,10 +322,17 @@ ps2 <- present_species
 
 
 
+# Check to make sure all SiteDatePlotIDs are there ------------------------
+
+# When
+
+nrow(monitor.info) # 6384 SiteDatePlotIDs
+
+
 # Combine with subplot to get all species present -------------------------
 
 # Currently present_species is only the additional species not found in subplot;
-#   add subplot observations, which already have correct SpeciesSeeded and species info
+#   add subplot observations, which already have correct SpeciesSeeded and species info.
 
 # Add subplot species
 subplot.species <- subplot |> 
@@ -342,7 +353,31 @@ ps3 <- present_species
 
 
 
+# Separate out completely empty plots -------------------------------------
 
+# Empty subplots have Code 0; empty 2x2 plots do not have a row in present_species
+#   because it would have been an NA that was dropped during pivot_longer().
+# Therefore, empty plots are those with only one row per SiteDatePlotID
+#   in present_species with subplot Code of 0.
+
+# Find list of SiteDatePlotIDs with only 1 row in present_species
+SiteDatePlotID.count <- present_species |> 
+  count(SiteDatePlotID)
+SiteDatePlotID.single <- SiteDatePlotID.count |> 
+  filter(n == 1)
+
+# The row should come from subplot obs, with code of 0
+empty.plots <- present_species |> 
+  filter(SiteDatePlotID %in% SiteDatePlotID.single$SiteDatePlotID) |> 
+  filter(ObsSource == "subplot") |> 
+  filter(Code == "0")
+
+
+# Attach cover values from p2x2 data (should all be 0)
+empty.plots <- left_join(empty.plots, cover)
+
+  
+  
 
 # Create table of species richness ----------------------------------------
 

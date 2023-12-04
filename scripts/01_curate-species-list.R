@@ -668,7 +668,7 @@ identical(de.overlap$Duration, de.overlap$Duration_2x2) # no difference
 #   Lifeform
 identical(de.overlap$Lifeform, de.overlap$Lifeform_2x2) # no difference
 
-# Conclusion: suplot Name & Native status should be used over 2x2
+# Conclusion: subplot Name & Native status should be used over 2x2
 
 # Replace correct Name and Native cols from subplot data for 2x2 data
 colnames(de.overlap.2x2) <- colnames(p2x2.codes.de)
