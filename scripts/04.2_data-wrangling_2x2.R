@@ -1,5 +1,5 @@
 # Created: 2023-09-18
-# Last updated: 2023-12-04
+# Last updated: 2024-01-23
 
 # Purpose: Create 2 clean data tables for 2x2 plot data: one with cover data and one with
 #   the list of species present for each monitoring event.
@@ -322,13 +322,6 @@ ps2 <- present_species
 
 
 
-# Check to make sure all SiteDatePlotIDs are there ------------------------
-
-# When
-
-nrow(monitor.info) # 6384 SiteDatePlotIDs
-
-
 # Combine with subplot to get all species present -------------------------
 
 # Currently present_species is only the additional species not found in subplot;
@@ -375,6 +368,14 @@ empty.plots <- present_species |>
 
 # Attach cover values from p2x2 data (should all be 0)
 empty.plots <- left_join(empty.plots, cover)
+
+
+# Check to make sure all SiteDatePlotIDs are there ------------------------
+
+# When
+
+nrow(monitor.info) # 6384 SiteDatePlotIDs
+length(unique(present_species$SiteDatePlotID))
 
   
   
