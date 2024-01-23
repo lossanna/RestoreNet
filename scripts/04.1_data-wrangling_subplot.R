@@ -1,5 +1,5 @@
 # Created: 2023-09-18
-# Last updated: 2023-12-04
+# Last updated: 2024-01-23
 
 # Purpose: Create clean data table for subplot data, with corrected and standardized species information,
 #   and monitoring and plot information, and correct SpeciesSeeded column based on each site-specific
@@ -206,9 +206,12 @@ length(unique(subplot$SiteDatePlotID)) # 6338
 SiteDatePlotID.missing <- monitor.info |> 
   filter(!SiteDatePlotID %in% subplot$SiteDatePlotID)
 #   The 46 missing IDs come from AVRCD and 29_Palms. I have manually checked and found
-#     that data for 2 subplots at AVRCD were not recorded during the 2022-04-13 monitoring event,
+#     that data for 2 subplots at AVRCD were not recorded during the 2022-04-15 monitoring event,
 #     and that at 29_Palms, all 44 of the  2x2m plots were monitored, but there is no 
-#     corresponding subplot data.
+#     corresponding subplot data. I emailed to ask about this, and the 29_Palms subplot data
+#     was collected, but there was 0 recruitment in all of the subplots.
+
+# Create df of 29_Palms for 2022-04-15
 
 
 # Save intermediate subplot with correct monitoring info, Native/Duration/Lifeform
