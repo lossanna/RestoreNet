@@ -1,5 +1,5 @@
 # Created: 2023-09-18
-# Last updated: 2023-12-04
+# Last updated: 2024-02-05
 
 # Purpose: In comparing the monitoring information from the subplot vs. 2x2 plot data, 
 #   there were discrepancies, but there should be only one correct version. 
@@ -781,7 +781,7 @@ monitor.correct |>
 monitor.correct |> 
   filter(Site == "29_Palms",
          Date_Seeded == "2021-12-19",
-         Treatment == "Pellets")
+         Treatment == "Pellets") # pellets were not re-seeded 
 
 # AVRCD
 #   3 monitoring dates, spring 2020, spring 2021, spring 2022
@@ -959,7 +959,7 @@ monitor.correct |>
   filter(Site == "29_Palms",
          Date_Seeded == "2020-03-13",
          Date_Monitored == "2022-04-15") 
-#    pellets might have just been seeded once; no fix needed                                   
+#    pellets were probably just seeded once; no fix needed                                   
 
 
 # AVRCD: 2 potential issues
@@ -970,7 +970,7 @@ monitor.correct |>
   filter(Site == "AVRCD",
          Date_Seeded == "2020-03-17",
          Date_Monitored == "2022-04-13")
-#    pellets might have just been seeded once; no fix needed    
+#    pellets were probably just seeded once; no fix needed     
 
 # 2. Multiple dates for second seeding
 monitor.correct |> 
@@ -981,7 +981,8 @@ monitor.correct |>
          Date_Seeded == "2022-01-17") |> 
   print(n = 28)
 #   all mulch plots were seeded two days earlier (a Friday); not sure why
-#     this would be the case, but it doesn't look like just a random typo
+#     this would be the case, but it doesn't look like just a random typo,
+#     so no fix is needed
 
 
 # BabbittPJ: 0 issues
