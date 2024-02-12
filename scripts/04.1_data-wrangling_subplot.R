@@ -22,6 +22,7 @@ monitor.wrong <- read_csv("data/data-wrangling-intermediate/02_subplot-wrong-mon
 monitor.fixed <- read_csv("data/data-wrangling-intermediate/02_subplot-wrong-monitor-events-corrected.csv")
 SiteDatePlotID.replace <- read_csv("data/data-wrangling-intermediate/02_SiteDatePlotID-replacements.csv")
 monitor.site <- read_csv("data/cleaned/02_corrected-monitoring-info-by-date-and-site_clean.csv")
+monitor.add.AVRCD <- read_csv("data/data-wrangling-intermediate/02_subplot-wrong-monitor-events-add-AVRCD.csv")
 
 
 # Organize columns --------------------------------------------------------
@@ -126,8 +127,9 @@ apply(subplot.in, 2, anyNA) # NAs for Count, Height, SpeciesSeeded inherent to d
 subplot <- bind_rows(subplot.in, subplot.de) %>% 
   arrange(raw.row)
 
-# Check that there the same number of observations as the original subplot data
-nrow(subplot) == nrow(subplot.raw) 
+# Check that there the same number of observations as the original subplot data 
+#   (+44 fom 29_Palms added)
+nrow(subplot) == (nrow(subplot.raw) + 44)
 
 
 

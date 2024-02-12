@@ -1140,6 +1140,7 @@ monitor.correct <- monitor.correct |>
 
 
 
+
 # Standardize PlotMix and Treatment spelling ------------------------------
 
 # Treatment
@@ -1153,11 +1154,27 @@ filter(monitor.2x2, Treatment == "Con/Mod") == filter(monitor.correct, Treatment
 #   monitor.correct, monitor.sub, and monitor.2x2 are all wrong in the same places (everything is TRUE)
 #     same fix needs to applied to all
 
+#   Create wrong row
 wrong.conmod <- monitor.correct |> 
   filter(Treatment == "Con/Mod")
 
+#   Create correct row
 fix.conmod <- wrong.conmod |> 
   mutate(Treatment = "ConMod")
+
+#   Look if there is already correct version in monitor.correct
+monitor.correct |> 
+  filter(Site %in% fix.conmod$Site,
+         Date_Monitored %in% fix.conmod$Date_Monitored,
+         Treatment == "Con/Mod") |> 
+  arrange(SiteDatePlotID) |> 
+  print(n = 22) 
+
+monitor.correct |> 
+  filter(Site %in% fix.conmod$Site,
+         Date_Monitored %in% fix.conmod$Date_Monitored,
+         Treatment == "ConMod") # no duplicates (4495 and 4538 are different plots)
+
 
 
 # Seed only
@@ -1166,11 +1183,24 @@ filter(monitor.2x2, Treatment == "Seed only") == filter(monitor.correct, Treatme
 #   monitor.correct, monitor.sub, and monitor.2x2 are all wrong in the same places (everything is TRUE)
 #     same fix needs to applied to all
 
+#   Create wrong row
 wrong.seedonly <- monitor.correct |> 
   filter(Treatment == "Seed only")
 
+#   Create correct row
 fix.seedonly <- wrong.seedonly |> 
   mutate(Treatment = "Seed")
+
+#   Look if there is already correct version in monitor.correct
+monitor.correct |> 
+  filter(Site %in% fix.seedonly$Site,
+         Date_Monitored %in% fix.seedonly$Date_Monitored,
+         Treatment == "Seed only") 
+
+monitor.correct |> 
+  filter(Site %in% fix.seedonly$Site,
+         Date_Monitored %in% fix.seedonly$Date_Monitored,
+         Treatment == "Seed") # no duplicates
 
 
 # PlotMix
@@ -1178,25 +1208,16 @@ unique(monitor.correct$PlotMix)
 #   no fix needed
 
 
-
-# All correct monitoring info ---------------------------------------------
-
-# Remove SiteDatePlotIDs with wrong plot information (wrong Plot number and misspelled Treatment)
-#   The wrong Plot ones have already existing correct rows with SiteDatePlotID and can be removed
-#   The wrong ConMod and Seed ones need to be removed and replaced
-wrong.leftover <- bind_rows(wrong.sub.BarTBar, 
-                            wrong.sub.Spiderweb, 
-                            wrong.sub.UtahPJ1, 
-                            wrong.sub.UtahPJ2, 
-                            wrong.conmod,
-                            wrong.seedonly)
-
+# Replace rows in monitor.correct with corrected info (all must be replaced)
+wrong.spelling.id <- c(wrong.conmod$SiteDatePlotID, wrong.seedonly$SiteDatePlotID)
 monitor.correct <- monitor.correct |> 
-  filter(!SiteDatePlotID %in% wrong.leftover$SiteDatePlotID) |> 
-  bind_rows(fix.conmod, fix.seedonly) |>  # add back corrected ConMod & Seed rows; Plot conflicts were duplicates, 
-#                                 but ConMod & Seed rows should be replaced
+  filter(!SiteDatePlotID %in% wrong.spelling.id) |> 
+  bind_rows(fix.conmod, fix.seedonly) |> 
   arrange(SiteDatePlotID)
 
+
+
+# All correct monitoring info ---------------------------------------------
 
 # Check for whole number
 (nrow(monitor.correct) - (8 * 6))/ 36
@@ -1212,26 +1233,24 @@ write_csv(monitor.correct,
 
 # Compile
 wrong.sub <- bind_rows(wrong.sub.AVRCD,
-                       wrong.sub.BarTBar,
                        wrong.sub.Mesquite,
                        wrong.sub.Patagonia,
                        wrong.sub.Salt_Desert,
-                       wrong.sub.Spiderweb,
-                       wrong.sub.SRER,
-                       wrong.sub.UtahPJ1,
-                       wrong.sub.UtahPJ2,
+                       wrong.monitor29.Spiderweb,
+                       wrong.monitor29.UtahPJ, 
+                       wrong.monitor33,
+                       wrong.monitor34,
                        wrong.conmod,
                        wrong.seedonly)
 
 fix.sub <- bind_rows(fix.sub.AVRCD,
-                     fix.sub.BarTBar,
                      fix.sub.Mesquite,
                      fix.sub.Patagonia,
                      fix.sub.Salt_Desert,
-                     fix.sub.Spiderweb,
-                     fix.sub.SRER,
-                     fix.sub.UtahPJ1,
-                     fix.sub.UtahPJ2,
+                     fix.monitor29.Spiderweb,
+                     fix.monitor29.UtahPJ, 
+                     fix.monitor33,
+                     fix.monitor34,
                      fix.conmod,
                      fix.seedonly)
 
@@ -1265,7 +1284,7 @@ wrong.2x2 <- bind_rows(wrong.2x2.29palms,
                        wrong.2x2.Preserve,
                        wrong.2x2.Roosevelt,
                        wrong.2x2.SCC,
-                       wrong.2x2.UtahPJ,
+                       wrong.monitor34,
                        wrong.conmod,
                        wrong.seedonly)
 
@@ -1277,7 +1296,7 @@ fix.2x2 <- bind_rows(fix.2x2.29palms,
                      fix.2x2.Preserve,
                      fix.2x2.Roosevelt,
                      fix.2x2.SCC,
-                     fix.2x2.UtahPJ,
+                     fix.monitor34,
                      fix.conmod,
                      fix.seedonly)
 
@@ -1292,16 +1311,6 @@ write_csv(wrong.2x2,
 # Write csv of corrected 2x2 monitor data
 write_csv(fix.2x2,
           file = "data/data-wrangling-intermediate/02_2x2-wrong-monitor-events-corrected.csv")
-
-
-
-# Write csv of replacement IDs --------------------------------------------
-
-# Fixes will be needed in both subplot and 2x2 data
-
-# Write csv of SiteDatePlotIDs that need to be replaced 
-write_csv(replaceID,
-          file = "data/data-wrangling-intermediate/02_SiteDatePlotID-replacements.csv")
 
 
 
