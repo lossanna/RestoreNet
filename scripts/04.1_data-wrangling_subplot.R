@@ -1,5 +1,5 @@
 # Created: 2023-09-18
-# Last updated: 2024-01-23
+# Last updated: 2024-02-12
 
 # Purpose: Create clean data table for subplot data, with corrected and standardized species information,
 #   and monitoring and plot information, and correct SpeciesSeeded column based on each site-specific
@@ -13,6 +13,7 @@ library(tidyverse)
 # Load data ---------------------------------------------------------------
 
 subplot.raw <- read_xlsx("data/raw/2023-09-15_Master 1.0 Germination Data_raw.xlsx", sheet = "AllSubplotData")
+add.29palms <- read_xlsx("data/raw/29Palms_Spr22.xlsx", sheet = "to merge with raw_LO")
 species.in <- read_csv("data/cleaned/01_subplot_species-list_location-independent_clean.csv")
 species.de <- read_csv("data/cleaned/01_subplot_species-list_location-dependent_clean.csv")
 mix <- read_xlsx("data/raw/from-Master_seed-mix_LO.xlsx", sheet = "with-site_R")
@@ -25,10 +26,14 @@ monitor.site <- read_csv("data/cleaned/02_corrected-monitoring-info-by-date-and-
 
 # Organize columns --------------------------------------------------------
 
+# Add 29 Palms data from spring 2022
+add.29palms$Species_Code <- as.character(add.29palms$Species_Code)
+subplot <- bind_rows(subplot.raw, add.29palms)
+
 # Narrow down subplot.raw columns
-subplot <- subplot.raw %>% 
+subplot <- subplot %>% 
   select(-Recorder_Initials, -Functional_Group, -`Certainty_of_ID(1-3)`, -Notes) %>% 
-  mutate(raw.row = 1:nrow(subplot.raw)) %>% # row number is to be able to easily refer back to the raw data and excluded columns if needed
+  mutate(raw.row = 1:nrow(subplot)) %>% # row number is to be able to easily refer back to the raw data and excluded columns if needed
   rename(CodeOriginal = Species_Code,
          Count = Seedling_Count,
          Height = Average_Height_mm,
@@ -51,7 +56,7 @@ subplot <- subplot %>%
   mutate(Date_Seeded = as.character(Date_Seeded),
          Date_Monitored = as.character(Date_Monitored))
 subplot[subplot == "NA"] <- NA
-apply(subplot, 2, anyNA) # check all columns for NAs; NAs in Code, Count, Height, Seeded
+apply(subplot, 2, anyNA) # check all columns for NAs; NAs in CodeOriginal, Count, Height, SpeciesSeeded are expected
 subplot <- subplot %>% 
   mutate(Date_Seeded = as.Date(Date_Seeded),
          Date_Monitored = as.Date(Date_Monitored)) # convert back to date
@@ -99,7 +104,7 @@ subplot.de <- left_join(subplot.de, species.de)
 
 # Check for NA codes
 filter(subplot.de, is.na(Code)) # no NAs
-apply(subplot.de, 2, anyNA) # NAs for Count, Height, SpeciesSeeded are inherent to data
+apply(subplot.de, 2, anyNA) # NAs for Count, Height, SpeciesSeeded are expected
 
 
 
