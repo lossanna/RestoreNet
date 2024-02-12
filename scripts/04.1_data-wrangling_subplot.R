@@ -20,7 +20,6 @@ mix <- read_xlsx("data/raw/from-Master_seed-mix_LO.xlsx", sheet = "with-site_R")
 monitor.info <- read_csv("data/cleaned/02_corrected-monitoring-info_clean.csv")
 monitor.wrong <- read_csv("data/data-wrangling-intermediate/02_subplot-wrong-monitor-events.csv")
 monitor.fixed <- read_csv("data/data-wrangling-intermediate/02_subplot-wrong-monitor-events-corrected.csv")
-SiteDatePlotID.replace <- read_csv("data/data-wrangling-intermediate/02_SiteDatePlotID-replacements.csv")
 monitor.site <- read_csv("data/cleaned/02_corrected-monitoring-info-by-date-and-site_clean.csv")
 monitor.add.AVRCD <- read_csv("data/data-wrangling-intermediate/02_subplot-wrong-monitor-events-add-AVRCD.csv")
 
