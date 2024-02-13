@@ -121,7 +121,17 @@ monitor.2x2 <- p2x2 %>%
 
 
 
-# Examine conflicts between subplot & 2x2 monitoring info -----------------
+# Fix monitoring info -----------------------------------------------------
+
+# Fix any wrong Date_Seeded, Date_Monitored, Plot, Treatment, or PlotMix
+#   Create "wrong" dataframes where the wrong info will be matched to the correct
+#     info via the correct SiteDatePlotID during data wrangling.
+#   "Wrong" dataframes will be dataset specific (separate for subplot and 2x2 data), 
+#     because mistakes are unique to dataset.
+#   Create "fixed" dataframes that connect rows to the correct info via the SiteDatePlotID. 
+
+
+## Examine conflicts between subplot & 2x2 monitoring info -----------------
 
 # Examine differences by looking at NAs formed from left_join()
 monitor.diff <- monitor.2x2 %>% 
@@ -141,7 +151,7 @@ monitor.diff <- monitor.2x2 %>%
 
 
 
-# 29_Palms ----------------------------------------------------------------
+## 29_Palms ----------------------------------------------------------------
 
 # 29_Palms (Mojave): 1 issue
 
@@ -173,7 +183,7 @@ fix.2x2.29palms <- filter(monitor.sub, Site == "29_Palms", Treatment == "Pellets
 
 
 
-# AVRCD -------------------------------------------------------------------
+## AVRCD -------------------------------------------------------------------
 
 # AVRCD (Mojave): 4 issues
 
@@ -266,7 +276,7 @@ add.AVRCD <- bind_rows(add.AVRCD1, add.AVRCD2)
 
 
 
-# FlyingM -----------------------------------------------------------------
+## FlyingM -----------------------------------------------------------------
 
 # FlyingM (CO Plateau): 2 issues
 # 1-2. Date_Seeded and Date_Monitored conflict
@@ -307,7 +317,7 @@ fix.2x2.FlyingM <- monitor.sub %>%
 
 
 
-# Mesquite ----------------------------------------------------------------
+## Mesquite ----------------------------------------------------------------
 
 # Mesquite (Chihuahuan): 4 issues
 
@@ -399,7 +409,7 @@ fix.sub.Mesquite <- bind_rows(fix.sub.Mesquite2, fix.sub.Mesquite3, fix.sub.Mesq
 
 
 
-# PEFO --------------------------------------------------------------------
+## PEFO --------------------------------------------------------------------
 
 # PEFO (Colorado Plateau): 1 issue
 
@@ -423,8 +433,7 @@ fix.2x2.PEFO <- filter(monitor.sub, Site == "PEFO", Date_Monitored == "2022-04-1
 
 
 
-
-# Patagonia ---------------------------------------------------------------
+## Patagonia ---------------------------------------------------------------
 
 # Patagonia (SRER): 1 issue
 
@@ -446,8 +455,7 @@ fix.sub.Patagonia$Treatment <- "ConMod"
 
 
 
-
-# Preserve ----------------------------------------------------------------
+## Preserve ----------------------------------------------------------------
 
 # Preserve (Sonoran Central): 1 issue
 
@@ -475,7 +483,7 @@ fix.2x2.Preserve <- monitor.sub |>
 
 
 
-# Roosevelt ---------------------------------------------------------------
+## Roosevelt ---------------------------------------------------------------
 
 # Roosevelt (Sonoran Central): 1 issue
 
@@ -504,7 +512,7 @@ fix.2x2.Roosevelt <- monitor.sub |>
 
 
 
-# SCC ---------------------------------------------------------------------
+## SCC ---------------------------------------------------------------------
 
 # SCC (Sonoran Central): 2 issues
 
@@ -530,7 +538,7 @@ fix.2x2.SCC <- monitor.sub |>
          Plot %in% wrong.2x2.SCC$Plot)
 
 
-# SRER --------------------------------------------------------------------
+## SRER --------------------------------------------------------------------
 
 # SRER (Sonoran SE): 1 issue
 
@@ -561,7 +569,7 @@ fix.sub.SRER <- wrong.sub.SRER |>
 
 
 
-# Salt Desert -------------------------------------------------------------
+## Salt Desert -------------------------------------------------------------
 
 # Salt Desert (Utah): 1 issue
 
@@ -627,16 +635,20 @@ monitor.correct <- bind_rows(monitor.correct, add.AVRCD)
 
 # Look for mistakes in compiled monitoring data ---------------------------
 
-#   Before, we had assumed that all the subplot monitoring information that matched the 2x2 data
-#     was correct, but it actually has mistakes. 
-
+# Before, we had assumed that all the subplot monitoring information that matched the 2x2 data
+#   was correct, but it actually has mistakes (it was wrong in both subplot and 2x2 data,
+#   so no conflict was created, which is how we determined mistakes in the previous section).
+# Ultimately found that there were a few instances where the Plot number was wrong,
+#   but a correct row already existed (with its own correct SiteDatePlotID).
+# (no objects were modified or created in this section)
 
 # Look for mistakes in currently compiled monitoring info by examining each site 
-
 unique(monitor.correct$Site)
 
 
-# Number of plots
+
+## Number of plots by site -------------------------------------------------
+
 #   CO Plateau all have normal 36 plots
 unique(filter(monitor.correct, Site == "AguaFria")$Plot)
 unique(filter(monitor.correct, Site == "BabbittPJ")$Plot)
@@ -683,7 +695,7 @@ count(monitor.correct, Plot) |>
 
 
 
-# Number of monitoring events and seeding
+## Number of monitoring events and seeding by site -------------------------
 
 # CO Plateau
 #   Six sites were seeded twice, once in July/Aug of 2018 and again in July/Aug of 2020:
@@ -948,7 +960,7 @@ monitor.correct |>
 
 
 
-# Investigate Date_Seeded for sites seeded twice --------------------------
+## Investigate Date_Seeded for sites seeded twice --------------------------
 
 # If a site was seeded twice, the Date_Seeded should probably reflect the most recent seeding
 #   in relation to Date_Monitored. Look for possible discrepancies.
@@ -1022,21 +1034,26 @@ seeded.twice |>
 
 
 
-# Resolve plot conflicts --------------------------------------------------
+# Correct SiteDatePlotID of mislabeled plots ------------------------------
 
-# Plots 29, 33, 34 have issues in both the subplot and 2x2 data
+# Plots 29, 33, 34 have issues in both the subplot and 2x2 data (Plot number is wrong).
+
+# These are plots listed twice, and there is already a correct version with a SiteDatePlotID assigned.
+# This occurs because in the subplot data, there are multiple observations (rows) for a plot
+#   during a specific monitoring event because multiple species were recorded.
+# Now that a SiteDatePlotID has been assigned, we need to change it to the correct SiteDatePlotID
+#   to connect the wrong info with fixed info.
+#  The rows with wrong monitoring information have SiteDatePlotIDs that will become null.
 
 # Create wrong and correct rows by site
-#   These are plots listed twice, and there is already a correct version with a SiteDatePlotID assigned.
-#   This occurs because in the subplot data, there are multiple observations (rows) for a plot
-#     during a specific monitoring event because multiple species were recorded.
-#   Need to create the same wrong & fixed dfs like before, and then also correct monitor.correct.
-#   The rows with wrong monitoring information have SiteDatePlotIDs that will become null.
-#   To determine what is correct, the count of Treatment should match the number of monitoring events at the site.
+#   Need to create the same wrong & fixed dfs like before, but wrong df needs new SiteDatePlotID
+#     to connect the wrong info with the right ID, which connects it to correct monitor.correct.
+#   To determine what is correct, the count of Treatment should match the number of monitoring events 
+#     at the site.
+
 
 # BarTBar, Plot 33 occurs twice
 #   Figure out problem and if it is subplot and 2x2 data 
-
 monitor.correct |> 
   filter(Site == "BarTBar", Plot == "33") |> 
   count(Treatment) # Treatment should be ConMod, not Mulch
@@ -1045,16 +1062,21 @@ subplot |>
 p2x2 |> 
   filter(Site == "BarTBar", Plot == "33", Treatment == "Mulch") # not present in 2x2 data 
 
-#   Create wrong row
+#   Create wrong row (with null SiteDatePlotID)
 wrong.monitor33 <- monitor.correct |> 
   filter(Site == "BarTBar", Plot == "33", Treatment == "Mulch")
-wrong.monitor33
+wrong.monitor33 
+null.monitor33 <- 1006
 
-#   Create correct row (including changed SiteDatePlotID)
+#   Create correct row
 fix.monitor33 <- monitor.correct |> 
   filter(Site == "BarTBar", Plot == "33", Treatment == "ConMod", Date_Monitored == "2019-04-16")
 fix.monitor33
 
+#   Change null ID to correct ID in wrong row
+wrong.monitor33 <- wrong.monitor33 |> 
+  mutate(SiteDatePlotID = fix.monitor33$SiteDatePlotID)
+wrong.monitor33
 
 
 # Spiderweb, Plot 29 occurs twice
@@ -1067,17 +1089,22 @@ subplot |>
 p2x2 |> 
   filter(Site == "Spiderweb", Plot == "29", PlotMix == "Med-Warm") # not present in p2x2 data
 
-#   Create wrong row
+#   Create wrong row (will null SiteDatePlotID)
 wrong.monitor29.Spiderweb <- monitor.correct |> 
   filter(Site == "Spiderweb", Plot == "29", PlotMix == "Med-Warm")
-wrong.monitor29.Spiderweb
+wrong.monitor29.Spiderweb 
+null.monitor29.Spiderweb <- 3235
 
-#   Create correct row (including changed SiteDatePlotID)
+#   Create correct row 
 fix.monitor29.Spiderweb <- monitor.correct |> 
   filter(Site == "Spiderweb", Plot == "29",
          PlotMix == "Warm", Date_Monitored == "2021-09-29")
 fix.monitor29.Spiderweb
 
+#   Change null ID to correct ID in wrong row
+wrong.monitor29.Spiderweb <- wrong.monitor29.Spiderweb |> 
+  mutate(SiteDatePlotID = fix.monitor29.Spiderweb$SiteDatePlotID)
+wrong.monitor29.Spiderweb
 
 
 # UtahPJ, Plot 29 occurs twice
@@ -1090,16 +1117,23 @@ subplot |>
 p2x2 |> 
   filter(Site == "UtahPJ", Plot == "29", Treatment == "Pits") # does not occur in 2x2 data
 
-#   Create wrong row
+#   Create wrong row (with null SiteDatePlotID)
 wrong.monitor29.UtahPJ <- monitor.correct |> 
   filter(Site == "UtahPJ", Plot == "29", Treatment == "Pits")
 wrong.monitor29.UtahPJ
+null.monitor29.UtahPJ <- c(4168, 4242, 4461)
 
-#   Create correct row (including changed SiteDatePlotID)
+#   Create correct row 
 fix.monitor29.UtahPJ <- monitor.correct |> 
   filter(Site == "UtahPJ", Plot == "29", Treatment == "Mulch",
          Date_Monitored %in% wrong.monitor29.UtahPJ$Date_Monitored)
 fix.monitor29.UtahPJ
+
+#   Change null ID to correct ID in wrong row
+wrong.monitor29.UtahPJ <- wrong.monitor29.UtahPJ |> 
+  mutate(SiteDatePlotID = fix.monitor29.UtahPJ$SiteDatePlotID)
+wrong.monitor29.UtahPJ
+
 
 
 # UtahPJ, Plot 34 occurs twice
@@ -1120,93 +1154,124 @@ p2x2 |>
   filter(Site == "UtahPJ", Plot == "34", PlotMix == "Cool") # occurs in 2x2 data
 
 
-#   Create wrong row
+#   Create wrong row (with null SiteDatePlotID)
 wrong.monitor34 <- monitor.correct |> 
   filter(Site == "UtahPJ", Plot == "34", Treatment == "ConMod", PlotMix == "Cool")
 wrong.monitor34
+null.monitor34 <- c(4174, 4248, 4357, 4467)
 
-#   Create correct row (including changed SiteDatePlotID)
+#   Create correct row 
 fix.monitor34 <- monitor.correct |> 
   filter(Site == "UtahPJ", Plot == "34", Treatment == "Control", PlotMix == "None",
          Date_Monitored %in% wrong.monitor34$Date_Monitored)
 fix.monitor34
 
+#   Change null ID to correct ID in wrong row
+wrong.monitor34 <- wrong.monitor34 |> 
+  mutate(SiteDatePlotID = fix.monitor34$SiteDatePlotID)
+wrong.monitor34
+
+
 
 # Correct monitor.correct by removing null IDs (9 rows)
-null.id <- c(wrong.monitor33$SiteDatePlotID, wrong.monitor29.Spiderweb$SiteDatePlotID,
-             wrong.monitor29.UtahPJ$SiteDatePlotID, wrong.monitor34$SiteDatePlotID)
+null.id <- c(null.monitor33, null.monitor29.Spiderweb, null.monitor29.UtahPJ,
+             null.monitor34)
 monitor.correct <- monitor.correct |> 
   filter(!SiteDatePlotID %in% null.id)
 
 
 
 
+
 # Standardize PlotMix and Treatment spelling ------------------------------
-
-# Treatment
-unique(monitor.correct$Treatment)
-unique(monitor.sub$Treatment) # already fixed `ConMod typo
-unique(monitor.2x2$Treatment)
-
-# ConMod
-filter(monitor.sub, Treatment == "Con/Mod") == filter(monitor.correct, Treatment == "Con/Mod")
-filter(monitor.2x2, Treatment == "Con/Mod") == filter(monitor.correct, Treatment == "Con/Mod")
-#   monitor.correct, monitor.sub, and monitor.2x2 are all wrong in the same places (everything is TRUE)
-#     same fix needs to applied to all
-
-#   Create wrong row
-wrong.conmod <- monitor.correct |> 
-  filter(Treatment == "Con/Mod")
-
-#   Create correct row
-fix.conmod <- wrong.conmod |> 
-  mutate(Treatment = "ConMod")
-
-#   Look if there is already correct version in monitor.correct
-monitor.correct |> 
-  filter(Site %in% fix.conmod$Site,
-         Date_Monitored %in% fix.conmod$Date_Monitored,
-         Treatment == "Con/Mod") |> 
-  arrange(SiteDatePlotID) |> 
-  print(n = 22) 
-
-monitor.correct |> 
-  filter(Site %in% fix.conmod$Site,
-         Date_Monitored %in% fix.conmod$Date_Monitored,
-         Treatment == "ConMod") # no duplicates (4495 and 4538 are different plots)
-
-
-
-# Seed only
-filter(monitor.sub, Treatment == "Seed only") == filter(monitor.correct, Treatment == "Seed only")
-filter(monitor.2x2, Treatment == "Seed only") == filter(monitor.correct, Treatment == "Seed only")
-#   monitor.correct, monitor.sub, and monitor.2x2 are all wrong in the same places (everything is TRUE)
-#     same fix needs to applied to all
-
-#   Create wrong row
-wrong.seedonly <- monitor.correct |> 
-  filter(Treatment == "Seed only")
-
-#   Create correct row
-fix.seedonly <- wrong.seedonly |> 
-  mutate(Treatment = "Seed")
-
-#   Look if there is already correct version in monitor.correct
-monitor.correct |> 
-  filter(Site %in% fix.seedonly$Site,
-         Date_Monitored %in% fix.seedonly$Date_Monitored,
-         Treatment == "Seed only") 
-
-monitor.correct |> 
-  filter(Site %in% fix.seedonly$Site,
-         Date_Monitored %in% fix.seedonly$Date_Monitored,
-         Treatment == "Seed") # no duplicates
-
 
 # PlotMix
 unique(monitor.correct$PlotMix)
 #   no fix needed
 
+# Treatment
+unique(monitor.correct$Treatment)
+unique(monitor.sub$Treatment) # already fixed `ConMod typo 
+unique(monitor.2x2$Treatment)
+
+# Problems
+# Should be "ConMod", not "Con/Mod"
+#   (Already fixed `ConMod typo, it conflicted between subplot and 2x2 data and was 
+#   fixed in Patagonia section)
+# Should be "Seed", not "Seed only"
+
+# Unlike Plot number, correct duplicates do not exist, so there is no correct SiteDatePlotID
+#   to reassign. Instead, must change info of the current SiteDatePlotID.
+
+
+## Con/Mod -----------------------------------------------------------------
+
+# Look to see where issues exist
+filter(monitor.sub, Treatment == "Con/Mod") == filter(monitor.correct, Treatment == "Con/Mod")
+filter(monitor.2x2, Treatment == "Con/Mod") == filter(monitor.correct, Treatment == "Con/Mod")
+#   monitor.correct, monitor.sub, and monitor.2x2 are all wrong in the same places 
+#     (everything is TRUE); same fix needs to applied to all
+
+# Create wrong row
+wrong.conmod <- monitor.correct |> 
+  filter(Treatment == "Con/Mod")
+
+# Create correct row
+fix.conmod <- wrong.conmod |> 
+  mutate(Treatment = "ConMod")
+
+# Check to make sure there isn't already a correct version in monitor.correct
+#   Find what already exists in monitor.correct that is correct
+a <- monitor.correct |> 
+  filter(Site %in% fix.conmod$Site,
+         Date_Monitored %in% fix.conmod$Date_Monitored,
+         Treatment == "ConMod")
+
+#   Find what already exists in monitor.correct that is wrong
+b <- monitor.correct |> 
+  filter(Site %in% fix.conmod$Site,
+         Date_Monitored %in% fix.conmod$Date_Monitored,
+         Treatment == "Con/Mod") |> 
+  arrange(SiteDatePlotID)
+
+#   Look for overlap
+intersect(a, b) # no duplicates, correct version does not already exist 
+
+
+## Seed only ---------------------------------------------------------------
+
+# Look to see where issues exist
+filter(monitor.sub, Treatment == "Seed only") == filter(monitor.correct, Treatment == "Seed only")
+filter(monitor.2x2, Treatment == "Seed only") == filter(monitor.correct, Treatment == "Seed only")
+#   monitor.correct, monitor.sub, and monitor.2x2 are all wrong in the same places 
+#     (everything is TRUE); same fix needs to applied to all
+
+# Create wrong row
+wrong.seedonly <- monitor.correct |> 
+  filter(Treatment == "Seed only")
+
+# Create correct row
+fix.seedonly <- wrong.seedonly |> 
+  mutate(Treatment = "Seed")
+
+# Check to make sure there isn't already a correct version in monitor.correct
+#   Find what already exists in monitor.correct that is correct
+a <- monitor.correct |> 
+  filter(Site %in% fix.seedonly$Site,
+         Date_Monitored %in% fix.seedonly$Date_Monitored,
+         Treatment == "Seed only") 
+
+#   Find what already exists in monitor.correct that is wrong
+b <- monitor.correct |> 
+  filter(Site %in% fix.seedonly$Site,
+         Date_Monitored %in% fix.seedonly$Date_Monitored,
+         Treatment == "Seed") # no duplicates
+
+#   Look for overlap
+intersect(a, b) # no duplicates, correct version does not already exist 
+
+
+## Make correction ---------------------------------------------------------
 
 # Replace rows in monitor.correct with corrected info (all must be replaced)
 wrong.spelling.id <- c(wrong.conmod$SiteDatePlotID, wrong.seedonly$SiteDatePlotID)
@@ -1214,6 +1279,10 @@ monitor.correct <- monitor.correct |>
   filter(!SiteDatePlotID %in% wrong.spelling.id) |> 
   bind_rows(fix.conmod, fix.seedonly) |> 
   arrange(SiteDatePlotID)
+
+
+# Remove temporary objects
+rm(a, b)
 
 
 
