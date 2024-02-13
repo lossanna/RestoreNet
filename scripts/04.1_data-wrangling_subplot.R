@@ -1,5 +1,5 @@
 # Created: 2023-09-18
-# Last updated: 2024-02-12
+# Last updated: 2024-02-13
 
 # Purpose: Create clean data table for subplot data, with corrected and standardized species information,
 #   and monitoring and plot information, and correct SpeciesSeeded column based on each site-specific
@@ -150,78 +150,93 @@ subplot$SpeciesSeeded[subplot$Name == "Erodium cicutarium"] <- "No"
 
 # Correct monitoring info -------------------------------------------------
 
-# Separate out monitoring info
+# Separate out monitoring info from rest of subplot data
 subplot.monitor <- subplot |> 
   select(Region, Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix, raw.row) 
 
 # Find raw.row number of events that need to be fixed
+#   some events that need to be fixed have multiple rows in subplot data
 wrong.raw.row <- left_join(monitor.wrong, subplot.monitor) 
 
 # Attach raw.row to corrected monitoring info
-#   some events that need to be fixed have multiple rows in subplot data
 monitor.assign <- data.frame(SiteDatePlotID = wrong.raw.row$SiteDatePlotID)
 monitor.assign <- left_join(monitor.assign, monitor.fixed)
+#   wrong.raw.row and monitor.assign have the same row order (rows already correspond)
 monitor.assign$raw.row <- wrong.raw.row$raw.row
 
-#   Separate monitor info that doesn't need to be fixed and add SiteDatePlotID
+# Separate monitor info that doesn't need to be fixed and add SiteDatePlotID
 subplot.monitor <- subplot.monitor |> 
   filter(!raw.row %in% monitor.assign$raw.row) |> 
   left_join(monitor.info)
 subplot.monitor |> 
   filter(is.na(SiteDatePlotID)) # all assigned SiteDatePlotID
 
-#   Add corrected monitor info for complete list
+# Add corrected monitor info for complete list
 subplot.monitor <- bind_rows(subplot.monitor, monitor.assign) |> 
   arrange(SiteDatePlotID)
 
-#   Check for matching lengths
-nrow(subplot.monitor) == nrow(subplot.raw)
+# Check for matching lengths
+#   (+44 fom 29_Palms added)
+nrow(subplot.monitor) == (nrow(subplot.raw) + 44)
 
 
 # Attach correct monitoring info to subplot data
-subplot <- subplot[ , -c(1:6)]
-subplot <- left_join(subplot, subplot.monitor)
-
-
-# Replace null SiteDatePlotIDs with correct ones
-subplot.IDreplace <- subplot |> 
-  filter(SiteDatePlotID %in% SiteDatePlotID.replace$SiteDatePlotID_old) |> 
-  rename(SiteDatePlotID_old = SiteDatePlotID) |> 
-  left_join(SiteDatePlotID.replace) |> 
-  select(-SiteDatePlotID_old) |> 
-  rename(SiteDatePlotID = SiteDatePlotID_replace)
-
-subplot <- subplot |> 
-  filter(!raw.row %in% subplot.IDreplace$raw.row) |> 
-  bind_rows(subplot.IDreplace) |> 
+subplot <- subplot[ , -c(1:6)] # remove incorrect info
+subplot <- left_join(subplot, subplot.monitor) |> # add correct info 
   arrange(raw.row)
 
+# Reorder columns
+subplot <- subplot |> 
+  select(Region, Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix, SiteDatePlotID, 
+         CodeOriginal, Code, Name, Native, Duration, Lifeform, SpeciesSeeded,
+         Count, Height, raw.row)
 
 # Check for matching lengths
-nrow(subplot) == nrow(subplot.raw)
+#   (+44 fom 29_Palms added)
+nrow(subplot) == (nrow(subplot.raw) + 44)
 
 # Check all cols for NAs
-apply(subplot, 2, anyNA) 
+apply(subplot, 2, anyNA) # NA in Count, Height, SpeciesSeeded is okay
+
 
 
 # Check for all SiteDatePlotIDs
 nrow(monitor.info) # 6384 IDs
 length(unique(subplot$SiteDatePlotID)) == nrow(monitor.info)
 length(unique(subplot$SiteDatePlotID)) # 6338
+(length(unique(subplot$SiteDatePlotID))) + 2 == nrow(monitor.info)
+#   The two missing SiteDatePlotIDs come from the AVRCD events that must be added separately.
+#     These subplots didn't have lines in the raw data, but they were measured and
+#     recruitment was 0.
 
-SiteDatePlotID.missing <- monitor.info |> 
-  filter(!SiteDatePlotID %in% subplot$SiteDatePlotID)
-#   The 46 missing IDs come from AVRCD and 29_Palms. I have manually checked and found
-#     that data for 2 subplots at AVRCD were not recorded during the 2022-04-15 monitoring event,
-#     and that at 29_Palms, all 44 of the  2x2m plots were monitored, but there is no 
-#     corresponding subplot data. I emailed to ask about this, and the 29_Palms subplot data
-#     was collected, but there was 0 recruitment in all of the subplots.
+# Add the two missing AVRCD events
+#   Manually add in the data columns
+nrow(subplot)
+add.AVRCD <- monitor.add.AVRCD |> 
+  mutate(CodeOriginal = "0", Code = "0", Name = "0", Native = "0", Duration = "0", Lifeform = "0", 
+         SpeciesSeeded = NA, Count = 0, Height = 0, 
+         raw.row = c(18038, 18039))
 
-# Create df of 29_Palms for 2022-04-15
+# Add to the rest of the subplot data
+subplot <- bind_rows(subplot, add.AVRCD)
 
 
-# Save intermediate subplot with correct monitoring info, Native/Duration/Lifeform
-#   but not SeededSpecies yet addressed
+
+# Add SiteDateID now that subplot data is complete
+subplot <- left_join(subplot, monitor.site) |> 
+  arrange(raw.row)
+
+# Reorder columns again
+subplot <- subplot |> 
+  select(Region, Site, Date_Seeded, Date_Monitored, SiteDateID, Plot, Treatment, PlotMix, SiteDatePlotID, 
+         CodeOriginal, Code, Name, Native, Duration, Lifeform, SpeciesSeeded,
+         Count, Height, raw.row)
+
+# Save intermediate subplot df, which has:
+#   Mojave events added (29 Palms and AVRCD)
+#   Correct monitoring info
+#   Correct Native, Duration, Lifeform
+#   Incorrect SeededSpecies (not yet addressed)
 subplot1 <- subplot
 
 
