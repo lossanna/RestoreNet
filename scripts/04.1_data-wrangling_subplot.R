@@ -430,23 +430,14 @@ subplot <- subplot |>
   select(-SpeciesSeeded)
 subplot <- left_join(subplot, seeded.correct)
 
-nrow(subplot) == nrow(subplot.raw)
+# Check for matching lengths
+#   (+44 from 29 Palms, +2 from AVRCD)
+nrow(subplot) == (nrow(subplot.raw) + 46)
 
 
 # Look for NAs
-unique(subplot$SpeciesSeeded)
-sub.spec.na <- subplot |> 
-  filter(is.na(SpeciesSeeded))
-sub.spec.na
-seeded.correct.subspec.na <- seeded.correct |> 
-  filter(Code %in% sub.spec.na$Code)
-# Not sure why this Seeded unknown grass from TLE isn't working with left_join()
-#   but it was seeded, so assign it as Yes for SpeciesSeeded
-subplot <- subplot |> 
-  mutate(SpeciesSeeded = case_when(
-    Code == "SUNGR.TLE" ~ "Yes",
-    TRUE ~ SpeciesSeeded))
-unique(subplot$SpeciesSeeded) # standardized to "No", "Yes", and "0"
+unique(subplot$SpeciesSeeded) # should be no NAs
+
 
 
 # Save intermediate subplot with correct SeededSpecies,
@@ -480,16 +471,7 @@ subplot <- subplot |>
 unique(subplot$PlantSource)
 
 
-# Add SiteDateID ----------------------------------------------------------
 
-subplot <- subplot |> 
-  left_join(monitor.site) |> 
-  select(Region, Site, Date_Seeded, Date_Monitored, SiteDateID,
-         Plot, Treatment, PlotMix, SiteDatePlotID,
-         CodeOriginal, Code, Name, Native, Duration, Lifeform, SpeciesSeeded, PlantSource,
-         Count, Height, raw.row) |> 
-  arrange(SiteDatePlotID) |> 
-  arrange(SiteDateID)
 
 
 # Write clean subplot data to csv -----------------------------------------
