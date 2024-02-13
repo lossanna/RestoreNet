@@ -152,12 +152,13 @@ monitor.diff <- monitor.2x2 %>%
 #   corresponding rows using subplot monitoring info. Differences are identified
 #   by NA for SitePlotDateID in monitor.diff.
 # Compare monitor.diff (2x2 monitoring info) values with relevant obs from 
-#   subplot monitoring info to determine correct value
-# Correct subplot info when needed; use subplot data as base for a complete list of 
-#   monitoring events because it has the monitoring ID attached
+#   subplot monitoring info to determine correct value.
+# Correct subplot monitoring info when needed; use subplot data as base for a complete list of 
+#   monitoring events because it has SiteDatePlotID attached.
 
-# Make dfs of wrong and correct subplot monitoring data for later data wrangling
-# Make dfs of wrong and correct 2x2 monitoring data for later data wrangling
+# Create wrong and fixed dfs for both subplot and 2x2 data.
+# When subplot data is correct, add the SiteDatePlotID from the subplot data to the wrong row,
+#    so the wrong dfs can connect to the fixed df.
 
 
 
@@ -165,7 +166,7 @@ monitor.diff <- monitor.2x2 %>%
 
 # 29_Palms (Mojave): 1 issue
 
-# 1. Date_Seeded conflict for Pellets plots during 2022-04-15 monitoring
+# 1. Date_Seeded conflict for Pellets plots during 2022-04-15 monitoring and SiteDatePlotID is missing
 # Extract differing rows
 filter(monitor.diff, Site == "29_Palms")
 filter(monitor.sub, Site == "29_Palms", Treatment == "Pellets", 
@@ -190,6 +191,9 @@ wrong.2x2.29palms <- filter(monitor.2x2, Site == "29_Palms", Date_Monitored == "
 # Create correct row for 2x2
 fix.2x2.29palms <- filter(monitor.sub, Site == "29_Palms", Treatment == "Pellets", 
                           Date_Monitored == "2022-04-15")
+
+# Add SiteDatePlotID to wrong row so it can connect to fixed df
+wrong.2x2.29palms$SiteDatePlotID <- fix.2x2.29palms$SiteDatePlotID
 
 
 
@@ -248,10 +252,10 @@ filter(monitor.2x2, Site == "AVRCD", Plot == "2") # Plot 2 monitored 3 times (ad
 #   2x2 is correct, entire site was probably monitored on 2022-04-13, and
 #     missing value probably indicates Plot 2 had no subplot recruitment
 
-# Extract incorrect row for 2x2 wrangling (doesn't have a SiteDatePlotID)
-wrong.2x2.AVRCD3 <- filter(monitor.2x2, Site == "AVRCD", Plot == "2", Date_Monitored == "2022-04-13")
+# Do not need to extract an incorrect row for 2x2 because all the monitoring info is correct,
+#   it just needs a SiteDatePlotID.
 
-# Create correct subplot and 2x2 row (assign SiteDatePlotID)
+# Create correct subplot (assign SiteDatePlotID)
 range(monitor.sub$SiteDatePlotID)
 add.AVRCD1 <- wrong.2x2.AVRCD3 |> 
   mutate(SiteDatePlotID = 6392)
@@ -267,10 +271,10 @@ filter(monitor.2x2, Site == "AVRCD", Plot == "44") # Plot 44 monitored 3 times (
 #   2x2 is correct, entire site was probably monitored on 2022-04-13, and
 #     missing value probably indicates Plot 44 had no subplot recruitment (same deal as with Plot 2)
 
-# Extract incorrect row for 2x2 wrangling (doesn't have a SiteDatePlotID)
-wrong.2x2.AVRCD4 <- filter(monitor.2x2, Site == "AVRCD", Plot == "44", Date_Monitored == "2022-04-13")
+# Do not need to extract an incorrect row for 2x2 because all the monitoring info is correct,
+#   it just needs a SiteDatePlotID.
 
-# Create correct subplot and 2x2 row (assign SiteDatePlotID)
+# Create correct subplot (assign SiteDatePlotID)
 add.AVRCD2 <- wrong.2x2.AVRCD4 |> 
   mutate(SiteDatePlotID = 6393)
 
@@ -280,7 +284,6 @@ add.AVRCD2 <- wrong.2x2.AVRCD4 |>
 wrong.sub.AVRCD <- bind_rows(wrong.sub.AVRCD1, wrong.sub.AVRCD2)
 fix.sub.AVRCD <- bind_rows(fix.sub.AVRCD1, fix.sub.AVRCD2)
 
-wrong.2x2.AVRCD <- bind_rows(wrong.2x2.AVRCD3, wrong.2x2.AVRCD4)
 add.AVRCD <- bind_rows(add.AVRCD1, add.AVRCD2)
 
 
@@ -325,6 +328,9 @@ fix.2x2.FlyingM <- monitor.sub %>%
   filter(Date_Seeded == "2018-07-18") |> 
   filter(Date_Monitored == "2019-06-12")
 
+# Add SiteDatePlotID to wrong row so it can connect to fixed df
+wrong.2x2.FlyingM$SiteDatePlotID <- fix.2x2.FlyingM$SiteDatePlotID
+
 
 
 ## Mesquite ----------------------------------------------------------------
@@ -360,6 +366,10 @@ wrong.2x2.Mesquite <- filter(monitor.diff, Site == "Mesquite",
 fix.2x2.Mesquite <- monitor.sub |> 
   filter(Site == "Mesquite") |> 
   filter(Date_Monitored == "2020-12-12")
+
+# Add SiteDatePlotID to wrong row so it can connect to fixed df
+wrong.2x2.Mesquite$SiteDatePlotID <- fix.2x2.Mesquite$SiteDatePlotID
+
 
 
 # 2. PlotMix conflict for Plot 233
@@ -441,6 +451,9 @@ wrong.2x2.PEFO <- filter(monitor.2x2, Site == "PEFO", Date_Monitored == "2022-04
 # Create correct row for 2x2
 fix.2x2.PEFO <- filter(monitor.sub, Site == "PEFO", Date_Monitored == "2022-04-12")
 
+# Add SiteDatePlotID to wrong row so it can connect to fixed df
+wrong.2x2.PEFO$SiteDatePlotID <- fix.2x2.PEFO$SiteDatePlotID
+
 
 
 ## Patagonia ---------------------------------------------------------------
@@ -490,6 +503,8 @@ fix.2x2.Preserve <- monitor.sub |>
   filter(Date_Monitored %in% wrong.2x2.Preserve$Date_Monitored,
          Plot %in% wrong.2x2.Preserve$Plot)
 
+# Add SiteDatePlotID to wrong row so it can connect to fixed df
+wrong.2x2.Preserve$SiteDatePlotID <- fix.2x2.Preserve$SiteDatePlotID
 
 
 
@@ -518,7 +533,8 @@ fix.2x2.Roosevelt <- monitor.sub |>
   filter(Date_Monitored %in% wrong.2x2.Roosevelt$Date_Monitored,
          Plot %in% wrong.2x2.Roosevelt$Plot)
 
-
+# Add SiteDatePlotID to wrong row so it can connect to fixed df
+wrong.2x2.Roosevelt$SiteDatePlotID <- fix.2x2.Roosevelt$SiteDatePlotID
 
 
 
@@ -546,6 +562,10 @@ wrong.2x2.SCC <- monitor.diff |>
 fix.2x2.SCC <- monitor.sub |> 
   filter(Date_Monitored %in% wrong.2x2.SCC$Date_Monitored,
          Plot %in% wrong.2x2.SCC$Plot)
+
+# Add SiteDatePlotID to wrong row so it can connect to fixed df
+wrong.2x2.SCC$SiteDatePlotID <- fix.2x2.SCC$SiteDatePlotID
+
 
 
 ## SRER --------------------------------------------------------------------
@@ -1195,6 +1215,9 @@ monitor.correct <- monitor.correct |>
 
 # Standardize PlotMix and Treatment spelling ------------------------------
 
+# Unlike Plot number, correct duplicates do not exist, so there is no correct SiteDatePlotID
+#   to reassign. Instead, must change info of the current SiteDatePlotID.
+
 # PlotMix
 unique(monitor.correct$PlotMix)
 #   no fix needed
@@ -1210,8 +1233,6 @@ unique(monitor.2x2$Treatment)
 #   fixed in Patagonia section)
 # Should be "Seed", not "Seed only"
 
-# Unlike Plot number, correct duplicates do not exist, so there is no correct SiteDatePlotID
-#   to reassign. Instead, must change info of the current SiteDatePlotID.
 
 
 ## Con/Mod -----------------------------------------------------------------
@@ -1358,7 +1379,6 @@ write_csv(add.AVRCD,
 
 # 2x2 plot data
 wrong.2x2 <- bind_rows(wrong.2x2.29palms,
-                       wrong.2x2.AVRCD,
                        wrong.2x2.FlyingM,
                        wrong.2x2.Mesquite,
                        wrong.2x2.PEFO,
@@ -1370,7 +1390,6 @@ wrong.2x2 <- bind_rows(wrong.2x2.29palms,
                        wrong.seedonly)
 
 fix.2x2 <- bind_rows(fix.2x2.29palms,
-                     add.AVRCD,
                      fix.2x2.FlyingM,
                      fix.2x2.Mesquite,
                      fix.2x2.PEFO,
