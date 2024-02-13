@@ -1,25 +1,35 @@
 # Created: 2023-09-18
-# Last updated: 2024-02-12
+# Last updated: 2024-02-13
 
 # Purpose: In comparing the monitoring information from the subplot vs. 2x2 plot data, 
 #   there were discrepancies, but there should be only one correct version. 
 #   This script shows what corrections were made and why, to standardize information 
-#   for all the monitoring events. I also assigned various monitoring IDs to events based on
+#   for all the monitoring events. I also assigned two monitoring IDs to events based on
 #   unique combinations of different columns grouped together. Monitoring IDs do not
 #   take into account any of the actual data collection (species present or species measurements).
 
 # Workflow:
-#   Create initial SiteDatePlotID based on subplot data (sometimes 2x2 data wasn't always recorded if nothing
+# 1. Create initial SiteDatePlotID based on subplot data (sometimes 2x2 data wasn't always recorded if nothing
 #     was growing).
-#   Examine conflicts between subplot and 2x2 monitoring info by site:
-#     1. Extract differing rows
-#     2. Figure out which version is correct
-#     3. Extract incorrect rows as a dataframe (will be either subplot or 2x2)
-#     4. Extract correct rows as a dataframe (will be either subplot or 2x2)
-#   Correct any instances of "Seed only" as a Treatment
-#   Look for mistakes in both subplot and 2x2 data (and therefore wasn't previously examined)
-#   Resolve Plot conflicts, and standardize spelling for PlotMix and Treatment
-#   Write out separate tables of incorrect events and correct events (with correct SiteDatePlotID) that must be
+# 2. Examine conflicts between subplot and 2x2 monitoring info by site:
+#   a. Extract differing rows.
+#   b. Figure out which version is correct.
+#   c. Extract incorrect rows as a dataframe, separate for subplot or 2x2 (mistakes are unique to datasets).
+#   d. Extract correct rows as a dataframe, separate for subplot or 2x2.
+# 3. Examine site characteristics to find other mistakes in both subplot and 2x2 data (and
+#     therefore not yet corrected):
+#     - Find number of plots by site.
+#     - Find number of sampling events and number of seeding events.
+# 4. Correct problems found in Section 3: 
+#     Sometimes the Plot number or Treatment was written wrong.
+#     In this case, both the monitoring info (Plot and Treatment) and the SiteDatePlotID need to be fixed.
+#     There were already correct versions of these rows, with their own SiteDatePlotID. So the correct
+#     ID must replace the other ID, which is rendered null.
+# 5. Standardize spelling for PlotMix and Treatment:
+#     In this case, there wasn't a correct version that already existed, so no null SiteDatePlotIDs
+#     were created.
+# 6. Write out complete corrected monitoring info.
+# 7. Write out separate tables of incorrect events and correct events (with correct SiteDatePlotID) to be
 #     fixed in subplot and 2x2 data during data wrangling.
 
 # Types of monitoring IDs
@@ -43,7 +53,7 @@
 #       plots were plowed up and herbicide applied to start fresh.
 #   - Sonoran SE sites were sometimes not monitored in their entirety (all 36 plots) on the same day.
 #   - Mojave sites had additional treatment of pellets (44 plots total), and all plots 
-#       were reseeded except pellet ones.
+#       were reseeded except pellet ones at AVRCD, but they were reseeded at 29 Palms.
 
 # There were 176 monitoring events, where each event is a unique site and monitoring time
 #   (times that took more than one day to monitor all plots counted as the same event).
