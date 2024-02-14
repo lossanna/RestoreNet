@@ -407,7 +407,7 @@ unique(present_species$PlantSource)
 # Create Source column
 present_species <- present_species |> 
   mutate(PlantSource = case_when(
-    PlantSource == "0_0" ~ "0",
+    PlantSource == "0_No" ~ "0",
     PlantSource == "Unknown_No" ~ "Unknown_recruit",
     PlantSource == "Native_No" ~ "Native_recruit",
     PlantSource == "Introduced_No" ~ "Introduced/Invasive",
@@ -415,6 +415,11 @@ present_species <- present_species |>
     PlantSource == "Native/Unknown_No" ~ "Likely native_recruit",
     PlantSource == "Unknown_Yes" ~ "Seeded"))
 unique(present_species$PlantSource)
+
+# Save intermediate
+#   Species info correct for additional p2x2 species only, "0" still included
+ps3 <- present_species 
+
 
 
 # Examine NA and 0 codes --------------------------------------------------
@@ -428,23 +433,29 @@ present_species |>
 #   Should not have any 0 CodeOriginal because empty 2x2 plots marked 0 were dropped after pivot_longer().
 present_species |> 
   filter(CodeOriginal == "0")
+
 #   But there are some that have a Code of 0 but not a CodeOriginal of 0.
 code0 <- present_species |> 
   filter(Code == "0")
 unique(code0$CodeOriginal) 
-#   Remove these rows because for most of them, no actual plant was observed (CodeOriginal describes
+#   These rows should be removed because for most of them, no actual plant was observed (CodeOriginal describes
 #     plant nearby or other plot conditions), and for "Not recorded" plots weren't measured 
 #     so species richness count won't be correct/comparable for 2x2 plots.
+
 present_species <- present_species |> 
   filter(Code != "0")
 
+
+# Save intermediate
+#   Species info correct for additional p2x2 species only, "0" removed
+ps4 <- present_species 
 
 
 
 # Combine with subplot to get all species present -------------------------
 
 # Currently present_species is only the additional species in 2x2 plot but not subplot;
-#   add subplot observations, which already have correct SpeciesSeeded and species info.
+#   add subplot observations, which already have correct plant species info.
 
 # Add subplot species
 #   Separate out subplot species
@@ -453,7 +464,7 @@ subplot.species <- subplot |>
 subplot.species$ObsSource <- "subplot"
 
 #   Remove cols so bind_rows() will work
-present_species <- ps2 |> 
+present_species <- ps4 |> 
   select(-raw.row, -source, -NeedsItsDuplicate, -DuplicateNum)
 
 #   Add subplot species to present_species
@@ -463,24 +474,30 @@ present_species <- bind_rows(present_species, subplot.species) |>
   arrange(SiteDatePlotID) |> 
   arrange(SiteDateID)
 
-# All species present in plot with correct species info and SpeciesSeeded
-ps3 <- present_species 
+
+# Remove rows where subplots were observed but 2x2 plots were not observed
+present_species <- present_species |> 
+  filter(!SiteDatePlotID %in% c(id.missing$SiteDatePlotID, code0$SiteDatePlotID))
+
+# Check for SiteDatePlotIDs present
+length(unique(present_species$SiteDatePlotID)) == (nrow(monitor.info) - nrow(id.missing) - nrow(code0))
+
+# Save intermediate
+#   All species present in plot with correct species info; 2x2 plots not recorded have been removed
+ps5 <- present_species 
 
 
+# not sure what i was trying to accomplish with below code
 
 # Separate out completely empty plots -------------------------------------
 
 # Empty subplots have Code 0; empty 2x2 plots do not have a row in present_species
-#   because it would have been a "0" that was dropped during pivot_longer().
-# Therefore, empty plots are those with only one row per SiteDatePlotID
+#   because it would have been a "0" that was dropped earlier.
+# Therefore, completely empty plots are those with only one row per SiteDatePlotID
 #   in present_species with subplot Code of 0.
 
-# Check for all SiteDatePlotID 
-length(unique(present_species$SiteDatePlotID)) == nrow(monitor.info)
 
-#   Remove the 72 plots where 2x2 plot data was not recorded
-present_species <- present_species |> 
-  filter(!SiteDatePlotID %in% id.missing$SiteDatePlotID)
+
 
 
 
@@ -503,12 +520,6 @@ empty.plots <- present_species |>
 empty.plots <- left_join(empty.plots, cover)
 
 
-# Check to make sure all SiteDatePlotIDs are there ------------------------
-
-# When
-
-nrow(monitor.info) # 6384 SiteDatePlotIDs
-length(unique(present_species$SiteDatePlotID))
 
   
   
@@ -518,23 +529,7 @@ length(unique(present_species$SiteDatePlotID))
 #   This is the number of species present at each plot during each monitoring event, 
 #     without taking the species themselves or their abundance into account.
 
-# Most Utah plots did not have additional species in plot recorded; note this
-#   Only 2x2 plots that did have additional species recorded:
-#     CRC, monitored 2021-06-28
-#     Salt_Desert, monitored 2021-06-29
-#     UtahPJ, monitored 2021-06-29
 
-no.add.recorded <- monitor.info |>
-  mutate(Date_Monitored = as.character(Date_Monitored)) |> 
-  filter(Date_Monitored %in% c("2018-11-02", "2018-11-16", "2018-11-27",
-                               "2018-11-28", "2018-12-11", "2018-12-12",
-                               "2019-03-22", "2019-03-29", "2019-04-05",
-                               "2019-04-19", "2019-04-25", "2019-04-26",
-                               "2019-05-09", "2019-05-16", "2019-05-17",
-                               "2019-05-28", "2019-05-29", "2019-06-13",
-                               "2019-07-01", "2019-07-02", "2019-07-24",
-                               "2019-08-06", "2019-08-07")) |> 
-  filter(Region == "Utah")
 
 
 
