@@ -70,9 +70,12 @@ Sonoran Central,Pleasant,None,LUSP2,LUSP2,Lupinus sparsiflorus,NA
 Sonoran Central,Preserve,None,BORO2,BORO2,Bouteloua rothrockii,NA
 Sonoran Central,Roosevelt,Warm,BAMU,BAMU,Baileya multiradiata,NA
 Sonoran Central,Roosevelt,Cool,DICA8,DICA8,Digitaria californica,NA
+Sonoran Central,Roosevelt,Warm,ENFA,ENFA,Encelia farinosa,NA
 Sonoran Central,Roosevelt,None,SACO6,SACO6,Salvia columbariae,NA
 Sonoran Central,Roosevelt,Cool,SECO10,SECO10,Senna covesii,NA
 Sonoran Central,SCC,Cool,BORO2,BORO2,Bouteloua rothrockii,NA
+Sonoran Central,SCC,Warm,ENFA,ENFA,Encelia farinosa,NA
+Sonoran Central,SCC,Warm,PLOV,PLOV,Plantago ovata,NA
 Sonoran Central,SCC,Cool,SPAMA,SPAM2,Sphaeralcea ambigua,NA
 Sonoran Central,SCC,Cool,SPCR,SPCR,Sporobolus cryptandrus,NA
 Sonoran SE,Patagonia,Warm,Possible ACHY near southwest corner (2 certainty) and about 10 ARPU small to medium in size with 2 of them next to the subplot but not quite in,ACHY,Achnatherum hymenoides,NA
@@ -249,16 +252,12 @@ Sonoran SE,SRER,Warm,There're multiple BOCUs and a couple possible SECO seedling
 Sonoran SE,SRER,Warm,A couple BOCUs and a possible ARPU,BOCU,Bouteloua curtipendula,NA
 Sonoran SE,SRER,Warm,BOCU partially in/on the west edge of the plot and a possible ARPU,BOCU,Bouteloua curtipendula,NA
 Sonoran SE,SRER,Warm,Multiple BOCUS and a couple possible ARPUs throughout,BOCU,Bouteloua curtipendula,NA
-Sonoran SE,SRER,Medium,1 Possible PLJA (1 out of 3 on certainty) on south border as well as some BOCUs (might be BOER but probably BOCU or other BOsp.) Mostly grazed,BOCU/BOER4.SRER,"BOCUs, or might be BOER4, SRER",NA
-Sonoran SE,SRER,Medium,BOCUs up to this point could also possibly be slender grama BORE or purple BORA,BOCU/BORE/BORA.SRER,"Bouteloua curtipendula/repens/radicosa (spp.), SRER",NA
-Sonoran SE,SRER,Warm,BOsp. a lot of possibly BOCU but could also be BORE or BORA,BOCU/BORE/BORA.SRER,"Bouteloua curtipendula/repens/radicosa (spp.), SRER",NA
 Sonoran SE,SRER,Medium,Extra large BOER in S half and medium sized one next to NE plot  corner that partially hangs in and at least 2 small ones within the plot as well,BOER4,Bouteloua eriopoda,NA
 Sonoran SE,SRER,Medium,HEMU,HEMU3,Heliomeris multiflora,NA
 Sonoran SE,SRER,Medium,There're a couple possible tiny MATA seedlings in some of the pits if not MATA than 0% (too small to ID for sure),MATA2,Machaeranthera tanacetifolia,NA
 Sonoran SE,SRER,Medium,Possible MATA seedling species in suplot and in the NW pit if not than 0% seeded species cover,MATA2,Machaeranthera tanacetifolia,NA
 Sonoran SE,SRER,Medium,PEPA (possibly),PEPA8,Penstemon palmeri,NA
 Sonoran SE,SRER,Medium,Possible SPCR along the northeast edge as well as a possible PEPA seedling next to the subplot if neither than 0% seeded cover,PEPA8,Penstemon palmeri,NA
-Sonoran SE,SRER,Medium,1 Possible PLJA (1 out of 3 on certainty) on south border as well as some BOCUs (might be BOER but probably BOCU or other BOsp.) Mostly grazed,PLJAspp.SRER,"Possibly Pleuraphis jamesii, SRER",NA
 Sonoran SE,SRER,Warm,"A couple small SECOs mostly near conmods and possiblya young POSE near SE conmod, Also decent size patch (~1% cover) of SECO just near/outside N edge",POSE,Poa secunda,NA
 Sonoran SE,SRER,Medium,Small POSE near SW pit,POSE,Poa secunda,NA
 Sonoran SE,SRER,Medium,"There's a possible POSE (boat/canoe leaf blades, greener than other grasses currently around, it's very basal and tufted too with a membraneous ligule however if it's not than 0% seeded species cover",POSE,Poa secunda,NA
