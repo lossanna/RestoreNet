@@ -21,8 +21,8 @@ species.in <- read_csv("data/cleaned/01_p2x2_species-list_location-independent_c
 species.de <- read_csv("data/cleaned/01_p2x2_species-list_location-dependent_clean.csv")
 mix <- read_xlsx("data/raw/from-Master_seed-mix_LO.xlsx", sheet = "with-site_R")
 monitor.info <- read_csv("data/cleaned/02_corrected-monitoring-info_clean.csv")
-monitor.wrong <- read_csv("data/data-wrangling-intermediate/02_2x2-wrong-monitor-events.csv")
-monitor.fixed <- read_csv("data/data-wrangling-intermediate/02_2x2-wrong-monitor-events-corrected.csv")
+monitor.wrong <- read_csv("data/data-wrangling-intermediate/02_p2x2-wrong-monitor-events.csv")
+monitor.fixed <- read_csv("data/data-wrangling-intermediate/02_p2x2-wrong-monitor-events-corrected.csv")
 monitor.site <- read_csv("data/cleaned/02_corrected-monitoring-info-by-date-and-site_clean.csv")
 subplot <- read_csv("data/cleaned/04.1_subplot-data_clean.csv")
 

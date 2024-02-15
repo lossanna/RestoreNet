@@ -1405,12 +1405,12 @@ nrow(wrong.2x2) == nrow(fix.2x2)
 
 # Write csv of wrong 2x2 monitor data for later 2x2 data wrangling
 write_csv(wrong.2x2,
-          file = "data/data-wrangling-intermediate/02_2x2-wrong-monitor-events.csv")
+          file = "data/data-wrangling-intermediate/02_p2x2-wrong-monitor-events.csv")
 
 
 # Write csv of corrected 2x2 monitor data
 write_csv(fix.2x2,
-          file = "data/data-wrangling-intermediate/02_2x2-wrong-monitor-events-corrected.csv")
+          file = "data/data-wrangling-intermediate/02_p2x2-wrong-monitor-events-corrected.csv")
 
 
 
