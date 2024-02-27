@@ -1,5 +1,5 @@
 # Created: 2023-09-18
-# Last updated: 2024-02-15
+# Last updated: 2024-02-27
 
 # Purpose: Create 2 clean data tables for 2x2 plot data: one with cover and species richness data 
 #   (one row for each monitoring event/SiteDatePlotID), and one with 
@@ -479,7 +479,8 @@ nonempty.plots <- present_species |>
 # See what 0 Codes remain in non-empty plots
 nonempty.code0 <- nonempty.plots |> 
   filter(Code == "0")
-unique(nonempty.code0$ObsSource) # this occurs when subplot is empty but 2x2 is not
+unique(nonempty.code0$ObsSource) # this occurs when subplot is empty but 2x2 is not (only "subplot" shows up)
+#                                   no fix needed
 
 # Calculate species richness of 2x2 plots for plots that had plants
 nonempty.plots.richness <- nonempty.plots |> 
@@ -493,13 +494,58 @@ empty.plots.richness <- empty.plots |>
   select(Region, Site, Date_Seeded, Date_Monitored, SiteDateID, Plot, Treatment, PlotMix, SiteDatePlotID) |> 
   mutate(Richness = 0)
 
-
 # Combine empty and non-empty plots
 richness <- bind_rows(nonempty.plots.richness, empty.plots.richness)
 
 # Check that all SiteDatePlotIDs are present
 #   2x2 plots that weren't observed have been removed
 length(unique(richness$SiteDatePlotID)) == (nrow(monitor.info) - nrow(id.missing) - nrow(code0))
+
+
+
+# Create table of PlantSource counts --------------------------------------
+
+# Calculate number of species in each PlantSource category per plot
+nonempty.plots.plantsource <- nonempty.plots |> 
+  filter(Code != "0") |>
+  group_by(Region, Site, Date_Seeded, Date_Monitored, SiteDateID, Plot, Treatment, PlotMix, SiteDatePlotID) |> 
+  count(PlantSource)
+#   rows missing indicate no species of that PlantSource was present
+
+# pivot_wider so each PlantSource category is its own column
+#   replace NAs (equivalent of missing rows) with 0 using values_fill
+unique(nonempty.plots.plantsource$PlantSource)
+nonempty.plots.plantsource <- nonempty.plots.plantsource |> 
+  pivot_wider(names_from = PlantSource,
+              values_from = n,
+              values_fill = 0)
+nonempty.plots.plantsource <- nonempty.plots.plantsource |> 
+  rename(LikelyNative_recruit = `Likely native_recruit`,
+         Invasive = `Introduced/Invasive`)
+
+# Add Weedy and Desirable_recruit cols
+#   Weedy = Unknown_recruit + Invasive
+nonempty.plots.plantsource <- nonempty.plots.plantsource |> 
+  mutate(Weedy = Unknown_recruit + Invasive,
+         Desirable_recruit = Native_recruit + LikelyNative_recruit)
+
+# Create equivalent table for empty plots (all 0s)
+empty.plots.plantsource <- empty.plots |> 
+  select(Region, Site, Date_Seeded, Date_Monitored, SiteDateID, Plot, Treatment, PlotMix, SiteDatePlotID) |> 
+  mutate(Native_recruit = 0,
+         Unknown_recruit = 0,
+         LikelyNative_recruit = 0,
+         Seeded = 0,
+         Invasive = 0,
+         Weedy = 0,
+         Desirable_recruit = 0)
+
+# Combine empty and non-empty plots
+plantsource <- bind_rows(nonempty.plots.plantsource, empty.plots.plantsource)
+
+# Check that all SiteDatePlotIDs are present
+#   2x2 plots that weren't observed have been removed
+length(unique(plantsource$SiteDatePlotID)) == (nrow(monitor.info) - nrow(id.missing) - nrow(code0))
 
 
 
@@ -562,9 +608,20 @@ unique(empty.plots.cover$Total_Veg_Cover)
 unique(empty.plots.cover$Seeded_Cover)
 
 
-# Combine 2x2 richness and cover into table -------------------------------
+# Combine 2x2 richness, plantsource, and cover ----------------------------
 
-p2x2.richness.cover <- left_join(richness, cover)
+# Check for matching row number
+nrow(richness) == nrow(plantsource)
+nrow(plantsource) == nrow(cover)
+
+# Combine
+p2x2.richness.cover <- left_join(richness, plantsource)
+p2x2.richness.cover <- left_join(p2x2.richness.cover, cover) |> 
+  select(Region, Site, Date_Seeded, Date_Monitored, SiteDateID, Plot, Treatment, PlotMix,
+         SiteDatePlotID, raw.row, Richness, Seeded, Native_recruit, LikelyNative_recruit,
+         Unknown_recruit, Invasive, Desirable_recruit, Weedy,
+         Seeded_Cover, Total_Veg_Cover, Not_Seeded_Cover) |> 
+  arrange(SiteDatePlotID)
 
 
 # Write clean tables ------------------------------------------------------
