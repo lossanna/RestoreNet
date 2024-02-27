@@ -449,35 +449,11 @@ ps5 <- present_species
 
 ## Separate out completely empty plots -------------------------------------
 
-#  Empty subplots have Code 0, and should have only one row (one SiteDatePlotID observation). 
-
-# Empty subplots
-empty.subplot <- subplot |> 
-  filter(Code == "0")
-length(unique(empty.subplot$SiteDatePlotID)) == nrow(empty.subplot) # some subplots are not actually empty
-
-# Examine subplots with Code 0 and multiple rows
-empty.subplot.multiple.row.id <- empty.subplot |> 
-  count(SiteDatePlotID) |> 
-  filter(n > 1)
-empty.subplot.multiple.row <- subplot |> 
-  filter(SiteDatePlotID %in% empty.subplot.multiple.row.id$SiteDatePlotID)
-#   SiteDatePlotIDs 2065, 2230, and 4374 are actually empty subplots with duplicate rows 
-#     (two Code 0 rows).
-#   SiteDatePlotID 4478 is not actually empty, even though it has a bunch of Code 0 rows
-#     (idk what happened there).
-
-# Fix SiteDatePlotIDs 2065, 2230, and 4374 by removing duplicate row
-
-
-
-
-
-# Empty 2x2 plots do not have a row in present_species
+#  Empty subplots have Code 0 and only one row (one SiteDatePlotID observation). 
+# Empty 2x2 plots do not have a row in present_species,
 #   because it would have been a "0" that was dropped earlier.
 # Therefore, completely empty plots are those with only one row per SiteDatePlotID
 #   in present_species with subplot Code of 0.
-
 
 
 # Find list of SiteDatePlotIDs with only 1 row in present_species
@@ -676,6 +652,12 @@ unique(empty.plots.cover$Seeded_Cover)
 
 empty.plots.not0total <- empty.plots.cover |> 
   filter(Total_Veg_Cover > 0)
+
+empty.plots.not0seeded <- empty.plots.cover |> 
+  filter(Seeded_Cover > 0)
+
+# not sure what to do about this tbh
+
 
 
 ## Handle cover NAs --------------------------------------------------------
