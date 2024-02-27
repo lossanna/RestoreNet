@@ -1,8 +1,8 @@
 # Created: 2023-09-18
 # Last updated: 2024-02-27
 
-# Purpose: Create 2 clean data tables for 2x2 plot data: one with cover and species richness data 
-#   (one row for each monitoring event/SiteDatePlotID), and one with 
+# Purpose: Create 2 clean data tables for 2x2 plot data: one with cover, species richness, 
+#   and PlantSource data (one row for each monitoring event/SiteDatePlotID), and one with 
 #  the list of species present for each monitoring event (can have multiple rows for SiteDatePlotID).
 
 #  Ensure corrected and standardized species information, and monitoring and plot information,
@@ -446,12 +446,39 @@ ps5 <- present_species
 #   This is the number of species present at each plot during each monitoring event, 
 #     without taking the species themselves or their abundance into account.
 
+
 ## Separate out completely empty plots -------------------------------------
 
-# Empty subplots have Code 0; empty 2x2 plots do not have a row in present_species
+#  Empty subplots have Code 0, and should have only one row (one SiteDatePlotID observation). 
+
+# Empty subplots
+empty.subplot <- subplot |> 
+  filter(Code == "0")
+length(unique(empty.subplot$SiteDatePlotID)) == nrow(empty.subplot) # some subplots are not actually empty
+
+# Examine subplots with Code 0 and multiple rows
+empty.subplot.multiple.row.id <- empty.subplot |> 
+  count(SiteDatePlotID) |> 
+  filter(n > 1)
+empty.subplot.multiple.row <- subplot |> 
+  filter(SiteDatePlotID %in% empty.subplot.multiple.row.id$SiteDatePlotID)
+#   SiteDatePlotIDs 2065, 2230, and 4374 are actually empty subplots with duplicate rows 
+#     (two Code 0 rows).
+#   SiteDatePlotID 4478 is not actually empty, even though it has a bunch of Code 0 rows
+#     (idk what happened there).
+
+# Fix SiteDatePlotIDs 2065, 2230, and 4374 by removing duplicate row
+
+
+
+
+
+# Empty 2x2 plots do not have a row in present_species
 #   because it would have been a "0" that was dropped earlier.
 # Therefore, completely empty plots are those with only one row per SiteDatePlotID
 #   in present_species with subplot Code of 0.
+
+
 
 # Find list of SiteDatePlotIDs with only 1 row in present_species
 SiteDatePlotID.count <- present_species |> 
@@ -556,6 +583,7 @@ cover <- p2x2.wide |>
   select(-starts_with("Additional")) |> 
   filter(SiteDatePlotID %in% richness$SiteDatePlotID)
 
+
 ## Change Seeded_Cover to numeric ------------------------------------------
 
 # See possible values of Seeded_Cover
@@ -589,23 +617,79 @@ cover$Total_Veg_Cover[cover$Total_Veg_Cover == "NA"] <- NA
 # Convert Seeded_Cover to numeric
 cover$Total_Veg_Cover <- as.numeric(cover$Total_Veg_Cover)
 
-# Add "Not_Seeded_Cover" column
+
+## Add "Not_Seeded_Cover" column -------------------------------------------
+
 cover$Not_Seeded_Cover <- cover$Total_Veg_Cover - cover$Seeded_Cover
 summary(cover$Not_Seeded_Cover) # creates negative values
 
+# Examine negative values
 cover.neg.notseed <- cover |> 
   filter(Not_Seeded_Cover < 0)
 cover.neg.notseed |> 
-  select(Site, SiteDatePlotID, Not_Seeded_Cover)
+  select(Site, SiteDatePlotID, Seeded_Cover, Total_Veg_Cover, Not_Seeded_Cover)
 #   Mostly it is small discrepancy, except for one which is -44;
 #     SiteDatePlotID of 6241, at Roosevelt
 
 
-# Examine cover of empty plots
+# Create small fixes for all but 6241
+#   Add Seeded_cover to Total_Veg_Cover
+cover.neg.notseed.fix <- cover.neg.notseed |> 
+  filter(SiteDatePlotID != 6241) |> 
+  mutate(Total_Veg_Cover = Seeded_Cover + Total_Veg_Cover) |> 
+  select(-Not_Seeded_Cover)
+cover.neg.notseed.fix <- cover.neg.notseed.fix |> 
+  mutate(Not_Seeded_Cover = Total_Veg_Cover - Seeded_Cover)
+
+
+# Figure out what is going on with 6241
+#   Plot 8 from Roosevelt, Seed treatment with Med-Warm mix
+cover |> 
+  filter(Site == "Roosevelt",
+         Plot == 8) |> 
+  select(Site, Date_Seeded, Date_Monitored, Seeded_Cover, Total_Veg_Cover)
+#   99 for Seeded_Cover is definitely a typo; am going to assume it was supposed to be 9
+
+cover.neg.notseed.fix6241 <- cover.neg.notseed |> 
+  filter(SiteDatePlotID == 6241) |> 
+  mutate(Seeded_Cover = 9) |> 
+  select(-Not_Seeded_Cover)
+cover.neg.notseed.fix6241 <- cover.neg.notseed.fix6241 |> 
+  mutate(Not_Seeded_Cover = Total_Veg_Cover - Seeded_Cover)
+
+
+# Combine all fixes
+cover.neg.notseed.fix <- bind_rows(cover.neg.notseed.fix, cover.neg.notseed.fix6241)
+
+# Replace fixes in cover table
+cover <- cover |> 
+  filter(!SiteDatePlotID %in% cover.neg.notseed.fix$SiteDatePlotID) |> 
+  bind_rows(cover.neg.notseed.fix)
+
+
+
+## Examine cover of empty plots --------------------------------------------
+
 empty.plots.cover <- left_join(empty.plots, cover)
-#   Not sure why some empty plots have a bit of cover reported
 unique(empty.plots.cover$Total_Veg_Cover)
 unique(empty.plots.cover$Seeded_Cover)
+
+empty.plots.not0total <- empty.plots.cover |> 
+  filter(Total_Veg_Cover > 0)
+
+
+## Handle cover NAs --------------------------------------------------------
+
+# Check for NAs
+apply(p2x2.richness.cover, 2, anyNA)
+
+# Seeded cover
+cover.seeded.na <- cover |> 
+  filter(is.na(Seeded_Cover))
+
+# Total veg cover
+cover.total.na <- cover |> 
+  filter(is.na(Total_Veg_Cover))
 
 
 # Combine 2x2 richness, plantsource, and cover ----------------------------
@@ -622,6 +706,11 @@ p2x2.richness.cover <- left_join(p2x2.richness.cover, cover) |>
          Unknown_recruit, Invasive, Desirable_recruit, Weedy,
          Seeded_Cover, Total_Veg_Cover, Not_Seeded_Cover) |> 
   arrange(SiteDatePlotID)
+
+
+
+
+
 
 
 # Write clean tables ------------------------------------------------------
