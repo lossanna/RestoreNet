@@ -546,6 +546,37 @@ na.height <- subplot |>
 
 
 
+# Examine completely empty plots ------------------------------------------
+
+#  Empty subplots have Code 0, and should have only one row (one SiteDatePlotID observation). 
+
+# Empty subplots
+empty.subplot <- subplot |> 
+  filter(Code == "0")
+length(unique(empty.subplot$SiteDatePlotID)) == nrow(empty.subplot) # some subplots are not actually empty
+
+# Examine subplots with Code 0 and multiple rows
+empty.subplot.multiple.row.id <- empty.subplot |> 
+  count(SiteDatePlotID) |> 
+  filter(n > 1)
+empty.subplot.multiple.row <- subplot |> 
+  filter(SiteDatePlotID %in% empty.subplot.multiple.row.id$SiteDatePlotID)
+#   SiteDatePlotIDs 2065, 2230, and 4374 are actually empty subplots with duplicate rows 
+#     (two Code 0 rows).
+#   SiteDatePlotID 4478 is not actually empty, even though it has a bunch of Code 0 rows
+#     (idk what happened there).
+
+# Separate out Code 0 rows to remove from subplot data
+empty.subplot.remove <- empty.subplot.multiple.row |> 
+  filter(Code == "0")
+
+# Remove from subplot data
+subplot <- subplot |> 
+  filter(!raw.row %in% empty.subplot.remove$raw.row)
+
+
+
+
 
 # Write clean subplot data to csv -----------------------------------------
 

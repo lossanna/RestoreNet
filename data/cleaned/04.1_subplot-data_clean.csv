@@ -7111,8 +7111,6 @@ Colorado Plateau,PEFO,2018-08-15,2019-06-18,89,8,Seed,Med-Warm,2061,TOIN,TOIN,To
 Colorado Plateau,PEFO,2018-08-15,2019-06-18,89,9,Mulch,Med-Warm,2062,UNGR2,UNGR2.PEFO,"Unknown grass 2, PEFO",Unknown,Unknown,Grass,8,30,7110,Yes,Seeded
 Colorado Plateau,PEFO,2018-08-15,2019-06-18,89,10,Seed,Warm,2063,0,0,0,0,0,0,0,0,7111,0,0
 Colorado Plateau,PEFO,2018-08-15,2019-06-18,89,11,ConMod,Warm,2064,ATCO,ATCO,Atriplex confertifolia,Native,Perennial,Shrub,2,60,7112,No,Native_recruit
-Colorado Plateau,PEFO,2018-08-15,2019-06-18,89,12,Mulch,Warm,2065,0,0,0,0,0,0,0,0,7113,0,0
-Colorado Plateau,PEFO,2018-08-15,2019-06-18,89,12,Mulch,Warm,2065,0,0,0,0,0,0,0,0,7114,0,0
 Colorado Plateau,PEFO,2018-08-15,2019-06-18,89,13,ConMod,Med-Warm,2066,ATCO,ATCO,Atriplex confertifolia,Native,Perennial,Shrub,2,300,7115,No,Native_recruit
 Colorado Plateau,PEFO,2018-08-15,2019-06-18,89,13,ConMod,Med-Warm,2066,ATCO,ATCO,Atriplex confertifolia,Native,Perennial,Shrub,1,20,7116,No,Native_recruit
 Colorado Plateau,PEFO,2018-08-15,2019-06-18,89,14,Control,None,2067,ATCO,ATCO,Atriplex confertifolia,Native,Perennial,Shrub,1,80,7117,No,Native_recruit
@@ -7322,8 +7320,6 @@ Colorado Plateau,Spiderweb,2018-08-01,2018-09-28,97,29,Mulch,Warm,2226,0,0,0,0,0
 Colorado Plateau,Spiderweb,2018-08-01,2018-09-28,97,30,Seed,Med-Warm,2227,0,0,0,0,0,0,0,0,7321,0,0
 Colorado Plateau,Spiderweb,2018-08-01,2018-09-28,97,31,Control,None,2228,0,0,0,0,0,0,0,0,7322,0,0
 Colorado Plateau,Spiderweb,2018-08-01,2018-09-28,97,32,Seed,Warm,2229,0,0,0,0,0,0,0,0,7323,0,0
-Colorado Plateau,Spiderweb,2018-08-01,2018-09-28,97,33,Pits,Med-Warm,2230,0,0,0,0,0,0,0,0,7324,0,0
-Colorado Plateau,Spiderweb,2018-08-01,2018-09-28,97,33,Pits,Med-Warm,2230,0,0,0,0,0,0,0,0,7325,0,0
 Colorado Plateau,Spiderweb,2018-08-01,2018-09-28,97,34,Control,None,2231,0,0,0,0,0,0,0,0,7326,0,0
 Colorado Plateau,Spiderweb,2018-08-01,2018-09-28,97,35,Pits,Warm,2232,TRTE,TRTE,Tribulus terrestris,Introduced,Annual,Forb,9,5,7327,No,Introduced/Invasive
 Colorado Plateau,Spiderweb,2018-08-01,2018-09-28,97,36,ConMod,Warm,2233,0,0,0,0,0,0,0,0,7328,0,0
@@ -11828,8 +11824,6 @@ Utah,CRC,2018-10-17,2019-06-13,168,14,Pits,Cool-Med,4373,SATR12,SATR12,Salsola t
 Utah,CRC,2018-10-17,2019-06-13,168,14,Pits,Cool-Med,4373,S-UNGR2,S-UNGR2.CRC,"Seeded unknown grass 2, CRC",Native,Unknown,Grass,1,35,11873,Yes,Seeded
 Utah,CRC,2018-10-17,2019-06-13,168,14,Pits,Cool-Med,4373,S-UNGR2,S-UNGR2.CRC,"Seeded unknown grass 2, CRC",Native,Unknown,Grass,2,40,11874,Yes,Seeded
 Utah,CRC,2018-10-17,2019-06-13,168,14,Pits,Cool-Med,4373,S-UNGR2,S-UNGR2.CRC,"Seeded unknown grass 2, CRC",Native,Unknown,Grass,1,45,11875,Yes,Seeded
-Utah,CRC,2018-10-17,2019-06-13,168,15,Pits,Med-Warm,4374,0,0,0,0,0,0,0,0,11876,0,0
-Utah,CRC,2018-10-17,2019-06-13,168,15,Pits,Med-Warm,4374,0,0,0,0,0,0,0,0,11877,0,0
 Utah,CRC,2018-10-17,2019-06-13,168,16,Seed,Cool-Med,4375,LILE3,LILE3,Linum lewisii,Native,Perennial,Forb,2,20,11878,Yes,Seeded
 Utah,CRC,2018-10-17,2019-06-13,168,16,Seed,Cool-Med,4375,S-UNGR2,S-UNGR2.CRC,"Seeded unknown grass 2, CRC",Native,Unknown,Grass,4,45,11879,Yes,Seeded
 Utah,CRC,2018-10-17,2019-06-13,168,16,Seed,Cool-Med,4375,S-UNGR2,S-UNGR2.CRC,"Seeded unknown grass 2, CRC",Native,Unknown,Grass,2,50,11880,Yes,Seeded
@@ -12243,12 +12237,7 @@ Utah,CRC,2018-10-17,2019-07-24,169,6,Mulch,Cool-Med,4475,S-PASM,PASM,Pascopyrum 
 Utah,CRC,2018-10-17,2019-07-24,169,6,Mulch,Cool-Med,4475,ELEL5,ELEL5,Elymus elymoides,Native,Perennial,Grass,1,65,12288,Yes,Seeded
 Utah,CRC,2018-10-17,2019-07-24,169,7,ConMod,Cool-Med,4476,S-UNGR2,S-UNGR2.CRC,"Seeded unknown grass 2, CRC",Native,Unknown,Grass,1,110,12289,Yes,Seeded
 Utah,CRC,2018-10-17,2019-07-24,169,8,Mulch,Med-Warm,4477,SATR12,SATR12,Salsola tragus,Introduced,Annual,Forb,3,310,12290,No,Introduced/Invasive
-Utah,CRC,2018-10-17,2019-07-24,169,9,Pits,Cool-Med,4478,0,0,0,0,0,0,0,0,12291,0,0
-Utah,CRC,2018-10-17,2019-07-24,169,9,Pits,Cool-Med,4478,0,0,0,0,0,0,0,0,12292,0,0
-Utah,CRC,2018-10-17,2019-07-24,169,9,Pits,Cool-Med,4478,0,0,0,0,0,0,0,0,12293,0,0
 Utah,CRC,2018-10-17,2019-07-24,169,9,Pits,Cool-Med,4478,ELEL5,ELEL5,Elymus elymoides,Native,Perennial,Grass,7,100,12294,Yes,Seeded
-Utah,CRC,2018-10-17,2019-07-24,169,9,Pits,Cool-Med,4478,0,0,0,0,0,0,0,0,12295,0,0
-Utah,CRC,2018-10-17,2019-07-24,169,9,Pits,Cool-Med,4478,0,0,0,0,0,0,0,0,12296,0,0
 Utah,CRC,2018-10-17,2019-07-24,169,9,Pits,Cool-Med,4478,S-UNGR3,S-UNGR3.CRC,"Seeded unknown grass 3, CRC",Native,Unknown,Grass,3,70,12297,Yes,Seeded
 Utah,CRC,2018-10-17,2019-07-24,169,9,Pits,Cool-Med,4478,S-UNGR2,S-UNGR2.CRC,"Seeded unknown grass 2, CRC",Native,Unknown,Grass,3,90,12298,Yes,Seeded
 Utah,CRC,2018-10-17,2019-07-24,169,9,Pits,Cool-Med,4478,S-UNGR2,S-UNGR2.CRC,"Seeded unknown grass 2, CRC",Native,Unknown,Grass,2,110,12299,Yes,Seeded
