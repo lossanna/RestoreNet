@@ -566,15 +566,13 @@ empty.subplot.multiple.row <- subplot |>
 #   SiteDatePlotID 4478 is not actually empty, even though it has a bunch of Code 0 rows
 #     (idk what happened there).
 
-# Separate out Code 0 rows to remove from subplot data
-empty.subplot.remove <- empty.subplot.multiple.row |> 
-  filter(Code == "0")
-
-# Remove from subplot data
+# Remove duplicate Code 0 rows from subplot data
 subplot <- subplot |> 
-  filter(!raw.row %in% empty.subplot.remove$raw.row)
+  filter(!raw.row %in% c(7114, 7325, 11877, 12292, 12293, 12295, 12296))
 
 
+subplot <- subplot |> 
+  arrange(SiteDatePlotID)
 
 
 

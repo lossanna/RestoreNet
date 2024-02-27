@@ -7111,6 +7111,7 @@ Colorado Plateau,PEFO,2018-08-15,2019-06-18,89,8,Seed,Med-Warm,2061,TOIN,TOIN,To
 Colorado Plateau,PEFO,2018-08-15,2019-06-18,89,9,Mulch,Med-Warm,2062,UNGR2,UNGR2.PEFO,"Unknown grass 2, PEFO",Unknown,Unknown,Grass,8,30,7110,Yes,Seeded
 Colorado Plateau,PEFO,2018-08-15,2019-06-18,89,10,Seed,Warm,2063,0,0,0,0,0,0,0,0,7111,0,0
 Colorado Plateau,PEFO,2018-08-15,2019-06-18,89,11,ConMod,Warm,2064,ATCO,ATCO,Atriplex confertifolia,Native,Perennial,Shrub,2,60,7112,No,Native_recruit
+Colorado Plateau,PEFO,2018-08-15,2019-06-18,89,12,Mulch,Warm,2065,0,0,0,0,0,0,0,0,7113,0,0
 Colorado Plateau,PEFO,2018-08-15,2019-06-18,89,13,ConMod,Med-Warm,2066,ATCO,ATCO,Atriplex confertifolia,Native,Perennial,Shrub,2,300,7115,No,Native_recruit
 Colorado Plateau,PEFO,2018-08-15,2019-06-18,89,13,ConMod,Med-Warm,2066,ATCO,ATCO,Atriplex confertifolia,Native,Perennial,Shrub,1,20,7116,No,Native_recruit
 Colorado Plateau,PEFO,2018-08-15,2019-06-18,89,14,Control,None,2067,ATCO,ATCO,Atriplex confertifolia,Native,Perennial,Shrub,1,80,7117,No,Native_recruit
@@ -7320,6 +7321,7 @@ Colorado Plateau,Spiderweb,2018-08-01,2018-09-28,97,29,Mulch,Warm,2226,0,0,0,0,0
 Colorado Plateau,Spiderweb,2018-08-01,2018-09-28,97,30,Seed,Med-Warm,2227,0,0,0,0,0,0,0,0,7321,0,0
 Colorado Plateau,Spiderweb,2018-08-01,2018-09-28,97,31,Control,None,2228,0,0,0,0,0,0,0,0,7322,0,0
 Colorado Plateau,Spiderweb,2018-08-01,2018-09-28,97,32,Seed,Warm,2229,0,0,0,0,0,0,0,0,7323,0,0
+Colorado Plateau,Spiderweb,2018-08-01,2018-09-28,97,33,Pits,Med-Warm,2230,0,0,0,0,0,0,0,0,7324,0,0
 Colorado Plateau,Spiderweb,2018-08-01,2018-09-28,97,34,Control,None,2231,0,0,0,0,0,0,0,0,7326,0,0
 Colorado Plateau,Spiderweb,2018-08-01,2018-09-28,97,35,Pits,Warm,2232,TRTE,TRTE,Tribulus terrestris,Introduced,Annual,Forb,9,5,7327,No,Introduced/Invasive
 Colorado Plateau,Spiderweb,2018-08-01,2018-09-28,97,36,ConMod,Warm,2233,0,0,0,0,0,0,0,0,7328,0,0
@@ -9473,6 +9475,50 @@ Mojave,AVRCD,2020-03-17,2020-04-30,115,44,Mulch,Warm,3618,ERCI6,ERCI6,Erodium ci
 Mojave,AVRCD,2020-03-17,2020-04-30,115,44,Mulch,Warm,3618,ERIN4,ERIN4,Eriogonum inflatum,Native,Unknown,Forb,1,10,9476,Yes,Seeded
 Mojave,AVRCD,2020-03-17,2020-04-30,115,44,Mulch,Warm,3618,AMTE3,AMTE3,Amsinckia tessellata,Native,Annual,Forb,1,20,9477,No,Native_recruit
 Mojave,AVRCD,2020-03-17,2020-04-30,115,44,Mulch,Warm,3618,SIAL2,SIAL2,Sisymbrium altissimum,Introduced,Annual,Forb,1,11,9478,No,Introduced/Invasive
+Mojave,29_Palms,2020-03-13,2021-03-30,113,1,Seed,Cool,3619,0,0,0,0,0,0,0,0,9479,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,2,Pellets,Cool,3620,0,0,0,0,0,0,0,0,9480,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,3,Mulch,Cool,3621,0,0,0,0,0,0,0,0,9481,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,4,ConMod,Cool,3622,0,0,0,0,0,0,0,0,9482,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,5,Seed,Warm,3623,0,0,0,0,0,0,0,0,9483,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,6,Pits,Cool,3624,0,0,0,0,0,0,0,0,9484,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,7,Pellets,Warm,3625,0,0,0,0,0,0,0,0,9485,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,8,ConMod,Warm,3626,0,0,0,0,0,0,0,0,9486,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,9,Seed,Cool,3627,0,0,0,0,0,0,0,0,9487,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,10,Mulch,Warm,3628,0,0,0,0,0,0,0,0,9488,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,11,Pits,Warm,3629,0,0,0,0,0,0,0,0,9489,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,12,Mulch,Cool,3630,0,0,0,0,0,0,0,0,9490,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,13,ConMod,Cool,3631,0,0,0,0,0,0,0,0,9491,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,14,Seed,Warm,3632,0,0,0,0,0,0,0,0,9492,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,15,Pellets,Cool,3633,0,0,0,0,0,0,0,0,9493,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,16,Pits,Cool,3634,0,0,0,0,0,0,0,0,9494,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,17,Control,None,3635,0,0,0,0,0,0,0,0,9495,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,18,ConMod,Warm,3636,0,0,0,0,0,0,0,0,9496,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,19,Pits,Warm,3637,0,0,0,0,0,0,0,0,9497,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,20,Mulch,Warm,3638,0,0,0,0,0,0,0,0,9498,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,21,Control,None,3639,0,0,0,0,0,0,0,0,9499,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,22,Pellets,Warm,3640,0,0,0,0,0,0,0,0,9500,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,23,ConMod,Cool,3641,0,0,0,0,0,0,0,0,9501,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,24,Pellets,Cool,3642,0,0,0,0,0,0,0,0,9502,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,25,Control,None,3643,0,0,0,0,0,0,0,0,9503,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,26,Seed,Cool,3644,0,0,0,0,0,0,0,0,9504,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,27,Pits,Cool,3645,0,0,0,0,0,0,0,0,9505,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,28,Mulch,Cool,3646,0,0,0,0,0,0,0,0,9506,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,29,Pellets,Warm,3647,0,0,0,0,0,0,0,0,9507,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,30,Mulch,Warm,3648,0,0,0,0,0,0,0,0,9508,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,31,Pellets,Cool,3649,0,0,0,0,0,0,0,0,9509,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,32,Pits,Warm,3650,0,0,0,0,0,0,0,0,9510,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,33,ConMod,Warm,3651,0,0,0,0,0,0,0,0,9511,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,34,Seed,Warm,3652,0,0,0,0,0,0,0,0,9512,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,35,Pits,Cool,3653,0,0,0,0,0,0,0,0,9513,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,36,Mulch,Cool,3654,0,0,0,0,0,0,0,0,9514,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,37,Pellets,Warm,3655,0,0,0,0,0,0,0,0,9515,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,38,Control,None,3656,0,0,0,0,0,0,0,0,9516,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,39,ConMod,Cool,3657,0,0,0,0,0,0,0,0,9517,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,40,Mulch,Warm,3658,0,0,0,0,0,0,0,0,9518,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,41,Pits,Warm,3659,0,0,0,0,0,0,0,0,9519,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,42,Seed,Cool,3660,0,0,0,0,0,0,0,0,9520,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,43,ConMod,Warm,3661,0,0,0,0,0,0,0,0,9521,0,0
+Mojave,29_Palms,2020-03-13,2021-03-30,113,44,Seed,Warm,3662,0,0,0,0,0,0,0,0,9522,0,0
 Mojave,AVRCD,2020-03-17,2021-04-06,116,1,ConMod,Cool,3663,ERCI6,ERCI6,Erodium cicutarium,Introduced,Annual,Forb,18,15,9523,No,Introduced/Invasive
 Mojave,AVRCD,2020-03-17,2021-04-06,116,2,Mulch,Cool,3664,ERCI6,ERCI6,Erodium cicutarium,Introduced,Annual,Forb,14,10,9524,No,Introduced/Invasive
 Mojave,AVRCD,2020-03-17,2021-04-06,116,2,Mulch,Cool,3664,SIAL2,SIAL2,Sisymbrium altissimum,Introduced,Annual,Forb,6,5,9525,No,Introduced/Invasive
@@ -9543,6 +9589,7 @@ Mojave,AVRCD,2020-03-17,2021-04-06,116,34,Pits,Warm,3696,HIIN3,HIIN3,Hirschfeldi
 Mojave,AVRCD,2020-03-17,2021-04-06,116,35,Mulch,Warm,3697,ERCI6,ERCI6,Erodium cicutarium,Introduced,Annual,Forb,12,9,9590,No,Introduced/Invasive
 Mojave,AVRCD,2020-03-17,2021-04-06,116,35,Mulch,Warm,3697,HIIN3,HIIN3,Hirschfeldia incana,Introduced,Unknown,Forb,1,2,9591,No,Introduced/Invasive
 Mojave,AVRCD,2020-03-17,2021-04-06,116,35,Mulch,Warm,3697,BRRU2,BRRU2,Bromus rubens,Introduced,Annual,Grass,1,8,9592,No,Introduced/Invasive
+Mojave,AVRCD,2020-03-17,2021-04-06,116,36,ConMod,Cool,3698,0,0,0,0,0,0,0,0,9593,0,0
 Mojave,AVRCD,2020-03-17,2021-04-06,116,37,Pellets,Cool,3699,ERCI6,ERCI6,Erodium cicutarium,Introduced,Annual,Forb,5,6,9594,No,Introduced/Invasive
 Mojave,AVRCD,2020-03-17,2021-04-06,116,37,Pellets,Cool,3699,AMTE3,AMTE3,Amsinckia tessellata,Native,Annual,Forb,2,8,9595,No,Native_recruit
 Mojave,AVRCD,2020-03-17,2021-04-06,116,37,Pellets,Cool,3699,HIIN3,HIIN3,Hirschfeldia incana,Introduced,Unknown,Forb,3,5,9596,No,Introduced/Invasive
@@ -10880,6 +10927,7 @@ Utah,Salt_Desert,2018-10-31,2019-05-09,175,32,Mulch,Cool-Med,4208,BRTE,BRTE,Brom
 Utah,Salt_Desert,2018-10-31,2019-05-09,175,32,Mulch,Cool-Med,4208,HEMU3,HEMU3,Heliomeris multiflora,Native,Perennial,Forb,1,15,10928,Yes,Seeded
 Utah,Salt_Desert,2018-10-31,2019-05-09,175,32,Mulch,Cool-Med,4208,ERCI6,ERCI6,Erodium cicutarium,Introduced,Annual,Forb,5,95,10929,No,Introduced/Invasive
 Utah,Salt_Desert,2018-10-31,2019-05-09,175,32,Mulch,Cool-Med,4208,LILE3,LILE3,Linum lewisii,Native,Perennial,Forb,1,12,10930,Yes,Seeded
+Utah,Salt_Desert,2018-10-31,2019-05-09,175,33,Pits,Med-Warm,4209,0,0,0,0,0,0,0,0,10931,0,0
 Utah,Salt_Desert,2018-10-31,2019-05-09,175,34,Mulch,Med-Warm,4210,S-UNGR1,S-UNGR1.Salt_Desert,"Seeded unknown grass 1, Salt_Desert",Native,Unknown,Grass,1,25,10932,Yes,Seeded
 Utah,Salt_Desert,2018-10-31,2019-05-09,175,34,Mulch,Med-Warm,4210,SATR12,SATR12,Salsola tragus,Introduced,Annual,Forb,1,20,10933,No,Introduced/Invasive
 Utah,Salt_Desert,2018-10-31,2019-05-09,175,34,Mulch,Med-Warm,4210,S-UNGR1,S-UNGR1.Salt_Desert,"Seeded unknown grass 1, Salt_Desert",Native,Unknown,Grass,4,10,10934,Yes,Seeded
@@ -11824,6 +11872,7 @@ Utah,CRC,2018-10-17,2019-06-13,168,14,Pits,Cool-Med,4373,SATR12,SATR12,Salsola t
 Utah,CRC,2018-10-17,2019-06-13,168,14,Pits,Cool-Med,4373,S-UNGR2,S-UNGR2.CRC,"Seeded unknown grass 2, CRC",Native,Unknown,Grass,1,35,11873,Yes,Seeded
 Utah,CRC,2018-10-17,2019-06-13,168,14,Pits,Cool-Med,4373,S-UNGR2,S-UNGR2.CRC,"Seeded unknown grass 2, CRC",Native,Unknown,Grass,2,40,11874,Yes,Seeded
 Utah,CRC,2018-10-17,2019-06-13,168,14,Pits,Cool-Med,4373,S-UNGR2,S-UNGR2.CRC,"Seeded unknown grass 2, CRC",Native,Unknown,Grass,1,45,11875,Yes,Seeded
+Utah,CRC,2018-10-17,2019-06-13,168,15,Pits,Med-Warm,4374,0,0,0,0,0,0,0,0,11876,0,0
 Utah,CRC,2018-10-17,2019-06-13,168,16,Seed,Cool-Med,4375,LILE3,LILE3,Linum lewisii,Native,Perennial,Forb,2,20,11878,Yes,Seeded
 Utah,CRC,2018-10-17,2019-06-13,168,16,Seed,Cool-Med,4375,S-UNGR2,S-UNGR2.CRC,"Seeded unknown grass 2, CRC",Native,Unknown,Grass,4,45,11879,Yes,Seeded
 Utah,CRC,2018-10-17,2019-06-13,168,16,Seed,Cool-Med,4375,S-UNGR2,S-UNGR2.CRC,"Seeded unknown grass 2, CRC",Native,Unknown,Grass,2,50,11880,Yes,Seeded
@@ -12237,6 +12286,7 @@ Utah,CRC,2018-10-17,2019-07-24,169,6,Mulch,Cool-Med,4475,S-PASM,PASM,Pascopyrum 
 Utah,CRC,2018-10-17,2019-07-24,169,6,Mulch,Cool-Med,4475,ELEL5,ELEL5,Elymus elymoides,Native,Perennial,Grass,1,65,12288,Yes,Seeded
 Utah,CRC,2018-10-17,2019-07-24,169,7,ConMod,Cool-Med,4476,S-UNGR2,S-UNGR2.CRC,"Seeded unknown grass 2, CRC",Native,Unknown,Grass,1,110,12289,Yes,Seeded
 Utah,CRC,2018-10-17,2019-07-24,169,8,Mulch,Med-Warm,4477,SATR12,SATR12,Salsola tragus,Introduced,Annual,Forb,3,310,12290,No,Introduced/Invasive
+Utah,CRC,2018-10-17,2019-07-24,169,9,Pits,Cool-Med,4478,0,0,0,0,0,0,0,0,12291,0,0
 Utah,CRC,2018-10-17,2019-07-24,169,9,Pits,Cool-Med,4478,ELEL5,ELEL5,Elymus elymoides,Native,Perennial,Grass,7,100,12294,Yes,Seeded
 Utah,CRC,2018-10-17,2019-07-24,169,9,Pits,Cool-Med,4478,S-UNGR3,S-UNGR3.CRC,"Seeded unknown grass 3, CRC",Native,Unknown,Grass,3,70,12297,Yes,Seeded
 Utah,CRC,2018-10-17,2019-07-24,169,9,Pits,Cool-Med,4478,S-UNGR2,S-UNGR2.CRC,"Seeded unknown grass 2, CRC",Native,Unknown,Grass,3,90,12298,Yes,Seeded
@@ -12705,6 +12755,7 @@ Sonoran SE,SRER,2019-08-09,2019-11-07,149,10,ConMod,Warm,4695,AMCO3,AMCO3,Ambros
 Sonoran SE,SRER,2019-08-09,2019-11-07,149,11,Pits,Warm,4696,BORA,BORA,Bouteloua radicosa,Native,Perennial,Grass,1,100,12761,No,Native_recruit
 Sonoran SE,SRER,2019-08-09,2019-11-07,149,12,Seed,Medium,4697,BORA,BORA,Bouteloua radicosa,Native,Perennial,Grass,1,50,12762,No,Native_recruit
 Sonoran SE,SRER,2019-08-09,2019-11-07,149,12,Seed,Medium,4697,UNGRS1,UNGRS1.SRER,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes, SRER",Native/Unknown,Unknown,Grass,1,50,12763,No,Likely native_recruit
+Sonoran SE,SRER,2019-08-09,2019-11-07,149,13,Pits,Medium,4698,0,0,0,0,0,0,0,0,12764,0,0
 Sonoran SE,SRER,2019-08-09,2019-11-07,149,14,Control,None,4699,BORA,BORA,Bouteloua radicosa,Native,Perennial,Grass,4,190,12765,No,Native_recruit
 Sonoran SE,SRER,2019-08-09,2019-11-07,149,14,Control,None,4699,UNGRS1,UNGRS1.SRER,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes, SRER",Native/Unknown,Unknown,Grass,1,50,12766,No,Likely native_recruit
 Sonoran SE,SRER,2019-08-09,2019-11-07,149,15,Seed,Warm,4700,BORA,BORA,Bouteloua radicosa,Native,Perennial,Grass,3,200,12767,No,Native_recruit
@@ -12726,6 +12777,7 @@ Sonoran SE,SRER,2019-08-09,2019-11-07,149,18,ConMod,Medium,4703,UNGRS1,UNGRS1.SR
 Sonoran SE,SRER,2019-08-09,2019-11-07,149,19,Mulch,Warm,4704,ARTE3,ARTE3,Aristida ternipes,Native,Perennial,Grass,1,140,12783,No,Native_recruit
 Sonoran SE,SRER,2019-08-09,2019-11-07,149,19,Mulch,Warm,4704,PACA6,PACA6,Panicum capillare,Native,Annual,Grass,3,200,12784,No,Native_recruit
 Sonoran SE,SRER,2019-08-09,2019-11-07,149,19,Mulch,Warm,4704,AMCO3,AMCO3,Ambrosia confertiflora,Native,Perennial,Forb,2,150,12785,No,Native_recruit
+Sonoran SE,SRER,2019-08-09,2019-11-07,149,20,ConMod,Warm,4705,0,0,0,0,0,0,0,0,12786,0,0
 Sonoran SE,SRER,2019-08-09,2019-11-07,149,21,Mulch,Medium,4706,AMCO3,AMCO3,Ambrosia confertiflora,Native,Perennial,Forb,1,110,12787,No,Native_recruit
 Sonoran SE,SRER,2019-08-09,2019-11-07,149,21,Mulch,Medium,4706,PACA6,PACA6,Panicum capillare,Native,Annual,Grass,2,100,12788,No,Native_recruit
 Sonoran SE,SRER,2019-08-09,2019-11-07,149,21,Mulch,Medium,4706,ARISPP,ARISPP.SRER,"Aristida spp., SRER",Native,Unknown,Grass,1,75,12789,No,Native_recruit
@@ -12783,10 +12835,14 @@ Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,2,ConMod,Warm,4723,UNGRS1,UNGRS1.
 Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,3,Pits,Warm,4724,SECO10,SECO10,Senna covesii,Native,Perennial,Forb,1,55,12841,Yes,Seeded
 Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,3,Pits,Warm,4724,ASTU,ASTU,Asclepias tuberosa,Native,Perennial,Forb,5,10,12842,Yes,Seeded
 Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,4,Mulch,Warm,4725,UNGRS2,UNGRS2.Patagonia,"Unknown grass (Patagonia); Unk grass seedling, leaf divided early like BOGR, possible lovegrass?, Patagonia",Unknown,Unknown,Grass,1,20,12843,No,Unknown_recruit
+Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,5,Seed,Medium,4726,0,0,0,0,0,0,0,0,12844,0,0
 Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,6,ConMod,Medium,4727,ERLE,ERLE,Eragrostis lehmanniana,Introduced,Perennial,Grass,1,550,12845,No,Introduced/Invasive
 Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,7,Pits,Medium,4728,UNGRS1,UNGRS1.Patagonia,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes, Patagonia",Native/Unknown,Unknown,Grass,2,2,12846,No,Likely native_recruit
 Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,8,Mulch,Medium,4729,ERCU2,ERCU2,Eragrostis curvula,Introduced,Perennial,Grass,1,700,12847,No,Introduced/Invasive
+Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,9,Control,None,4730,0,0,0,0,0,0,0,0,12848,0,0
+Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,10,Seed,Warm,4731,0,0,0,0,0,0,0,0,12849,0,0
 Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,11,ConMod,Warm,4732,UNGRS2,UNGRS2.Patagonia,"Unknown grass (Patagonia); Unk grass seedling, leaf divided early like BOGR, possible lovegrass?, Patagonia",Unknown,Unknown,Grass,1,150,12850,No,Unknown_recruit
+Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,12,Control,None,4733,0,0,0,0,0,0,0,0,12851,0,0
 Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,13,Seed,Medium,4734,ERCU2,ERCU2,Eragrostis curvula,Introduced,Perennial,Grass,1,350,12852,No,Introduced/Invasive
 Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,14,Control,None,4735,UNGRS1,UNGRS1.Patagonia,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes, Patagonia",Native/Unknown,Unknown,Grass,1,20,12853,No,Likely native_recruit
 Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,15,Mulch,Warm,4736,ERCU2,ERCU2,Eragrostis curvula,Introduced,Perennial,Grass,1,400,12854,No,Introduced/Invasive
@@ -12794,6 +12850,8 @@ Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,16,Pits,Warm,4737,SECO10,SECO10,S
 Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,16,Pits,Warm,4737,UNGRS2,UNGRS2.Patagonia,"Unknown grass (Patagonia); Unk grass seedling, leaf divided early like BOGR, possible lovegrass?, Patagonia",Unknown,Unknown,Grass,1,25,12856,No,Unknown_recruit
 Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,16,Pits,Warm,4737,UNGRS3,UNGRS3.Patagonia,"Unknown grass (Patagonia); Lighter green, thin leaves, possible threeawn?, Patagonia",Native,Unknown,Grass,2,70,12857,No,Native_recruit
 Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,16,Pits,Warm,4737,ASTU,ASTU,Asclepias tuberosa,Native,Perennial,Forb,6,10,12858,Yes,Seeded
+Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,17,Mulch,Medium,4738,0,0,0,0,0,0,0,0,12859,0,0
+Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,18,ConMod,Medium,4739,0,0,0,0,0,0,0,0,12860,0,0
 Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,19,Seed,Warm,4740,UNGRS2,UNGRS2.Patagonia,"Unknown grass (Patagonia); Unk grass seedling, leaf divided early like BOGR, possible lovegrass?, Patagonia",Unknown,Unknown,Grass,5,20,12861,No,Unknown_recruit
 Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,19,Seed,Warm,4740,ERCI6,ERCI6,Erodium cicutarium,Introduced,Annual,Forb,1,5,12862,No,Introduced/Invasive
 Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,20,Pits,Medium,4741,UNGRS1,UNGRS1.Patagonia,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes, Patagonia",Native/Unknown,Unknown,Grass,3,3,12863,No,Likely native_recruit
@@ -12810,8 +12868,10 @@ Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,25,Pits,Warm,4746,ASTU,ASTU,Ascle
 Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,25,Pits,Warm,4746,UNGRS2,UNGRS2.Patagonia,"Unknown grass (Patagonia); Unk grass seedling, leaf divided early like BOGR, possible lovegrass?, Patagonia",Unknown,Unknown,Grass,5,20,12874,No,Unknown_recruit
 Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,25,Pits,Warm,4746,UNGRS3,UNGRS3.Patagonia,"Unknown grass (Patagonia); Lighter green, thin leaves, possible threeawn?, Patagonia",Native,Unknown,Grass,1,25,12875,No,Native_recruit
 Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,26,ConMod,Medium,4747,ERLE,ERLE,Eragrostis lehmanniana,Introduced,Perennial,Grass,2,160,12876,No,Introduced/Invasive
+Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,27,Control,None,4748,0,0,0,0,0,0,0,0,12877,0,0
 Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,28,Pits,Medium,4749,UNGRS1,UNGRS1.Patagonia,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes, Patagonia",Native/Unknown,Unknown,Grass,5,2,12878,No,Likely native_recruit
 Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,28,Pits,Medium,4749,UNGRS2,UNGRS2.Patagonia,"Unknown grass (Patagonia); Unk grass seedling, leaf divided early like BOGR, possible lovegrass?, Patagonia",Unknown,Unknown,Grass,1,10,12879,No,Unknown_recruit
+Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,29,Mulch,Medium,4750,0,0,0,0,0,0,0,0,12880,0,0
 Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,30,ConMod,Warm,4751,UNGRS1,UNGRS1.Patagonia,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes, Patagonia",Native/Unknown,Unknown,Grass,3,20,12881,No,Likely native_recruit
 Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,31,Mulch,Warm,4752,UNGRS1,UNGRS1.Patagonia,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes, Patagonia",Native/Unknown,Unknown,Grass,3,15,12882,No,Likely native_recruit
 Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,31,Mulch,Warm,4752,UNGRS2,UNGRS2.Patagonia,"Unknown grass (Patagonia); Unk grass seedling, leaf divided early like BOGR, possible lovegrass?, Patagonia",Unknown,Unknown,Grass,4,30,12883,No,Unknown_recruit
@@ -12819,7 +12879,10 @@ Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,32,Pits,Warm,4753,SINE,SINE,Sida 
 Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,32,Pits,Warm,4753,UNGRS2,UNGRS2.Patagonia,"Unknown grass (Patagonia); Unk grass seedling, leaf divided early like BOGR, possible lovegrass?, Patagonia",Unknown,Unknown,Grass,1,55,12885,No,Unknown_recruit
 Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,32,Pits,Warm,4753,ASTU,ASTU,Asclepias tuberosa,Native,Perennial,Forb,1,2,12886,Yes,Seeded
 Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,32,Pits,Warm,4753,UNGRS1,UNGRS1.Patagonia,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes, Patagonia",Native/Unknown,Unknown,Grass,3,1,12887,No,Likely native_recruit
+Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,33,ConMod,Medium,4754,0,0,0,0,0,0,0,0,12888,0,0
+Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,34,Pits,Medium,4755,0,0,0,0,0,0,0,0,12889,0,0
 Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,35,Mulch,Medium,4756,POSE,POSE,Poa secunda,Native,Perennial,Grass,1,55,12890,Yes,Seeded
+Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,36,Seed,Medium,4757,0,0,0,0,0,0,0,0,12891,0,0
 Sonoran SE,Patagonia,2019-08-09,2020-03-30,141,1,Seed,Warm,4758,LETH2,LETH2,Lepidium thurberi,Native,Annual,Forb,2,40,12892,No,Native_recruit
 Sonoran SE,Patagonia,2019-08-09,2020-03-30,141,1,Seed,Warm,4758,UNFO1,UNFO1.Patagonia,"Unknown forb (Patagonia and SRER are same); upright mustard with tiny blueish flower, Patagonia",Unknown,Unknown,Forb,4,70,12893,No,Unknown_recruit
 Sonoran SE,Patagonia,2019-08-09,2020-03-30,141,1,Seed,Warm,4758,UNFO2,UNFO2.Patagonia,"Unknown forb (Patagonia); low to ground, succulenty, tiny white flowers, similar to purslane, Patagonia",Unknown,Unknown,Forb,2,20,12894,No,Unknown_recruit
@@ -12910,6 +12973,7 @@ Sonoran SE,Patagonia,2019-08-09,2020-03-30,141,28,Pits,Medium,4785,SPCR,SPCR,Spo
 Sonoran SE,Patagonia,2019-08-09,2020-03-30,141,28,Pits,Medium,4785,UNFO6,UNFO6.Patagonia,"Unknown forb; green, young, radiating basal leaves; slightly fuzzy; Patagonia, Patagonia",Unknown,Unknown,Forb,4,20,12979,No,Unknown_recruit
 Sonoran SE,Patagonia,2019-08-09,2020-03-30,141,28,Pits,Medium,4785,PSCA11,PSCA11,Pseudognaphalium canescens,Native,Unknown,Forb,16,18,12980,No,Native_recruit
 Sonoran SE,Patagonia,2019-08-09,2020-03-30,141,28,Pits,Medium,4785,UNFO2,UNFO2.Patagonia,"Unknown forb (Patagonia); low to ground, succulenty, tiny white flowers, similar to purslane, Patagonia",Unknown,Unknown,Forb,3,10,12981,No,Unknown_recruit
+Sonoran SE,Patagonia,2019-08-09,2020-03-30,141,29,Mulch,Medium,4786,0,0,0,0,0,0,0,0,12982,0,0
 Sonoran SE,Patagonia,2019-08-09,2020-03-30,141,30,ConMod,Warm,4787,PHDI,PHDI,Phacelia distans,Native,Unknown,Forb,1,50,12983,No,Native_recruit
 Sonoran SE,Patagonia,2019-08-09,2020-03-30,141,31,Mulch,Warm,4788,ARPU9,ARPU9,Aristida purpurea,Native,Perennial,Grass,3,50,12984,Yes,Seeded
 Sonoran SE,Patagonia,2019-08-09,2020-03-30,141,31,Mulch,Warm,4788,UNFO1,UNFO1.Patagonia,"Unknown forb (Patagonia and SRER are same); upright mustard with tiny blueish flower, Patagonia",Unknown,Unknown,Forb,1,20,12985,No,Unknown_recruit
@@ -13403,8 +13467,10 @@ Sonoran SE,SRER,2019-08-09,2020-09-30,151,36,Pits,Medium,4865,BRASPP,BRASPP.SRER
 Sonoran SE,SRER,2019-08-09,2020-09-30,151,36,Pits,Medium,4865,CRYSPP,CRYSPP.SRER,"Cryptantha spp., SRER",Native,Unknown,Forb,4,75,13473,No,Native_recruit
 Sonoran SE,SRER,2019-08-09,2020-09-30,151,36,Pits,Medium,4865,UNDPF,UNDPF.SRER,"Unknown dead pod forb, SRER",Unknown,Unknown,Forb,16,110,13474,No,Unknown_recruit
 Sonoran SE,Patagonia,2019-08-09,2020-10-01,142,1,Seed,Warm,4866,ARPU9,ARPU9,Aristida purpurea,Native,Perennial,Grass,1,173,13475,Yes,Seeded
+Sonoran SE,Patagonia,2019-08-09,2020-10-01,142,2,ConMod,Warm,4867,0,0,0,0,0,0,0,0,13476,0,0
 Sonoran SE,Patagonia,2019-08-09,2020-10-01,142,3,Pits,Warm,4868,PSCA11,PSCA11,Pseudognaphalium canescens,Native,Unknown,Forb,11,100,13477,No,Native_recruit
 Sonoran SE,Patagonia,2019-08-09,2020-10-01,142,4,Mulch,Warm,4869,ARPU9,ARPU9,Aristida purpurea,Native,Perennial,Grass,1,58,13478,Yes,Seeded
+Sonoran SE,Patagonia,2019-08-09,2020-10-01,142,5,Seed,Medium,4870,0,0,0,0,0,0,0,0,13479,0,0
 Sonoran SE,Patagonia,2019-08-09,2020-10-01,142,6,ConMod,Medium,4871,ERLE,ERLE,Eragrostis lehmanniana,Introduced,Perennial,Grass,2,460,13480,No,Introduced/Invasive
 Sonoran SE,Patagonia,2019-08-09,2020-10-01,142,6,ConMod,Medium,4871,PSCA11,PSCA11,Pseudognaphalium canescens,Native,Unknown,Forb,6,25,13481,No,Native_recruit
 Sonoran SE,Patagonia,2019-08-09,2020-10-01,142,6,ConMod,Medium,4871,COCA5,COCA5,Conyza canadensis,Native,Annual,Forb,1,282,13482,No,Native_recruit
@@ -13431,6 +13497,7 @@ Sonoran SE,Patagonia,2019-08-09,2020-10-01,142,16,Pits,Warm,4881,ERISPP,ERISPP.P
 Sonoran SE,Patagonia,2019-08-09,2020-10-01,142,16,Pits,Warm,4881,COCA5,COCA5,Conyza canadensis,Native,Annual,Forb,3,145,13503,No,Native_recruit
 Sonoran SE,Patagonia,2019-08-09,2020-10-01,142,16,Pits,Warm,4881,ERLE,ERLE,Eragrostis lehmanniana,Introduced,Perennial,Grass,2,270,13504,No,Introduced/Invasive
 Sonoran SE,Patagonia,2019-08-09,2020-10-01,142,16,Pits,Warm,4881,PSCA11,PSCA11,Pseudognaphalium canescens,Native,Unknown,Forb,8,75,13505,No,Native_recruit
+Sonoran SE,Patagonia,2019-08-09,2020-10-01,142,17,Mulch,Medium,4882,0,0,0,0,0,0,0,0,13506,0,0
 Sonoran SE,Patagonia,2019-08-09,2020-10-01,142,18,ConMod,Medium,4883,ERLE,ERLE,Eragrostis lehmanniana,Introduced,Perennial,Grass,1,386,13507,No,Introduced/Invasive
 Sonoran SE,Patagonia,2019-08-09,2020-10-01,142,19,Seed,Warm,4884,ERLE,ERLE,Eragrostis lehmanniana,Introduced,Perennial,Grass,2,150,13508,No,Introduced/Invasive
 Sonoran SE,Patagonia,2019-08-09,2020-10-01,142,19,Seed,Warm,4884,ARPU9,ARPU9,Aristida purpurea,Native,Perennial,Grass,2,95,13509,Yes,Seeded
@@ -13451,9 +13518,14 @@ Sonoran SE,Patagonia,2019-08-09,2020-10-04,143,28,Pits,Medium,4893,PSCA11,PSCA11
 Sonoran SE,Patagonia,2019-08-09,2020-10-04,143,28,Pits,Medium,4893,COCA5,COCA5,Conyza canadensis,Native,Annual,Forb,1,112,13524,No,Native_recruit
 Sonoran SE,Patagonia,2019-08-09,2020-10-04,143,28,Pits,Medium,4893,ERCU2,ERCU2,Eragrostis curvula,Introduced,Perennial,Grass,4,110,13525,No,Introduced/Invasive
 Sonoran SE,Patagonia,2019-08-09,2020-10-04,143,28,Pits,Medium,4893,UNFS,UNFS.Patagonia,"Unknown forb seedling, Patagonia",Unknown,Unknown,Forb,1,1,13526,No,Unknown_recruit
+Sonoran SE,Patagonia,2019-08-09,2020-10-04,143,29,Mulch,Medium,4894,0,0,0,0,0,0,0,0,13527,0,0
+Sonoran SE,Patagonia,2019-08-09,2020-10-04,143,30,ConMod,Warm,4895,0,0,0,0,0,0,0,0,13528,0,0
 Sonoran SE,Patagonia,2019-08-09,2020-10-04,143,31,Mulch,Warm,4896,ARPU9,ARPU9,Aristida purpurea,Native,Perennial,Grass,1,220,13529,Yes,Seeded
 Sonoran SE,Patagonia,2019-08-09,2020-10-04,143,32,Pits,Warm,4897,ARPU9,ARPU9,Aristida purpurea,Native,Perennial,Grass,1,570,13530,Yes,Seeded
+Sonoran SE,Patagonia,2019-08-09,2020-10-04,143,33,ConMod,Medium,4898,0,0,0,0,0,0,0,0,13531,0,0
+Sonoran SE,Patagonia,2019-08-09,2020-10-04,143,34,Pits,Medium,4899,0,0,0,0,0,0,0,0,13532,0,0
 Sonoran SE,Patagonia,2019-08-09,2020-10-04,143,35,Mulch,Medium,4900,ERCU2,ERCU2,Eragrostis curvula,Introduced,Perennial,Grass,1,75,13533,No,Introduced/Invasive
+Sonoran SE,Patagonia,2019-08-09,2020-10-04,143,36,Seed,Medium,4901,0,0,0,0,0,0,0,0,13534,0,0
 Sonoran SE,SRER,2019-08-09,2021-03-10,152,1,ConMod,Warm,4902,MENSPP,MENSPP.SRER,"Mentzelia spp., SRER",Native,Unknown,Forb,34,10,13535,No,Native_recruit
 Sonoran SE,SRER,2019-08-09,2021-03-10,152,1,ConMod,Warm,4902,CRYSPP,CRYSPP.SRER,"Cryptantha spp., SRER",Native,Unknown,Forb,22,12,13536,No,Native_recruit
 Sonoran SE,SRER,2019-08-09,2021-03-10,152,1,ConMod,Warm,4902,UNFO_S_1,UNFO_S_1.SRER,"Unknown forb; Purple vine, sagitate leaves (Spring 2021), SRER",Unknown,Unknown,Forb,1,17,13537,No,Unknown_recruit
@@ -13654,6 +13726,7 @@ Sonoran SE,Patagonia,2019-08-09,2021-03-12,144,16,Pits,Warm,4953,ARPU9,ARPU9,Ari
 Sonoran SE,Patagonia,2019-08-09,2021-03-12,144,16,Pits,Warm,4953,ERLE,ERLE,Eragrostis lehmanniana,Introduced,Perennial,Grass,1,135,13732,No,Introduced/Invasive
 Sonoran SE,Patagonia,2019-08-09,2021-03-12,144,16,Pits,Warm,4953,ERCU2,ERCU2,Eragrostis curvula,Introduced,Perennial,Grass,1,80,13733,No,Introduced/Invasive
 Sonoran SE,Patagonia,2019-08-09,2021-03-12,144,16,Pits,Warm,4953,PSCA11,PSCA11,Pseudognaphalium canescens,Native,Unknown,Forb,2,20,13734,No,Native_recruit
+Sonoran SE,Patagonia,2019-08-09,2021-03-12,144,17,Mulch,Medium,4954,0,0,0,0,0,0,0,0,13735,0,0
 Sonoran SE,Patagonia,2019-08-09,2021-03-12,144,18,ConMod,Medium,4955,SATR12,SATR12,Salsola tragus,Introduced,Annual,Forb,1,3,13736,No,Introduced/Invasive
 Sonoran SE,Patagonia,2019-08-09,2021-03-12,144,19,Seed,Warm,4956,ARPU9,ARPU9,Aristida purpurea,Native,Perennial,Grass,2,85,13737,Yes,Seeded
 Sonoran SE,Patagonia,2019-08-09,2021-03-12,144,19,Seed,Warm,4956,ERCU2,ERCU2,Eragrostis curvula,Introduced,Perennial,Grass,3,55,13738,No,Introduced/Invasive
@@ -13673,10 +13746,13 @@ Sonoran SE,Patagonia,2019-08-09,2021-03-12,144,27,Control,None,4964,PSCA11,PSCA1
 Sonoran SE,Patagonia,2019-08-09,2021-03-12,144,28,Pits,Medium,4965,ERCU2,ERCU2,Eragrostis curvula,Introduced,Perennial,Grass,4,34,13752,No,Introduced/Invasive
 Sonoran SE,Patagonia,2019-08-09,2021-03-12,144,28,Pits,Medium,4965,UNFO_P_7,UNFO_P_7.Patagonia,"Unknown forb; Rosette leaves slightly fuzzy and silvery light green. simple leaves, smells like bandaids (Spring 2021), Patagonia",Unknown,Unknown,Forb,1,16,13753,No,Unknown_recruit
 Sonoran SE,Patagonia,2019-08-09,2021-03-12,144,28,Pits,Medium,4965,PSCA11,PSCA11,Pseudognaphalium canescens,Native,Unknown,Forb,2,11,13754,No,Native_recruit
+Sonoran SE,Patagonia,2019-08-09,2021-03-12,144,29,Mulch,Medium,4966,0,0,0,0,0,0,0,0,13755,0,0
 Sonoran SE,Patagonia,2019-08-09,2021-03-12,144,30,ConMod,Warm,4967,CHESPP,CHESPP.Patagonia,"Chenopodium spp., Patagonia",Unknown,Unknown,Forb,2,17,13756,No,Unknown_recruit
 Sonoran SE,Patagonia,2019-08-09,2021-03-12,144,31,Mulch,Warm,4968,UNFO_P_1,UNFO_P_1.Patagonia,"Unknown forb; small reddish purple rosette with ovate leaves (Spring 2021), Patagonia",Unknown,Unknown,Forb,1,5,13757,No,Unknown_recruit
 Sonoran SE,Patagonia,2019-08-09,2021-03-12,144,32,Pits,Warm,4969,ARPU9,ARPU9,Aristida purpurea,Native,Perennial,Grass,1,150,13758,Yes,Seeded
 Sonoran SE,Patagonia,2019-08-09,2021-03-12,144,32,Pits,Warm,4969,UNFO_P_2,UNFO_P_2.Patagonia,"Unknown forb; Pinated leaves, upright rosette, lighter green, Ambrosia?  (Spring 2021), Patagonia",Native/Unknown,Unknown,Forb,1,2,13759,No,Likely native_recruit
+Sonoran SE,Patagonia,2019-08-09,2021-03-12,144,33,ConMod,Medium,4970,0,0,0,0,0,0,0,0,13760,0,0
+Sonoran SE,Patagonia,2019-08-09,2021-03-12,144,34,Pits,Medium,4971,0,0,0,0,0,0,0,0,13761,0,0
 Sonoran SE,Patagonia,2019-08-09,2021-03-12,144,35,Mulch,Medium,4972,POSE,POSE,Poa secunda,Native,Perennial,Grass,1,48,13762,Yes,Seeded
 Sonoran SE,Patagonia,2019-08-09,2021-03-12,144,36,Seed,Medium,4973,UNFO_P_1,UNFO_P_1.Patagonia,"Unknown forb; small reddish purple rosette with ovate leaves (Spring 2021), Patagonia",Unknown,Unknown,Forb,2,2,13763,No,Unknown_recruit
 Sonoran SE,SRER,2019-08-09,2021-10-06,154,1,ConMod,Warm,4974,ARWA,ARWA,Aristolochia watsonii,Native,Perennial,Forb,2,85,13764,No,Native_recruit
@@ -16267,6 +16343,7 @@ Chihuahuan,Creosote,2020-08-05,2021-03-20,6,235,Mulch,Medium,5908,0,0,0,0,0,0,0,
 Chihuahuan,Creosote,2020-08-05,2021-03-20,6,236,Pits,Medium,5909,0,0,0,0,0,0,0,0,16349,0,0
 Chihuahuan,Creosote,2020-08-05,2021-10-11,7,201,ConMod,Medium,5910,BOAR,BOAR,Bouteloua aristidoides,Native,Annual,Grass,1,120,16350,No,Native_recruit
 Chihuahuan,Creosote,2020-08-05,2021-10-11,7,201,ConMod,Medium,5910,DAPU7,DAPU7,Dasyochloa pulchella,Native,Perennial,Grass,2.5,40,16351,No,Native_recruit
+Chihuahuan,Creosote,2020-08-05,2021-10-11,7,201,ConMod,Medium,5910,TILA2,TILA2,Tidestromia lanuginosa,Native,Annual,Forb,1,110,16498,No,Native_recruit
 Chihuahuan,Creosote,2020-08-05,2021-10-11,7,202,Control,None,5911,BAAB,BAAB,Bahia absinthifolia,Native,Perennial,Forb,1,40,16352,No,Native_recruit
 Chihuahuan,Creosote,2020-08-05,2021-10-11,7,202,Control,None,5911,BOAR,BOAR,Bouteloua aristidoides,Native,Annual,Grass,8,120,16353,No,Native_recruit
 Chihuahuan,Creosote,2020-08-05,2021-10-11,7,202,Control,None,5911,MOCE,MOCE,Mollugo cerviana,Introduced,Annual,Forb,1,50,16354,No,Introduced/Invasive
@@ -16410,12 +16487,11 @@ Chihuahuan,Creosote,2020-08-05,2021-10-11,7,234,Pits,Medium,5943,PAHI5,PAHI5,Pan
 Chihuahuan,Creosote,2020-08-05,2021-10-11,7,234,Pits,Medium,5943,SOEL,SOEL,Solanum elaeagnifolium,Native,Perennial,Forb,1,110,16492,No,Native_recruit
 Chihuahuan,Creosote,2020-08-05,2021-10-11,7,235,Mulch,Medium,5944,BAAB,BAAB,Bahia absinthifolia,Native,Perennial,Forb,1,60,16493,No,Native_recruit
 Chihuahuan,Creosote,2020-08-05,2021-10-11,7,235,Mulch,Medium,5944,Unksporo,Unksporo.Creosote,"Unknown grass; Sporobolus and Eragrostis, Creosote",Unknown,Unknown,Grass,1,130,16494,No,Unknown_recruit
+Chihuahuan,Creosote,2020-08-05,2021-10-11,7,235,Mulch,Medium,5944,DAPU7,DAPU7,Dasyochloa pulchella,Native,Perennial,Grass,1,60,16499,No,Native_recruit
+Chihuahuan,Creosote,2020-08-05,2021-10-11,7,235,Mulch,Medium,5944,MOCE,MOCE,Mollugo cerviana,Introduced,Annual,Forb,1,60,16500,No,Introduced/Invasive
 Chihuahuan,Creosote,2020-08-05,2021-10-11,7,236,Pits,Medium,5945,BAAB,BAAB,Bahia absinthifolia,Native,Perennial,Forb,1,180,16495,No,Native_recruit
 Chihuahuan,Creosote,2020-08-05,2021-10-11,7,236,Pits,Medium,5945,BOAR,BOAR,Bouteloua aristidoides,Native,Annual,Grass,3,80,16496,No,Native_recruit
 Chihuahuan,Creosote,2020-08-05,2021-10-11,7,236,Pits,Medium,5945,LATR2,LATR2,Larrea tridentata,Native,Perennial,Shrub,1,10,16497,No,Native_recruit
-Chihuahuan,Creosote,2020-08-05,2021-10-11,7,201,ConMod,Medium,5910,TILA2,TILA2,Tidestromia lanuginosa,Native,Annual,Forb,1,110,16498,No,Native_recruit
-Chihuahuan,Creosote,2020-08-05,2021-10-11,7,235,Mulch,Medium,5944,DAPU7,DAPU7,Dasyochloa pulchella,Native,Perennial,Grass,1,60,16499,No,Native_recruit
-Chihuahuan,Creosote,2020-08-05,2021-10-11,7,235,Mulch,Medium,5944,MOCE,MOCE,Mollugo cerviana,Introduced,Annual,Forb,1,60,16500,No,Introduced/Invasive
 Chihuahuan,Creosote,2020-08-05,2021-10-11,7,236,Pits,Medium,5945,Unksporo,Unksporo.Creosote,"Unknown grass; Sporobolus and Eragrostis, Creosote",Unknown,Unknown,Grass,1,110,16501,No,Unknown_recruit
 Chihuahuan,Mesquite,2020-08-05,2020-09-20,8,201,Mulch,Warm,5946,BAMU,BAMU,Baileya multiradiata,Native,Unknown,Forb,1,10,16502,Yes,Seeded
 Chihuahuan,Mesquite,2020-08-05,2020-09-20,8,202,Pits,Warm,5947,BAMU,BAMU,Baileya multiradiata,Native,Unknown,Forb,15,10,16503,Yes,Seeded
@@ -16826,6 +16902,7 @@ Sonoran Central,Pleasant,2019-12-19,2022-03-29,124,12,Seed,Warm,6173,HEHIC,HEHIC
 Sonoran Central,Pleasant,2019-12-19,2022-03-29,124,12,Seed,Warm,6173,LOHU2,LOHU2,Lotus humistratus,Native,Annual,Forb,2,5,16927,No,Native_recruit
 Sonoran Central,Pleasant,2019-12-19,2022-03-29,124,12,Seed,Warm,6173,SCBA,SCBA,Schismus barbatus,Introduced,Annual,Grass,7,15,16928,No,Introduced/Invasive
 Sonoran Central,Pleasant,2019-12-19,2022-03-29,124,12,Seed,Warm,6173,PEHE,PEHE,Pectocarya heterocarpa,Native,Annual,Forb,11,20,16929,No,Native_recruit
+Sonoran Central,Pleasant,2019-12-19,2022-03-29,124,12,Seed,Warm,6173,PERE,PERE,Pectocarya recurvata,Native,Annual,Forb,7,32,16986,No,Native_recruit
 Sonoran Central,Pleasant,2019-12-19,2022-03-29,124,13,ConMod,Warm,6174,PEHE,PEHE,Pectocarya heterocarpa,Native,Annual,Forb,13,25,16932,No,Native_recruit
 Sonoran Central,Pleasant,2019-12-19,2022-03-29,124,13,ConMod,Warm,6174,PLAR,PLAR,Plagiobothrys arizonicus,Native,Annual,Forb,1,18,16933,No,Native_recruit
 Sonoran Central,Pleasant,2019-12-19,2022-03-29,124,13,ConMod,Warm,6174,SCBA,SCBA,Schismus barbatus,Introduced,Annual,Grass,2,20,16934,No,Introduced/Invasive
@@ -16865,7 +16942,6 @@ Sonoran Central,Pleasant,2019-12-19,2022-03-29,124,20,ConMod,Warm,6181,ERCI6,ERC
 Sonoran Central,Pleasant,2019-12-19,2022-03-29,124,21,Mulch,Warm,6182,SCBA,SCBA,Schismus barbatus,Introduced,Annual,Grass,14,23,16982,No,Introduced/Invasive
 Sonoran Central,Pleasant,2019-12-19,2022-03-29,124,21,Mulch,Warm,6182,ERCI6,ERCI6,Erodium cicutarium,Introduced,Annual,Forb,3,11,16983,No,Introduced/Invasive
 Sonoran Central,Pleasant,2019-12-19,2022-03-29,124,22,Seed,Warm,6183,LOHU2,LOHU2,Lotus humistratus,Native,Annual,Forb,1,11,16985,No,Native_recruit
-Sonoran Central,Pleasant,2019-12-19,2022-03-29,124,12,Seed,Warm,6173,PERE,PERE,Pectocarya recurvata,Native,Annual,Forb,7,32,16986,No,Native_recruit
 Sonoran Central,Pleasant,2019-12-19,2022-03-29,124,22,Seed,Warm,6183,ERCI6,ERCI6,Erodium cicutarium,Introduced,Annual,Forb,1,15,16987,No,Introduced/Invasive
 Sonoran Central,Pleasant,2019-12-19,2022-03-29,124,22,Seed,Warm,6183,SCBA,SCBA,Schismus barbatus,Introduced,Annual,Grass,7,14,16988,No,Introduced/Invasive
 Sonoran Central,Pleasant,2019-12-19,2022-03-29,124,23,Seed,Cool,6184,ERCI6,ERCI6,Erodium cicutarium,Introduced,Annual,Forb,21,13,16991,No,Introduced/Invasive
@@ -17087,6 +17163,7 @@ Sonoran Central,Preserve,2019-11-25,2022-03-31,130,21,Seed,Warm,6218,LOAR12,LOAR
 Sonoran Central,Preserve,2019-11-25,2022-03-31,130,21,Seed,Warm,6218,ERCI6,ERCI6,Erodium cicutarium,Introduced,Annual,Forb,1,15,17257,No,Introduced/Invasive
 Sonoran Central,Preserve,2019-11-25,2022-03-31,130,21,Seed,Warm,6218,LOSQ,LOSQ,Loeflingia squarrosa,Native,Annual,Forb,1,5,17258,No,Native_recruit
 Sonoran Central,Preserve,2019-11-25,2022-03-31,130,21,Seed,Warm,6218,HEHIC,HEHIC,Herniaria hirsuta,Introduced,Annual,Forb,1,22,17259,No,Introduced/Invasive
+Sonoran Central,Preserve,2019-11-25,2022-03-31,130,21,Seed,Warm,6218,DRCUI,DRCUI,Draba cuneifolia var. integrifolia,Native,Annual,Forb,1,40,17410,No,Native_recruit
 Sonoran Central,Preserve,2019-11-25,2022-03-31,130,22,Pits,Cool,6219,EUPO3,CHPO12,Chamaesyce polycarpa,Native,Unknown,Forb,50,20,17261,No,Native_recruit
 Sonoran Central,Preserve,2019-11-25,2022-03-31,130,22,Pits,Cool,6219,DICA8,DICA8,Digitaria californica,Native,Perennial,Grass,3,25,17262,Yes,Seeded
 Sonoran Central,Preserve,2019-11-25,2022-03-31,130,22,Pits,Cool,6219,HEHIC,HEHIC,Herniaria hirsuta,Introduced,Annual,Forb,16,3,17263,No,Introduced/Invasive
@@ -17213,7 +17290,6 @@ Sonoran Central,Preserve,2019-11-25,2022-03-31,130,36,Pits,Warm,6233,LOAR12,LOAR
 Sonoran Central,Preserve,2019-11-25,2022-03-31,130,36,Pits,Warm,6233,STMI2,STMI2,Stylocline micropoides,Native,Annual,Forb,2,18,17406,No,Native_recruit
 Sonoran Central,Preserve,2019-11-25,2022-03-31,130,36,Pits,Warm,6233,ERCI6,ERCI6,Erodium cicutarium,Introduced,Annual,Forb,1,50,17407,No,Introduced/Invasive
 Sonoran Central,Preserve,2019-11-25,2022-03-31,130,36,Pits,Warm,6233,SECO10,SECO10,Senna covesii,Native,Perennial,Forb,1,20,17408,Yes,Seeded
-Sonoran Central,Preserve,2019-11-25,2022-03-31,130,21,Seed,Warm,6218,DRCUI,DRCUI,Draba cuneifolia var. integrifolia,Native,Annual,Forb,1,40,17410,No,Native_recruit
 Sonoran Central,Roosevelt,2019-11-22,2022-03-28,135,1,Pits,Cool,6234,LOHU2,LOHU2,Lotus humistratus,Native,Annual,Forb,14,12,17411,No,Native_recruit
 Sonoran Central,Roosevelt,2019-11-22,2022-03-28,135,1,Pits,Cool,6234,PERE,PERE,Pectocarya recurvata,Native,Annual,Forb,6,20,17412,No,Native_recruit
 Sonoran Central,Roosevelt,2019-11-22,2022-03-28,135,1,Pits,Cool,6234,LUSP2,LUSP2,Lupinus sparsiflorus,Native,Annual,Forb,3,22,17413,Yes,Seeded
@@ -17789,75 +17865,3 @@ Mojave,29_Palms,2021-12-19,2022-04-15,114,43,ConMod,Warm,6390,0,0,0,0,0,0,0,0,18
 Mojave,29_Palms,2021-12-19,2022-04-15,114,44,Seed,Warm,6391,0,0,0,0,0,0,0,0,18037,0,0
 Mojave,AVRCD,2022-01-15,2022-04-13,118,2,Mulch,Cool,6392,0,0,0,0,0,0,0,0,18038,0,0
 Mojave,AVRCD,2022-01-15,2022-04-13,118,44,Mulch,Warm,6393,0,0,0,0,0,0,0,0,18039,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,1,Seed,Cool,3619,0,0,0,0,0,0,0,0,9479,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,2,Pellets,Cool,3620,0,0,0,0,0,0,0,0,9480,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,3,Mulch,Cool,3621,0,0,0,0,0,0,0,0,9481,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,4,ConMod,Cool,3622,0,0,0,0,0,0,0,0,9482,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,5,Seed,Warm,3623,0,0,0,0,0,0,0,0,9483,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,6,Pits,Cool,3624,0,0,0,0,0,0,0,0,9484,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,7,Pellets,Warm,3625,0,0,0,0,0,0,0,0,9485,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,8,ConMod,Warm,3626,0,0,0,0,0,0,0,0,9486,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,9,Seed,Cool,3627,0,0,0,0,0,0,0,0,9487,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,10,Mulch,Warm,3628,0,0,0,0,0,0,0,0,9488,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,11,Pits,Warm,3629,0,0,0,0,0,0,0,0,9489,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,12,Mulch,Cool,3630,0,0,0,0,0,0,0,0,9490,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,13,ConMod,Cool,3631,0,0,0,0,0,0,0,0,9491,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,14,Seed,Warm,3632,0,0,0,0,0,0,0,0,9492,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,15,Pellets,Cool,3633,0,0,0,0,0,0,0,0,9493,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,16,Pits,Cool,3634,0,0,0,0,0,0,0,0,9494,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,17,Control,None,3635,0,0,0,0,0,0,0,0,9495,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,18,ConMod,Warm,3636,0,0,0,0,0,0,0,0,9496,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,19,Pits,Warm,3637,0,0,0,0,0,0,0,0,9497,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,20,Mulch,Warm,3638,0,0,0,0,0,0,0,0,9498,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,21,Control,None,3639,0,0,0,0,0,0,0,0,9499,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,22,Pellets,Warm,3640,0,0,0,0,0,0,0,0,9500,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,23,ConMod,Cool,3641,0,0,0,0,0,0,0,0,9501,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,24,Pellets,Cool,3642,0,0,0,0,0,0,0,0,9502,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,25,Control,None,3643,0,0,0,0,0,0,0,0,9503,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,26,Seed,Cool,3644,0,0,0,0,0,0,0,0,9504,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,27,Pits,Cool,3645,0,0,0,0,0,0,0,0,9505,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,28,Mulch,Cool,3646,0,0,0,0,0,0,0,0,9506,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,29,Pellets,Warm,3647,0,0,0,0,0,0,0,0,9507,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,30,Mulch,Warm,3648,0,0,0,0,0,0,0,0,9508,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,31,Pellets,Cool,3649,0,0,0,0,0,0,0,0,9509,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,32,Pits,Warm,3650,0,0,0,0,0,0,0,0,9510,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,33,ConMod,Warm,3651,0,0,0,0,0,0,0,0,9511,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,34,Seed,Warm,3652,0,0,0,0,0,0,0,0,9512,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,35,Pits,Cool,3653,0,0,0,0,0,0,0,0,9513,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,36,Mulch,Cool,3654,0,0,0,0,0,0,0,0,9514,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,37,Pellets,Warm,3655,0,0,0,0,0,0,0,0,9515,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,38,Control,None,3656,0,0,0,0,0,0,0,0,9516,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,39,ConMod,Cool,3657,0,0,0,0,0,0,0,0,9517,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,40,Mulch,Warm,3658,0,0,0,0,0,0,0,0,9518,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,41,Pits,Warm,3659,0,0,0,0,0,0,0,0,9519,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,42,Seed,Cool,3660,0,0,0,0,0,0,0,0,9520,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,43,ConMod,Warm,3661,0,0,0,0,0,0,0,0,9521,0,0
-Mojave,29_Palms,2020-03-13,2021-03-30,113,44,Seed,Warm,3662,0,0,0,0,0,0,0,0,9522,0,0
-Mojave,AVRCD,2020-03-17,2021-04-06,116,36,ConMod,Cool,3698,0,0,0,0,0,0,0,0,9593,0,0
-Utah,Salt_Desert,2018-10-31,2019-05-09,175,33,Pits,Med-Warm,4209,0,0,0,0,0,0,0,0,10931,0,0
-Sonoran SE,SRER,2019-08-09,2019-11-07,149,13,Pits,Medium,4698,0,0,0,0,0,0,0,0,12764,0,0
-Sonoran SE,SRER,2019-08-09,2019-11-07,149,20,ConMod,Warm,4705,0,0,0,0,0,0,0,0,12786,0,0
-Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,5,Seed,Medium,4726,0,0,0,0,0,0,0,0,12844,0,0
-Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,9,Control,None,4730,0,0,0,0,0,0,0,0,12848,0,0
-Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,10,Seed,Warm,4731,0,0,0,0,0,0,0,0,12849,0,0
-Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,12,Control,None,4733,0,0,0,0,0,0,0,0,12851,0,0
-Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,17,Mulch,Medium,4738,0,0,0,0,0,0,0,0,12859,0,0
-Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,18,ConMod,Medium,4739,0,0,0,0,0,0,0,0,12860,0,0
-Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,27,Control,None,4748,0,0,0,0,0,0,0,0,12877,0,0
-Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,29,Mulch,Medium,4750,0,0,0,0,0,0,0,0,12880,0,0
-Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,33,ConMod,Medium,4754,0,0,0,0,0,0,0,0,12888,0,0
-Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,34,Pits,Medium,4755,0,0,0,0,0,0,0,0,12889,0,0
-Sonoran SE,Patagonia,2019-08-09,2019-11-12,140,36,Seed,Medium,4757,0,0,0,0,0,0,0,0,12891,0,0
-Sonoran SE,Patagonia,2019-08-09,2020-03-30,141,29,Mulch,Medium,4786,0,0,0,0,0,0,0,0,12982,0,0
-Sonoran SE,Patagonia,2019-08-09,2020-10-01,142,2,ConMod,Warm,4867,0,0,0,0,0,0,0,0,13476,0,0
-Sonoran SE,Patagonia,2019-08-09,2020-10-01,142,5,Seed,Medium,4870,0,0,0,0,0,0,0,0,13479,0,0
-Sonoran SE,Patagonia,2019-08-09,2020-10-01,142,17,Mulch,Medium,4882,0,0,0,0,0,0,0,0,13506,0,0
-Sonoran SE,Patagonia,2019-08-09,2020-10-04,143,29,Mulch,Medium,4894,0,0,0,0,0,0,0,0,13527,0,0
-Sonoran SE,Patagonia,2019-08-09,2020-10-04,143,30,ConMod,Warm,4895,0,0,0,0,0,0,0,0,13528,0,0
-Sonoran SE,Patagonia,2019-08-09,2020-10-04,143,33,ConMod,Medium,4898,0,0,0,0,0,0,0,0,13531,0,0
-Sonoran SE,Patagonia,2019-08-09,2020-10-04,143,34,Pits,Medium,4899,0,0,0,0,0,0,0,0,13532,0,0
-Sonoran SE,Patagonia,2019-08-09,2020-10-04,143,36,Seed,Medium,4901,0,0,0,0,0,0,0,0,13534,0,0
-Sonoran SE,Patagonia,2019-08-09,2021-03-12,144,17,Mulch,Medium,4954,0,0,0,0,0,0,0,0,13735,0,0
-Sonoran SE,Patagonia,2019-08-09,2021-03-12,144,29,Mulch,Medium,4966,0,0,0,0,0,0,0,0,13755,0,0
-Sonoran SE,Patagonia,2019-08-09,2021-03-12,144,33,ConMod,Medium,4970,0,0,0,0,0,0,0,0,13760,0,0
-Sonoran SE,Patagonia,2019-08-09,2021-03-12,144,34,Pits,Medium,4971,0,0,0,0,0,0,0,0,13761,0,0
