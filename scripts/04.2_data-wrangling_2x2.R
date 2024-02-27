@@ -484,12 +484,13 @@ unique(nonempty.code0$ObsSource) # this occurs when subplot is empty but 2x2 is 
 # Calculate species richness of 2x2 plots for plots that had plants
 nonempty.plots.richness <- nonempty.plots |> 
   filter(Code != "0") |>
-  group_by(Region, Site, Date_Monitored, SiteDateID, Plot, Treatment, PlotMix, SiteDatePlotID) |> 
+  group_by(Region, Site, Date_Seeded, Date_Monitored, SiteDateID, Plot, Treatment, PlotMix, SiteDatePlotID) |> 
   summarise(Richness = n_distinct(Code),
             .groups = "keep")
 
 # Assign richness to empty plots
 empty.plots.richness <- empty.plots |> 
+  select(Region, Site, Date_Seeded, Date_Monitored, SiteDateID, Plot, Treatment, PlotMix, SiteDatePlotID) |> 
   mutate(Richness = 0)
 
 
@@ -548,6 +549,8 @@ summary(cover$Not_Seeded_Cover) # creates negative values
 
 cover.neg.notseed <- cover |> 
   filter(Not_Seeded_Cover < 0)
+cover.neg.notseed |> 
+  select(Site, SiteDatePlotID, Not_Seeded_Cover)
 #   Mostly it is small discrepancy, except for one which is -44;
 #     SiteDatePlotID of 6241, at Roosevelt
 
