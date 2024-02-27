@@ -1,5 +1,5 @@
 # Created: 2023-09-18
-# Last updated: 2024-02-13
+# Last updated: 2024-02-27
 
 # Purpose: Create clean data table for subplot data, with corrected and standardized species information,
 #   and monitoring and plot information, and correct SpeciesSeeded column based on each site-specific
@@ -470,6 +470,79 @@ subplot <- subplot |>
     PlantSource == "Unknown_Yes" ~ "Seeded"))
 unique(subplot$PlantSource)
 
+
+# Save intermediate subplot with all correct plant species info,
+#   but response variables Count and Height not yet addressed
+subplot3 <- subplot
+
+
+
+# Address Count values of 0 -----------------------------------------------
+
+# Examine rows with Count of 0
+count0 <- subplot |> 
+  filter(Count == 0)
+unique(count0$Code)
+#   Code 0 should have a Count of 0 also, but non-0 Codes shouldn't exist
+
+# Examine non-0 Codes
+count0.non0code <- count0 |> 
+  filter(Code != "0")
+#   These rows should just be removed, because we want rows only of plants that were 
+#     actually observed to be present.
+
+# Remove non-0 Codes from subplot data
+subplot <- subplot |> 
+  filter(!raw.row %in% count0.non0code$raw.row)
+
+
+# Address Height values of 0 ----------------------------------------------
+
+# Examine rows with Height of 0
+height0 <- subplot |> 
+  filter(Height == 0)
+unique(height0$Code)
+#   Code 0 should have a Height of 0 also, but non-0 Codes shouldn't exist
+
+# Examine non-0 Codes
+height0.non0code <- height0 |> 
+  filter(Code != "0")
+#   No fix needed because this is a rare occurrence and it's possible that 
+#     the height was so small it was essentially 0.
+
+
+
+# Address NAs in Count ----------------------------------------------------
+
+# Examine NAs for Count
+na.count <- subplot |> 
+  filter(is.na(Count))
+#   Most rows are for Code 0, in which case Count and Height should also be 0
+
+# Fix Code 0s
+na.count.0 <- na.count |> 
+  filter(Code == "0")
+na.count.0.fix <- na.count.0 |> 
+  mutate(Count = 0,
+         Height = 0)
+
+# Replace fixed rows in subplot data
+subplot <- subplot |> 
+  filter(!raw.row %in% na.count.0.fix$raw.row) |> 
+  bind_rows(na.count.0.fix)
+
+# Examine non-0 Codes
+na.count.non0 <- na.count |> 
+  filter(Code != "0")
+#   Need to look back at original data sheets to see what is missing
+
+
+# Address NAs in Height ---------------------------------------------------
+
+# Examine NAs for Height
+na.height <- subplot |> 
+  filter(is.na(Height))
+#   Need to look back at original data sheets to see what is missing
 
 
 
