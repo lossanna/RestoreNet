@@ -38,14 +38,14 @@
 #     This is the most specific monitoring IDs get. Observations have the same ID if they were
 #     plants growing in the same plot, observed on the same day. Values range from 1 to 6393, with
 #     9 null IDs (nulls created because Plot info was wrong and duplicated).
-#   SiteDateID: 188 total, values of 1-188
+#   SiteDateID: 187 total, values of 1-187
 #     Unique combinations of Site, Date_Seeded, Date_Monitored columns.
 #     This is used for connecting precipitation data to monitoring events, because precipitation
 #     is measured either as cumulative precip since the last monitoring event, or cumulative precip
 #     since most recent seeding (8 sites were reseeded to repeat experiment). Sometimes the
 #     same SiteDateID does not contain all 36 plots at the site, because sometimes sites took
 #     more than one day to monitor. This specificity is retained in determining precipitation.
-#     Values range from 1 to 188.
+#     Values range from 1 to 187.
 
 # For the most part, for each site there is a single seeding date, 36 plots, and all plots were seeded  
 #   on the same day, and monitored on the same days. There are a few exceptions:

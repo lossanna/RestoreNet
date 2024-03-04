@@ -26,6 +26,10 @@ total.cover.na <- richness.cover |>
 not.seeded.na <- richness.cover |> 
   filter(is.na(Not_Seeded_Cover))
 
+# Remove ones with NAs for now until I can look at raw data sheets and correct them'
+richness.cover <- richness.cover |> 
+  filter(!SiteDatePlotID %in% not.seeded.na$SiteDatePlotID)
+
 # Remove monitoring events not included in 2x2 data
 prism.data.2x2 <- prism.data |> 
   filter(SiteDateID %in% richness.cover$SiteDateID)
@@ -47,7 +51,10 @@ dat <- richness.cover |>
   left_join(since.cv)
 
 # Check for NAs
-apply(cum.pc, 2, anyNA)
+apply(dat, 2, anyNA)
+
+precip.na <- dat |> 
+  filter(is.na(Cum_precip))
 
 
 # Visualize linear relationships ------------------------------------------
