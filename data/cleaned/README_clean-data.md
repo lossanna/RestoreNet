@@ -7,10 +7,10 @@ Notes about cleaned data for RAMPS RestoreNet 1.0 project.
 # Directory
 
 ## From `01_curate-species-list.R`
-#### `01_p2x2_species-list_location-dependent_clean.csv`
+#### `01_2x2_species-list_location-dependent_clean.csv`
 
 
-#### `01_p2x2_species-list_location-independent_clean.csv`
+#### `01_2x2_species-list_location-independent_clean.csv`
 
 #### `01_species-list_location-dependent_clean.csv`
 

@@ -814,11 +814,11 @@ p2x2.codes.in.dup <- p2x2.codes.in %>%
 # OUTPUT: list of location-independent species from 2x2 that need a duplicate row 
 #   (CodeOriginal includes more than one species)
 write_csv(p2x2.codes.in.dup,
-          file = "data/data-wrangling-intermediate/01a_output-species9_p2x2-location-independent-need-duplicate-number.csv")
+          file = "data/data-wrangling-intermediate/01a_output-species9_2x2-location-independent-need-duplicate-number.csv")
 
 # EDITED: list of location-independent species from 2x2 with DuplicateNum col
 #   This was much easier to just do manually than to try and do in R
-p2x2.codes.in.dup <- read_csv("data/data-wrangling-intermediate/01b_edited-species9_p2x2-location-independent-duplicate-number-added.csv")
+p2x2.codes.in.dup <- read_csv("data/data-wrangling-intermediate/01b_edited-species9_2x2-location-independent-duplicate-number-added.csv")
 
 # Add ones that need duplicates to ones that don't for complete list
 p2x2.codes.in <- p2x2.codes.in |> 
@@ -830,7 +830,7 @@ p2x2.codes.in <- p2x2.codes.in |>
 
 # Write to csv
 write_csv(p2x2.codes.in,
-          file = "data/cleaned/01_p2x2_species-list_location-independent_clean.csv")
+          file = "data/cleaned/01_2x2_species-list_location-independent_clean.csv")
 
 
 
@@ -871,7 +871,7 @@ p2x2.codes.de <- species.de %>%
 
 # Write to csv
 write_csv(p2x2.codes.de,
-          file = "data/cleaned/01_p2x2_species-list_location-dependent_clean.csv")
+          file = "data/cleaned/01_2x2_species-list_location-dependent_clean.csv")
 
 
 

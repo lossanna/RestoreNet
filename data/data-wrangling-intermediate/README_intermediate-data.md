@@ -84,7 +84,7 @@ Notes about `output` and `edited` intermediate data files created in data cleani
 - Final manual check of codes for location-dependent species list. Changed values are highlighted and explained in comment.
 - Columns: `Region`, `Site`, `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`.
 
-#### `01a_output-species9_p2x2-location-independent-need-duplicate-number.csv`
+#### `01a_output-species9_2x2-location-independent-need-duplicate-number.csv`
 - List of location-independent codes that need duplicate rows from `2x2` with corrected/finalized species info (created in `edited-species7.csv`). List needs `DuplicateNum` column added, which is easiest to do manually (rather than trying to write a vector in R, which I initially tried to do but it didn't work lol).
 - Duplicate rows needed because a single original code mentions multiple species; hence, the same code will need multiple rows to describe all the information. All duplicate rows needed are included in this table. `subplot` data doesn't need any duplicate rows.
 - Location-dependent rows that needed duplicates were handled solely in R (there were only 4).
@@ -155,7 +155,7 @@ Notes about `output` and `edited` intermediate data files created in data cleani
 - Final fixes to  location-dependent species list. Changed native status for a few unknowns after cross-referencing master species list.
 - Columns: `Region`, `Site`, `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`.
 
-#### `01b_edited-species9_p2x2-location-independent-duplicate-number-added.csv`
+#### `01b_edited-species9_2x2-location-independent-duplicate-number-added.csv`
 - List of location-independent codes that need duplicate rows from `2x2` with corrected/finalized species info (created in `edited-species7.csv`). Manually added `DuplicateNum` column.
 - Duplicate rows needed because a single original code mentions multiple species; hence, the same code will need multiple rows to describe all the information. All duplicate rows needed are included in this table. `subplot` data doesn't need any duplicate rows.
 - Location-dependent rows that needed duplicates were handled solely in R (there were only 4).
