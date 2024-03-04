@@ -1,5 +1,5 @@
 # Created: 2023-09-28
-# Last updated: 2023-10-20
+# Last updated: 2024-03-04
 
 # Purpose: Explore precip trends. Compare actual precip values (from PRISM daily values, see 03.2.R)
 #   with 30-year normals. Actual precip is recorded as either cumulative precip
@@ -114,7 +114,7 @@ month.normal.graph |>
 # Precip since last monitoring event --------------------------------------
 
 
-# Since_last data wrangling -----------------------------------------------
+## Since_last data wrangling -----------------------------------------------
 
 # pivot_longer() and convert NAs to 0 (blank cells are 0)
 normals.since <- normals.since.raw |> 
@@ -158,15 +158,31 @@ since.long <- ppt |>
   mutate(source = "actual") |> 
   bind_rows(normals.since.bind)
 
+
 # Find percent change (deviation from normals)
 since.pc <- ppt |> 
   select(Region, Site, SiteDateID, Date_Seeded, Date_Monitored, Since_last_precip) |> 
   left_join(normals.since) |> 
   mutate(perc_change = (Since_last_precip - ppt_mm) / ppt_mm)
+#   Inf created when there was no rain in the time period (can't divide by 0),
+#     but this only occurs when the time period is small and in all cases there is another
+#     monitoring date less than 2 weeks away with a non-Inf percent change.
+
+
+# Find CV of actual and normals
+since.cv.long <- since.long |> 
+  group_by(Region, Site, source) |> 
+  summarise(CV = sd(ppt_mm) / mean(ppt_mm),
+            .groups = "keep")
+since.cv.wide <- since.cv.long |> 
+  pivot_wider(names_from = source, values_from = CV) |> 
+  rename(Actual_CV = actual,
+         Normals_CV = normals) |> 
+  mutate(Difference_CV = Actual_CV - Normals_CV)
 
 
 
-# Since_last graph --------------------------------------------------------
+## Since_last graph --------------------------------------------------------
 
 # All sites
 since.long |> 
@@ -377,7 +393,7 @@ since.pc |>
 # Cumulative precip since seeding -----------------------------------------
 
 
-# Cumulative data wrangling -----------------------------------------------
+## Cumulative data wrangling -----------------------------------------------
 
 # pivot_longer() and convert NAs to 0 (blank cells are 0)
 normals.cum <- normals.cum.raw |> 
@@ -428,9 +444,20 @@ cum.pc <- ppt |>
   mutate(perc_change = (Cum_precip - ppt_mm) / ppt_mm)
 
 
+# Find CV of actual and normals
+cum.cv.long <- cum.long |> 
+  group_by(Region, Site, source) |> 
+  summarise(CV = sd(ppt_mm) / mean(ppt_mm),
+            .groups = "keep")
+cum.cv.wide <- cum.cv.long |> 
+  pivot_wider(names_from = source, values_from = CV) |> 
+  rename(Actual_CV = actual,
+         Normals_CV = normals) |> 
+  mutate(Difference_CV = Actual_CV - Normals_CV)
 
 
-# Cumulative graph --------------------------------------------------------
+
+## Cumulative graph --------------------------------------------------------
 
 # All sites
 cum.long |> 
@@ -619,6 +646,20 @@ cum.pc |>
              linetype = "dashed",
              color = "red")
 
+
+# Write to CSV ------------------------------------------------------------
+
+write_csv(since.pc,
+          file = "data/cleaned/03.3_since-last-precip_percent-deviation-from-norm_clean.csv")
+
+write_csv(cum.pc,
+          file = "data/cleaned/03.3_cumulative-precip_percent-deviation-from-norm_clean.csv")
+
+write_csv(since.cv.wide,
+          file = "data/cleaned/03.3_since-last-precip_CV_clean.csv")
+
+write_csv(cum.cv.wide,
+          file = "data/cleaned/03.3_cumulative-precip_CV_clean.csv")
 
 
 save.image("RData/03.3_explore-precip-trends.RData")
