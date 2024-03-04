@@ -663,3 +663,4 @@ write_csv(cum.cv.wide,
 
 
 save.image("RData/03.3_explore-precip-trends.RData")
+

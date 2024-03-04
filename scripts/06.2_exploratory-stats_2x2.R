@@ -54,7 +54,7 @@ dat <- richness.cover |>
 apply(dat, 2, anyNA)
 
 precip.na <- dat |> 
-  filter(is.na(Cum_precip))
+  filter(is.na(cum_perc_dev))
 
 
 # Visualize linear relationships ------------------------------------------
