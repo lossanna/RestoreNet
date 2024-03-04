@@ -7,7 +7,7 @@ library(tidyverse)
 
 # Load data ---------------------------------------------------------------
 
-richness.cover <- read_csv("data/cleaned/04.2_p2x2-richness-cover_clean.csv")
+richness.cover <- read_csv("data/cleaned/04.2_2x2-richness-cover_clean.csv")
 prism.data <- read_csv("data/cleaned/03.2_monitoring-events-with-PRISM-climate-data_clean.csv")
 cum.cv <- read_csv("data/cleaned/03.3_cumulative-precip_CV_clean.csv")
 cum.pc <- read_csv("data/cleaned/03.3_cumulative-precip_percent-deviation-from-norm_clean.csv")
