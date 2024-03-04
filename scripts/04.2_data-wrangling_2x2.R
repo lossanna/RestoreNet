@@ -1,5 +1,5 @@
 # Created: 2023-09-18
-# Last updated: 2024-02-27
+# Last updated: 2024-03-04
 
 # Purpose: Create 2 clean data tables for 2x2 plot data: one with cover, species richness, 
 #   and PlantSource data (one row for each monitoring event/SiteDatePlotID), and one with 
@@ -663,15 +663,30 @@ empty.plots.not0seeded <- empty.plots.cover |>
 ## Handle cover NAs --------------------------------------------------------
 
 # Check for NAs
-apply(p2x2.richness.cover, 2, anyNA)
+apply(cover, 2, anyNA)
 
 # Seeded cover
 cover.seeded.na <- cover |> 
   filter(is.na(Seeded_Cover))
 
+#   SRER and Patagonia are probably 0 because they are all Control plots
+cover.seeded.na.fix <- cover.seeded.na |> 
+  filter(Region != "Colorado Plateau") |> 
+  mutate(Seeded_Cover = 0)
+cover.seeded.na.fix <- cover.seeded.na.fix |> 
+  mutate(Not_Seeded_Cover = Total_Veg_Cover - Seeded_Cover)
+
+#   Add back in fix to cover data
+cover <- cover |> 
+  filter(!SiteDatePlotID %in% cover.seeded.na.fix$SiteDatePlotID) |> 
+  bind_rows(cover.seeded.na.fix) |> 
+  arrange(SiteDatePlotID)
+
+
 # Total veg cover
 cover.total.na <- cover |> 
-  filter(is.na(Total_Veg_Cover))
+  filter(is.na(Total_Veg_Cover)) # not sure how to fix any of these yet, need raw data sheets
+
 
 
 # Combine 2x2 richness, plantsource, and cover ----------------------------
@@ -693,16 +708,15 @@ p2x2.richness.cover <- left_join(p2x2.richness.cover, cover) |>
 
 
 
-
-
 # Write clean tables ------------------------------------------------------
 
 # List of species present
 write_csv(present_species,
-          file = "data/cleaned/04.2_p2x2-species-present_clean.csv")
+          file = "data/cleaned/04.2_2x2-species-present_clean.csv")
 
 # Richness and cover
 write_csv(p2x2.richness.cover,
-          file = "data/cleaned/04.2_p2x2-richness-cover_clean.csv")
+          file = "data/cleaned/04.2_2x2-richness-cover_clean.csv")
+
 
 save.image("RData/04.2_data-wrangling_2x2.RData")
