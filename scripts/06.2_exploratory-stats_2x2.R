@@ -9,23 +9,51 @@ library(tidyverse)
 
 richness.cover <- read_csv("data/cleaned/04.2_p2x2-richness-cover_clean.csv")
 prism.data <- read_csv("data/cleaned/03.2_monitoring-events-with-PRISM-climate-data_clean.csv")
+cum.cv <- read_csv("data/cleaned/03.3_cumulative-precip_CV_clean.csv")
+cum.pc <- read_csv("data/cleaned/03.3_cumulative-precip_percent-deviation-from-norm_clean.csv")
+since.cv <- read_csv("data/cleaned/03.3_since-last-precip_CV_clean.csv")
+since.pc <- read_csv("data/cleaned/03.3_since-last-precip_percent-deviation-from-norm_clean.csv")
 
 
 # Data wrangling ----------------------------------------------------------
 
+# Check for NAs
+apply(richness.cover, 2, anyNA)
+seeded.cover.na <- richness.cover |> 
+  filter(is.na(Seeded_Cover))
+total.cover.na <- richness.cover |> 
+  filter(is.na(Total_Veg_Cover))
+not.seeded.na <- richness.cover |> 
+  filter(is.na(Not_Seeded_Cover))
+
 # Remove monitoring events not included in 2x2 data
 prism.data.2x2 <- prism.data |> 
   filter(SiteDateID %in% richness.cover$SiteDateID)
+cum.pc.2x2 <- cum.pc |> 
+  filter(SiteDateID %in% richness.cover$SiteDateID) |> 
+  select(Region, Site, SiteDateID, Date_Seeded, Date_Monitored, perc_change) |> 
+  rename(cum_perc_dev = perc_change)
+since.pc.2x2 <- since.pc |> 
+  filter(SiteDateID %in% richness.cover$SiteDateID) |> 
+  select(Region, Site, SiteDateID, Date_Seeded, Date_Monitored, perc_change) |> 
+  rename(since_perc_dev = perc_change)
 
 # Combine
-dat <- left_join(richness.cover, prism.data.2x2)
+dat <- richness.cover |> 
+  left_join(prism.data.2x2) |> 
+  left_join(cum.pc.2x2) |> 
+  left_join(since.pc.2x2) |> 
+  left_join(cum.cv) |> 
+  left_join(since.cv)
 
+# Check for NAs
+apply(cum.pc, 2, anyNA)
 
 
 # Visualize linear relationships ------------------------------------------
 
 # SRER
 dat |> 
-  filter(Site == "SRER") |> 
-  ggplot(aes(x = Cum_precip, y = Seeded_Cover)) +
-  geom_point()
+  ggplot(aes(x = since_perc_dev, y = Seeded_Cover)) +
+  geom_point() +
+  geom_line()

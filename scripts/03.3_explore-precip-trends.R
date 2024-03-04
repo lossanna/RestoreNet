@@ -176,9 +176,9 @@ since.cv.long <- since.long |>
             .groups = "keep")
 since.cv.wide <- since.cv.long |> 
   pivot_wider(names_from = source, values_from = CV) |> 
-  rename(Actual_CV = actual,
-         Normals_CV = normals) |> 
-  mutate(Difference_CV = Actual_CV - Normals_CV)
+  rename(Actual_CV_since = actual,
+         Normals_CV_since = normals) |> 
+  mutate(Difference_CV_since = Actual_CV_since - Normals_CV_since)
 
 
 
@@ -451,9 +451,9 @@ cum.cv.long <- cum.long |>
             .groups = "keep")
 cum.cv.wide <- cum.cv.long |> 
   pivot_wider(names_from = source, values_from = CV) |> 
-  rename(Actual_CV = actual,
-         Normals_CV = normals) |> 
-  mutate(Difference_CV = Actual_CV - Normals_CV)
+  rename(Actual_CV_cum = actual,
+         Normals_CV_cum = normals) |> 
+  mutate(Difference_CV_cum = Actual_CV_cum - Normals_CV_cum)
 
 
 
