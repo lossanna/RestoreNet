@@ -1,5 +1,5 @@
 # Created: 2024-02-27
-# Last updated: 2024-02-27
+# Last updated: 2024-03-04
 
 # Purpose: Begin to examine 2x2 trends as they relate to precip.
 
@@ -53,14 +53,28 @@ dat <- richness.cover |>
 # Check for NAs
 apply(dat, 2, anyNA)
 
-precip.na <- dat |> 
-  filter(is.na(cum_perc_dev))
 
 
 # Visualize linear relationships ------------------------------------------
 
-# SRER
 dat |> 
+  filter(Region == "Sonoran SE") |> 
+  filter(Treatment != "Control") |> 
+  ggplot(aes(x = Cum_precip, y = Seeded_Cover)) +
+  geom_point() +
+  geom_smooth()
+
+
+dat |> 
+  filter(Region == "Sonoran SE") |> 
+  filter(Treatment != "Control") |> 
   ggplot(aes(x = since_perc_dev, y = Seeded_Cover)) +
   geom_point() +
-  geom_line()
+  geom_smooth()
+
+dat |>  
+  filter(Region != "Mojave") |> 
+  filter(Treatment != "Control") |> 
+  ggplot(aes(x = since_perc_dev, y = Seeded_Cover)) +
+  geom_point() +
+  geom_smooth()
