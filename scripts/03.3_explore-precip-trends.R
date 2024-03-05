@@ -167,7 +167,8 @@ since.pd <- ppt |>
          Deviation_mm = ppt_mm - Since_last_precip)
 #   Inf created when there was no rain in the time period (can't divide by 0),
 #     but this only occurs when the time period is small and in all cases there is another
-#     monitoring date less than 2 weeks away with a non-Inf percent change.
+#     monitoring date less than 2 weeks away with a non-Inf percent change. Occurs
+#     at CO Plateau & Utah, where monitoring was more frequent.
 
 
 # Find CV of actual and normals
@@ -444,6 +445,10 @@ cum.pd <- ppt |>
   left_join(normals.cum) |> 
   mutate(Perc_deviation = (Cum_precip - ppt_mm) / ppt_mm,
          Deviation_mm = ppt_mm - Cum_precip)
+#   Inf created when there was no rain in the time period (can't divide by 0),
+#     but this only occurs when the time period is small and in all cases there is another
+#     monitoring date less than 2 weeks away with a non-Inf percent change. Occurs once
+#     at CO Plateau (BarTBar).
 
 
 # Find CV of actual and normals
