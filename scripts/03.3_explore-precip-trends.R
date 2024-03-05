@@ -1,5 +1,5 @@
 # Created: 2023-09-28
-# Last updated: 2024-03-04
+# Last updated: 2024-03-05
 
 # Purpose: Explore precip trends. Compare actual precip values (from PRISM daily values, see 03.2.R)
 #   with 30-year normals. Actual precip is recorded as either cumulative precip
@@ -159,11 +159,12 @@ since.long <- ppt |>
   bind_rows(normals.since.bind)
 
 
-# Find percent change (deviation from normals)
-since.pc <- ppt |> 
+# Find percent deviation from normals
+since.pd <- ppt |> 
   select(Region, Site, SiteDateID, Date_Seeded, Date_Monitored, Since_last_precip) |> 
   left_join(normals.since) |> 
-  mutate(perc_change = (Since_last_precip - ppt_mm) / ppt_mm)
+  mutate(Perc_deviation = (Since_last_precip - ppt_mm) / ppt_mm,
+         Deviation_mm = ppt_mm - Since_last_precip)
 #   Inf created when there was no rain in the time period (can't divide by 0),
 #     but this only occurs when the time period is small and in all cases there is another
 #     monitoring date less than 2 weeks away with a non-Inf percent change.
@@ -194,9 +195,9 @@ since.long |>
   theme_bw() +
   theme(legend.position = "bottom") 
 
-since.pc |> 
-  filter(perc_change != Inf) |> 
-  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+since.pd |> 
+  filter(Perc_deviation != Inf) |> 
+  ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
   geom_point() +
   geom_line() +
   facet_wrap(~Site) +
@@ -204,10 +205,10 @@ since.pc |>
   theme_bw() +
   scale_y_continuous(labels = percent)
 
-since.pc |> 
-  filter(perc_change != Inf,
+since.pd |> 
+  filter(Perc_deviation != Inf,
          Region !="Mojave") |> 
-  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+  ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
   geom_point() +
   geom_line() +
   facet_wrap(~Site) +
@@ -232,10 +233,10 @@ since.long |>
   theme_bw() +
   theme(legend.position = "bottom") 
 
-since.pc |> 
-  filter(perc_change != Inf) |> 
+since.pd |> 
+  filter(Perc_deviation != Inf) |> 
   filter(Region == "Sonoran Central") |> 
-  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+  ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
   geom_point() +
   geom_line() +
   facet_wrap(~Site) +
@@ -257,10 +258,10 @@ since.long |>
   theme_bw() +
   theme(legend.position = "bottom") 
 
-since.pc |> 
-  filter(perc_change != Inf) |> 
+since.pd |> 
+  filter(Perc_deviation != Inf) |> 
   filter(Region == "Sonoran SE") |> 
-  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+  ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
   geom_point() +
   geom_line() +
   facet_wrap(~Site) +
@@ -282,10 +283,10 @@ since.long |>
   theme_bw() +
   theme(legend.position = "bottom")
 
-since.pc |> 
-  filter(perc_change != Inf) |> 
+since.pd |> 
+  filter(Perc_deviation != Inf) |> 
   filter(Region == "Chihuahuan") |> 
-  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+  ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
   geom_point() +
   geom_line() +
   facet_wrap(~Site) +
@@ -307,10 +308,10 @@ since.long |>
   theme_bw() +
   theme(legend.position = "bottom") 
 
-since.pc |> 
-  filter(perc_change != Inf) |> 
+since.pd |> 
+  filter(Perc_deviation != Inf) |> 
   filter(Region == "Mojave") |> 
-  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+  ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
   geom_point() +
   geom_line() +
   facet_wrap(~Site) +
@@ -332,10 +333,10 @@ since.long |>
   theme_bw() +
   theme(legend.position = "bottom") 
 
-since.pc |> 
-  filter(perc_change != Inf) |> 
+since.pd |> 
+  filter(Perc_deviation != Inf) |> 
   filter(Region == "Utah") |> 
-  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+  ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
   geom_point() +
   geom_line() +
   facet_wrap(~Site) +
@@ -357,10 +358,10 @@ since.long |>
   theme_bw() +
   theme(legend.position = "bottom") 
 
-since.pc |> 
-  filter(perc_change != Inf) |> 
+since.pd |> 
+  filter(Perc_deviation != Inf) |> 
   filter(Region == "Colorado Plateau") |> 
-  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+  ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
   geom_point() +
   geom_line() +
   facet_wrap(~Site) +
@@ -371,11 +372,11 @@ since.pc |>
              linetype = "dashed",
              color = "red")
 
-since.pc |> 
-  filter(perc_change != Inf,
+since.pd |> 
+  filter(Perc_deviation != Inf,
          Site != "MOWE") |> 
   filter(Region == "Colorado Plateau") |> 
-  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+  ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
   geom_point() +
   geom_line() +
   facet_wrap(~Site) +
@@ -438,10 +439,11 @@ cum.long <- ppt |>
   bind_rows(normals.cum.bind)
 
 # Find percent change (deviation from normals)
-cum.pc <- ppt |> 
+cum.pd <- ppt |> 
   select(Region, Site, SiteDateID, Date_Seeded, Date_Monitored, Cum_precip) |> 
   left_join(normals.cum) |> 
-  mutate(perc_change = (Cum_precip - ppt_mm) / ppt_mm)
+  mutate(Perc_deviation = (Cum_precip - ppt_mm) / ppt_mm,
+         Deviation_mm = ppt_mm - Cum_precip)
 
 
 # Find CV of actual and normals
@@ -469,9 +471,9 @@ cum.long |>
   theme_bw() +
   theme(legend.position = "bottom") 
 
-cum.pc |> 
-  filter(perc_change != Inf) |> 
-  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+cum.pd |> 
+  filter(Perc_deviation != Inf) |> 
+  ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
   geom_point() +
   geom_line() +
   facet_wrap(~Site) +
@@ -479,10 +481,10 @@ cum.pc |>
   theme_bw() +
   scale_y_continuous(labels = percent)
 
-cum.pc |> 
-  filter(perc_change != Inf,
+cum.pd |> 
+  filter(Perc_deviation != Inf,
          Region !="Mojave") |> 
-  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+  ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
   geom_point() +
   geom_line() +
   facet_wrap(~Site) +
@@ -507,10 +509,10 @@ cum.long |>
   theme_bw() +
   theme(legend.position = "bottom") 
 
-cum.pc |> 
-  filter(perc_change != Inf) |> 
+cum.pd |> 
+  filter(Perc_deviation != Inf) |> 
   filter(Region == "Sonoran Central") |> 
-  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+  ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
   geom_point() +
   geom_line() +
   facet_wrap(~Site) +
@@ -532,10 +534,10 @@ cum.long |>
   theme_bw() +
   theme(legend.position = "bottom") 
 
-cum.pc |> 
-  filter(perc_change != Inf) |> 
+cum.pd |> 
+  filter(Perc_deviation != Inf) |> 
   filter(Region == "Sonoran SE") |> 
-  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+  ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
   geom_point() +
   geom_line() +
   facet_wrap(~Site) +
@@ -557,10 +559,10 @@ cum.long |>
   theme_bw() +
   theme(legend.position = "bottom")
 
-cum.pc |> 
-  filter(perc_change != Inf) |> 
+cum.pd |> 
+  filter(Perc_deviation != Inf) |> 
   filter(Region == "Chihuahuan") |> 
-  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+  ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
   geom_point() +
   geom_line() +
   facet_wrap(~Site) +
@@ -582,10 +584,10 @@ cum.long |>
   theme_bw() +
   theme(legend.position = "bottom") 
 
-cum.pc |> 
-  filter(perc_change != Inf) |> 
+cum.pd |> 
+  filter(Perc_deviation != Inf) |> 
   filter(Region == "Mojave") |> 
-  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+  ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
   geom_point() +
   geom_line() +
   facet_wrap(~Site) +
@@ -607,10 +609,10 @@ cum.long |>
   theme_bw() +
   theme(legend.position = "bottom") 
 
-cum.pc |> 
-  filter(perc_change != Inf) |> 
+cum.pd |> 
+  filter(Perc_deviation != Inf) |> 
   filter(Region == "Utah") |> 
-  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+  ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
   geom_point() +
   geom_line() +
   facet_wrap(~Site) +
@@ -632,10 +634,10 @@ cum.long |>
   theme_bw() +
   theme(legend.position = "bottom") 
 
-cum.pc |> 
-  filter(perc_change != Inf) |> 
+cum.pd |> 
+  filter(Perc_deviation != Inf) |> 
   filter(Region == "Colorado Plateau") |> 
-  ggplot(aes(x = Date_Monitored, y = perc_change)) +
+  ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
   geom_point() +
   geom_line() +
   facet_wrap(~Site) +
@@ -649,10 +651,10 @@ cum.pc |>
 
 # Write to CSV ------------------------------------------------------------
 
-write_csv(since.pc,
+write_csv(since.pd,
           file = "data/cleaned/03.3_since-last-precip_percent-deviation-from-norm_clean.csv")
 
-write_csv(cum.pc,
+write_csv(cum.pd,
           file = "data/cleaned/03.3_cumulative-precip_percent-deviation-from-norm_clean.csv")
 
 write_csv(since.cv.wide,
