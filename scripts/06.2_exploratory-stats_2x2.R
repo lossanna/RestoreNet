@@ -13,6 +13,7 @@ cum.cv <- read_csv("data/cleaned/03.3_cumulative-precip_CV_clean.csv")
 cum.pd <- read_csv("data/cleaned/03.3_cumulative-precip_percent-deviation-from-norm_clean.csv")
 since.cv <- read_csv("data/cleaned/03.3_since-last-precip_CV_clean.csv")
 since.pd <- read_csv("data/cleaned/03.3_since-last-precip_percent-deviation-from-norm_clean.csv")
+ai <- read_csv("data/cleaned/03.4_aridity-index-values_clean.csv")
 
 
 # Data wrangling ----------------------------------------------------------
@@ -44,9 +45,10 @@ since.pd.2x2 <- since.pd |>
   rename(Perc_dev_since = Perc_deviation,
          Dev_mm_since = Deviation_mm)
 
-# Combine
+# Combine all variables
 dat <- richness.cover |> 
   left_join(prism.data.2x2) |> 
+  left_join(ai) |> 
   left_join(cum.pd.2x2) |> 
   left_join(since.pd.2x2) |> 
   left_join(cum.cv) |> 
@@ -57,6 +59,8 @@ apply(dat, 2, anyNA)
 
 
 # Add PlotMix_Climate col
+#   Look at seed mix to see which is the current-adapted and which is the projected mix;
+#     PlotMix names alone cannot be used to group.
 dat <- dat |> 
   mutate(PlotMix_Climate = case_when(
     str_detect(dat$Site, "Creosote|Mesquite|Patagonia|SRER") & 
@@ -80,6 +84,8 @@ dat <- dat |>
     str_detect(dat$Site, "29_Palms|AVRCD|Preserve|SCC|Roosevelt|Pleasant|TLE") & 
       dat$PlotMix == "Warm" ~ "Projected",
     TRUE ~ dat$PlotMix))
+dat$PlotMix_Climate <- factor(dat$PlotMix_Climate, 
+                              levels = c("None", "Current", "Projected"))
 
 
 
@@ -175,6 +181,7 @@ dat |>
 
 
 # Utah
+#   Utah is weird because they didn't take 2x2 data for a lot of it
 dat |> 
   filter(Region == "Utah") |> 
   ggplot(aes(x = Perc_dev_cum, y = Seeded_Cover)) +
@@ -208,3 +215,94 @@ dat |>
   geom_smooth() +
   facet_wrap(~PlotMix_Climate) +
   ggtitle("Colorado Plateau & Utah")
+
+
+
+
+## Number of Weedy by PlotMix_Climate and Cumulative -----------------------
+
+# All sites
+dat |> 
+  ggplot(aes(x = Perc_dev_cum, y = Desirable)) +
+  geom_point() +
+  geom_smooth() +
+  facet_wrap(~PlotMix_Climate) +
+  ggtitle("All sites")
+dat |> 
+  filter(Perc_dev_cum != Inf) |>
+  ggplot(aes(x = Perc_dev_cum, y = Weedy)) +
+  geom_point() +
+  geom_smooth() +
+  facet_wrap(~PlotMix_Climate) + 
+  ggtitle("All sites")
+
+
+# Sonoran Desert
+dat |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Desirable)) +
+  geom_point() +
+  geom_smooth() +
+  facet_wrap(~PlotMix_Climate) +
+  ggtitle("Sonoran Desert")
+dat |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Weedy)) +
+  geom_point() +
+  geom_smooth() +
+  facet_wrap(~PlotMix_Climate) +
+  ggtitle("Sonoran Desert")
+
+
+# CO Plateau
+dat |> 
+  filter(Region == "Colorado Plateau") |>
+  filter(Perc_dev_cum != Inf) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Desirable)) +
+  geom_point() +
+  geom_smooth() +
+  facet_wrap(~PlotMix_Climate) +
+  ggtitle("Colorado Plateau")
+dat |> 
+  filter(Region == "Colorado Plateau") |> 
+  filter(Perc_dev_cum != Inf) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Weedy)) +
+  geom_point() +
+  geom_smooth() +
+  facet_wrap(~PlotMix_Climate) +
+  ggtitle("Colorado Plateau")
+
+
+# Chihuahuan
+dat |> 
+  filter(Region == "Chihuahuan") |> 
+  ggplot(aes(x = Perc_dev_cum, y = Desirable)) +
+  geom_point() +
+  geom_smooth() +
+  facet_wrap(~PlotMix_Climate) +
+  ggtitle("Chihuahuan")
+dat |> 
+  filter(Region == "Chihuahuan") |> 
+  ggplot(aes(x = Perc_dev_cum, y = Weedy)) +
+  geom_point() +
+  geom_smooth() +
+  facet_wrap(~PlotMix_Climate) +
+  ggtitle("Chihuahuan")
+
+# Mojave
+dat |> 
+  filter(Region == "Mojave") |> 
+  ggplot(aes(x = Perc_dev_cum, y = Desirable)) +
+  geom_point() +
+  geom_smooth() +
+  facet_wrap(~PlotMix_Climate) +
+  ggtitle("Mojave")
+dat |> 
+  filter(Region == "Mojave") |> 
+  ggplot(aes(x = Perc_dev_cum, y = Weedy)) +
+  geom_point() +
+  geom_smooth() +
+  facet_wrap(~PlotMix_Climate) +
+  ggtitle("Mojave")
+
+
