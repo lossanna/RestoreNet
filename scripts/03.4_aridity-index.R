@@ -58,5 +58,6 @@ ai <- cbind.data.frame(sites.gps, AridityIndex)
 # Write to CSV ------------------------------------------------------------
 
 write.csv(ai,
-          file = "data/cleaned/03.4_aridity-index-values_clean.csv")
+          file = "data/cleaned/03.4_aridity-index-values_clean.csv",
+          row.names = FALSE)
 
