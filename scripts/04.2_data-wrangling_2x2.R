@@ -1,5 +1,5 @@
 # Created: 2023-09-18
-# Last updated: 2024-03-04
+# Last updated: 2024-03-06
 
 # Purpose: Create 2 clean data tables for 2x2 plot data: one with cover, species richness, 
 #   and PlantSource data (one row for each monitoring event/SiteDatePlotID), and one with 
@@ -528,9 +528,12 @@ nonempty.plots.plantsource <- nonempty.plots.plantsource |>
 
 # Add Weedy and Desirable_recruit cols
 #   Weedy = Unknown_recruit + Invasive
+#   Desirable_recruit = Native_recruit + LikelyNative_recruit
+#   Desirable = Seeded + Native_recruit + LikelyNative_recruit 
 nonempty.plots.plantsource <- nonempty.plots.plantsource |> 
   mutate(Weedy = Unknown_recruit + Invasive,
-         Desirable_recruit = Native_recruit + LikelyNative_recruit)
+         Desirable_recruit = Native_recruit + LikelyNative_recruit,
+         Desirable = Seeded + Native_recruit + LikelyNative_recruit)
 
 # Create equivalent table for empty plots (all 0s)
 empty.plots.plantsource <- empty.plots |> 
@@ -541,7 +544,8 @@ empty.plots.plantsource <- empty.plots |>
          Seeded = 0,
          Invasive = 0,
          Weedy = 0,
-         Desirable_recruit = 0)
+         Desirable_recruit = 0,
+         Desirable = 0)
 
 # Combine empty and non-empty plots
 plantsource <- bind_rows(nonempty.plots.plantsource, empty.plots.plantsource)
@@ -700,7 +704,7 @@ p2x2.richness.cover <- left_join(richness, plantsource)
 p2x2.richness.cover <- left_join(p2x2.richness.cover, cover) |> 
   select(Region, Site, Date_Seeded, Date_Monitored, SiteDateID, Plot, Treatment, PlotMix,
          SiteDatePlotID, raw.row, Richness, Seeded, Native_recruit, LikelyNative_recruit,
-         Unknown_recruit, Invasive, Desirable_recruit, Weedy,
+         Unknown_recruit, Invasive, Desirable_recruit, Weedy, Desirable,
          Seeded_Cover, Total_Veg_Cover, Not_Seeded_Cover) |> 
   arrange(SiteDatePlotID)
 
@@ -720,3 +724,4 @@ write_csv(p2x2.richness.cover,
 
 
 save.image("RData/04.2_data-wrangling_2x2.RData")
+
