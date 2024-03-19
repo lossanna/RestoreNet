@@ -1,5 +1,5 @@
 # Created: 2023-09-28
-# Last updated: 2024-03-05
+# Last updated: 2024-03-18
 
 # Purpose: Explore precip trends. Compare actual precip values (from PRISM daily values, see 03.2.R)
 #   with 30-year normals. Actual precip is recorded as either cumulative precip
@@ -450,6 +450,12 @@ cum.pd <- ppt |>
 #     monitoring date less than 2 weeks away with a non-Inf percent change. Occurs once
 #     at CO Plateau (BarTBar).
 
+# Examine the outliers (extreme percent deviation)
+cum.pd.outlier <- cum.pd |> 
+  filter(Perc_deviation > 2)
+#   Mojave sites in 2020 had extreme deviation from the norm; Mojave sites were monitored
+#     only once a year.
+
 
 # Find CV of actual and normals
 cum.cv.long <- cum.long |> 
@@ -464,9 +470,14 @@ cum.cv.wide <- cum.cv.long |>
 
 
 
+
+
+
+
 ## Cumulative graph --------------------------------------------------------
 
 # All sites
+#   Actuals vs normals (mm of precip)
 cum.long |> 
   ggplot(aes(x = Date_Monitored, y = ppt_mm, color = source)) +
   geom_point() +
@@ -476,6 +487,15 @@ cum.long |>
   theme_bw() +
   theme(legend.position = "bottom") 
 
+#   Percent deviation
+cum.pd |> 
+  filter(Perc_deviation != Inf) |> 
+  ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
+  geom_point() +
+  geom_line() +
+  xlab(NULL) +
+  theme_bw() +
+  scale_y_continuous(labels = percent)
 cum.pd |> 
   filter(Perc_deviation != Inf) |> 
   ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
