@@ -1,9 +1,10 @@
 # Created: 2024-02-27
-# Last updated: 2024-03-05
+# Last updated: 2024-03-06
 
 # Purpose: Begin to examine 2x2 trends as they relate to precip.
 
 library(tidyverse)
+library(lme4)
 
 # Load data ---------------------------------------------------------------
 
@@ -86,6 +87,16 @@ dat <- dat |>
     TRUE ~ dat$PlotMix))
 dat$PlotMix_Climate <- factor(dat$PlotMix_Climate, 
                               levels = c("None", "Current", "Projected"))
+
+
+# Data without NAs
+dat.noInf <- dat |> 
+  filter(Perc_dev_cum != Inf)
+
+
+# Control & Seed treatments only
+dat.seed.trt <- dat.noInf |> 
+  filter(Treatment %in% c("Seed", "Control"))
 
 
 
@@ -306,3 +317,25 @@ dat |>
   ggtitle("Mojave")
 
 
+
+# Linear models -----------------------------------------------------------
+
+# Seeded cover
+# Control & Seed treatments only
+dat.seed.trt |>
+  ggplot(aes(x = Perc_dev_cum, y = Seeded_Cover)) +
+  geom_point() +
+  facet_wrap(~Treatment)
+lm.seeded1 <- lm(Seeded_Cover ~ Perc_dev_cum + Treatment, 
+                 data = dat.seed.trt)
+summary(lm.seeded1)
+
+lm.seeded2 <- lm(Seeded_Cover ~ Perc_dev_cum + Treatment + AridityIndex, 
+                 data = dat.seed.trt)
+summary(lm.seeded2)
+
+
+
+
+
+save.image("RData/06.2_exploratory-stats_2x2.RData")
