@@ -1,5 +1,5 @@
 # Created: 2024-03-06
-# Last updated: 2024-03-18
+# Last updated: 2024-03-27
 
 # Purpose: Begin to examine subplot trends as they relate to precip.
 
@@ -94,6 +94,14 @@ dat <- dat |>
     str_detect(dat$PlantSource, "Native_recruit|Likely native_recruit|Seeded") ~ "Desirable",
     TRUE ~ dat$PlantSource))
 
+# Add PlantSource2 column
+unique(dat$PlantSource)
+dat <- dat |> 
+  mutate(PlantSource2 = case_when(
+    dat$PlantSource == "Unknown_recruit" ~ "Recruit",
+    str_detect(dat$PlantSource, "Native_recruit|Likely native_recruit") ~ "Native recruit",
+    TRUE ~ dat$PlantSource))
+
 # Data without Infinity
 dat.noInf <- dat |> 
   filter(Perc_dev_cum != Inf)
@@ -112,9 +120,7 @@ dat2.seed.trt <- dat2 |>
 
 
 
-# Visualize relationships -------------------------------------------------
-
-## Density by PlotMix_Climate, Weedy, and Cumulative -----------------------
+# Initial: Density by PlotMix, Climate, Weedy and Cum precip --------------
 
 # All sites
 #   geom_smooth() default
@@ -318,34 +324,100 @@ dat |>
 
 
 
+
+# 2024-03 draft figures ---------------------------------------------------
+
 ## Density, Control & Seed only --------------------------------------------
 
-# 2024-03 draft figures
+
+# All sites
+#   Although tbh there is probably too much going on in these graphs
+dat2.seed.trt |> 
+  filter(Weedy != "Weedy") |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = AridityIndex,
+                 shape = PlantSource2)) +
+  geom_smooth() +
+  facet_wrap(~PlotMix_Climate) +
+  ggtitle("All sites, desirable species") +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  scale_color_viridis(option ="magma", direction = -1) +
+  scale_shape_manual(values = c(20, 17, 15)) 
+
+seedcon.all.des <- dat2.seed.trt |> 
+  filter(Weedy != "Weedy") |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = PlantSource)) +
+  geom_smooth() +
+  facet_wrap(~PlotMix_Climate) +
+  ggtitle("All sites, desirable species") +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") 
+seedcon.all.des
+seedcon.all.weed <- dat2.seed.trt |> 
+  filter(Weedy != "Desirable") |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = PlantSource)) +
+  geom_smooth() +
+  facet_wrap(~PlotMix_Climate) +
+  ggtitle("All sites, weedy")  +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")
+seedcon.all.weed
+seedcon.all.weed.outrm <- dat2.seed.trt |> 
+  filter(Weedy != "Desirable") |> 
+  filter(Count < 100) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = PlantSource)) +
+  geom_smooth() +
+  facet_wrap(~PlotMix_Climate) +
+  ggtitle("All sites, weedy (outlier removed)")  +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")
+seedcon.all.weed.outrm
+
 
 # Sonoran Desert
 seedcon.sonoran.des <- dat2.seed.trt |> 
   filter(Weedy != "Weedy") |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
-  geom_point(aes(color = PlantSource)) +
+  geom_point(aes(color = PlantSource2,
+                 shape = PlantSource2)) +
   geom_smooth() +
   facet_wrap(~PlotMix_Climate) +
   ggtitle("Sonoran Desert, desirable species") +
+  theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")
+  xlab("Cumulative precip deviation from normals")  +
+  scale_shape_manual(values = c(20, 17, 15)) +
+  scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02"))
 seedcon.sonoran.des
 seedcon.sonoran.weed <- dat2.seed.trt |> 
   filter(Weedy != "Desirable") |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
-  geom_point(aes(color = PlantSource)) +
+  geom_point(aes(color = PlantSource2,
+                 shape = PlantSource2)) +
   geom_smooth() +
   facet_wrap(~PlotMix_Climate) +
-  ggtitle("Sonoran Desert, weedy")  +
+  ggtitle("Sonoran Desert, weedy species")  +
+  theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")
+  xlab("Cumulative precip deviation from normals")  +
+  scale_shape_manual(values = c(20, 15, 17)) +
+  scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77"))
 seedcon.sonoran.weed
 #   Linear model
 dat.seed.trt |> 
@@ -374,26 +446,34 @@ seedcon.co.des <- dat2.seed.trt |>
   filter(Weedy != "Weedy") |> 
   filter(Region == "Colorado Plateau") |> 
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
-  geom_point(aes(color = PlantSource)) +
+  geom_point(aes(color = PlantSource2,
+                 shape = PlantSource2)) +
   geom_smooth() +
   facet_wrap(~PlotMix_Climate) +
   ggtitle("Colorado Plateau, desirable species") +
+  theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")
+  xlab("Cumulative precip deviation from normals")  +
+  scale_shape_manual(values = c(20, 17, 15)) +
+  scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02"))
 seedcon.co.des
 seedcon.co.weed <- dat2.seed.trt |> 
   filter(Weedy != "Desirable") |> 
   filter(Region == "Colorado Plateau") |> 
   filter(Count < 100) |> # removing outliers
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
-  geom_point(aes(color = PlantSource)) +
+  geom_point(aes(color = PlantSource2,
+                 shape = PlantSource2)) +
   geom_smooth() +
   facet_wrap(~PlotMix_Climate) +
-  ggtitle("Colorado Plateau, weedy") +
+  ggtitle("Colorado Plateau, weedy species") +
+  theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")
+  xlab("Cumulative precip deviation from normals")  +
+  scale_shape_manual(values = c(20, 15, 17)) +
+  scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77"))
 seedcon.co.weed
 
 # Utah
