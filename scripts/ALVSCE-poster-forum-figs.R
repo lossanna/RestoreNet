@@ -554,5 +554,124 @@ dat.seed.trt |>
 
 
 
+# Top species in mixes ----------------------------------------------------
+
+# Sonoran Desert
+#   Current
+dat |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Current climate mix",
+         PlantSource == "Seeded") |> 
+  group_by(Code, Name) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep")
+
+#   Projected
+dat |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Projected climate mix",
+         PlantSource == "Seeded") |> 
+  group_by(Code, Name) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep")
+
+# CO Plateau
+#   Current
+#     All sites
+co.current.sum <- dat |> 
+  filter(Region == "Colorado Plateau",
+         PlotMix_Climate == "Current climate mix",
+         PlantSource == "Seeded") |> 
+  group_by(Code, Name) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount))
+
+co.current.count <- dat |> 
+  filter(Region == "Colorado Plateau",
+         PlotMix_Climate == "Current climate mix",
+         PlantSource == "Seeded") |>
+  count(Code) |> 
+  arrange(desc(n))
+
+co.current <- left_join(co.current.sum, co.current.count) |> 
+  mutate(Score = SumCount * n) |> 
+  arrange(desc(Score))
+
+#     By site/mix
+dat |> 
+  filter(Site %in% c("BarTBar", "FlyingM"),
+         PlotMix_Climate == "Current climate mix",
+         PlantSource == "Seeded") |> 
+  group_by(Code, Name) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount))
+
+dat |> 
+  filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb"),
+         PlotMix_Climate == "Current climate mix",
+         PlantSource == "Seeded") |> 
+  group_by(Code, Name) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount))
+
+dat |> 
+  filter(Site == "BabbittPJ",
+         PlotMix_Climate == "Current climate mix",
+         PlantSource == "Seeded") |> 
+  group_by(Code, Name) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount))
+
+dat |> 
+  filter(Site == "TLE",
+         PlotMix_Climate == "Current climate mix",
+         PlantSource == "Seeded") |> 
+  group_by(Code, Name) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount)) # lol nothing grew
+
+
+#   Projected
+#     By site/mix
+dat |> 
+  filter(Site %in% c("BarTBar", "FlyingM"),
+         PlotMix_Climate == "Projected climate mix",
+         PlantSource == "Seeded") |> 
+  group_by(Code, Name) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount))
+
+dat |> 
+  filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb"),
+         PlotMix_Climate == "Projected climate mix",
+         PlantSource == "Seeded") |> 
+  group_by(Code, Name) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount))
+
+dat |> 
+  filter(Site == "BabbittPJ",
+         PlotMix_Climate == "Projected climate mix",
+         PlantSource == "Seeded") |> 
+  group_by(Code, Name) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount))
+
+dat |> 
+  filter(Site == "TLE",
+         PlotMix_Climate == "Projected climate mix",
+         PlantSource == "Seeded") |> 
+  group_by(Code, Name) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount)) # lol nothing grew
 
 save.image("RData/ALVSCE-poster-forum-figs.RData")
