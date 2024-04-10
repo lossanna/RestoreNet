@@ -1,5 +1,5 @@
 # Created: 2024-04-01
-# Last updated: 2024-04-01
+# Last updated: 2024-04-10
 
 # Purpose: Create figures for National Conference on Eco Restoration 2024 poster.
 
@@ -106,18 +106,20 @@ seedcon.sonoran.des <- dat.seed.trt |>
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
   geom_point(aes(color = PlantSource2,
-                 shape = PlantSource2)) +
+                 shape = PlantSource2),
+             size = 2.5,
+             alpha = 0.7) +
   geom_smooth() +
   facet_wrap(~PlotMix_Climate) +
   ggtitle("Sonoran Desert, desirable species") +
-  theme_minimal(base_size = 16) +
+  theme_minimal(base_size = 20) +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
   xlab("Cumulative precip deviation from normals")  +
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
-  theme(plot.margin = margin(t = 0.1, r = 0.1, b = 0.2, l = 0.1, "in")) +
+  theme(plot.margin = margin(t = 0.1, r = 0.1, b = 0.5, l = 0.1, "in")) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5)
 seedcon.sonoran.des
 
@@ -127,19 +129,21 @@ seedcon.sonoran.weed <- dat.seed.trt |>
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
   geom_point(aes(color = PlantSource2,
-                 shape = PlantSource2)) +
+                 shape = PlantSource2),
+             size = 2.5,
+             alpha = 0.7) +
   geom_smooth() +
   facet_wrap(~PlotMix_Climate) +
   ggtitle("Sonoran Desert, weedy species")  +
-  theme_minimal(base_size = 16) +
+  theme_minimal(base_size = 20) +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
   xlab("Cumulative precip deviation from normals")  +
   scale_shape_manual(values = c(20, 15, 17)) +
   scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77")) +
   theme(legend.title = element_blank()) +
-  theme(plot.margin = margin(t = 0.1, r = 0.1, b = 0.2, l = 0.1, "in")) +
-  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5)
+  theme(plot.margin = margin(t = 0.1, r = 0.1, b = 0.5, l = 0.1, "in")) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 seedcon.sonoran.weed
 
 
@@ -150,18 +154,20 @@ seedcon.co.des <- dat.seed.trt |>
   filter(Region == "Colorado Plateau") |> 
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
   geom_point(aes(color = PlantSource2,
-                 shape = PlantSource2)) +
+                 shape = PlantSource2),
+             size = 2.5,
+             alpha = 0.7) +
   geom_smooth() +
   facet_wrap(~PlotMix_Climate) +
   ggtitle("Northern Arizona Plateau, desirable species") +
-  theme_minimal(base_size = 16) +
+  theme_minimal(base_size = 20) +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
   xlab("Cumulative precip deviation from normals")  +
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02"))  +
   theme(legend.title = element_blank()) +
-  theme(plot.margin = margin(t = 0.1, r = 0.1, b = 0.2, l = 0.1, "in")) +
+  theme(plot.margin = margin(t = 0.1, r = 0.1, b = 0.5, l = 0.1, "in")) +
   theme(axis.text.x = element_text(angle = 35)) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5)
 seedcon.co.des
@@ -173,30 +179,33 @@ seedcon.co.weed <- dat.seed.trt |>
   filter(Count < 100) |> # removing outliers
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
   geom_point(aes(color = PlantSource2,
-                 shape = PlantSource2)) +
+                 shape = PlantSource2),
+             size = 2.5,
+             alpha = 0.7) +
   geom_smooth() +
   facet_wrap(~PlotMix_Climate) +
   ggtitle("Northern Arizona Plateau, weedy species") +
-  theme_minimal(base_size = 16) +
+  theme_minimal(base_size = 20) +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
   xlab("Cumulative precip deviation from normals")  +
   scale_shape_manual(values = c(20, 15, 17)) +
   scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77"))  +
   theme(legend.title = element_blank()) +
-  theme(plot.margin = margin(t = 0.1, r = 0.1, b = 0.2, l = 0.1, "in"))  +
+  theme(plot.margin = margin(t = 0.1, r = 0.1, b = 0.5, l = 0.1, "in"))  +
   theme(axis.text.x = element_text(angle = 35)) +
-  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5)
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 seedcon.co.weed
 
 
 # Write to TIFF -----------------------------------------------------------
 
 # Combine into single figure
-tiff("figures/2024-04_NCER/Sonoran_CO-Plateau_combined.tiff", units = "in", height = 13, width = 22, res = 300)
+tiff("figures/2024-04_NCER/Sonoran_CO-Plateau_combined.tiff", units = "in", height = 15, width = 22.5, res = 400)
 ggarrange(seedcon.sonoran.des, seedcon.sonoran.weed, seedcon.co.des, seedcon.co.weed,
           nrow = 2, ncol = 2,
-          labels = c("(A)", "(B)", "(C)", "(D)"))
+          labels = c("(A)", "(B)", "(C)", "(D)"),
+          font.label = list(size = 24))
 dev.off()
 
 
