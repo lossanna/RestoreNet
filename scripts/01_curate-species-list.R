@@ -1,5 +1,5 @@
 # Created: 2023-09-18
-# Last updated: 2023-10-20
+# Last updated: 2024-04-29
 
 # Purpose: Curate a complete species list with Code, Code Original, Name, Native, Duration, Lifeform info.
 #   Two lists must be created, a location-independent version (known species), and a 
@@ -44,8 +44,8 @@ native.fix <- read_csv("data/data-wrangling-intermediate/01-dependency_seeded-sp
 # For manual edits to CSVs, the CSV is written from R, copied and named a new name, edited, 
 #   and new file is read into R.
 
-# Files in the format "output-species_xx.csv" are ones written from R.
-# Files in the format "edited-species_xx.csv" are manually edited and read back in as new objects,
+# Files in the format "output_xx.csv" are ones written from R.
+# Files in the format "edited_xx.csv" are manually edited and read back in as new objects,
 #   but then usually used to alter existing objects.
 #   See README_rawdata.md for more details.
 
@@ -115,7 +115,7 @@ subplot.missing <- subplot %>%
 
 # OUTPUT: write to csv to manually fill in information
 write_csv(subplot.missing,
-          file = "data/data-wrangling-intermediate/01a_output-species1_subplot-codes-missing.csv")
+          file = "data/data-wrangling-intermediate/01a_output1_subplot-codes-missing.csv")
 head(subplot.missing)
 
 # EDITED: manually edit new file to add Name, Native, Lifeform, and Duration cols
@@ -125,7 +125,7 @@ head(subplot.missing)
 #     is generally only found in California, according to USDA Plants. In the subplot data,
 #     the observation of AVCA was also marked seeded.
 #   Also I assumed LILE was LILE3 at CRC because it was marked as seeded and LILE3 was in seed mix
-sub.missing <- read_csv("data/data-wrangling-intermediate/01b_edited-species1_subplot-codes-missing_native-duration-lifeform.csv")
+sub.missing <- read_csv("data/data-wrangling-intermediate/01b_edited1_subplot-codes-missing_native-duration-lifeform.csv")
 head(sub.missing)
 
 
@@ -194,12 +194,12 @@ subplot.in.lifeform.inspect <- subplot.in.lifeform |>
 
 # OUTPUT: list of lifeform info according to subplot data
 write_csv(subplot.in.lifeform.inspect,
-          file = "data/data-wrangling-intermediate/01a_output-species2_subplot-lifeform-info.csv")
+          file = "data/data-wrangling-intermediate/01a_output2_subplot-lifeform-info.csv")
 
 # EDITED: delete incorrect rows so there is only one lifeform assignment per code
 #   Fix conflicting lifeform according to USDA Plants
 #   Standardize spelling of lifeform to Grass, Forb, or Shrub
-subplot.in.duplicate <- read_csv("data/data-wrangling-intermediate/01b_edited-species2_subplot-lifeform-info-corrected.csv")
+subplot.in.duplicate <- read_csv("data/data-wrangling-intermediate/01b_edited2_subplot-lifeform-info-corrected.csv")
 
 subplot.in.lifeform <- subplot.in.lifeform |> 
   filter(!CodeOriginal %in% subplot.in.duplicate$CodeOriginal) |> 
@@ -225,11 +225,11 @@ lifeform.na <- species.m.known %>%
   arrange(CodeOriginal)
 
 write_csv(lifeform.na,
-          file = "data/data-wrangling-intermediate/01a_output-species3_xlsx_lifeform-na.csv")
+          file = "data/data-wrangling-intermediate/01a_output3_xlsx_lifeform-na.csv")
 head(lifeform.na)
 
 # EDITED: manually edit new file and fill in Lifeform col
-lifeform.na.edit <- read_csv("data/data-wrangling-intermediate/01b_edited-species3_xlsx_lifeform-na.csv")
+lifeform.na.edit <- read_csv("data/data-wrangling-intermediate/01b_edited3_xlsx_lifeform-na.csv")
 head(lifeform.na.edit)
 
 # Add newly edited lifeform data to existing list
@@ -261,13 +261,13 @@ unique(species.m.known$Lifeform) # Lifeform names have been standardized
 
 # OUTPUT: write output with Native and Lifeform columns
 write_csv(species.m.known,
-          file = "data/data-wrangling-intermediate/01a_output-species4_xlsx_native-lifeform.csv")
+          file = "data/data-wrangling-intermediate/01a_output4_xlsx_native-lifeform.csv")
 head(species.m.known)
 
 # EDITED: edit new file manually to add Duration
 #   Also delete 2 duplicate rows (BOAR & SATR12) with misspelled name/updated name (correct row remains)
 #     and add row of all 0s for empty plots
-species.m.known <- read_csv("data/data-wrangling-intermediate/01b_edited-species4_xlsx_native-lifeform-duration.csv")
+species.m.known <- read_csv("data/data-wrangling-intermediate/01b_edited4_xlsx_native-lifeform-duration.csv")
 head(species.m.known)
 
 
@@ -383,7 +383,7 @@ species.de <- bind_rows(species.m.unk, sub.missing.unk) |>
 
 # OUTPUT: write to CSV to fill in information for species.m.unk
 write_csv(species.de,
-          file = "data/data-wrangling-intermediate/01a_output-species5.1_location-dependent.csv")
+          file = "data/data-wrangling-intermediate/01a_output5.1_location-dependent.csv")
 head(species.de) # contains Name & Native
 
 # OUTPUT: extract Site information for species.m.unk to add to location-dependent list
@@ -395,7 +395,7 @@ sites.m.unk <- subplot %>%
   arrange(Region) %>% 
   arrange(CodeOriginal)
 write_csv(sites.m.unk,
-          file = "data/data-wrangling-intermediate/01a_output-species5.2_location-dependent_xlsx_sites.csv")
+          file = "data/data-wrangling-intermediate/01a_output5.2_location-dependent_xlsx_sites.csv")
 head(sites.m.unk) # contains Site
 
 # Look for NA codes that were observations in subplot data
@@ -410,11 +410,11 @@ filter(subplot, CodeOriginal == "NA")|>
 
 # EDITED: manually add/correct Site, Native, Duration, and Lifeform cols
 #   Use 5.1 as skeleton to edit
-#   Delete rows that do not appear in subplot data (don't appear in output-species5.2.csv)
+#   Delete rows that do not appear in subplot data (don't appear in output5.2.csv)
 #   Create extra rows for unknowns (they are defined by Region but need a row for each Site), as cross-referenced 
-#     with output-species5.2.csv)
+#     with output5.2.csv)
 #   Manually add row for NA code that was actually an observation of a plant
-species.de <- read_csv("data/data-wrangling-intermediate/01b_edited-species5_location-dependent_native-duration-lifeform.csv")
+species.de <- read_csv("data/data-wrangling-intermediate/01b_edited5_location-dependent_native-duration-lifeform.csv")
 head(species.de)
 
 
@@ -564,7 +564,7 @@ p2x2.codes.missing <- p2x2.codes %>%
 
 # OUTPUT: create list of sites and codes that need more info
 write_csv(p2x2.codes.missing,
-          file = "data/data-wrangling-intermediate/01a_output-species6_codes-missing-2x2plot.csv")
+          file = "data/data-wrangling-intermediate/01a_output6_codes-missing-2x2plot.csv")
 head(p2x2.codes.missing)
 
 # EDITED: add/correct Native, Duration, Lifeform info
@@ -573,7 +573,7 @@ head(p2x2.codes.missing)
 #     they can be considered location independent
 #   Cross reference ambiguous codes with master species list and notes from raw 2x2 data
 #   Changed CRES1 to CRES11 because there's no such thing as CRES1 and CRES11 was seeded at the site
-p2x2.codes.missing <- read_csv("data/data-wrangling-intermediate/01b_edited-species6_codes-missing-2x2plot.csv")
+p2x2.codes.missing <- read_csv("data/data-wrangling-intermediate/01b_edited6_codes-missing-2x2plot.csv")
 head(p2x2.codes.missing)
 
 
@@ -713,12 +713,12 @@ species.in %>%
 
 # OUTPUT: Final manual check of location-independent species list
 write_csv(species.in,
-          file = "data/data-wrangling-intermediate/01a_output-species7_location-independent-final-check.csv")
+          file = "data/data-wrangling-intermediate/01a_output7_location-independent-final-check.csv")
 
 # EDITED: fixed a few codes 
 #   Changed a few codes with wrong numbers (ELEL5 and SPAM2)
 #   Changed codes that did not match USDA Plants code (EUAB, EUME3, URLI5)
-species.in <- read_xlsx("data/data-wrangling-intermediate/01b_edited-species7_location-independent-final-fix.xlsx")
+species.in <- read_xlsx("data/data-wrangling-intermediate/01b_edited7_location-independent-final-fix.xlsx")
 
 # Write to csv
 write_csv(species.in,
@@ -750,11 +750,11 @@ species.de %>%
 
 # OUTPUT: Final manual check of location-dependent species list; look for duplicate codes
 write_csv(species.de,
-          file = "data/data-wrangling-intermediate/01a_output-species8_location-dependent-final-check.csv")
+          file = "data/data-wrangling-intermediate/01a_output8_location-dependent-final-check.csv")
 
 # EDITED: remove rows that are (functionally) duplicates
 #   See Excel file textbox for changes
-species.de <- read_xlsx("data/data-wrangling-intermediate/01b_edited-species8_location-dependent-final-fix.xlsx")
+species.de <- read_xlsx("data/data-wrangling-intermediate/01b_edited8_location-dependent-final-fix.xlsx")
 
 # Write to csv
 write_csv(species.de,
@@ -814,11 +814,11 @@ p2x2.codes.in.dup <- p2x2.codes.in %>%
 # OUTPUT: list of location-independent species from 2x2 that need a duplicate row 
 #   (CodeOriginal includes more than one species)
 write_csv(p2x2.codes.in.dup,
-          file = "data/data-wrangling-intermediate/01a_output-species9_2x2-location-independent-need-duplicate-number.csv")
+          file = "data/data-wrangling-intermediate/01a_output9_2x2-location-independent-need-duplicate-number.csv")
 
 # EDITED: list of location-independent species from 2x2 with DuplicateNum col
 #   This was much easier to just do manually than to try and do in R
-p2x2.codes.in.dup <- read_csv("data/data-wrangling-intermediate/01b_edited-species9_2x2-location-independent-duplicate-number-added.csv")
+p2x2.codes.in.dup <- read_csv("data/data-wrangling-intermediate/01b_edited9_2x2-location-independent-duplicate-number-added.csv")
 
 # Add ones that need duplicates to ones that don't for complete list
 p2x2.codes.in <- p2x2.codes.in |> 

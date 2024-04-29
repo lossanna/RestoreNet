@@ -1,5 +1,5 @@
 Created: 2023-09-18  
-Last updated: 2023-10-20
+Last updated: 2024-04-29
   
 Notes about `output` and `edited` intermediate data files created in data cleaning for RAMPS RestoreNet project.
 
@@ -45,65 +45,65 @@ Notes about `output` and `edited` intermediate data files created in data cleani
 
 ## From `01_curate-species-list.R`
 ### Output
-#### `01a_output-species1_subplot-codes-missing.csv`
+#### `01a_output1_subplot-codes-missing.csv`
 - List of codes included in the `subplot` data, but are missing from the the original master species list.
 - Columns: `Region`, `Site`, `CodeOriginal`.
 
-#### `01a_output-species2_subplot-lifeform-info.csv`
+#### `01a_output2_subplot-lifeform-info.csv`
 - List of codes and accompanying lifeform information based on the `subplot` data, where a code and the functional type was recorded.
 - Columns: `CodeOriginal`, `Lifeform`.
 
-#### `01a_output-species3_xlsx_lifeform-na.csv`
+#### `01a_output3_xlsx_lifeform-na.csv`
 - List of species without lifeform information from the master species list.
  	- Lifeform information would have come from `AllSubplotData` tab from `Master.xlsx`.
 - Columns: `CodeOriginal`, `Name`, `Lifeform` (all NAs).
 
-#### `01a_output-species4_xlsx_native-lifeform.csv`
+#### `01a_output4_xlsx_native-lifeform.csv`
 - List of unique location-independent species codes from master species list. All need duration information added.
 - Columns: `CodeOriginal`, `Name`, `Native`, `Lifeform`.
 
-#### `01a_output-species5.1_location-dependent.csv`
-- List of codes for location-dependent species in `subplot` data. First part is from master species list, and is missing site, duration, and lifeform information. Second part is from codes in the `subplot` data missing from the master species list. Site, duration, and lifeform information is already filled out for these (had been manually input into `edited-species1.csv`).
-- `output-species5.1.csv` is used as a skeleton to fill in the missing information for the species in the master list.
+#### `01a_output5.1_location-dependent.csv`
+- List of codes for location-dependent species in `subplot` data. First part is from master species list, and is missing site, duration, and lifeform information. Second part is from codes in the `subplot` data missing from the master species list. Site, duration, and lifeform information is already filled out for these (had been manually input into `edited1.csv`).
+- `output5.1.csv` is used as a skeleton to fill in the missing information for the species in the master list.
 - Columns: `CodeOriginal`, `Name`, `Native`, `Region`, `Site` (partially filled out), `Duration` (partially filled out), `Lifeform` (partially filled out).
 
-#### `01a_output-species5.2_location-dependent_xlsx_sites`
-- List of codes from the master species list, with their site and region information. Used in conjunction with `output-species5.1.csv` to fill in missing site data.
+#### `01a_output5.2_location-dependent_xlsx_sites`
+- List of codes from the master species list, with their site and region information. Used in conjunction with `output5.1.csv` to fill in missing site data.
 - Columns: `CodeOriginal`, `Region`, `Site`.
 
-#### `01a_output-species6_codes-missing-2x2plot.csv`
+#### `01a_output6_codes-missing-2x2plot.csv`
 - List of codes that were in the `2x2` data, but not yet in the species lists for the `subplot` data, which have already been generated/have species info associated with them.
 - Most of the codes are unknowns or descriptions.
 - Columns: `Region`, `Site`, `CodeOriginal`.
 
-#### `01a_output-species7_location-independent-final-check.csv`
+#### `01a_output7_location-independent-final-check.csv`
 - Final manual check of codes for location-independent species list. 
 - Columns: `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`.
 
-#### `01a_output-species8_location-dependent-final-check.csv`
+#### `01a_output8_location-dependent-final-check.csv`
 - Final manual check of codes for location-dependent species list. Changed values are highlighted and explained in comment.
 - Columns: `Region`, `Site`, `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`.
 
-#### `01a_output-species9_2x2-location-independent-need-duplicate-number.csv`
-- List of location-independent codes that need duplicate rows from `2x2` with corrected/finalized species info (created in `edited-species7.csv`). List needs `DuplicateNum` column added, which is easiest to do manually (rather than trying to write a vector in R, which I initially tried to do but it didn't work lol).
+#### `01a_output9_2x2-location-independent-need-duplicate-number.csv`
+- List of location-independent codes that need duplicate rows from `2x2` with corrected/finalized species info (created in `edited7.csv`). List needs `DuplicateNum` column added, which is easiest to do manually (rather than trying to write a vector in R, which I initially tried to do but it didn't work lol).
 - Duplicate rows needed because a single original code mentions multiple species; hence, the same code will need multiple rows to describe all the information. All duplicate rows needed are included in this table. `subplot` data doesn't need any duplicate rows.
 - Location-dependent rows that needed duplicates were handled solely in R (there were only 4).
 - Columns: `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`. `NeedsItsDuplicate`.
 
 ### Edited
-#### `01b_edited-species1_subplot-codes-missing.csv`
+#### `01b_edited1_subplot-codes-missing.csv`
 - List of codes included in the raw `subplot` data, but are missing from the the original master species list (`from-Master-species-list-with-native-status_LO.xlsx`).
 - Manually edited to add plant name, duration, and lifeform based on USDA Plants.
 - Not divided by location dependence, but ones that will be location-dependent (unknowns) have sites added to the name.
 - Row length: edited list is the same length as output list.
 - Columns: `Region`, `Site`, `CodeOriginal`, `Name` (added), `Native` (added), `Duration` (added), `Lifeform` (added).
 
-#### `01b_edited-species2_subplot-lifeform-info-corrected.csv`
+#### `01b_edited2_subplot-lifeform-info-corrected.csv`
 - List of codes and their lifeform information, as taken from the `subplot` data. I deleted rows with incorrect information, so there would be only one assignment per `CodeOriginal` (this includes standardized spelling of Grass/Forb/Shrub).
 - Row length: edited is shorter than output, because output includes duplicates with wrong information.
 - Columns: `CodeOriginal`, `Lifeform` (edited).
 
-#### `01b_edited-species3_xlsx_lifeform-na.csv`
+#### `01b_edited3_xlsx_lifeform-na.csv`
 - List of species originally without lifeform information. Subset of codes is taken only codes from the master species list.
 	- Lifeform information would have come from raw `subplot` data (`AllSubplotData` tab from `Master.xlsx`).
 - Manually edited to assign missing lifeform (functional group) information.
@@ -112,17 +112,17 @@ Notes about `output` and `edited` intermediate data files created in data cleani
 - Row length: edited list is the same length as output list.
 - Columns: `CodeOriginal`, `Name`, `Lifeform` (edited).
 
-#### `01b_edited-species4_xlsx_native-lifeform-duration.csv`
+#### `01b_edited4_xlsx_native-lifeform-duration.csv`
 - List of codes taken from master species list. Species have native and lifeform information, but need duration information added.
 - Manually edited to add plant duration, based on USDA Plants.
 - Manually edited to resolve conflicting/misspelled names for BOAR and SATR12 to remove duplicates.
 - Row length: edited list is 2 rows less than output list (2 rows removed).
 - Columns: `CodeOriginal`, `Name`, `Native`, `Duration` (added), `Lifeform`.
 
-#### `01b_edited-species5_location-dependent_native-duration-lifeform.csv`
+#### `01b_edited5_location-dependent_native-duration-lifeform.csv`
 - List of `subplot` location-dependent codes.
-	- Unknowns from master species list lack site, duration, and lifeform information. `Duration` and `Lifeform` are assigned according to USDA Plants, and `Site` comes from `output-species5.2.csv`.
-	- Unknowns from the subplot data that were not in the master species list contain all information because all information was added in `edited-species1.csv`.
+	- Unknowns from master species list lack site, duration, and lifeform information. `Duration` and `Lifeform` are assigned according to USDA Plants, and `Site` comes from `output5.2.csv`.
+	- Unknowns from the subplot data that were not in the master species list contain all information because all information was added in `edited1.csv`.
 - Manually added a row for a subplot observation that has an NA code but is an actual observation of a plant (there is just one in row 12576).
 - Add rows when there are species with the same code and name at different sites within the same region. 
 - Delete duplicate rows of the same species with the same codes at the same sites but with different names and retain the more specific name (this happens because there were were multiple entries in the master species list).
@@ -132,7 +132,7 @@ Notes about `output` and `edited` intermediate data files created in data cleani
 - Row length: edited is longer than either output, because rows needed to be added for species with the same code and name, but at different sites within the same region.
 - Columns: `CodeOriginal`, `Name`, `Native`, `Region`, `Site` (edited), `Duration` (edited), `Lifeform` (edited).
 
-#### `01b_edited-species6_codes-missing-2x2plot.csv`
+#### `01b_edited6_codes-missing-2x2plot.csv`
 - List of codes that were in the `2x2` plot data, but not yet in the species lists for the `subplot` data, which have already been generated.
 - Most of the codes are unknowns or descriptions; long codes that are basically descriptions and mention multiple species have multiple rows for the same code, and a column marks if there is a duplicate that is needed. All of these codes came from the Sonoran SE sites. Most other sites had a standard USDA code marked in multiple columns all named `Additional_Species_In_Plot` in the original raw `2x2` data.
 	+ The Sonoran SE plots were difficult to identify, so longer explanations were needed.
@@ -146,17 +146,17 @@ Notes about `output` and `edited` intermediate data files created in data cleani
 - Row length: the edited version is much longer than the output, because of necessary duplicate rows.
 - Columns: `Region`, `Site`, `CodeOriginal`, `NeedsItsDuplicate` (added), `DuplicateNum` (added), `Code` (added), `Name` (added), `Native` (added), `Duration` (added), `Lifeform` (added), `LocationDependence` (added).
 
-#### `01b_edited-species7_location-independent-final-fix.xlsx`
+#### `01b_edited7_location-independent-final-fix.xlsx`
 - Final fixes to  location-independent species list. Changes are noted as comments in Excel sheet (standardized codes to be the same as USDA Plants ones).
 - Row length: edited is the same length as output.
 - Columns: `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`.
 
-#### `01b_edited-species8_location-dependent-final-fix.xlsx`
+#### `01b_edited8_location-dependent-final-fix.xlsx`
 - Final fixes to  location-dependent species list. Changed native status for a few unknowns after cross-referencing master species list.
 - Columns: `Region`, `Site`, `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`.
 
-#### `01b_edited-species9_2x2-location-independent-duplicate-number-added.csv`
-- List of location-independent codes that need duplicate rows from `2x2` with corrected/finalized species info (created in `edited-species7.csv`). Manually added `DuplicateNum` column.
+#### `01b_edited9_2x2-location-independent-duplicate-number-added.csv`
+- List of location-independent codes that need duplicate rows from `2x2` with corrected/finalized species info (created in `edited7.csv`). Manually added `DuplicateNum` column.
 - Duplicate rows needed because a single original code mentions multiple species; hence, the same code will need multiple rows to describe all the information. All duplicate rows needed are included in this table. `subplot` data doesn't need any duplicate rows.
 - Location-dependent rows that needed duplicates were handled solely in R (there were only 4).
 - Row length: edited list has the same number of rows as output.
@@ -226,64 +226,64 @@ Notes about `output` and `edited` intermediate data files created in data cleani
 
 ## From `04.1_data-wrangling_subplot.R`
 ### Output
-#### `04.1a_output-species-seeded1_seeded-not-in-mix_subplot.csv`
+#### `04.1a_output-seeded1_seeded-not-in-mix_subplot.csv`
 - List of species from `subplot` data originally marked as seeded but do not appear on the seed mix list, as matched by `CodeOriginal`.
 - Columns: `Site`, `Region`, `PlotMix`, `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`, `SpeciesSeeded`.
 
-#### `04.1a_output-species-seeded2_seeded-in-mix_subplot.csv`
+#### `04.1a_output-seeded2_seeded-in-mix_subplot.csv`
 - List of species from `subplot` data marked seeded and in at least one of the seed mixes. Need to look at each manually because seed mixes are site-specific.
 - Columns: `Site`, `Region`, `PlotMix`, `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`, `SpeciesSeeded`.
 
-#### `04.1a_output-species-seeded3_unk_subplot.csv`
+#### `04.1a_output-seeded3_unk_subplot.csv`
 - List of species from `subplot` data originally marked as unknown for seeding status.
 - Columns: `Site`, `Region`, `PlotMix`, `CodeOriginal`, `Code`, `Name`, `SpeciesSeeded`.
 
-#### `04.1a_output-species-seeded4_NA_subplot.csv`
+#### `04.1a_output-seeded4_NA_subplot.csv`
 - List of species from `subplot` data originally marked as NA for seeding status.
 - Columns: `Site`, `Region`, `PlotMix`, `CodeOriginal`, `Code`, `Name`, `SpeciesSeeded`.
 
-#### `04.1a_output-species-seeded5_no_subplot.csv`
+#### `04.1a_output-seeded5_no_subplot.csv`
 - List of species from `subplot` data originally marked as not seeded.
 - Columns: `Site`, `Region`, `PlotMix`, `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`, `SpeciesSeeded`.
 
-#### `04.1a_output-species-seeded6_conflicting-SpeciesSeeded.csv`
+#### `04.1a_output-seeded6_conflicting-SpeciesSeeded.csv`
 - After having in theory compiled lists based off of all possible original values from `SpeciesSeeded` column, there were still some conflicts, creating duplicate rows (only `SpeciesSeeded` was conflicting). I couldn't figure out a way to extract all of the duplicate rows, not just half of them, so I filtered the entire list based on `Code`. This also brought in some rows that weren't actually conflicting duplicates, but were codes from a different mix. All of them were unknowns, and the conflict occurred because in some rows in the raw `subplot` data they were marked as seeded, but sometimes they were marked as not seeded.
 - Columns: `Site`, `Region`, `PlotMix`, `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`, `SpeciesSeeded`.
 
 
 ### Edited
-#### `04.1b_edited-species-seeded1_corrected-seeded-not-in-mix_subplot.xlsx`
+#### `04.1b_edited-seeded1_corrected-seeded-not-in-mix_subplot.xlsx`
 - `SpeciesSeeded` column corrected based on seed mixes listed in `from-Master_seed-mix_LO.xlsx`. 
 - Unknowns originally marked as seeded remained marked as seeded.
 - Only changed status if the plant was identified to genus level. Cells that are changed are highlighted.
 - Row length: edited has the same number of rows as output.
 - Columns: `Site`, `Region`, `PlotMix`, `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`, `SpeciesSeeded` (edited).
 
-#### `04.1b_edited-species-seeded2_corrected-seeded-in-mix_subplot.xlsx`
+#### `04.1b_edited-seeded2_corrected-seeded-in-mix_subplot.xlsx`
 - `SpeciesSeeded` column corrected based on site-specific seed mixes. Usually discrepancies are because the `PlotMix` column is conflicting (species weren't included in both warm and cool mixes, so there can only be one for any of them per site, or they were marked seeded in a control plot that didn't receive any seeding).
 - Also standardized `SpeciesSeeded` response to be only "Yes", which created some duplicate rows, but these are retained and dealt with in R.
 - Row length: edited has the same number of rows as output.
 - Columns: `Site`, `Region`, `PlotMix`, `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`, `SpeciesSeeded` (edited).
 
-#### `04.1b_edited-species-seeded3_unk-corrected_subplot.xlsx`
+#### `04.1b_edited-seeded3_unk-corrected_subplot.xlsx`
 - Entire `SpeciesSeeded` column edited to either `No`, `Yes`, or `0`.
 - Unknowns marked as not seeded (`No`).
 - Row length: edited has the same number of rows as output.
 - Columns: `Site`, `Region`, `PlotMix`, `CodeOriginal`, `Code`, `Name`, `SpeciesSeeded` (edited).
 
-#### `04.1b_edited-species-seeded4_NA-corrected_subplot.xlsx`
+#### `04.1b_edited-seeded4_NA-corrected_subplot.xlsx`
 - Entire `SpeciesSeeded` column edited to either `No`, `Yes`, or `0`.
 - `0` assigned if `Code` was `0`, which indicates there was no plant for observation. Unknowns marked as not seeded (`No`).
 - `Yes` assigned to a few identified to species level if they were in that plot's seed mix.
 - Row length: edited has the same number of rows as output.
 - Columns: `Site`, `Region`, `PlotMix`, `CodeOriginal`, `Code`, `Name`, `SpeciesSeeded` (edited).
 
-#### `04.1b_edited-species-seeded5_corrected-not-seeded_subplot.xlsx`
+#### `04.1b_edited-seeded5_corrected-not-seeded_subplot.xlsx`
 - `SpeciesSeeded` column corrected based on site-specific seed mixes. This spreadsheet has 1222 rows and I honestly just went through all of them (most of them did not need to be changed, though).
 - Row length: edited has the same number of rows as output.
 - Columns: `Site`, `Region`, `PlotMix`, `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`, `SpeciesSeeded` (edited).
 
-#### `04.1b_edited-species-seeded6_conflicting-SpeciesSeeded-fixed.xlsx`
+#### `04.1b_edited-seeded6_conflicting-SpeciesSeeded-fixed.xlsx`
 - This list contained rows with conflicting `SpeciesSeeded` information, and a few rows that were not conflicts but was just the same `Code` in a different `PlotMix`. I manually made a new column `Retain` to manually mark which conflicting duplicate rows should be dropped. Because they were all unknowns, I marked them all as not seeded, removing the conflicting duplicate row that said they were seeded.
 - Row length: edited has the same number of rows as output.
 - Columns: `Site`, `Region`, `PlotMix`, `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`, `SpeciesSeeded`, `Retain` (added).
@@ -292,12 +292,12 @@ Notes about `output` and `edited` intermediate data files created in data cleani
 
 ## From `04.2_data-wrangling_2x2.R`
 ### Output
-#### `04.2a_output-species-seeded1_in-mix-need-assignment.csv`
+#### `04.2a_output1_SpeciesSeeded-in-mix-need-assignment.csv`
 - List of `2x2` species (from site-specific plot mixes) not assigned a `SpeciesSeeded` status from the `subplot` data that existed in at least one seed mix. All species not in a seed mix were assigned not seeded, but I also manually looked over the codes and retained a few from SRER that referenced possibly seeded species.
 - Columns: `Region`, `Site`, `PlotMix`, `CodeOriginal`, `Code`, `Name`, `SpeciesSeeded` (all NAs).
 
 ### Edited
-#### `04.2b_edited-species-seeded1_SpeciesSeeded-in-mix-assigned.xlsx`
+#### `04.2b_edited1_SpeciesSeeded-in-mix-assigned.xlsx`
 - Manually edited to assign `SpeciesSeeded` based on site-specific seed mixes (all assigned either `No` or `Yes`).
 - Row length: edited has the same number of rows as output.
 - Columns: `Region`, `Site`, `PlotMix`, `CodeOriginal`, `Code`, `Name`, `SpeciesSeeded` (edited).

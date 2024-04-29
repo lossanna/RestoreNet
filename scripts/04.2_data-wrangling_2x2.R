@@ -1,5 +1,5 @@
 # Created: 2023-09-18
-# Last updated: 2024-03-06
+# Last updated: 2024-04-29
 
 # Purpose: Create 2 clean data tables for 2x2 plot data: one with cover, species richness, 
 #   and PlantSource data (one row for each monitoring event/SiteDatePlotID), and one with 
@@ -303,10 +303,10 @@ ps.ss.mix <- ps.ss.na |>
 
 # OUTPUT: list of species that need SpeciesSeeded assignment
 write_csv(ps.ss.mix,
-          file = "data/data-wrangling-intermediate/04.2a_output-species-seeded1_in-mix-need-assignment.csv")
+          file = "data/data-wrangling-intermediate/04.2a_output1_SpeciesSeeded-in-mix-need-assignment.csv")
 
 # EDITED: manually check if the species was seeded based on site-specific plot mix
-ps.ss.mix <- read_xlsx("data/data-wrangling-intermediate/04.2b_edited-species-seeded1_SpeciesSeeded-in-mix-assigned.xlsx")
+ps.ss.mix <- read_xlsx("data/data-wrangling-intermediate/04.2b_edited1_SpeciesSeeded-in-mix-assigned.xlsx")
 
 
 ## Compile -----------------------------------------------------------------
