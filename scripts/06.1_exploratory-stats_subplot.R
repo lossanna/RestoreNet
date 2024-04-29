@@ -1,5 +1,5 @@
 # Created: 2024-03-06
-# Last updated: 2024-03-27
+# Last updated: 2024-04-29
 
 # Purpose: Begin to examine subplot trends as they relate to precip.
 
@@ -56,51 +56,6 @@ dat <- subplot |>
 # Check for NAs
 apply(dat, 2, anyNA)
 
-
-# Add PlotMix_Climate col
-#   Look at seed mix to see which is the current-adapted and which is the projected mix;
-#     PlotMix names alone cannot be used to group.
-dat <- dat |> 
-  mutate(PlotMix_Climate = case_when(
-    str_detect(dat$Site, "Creosote|Mesquite|Patagonia|SRER") & 
-      dat$PlotMix == "Medium" ~ "Current",
-    str_detect(dat$Site, "Creosote|Mesquite|Patagonia|SRER") & 
-      dat$PlotMix == "Warm" ~ "Projected",
-    str_detect(dat$Site, "AguaFria|MOWE|PEFO|Spiderweb") & 
-      dat$PlotMix == "Med-Warm" ~ "Current",
-    str_detect(dat$Site, "AguaFria|MOWE|PEFO|Spiderweb") & 
-      dat$PlotMix == "Warm" ~ "Projected",
-    str_detect(dat$Site, "BarTBar|FlyingM|CRC|Salt_Desert") & 
-      dat$PlotMix == "Cool-Med" ~ "Current",
-    str_detect(dat$Site, "BarTBar|FlyingM|CRC|Salt_Desert") & 
-      dat$PlotMix == "Med-Warm" ~ "Projected",
-    str_detect(dat$Site, "BabbittPJ|UtahPJ") & 
-      dat$PlotMix == "Cool" ~ "Current",
-    str_detect(dat$Site, "BabbittPJ|UtahPJ") & 
-      dat$PlotMix == "Cool-Med" ~ "Projected",
-    str_detect(dat$Site, "29_Palms|AVRCD|Preserve|SCC|Roosevelt|Pleasant|TLE") & 
-      dat$PlotMix == "Cool" ~ "Current",
-    str_detect(dat$Site, "29_Palms|AVRCD|Preserve|SCC|Roosevelt|Pleasant|TLE") & 
-      dat$PlotMix == "Warm" ~ "Projected",
-    TRUE ~ dat$PlotMix))
-dat$PlotMix_Climate <- factor(dat$PlotMix_Climate, 
-                              levels = c("None", "Current", "Projected"))
-
-# Add Weedy column
-unique(dat$PlantSource)
-dat <- dat |> 
-  mutate(Weedy = case_when(
-    str_detect(dat$PlantSource, "Unknown_recruit|Introduced/Invasive") ~ "Weedy",
-    str_detect(dat$PlantSource, "Native_recruit|Likely native_recruit|Seeded") ~ "Desirable",
-    TRUE ~ dat$PlantSource))
-
-# Add PlantSource2 column
-unique(dat$PlantSource)
-dat <- dat |> 
-  mutate(PlantSource2 = case_when(
-    dat$PlantSource == "Unknown_recruit" ~ "Recruit",
-    str_detect(dat$PlantSource, "Native_recruit|Likely native_recruit") ~ "Native recruit",
-    TRUE ~ dat$PlantSource))
 
 # Data without Infinity
 dat.noInf <- dat |> 

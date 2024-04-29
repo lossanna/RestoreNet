@@ -1,5 +1,5 @@
 # Created: 2023-09-18
-# Last updated: 2024-02-27
+# Last updated: 2024-04-29
 
 # Purpose: Create clean data table for subplot data, with corrected and standardized species information,
 #   and monitoring and plot information, and correct SpeciesSeeded column based on each site-specific
@@ -203,7 +203,7 @@ apply(subplot, 2, anyNA) # NA in Count, Height, SpeciesSeeded is okay
 # Check for all SiteDatePlotIDs
 nrow(monitor.info) # 6384 IDs
 length(unique(subplot$SiteDatePlotID)) == nrow(monitor.info)
-length(unique(subplot$SiteDatePlotID)) # 6338
+length(unique(subplot$SiteDatePlotID)) # 6382 IDs
 (length(unique(subplot$SiteDatePlotID))) + 2 == nrow(monitor.info)
 #   The two missing SiteDatePlotIDs come from the AVRCD events that must be added separately.
 #     These subplots didn't have lines in the raw data, but they were measured and
@@ -446,7 +446,15 @@ subplot2 <- subplot
 
 
 
-# Add PlantSource column --------------------------------------------------
+# Add additional grouping columns -----------------------------------------
+
+# PlantSource: Unknown_recruit, Native_recruit, Introduced/Invasive, Seeded, Likely native_recruit, 0
+# Weedy: Weedy, Desirable, 0  
+# PlantSource2: Recruit, Native_recruit, Introduced/Invasive, Seeded, 0
+# PlotMix_Climate: None, Current, Projected, 0
+
+
+## Add PlantSource & PlantSource2 columns ---------------------------------
 
 # Because plants couldn't always be identified to the species level, H. Farrell
 #   grouped them by Native_Recruited, Invasive, and Seeded. 
@@ -458,7 +466,7 @@ subplot <- subplot |>
   mutate(PlantSource = paste0(subplot$Native, "_", subplot$SpeciesSeeded))
 unique(subplot$PlantSource)
 
-# Create Source column
+# Create PlantSource column
 subplot <- subplot |> 
   mutate(PlantSource = case_when(
     PlantSource == "0_0" ~ "0",
@@ -470,8 +478,66 @@ subplot <- subplot |>
     PlantSource == "Unknown_Yes" ~ "Seeded"))
 unique(subplot$PlantSource)
 
+# Create PlantSource2 column
+unique(subplot$PlantSource)
+subplot <- subplot |> 
+  mutate(PlantSource2 = case_when(
+    subplot$PlantSource == "Unknown_recruit" ~ "Recruit",
+    str_detect(subplot$PlantSource, "Native_recruit|Likely native_recruit") ~ "Native recruit",
+    TRUE ~ subplot$PlantSource))
+unique(subplot$PlantSource2)
 
-# Save intermediate subplot with all correct plant species info,
+
+## Add Weedy column -------------------------------------------------------
+
+# To further simplify weedy vs. desirable species
+
+# Add Weedy column
+unique(subplot$PlantSource)
+subplot <- subplot |> 
+  mutate(Weedy = case_when(
+    str_detect(subplot$PlantSource, "Unknown_recruit|Introduced/Invasive") ~ "Weedy",
+    str_detect(subplot$PlantSource, "Native_recruit|Likely native_recruit|Seeded") ~ "Desirable",
+    TRUE ~ subplot$PlantSource))
+unique(subplot$Weedy)
+
+
+## Add PlotMix_Climate column ---------------------------------------------
+
+# PlotMix names alone cannot be used to group what is climate-adapted and what is current-adapted
+#   because mixes are site-specific, and some mixes that are current-adapted are climate-adapted at other sites
+#   and vise versa.
+# Need ot manually check each site and its seedmix to figure out which is which.
+
+# Add PlotMix_Climate col
+subplot <- subplot |> 
+  mutate(PlotMix_Climate = case_when(
+    str_detect(subplot$Site, "Creosote|Mesquite|Patagonia|SRER") & 
+      subplot$PlotMix == "Medium" ~ "Current",
+    str_detect(subplot$Site, "Creosote|Mesquite|Patagonia|SRER") & 
+      subplot$PlotMix == "Warm" ~ "Projected",
+    str_detect(subplot$Site, "AguaFria|MOWE|PEFO|Spiderweb") & 
+      subplot$PlotMix == "Med-Warm" ~ "Current",
+    str_detect(subplot$Site, "AguaFria|MOWE|PEFO|Spiderweb") & 
+      subplot$PlotMix == "Warm" ~ "Projected",
+    str_detect(subplot$Site, "BarTBar|FlyingM|CRC|Salt_Desert") & 
+      subplot$PlotMix == "Cool-Med" ~ "Current",
+    str_detect(subplot$Site, "BarTBar|FlyingM|CRC|Salt_Desert") & 
+      subplot$PlotMix == "Med-Warm" ~ "Projected",
+    str_detect(subplot$Site, "BabbittPJ|UtahPJ") & 
+      subplot$PlotMix == "Cool" ~ "Current",
+    str_detect(subplot$Site, "BabbittPJ|UtahPJ") & 
+      subplot$PlotMix == "Cool-Med" ~ "Projected",
+    str_detect(subplot$Site, "29_Palms|AVRCD|Preserve|SCC|Roosevelt|Pleasant|TLE") & 
+      subplot$PlotMix == "Cool" ~ "Current",
+    str_detect(subplot$Site, "29_Palms|AVRCD|Preserve|SCC|Roosevelt|Pleasant|TLE") & 
+      subplot$PlotMix == "Warm" ~ "Projected",
+    TRUE ~ subplot$PlotMix))
+subplot$PlotMix_Climate <- factor(subplot$PlotMix_Climate, 
+                              levels = c("None", "Current", "Projected"))
+
+
+# Save intermediate subplot with all correct plant species info, grouping cols added,
 #   but response variables Count and Height not yet addressed
 subplot3 <- subplot
 
@@ -534,6 +600,11 @@ subplot <- subplot |>
 # Examine non-0 Codes
 na.count.non0 <- na.count |> 
   filter(Code != "0")
+
+# OUTPUT: create list of observations with NA for count but a non-0 Code (an actual plant)
+write_csv(na.count.non0,
+          file = "data/data-wrangling-intermediate/04.1a_output7_NA-count-of-non-0-Code.csv")
+
 #   Need to look back at original data sheets to see what is missing
 
 
