@@ -601,7 +601,7 @@ subplot <- subplot |>
 na.count.non0 <- na.count |> 
   filter(Code != "0")
 
-# OUTPUT: create list of observations with NA for count but a non-0 Code (an actual plant)
+# OUTPUT: create list of observations with NA for Count but a non-0 Code (an actual plant)
 write_csv(na.count.non0,
           file = "data/data-wrangling-intermediate/04.1a_output7_NA-count-of-non-0-Code.csv")
 
@@ -613,6 +613,11 @@ write_csv(na.count.non0,
 # Examine NAs for Height
 na.height <- subplot |> 
   filter(is.na(Height))
+
+# OUTPUT: create list of observations with NA for Height and non-0 Code
+write_csv(na.height,
+          file = "data/data-wrangling-intermediate/04.1a_output8_NA-height-of-non-0-Code.csv")
+
 #   Need to look back at original data sheets to see what is missing
 
 

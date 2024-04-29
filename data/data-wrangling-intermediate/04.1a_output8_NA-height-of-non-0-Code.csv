@@ -1,0 +1,56 @@
+Region,Site,Date_Seeded,Date_Monitored,SiteDateID,Plot,Treatment,PlotMix,SiteDatePlotID,CodeOriginal,Code,Name,Native,Duration,Lifeform,Count,Height,raw.row,SpeciesSeeded,PlantSource,PlantSource2,Weedy,PlotMix_Climate
+Utah,CRC,2018-10-17,2019-03-22,164,6,Mulch,Cool-Med,3964,HEMU3,HEMU3,Heliomeris multiflora,Native,Perennial,Forb,1,NA,9950,Yes,Seeded,Seeded,Desirable,Current
+Utah,CRC,2018-10-17,2019-04-05,165,21,Mulch,Cool-Med,4051,SATR12,SATR12,Salsola tragus,Introduced,Annual,Forb,2,NA,10251,No,Introduced/Invasive,Introduced/Invasive,Weedy,Current
+Utah,CRC,2018-10-17,2019-04-05,165,21,Mulch,Cool-Med,4051,LILE3,LILE3,Linum lewisii,Native,Perennial,Forb,1,NA,10252,Yes,Seeded,Seeded,Desirable,Current
+Utah,CRC,2018-10-17,2019-04-05,165,21,Mulch,Cool-Med,4051,S-UNGR3,S-UNGR3.CRC,"Seeded unknown grass 3, CRC",Native,Unknown,Grass,3,NA,10253,Yes,Seeded,Seeded,Desirable,Current
+Utah,CRC,2018-10-17,2019-04-05,165,21,Mulch,Cool-Med,4051,S-UNGR2,S-UNGR2.CRC,"Seeded unknown grass 2, CRC",Native,Unknown,Grass,1,NA,10254,Yes,Seeded,Seeded,Desirable,Current
+Utah,CRC,2018-10-17,2019-04-05,165,21,Mulch,Cool-Med,4051,LILE3,LILE3,Linum lewisii,Native,Perennial,Forb,1,NA,10255,Yes,Seeded,Seeded,Desirable,Current
+Utah,CRC,2018-10-17,2019-04-05,165,21,Mulch,Cool-Med,4051,S-UNGR2,S-UNGR2.CRC,"Seeded unknown grass 2, CRC",Native,Unknown,Grass,2,NA,10256,Yes,Seeded,Seeded,Desirable,Current
+Utah,CRC,2018-10-17,2019-04-05,165,21,Mulch,Cool-Med,4051,S-UNGR2,S-UNGR2.CRC,"Seeded unknown grass 2, CRC",Native,Unknown,Grass,1,NA,10257,Yes,Seeded,Seeded,Desirable,Current
+Utah,CRC,2018-10-17,2019-04-05,165,22,ConMod,Med-Warm,4052,S-UNGR1,S-UNGR1.CRC,"Seeded unknown grass 1, CRC",Native,Unknown,Grass,6,NA,10258,Yes,Seeded,Seeded,Desirable,Projected
+Utah,CRC,2018-10-17,2019-04-05,165,23,Control,None,4053,CHTE2,CHTE2,Chorispora tenella,Introduced,Annual,Forb,7,NA,10259,No,Introduced/Invasive,Introduced/Invasive,Weedy,None
+Utah,CRC,2018-10-17,2019-04-05,165,24,Seed,Med-Warm,4054,S-UNGR1,S-UNGR1.CRC,"Seeded unknown grass 1, CRC",Native,Unknown,Grass,1,NA,10260,Yes,Seeded,Seeded,Desirable,Projected
+Utah,CRC,2018-10-17,2019-04-05,165,24,Seed,Med-Warm,4054,S-UNGR1,S-UNGR1.CRC,"Seeded unknown grass 1, CRC",Native,Unknown,Grass,3,NA,10261,Yes,Seeded,Seeded,Desirable,Projected
+Utah,CRC,2018-10-17,2019-04-05,165,24,Seed,Med-Warm,4054,S-UNGR1,S-UNGR1.CRC,"Seeded unknown grass 1, CRC",Native,Unknown,Grass,5,NA,10262,Yes,Seeded,Seeded,Desirable,Projected
+Utah,CRC,2018-10-17,2019-04-05,165,24,Seed,Med-Warm,4054,CHTE2,CHTE2,Chorispora tenella,Introduced,Annual,Forb,1,NA,10263,No,Introduced/Invasive,Introduced/Invasive,Weedy,Projected
+Utah,CRC,2018-10-17,2019-04-05,165,25,Pits,Cool-Med,4055,SATR12,SATR12,Salsola tragus,Introduced,Annual,Forb,4,NA,10264,No,Introduced/Invasive,Introduced/Invasive,Weedy,Current
+Utah,CRC,2018-10-17,2019-04-05,165,25,Pits,Cool-Med,4055,S-UNGR2,S-UNGR2.CRC,"Seeded unknown grass 2, CRC",Native,Unknown,Grass,1,NA,10265,Yes,Seeded,Seeded,Desirable,Current
+Utah,CRC,2018-10-17,2019-04-05,165,25,Pits,Cool-Med,4055,LILE3,LILE3,Linum lewisii,Native,Perennial,Forb,7,NA,10266,Yes,Seeded,Seeded,Desirable,Current
+Utah,CRC,2018-10-17,2019-04-05,165,25,Pits,Cool-Med,4055,S-UNGR2,S-UNGR2.CRC,"Seeded unknown grass 2, CRC",Native,Unknown,Grass,2,NA,10267,Yes,Seeded,Seeded,Desirable,Current
+Utah,CRC,2018-10-17,2019-04-05,165,26,ConMod,Cool-Med,4056,SATR12,SATR12,Salsola tragus,Introduced,Annual,Forb,3,NA,10268,No,Introduced/Invasive,Introduced/Invasive,Weedy,Current
+Utah,CRC,2018-10-17,2019-04-05,165,26,ConMod,Cool-Med,4056,LILE3,LILE3,Linum lewisii,Native,Perennial,Forb,2,NA,10269,Yes,Seeded,Seeded,Desirable,Current
+Utah,CRC,2018-10-17,2019-04-05,165,26,ConMod,Cool-Med,4056,LILE3,LILE3,Linum lewisii,Native,Perennial,Forb,1,NA,10270,Yes,Seeded,Seeded,Desirable,Current
+Utah,CRC,2018-10-17,2019-04-05,165,26,ConMod,Cool-Med,4056,S-UNFO2,S-UNFO2.CRC,"Seeded unknown forb 2, CRC",Native,Unknown,Forb,1,NA,10271,Yes,Seeded,Seeded,Desirable,Current
+Utah,CRC,2018-10-17,2019-04-05,165,26,ConMod,Cool-Med,4056,S-UNGR2,S-UNGR2.CRC,"Seeded unknown grass 2, CRC",Native,Unknown,Grass,8,NA,10272,Yes,Seeded,Seeded,Desirable,Current
+Utah,CRC,2018-10-17,2019-04-05,165,26,ConMod,Cool-Med,4056,CHTE2,CHTE2,Chorispora tenella,Introduced,Annual,Forb,15,NA,10273,No,Introduced/Invasive,Introduced/Invasive,Weedy,Current
+Utah,Salt_Desert,2018-10-31,2019-04-19,174,5,Pits,Cool-Med,4071,ELEL5,ELEL5,Elymus elymoides,Native,Perennial,Grass,1,NA,10331,Yes,Seeded,Seeded,Desirable,Current
+Utah,Salt_Desert,2018-10-31,2019-04-19,174,25,Mulch,Cool-Med,4091,LILE3,LILE3,Linum lewisii,Native,Perennial,Forb,4,NA,10413,Yes,Seeded,Seeded,Desirable,Current
+Utah,CRC,2018-10-17,2019-04-25,166,13,Seed,Med-Warm,4115,S-UNGR1,S-UNGR1.CRC,"Seeded unknown grass 1, CRC",Native,Unknown,Grass,1,NA,10509,Yes,Seeded,Seeded,Desirable,Projected
+Utah,CRC,2018-10-17,2019-04-25,166,13,Seed,Med-Warm,4115,S-UNGR1,S-UNGR1.CRC,"Seeded unknown grass 1, CRC",Native,Unknown,Grass,2,NA,10510,Yes,Seeded,Seeded,Desirable,Projected
+Utah,CRC,2018-10-17,2019-04-25,166,13,Seed,Med-Warm,4115,S-UNGR4,S-UNGR4.CRC,"Seeded unknown grass 4, CRC",Native,Unknown,Grass,8,NA,10511,Yes,Seeded,Seeded,Desirable,Projected
+Utah,CRC,2018-10-17,2019-04-25,166,14,Pits,Cool-Med,4116,LILE3,LILE3,Linum lewisii,Native,Perennial,Forb,5,NA,10512,Yes,Seeded,Seeded,Desirable,Current
+Utah,CRC,2018-10-17,2019-04-25,166,14,Pits,Cool-Med,4116,S-UNGR2,S-UNGR2.CRC,"Seeded unknown grass 2, CRC",Native,Unknown,Grass,1,NA,10513,Yes,Seeded,Seeded,Desirable,Current
+Utah,CRC,2018-10-17,2019-04-25,166,14,Pits,Cool-Med,4116,S-UNGR2,S-UNGR2.CRC,"Seeded unknown grass 2, CRC",Native,Unknown,Grass,1,NA,10514,Yes,Seeded,Seeded,Desirable,Current
+Utah,CRC,2018-10-17,2019-04-25,166,14,Pits,Cool-Med,4116,S-UNGR2,S-UNGR2.CRC,"Seeded unknown grass 2, CRC",Native,Unknown,Grass,2,NA,10515,Yes,Seeded,Seeded,Desirable,Current
+Utah,Salt_Desert,2018-10-31,2019-05-09,175,5,Pits,Cool-Med,4181,ELEL5,ELEL5,Elymus elymoides,Native,Perennial,Grass,1,NA,10819,Yes,Seeded,Seeded,Desirable,Current
+Utah,Salt_Desert,2018-10-31,2019-05-09,175,11,ConMod,Cool-Med,4187,BRTE,BRTE,Bromus tectorum,Introduced,Annual,Grass,NA,NA,10842,No,Introduced/Invasive,Introduced/Invasive,Weedy,Current
+Utah,CRC,2018-10-17,2019-05-17,167,8,Mulch,Med-Warm,4258,S-UNGR1,S-UNGR1.CRC,"Seeded unknown grass 1, CRC",Native,Unknown,Grass,2,NA,11251,Yes,Seeded,Seeded,Desirable,Projected
+Utah,CRC,2018-10-17,2019-05-17,167,11,Pits,Med-Warm,4261,S-UNGR1,S-UNGR1.CRC,"Seeded unknown grass 1, CRC",Native,Unknown,Grass,3,NA,11265,Yes,Seeded,Seeded,Desirable,Projected
+Utah,CRC,2018-10-17,2019-05-17,167,18,Control,None,4268,CHTE2,CHTE2,Chorispora tenella,Introduced,Annual,Forb,NA,NA,11297,No,Introduced/Invasive,Introduced/Invasive,Weedy,None
+Utah,Salt_Desert,2018-10-31,2019-05-28,176,5,Pits,Cool-Med,4291,ELEL5,ELEL5,Elymus elymoides,Native,Perennial,Grass,1,NA,11401,Yes,Seeded,Seeded,Desirable,Current
+Sonoran SE,SRER,2019-08-09,2021-03-10,152,14,Control,None,4915,BOUSPP,BOUSPP.SRER,"Bouteloua spp., SRER",Native,Unknown,Grass,3,NA,13602,No,Native_recruit,Native recruit,Desirable,None
+Chihuahuan,Mesquite,2020-08-05,2020-11-14,10,207,Mulch,Warm,6024,UnkATCA,UnkATCA.Mesquite,"Unknown shrub; Possible Atriplex canescens, Mesquite",Native,Perennial,Shrub,1,NA,16603,Yes,Seeded,Seeded,Desirable,Projected
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,11,214,Mulch,Warm,6067,Unkgrass,Unkgrass.Mesquite,"Unknown grass, Mesquite",Native,Unknown,Grass,8,NA,16651,No,Native_recruit,Native recruit,Desirable,Projected
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,11,222,Pits,Warm,6075,Unkgrass,Unkgrass.Mesquite,"Unknown grass, Mesquite",Native,Unknown,Grass,2,NA,16659,No,Native_recruit,Native recruit,Desirable,Projected
+Chihuahuan,Mesquite,2020-08-05,2020-12-12,11,224,Mulch,Medium,6077,Unkgrass,Unkgrass.Mesquite,"Unknown grass, Mesquite",Native,Unknown,Grass,6,NA,16661,No,Native_recruit,Native recruit,Desirable,Current
+Chihuahuan,Mesquite,2020-08-05,2021-03-20,12,207,Mulch,Warm,6096,ATCA,ATCA2,Atriplex canescens,Native,Perennial,Shrub,1,NA,16680,Yes,Seeded,Seeded,Desirable,Projected
+Chihuahuan,Mesquite,2020-08-05,2021-03-20,12,207,Mulch,Warm,6096,BAMU,BAMU,Baileya multiradiata,Native,Unknown,Forb,1,NA,16681,Yes,Seeded,Seeded,Desirable,Projected
+Chihuahuan,Mesquite,2020-08-05,2021-10-10,13,216,ConMod,Medium,6141,UNK Fuzzy astr,UNK Fuzzy astr.Mesquite,"Unknown fuzzy aster, Mesquite",Unknown,Unknown,Forb,1,NA,16788,No,Unknown_recruit,Recruit,Weedy,Current
+Mojave,AVRCD,2022-01-17,2022-04-13,117,18,Control,None,6286,AMIN3,AMMEI2,Amsinckia menziesii,Native,Annual,Forb,NA,NA,17737,No,Native_recruit,Native recruit,Desirable,None
+Mojave,AVRCD,2022-01-17,2022-04-13,117,18,Control,None,6286,BRNI,BRNI,Brassica nigra,Introduced,Annual,Forb,NA,NA,17742,No,Introduced/Invasive,Introduced/Invasive,Weedy,None
+Mojave,AVRCD,2022-01-17,2022-04-13,117,36,ConMod,Cool,6304,SIIR,SIIR,Sisymbrium irio,Introduced,Annual,Forb,NA,NA,17822,No,Introduced/Invasive,Introduced/Invasive,Weedy,Current
+Sonoran Central,Pleasant,2019-12-19,2023-03-24,125,19,Mulch,Cool,6330,ERCI6,ERCI6,Erodium cicutarium,Introduced,Annual,Forb,1,NA,17923,No,Introduced/Invasive,Introduced/Invasive,Weedy,Current
+Sonoran Central,Pleasant,2019-12-19,2023-03-24,125,19,Mulch,Cool,6330,SCBA,SCBA,Schismus barbatus,Introduced,Annual,Grass,1,NA,17924,No,Introduced/Invasive,Introduced/Invasive,Weedy,Current
+Sonoran Central,Pleasant,2019-12-19,2023-03-24,125,19,Mulch,Cool,6330,CRYPT,CRYPT.Pleasant,"Cryptantha spp., Pleasant",Native,Unknown,Forb,2,NA,17925,No,Native_recruit,Native recruit,Desirable,Current
+Sonoran Central,Pleasant,2019-12-19,2023-03-24,125,19,Mulch,Cool,6330,CACI2,CACI2,Calandrinia ciliata,Native,Annual,Forb,3,NA,17926,No,Native_recruit,Native recruit,Desirable,Current
+Sonoran Central,Pleasant,2019-12-19,2023-03-24,125,19,Mulch,Cool,6330,PECTO,PECTO,Pectocarya,Native,Annual,Forb,7,NA,17927,No,Native_recruit,Native recruit,Desirable,Current
