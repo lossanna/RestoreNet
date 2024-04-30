@@ -1,5 +1,5 @@
 # Created: 2023-09-18
-# Last updated: 2024-04-29
+# Last updated: 2024-04-30
 
 # Purpose: Create clean data table for subplot data, with corrected and standardized species information,
 #   and monitoring and plot information, and correct SpeciesSeeded column based on each site-specific
@@ -592,10 +592,11 @@ na.count.0.fix <- na.count.0 |>
   mutate(Count = 0,
          Height = 0)
 
-# Replace fixed rows in subplot data
+# Replace fixed rows in subplot data for 0 Codes
 subplot <- subplot |> 
   filter(!raw.row %in% na.count.0.fix$raw.row) |> 
   bind_rows(na.count.0.fix)
+
 
 # Examine non-0 Codes
 na.count.non0 <- na.count |> 
@@ -605,7 +606,19 @@ na.count.non0 <- na.count |>
 write_csv(na.count.non0,
           file = "data/data-wrangling-intermediate/04.1a_output7_NA-count-of-non-0-Code.csv")
 
-#   Need to look back at original data sheets to see what is missing
+# EDITED: manually review scanned original data sheets to check where there are NAs
+#   Not all data sheets were available, so some remain NAs and will have to be removed.
+na.count.non0.fix <- read_xlsx("data/data-wrangling-intermediate/04.1b_edited7_NA-count-of-non-0-Code-corrected.xlsx")
+
+# Replace fixed rows in subplot data for non-0 Codes
+subplot <- subplot |> 
+  filter(!raw.row %in% na.count.non0.fix$raw.row) |> 
+  bind_rows(na.count.non0.fix)
+
+# Remove remaining NAs for non-0 Codes that could not be fixed (scanned data sheet not available)
+subplot <- subplot |> 
+  filter(!is.na(Count))
+
 
 
 # Address NAs in Height ---------------------------------------------------
@@ -618,7 +631,13 @@ na.height <- subplot |>
 write_csv(na.height,
           file = "data/data-wrangling-intermediate/04.1a_output8_NA-height-of-non-0-Code.csv")
 
-#   Need to look back at original data sheets to see what is missing
+# EDITED: manually review scanned original data sheets to check where there are NAs
+#   Not all data sheets were available, so some remain NAs and will have to be removed.
+na.height.fix <- read_xlsx("data/data-wrangling-intermediate/04.1b_edited8_NA-height-of-non-0-Code-corrected.xlsx")
+
+# Nothing actually changed/there were no fixes to data.
+#   All 57 observations have no Height recorded in scanned data sheet, but do have Count,
+#   so we will not drop the rows.
 
 
 
