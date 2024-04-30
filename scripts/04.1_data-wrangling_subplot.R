@@ -5,7 +5,7 @@
 #   and monitoring and plot information, and correct SpeciesSeeded column based on each site-specific
 #     seed mix and plot. 
 #   Essentially, add corrected metadata from 01.R and 02.R to subplot data, 
-#     correct SpeciesSeeded column, and add PlantSource column.
+#     correct SpeciesSeeded column, and add other grouping columns (PlantSource, PlantSource2, Weedy, PlotMix_Climate).
 
 library(readxl)
 library(tidyverse)
