@@ -1,8 +1,8 @@
 # Created: 2023-09-18
-# Last updated: 2024-04-29
+# Last updated: 2024-04-30
 
 # Purpose: Create 2 clean data tables for 2x2 plot data: one with cover, species richness, 
-#   and PlantSource data (one row for each monitoring event/SiteDatePlotID), and one with 
+#   and grouping cols (one row for each monitoring event/SiteDatePlotID), and one with 
 #  the list of species present for each monitoring event (can have multiple rows for SiteDatePlotID).
 
 #  Ensure corrected and standardized species information, and monitoring and plot information,
@@ -25,7 +25,6 @@ monitor.wrong <- read_csv("data/data-wrangling-intermediate/02_2x2-wrong-monitor
 monitor.fixed <- read_csv("data/data-wrangling-intermediate/02_2x2-wrong-monitor-events-corrected.csv")
 monitor.site <- read_csv("data/cleaned/02_corrected-monitoring-info-by-date-and-site_clean.csv")
 subplot <- read_csv("data/cleaned/04.1_subplot-data_clean.csv")
-
 
 
 # Organize columns --------------------------------------------------------
@@ -343,7 +342,15 @@ ps2 <- present_species
 
 
 
-# Add PlantSource column --------------------------------------------------
+# Add additional grouping columns -----------------------------------------
+
+# PlantSource: Unknown_recruit, Native_recruit, Introduced/Invasive, Seeded, Likely native_recruit, 0
+# Weedy: Weedy, Desirable, 0  
+# PlantSource2: Recruit, Native_recruit, Introduced/Invasive, Seeded, 0
+# PlotMix_Climate: None, Current, Projected, 0
+
+
+## Add PlantSource & PlantSource2 columns ---------------------------------
 
 # Because plants couldn't always be identified to the species level, H. Farrell
 #   grouped them by Native_Recruited, Invasive, and Seeded. 
@@ -355,7 +362,7 @@ present_species <- present_species |>
   mutate(PlantSource = paste0(present_species$Native, "_", present_species$SpeciesSeeded))
 unique(present_species$PlantSource)
 
-# Create Source column
+# Create PlantSource column
 present_species <- present_species |> 
   mutate(PlantSource = case_when(
     PlantSource == "0_No" ~ "0",
@@ -366,6 +373,65 @@ present_species <- present_species |>
     PlantSource == "Native/Unknown_No" ~ "Likely native_recruit",
     PlantSource == "Unknown_Yes" ~ "Seeded"))
 unique(present_species$PlantSource)
+
+# Create PlantSource2 column
+unique(present_species$PlantSource)
+present_species <- present_species |> 
+  mutate(PlantSource2 = case_when(
+    present_species$PlantSource == "Unknown_recruit" ~ "Recruit",
+    str_detect(present_species$PlantSource, "Native_recruit|Likely native_recruit") ~ "Native recruit",
+    TRUE ~ present_species$PlantSource))
+unique(present_species$PlantSource2)
+
+
+## Add Weedy column -------------------------------------------------------
+
+# To further simplify weedy vs. desirable species
+
+# Add Weedy column
+unique(present_species$PlantSource)
+present_species <- present_species |> 
+  mutate(Weedy = case_when(
+    str_detect(present_species$PlantSource, "Unknown_recruit|Introduced/Invasive") ~ "Weedy",
+    str_detect(present_species$PlantSource, "Native_recruit|Likely native_recruit|Seeded") ~ "Desirable",
+    TRUE ~ present_species$PlantSource))
+unique(present_species$Weedy)
+
+
+## Add PlotMix_Climate column ---------------------------------------------
+
+# PlotMix names alone cannot be used to group what is climate-adapted and what is current-adapted
+#   because mixes are site-specific, and some mixes that are current-adapted are climate-adapted at other sites
+#   and vise versa.
+# Need ot manually check each site and its seedmix to figure out which is which.
+
+# Add PlotMix_Climate col
+present_species <- present_species |> 
+  mutate(PlotMix_Climate = case_when(
+    str_detect(present_species$Site, "Creosote|Mesquite|Patagonia|SRER") & 
+      present_species$PlotMix == "Medium" ~ "Current",
+    str_detect(present_species$Site, "Creosote|Mesquite|Patagonia|SRER") & 
+      present_species$PlotMix == "Warm" ~ "Projected",
+    str_detect(present_species$Site, "AguaFria|MOWE|PEFO|Spiderweb") & 
+      present_species$PlotMix == "Med-Warm" ~ "Current",
+    str_detect(present_species$Site, "AguaFria|MOWE|PEFO|Spiderweb") & 
+      present_species$PlotMix == "Warm" ~ "Projected",
+    str_detect(present_species$Site, "BarTBar|FlyingM|CRC|Salt_Desert") & 
+      present_species$PlotMix == "Cool-Med" ~ "Current",
+    str_detect(present_species$Site, "BarTBar|FlyingM|CRC|Salt_Desert") & 
+      present_species$PlotMix == "Med-Warm" ~ "Projected",
+    str_detect(present_species$Site, "BabbittPJ|UtahPJ") & 
+      present_species$PlotMix == "Cool" ~ "Current",
+    str_detect(present_species$Site, "BabbittPJ|UtahPJ") & 
+      present_species$PlotMix == "Cool-Med" ~ "Projected",
+    str_detect(present_species$Site, "29_Palms|AVRCD|Preserve|SCC|Roosevelt|Pleasant|TLE") & 
+      present_species$PlotMix == "Cool" ~ "Current",
+    str_detect(present_species$Site, "29_Palms|AVRCD|Preserve|SCC|Roosevelt|Pleasant|TLE") & 
+      present_species$PlotMix == "Warm" ~ "Projected",
+    TRUE ~ present_species$PlotMix))
+present_species$PlotMix_Climate <- factor(present_species$PlotMix_Climate, 
+                                          levels = c("None", "Current", "Projected"))
+
 
 # Save intermediate
 #   Species info correct for additional p2x2 species only, "0" still included
