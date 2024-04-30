@@ -1,5 +1,5 @@
 # Created: 2024-03-06
-# Last updated: 2024-04-29
+# Last updated: 2024-04-30
 
 # Purpose: Begin to examine subplot trends as they relate to precip.
 
@@ -27,12 +27,7 @@ apply(subplot, 2, anyNA)
 count.na <- subplot |> 
   filter(is.na(Count))
 height.na <- subplot |> 
-  filter(is.na(Height))
-
-# Remove ones with NAs for now until I can look at raw data sheets and correct them
-subplot <- subplot |> 
-  filter(!is.na(Count)) |> 
-  filter(!is.na(Height))
+  filter(is.na(Height)) # some have no Height recorded but do have Count
 
 # Reorganize columns for left_join()
 cum.pd.subplot <- cum.pd |> 
@@ -58,6 +53,10 @@ apply(dat, 2, anyNA)
 
 
 # Data without Infinity
+#   Inf created when there was no rain in the time period (can't divide by 0),
+#     but this only occurs when the time period is small and in all cases there is another
+#     monitoring date less than 2 weeks away with a non-Inf percent change. Occurs once
+#     at CO Plateau (BarTBar).
 dat.noInf <- dat |> 
   filter(Perc_dev_cum != Inf)
 
