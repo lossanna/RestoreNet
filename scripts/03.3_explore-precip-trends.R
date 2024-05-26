@@ -453,8 +453,8 @@ cum.pd <- ppt |>
 # Examine the outliers (extreme percent deviation)
 cum.pd.outlier <- cum.pd |> 
   filter(Perc_deviation > 2)
-#   Mojave sites in 2020 had extreme deviation from the norm; Mojave sites were monitored
-#     only once a year.
+#   Mojave sites in 2020 had extreme deviation from the norm (they got a bunch of rain in March-April 2020); 
+#     Mojave sites were monitored only once a year.
 
 
 # Find CV of actual and normals
