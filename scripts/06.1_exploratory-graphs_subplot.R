@@ -1,5 +1,5 @@
 # Created: 2024-03-06
-# Last updated: 2024-04-30
+# Last updated: 2024-06-26
 
 # Purpose: Begin to examine subplot trends as they relate to precip.
 
@@ -550,24 +550,6 @@ dev.off()
 
 
 
-
-
-# Linear models -----------------------------------------------------------
-
-# Count
-# Control & Seed treatments only
-dat.seed.trt |>
-  ggplot(aes(x = Perc_dev_cum, y = Count)) +
-  geom_point() +
-  facet_wrap(~Treatment)
-lm.seeded1 <- lm(Seeded_Cover ~ Perc_dev_cum + Treatment, 
-                 data = dat.seed.trt)
-summary(lm.seeded1)
-
-lm.seeded2 <- lm(Seeded_Cover ~ Perc_dev_cum + Treatment + AridityIndex, 
-                 data = dat.seed.trt)
-summary(lm.seeded2)
-
-save.image("RData/06.1_exploratory-stats_subplot.RData")
+save.image("RData/06.1_exploratory-graphs_subplot.RData")
 
 

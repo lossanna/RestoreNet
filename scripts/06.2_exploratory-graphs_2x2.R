@@ -1,5 +1,5 @@
 # Created: 2024-02-27
-# Last updated: 2024-03-18
+# Last updated: 2024-05-26
 
 # Purpose: Begin to examine 2x2 trends as they relate to precip.
 
@@ -390,24 +390,5 @@ dat |>
 
 
 
-# Linear models -----------------------------------------------------------
 
-# Seeded cover
-# Control & Seed treatments only
-dat.seed.trt |>
-  ggplot(aes(x = Perc_dev_cum, y = Seeded_Cover)) +
-  geom_point() +
-  facet_wrap(~Treatment)
-lm.seeded1 <- lm(Seeded_Cover ~ Perc_dev_cum + Treatment, 
-                 data = dat.seed.trt)
-summary(lm.seeded1)
-
-lm.seeded2 <- lm(Seeded_Cover ~ Perc_dev_cum + Treatment + AridityIndex, 
-                 data = dat.seed.trt)
-summary(lm.seeded2)
-
-
-
-
-
-save.image("RData/06.2_exploratory-stats_2x2.RData")
+save.image("RData/06.2_exploratory-graphs_2x2.RData")
