@@ -5,7 +5,7 @@
 #   Farrell 2023 data (specifically cumulative precipitation, precipitation
 #   since last monitoring event, MAT, and MAP). 
 # Farrell used 800m resolution data for daily values, and I used 4km 
-#   (800m not freely available); Farrell used 2981-2010 normals and I used
+#   (800m not freely available); Farrell used 1981-2010 normals and I used
 #   1991-2020 normals (both at 800m).
 
 
