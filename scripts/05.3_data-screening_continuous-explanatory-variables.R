@@ -101,7 +101,7 @@ qqline(pairs.cont$Elevation_ft)
 # All
 pairs.cont |> 
   select(-Region) |> 
-  ggpairs() # Elevation & MAT strongly correlated; Cum_precip & MAP loosely correlated
+  ggpairs() # Elevation & MAT strongly correlated (R = 0.9); Cum_precip & MAP loosely correlated (R = 0.4)
 
 # By region
 pairs.cont |> 

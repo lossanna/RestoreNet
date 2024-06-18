@@ -1,8 +1,8 @@
 # Created: 2024-03-05
 # Last updated: 2024-03-05
 
-# Purpose: Extract aridity index values (based on annual averages) from the Global Aridity Index 
-#   and Potential Evapotranspiration Database for each site. 
+# Purpose: Extract aridity index values (based on annual averages) from the Global Aridity Index
+#   and Potential Evapotranspiration Database for each site.
 
 # Publication about database: https://doi.org/10.1038/s41597-022-01493-1
 # Database download: https://figshare.com/articles/dataset/Global_Aridity_Index_and_Potential_Evapotranspiration_ET0_Climate_Database_v2/7504448/6
@@ -30,12 +30,14 @@ ai_raster <- raster(x = "C:/Users/liaos/OneDrive - University of Arizona/grad sc
 
 # Create table of GPS coordinates -----------------------------------------
 
-sites.gps <- prism.dat[ , c(1, 2, 7, 6)]
+sites.gps <- prism.dat[, c(1, 2, 7, 6)]
 sites.gps <- sites.gps[!duplicated(sites.gps), ]
 
 # GPS coordinates should be in WGS84 format
-coords <- data.frame(x = sites.gps$Longitude,
-                     y = sites.gps$Latitude)
+coords <- data.frame(
+  x = sites.gps$Longitude,
+  y = sites.gps$Latitude
+)
 
 # Change rasters to spatial points
 ai_points <- SpatialPoints(coords, proj4string = ai_raster@crs)
@@ -44,7 +46,7 @@ ai_points <- SpatialPoints(coords, proj4string = ai_raster@crs)
 
 # Extract values ----------------------------------------------------------
 
-# Extract points 
+# Extract points
 ai_values <- extract(ai_raster, ai_points)
 
 # Multiply by 0.0001 to convert to correct units (as explained in database README)
@@ -58,6 +60,6 @@ ai <- cbind.data.frame(sites.gps, AridityIndex)
 # Write to CSV ------------------------------------------------------------
 
 write.csv(ai,
-          file = "data/cleaned/03.4_aridity-index-values_clean.csv",
-          row.names = FALSE)
-
+  file = "data/cleaned/03.4_aridity-index-values_clean.csv",
+  row.names = FALSE
+)
