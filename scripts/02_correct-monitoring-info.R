@@ -1,5 +1,5 @@
 # Created: 2023-09-18
-# Last updated: 2024-02-13
+# Last updated: 2024-07-22
 
 # Purpose: In comparing the monitoring information from the subplot vs. 2x2 plot data,
 #   there were discrepancies, but there should be only one correct version.
@@ -31,6 +31,8 @@
 # 6. Write out complete corrected monitoring info.
 # 7. Write out separate tables of incorrect events and correct events (with correct SiteDatePlotID) to be
 #     fixed in subplot and 2x2 data during data wrangling.
+# 8. Write separate list of SiteDateID.
+# 9. Write separate list of SitePlotID.
 
 # Types of monitoring IDs
 #   SiteDatePlotID: 6384 total, values of 1-6393
@@ -46,6 +48,11 @@
 #     same SiteDateID does not contain all 36 plots at the site, because sometimes sites took
 #     more than one day to monitor. This specificity is retained in determining precipitation.
 #     Values range from 1 to 187.
+#   SitePlotID: 1068 total, values of 1-1068
+#     Unique combinations of Site, Date_Seeded, Plot columns.
+#     This the number of unique plots (ones that were reseeded twice were counted twice), and
+#     will be used to account for repeat measurements taken from the same plots by having
+#     SitePlotID as a random variable.
 
 # For the most part, for each site there is a single seeding date, 36 plots, and all plots were seeded
 #   on the same day, and monitored on the same days. There are a few exceptions:
@@ -1469,14 +1476,12 @@ nrow(wrong.2x2) == nrow(fix.2x2)
 
 # Write csv of wrong 2x2 monitor data for later 2x2 data wrangling
 write_csv(wrong.2x2,
-  file = "data/data-wrangling-intermediate/02_2x2-wrong-monitor-events.csv"
-)
+  file = "data/data-wrangling-intermediate/02_2x2-wrong-monitor-events.csv")
 
 
 # Write csv of corrected 2x2 monitor data
 write_csv(fix.2x2,
-  file = "data/data-wrangling-intermediate/02_2x2-wrong-monitor-events-corrected.csv"
-)
+  file = "data/data-wrangling-intermediate/02_2x2-wrong-monitor-events-corrected.csv")
 
 
 
@@ -1496,8 +1501,22 @@ monitor.site <- monitor.site |>
 
 # Write csv
 write_csv(monitor.site,
-  file = "data/cleaned/02_corrected-monitoring-info-by-date-and-site_clean.csv"
-)
+  file = "data/cleaned/02_SiteDateID_clean.csv")
+
+
+
+# Create list of SitePlotID -----------------------------------------------
+
+# Will be used as a random effect to account for repeat measures on the same plots.
+
+siteplot.id <- monitor.correct |> 
+  select(Region, Site, Date_Seeded, Plot) |> 
+  distinct(.keep_all = TRUE)
+siteplot.id <- siteplot.id |> 
+  mutate(SitePlotID = 1:nrow(siteplot.id))
+
+write_csv(siteplot.id,
+          file = "data/cleaned/02_SitePlotID_clean.csv")
 
 
 
