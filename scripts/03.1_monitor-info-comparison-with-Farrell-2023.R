@@ -12,7 +12,7 @@ library(tidyverse)
 
 h.subplot.raw <- read_csv("data/Farrell_2023_EcologicalApplications_supp_RestoreNetsubpl/RestoreNet_Subplots_Data.csv")
 monitor.info <- read_csv("data/cleaned/02_corrected-monitoring-info_clean.csv")
-monitor.site <- read_csv("data/cleaned/02_corrected-monitoring-info-by-date-and-site_clean.csv")
+monitor.site <- read_csv("data/cleaned/02_SiteDateID_clean.csv")
 
 
 # Data wrangling ----------------------------------------------------------

@@ -20,8 +20,9 @@ mix <- read_xlsx("data/raw/from-Master_seed-mix_LO.xlsx", sheet = "with-site_R")
 monitor.info <- read_csv("data/cleaned/02_corrected-monitoring-info_clean.csv")
 monitor.wrong <- read_csv("data/data-wrangling-intermediate/02_subplot-wrong-monitor-events.csv")
 monitor.fixed <- read_csv("data/data-wrangling-intermediate/02_subplot-wrong-monitor-events-corrected.csv")
-monitor.site <- read_csv("data/cleaned/02_corrected-monitoring-info-by-date-and-site_clean.csv")
+monitor.site <- read_csv("data/cleaned/02_SiteDateID_clean.csv")
 monitor.add.AVRCD <- read_csv("data/data-wrangling-intermediate/02_subplot-wrong-monitor-events-add-AVRCD.csv")
+monitor.siteplot <- read_csv("data/cleaned/02_SitePlotID_clean.csv")
 
 
 # Organize columns --------------------------------------------------------
@@ -233,17 +234,18 @@ subplot <- bind_rows(subplot, add.AVRCD)
 
 
 
-# Add SiteDateID now that subplot data is complete
+# Add SiteDateID and SitePlotID now that subplot data is complete
 subplot <- left_join(subplot, monitor.site) |>
+  left_join(monitor.siteplot) |> 
   arrange(raw.row)
 
 # Reorder columns again
 subplot <- subplot |>
   select(
-    Region, Site, Date_Seeded, Date_Monitored, SiteDateID, Plot, Treatment, PlotMix, SiteDatePlotID,
+    Region, Site, Date_Seeded, Date_Monitored, SiteDateID, Plot, Treatment, PlotMix, SitePlotID, SiteDatePlotID,
     CodeOriginal, Code, Name, Native, Duration, Lifeform, SpeciesSeeded,
     Count, Height, raw.row
-  )
+    )
 
 # Save intermediate subplot df, which has:
 #   Mojave events added (29 Palms and AVRCD)
@@ -712,6 +714,17 @@ subplot <- subplot |>
 subplot <- subplot |>
   arrange(SiteDatePlotID)
 
+
+# Reorder columns ---------------------------------------------------------
+
+subplot <- subplot |> 
+  select(
+    Region, Site, Date_Seeded, Date_Monitored, SiteDateID, Plot, Treatment, PlotMix, 
+    PlotMix_Climate, SitePlotID, SiteDatePlotID,
+    CodeOriginal, Code, Name, Native, Duration, Lifeform, SpeciesSeeded,
+    PlantSource, PlantSource2, Weedy,
+    Count, Height, raw.row
+  )
 
 
 # Write clean subplot data to csv -----------------------------------------

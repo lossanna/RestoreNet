@@ -20,7 +20,7 @@ prism.normals.raw <- read_xlsx("data/data-wrangling-intermediate/03.2_monitoring
                            sheet = "normals")
 
 monitor.info <- read_csv("data/cleaned/02_corrected-monitoring-info_clean.csv")
-monitor.site <- read_csv("data/cleaned/02_corrected-monitoring-info-by-date-and-site_clean.csv")
+monitor.site <- read_csv("data/cleaned/02_SiteDateID_clean.csv.csv")
 
 
 

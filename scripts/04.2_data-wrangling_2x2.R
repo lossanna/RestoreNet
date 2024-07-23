@@ -23,7 +23,8 @@ mix <- read_xlsx("data/raw/from-Master_seed-mix_LO.xlsx", sheet = "with-site_R")
 monitor.info <- read_csv("data/cleaned/02_corrected-monitoring-info_clean.csv")
 monitor.wrong <- read_csv("data/data-wrangling-intermediate/02_2x2-wrong-monitor-events.csv")
 monitor.fixed <- read_csv("data/data-wrangling-intermediate/02_2x2-wrong-monitor-events-corrected.csv")
-monitor.site <- read_csv("data/cleaned/02_corrected-monitoring-info-by-date-and-site_clean.csv")
+monitor.site <- read_csv("data/cleaned/02_SiteDateID_clean.csv")
+monitor.siteplot <- read_csv("data/cleaned/02_SitePlotID_clean.csv")
 subplot <- read_csv("data/cleaned/04.1_subplot-data_clean.csv")
 
 
@@ -82,6 +83,9 @@ p2x2.wide <- left_join(p2x2.monitor, p2x2.wide)
 
 # Add SiteDateID
 p2x2.wide <- left_join(p2x2.wide, monitor.site)
+
+# Add SitePlotID
+p2x2.wide <- left_join(p2x2.wide, monitor.siteplot)
 
 
 ## Check for missing SiteDatePlotID ----------------------------------------
@@ -808,6 +812,7 @@ p2x2.richness.cover <- left_join(p2x2.richness.cover, cover) |>
 write_csv(present_species,
   file = "data/cleaned/04.2_2x2-species-present_clean.csv"
 )
+
 
 # Richness and cover
 write_csv(p2x2.richness.cover,
