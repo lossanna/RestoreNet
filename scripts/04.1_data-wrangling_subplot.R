@@ -1,5 +1,5 @@
 # Created: 2023-09-18
-# Last updated: 2024-04-30
+# Last updated: 2024-07-29
 
 # Purpose: Create clean data table for subplot data, with corrected and standardized species information,
 #   and monitoring and plot information, and correct SpeciesSeeded column based on each site-specific
@@ -715,6 +715,22 @@ subplot <- subplot |>
   arrange(SiteDatePlotID)
 
 
+# Check for non-integer Count values --------------------------------------
+
+# Check if all the Count values are integers
+all(subplot$Count == floor(subplot$Count)) # FALSE
+
+# Extract non-integer Count values
+subplot$Count[subplot$Count != floor(subplot$Count)] # there is a random 2.5
+non.int <- subplot |> 
+  filter(Count == 2.5)
+#   I checked other Creosote plots during that sampling time and most were <10, so
+#     I am going to round this to 3 (typo was probably not supposed to be 25)
+
+# Correct non-integer value
+subplot$Count[subplot$Count == 2.5] <- 3
+
+
 # Reorder columns ---------------------------------------------------------
 
 subplot <- subplot |> 
@@ -730,8 +746,7 @@ subplot <- subplot |>
 # Write clean subplot data to csv -----------------------------------------
 
 write_csv(subplot,
-  file = "data/cleaned/04.1_subplot-data_clean.csv"
-)
+  file = "data/cleaned/04.1_subplot-data_clean.csv")
 
 
 save.image("RData/04.1_data-wrangling_subplot.RData")
