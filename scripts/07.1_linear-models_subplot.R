@@ -1,17 +1,13 @@
 # Created: 2024-05-26
-# Last updated: 2024-05-29
+# Last updated: 2024-07-29
 
-# Purpose: Run generalized linear models for subplot data.
+# Purpose: Run generalized linear models for subplot data. Check for overdispersion and zero-inflation.
 
 library(tidyverse)
-library(mvabund)
-library(ecostats)
 library(MASS)
-library(pscl)
+library(glmmTMB)
 library(performance)
-library(lmtest)
-library(assessor)
-library(qqplotr)
+library(DHARMa)
 
 # Load data ---------------------------------------------------------------
 
@@ -19,6 +15,7 @@ subplot.raw <- read_csv("data/cleaned/04.1_subplot-data_clean.csv")
 prism.data <- read_csv("data/cleaned/03.2_monitoring-events-with-PRISM-climate-data_clean.csv")
 cum.pd <- read_csv("data/cleaned/03.3_cumulative-precip_percent-deviation-from-norm_clean.csv")
 ai <- read_csv("data/cleaned/03.4_aridity-index-values_clean.csv")
+siteplot.id <- read_csv("data/cleaned/02_SitePlotID_clean.csv")
 
 
 # Data wrangling ----------------------------------------------------------
@@ -65,174 +62,177 @@ pitseed.height <- pitseed |>
 
 # Count -------------------------------------------------------------------
 
-## All variables ----------------------------------------------------------
+# All data ----------------------------------------------------------------
 
 # Poisson
-glm.pos <- glm(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
-                 PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + Cum_precip,
-               data = pitseed, family = "poisson")
-summary(glm.pos)
-#   overdispersion according to residual deviance/degrees freedom
-check_overdispersion(glm.pos) # overdispersion detected
-check_zeroinflation(glm.pos) # zero-inflation detected
-
-# Quasi-Poisson
-glm.quasi <- glm(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
-                   PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + Cum_precip,
-                 data = pitseed, family = "quasipoisson")
-summary(glm.quasi)
-check_overdispersion(glm.quasi)
-check_model(glm.quasi)
+glm.all.pos <- glm(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
+                     PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + Cum_precip,
+                   data = subplot, family = "poisson")
+check_overdispersion(glm.all.pos) # overdispersion detected
+check_zeroinflation(glm.all.pos) # zero-inflation detected
 
 # Negative binomial
-glm.nb <- glm.nb(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
-                PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + Cum_precip,
-              data = pitseed)
-summary(glm.nb)
-step(glm.nb) # suggests to drop PlotMix_Climate, Cum_precip
-plot(glm.nb, which = 1:3)
-
-
-# Zero-inflated Poisson
-#   All explanatory variables: does not converge
-zip <- zeroinfl(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
-                       PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + Cum_precip |
-                       Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
+glm.all.nb <- glm.nb(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
                        PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + Cum_precip,
-                     dist = "poisson",
-                     link = "logit",
-                     data = pitseed)
-
-#   1: dropped PlotMix_Climate and Cum_precip: does not converge
-zip1 <- zeroinfl(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
-                        Duration + Lifeform + MAT + MAP + Sand_content |
-                        Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
-                        Duration + Lifeform + MAT + MAP + Sand_content,
-                      dist = "poisson",
-                      link = "logit",
-                      data = pitseed)
-
-#   2: dropped PlotMix_Climate, Cum_precip, Lifeform: does not converge
-zip2 <- zeroinfl(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
-                        Duration + MAT + MAP + Sand_content |
-                        Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
-                        Duration + MAT + MAP + Sand_content,
-                      dist = "poisson",
-                      link = "logit",
-                      data = pitseed)
-
-#   3: did not converge
-zip3 <- zeroinfl(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
-                        Duration |
-                        Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
-                        Duration,
-                      dist = "poisson",
-                      link = "logit",
-                      data = pitseed)
-
-#   4: did not converge
-zip4 <- zeroinfl(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 |
-                        Perc_dev_cum + AridityIndex + Treatment + PlantSource2,
-                      dist = "poisson",
-                      link = "logit",
-                      data = pitseed)
-
-#   5: Perc_dev_cum, AridityIndex, Treatment
-zip5 <- zeroinfl(Count ~ Perc_dev_cum + AridityIndex + Treatment  |
-                        Perc_dev_cum + AridityIndex + Treatment,
-                      dist = "poisson",
-                      link = "logit",
-                      data = pitseed)
-summary(zip5)
+                     data = subplot)
+summary(glm.all.nb)
+step(glm.all.nb) # suggests to drop Cum_precip and PlotMix_Climate
+check_zeroinflation(glm.all.nb) # zero-inflation detected
 
 
 # Zero-inflated negative binomial
-#   All explanatory variables: does not converge
-zinb <- zeroinfl(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
-                       PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + Cum_precip |
-                       Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
-                       PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + Cum_precip,
-                     dist = "negbin",
-                     link = "logit",
-                     data = pitseed)
+#   All (no random effects, all variables included in zero model): does not converge
+zinb.all <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
+                  PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + Cum_precip,
+                data = subplot,
+                family = nbinom2,
+                ziformula = ~.)
 
-#   1: dropped PlotMix_Climate and Cum_precip: does not converge
-zinb1 <- zeroinfl(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
-                       Duration + Lifeform + MAT + MAP + Sand_content |
-                       Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
-                       Duration + Lifeform + MAT + MAP + Sand_content,
-                     dist = "negbin",
-                     link = "logit",
-                     data = pitseed)
+#   1: dropped PlotMix_Climate and Cum_precip (no random): does not converge
+zinb.all1 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
+                      Duration + Lifeform + MAT + MAP + Sand_content,
+                    data = subplot,
+                    family = nbinom2,
+                    ziformula = ~.)
 
-#   2: dropped PlotMix_Climate, Cum_precip, Lifeform: does not converge
-zinb2 <- zeroinfl(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
-                        Duration + MAT + MAP + Sand_content |
-                        Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
-                        Duration + MAT + MAP + Sand_content,
-                      dist = "negbin",
-                      link = "logit",
-                      data = pitseed)
-
-#   3: did not converge
-zinb3 <- zeroinfl(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
-                        Duration |
-                        Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
-                        Duration,
-                      dist = "negbin",
-                      link = "logit",
-                      data = pitseed)
-
-#   4: did not converge
-zinb4 <- zeroinfl(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 |
-                        Perc_dev_cum + AridityIndex + Treatment + PlantSource2,
-                      dist = "negbin",
-                      link = "logit",
-                      data = pitseed)
+#   4: Perc_dev_cum, AridityIndex, Treatment, PlantSource2 did not converge
+zinb.all4 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2,
+                         data = subplot,
+                         family = nbinom2,
+                         ziformula = ~.) # did not converge
 
 #   5: Perc_dev_cum, AridityIndex, Treatment
-zinb5 <- zeroinfl(Count ~ Perc_dev_cum + AridityIndex + Treatment  |
-                        Perc_dev_cum + AridityIndex + Treatment,
-                      dist = "negbin",
-                      link = "logit",
-                      data = pitseed)
-summary(zinb5)
+zinb.all5 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment,
+                         data = subplot,
+                         family = nbinom2,
+                         ziformula = ~.)
+summary(zinb.all5)
 
-#   6: Perc_dev_cum, Treatment, MAP, MAT
-zinb6 <- zeroinfl(Count ~ Perc_dev_cum + Treatment + MAP + MAT |
-                    Perc_dev_cum + Treatment + MAP + MAT,
-                  dist = "negbin",
-                  link = "logit",
-                  data = pitseed)
-summary(zinb6)
+#     5.1: with random effects
+zinb.all5.10 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + (1 | SitePlotID),
+                     data = subplot,
+                     family = nbinom2,
+                     ziformula = ~.) # did not converge
 
-#   7: Perc_dev_cum, Treatment, MAP, MAT, AridityIndex
-zinb7 <- zeroinfl(Count ~ Perc_dev_cum + Treatment + MAP + MAT + AridityIndex |
-                    Perc_dev_cum + Treatment + MAP + MAT + AridityIndex,
-                  dist = "negbin",
-                  link = "logit",
-                  data = pitseed)
-summary(zinb7)
 
-#   8: Perc_dev_cum, Treatment, MAP, MAT, AridityIndex, Sand_content
-zinb8 <- zeroinfl(Count ~ Perc_dev_cum + Treatment + MAP + MAT + AridityIndex + Sand_content |
-                    Perc_dev_cum + Treatment + MAP + MAT + AridityIndex + Sand_content,
-                  dist = "negbin",
-                  link = "logit",
-                  data = pitseed)
-summary(zinb8)
+#   8: Perc_dev_cum, Treatment
+zinb.all8 <- glmmTMB(Count ~ Perc_dev_cum + Treatment,
+                         data = subplot,
+                         family = nbinom2,
+                         ziformula = ~.)
+summary(zinb.all8)
+
+#     8.1: with random effects
+zinb.all8.10 <- glmmTMB(Count ~ Perc_dev_cum + Treatment + (1 | SitePlotID),
+                     data = subplot,
+                     family = nbinom2,
+                     ziformula = ~.)
+
+
+
+## pitseed dataset (Control, Seed, Pits) -----------------------------------
+
+# Poisson
+glm.pitseed.pos <- glm(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
+                 PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + Cum_precip,
+               data = pitseed, family = "poisson")
+summary(glm.pitseed.pos)
+#   overdispersion according to residual deviance/degrees freedom
+check_overdispersion(glm.pitseed.pos) # overdispersion detected
+check_zeroinflation(glm.pitseed.pos) # zero-inflation detected
+
+# Quasi-Poisson
+glm.pitseed.quasi <- glm(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
+                   PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + Cum_precip,
+                 data = pitseed, family = "quasipoisson")
+summary(glm.pitseed.quasi)
+check_overdispersion(glm.pitseed.quasi) # overdispersion detected
+check_zeroinflation(glm.pitseed.quasi) # zero-inflation detected
+check_model(glm.pitseed.quasi) 
+
+# Negative binomial
+glm.pitseed.nb <- glm.nb(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
+                PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + Cum_precip,
+              data = pitseed)
+summary(glm.pitseed.nb)
+step(glm.pitseed.nb) # suggests to drop PlotMix_Climate, Cum_precip
+check_zeroinflation(glm.pitseed.nb) # zero-inflation detected
+plot(glm.pitseed.nb, which = 1:3)
+
+
+# Zero-inflated negative binomial
+#   All explanatory variables (no random effect): does not converge
+zinb.pitseed <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
+                 PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + Cum_precip,
+               data = pitseed,
+               family = nbinom2,
+               ziformula = ~.) # did not converge
+
+#   1: dropped PlotMix_Climate and Cum_precip: does not converge
+zinb.pitseed1 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
+                 Duration + Lifeform + MAT + MAP + Sand_content,
+               data = pitseed,
+               family = nbinom2,
+               ziformula = ~.) # did not converge
+
+#   2: dropped PlotMix_Climate, Cum_precip, Lifeform: does not converge
+zinb.pitseed2 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
+                  Duration + MAT + MAP + Sand_content,
+                data = pitseed,
+                family = nbinom2,
+                ziformula = ~.)
+
+#   3: Perc_dev_cum, AridityIndex, Treatment, PlantSource2, Duration: did not converge
+zinb.pitseed3 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
+                  Duration,
+                data = pitseed,
+                family = nbinom2,
+                ziformula = ~.) # did not converge
+
+#   4: Perc_dev_cum, AridityIndex, Treatment, PlantSource2 did not converge
+zinb.pitseed4 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2,
+                data = pitseed,
+                family = nbinom2,
+                ziformula = ~.) # did not converge
+
+#   5: Perc_dev_cum, AridityIndex, Treatment
+zinb.pitseed5 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment,
+                data = pitseed,
+                family = nbinom2,
+                ziformula = ~.)
+summary(zinb.pitseed5)
+
+#   6: Perc_dev_cum, Treatment, MAP, MAT: produced NaNs
+zinb.pitseed6 <- glmmTMB(Count ~ Perc_dev_cum + Treatment + MAP + MAT,
+                 data = pitseed,
+                 family = nbinom2,
+                 ziformula = ~.) # failed to invert Hessian from numDeriv::jacobian(), falling back to internal vcov estimate
+#                                   idk something went wrong
+
+#   7: Perc_dev_cum, AridityIndex, Treatment, MAP, MAT 
+zinb.pitseed7 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + MAP + MAT,
+                 data = pitseed,
+                 family = nbinom2,
+                 ziformula = ~.) # did not converge
+
+#   8: Perc_dev_cum, Treatment
+zinb.pitseed8 <- glmmTMB(Count ~ Perc_dev_cum + Treatment,
+                 data = pitseed,
+                 family = nbinom2,
+                 ziformula = ~.) 
+summary(zinb.pitseed8)
 
 #   9: Perc_dev_cum, Treatment, MAP, MAT, AridityIndex, Sand_content, Weedy: did not converge
-zinb9 <- zeroinfl(Count ~ Perc_dev_cum + Treatment + MAP + MAT + AridityIndex + Sand_content + Weedy |
-                    Perc_dev_cum + Treatment + MAP + MAT + AridityIndex + Sand_content + Weedy,
-                  dist = "negbin",
-                  link = "logit",
-                  data = pitseed)
-summary(zinb9)
+zinb.pitseed8 <- glmmTMB(Count ~ Perc_dev_cum + Treatment + MAP + MAT + AridityIndex + Sand_content + Weedy,
+                         data = pitseed,
+                         family = nbinom2,
+                         ziformula = ~.) # did not converge
 
 
-# Compare zero-inflated Poisson and zero-inflated negative binomial
-lrtest(zip5, zinb5) # go with negative binomial (there is still overdispersion with zero-inflation correction)
+
+# Hurdle model
+#   All explanatory variables: does not converge
+
 
 
 
@@ -240,52 +240,22 @@ lrtest(zip5, zinb5) # go with negative binomial (there is still overdispersion w
 
 # Zero-inflated negative binomial
 #   Desirable
-zinb5.des <- zeroinfl(Count ~ Perc_dev_cum + AridityIndex + Treatment  |
-                        Perc_dev_cum + AridityIndex + Treatment,
-                      dist = "negbin",
-                      link = "logit",
-                      data = pitseed.des)
+zinb5.des <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment,
+                     data = pitseed.des,
+                     family = nbinom2,
+                     ziformula = ~.)
 summary(zinb5.des)
-resid_zeroinfl(zinb5.des, plot = TRUE, scale = "uniform")
 plot(residuals(zinb5.des) ~ fitted(zinb5.des))
-qqrplot(zinb5.des)
+
 
 #   Weedy
-zinb5.weed <- zeroinfl(Count ~ Perc_dev_cum + AridityIndex + Treatment  |
-                            Perc_dev_cum + AridityIndex + Treatment,
-                          dist = "negbin",
-                          link = "logit",
-                          data = pitseed.weed)
+zinb5.weed <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment,
+                      data = pitseed.weed,
+                      family = nbinom2,
+                      ziformula = ~.)
 summary(zinb5.weed)
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-m2 <- manyglm(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
-                PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + Cum_precip,
-              data = pitseed, family = "negative.binomial")
-plot(m2, which = 1:3)
-
-
-
-
-glm.all2 <- glm(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2,
-                data = pitseed, family = "poisson")
-summary(glm.all2)
-
-
-glm.nb.all <- manyglm(Count ~ Perc_dev_cum + AridityIndex + Treatment + Weedy,
-                      data = pitseed, family = "negative.binomial")
-coefficients(glm.nb.all)
+save.image("RData/07.1_linear-models_subplot.RData")
