@@ -8,7 +8,6 @@
 # Including SitePlotID as a random variable accounts for the non-independence of repeat sampling.
 
 library(tidyverse)
-library(MASS)
 library(glmmTMB)
 library(performance)
 library(DHARMa)
@@ -28,7 +27,7 @@ siteplot.id <- read_csv("data/cleaned/02_SitePlotID_clean.csv")
 
 # Reorganize columns for left_join()
 cum.pd.subplot <- cum.pd |> 
-  dplyr::select(Region, Site, SiteDateID, Date_Seeded, Date_Monitored, Perc_deviation, Deviation_mm) |> 
+  select(Region, Site, SiteDateID, Date_Seeded, Date_Monitored, Perc_deviation, Deviation_mm) |> 
   rename(Perc_dev_cum = Perc_deviation,
          Dev_mm_cum = Deviation_mm)
 
@@ -105,31 +104,30 @@ pitseed.weed <- pitseed |>
 
 ## Poisson ----------------------------------------------------------------
 
-glm.pitseed.pos <- glm(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
-                         PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + Cum_precip,
-                       data = pitseed, family = "poisson")
-summary(glm.pitseed.pos)
-#   overdispersion according to residual deviance/degrees freedom
-check_overdispersion(glm.pitseed.pos) # overdispersion detected
-check_zeroinflation(glm.pitseed.pos) # no zero-inflation detected
+pos.pitseed <- glm(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
+                     PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + Cum_precip,
+                   data = pitseed, family = "poisson")
+summary(pos.pitseed)
+check_overdispersion(pos.pitseed) # overdispersion detected
+check_zeroinflation(pos.pitseed) # no zero-inflation detected
 
 
-## Quasi-Poisson ----------------------------------------------------------
 
-glm.pitseed.quasi <- glm(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
-                           PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + Cum_precip,
-                         data = pitseed, family = "quasipoisson")
-summary(glm.pitseed.quasi)
-check_overdispersion(glm.pitseed.quasi) # overdispersion detected
-check_zeroinflation(glm.pitseed.quasi) # no zero-inflation detected
-check_model(glm.pitseed.quasi) 
+
 
 
 ## Negative binomial ------------------------------------------------------
 
-glm.pitseed.nb <- glm.nb(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
-                           PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + Cum_precip,
-                         data = pitseed)
+nb.pitseed <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
+                        PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
+                        Cum_precip + (1 | Site / Plot),
+                      data = pitseed,
+                      family = nbinom2)
+summary(nb.pitseed)
+check_model(nb.pitseed)
+check_overdispersion(nb.pitseed)
+
+
 summary(glm.pitseed.nb)
 step(glm.pitseed.nb) # suggests to drop PlotMix_Climate, Cum_precip
 check_zeroinflation(glm.pitseed.nb) # no zero-inflation detected
