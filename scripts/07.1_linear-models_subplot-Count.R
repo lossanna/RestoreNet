@@ -1,7 +1,11 @@
 # Created: 2024-05-26
-# Last updated: 2024-07-29
+# Last updated: 2024-07-30
 
-# Purpose: Run generalized linear models for subplot data. Check for overdispersion and zero-inflation.
+# Purpose: Run generalized linear models for subplot data, with Count as response variable. 
+#   Check for overdispersion and zero-inflation.
+
+# Presence of overdispersion and zero-inflation for Count indicates a zero-inflated negative binomial 
+#   should be used.
 
 library(tidyverse)
 library(MASS)
@@ -88,7 +92,7 @@ zinb.all <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSourc
                 family = nbinom2,
                 ziformula = ~.)
 
-#   1: dropped PlotMix_Climate and Cum_precip (no random): does not converge
+#   1: dropped PlotMix_Climate and Cum_precip (no random): did not converge
 zinb.all1 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
                       Duration + Lifeform + MAT + MAP + Sand_content,
                     data = subplot,
@@ -108,11 +112,17 @@ zinb.all5 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment,
                          ziformula = ~.)
 summary(zinb.all5)
 
-#     5.1: with random effects
+#     5.1: with random effects: did not converge
 zinb.all5.10 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + (1 | SitePlotID),
                      data = subplot,
                      family = nbinom2,
                      ziformula = ~.) # did not converge
+
+#     5.11: with random effects
+zinb.all5.11 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + (1 | SitePlotID),
+                        data = subplot,
+                        family = nbinom2,
+                        ziformula = ~ Perc_dev_cum + AridityIndex + Treatment) 
 
 
 #   8: Perc_dev_cum, Treatment
@@ -122,11 +132,11 @@ zinb.all8 <- glmmTMB(Count ~ Perc_dev_cum + Treatment,
                          ziformula = ~.)
 summary(zinb.all8)
 
-#     8.1: with random effects
+#     8.1: with random effects: did not converge
 zinb.all8.10 <- glmmTMB(Count ~ Perc_dev_cum + Treatment + (1 | SitePlotID),
                      data = subplot,
                      family = nbinom2,
-                     ziformula = ~.)
+                     ziformula = ~.) # did not converge
 
 
 
@@ -258,4 +268,4 @@ summary(zinb5.weed)
 
 
 
-save.image("RData/07.1_linear-models_subplot.RData")
+save.image("RData/07.1_linear-models_subplot-Count.RData")
