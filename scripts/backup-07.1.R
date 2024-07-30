@@ -1,11 +1,16 @@
+# All the ZINBs
+
+
 # Created: 2024-05-26
 # Last updated: 2024-07-30
 
 # Purpose: Run generalized linear models for subplot data, with Count as response variable. 
 #   Check for overdispersion and zero-inflation.
 
-# Presence of overdispersion and for Count indicates a negative binomial should be used.
-# Including SitePlotID as a random variable accounts for the non-independence of repeat sampling.
+# Presence of overdispersion and zero-inflation for Count indicates a zero-inflated negative binomial 
+#   should be used.
+# Including SitePlotID as a random variable accounts for the non-independence of repeat sampling, but
+#   the variable cannot be included in the zero-inflated model, because it will not converge.
 
 library(tidyverse)
 library(MASS)
@@ -148,78 +153,78 @@ zinb.pitseed <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantS
 
 # 1: dropped PlotMix_Climate and Cum_precip: does not converge
 zinb.pitseed01 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
-                           Duration + Lifeform + MAT + MAP + Sand_content,
-                         data = pitseed,
-                         family = nbinom2,
-                         ziformula = ~.) # did not converge
+                            Duration + Lifeform + MAT + MAP + Sand_content,
+                          data = pitseed,
+                          family = nbinom2,
+                          ziformula = ~.) # did not converge
 
 
 # 2: dropped PlotMix_Climate, Cum_precip, Lifeform: does not converge
 zinb.pitseed02 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
-                           Duration + MAT + MAP + Sand_content,
-                         data = pitseed,
-                         family = nbinom2,
-                         ziformula = ~.)
+                            Duration + MAT + MAP + Sand_content,
+                          data = pitseed,
+                          family = nbinom2,
+                          ziformula = ~.)
 
 
 # 3: Perc_dev_cum, AridityIndex, Treatment, PlantSource2, Duration: does not converge
 zinb.pitseed03 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
-                           Duration,
-                         data = pitseed,
-                         family = nbinom2,
-                         ziformula = ~.) # did not converge
+                            Duration,
+                          data = pitseed,
+                          family = nbinom2,
+                          ziformula = ~.) # did not converge
 
 
 # 4: Perc_dev_cum, AridityIndex, Treatment, PlantSource2 does not converge
 zinb.pitseed04 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2,
-                         data = pitseed,
-                         family = nbinom2,
-                         ziformula = ~.) # did not converge
+                          data = pitseed,
+                          family = nbinom2,
+                          ziformula = ~.) # did not converge
 
 
 # 5: Perc_dev_cum, AridityIndex, Treatment
 zinb.pitseed05 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment,
-                         data = pitseed,
-                         family = nbinom2,
-                         ziformula = ~.)
+                          data = pitseed,
+                          family = nbinom2,
+                          ziformula = ~.)
 summary(zinb.pitseed05) # AIC: 48216.1
 
 
 # 6: Perc_dev_cum, Treatment, MAP, MAT: produced NaNs
 zinb.pitseed06 <- glmmTMB(Count ~ Perc_dev_cum + Treatment + MAP + MAT,
-                         data = pitseed,
-                         family = nbinom2,
-                         ziformula = ~.) # failed to invert Hessian from numDeriv::jacobian(), falling back to internal vcov estimate
+                          data = pitseed,
+                          family = nbinom2,
+                          ziformula = ~.) # failed to invert Hessian from numDeriv::jacobian(), falling back to internal vcov estimate
 #                                   idk something went wrong
 
 
 # 7: Perc_dev_cum, AridityIndex, Treatment, MAP, MAT: does not converge 
 zinb.pitseed07 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + MAP + MAT,
-                         data = pitseed,
-                         family = nbinom2,
-                         ziformula = ~.) # did not converge
+                          data = pitseed,
+                          family = nbinom2,
+                          ziformula = ~.) # did not converge
 
 
 # 8: Perc_dev_cum, Treatment
 zinb.pitseed08 <- glmmTMB(Count ~ Perc_dev_cum + Treatment,
-                         data = pitseed,
-                         family = nbinom2,
-                         ziformula = ~.) 
+                          data = pitseed,
+                          family = nbinom2,
+                          ziformula = ~.) 
 summary(zinb.pitseed08) # AIC: 48434.3
 
 
 # 9: Perc_dev_cum, AridityIndex, Treatment, MAP, MAT, Sand_content, Weedy: does not converge
 zinb.pitseed09 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + MAP + MAT + Sand_content + Weedy,
-                         data = pitseed,
-                         family = nbinom2,
-                         ziformula = ~.) # did not converge
+                          data = pitseed,
+                          family = nbinom2,
+                          ziformula = ~.) # did not converge
 
 
 # 10: Perc_dev_cum, Lifeform, MAP: does not converge
 zinb.pitseed10 <- glmmTMB(Count ~ Perc_dev_cum + Lifeform + MAP,
-                         data = pitseed,
-                         family = nbinom2,
-                         ziformula = ~.) # did not converge
+                          data = pitseed,
+                          family = nbinom2,
+                          ziformula = ~.) # did not converge
 
 
 # 11: Perc_dev_cum, MAP
@@ -325,37 +330,37 @@ check_zeroinflation(glm.all.nb) # zero-inflation detected
 
 # 5: Perc_dev_cum, AridityIndex, Treatment
 zinb.all05 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment,
-                         data = subplot,
-                         family = nbinom2,
-                         ziformula = ~.)
+                      data = subplot,
+                      family = nbinom2,
+                      ziformula = ~.)
 summary(zinb.all05)
 
 #   5.1: with random effects: does not converge
 zinb.all05.10 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + (1 | SitePlotID),
-                     data = subplot,
-                     family = nbinom2,
-                     ziformula = ~.) # did not converge
+                         data = subplot,
+                         family = nbinom2,
+                         ziformula = ~.) # did not converge
 
 #   5.11: with random effects, but not in zero-inflated
 zinb.all05.11 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + (1 | SitePlotID),
-                        data = subplot,
-                        family = nbinom2,
-                        ziformula = ~ Perc_dev_cum + AridityIndex + Treatment) 
+                         data = subplot,
+                         family = nbinom2,
+                         ziformula = ~ Perc_dev_cum + AridityIndex + Treatment) 
 summary(zinb.all05.11) # AIC: 86645.5
 
 
 # 8: Perc_dev_cum, Treatment
 zinb.all08 <- glmmTMB(Count ~ Perc_dev_cum + Treatment,
-                         data = subplot,
-                         family = nbinom2,
-                         ziformula = ~.)
+                      data = subplot,
+                      family = nbinom2,
+                      ziformula = ~.)
 summary(zinb.all08) # AIC: 90500.2
 
 #   8.1: with random effects: does not converge
 zinb.all08.10 <- glmmTMB(Count ~ Perc_dev_cum + Treatment + (1 | SitePlotID),
-                     data = subplot,
-                     family = nbinom2,
-                     ziformula = ~.) # did not converge
+                         data = subplot,
+                         family = nbinom2,
+                         ziformula = ~.) # did not converge
 
 #   8.11: with random effects, but not in zero-inflated
 zinb.all08.11 <- glmmTMB(Count ~ Perc_dev_cum + Treatment + (1 | SitePlotID),
@@ -380,22 +385,22 @@ summary(zinb.all12) # AIC: 90198.3
 
 # 5: Perc_dev_cum, AridityIndex, Treatment
 zinb.nopellet05 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment,
-                      data = nopellet,
-                      family = nbinom2,
-                      ziformula = ~.)
+                           data = nopellet,
+                           family = nbinom2,
+                           ziformula = ~.)
 summary(zinb.nopellet05) # AIC: 89562.4
 
 #   5.1: with random effects: does not converge
 zinb.nopellet05.10 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + (1 | SitePlotID),
-                         data = nopellet,
-                         family = nbinom2,
-                         ziformula = ~.) # did not converge
+                              data = nopellet,
+                              family = nbinom2,
+                              ziformula = ~.) # did not converge
 
 #   5.11: with random effects, but not in zero-inflated
 zinb.nopellet05.11 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + (1 | SitePlotID),
-                         data = nopellet,
-                         family = nbinom2,
-                         ziformula = ~ Perc_dev_cum + AridityIndex + Treatment) 
+                              data = nopellet,
+                              family = nbinom2,
+                              ziformula = ~ Perc_dev_cum + AridityIndex + Treatment) 
 summary(zinb.nopellet05.11) # AIC: 86062.4
 
 
@@ -408,7 +413,7 @@ summary(zinb.nopellet05.11) # AIC: 86062.4
 # Poisson -----------------------------------------------------------------
 
 pos.pitseed05.11.des <- glm(Count ~ Perc_dev_cum + AridityIndex + Treatment,
-                       data = pitseed.des, family = "poisson")
+                            data = pitseed.des, family = "poisson")
 summary(pos.pitseed05.11.des)
 #   overdispersion according to residual deviance/degrees freedom
 check_overdispersion(pos.pitseed05.11.des) # overdispersion detected
@@ -430,26 +435,26 @@ check_zeroinflation(nb.nopellet05.11.des)
 
 # 5.11, pitseed, Desirable 
 zinb.pitseed05.11.des <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + (1 | SitePlotID),
-                     data = pitseed.des,
-                     family = nbinom2,
-                     ziformula = ~ Perc_dev_cum + AridityIndex + Treatment)
+                                 data = pitseed.des,
+                                 family = nbinom2,
+                                 ziformula = ~ Perc_dev_cum + AridityIndex + Treatment)
 summary(zinb.pitseed05.11.des)
 check_model(zinb.pitseed05.11.des)
 
 # 5.11, pitseed, Weedy
 zinb.pitseed05.11.weed <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + (1 | SitePlotID),
-                      data = pitseed.weed,
-                      family = nbinom2,
-                      ziformula = ~ Perc_dev_cum + AridityIndex + Treatment)
+                                  data = pitseed.weed,
+                                  family = nbinom2,
+                                  ziformula = ~ Perc_dev_cum + AridityIndex + Treatment)
 summary(zinb.pitseed05.11.weed)
 
 
 
 # 5.11, nopellet, Desirable
 zinb.nopellet05.11.des <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + (1 | SitePlotID),
-                              data = nopellet.des,
-                              family = nbinom2,
-                              ziformula = ~ Perc_dev_cum + AridityIndex + Treatment) 
+                                  data = nopellet.des,
+                                  family = nbinom2,
+                                  ziformula = ~ Perc_dev_cum + AridityIndex + Treatment) 
 summary(zinb.nopellet05.11.des)
 resid.zinb.nopellet05.11.des <- simulateResiduals(fittedModel = zinb.nopellet05.11.des)
 plot(resid.zinb.nopellet05.11.des)
@@ -460,9 +465,9 @@ testZeroInflation(resid.zinb.nopellet05.11.des)
 
 # 5.11, nopellet, Weedy
 zinb.nopellet05.11.weed <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + (1 | SitePlotID),
-                                  data = nopellet.weed,
-                                  family = nbinom2,
-                                  ziformula = ~ Perc_dev_cum + AridityIndex + Treatment) 
+                                   data = nopellet.weed,
+                                   family = nbinom2,
+                                   ziformula = ~ Perc_dev_cum + AridityIndex + Treatment) 
 summary(zinb.nopellet05.11.weed)
 
 
