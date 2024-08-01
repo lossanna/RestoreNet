@@ -1,11 +1,12 @@
 # Created: 2024-05-29
-# Last updated: 2024-05-29
+# Last updated: 2024-08-01
 
 # Purpose: Examine distributions, outliers, and variable relationships for continuous
 #   explanatory variables (applies to both subplot and 2x2 data response variables).
 
 library(tidyverse)
 library(GGally)
+library(ggpubr)
 
 # Load data ---------------------------------------------------------------
 
@@ -69,6 +70,31 @@ cum.pd |>
 #   29_Palms only has 3 monitoring events, so the outlier should probably not be dropped?
 #     There is nothing wrong with the data - I manually checked and the site just got a bunch
 #     of rain in March-April 2020 for some reason.
+
+# Relationship between Perc_dev_cum and Count
+subplot |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point() +
+  geom_smooth()
+
+#   Without outliers
+subplot |> 
+  filter(SiteDateID != 112,
+         Count < 200) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point() +
+  geom_smooth()
+
+#   As quadratic?
+subplot |> 
+  filter(SiteDateID != 112,
+         Count < 100,
+         Perc_dev_cum < 1) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point() +
+  stat_smooth(method = "lm",
+              formula = y ~ poly(x, 2)) 
+summary(lm(Count ~ poly(Perc_dev_cum, 2), data = subplot))
 
 
 
