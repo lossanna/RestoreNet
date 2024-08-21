@@ -152,7 +152,6 @@ sonoran.des <- sonoran |>
   filter(Weedy != "Weedy")
 sonoran.des$PlantSource2 <- relevel(sonoran.des$PlantSource2, ref = "Native recruit")
 
-
 # Weedy
 sonoran.weed <- sonoran |> 
   filter(Weedy != "Desirable")
@@ -169,7 +168,6 @@ naz.des <- naz |>
   filter(Weedy != "Weedy")
 naz.des$PlantSource2 <- relevel(naz.des$PlantSource2, ref = "Native recruit")
 
-
 # Weedy
 naz.weed <- naz |> 
   filter(Weedy != "Desirable")
@@ -185,7 +183,6 @@ utah <- subplot |>
 utah.des <- utah |> 
   filter(Weedy != "Weedy")
 utah.des$PlantSource2 <- relevel(utah.des$PlantSource2, ref = "Native recruit")
-
 
 # Weedy
 utah.weed <- utah |> 
@@ -206,7 +203,7 @@ pos.pitseed0.0 <- glm(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSou
                    data = pitseed0, family = "poisson")
 summary(pos.pitseed0.0)
 check_overdispersion(pos.pitseed0.0) # overdispersion detected
-check_zeroinflation(pos.pitseed0.0) # no zero-inflation detected
+check_zeroinflation(pos.pitseed0.0) # model is overfitting zeros
 check_model(pos.pitseed0.0)
 
 # All variables, ref adjusted, no random effects: does not converge
@@ -234,8 +231,8 @@ nb.pitseed0.0 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + Plant
 summary(nb.pitseed0.0)
 res.nb.pitseed0.0 <- simulateResiduals(nb.pitseed0.0)
 check_model(nb.pitseed0.0)
-check_zeroinflation(nb.pitseed0.0) # no zero-inflation
-testZeroInflation(res.nb.pitseed0.0) # no zero-inflation
+check_zeroinflation(nb.pitseed0.0) # model is overfitting zeros
+testZeroInflation(res.nb.pitseed0.0) # model is overfitting zeros
 check_overdispersion(nb.pitseed0.0) # overdispersion detected
 plotResiduals(res.nb.pitseed0.0)
 plotQQunif(res.nb.pitseed0.0)
@@ -253,7 +250,7 @@ res.nb.pitseed0 <- simulateResiduals(nb.pitseed0)
 plotResiduals(nb.pitseed0)
 check_model(nb.pitseed0)
 check_overdispersion(nb.pitseed0) # indicates overdispersion still
-check_zeroinflation(nb.pitseed0) # no zero-inflation
+check_zeroinflation(nb.pitseed0) # model is overfitting zeros
 testDispersion(res.nb.pitseed0, alternative = "greater") # indicates overdispersion still
 step(nb.pitseed0)
 
@@ -301,7 +298,7 @@ pos.all.0 <- glm(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 
                    data = subplot, family = "poisson")
 summary(pos.all.0)
 check_overdispersion(pos.all.0) # overdispersion detected
-check_zeroinflation(pos.all.0) # no zero-inflation detected
+check_zeroinflation(pos.all.0) # model is overfitting zeros
 
 # All variables, ref adjusted, with random effects: does not converge
 pos.all <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
@@ -322,7 +319,7 @@ nb.all.0 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSourc
                         family = nbinom2)
 summary(nb.all.0)
 check_overdispersion(nb.all.0) # overdispersion detected
-check_zeroinflation(nb.all.0) # no zero-inflation detected
+check_zeroinflation(nb.all.0) # model is overfitting zeros
 
 
 # All variables, ref adjusted, nested random effect of Site/Plot
@@ -338,7 +335,7 @@ res.nb.all <- simulateResiduals(nb.all)
 plotResiduals(nb.all)
 plotQQunif(nb.all)
 check_overdispersion(nb.all) # overdispersion detected
-check_zeroinflation(nb.all) # no zero-inflation detected
+check_zeroinflation(nb.all) # model is overfitting zeros
 check_collinearity(nb.all)
 
 
@@ -368,7 +365,7 @@ res.nb.nopellet <- simulateResiduals(nb.nopellet)
 plotResiduals(res.nb.nopellet)
 plotQQunif(res.nb.nopellet)
 check_overdispersion(nb.nopellet) # overdispersion detected
-check_zeroinflation(nb.nopellet) # no zero-inflation detected
+check_zeroinflation(nb.nopellet) # model is overfitting zeros
 check_collinearity(nb.nopellet)
 testOutliers(res.nb.nopellet)
 outliers(res.nb.nopellet)
@@ -391,7 +388,7 @@ res.nb.pitseed.des <- simulateResiduals(nb.pitseed.des)
 plotResiduals(res.nb.pitseed.des)
 plotQQunif(res.nb.pitseed.des)
 check_overdispersion(nb.pitseed.des) # overdispersion detected
-check_zeroinflation(nb.pitseed.des) # no zero-inflation detected
+check_zeroinflation(nb.pitseed.des) # model is overfitting zeros
 check_collinearity(nb.pitseed.des)
 testOutliers(res.nb.pitseed.des)
 
@@ -407,7 +404,7 @@ res.nb.pitseed.weed <- simulateResiduals(nb.pitseed.weed)
 plotResiduals(res.nb.pitseed.weed)
 plotQQunif(res.nb.pitseed.weed)
 check_overdispersion(nb.pitseed.weed) # overdispersion detected
-check_zeroinflation(nb.pitseed.weed) # no zero-inflation detected
+check_zeroinflation(nb.pitseed.weed) # model is overfitting zeros
 check_collinearity(nb.pitseed.weed)
 
 
@@ -423,7 +420,7 @@ res.nb.pitseed1.des <- simulateResiduals(nb.pitseed1.des)
 plotResiduals(res.nb.pitseed1.des)
 plotQQunif(res.nb.pitseed1.des)
 check_overdispersion(nb.pitseed1.des) # overdispersion detected
-check_zeroinflation(nb.pitseed1.des) # no zero-inflation detected
+check_zeroinflation(nb.pitseed1.des) # model is overfitting zeros
 check_collinearity(nb.pitseed1.des)
 
 # 1: Drop MAP & Duration (collinearity): Weedy
@@ -438,7 +435,7 @@ res.nb.pitseed1.weed <- simulateResiduals(nb.pitseed1.weed)
 plotResiduals(res.nb.pitseed1.weed)
 plotQQunif(res.nb.pitseed1.weed)
 check_overdispersion(nb.pitseed1.weed) # overdispersion detected
-check_zeroinflation(nb.pitseed1.weed) # no zero-inflation detected
+check_zeroinflation(nb.pitseed1.weed) # model is overfitting zeros
 check_collinearity(nb.pitseed1.weed)
 
 
@@ -489,7 +486,7 @@ res.nb.nopellet1.des <- simulateResiduals(nb.nopellet1.des)
 plotResiduals(res.nb.nopellet1.des)
 plotQQunif(res.nb.nopellet1.des)
 check_overdispersion(nb.nopellet1.des) # overdispersion detected
-check_zeroinflation(nb.nopellet1.des) # no zero-inflation detected
+check_zeroinflation(nb.nopellet1.des) # model is overfitting zeros
 
 # 1: Drop MAP & Duration (collinearity): Weedy
 nb.nopellet1.weed <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
@@ -503,7 +500,7 @@ res.nb.nopellet1.weed <- simulateResiduals(nb.nopellet1.weed)
 plotResiduals(res.nb.nopellet1.weed)
 plotQQunif(res.nb.nopellet1.weed)
 check_overdispersion(nb.nopellet1.weed) # overdispersion detected
-check_zeroinflation(nb.nopellet1.weed) # no zero-inflation detected
+check_zeroinflation(nb.nopellet1.weed) # model is overfitting zeros
 
 
 
@@ -591,7 +588,7 @@ plotQQunif(res.nb.sonoran1.des)
 plotResiduals(res.nb.sonoran1.des)
 check_model(nb.sonoran1.des)
 check_overdispersion(nb.sonoran1.des) # overdispersion detected
-check_zeroinflation(nb.sonoran1.des) # no zero-inflation detected
+check_zeroinflation(nb.sonoran1.des) # model is overfitting zeros
 
 # 1: Drop MAP & Duration (for collinearity): Weedy
 nb.sonoran1.weed <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
@@ -606,7 +603,7 @@ plotQQunif(res.nb.sonoran1.weed)
 plotResiduals(res.nb.sonoran1.weed)
 check_model(nb.sonoran1.weed)
 check_overdispersion(nb.sonoran1.weed) # overdispersion detected
-check_zeroinflation(nb.sonoran1.weed) # no zero-inflation detected
+check_zeroinflation(nb.sonoran1.weed) # model is overfitting zeros
 
 
 
