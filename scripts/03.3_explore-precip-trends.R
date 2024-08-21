@@ -1,5 +1,5 @@
 # Created: 2023-09-28
-# Last updated: 2024-03-18
+# Last updated: 2024-08-21
 
 # Purpose: Explore precip trends. Compare actual precip values (from PRISM daily values, see 03.2.R)
 #   with 30-year normals. Actual precip is recorded as either cumulative precip
@@ -562,6 +562,21 @@ cum.long |>
 cum.pd |> 
   filter(Perc_deviation != Inf) |> 
   filter(Region == "Sonoran SE") |> 
+  ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  xlab(NULL) +
+  theme_bw() +
+  scale_y_continuous(labels = percent) +
+  geom_hline(yintercept = 0,
+             linetype = "dashed",
+             color = "red")
+
+# All Sonoran
+cum.pd |> 
+  filter(Perc_deviation != Inf) |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
   geom_point() +
   geom_line() +
