@@ -204,7 +204,6 @@ pos.all <- glmmTMB(Height ~ Perc_dev_cum + AridityIndex + Treatment + PlantSourc
 ## Negative binomial ------------------------------------------------------
 
 # All variables, ref adjusted, nested random effect of Site/Plot
-#   Perc_cum_dev not significant
 nb.all <- glmmTMB(Height ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
                     PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
                     Cum_precip + (1 | Site / Plot),
@@ -215,10 +214,24 @@ r2(nb.all)
 res.nb.all <- simulateResiduals(nb.all)
 plotResiduals(nb.all)
 plotQQunif(nb.all)
-check_overdispersion(nb.all)
+check_overdispersion(nb.all) # no overdispersion detected
 check_zeroinflation(nb.all) # model is overfitting zeros
 check_collinearity(nb.all)
-check_model(nb.all)
+
+# 1: Drop MAP (collinearity)
+nb.all1 <- glmmTMB(Height ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
+                    PlotMix_Climate + Duration + Lifeform + MAT + Sand_content + 
+                    Cum_precip + (1 | Site / Plot),
+                  data = subplot,
+                  family = nbinom2)
+summary(nb.all1)
+r2(nb.all1)
+res.nb.all1 <- simulateResiduals(nb.all1)
+plotResiduals(nb.all1)
+plotQQunif(nb.all1)
+check_overdispersion(nb.all1) # no overdispersion detected
+check_zeroinflation(nb.all1) # model is overfitting zeros
+check_collinearity(nb.all1)
 
 
 save.image("RData/07.2_generalized-linear-models_subplot-Height.RData")
