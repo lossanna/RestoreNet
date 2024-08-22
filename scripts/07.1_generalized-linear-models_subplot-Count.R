@@ -1,5 +1,5 @@
 # Created: 2024-05-26
-# Last updated: 2024-08-21
+# Last updated: 2024-08-22
 
 # Purpose: Run generalized linear models for subplot data, with Count as response variable. 
 #   Check for overdispersion and zero-inflation.
@@ -232,7 +232,7 @@ summary(nb.pitseed0.0)
 res.nb.pitseed0.0 <- simulateResiduals(nb.pitseed0.0)
 check_model(nb.pitseed0.0)
 check_zeroinflation(nb.pitseed0.0) # model is overfitting zeros
-testZeroInflation(res.nb.pitseed0.0) # model is overfitting zeros
+testZeroInflation(res.nb.pitseed0.0)
 check_overdispersion(nb.pitseed0.0) # overdispersion detected
 plotResiduals(res.nb.pitseed0.0)
 plotQQunif(res.nb.pitseed0.0)
@@ -249,7 +249,7 @@ summary(nb.pitseed0)
 res.nb.pitseed0 <- simulateResiduals(nb.pitseed0)
 plotResiduals(nb.pitseed0)
 check_model(nb.pitseed0)
-check_overdispersion(nb.pitseed0) # indicates overdispersion still
+check_overdispersion(nb.pitseed0) # overdispersion detected
 check_zeroinflation(nb.pitseed0) # model is overfitting zeros
 testDispersion(res.nb.pitseed0, alternative = "greater") # indicates overdispersion still
 step(nb.pitseed0)
@@ -267,9 +267,10 @@ res.nb.pitseed <- simulateResiduals(nb.pitseed)
 plotResiduals(nb.pitseed)
 plotQQunif(nb.pitseed)
 check_model(nb.pitseed)
-check_overdispersion(nb.pitseed) # indicates overdispersion still
+check_overdispersion(nb.pitseed) # overdispersion detected
 testDispersion(res.nb.pitseed, alternative = "greater") # indicates overdispersion still
-check_collinearity(nb.pitseed)
+check_zeroinflation(nb.pitseed) # model is overfitting zeros
+check_collinearity(nb.pitseed) # MAP should be dropped
 step(nb.pitseed)
 
 
@@ -521,6 +522,7 @@ res.nb.sonoran <- simulateResiduals(nb.sonoran)
 plotResiduals(res.nb.sonoran)
 plotQQunif(res.nb.sonoran)
 check_overdispersion(nb.sonoran) # overdispersion detected
+check_zeroinflation(nb.sonoran) # model is overfitting zeros
 check_collinearity(nb.sonoran)
 
 # 1: Drop MAP (for collinearity): Desirable
@@ -556,7 +558,7 @@ plotQQunif(res.nb.sonoran.des)
 plotResiduals(res.nb.sonoran.des)
 check_model(nb.sonoran.des)
 check_overdispersion(nb.sonoran.des) # overdispersion detected
-check_zeroinflation(nb.sonoran.des) # no overdispersion detected
+check_zeroinflation(nb.sonoran.des) # model is overfitting zeros
 check_collinearity(nb.sonoran.des) # should drop MAP
 
 # All variables, nested random effect of Site/Plot: Weedy
@@ -571,7 +573,7 @@ res.nb.sonoran.weed <- simulateResiduals(nb.sonoran.weed)
 plotQQunif(res.nb.sonoran.weed)
 plotResiduals(res.nb.sonoran.weed)
 check_overdispersion(nb.sonoran.weed) # overdispersion detected
-check_model(nb.sonoran.weed)
+check_zeroinflation(nb.sonoran.weed) # model is overfitting zeros
 check_collinearity(nb.sonoran.weed) # should drop MAP & Duration
 
 
@@ -624,7 +626,8 @@ res.nb.naz <- simulateResiduals(nb.naz)
 plotQQunif(res.nb.naz)
 plotResiduals(res.nb.naz)
 check_model(nb.naz)
-check_overdispersion(res.nb.naz) # overdispersion detected
+check_overdispersion(nb.naz) # overdispersion detected
+check_zeroinflation(nb.naz) # model is overfitting zeros
 check_collinearity(nb.naz)
 
 
@@ -646,7 +649,7 @@ plotQQunif(res.nb.naz.des)
 plotResiduals(res.nb.naz.des)
 check_model(nb.naz.des)
 check_overdispersion(nb.naz.des) # overdispersion detected
-check_zeroinflation(nb.naz.des) # no overdispersion detected
+check_zeroinflation(nb.naz.des) # model is overfitting zeros
 check_collinearity(nb.naz.des)
 
 # All variables, nested random effect of Site/Plot: Weedy
@@ -662,6 +665,7 @@ plotQQunif(res.nb.naz.weed)
 plotResiduals(res.nb.naz.weed)
 check_model(nb.naz.weed)
 check_overdispersion(nb.naz.weed) # overdispersion detected
+check_zeroinflation(nb.naz.weed) # model is overfitting zeros
 check_collinearity(nb.naz.weed)
 
 # 1: Drop PlantSource2 (for collinearity): Weedy
@@ -677,6 +681,7 @@ plotQQunif(res.nb.naz1.weed)
 plotResiduals(res.nb.naz1.weed)
 check_model(nb.naz1.weed)
 check_overdispersion(nb.naz1.weed) # overdispersion detected
+check_zeroinflation(nb.naz1.weed) # model is overfitting zeros
 
 
 
