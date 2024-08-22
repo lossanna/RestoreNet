@@ -68,10 +68,6 @@ unique(subplot$PlotMix_Climate)
 #     None is reference then Projected will be dropped from models. Better
 #     to drop None and be able to compare Current & Projected.
 
-# Create subplot data with 0 as ref for PlantSource2, Weedy, Duration, Lifeform
-#   Change reference for Treatment
-subplot0 <- subplot
-
 
 # Change ref from 0 for better comparisons
 #   Lifeform
@@ -109,8 +105,6 @@ subplot |>
 # All
 nopellet <- subplot |> 
   filter(Treatment != "Pellets")
-nopellet0 <- subplot0 |> 
-  filter(Treatment != "Pellets")
 
 # Desirable
 nopellet.des <- nopellet |> 
@@ -127,8 +121,6 @@ nopellet.weed <- nopellet |>
 
 # All
 pitseed <- subplot |> 
-  filter(Treatment %in% c("Control", "Seed", "Pits"))
-pitseed0 <- subplot0 |> 
   filter(Treatment %in% c("Control", "Seed", "Pits"))
 
 # Desirable
@@ -190,6 +182,89 @@ utah.weed <- utah |>
 
 
 
+# All data ----------------------------------------------------------------
+
+## Poisson ----------------------------------------------------------------
+
+# All variables, no random effects
+pos.all.0 <- glm(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
+                   PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + Cum_precip,
+                 data = subplot, family = "poisson")
+summary(pos.all.0)
+check_overdispersion(pos.all.0) # overdispersion detected
+check_zeroinflation(pos.all.0) # model is overfitting zeros
+
+# All variables, with random effects: does not converge
+pos.all <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
+                     PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
+                     Cum_precip + (1 | Site / Plot),
+                   data = subplot,
+                   family = genpois) # did not converge
+
+
+## Negative binomial ------------------------------------------------------
+
+# All variables, no random effects
+#   Perc_cum_dev significant
+nb.all.0 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
+                      PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
+                      Cum_precip,
+                    data = subplot,
+                    family = nbinom2)
+summary(nb.all.0)
+check_overdispersion(nb.all.0) # overdispersion detected
+check_zeroinflation(nb.all.0) # model is overfitting zeros
+
+
+# All variables, nested random effect of Site/Plot
+#   Perc_cum_dev not significant
+nb.all <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
+                    PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
+                    Cum_precip + (1 | Site / Plot),
+                  data = subplot,
+                  family = nbinom2)
+summary(nb.all)
+r2(nb.all)
+res.nb.all <- simulateResiduals(nb.all)
+plotResiduals(nb.all)
+plotQQunif(nb.all)
+check_overdispersion(nb.all) # overdispersion detected
+check_zeroinflation(nb.all) # model is overfitting zeros
+check_collinearity(nb.all)
+
+
+
+
+# nopellet dataset --------------------------------------------------------
+
+## Negative binomial ------------------------------------------------------
+
+# All variables, no random effect
+nb.nopellet0 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
+                          PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
+                          Cum_precip,
+                        data = nopellet,
+                        family = nbinom2)
+summary(nb.nopellet0)
+
+# All variables, nested Site/Plot as random effect
+nb.nopellet <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
+                         PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
+                         Cum_precip + (1 | Site / Plot),
+                       data = nopellet,
+                       family = nbinom2)
+summary(nb.nopellet)
+r2(nb.nopellet)
+res.nb.nopellet <- simulateResiduals(nb.nopellet)
+plotResiduals(res.nb.nopellet)
+plotQQunif(res.nb.nopellet)
+check_overdispersion(nb.nopellet) # overdispersion detected
+check_zeroinflation(nb.nopellet) # model is overfitting zeros
+check_collinearity(nb.nopellet)
+testOutliers(res.nb.nopellet)
+outliers(res.nb.nopellet)
+
+
 
 # pitseed dataset (Control, Seed, Pits) -----------------------------------
 
@@ -197,65 +272,38 @@ utah.weed <- utah |>
 
 ## Poisson ----------------------------------------------------------------
 
-# All variables, no random effects, 0 as ref
-pos.pitseed0.0 <- glm(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
-                     PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + Cum_precip,
-                   data = pitseed0, family = "poisson")
-summary(pos.pitseed0.0)
-check_overdispersion(pos.pitseed0.0) # overdispersion detected
-check_zeroinflation(pos.pitseed0.0) # model is overfitting zeros
-check_model(pos.pitseed0.0)
-
 # All variables, ref adjusted, no random effects: does not converge
 pos.pitseed.0 <- glm(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
                        PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + Cum_precip,
-                     data = pitseed, family = "poisson") # did not converge
-
-# All variables, 0 as ref, with random effects: does not converge
-pos.pitseed0 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
-                        PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
-                        Cum_precip + (1 | Site / Plot),
-                      data = pitseed0,
-                      family = genpois) # did not converge
-
+                     data = pitseed, family = "poisson")
+summary(pos.pitseed.0)
+r2(pos.pitseed.0)
+res.pos.pitseed.0 <- simulateResiduals(pos.pitseed.0)
+check_overdispersion(pos.pitseed.0) # overdispersion detected
+check_zeroinflation(pos.pitseed.0) # model is overfitting zeros
+plotResiduals(pos.pitseed.0)
 
 
 ## Negative binomial ------------------------------------------------------
 
-# All variables, 0 as ref, no random effects
-nb.pitseed0.0 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
+# All variables, no random effects
+nb.pitseed.0 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
                         PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
                         Cum_precip,
-                      data = pitseed0,
+                      data = pitseed,
                       family = nbinom2)
-summary(nb.pitseed0.0)
-res.nb.pitseed0.0 <- simulateResiduals(nb.pitseed0.0)
-check_model(nb.pitseed0.0)
-check_zeroinflation(nb.pitseed0.0) # model is overfitting zeros
-testZeroInflation(res.nb.pitseed0.0)
-check_overdispersion(nb.pitseed0.0) # overdispersion detected
-plotResiduals(res.nb.pitseed0.0)
-plotQQunif(res.nb.pitseed0.0)
-outliers(res.nb.pitseed0.0)
+summary(nb.pitseed.0)
+res.nb.pitseed.0 <- simulateResiduals(nb.pitseed.0)
+check_model(nb.pitseed.0)
+check_zeroinflation(nb.pitseed.0) # model is overfitting zeros
+testZeroInflation(res.nb.pitseed.0)
+check_overdispersion(nb.pitseed.0) # overdispersion detected
+plotResiduals(res.nb.pitseed.0)
+plotQQunif(res.nb.pitseed.0)
+outliers(res.nb.pitseed.0)
 
 
-# All variables, 0 as ref, nested random effect of Site/Plot
-nb.pitseed0 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
-                        PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
-                        Cum_precip + (1 | Site / Plot),
-                      data = pitseed0,
-                      family = nbinom2)
-summary(nb.pitseed0)
-res.nb.pitseed0 <- simulateResiduals(nb.pitseed0)
-plotResiduals(nb.pitseed0)
-check_model(nb.pitseed0)
-check_overdispersion(nb.pitseed0) # overdispersion detected
-check_zeroinflation(nb.pitseed0) # model is overfitting zeros
-testDispersion(res.nb.pitseed0, alternative = "greater") # indicates overdispersion still
-step(nb.pitseed0)
-
-
-# All variables, ref adjusted, nested random effect of Site/Plot
+# All variables, nested random effect of Site/Plot
 nb.pitseed <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
                         PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
                         Cum_precip + (1 | Site / Plot),
@@ -289,95 +337,12 @@ plotQQunif(nb.pitseed1)
 
 
 
-# All data ----------------------------------------------------------------
-
-## Poisson ----------------------------------------------------------------
-
-# All variables, ref adjusted, no random effects
-pos.all.0 <- glm(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
-                     PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + Cum_precip,
-                   data = subplot, family = "poisson")
-summary(pos.all.0)
-check_overdispersion(pos.all.0) # overdispersion detected
-check_zeroinflation(pos.all.0) # model is overfitting zeros
-
-# All variables, ref adjusted, with random effects: does not converge
-pos.all <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
-                         PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
-                         Cum_precip + (1 | Site / Plot),
-                       data = subplot,
-                       family = genpois) # did not converge
-
-
-## Negative binomial ------------------------------------------------------
-
-# All variables, ref adjusted, no random effects
-#   Perc_cum_dev significant
-nb.all.0 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
-                          PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
-                          Cum_precip,
-                        data = subplot,
-                        family = nbinom2)
-summary(nb.all.0)
-check_overdispersion(nb.all.0) # overdispersion detected
-check_zeroinflation(nb.all.0) # model is overfitting zeros
-
-
-# All variables, ref adjusted, nested random effect of Site/Plot
-#   Perc_cum_dev not significant
-nb.all <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
-                      PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
-                      Cum_precip + (1 | Site / Plot),
-                    data = subplot,
-                    family = nbinom2)
-summary(nb.all)
-r2(nb.all)
-res.nb.all <- simulateResiduals(nb.all)
-plotResiduals(nb.all)
-plotQQunif(nb.all)
-check_overdispersion(nb.all) # overdispersion detected
-check_zeroinflation(nb.all) # model is overfitting zeros
-check_collinearity(nb.all)
-
-
-
-
-# nopellet dataset --------------------------------------------------------
-
-## Negative binomial ------------------------------------------------------
-
-# All variables, ref adjusted, no random effect
-nb.nopellet0 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
-                          PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
-                          Cum_precip,
-                        data = nopellet,
-                        family = nbinom2)
-summary(nb.nopellet0)
-
-# All variables, ref adjusted, nested Site/Plot as random effect
-nb.nopellet <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
-                              PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
-                              Cum_precip + (1 | Site / Plot),
-                            data = nopellet,
-                            family = nbinom2)
-summary(nb.nopellet)
-r2(nb.nopellet)
-res.nb.nopellet <- simulateResiduals(nb.nopellet)
-plotResiduals(res.nb.nopellet)
-plotQQunif(res.nb.nopellet)
-check_overdispersion(nb.nopellet) # overdispersion detected
-check_zeroinflation(nb.nopellet) # model is overfitting zeros
-check_collinearity(nb.nopellet)
-testOutliers(res.nb.nopellet)
-outliers(res.nb.nopellet)
-
-
 
 # pitseed subset by Weedy/Desirable ---------------------------------------
 
 ## Negative binomial ------------------------------------------------------
 
-# All variables, ref adjusted, Site/Plot random effect: Desirable
+# All variables, Site/Plot random effect: Desirable
 nb.pitseed.des <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
                           PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
                           Cum_precip + (1 | Site / Plot),
@@ -446,7 +411,7 @@ check_collinearity(nb.pitseed1.weed)
 
 ## Negative binomial ------------------------------------------------------
 
-# All variables, ref adjusted, nested random effect of Site/Plot: Desirable
+# All variables, nested random effect of Site/Plot: Desirable
 nb.nopellet.des <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
                              PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
                              Cum_precip + (1 | Site / Plot),
@@ -460,7 +425,7 @@ plotQQunif(res.nb.nopellet.des)
 check_overdispersion(nb.nopellet.des) # overdispersion detected
 check_collinearity(nb.nopellet.des)
 
-# All variables, ref adjusted, nested random effect of Site/Plot: Weedy
+# All variables, nested random effect of Site/Plot: Weedy
 nb.nopellet.weed <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
                              PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
                              Cum_precip + (1 | Site / Plot),
@@ -510,7 +475,7 @@ check_zeroinflation(nb.nopellet1.weed) # model is overfitting zeros
 
 ## Negative binomial ------------------------------------------------------
 
-# All variables, ref adjusted, nested random effect of Site/Plot
+# All variables, nested random effect of Site/Plot
 nb.sonoran <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
                             PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
                             Cum_precip + (1 | Site / Plot),
@@ -525,7 +490,7 @@ check_overdispersion(nb.sonoran) # overdispersion detected
 check_zeroinflation(nb.sonoran) # model is overfitting zeros
 check_collinearity(nb.sonoran)
 
-# 1: Drop MAP (for collinearity): Desirable
+# 1: Drop MAP (for collinearity)
 nb.sonoran1 <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
                         PlotMix_Climate + Duration + Lifeform + MAT + Sand_content + 
                         Cum_precip + (1 | Site / Plot),
@@ -690,7 +655,7 @@ check_zeroinflation(nb.naz1.weed) # model is overfitting zeros
 
 ## Negative binomial ------------------------------------------------------
 
-# All variables, ref adjusted, nested random effect of Site/Plot: produces NaNs
+# All variables, nested random effect of Site/Plot: produces NaNs
 nb.utah <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
                     PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
                     Cum_precip + (1 | Site / Plot),
