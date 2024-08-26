@@ -1,5 +1,5 @@
 # Created: 2024-05-26
-# Last updated: 2024-08-22
+# Last updated: 2024-08-26
 
 # Purpose: Run generalized linear models for subplot data, with Count as response variable. 
 #   Check for overdispersion and zero-inflation.
@@ -573,6 +573,22 @@ check_overdispersion(nb.sonoran1.weed) # overdispersion detected
 check_zeroinflation(nb.sonoran1.weed) # model is overfitting zeros
 
 
+# 2: Drop MAP (for collinearity) & Sand_content (for singularity): Desirable
+nb.sonoran2.des <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
+                             PlotMix_Climate + Duration + Lifeform + MAT +  
+                             Cum_precip + (1 | Site / Plot),
+                           data = sonoran.des,
+                           family = nbinom2)
+summary(nb.sonoran2.des)
+r2(nb.sonoran2.des)
+res.nb.sonoran2.des <- simulateResiduals(nb.sonoran2.des)
+plotQQunif(res.nb.sonoran2.des)
+plotResiduals(res.nb.sonoran2.des)
+check_model(nb.sonoran2.des)
+check_overdispersion(nb.sonoran2.des) # overdispersion detected
+check_zeroinflation(nb.sonoran2.des) # model is overfitting zeros
+
+
 
 
 # Northern AZ sites -------------------------------------------------------
@@ -662,6 +678,28 @@ nb.utah <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource
                   data = utah,
                   family = nbinom2) # produces NaNs
 summary(nb.utah)
+
+
+# Utah sites by Weedy/Desirable -------------------------------------------
+
+
+## Negative binomial ------------------------------------------------------
+
+# All variables, nested random effect of Site/Plot: Desirable
+nb.utah.des <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
+                        PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
+                        Cum_precip + (1 | Site / Plot),
+                      data = utah.des,
+                      family = nbinom2) # produces NaNs
+summary(nb.utah.des)
+
+# All variables, nested random effect of Site/Plot: Weedy
+nb.utah.weed <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
+                         PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
+                         Cum_precip + (1 | Site / Plot),
+                       data = utah.weed,
+                       family = nbinom2) # does not converge
+
 
 
 save.image("RData/07.1_generalized-linear-models_subplot-Count.RData")
