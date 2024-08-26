@@ -57,11 +57,11 @@ apply(dat, 2, anyNA)
 #     but this only occurs when the time period is small and in all cases there is another
 #     monitoring date less than 2 weeks away with a non-Inf percent change. Occurs once
 #     at CO Plateau (BarTBar).
-dat.noInf <- dat |> 
+dat <- dat |> 
   filter(Perc_dev_cum != Inf)
 
 # Control & Seed treatments only
-dat.seed.trt <- dat.noInf |> 
+dat.seed.trt <- dat |> 
   filter(Treatment %in% c("Seed", "Control"))
 
 
@@ -78,14 +78,14 @@ dat2.seed.trt <- dat2 |>
 
 # All sites
 #   geom_smooth() default
-dat.noInf |> 
+dat |> 
   filter(Weedy != "Weedy") |> 
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
   geom_point() +
   geom_smooth() +
   facet_wrap(~PlotMix_Climate) +
   ggtitle("All sites, desirable species")
-dat.noInf |> 
+dat |> 
   filter(Weedy != "Desirable") |> 
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
   geom_point() +
@@ -112,14 +112,14 @@ dat2.seed.trt |>
   scale_color_viridis() +
   scale_x_continuous(labels = scales::percent)
 #   Linear model
-dat.noInf |> 
+dat |> 
   filter(Weedy != "Weedy") |> 
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
   geom_point() +
   geom_smooth(method = "lm") +
   facet_wrap(~PlotMix_Climate) +
   ggtitle("All sites, desirable species")
-dat.noInf |> 
+dat |> 
   filter(Weedy != "Desirable") |> 
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
   geom_point() +
@@ -557,7 +557,7 @@ dev.off()
 # Includes all treatments, outliers not removed
 
 # Sonoran Desert
-sonoran.des <- dat.noInf |> 
+sonoran.des <- dat |> 
   filter(Weedy != "Weedy") |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
@@ -576,7 +576,7 @@ sonoran.des <- dat.noInf |>
   theme(legend.title = element_blank()) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 sonoran.des
-sonoran.weed <- dat.noInf |> 
+sonoran.weed <- dat |> 
   filter(Weedy != "Desirable") |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
@@ -598,7 +598,7 @@ sonoran.weed
 
 
 # Northern AZ (CO Plateau)
-naz.des <- dat.noInf |> 
+naz.des <- dat |> 
   filter(Weedy != "Weedy") |> 
   filter(Region == "Colorado Plateau") |> 
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
@@ -617,7 +617,7 @@ naz.des <- dat.noInf |>
   theme(legend.title = element_blank()) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 naz.des
-naz.weed <- dat.noInf |> 
+naz.weed <- dat |> 
   filter(Weedy != "Desirable") |> 
   filter(Region == "Colorado Plateau") |> 
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
@@ -639,7 +639,7 @@ naz.weed
 
 
 # Utah
-utah.des <- dat.noInf |> 
+utah.des <- dat |> 
   filter(Weedy != "Weedy") |> 
   filter(Region == "Utah") |> 
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
@@ -658,7 +658,7 @@ utah.des <- dat.noInf |>
   theme(legend.title = element_blank()) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 utah.des
-utah.weed <- dat.noInf |> 
+utah.weed <- dat |> 
   filter(Weedy != "Desirable") |> 
   filter(Region == "Utah") |> 
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
@@ -682,7 +682,7 @@ utah.weed
 ## Height by Sonoran Desert, N AZ, Utah -----------------------------------
 
 # Sonoran Desert
-sonoran.des.height <- dat.noInf |> 
+sonoran.des.height <- dat |> 
   filter(Weedy != "Weedy") |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Height)) +
@@ -701,7 +701,7 @@ sonoran.des.height <- dat.noInf |>
   theme(legend.title = element_blank()) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 sonoran.des.height
-sonoran.weed.height <- dat.noInf |> 
+sonoran.weed.height <- dat |> 
   filter(Weedy != "Desirable") |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Height)) +
@@ -723,7 +723,7 @@ sonoran.weed.height
 
 
 # Northern AZ (CO Plateau)
-naz.des.height <- dat.noInf |> 
+naz.des.height <- dat |> 
   filter(Weedy != "Weedy") |> 
   filter(Region == "Colorado Plateau") |> 
   ggplot(aes(x = Perc_dev_cum, y = Height)) +
@@ -742,7 +742,7 @@ naz.des.height <- dat.noInf |>
   theme(legend.title = element_blank()) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 naz.des.height
-naz.weed.height <- dat.noInf |> 
+naz.weed.height <- dat |> 
   filter(Weedy != "Desirable") |> 
   filter(Region == "Colorado Plateau") |> 
   ggplot(aes(x = Perc_dev_cum, y = Height)) +
@@ -764,7 +764,7 @@ naz.weed.height
 
 
 # Utah
-utah.des.height <- dat.noInf |> 
+utah.des.height <- dat |> 
   filter(Weedy != "Weedy") |> 
   filter(Region == "Utah") |> 
   ggplot(aes(x = Perc_dev_cum, y = Height)) +
@@ -783,7 +783,7 @@ utah.des.height <- dat.noInf |>
   theme(legend.title = element_blank()) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 utah.des.height
-utah.weed.height <- dat.noInf |> 
+utah.weed.height <- dat |> 
   filter(Weedy != "Desirable") |> 
   filter(Region == "Utah") |> 
   ggplot(aes(x = Perc_dev_cum, y = Height)) +
@@ -802,6 +802,483 @@ utah.weed.height <- dat.noInf |>
   theme(legend.title = element_blank()) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 utah.weed.height
+
+
+## Identify outliers ------------------------------------------------------
+
+### Sonoran Desert --------------------------------------------------------
+
+# Desirable, None
+dat |> 
+  filter(Weedy != "Weedy",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "None") |> 
+  filter(Count > 50) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum)
+
+# Desirable, Current
+#   High count recruit
+dat |> 
+  filter(Weedy != "Weedy",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Current") |> 
+  filter(Count > 50) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum)
+
+#   Seeded at ~30% deviation
+dat |> 
+  filter(Weedy != "Weedy",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Current",
+         PlantSource2 == "Seeded")|> 
+  filter(Count > 5) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum) |> 
+  print(n = 23)
+
+#   Seeded highest wet deviation
+dat |> 
+  filter(Weedy != "Weedy",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Current",
+         PlantSource2 == "Seeded")|> 
+  filter(Perc_dev_cum > 0.35) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum) |> 
+  print(n = 48)
+
+#   Seeded highest dry deviation
+dat |> 
+  filter(Weedy != "Weedy",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Current",
+         PlantSource2 == "Seeded")|> 
+  filter(Perc_dev_cum < -0.35) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum)
+
+#   Seeded, species of highest Count
+dat |> 
+  filter(Weedy != "Weedy",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Current",
+         PlantSource2 == "Seeded")|> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum) |> 
+  arrange(desc(Count)) |> 
+  print(n = 45)
+
+#   Seeded, species frequency (showed up in most plots and sites)
+dat |> 
+  filter(Weedy != "Weedy",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Current",
+         PlantSource2 == "Seeded")|> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum) |> 
+  count(Name) |> 
+  arrange(desc(n))
+
+
+# Desirable, Projected
+#   High count recruit
+dat |> 
+  filter(Weedy != "Weedy",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Projected") |> 
+  filter(Count > 50) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum)
+
+#   Seeded at ~35% deviation
+dat |> 
+  filter(Weedy != "Weedy",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Projected",
+         PlantSource2 == "Seeded")|> 
+  filter(Count > 10) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum)
+
+#   Seeded highest wet deviation
+dat |> 
+  filter(Weedy != "Weedy",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Projected",
+         PlantSource2 == "Seeded")|> 
+  filter(Perc_dev_cum > 0.35) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum)
+
+#   Seeded highest dry deviation
+dat |> 
+  filter(Weedy != "Weedy",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Projected",
+         PlantSource2 == "Seeded")|> 
+  filter(Perc_dev_cum < -0.35) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum)
+
+#   Seeded, species of highest Count
+dat |> 
+  filter(Weedy != "Weedy",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Projected",
+         PlantSource2 == "Seeded")|> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum) |> 
+  arrange(desc(Count)) |> 
+  print(n = 49)
+
+#   Seeded, species frequency (showed up in most plots and sites)
+dat |> 
+  filter(Weedy != "Weedy",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Projected",
+         PlantSource2 == "Seeded")|> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum) |> 
+  count(Name) |> 
+  arrange(desc(n))
+
+
+
+# Weedy, None
+#   High count recruit (also highest dry deviation)
+dat |> 
+  filter(Weedy == "Weedy",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "None") |> 
+  filter(Count > 50) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum)
+
+#   Invasive highest wet deviation
+dat |> 
+  filter(Weedy == "Weedy",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "None") |> 
+  filter(Perc_dev_cum > 0.5) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum)
+
+
+# Weedy, Current
+#   High count recruit 
+dat |> 
+  filter(Weedy == "Weedy",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Current") |> 
+  filter(Count > 50) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum)
+
+#   Invasive highest dry deviation
+dat |> 
+  filter(Weedy == "Weedy",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Current") |> 
+  filter(Perc_dev_cum < -0.35) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum) |> 
+  arrange(desc(Count))
+
+#   Invasive highest wet deviation
+dat |> 
+  filter(Weedy == "Weedy",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Current") |> 
+  filter(Perc_dev_cum > 0.5) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum) 
+
+
+# Weedy, Projected
+#   High count recruit 
+dat |> 
+  filter(Weedy == "Weedy",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Projected") |> 
+  filter(Count > 50) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum)
+
+#   Invasive highest dry deviation
+dat |> 
+  filter(Weedy == "Weedy",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Projected") |> 
+  filter(Perc_dev_cum < -0.35) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum) |> 
+  arrange(desc(Count))
+
+#   Invasive highest wet deviation
+dat |> 
+  filter(Weedy == "Weedy",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Projected") |> 
+  filter(Perc_dev_cum > 0.5) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum)
+
+
+
+### Colorado Plateau ------------------------------------------------------
+
+# Desirable, None
+#   Highest count recruit
+dat |> 
+  filter(Weedy != "Weedy",
+         Region == "Colorado Plateau",
+         PlotMix_Climate == "None") |> 
+  filter(Count > 20) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum)
+
+# Desirable, Current
+#   High count recruit
+dat |> 
+  filter(Weedy != "Weedy",
+         Region == "Colorado Plateau",
+         PlotMix_Climate == "Current") |> 
+  filter(Count > 50) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum)
+
+#   High count Seeded
+dat |> 
+  filter(Weedy != "Weedy",
+         Region == "Colorado Plateau",
+         PlotMix_Climate == "Current") |> 
+  filter(Count > 20,
+         PlantSource2 == "Seeded") |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum)
+
+#   Seeded highest wet deviation
+dat |> 
+  filter(Weedy != "Weedy",
+         Region == "Colorado Plateau",
+         PlotMix_Climate == "Current",
+         PlantSource2 == "Seeded")|> 
+  filter(Perc_dev_cum > 1) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum)
+
+#   Seeded highest dry deviation
+dat |> 
+  filter(Weedy != "Weedy",
+         Region == "Colorado Plateau",
+         PlotMix_Climate == "Current",
+         PlantSource2 == "Seeded")|> 
+  filter(Perc_dev_cum < -0.5) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum)
+
+
+
+# Desirable, Projected
+#   High count recruit
+dat |> 
+  filter(Weedy != "Weedy",
+         Region == "Colorado Plateau",
+         PlotMix_Climate == "Projected") |> 
+  filter(Count > 40) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum)
+
+#   Seeded highest wet deviation
+dat |> 
+  filter(Weedy != "Weedy",
+         Region == "Colorado Plateau",
+         PlotMix_Climate == "Projected",
+         PlantSource2 == "Seeded")|> 
+  filter(Perc_dev_cum > 1) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum)
+
+#   Seeded highest dry deviation
+dat |> 
+  filter(Weedy != "Weedy",
+         Region == "Colorado Plateau",
+         PlotMix_Climate == "Projected",
+         PlantSource2 == "Seeded")|> 
+  filter(Perc_dev_cum < -0.5) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum)
+
+
+
+# Weedy, None
+#   High count seeded (also highest wet deviation)
+dat |> 
+  filter(Weedy == "Weedy",
+         Region == "Colorado Plateau",
+         PlotMix_Climate == "None") |> 
+  filter(Perc_dev_cum > 1.5) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum)
+
+#   Invasive highest dry deviation
+dat |> 
+  filter(Weedy == "Weedy",
+         Region == "Colorado Plateau",
+         PlotMix_Climate == "None") |> 
+  filter(Perc_dev_cum < -0.5) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum)
+
+
+# Weedy, Current
+#   High count recruit 
+dat |> 
+  filter(Weedy == "Weedy",
+         Region == "Colorado Plateau",
+         PlotMix_Climate == "Current") |> 
+  filter(Count > 40) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum)
+
+#   High count seeded (also highest wet deviation) 
+dat |> 
+  filter(Weedy == "Weedy",
+         Region == "Colorado Plateau",
+         PlotMix_Climate == "Current") |> 
+  filter(Perc_dev_cum > 1.5) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum)
+
+#   Invasive highest dry deviation
+dat |> 
+  filter(Weedy == "Weedy",
+         Region == "Colorado Plateau",
+         PlotMix_Climate == "Current") |> 
+  filter(Perc_dev_cum < -0.5) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum) |> 
+  arrange(desc(Count))
+
+
+# Weedy, Projected
+#   High count recruit 
+dat |> 
+  filter(Weedy == "Weedy",
+         Region == "Colorado Plateau",
+         PlotMix_Climate == "Projected") |> 
+  filter(Count > 30) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum)
+
+#   Invasive highest dry deviation
+dat |> 
+  filter(Weedy == "Weedy",
+         Region == "Colorado Plateau",
+         PlotMix_Climate == "Projected") |> 
+  filter(Perc_dev_cum < -0.5) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum) |> 
+  arrange(desc(Count))
+
+#   Invasive highest wet deviation
+dat |> 
+  filter(Weedy == "Weedy",
+         Region == "Colorado Plateau",
+         PlotMix_Climate == "Projected") |> 
+  filter(Perc_dev_cum > 1.5) |> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum)
+
+
+
+
+## Top species in mixes ---------------------------------------------------
+
+# Sonoran Desert
+#   Current
+dat |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Current",
+         PlantSource == "Seeded") |> 
+  group_by(Code, Name) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep")
+
+#   Projected
+dat |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Projected",
+         PlantSource == "Seeded") |> 
+  group_by(Code, Name) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep")
+
+# CO Plateau
+#   Current
+#     All sites
+co.current.sum <- dat |> 
+  filter(Region == "Colorado Plateau",
+         PlotMix_Climate == "Current",
+         PlantSource == "Seeded") |> 
+  group_by(Code, Name) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount))
+
+co.current.count <- dat |> 
+  filter(Region == "Colorado Plateau",
+         PlotMix_Climate == "Current",
+         PlantSource == "Seeded") |>
+  count(Code) |> 
+  arrange(desc(n))
+
+co.current <- left_join(co.current.sum, co.current.count) |> 
+  mutate(Score = SumCount * n) |> 
+  arrange(desc(Score))
+
+#     By site/mix
+dat |> 
+  filter(Site %in% c("BarTBar", "FlyingM"),
+         PlotMix_Climate == "Current",
+         PlantSource == "Seeded") |> 
+  group_by(Code, Name) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount))
+
+dat |> 
+  filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb"),
+         PlotMix_Climate == "Current",
+         PlantSource == "Seeded") |> 
+  group_by(Code, Name) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount))
+
+dat |> 
+  filter(Site == "BabbittPJ",
+         PlotMix_Climate == "Current",
+         PlantSource == "Seeded") |> 
+  group_by(Code, Name) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount))
+
+dat |> 
+  filter(Site == "TLE",
+         PlotMix_Climate == "Current",
+         PlantSource == "Seeded") |> 
+  group_by(Code, Name) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount)) # lol nothing grew
+
+
+#   Projected
+#     By site/mix
+dat |> 
+  filter(Site %in% c("BarTBar", "FlyingM"),
+         PlotMix_Climate == "Projected",
+         PlantSource == "Seeded") |> 
+  group_by(Code, Name) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount))
+
+dat |> 
+  filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb"),
+         PlotMix_Climate == "Projected",
+         PlantSource == "Seeded") |> 
+  group_by(Code, Name) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount))
+
+dat |> 
+  filter(Site == "BabbittPJ",
+         PlotMix_Climate == "Projected",
+         PlantSource == "Seeded") |> 
+  group_by(Code, Name) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount))
+
+dat |> 
+  filter(Site == "TLE",
+         PlotMix_Climate == "Projected",
+         PlantSource == "Seeded") |> 
+  group_by(Code, Name) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount)) # lol nothing grew
+
+
 
 
 
