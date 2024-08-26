@@ -91,13 +91,13 @@ dat$PlotMix_Climate <- factor(dat$PlotMix_Climate,
                               levels = c("None", "Current", "Projected"))
 
 
-# Data without Infinity
-dat.noInf <- dat |> 
+# Remove infinity
+dat <- dat |> 
   filter(Perc_dev_cum != Inf)
 
 
 # Control & Seed treatments only
-dat.seed.trt <- dat.noInf |> 
+dat.seed.trt <- dat|> 
   filter(Treatment %in% c("Seed", "Control"))
 
 
@@ -231,77 +231,6 @@ dat |>
 
 
 
-# 2024-03 draft figures
-
-# Sonoran Desert
-seedcon.sonoran.seed <- dat.seed.trt |> 
-  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
-  ggplot(aes(x = Perc_dev_cum, y = Seeded_Cover)) +
-  geom_point(aes(color = Desirable)) +
-  geom_smooth() +
-  facet_wrap(~PlotMix_Climate) +
-  ggtitle("Sonoran Desert, seeded cover") +
-  scale_x_continuous(labels = scales::percent) +
-  scale_color_viridis(direction = -1) +
-  xlab("Cumulative precip deviation from normals") +
-  theme(legend.position = "bottom")
-seedcon.sonoran.seed
-seedcon.sonoran.total <- dat.seed.trt |> 
-  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
-  ggplot(aes(x = Perc_dev_cum, y = Total_Veg_Cover)) +
-  geom_point(aes(color = Weedy)) +
-  geom_smooth() +
-  facet_wrap(~PlotMix_Climate) +
-  ggtitle("Sonoran Desert, total cover") +
-  scale_x_continuous(labels = scales::percent) +
-  scale_color_viridis(direction = -1) +
-  xlab("Cumulative precip deviation from normals") +
-  theme(legend.position = "bottom")
-seedcon.sonoran.total
-
-# CO Plateau
-seedcon.co.seed <- dat.seed.trt |> 
-  filter(Region == "Colorado Plateau") |> 
-  ggplot(aes(x = Perc_dev_cum, y = Seeded_Cover)) +
-  geom_point(aes(color = Desirable)) +
-  geom_smooth() +
-  facet_wrap(~PlotMix_Climate) +
-  ggtitle("Colorado Plateau, seeded cover") +
-  scale_x_continuous(labels = scales::percent) +
-  scale_color_viridis(direction = -1) +
-  xlab("Cumulative precip deviation from normals") +
-  theme(legend.position = "bottom")
-seedcon.co.seed
-seedcon.co.total <- dat.seed.trt |> 
-  filter(Region == "Colorado Plateau") |> 
-  ggplot(aes(x = Perc_dev_cum, y = Total_Veg_Cover)) +
-  geom_point(aes(color = Weedy)) +
-  geom_smooth() +
-  facet_wrap(~PlotMix_Climate) +
-  ggtitle("Colorado Plateau, total cover") +
-  scale_x_continuous(labels = scales::percent) +
-  scale_color_viridis(direction = -1) +
-  xlab("Cumulative precip deviation from normals") +
-  theme(legend.position = "bottom")
-seedcon.co.total
-
-
-# Write out draft figures
-tiff("figures/2024-03_draft-figures/Sonoran_seeded-cover_seed-control-only.tiff", units = "in", height = 5, width = 7, res = 150)
-seedcon.sonoran.seed
-dev.off()
-tiff("figures/2024-03_draft-figures/Sonoran_total-cover_seed-control-only.tiff", units = "in", height = 5, width = 7, res = 150)
-seedcon.sonoran.total
-dev.off()
-
-tiff("figures/2024-03_draft-figures/CO-Plateau_seeded-cover_seed-control-only.tiff", units = "in", height = 5, width = 7, res = 150)
-seedcon.co.seed
-dev.off()
-tiff("figures/2024-03_draft-figures/CO-Plateau_total-cover_seed-control-only.tiff", units = "in", height = 5, width = 7, res = 150)
-seedcon.co.total
-dev.off()
-
-
 ## Number of Weedy by PlotMix_Climate and Cumulative -----------------------
 
 # All sites
@@ -389,6 +318,138 @@ dat |>
   ggtitle("Mojave")
 
 
+# 2024-03 draft figures ---------------------------------------------------
+
+# Sonoran Desert
+seedcon.sonoran.seed <- dat.seed.trt |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Seeded_Cover)) +
+  geom_point(aes(color = Desirable)) +
+  geom_smooth() +
+  facet_wrap(~PlotMix_Climate) +
+  ggtitle("Sonoran Desert, seeded cover") +
+  scale_x_continuous(labels = scales::percent) +
+  scale_color_viridis(direction = -1) +
+  xlab("Cumulative precip deviation from normals") +
+  theme(legend.position = "bottom")
+seedcon.sonoran.seed
+seedcon.sonoran.total <- dat.seed.trt |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Total_Veg_Cover)) +
+  geom_point(aes(color = Weedy)) +
+  geom_smooth() +
+  facet_wrap(~PlotMix_Climate) +
+  ggtitle("Sonoran Desert, total cover") +
+  scale_x_continuous(labels = scales::percent) +
+  scale_color_viridis(direction = -1) +
+  xlab("Cumulative precip deviation from normals") +
+  theme(legend.position = "bottom")
+seedcon.sonoran.total
+
+# CO Plateau
+seedcon.co.seed <- dat.seed.trt |> 
+  filter(Region == "Colorado Plateau") |> 
+  ggplot(aes(x = Perc_dev_cum, y = Seeded_Cover)) +
+  geom_point(aes(color = Desirable)) +
+  geom_smooth() +
+  facet_wrap(~PlotMix_Climate) +
+  ggtitle("Colorado Plateau, seeded cover") +
+  scale_x_continuous(labels = scales::percent) +
+  scale_color_viridis(direction = -1) +
+  xlab("Cumulative precip deviation from normals") +
+  theme(legend.position = "bottom")
+seedcon.co.seed
+seedcon.co.total <- dat.seed.trt |> 
+  filter(Region == "Colorado Plateau") |> 
+  ggplot(aes(x = Perc_dev_cum, y = Total_Veg_Cover)) +
+  geom_point(aes(color = Weedy)) +
+  geom_smooth() +
+  facet_wrap(~PlotMix_Climate) +
+  ggtitle("Colorado Plateau, total cover") +
+  scale_x_continuous(labels = scales::percent) +
+  scale_color_viridis(direction = -1) +
+  xlab("Cumulative precip deviation from normals") +
+  theme(legend.position = "bottom")
+seedcon.co.total
+
+
+# Write out draft figures
+tiff("figures/2024-03_draft-figures/Sonoran_seeded-cover_seed-control-only.tiff", units = "in", height = 5, width = 7, res = 150)
+seedcon.sonoran.seed
+dev.off()
+tiff("figures/2024-03_draft-figures/Sonoran_total-cover_seed-control-only.tiff", units = "in", height = 5, width = 7, res = 150)
+seedcon.sonoran.total
+dev.off()
+
+tiff("figures/2024-03_draft-figures/CO-Plateau_seeded-cover_seed-control-only.tiff", units = "in", height = 5, width = 7, res = 150)
+seedcon.co.seed
+dev.off()
+tiff("figures/2024-03_draft-figures/CO-Plateau_total-cover_seed-control-only.tiff", units = "in", height = 5, width = 7, res = 150)
+seedcon.co.total
+dev.off()
+
+
+# 2024-08 draft figures ---------------------------------------------------
+
+# Sonoran Desert
+sonoran.seed <- dat |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Seeded_Cover)) +
+  geom_point(aes(color = Desirable)) +
+  geom_smooth() +
+  facet_wrap(~PlotMix_Climate) +
+  ggtitle("Sonoran Desert, seeded cover") +
+  theme_minimal() +
+  scale_x_continuous(labels = scales::percent) +
+  scale_color_viridis(direction = -1) +
+  xlab("Cumulative precip deviation from normals") +
+  theme(legend.position = "bottom") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+sonoran.seed
+sonoran.total <- dat |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Total_Veg_Cover)) +
+  geom_point(aes(color = Weedy)) +
+  geom_smooth() +
+  facet_wrap(~PlotMix_Climate) +
+  ggtitle("Sonoran Desert, total cover") +
+  theme_minimal() +
+  scale_x_continuous(labels = scales::percent) +
+  scale_color_viridis(direction = -1) +
+  xlab("Cumulative precip deviation from normals") +
+  theme(legend.position = "bottom") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+sonoran.total
+
+# CO Plateau
+co.seed <- dat |> 
+  filter(Region == "Colorado Plateau") |> 
+  ggplot(aes(x = Perc_dev_cum, y = Seeded_Cover)) +
+  geom_point(aes(color = Desirable)) +
+  geom_smooth() +
+  facet_wrap(~PlotMix_Climate) +
+  ggtitle("Colorado Plateau, seeded cover") +
+  theme_minimal() +
+  scale_x_continuous(labels = scales::percent) +
+  scale_color_viridis(direction = -1) +
+  xlab("Cumulative precip deviation from normals") +
+  theme(legend.position = "bottom") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+co.seed
+co.total <- dat |> 
+  filter(Region == "Colorado Plateau") |> 
+  ggplot(aes(x = Perc_dev_cum, y = Total_Veg_Cover)) +
+  geom_point(aes(color = Weedy)) +
+  geom_smooth() +
+  facet_wrap(~PlotMix_Climate) +
+  ggtitle("Colorado Plateau, total cover") +
+  theme_minimal() +
+  scale_x_continuous(labels = scales::percent) +
+  scale_color_viridis(direction = -1) +
+  xlab("Cumulative precip deviation from normals") +
+  theme(legend.position = "bottom") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+co.total
 
 
 save.image("RData/06.2_exploratory-graphs_2x2.RData")
