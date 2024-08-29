@@ -1075,7 +1075,7 @@ utah.weed.count.plotmixclimate
 
 
 
-## All sites --------------------------------------------------------------
+### All sites -------------------------------------------------------------
 
 # Extreme precip deviation outliers removed (8000% deviation) for better visualization
 dat |> 
