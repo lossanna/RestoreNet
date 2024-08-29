@@ -1,5 +1,5 @@
 # Created: 2024-07-30
-# Last updated: 2024-08-21
+# Last updated: 2024-08-29
 
 # Purpose: Run generalized linear models for subplot data, with Height as response variable. 
 #   Check for overdispersion and zero-inflation.
@@ -92,6 +92,26 @@ subplot$Weedy <- relevel(subplot$Weedy, ref = "Weedy")
 unique(subplot$PlantSource2)
 subplot$PlantSource2 <- as.factor(subplot$PlantSource2)
 subplot$PlantSource2 <- relevel(subplot$PlantSource2, ref = "Introduced/Invasive")
+
+
+## Separate Weedy and Desirable -------------------------------------------
+
+# Desirable
+subplot.des <- subplot |> 
+  filter(Weedy != "Weedy")
+
+# Weedy
+subplot.weed <- subplot |> 
+  filter(Weedy != "Desirable")
+
+# With 8000% precip dev from Mojave removed
+#   Desirable
+subplot.des8rm <- subplot.des |> 
+  filter(Perc_dev_cum < 8)
+
+#   Weedy
+subplot.weed8rm <- subplot.weed |> 
+  filter(Perc_dev_cum < 8)
 
 
 
@@ -232,6 +252,106 @@ plotQQunif(nb.all1)
 check_overdispersion(nb.all1) # no overdispersion detected
 check_zeroinflation(nb.all1) # model is overfitting zeros
 check_collinearity(nb.all1)
+
+
+# All data, subset by Weedy/Desirable -------------------------------------
+
+## Negative binomial ------------------------------------------------------
+
+# All variables, nested random effect of Site/Plot: Desirable
+nb.all.des <- glmmTMB(Height ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
+                        PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
+                        Cum_precip + (1 | Site / Plot),
+                      data = subplot.des,
+                      family = nbinom2)
+summary(nb.all.des)
+r2(nb.all.des)
+res.nb.all.des <- simulateResiduals(nb.all.des)
+plotResiduals(nb.all.des)
+plotQQunif(res.nb.all.des)
+check_overdispersion(nb.all.des) # overdispersion detected
+check_zeroinflation(nb.all.des) # model is overfitting zeros
+check_collinearity(nb.all.des)
+
+# All variables, nested random effect of Site/Plot: Weedy
+nb.all.weed <- glmmTMB(Height ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
+                         PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
+                         Cum_precip + (1 | Site / Plot),
+                       data = subplot.weed,
+                       family = nbinom2)
+summary(nb.all.weed)
+r2(nb.all.weed)
+res.nb.all.weed <- simulateResiduals(nb.all.weed)
+plotResiduals(res.nb.all.weed)
+plotQQunif(res.nb.all.weed)
+check_overdispersion(nb.all.weed) # overdispersion detected
+check_collinearity(nb.all.weed)
+
+
+# 1: Drop MAP (collinearity): Desirable
+nb.all1.des <- glmmTMB(Height ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
+                         PlotMix_Climate + Duration + Lifeform + MAT + Sand_content + 
+                         Cum_precip + (1 | Site / Plot),
+                       data = subplot.des,
+                       family = nbinom2)
+summary(nb.all1.des)
+r2(nb.all1.des)
+res.nb.all1.des <- simulateResiduals(nb.all1.des)
+plotResiduals(res.nb.all1.des)
+plotQQunif(res.nb.all1.des)
+check_overdispersion(nb.all1.des) # overdispersion detected
+check_zeroinflation(nb.all1.des) # model is overfitting zeros
+
+# 1: Drop MAP (collinearity): Weedy
+nb.all1.weed <- glmmTMB(Height ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
+                          PlotMix_Climate + Duration + Lifeform + MAT + Sand_content + 
+                          Cum_precip + (1 | Site / Plot),
+                        data = subplot.weed,
+                        family = nbinom2)
+summary(nb.all1.weed)
+r2(nb.all1.weed)
+res.nb.all1.weed <- simulateResiduals(nb.all1.weed)
+plotResiduals(res.nb.all1.weed)
+plotQQunif(res.nb.all1.weed)
+check_overdispersion(nb.all1.weed) # overdispersion detected
+check_zeroinflation(nb.all1.weed) # model is overfitting zeros
+
+
+
+# All data (minus 8000% outlier), subset by Weedy/Desirable ---------------
+
+# In general, very little looks different when outliers are included
+
+## Negative binomial ------------------------------------------------------
+
+# All variables, nested random effect of Site/Plot: Desirable
+nb.all.des8rm <- glmmTMB(Height ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
+                           PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
+                           Cum_precip + (1 | Site / Plot),
+                         data = subplot.des8rm,
+                         family = nbinom2)
+summary(nb.all.des8rm)
+r2(nb.all.des8rm)
+res.nb.all.des8rm <- simulateResiduals(nb.all.des8rm)
+plotResiduals(nb.all.des8rm)
+plotQQunif(res.nb.all.des8rm)
+check_overdispersion(nb.all.des8rm) # overdispersion detected
+check_zeroinflation(nb.all.des8rm) # model is overfitting zeros
+check_collinearity(nb.all.des8rm)
+
+# All variables, nested random effect of Site/Plot: Weedy
+nb.all.weed8rm <- glmmTMB(Height ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
+                            PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
+                            Cum_precip + (1 | Site / Plot),
+                          data = subplot.weed8rm,
+                          family = nbinom2)
+summary(nb.all.weed8rm)
+r2(nb.all.weed8rm)
+res.nb.all.weed8rm <- simulateResiduals(nb.all.weed8rm)
+plotResiduals(res.nb.all.weed8rm)
+plotQQunif(res.nb.all.weed8rm)
+check_overdispersion(nb.all.weed8rm) # overdispersion detected
+check_collinearity(nb.all.weed8rm)
 
 
 
