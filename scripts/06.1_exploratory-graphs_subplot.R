@@ -1346,6 +1346,49 @@ tiff("figures/2024-08_draft-figures/Sonoran_weedy_Count-by-forb-grass-and-PlantS
 sonoran.weed.count.forbgrass.plantsource2
 dev.off()
 
+# N AZ
+tiff("figures/2024-08_draft-figures/CO-Plateau_desirable_Count-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+naz.des.count
+dev.off()
+tiff("figures/2024-08_draft-figures/CO-Plateau_weedy_Count-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+naz.weed.count
+dev.off()
+
+tiff("figures/2024-08_draft-figures/CO-Plateau_desirable_Count-by-PlotMix_Climate-and-PlantSource2.tiff", units = "in", height = 5, width = 7, res = 150)
+naz.des.count.plotmixclimate
+dev.off()
+tiff("figures/2024-08_draft-figures/CO-Plateau_weedy_Count-by-PlotMix_Climate-and-PlantSource2.tiff", units = "in", height = 5, width = 7, res = 150)
+naz.weed.count.plotmixclimate
+dev.off()
+
+tiff("figures/2024-08_draft-figures/CO-Plateau_desirable_Count-by-forb-grass-shrub-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+naz.des.count.forbgrassshrub.plantsource2
+dev.off()
+tiff("figures/2024-08_draft-figures/CO-Plateau_weedy_Count-by-forb-grass-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+naz.weed.count.forbgrass.plantsource2
+dev.off()
+
+# All sites
+tiff("figures/2024-08_draft-figures/All-sites_desirable_Count-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+all.des.count
+dev.off()
+tiff("figures/2024-08_draft-figures/All-sites_weedy_Count-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+all.weed.count
+dev.off()
+
+tiff("figures/2024-08_draft-figures/All-sites_desirable_Count-by-PlotMix_Climate-and-PlantSource2.tiff", units = "in", height = 5, width = 7, res = 150)
+all.des.count.plotmixclimate
+dev.off()
+tiff("figures/2024-08_draft-figures/All-sites_weedy_Count-by-PlotMix_Climate-and-PlantSource2.tiff", units = "in", height = 5, width = 7, res = 150)
+all.weed.count.plotmixclimate
+dev.off()
+
+tiff("figures/2024-08_draft-figures/All-sites_desirable_Count-by-forb-grass-shrub-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+all.des.count.forbgrassshrub.plantsource2
+dev.off()
+tiff("figures/2024-08_draft-figures/All-sites_weedy_Count-by-forb-grass-shrub-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+all.weed.count.forbgrassshrub.plantsource2
+dev.off()
 
 
 
