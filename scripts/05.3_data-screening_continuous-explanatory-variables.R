@@ -1,8 +1,13 @@
 # Created: 2024-05-29
-# Last updated: 2024-08-01
+# Last updated: 2024-08-29
 
 # Purpose: Examine distributions, outliers, and variable relationships for continuous
 #   explanatory variables (applies to both subplot and 2x2 data response variables).
+
+# There isn't much difference between the weedy and desirable data sets, or the full set (except for the
+#   huge Perc_dev_cum outlier).
+# Square-root transformation seemed to help normalize Cum_precip.
+# Log transformation seemed to help normalize AridityIndex.
 
 library(tidyverse)
 library(GGally)
@@ -44,6 +49,25 @@ pairs.cont <- subplot |>
   select(Region, Perc_dev_cum, AridityIndex, MAT, MAP, Cum_precip, Elevation_ft) 
 pairs.cont <- pairs.cont |> 
   distinct(.keep_all = TRUE)
+
+# Make separate Desirable/Weedy data sets, with 8000% precip deviation removed
+subplot.des8rm <- subplot |> 
+  filter(Weedy != "Weedy",
+         Perc_dev_cum < 8)
+
+subplot.weed8rm <- subplot |> 
+  filter(Weedy != "Desirable",
+         Perc_dev_cum < 8)
+
+pairs.cont.des8rm <- subplot.des8rm |> 
+  select(Region, Perc_dev_cum, AridityIndex, MAT, MAP, Cum_precip, Elevation_ft) 
+pairs.cont.des8rm <- pairs.cont.des8rm |> 
+  distinct(.keep_all = TRUE)
+pairs.cont.weed8rm <- subplot.weed8rm |> 
+  select(Region, Perc_dev_cum, AridityIndex, MAT, MAP, Cum_precip, Elevation_ft) 
+pairs.cont.weed8rm <- pairs.cont.weed8rm |> 
+  distinct(.keep_all = TRUE)
+
 
 
 # Cum precip, percent deviation from normals ------------------------------
@@ -110,6 +134,11 @@ hist(pairs.cont$Elevation_ft)
 # QQ plots
 qqnorm(pairs.cont$Perc_dev_cum)
 qqline(pairs.cont$Perc_dev_cum) # normal except for the outlier
+qqnorm(pairs.cont.des8rm$Perc_dev_cum)
+qqline(pairs.cont.des8rm$Perc_dev_cum)
+qqnorm(pairs.cont.weed8rm$Perc_dev_cum)
+qqline(pairs.cont.weed8rm$Perc_dev_cum)
+
 qqnorm(pairs.cont$AridityIndex)
 qqline(pairs.cont$AridityIndex) # not that normal?
 qqnorm(pairs.cont$MAT)
@@ -120,6 +149,74 @@ qqnorm(pairs.cont$Cum_precip)
 qqline(pairs.cont$Cum_precip) # not normal
 qqnorm(pairs.cont$Elevation_ft)
 qqline(pairs.cont$Elevation_ft)
+
+
+
+# Cum_precip transformation -----------------------------------------------
+
+# As is
+summary(pairs.cont.des8rm$Cum_precip)
+qqnorm(pairs.cont.des8rm$Cum_precip)
+qqline(pairs.cont.des8rm$Cum_precip)
+qqnorm(pairs.cont.weed8rm$Cum_precip)
+qqline(pairs.cont.weed8rm$Cum_precip)
+
+# Log transformation
+des8rm.log <- pairs.cont.des8rm |> 
+  mutate(Cum_precip_log = log(Cum_precip))
+weed8rm.log <- pairs.cont.weed8rm |> 
+  mutate(Cum_precip_log = log(Cum_precip))
+
+qqnorm(des8rm.log$Cum_precip_log) 
+qqline(des8rm.log$Cum_precip_log) # did not really help?
+qqnorm(weed8rm.log$Cum_precip_log) 
+qqline(weed8rm.log$Cum_precip_log)
+
+# Square root transformation
+des8rm.sqrt <- pairs.cont.des8rm |> 
+  mutate(Cum_precip_sqrt = sqrt(Cum_precip))
+weed8rm.sqrt <- pairs.cont.weed8rm |> 
+  mutate(Cum_precip_sqrt = sqrt(Cum_precip))
+
+qqnorm(des8rm.sqrt$Cum_precip_sqrt)
+qqline(des8rm.sqrt$Cum_precip_sqrt)
+hist(weed8rm.sqrt$Cum_precip_sqrt)
+qqnorm(weed8rm.sqrt$Cum_precip_sqrt)
+qqline(weed8rm.sqrt$Cum_precip_sqrt) # did help
+
+
+# AridityIndex transformation ---------------------------------------------
+
+# As is
+summary(pairs.cont.des8rm$AridityIndex)
+hist(pairs.cont.des8rm$AridityIndex, breaks = 20)
+qqnorm(pairs.cont.des8rm$AridityIndex)
+qqline(pairs.cont.des8rm$AridityIndex)
+qqnorm(pairs.cont.weed8rm$AridityIndex)
+qqline(pairs.cont.weed8rm$AridityIndex)
+
+# Log transformation
+des8rm.log <- pairs.cont.des8rm |> 
+  mutate(AridityIndex_log = log(AridityIndex))
+weed8rm.log <- pairs.cont.weed8rm |> 
+  mutate(AridityIndex_log = log(AridityIndex))
+
+qqnorm(des8rm.log$AridityIndex_log) 
+qqline(des8rm.log$AridityIndex_log) # not great, but seemed to help the best
+qqnorm(weed8rm.log$AridityIndex_log) 
+qqline(weed8rm.log$AridityIndex_log)
+
+# Square root transformation
+des8rm.sqrt <- pairs.cont.des8rm |> 
+  mutate(AridityIndex_sqrt = sqrt(AridityIndex))
+weed8rm.sqrt <- pairs.cont.weed8rm |> 
+  mutate(AridityIndex_sqrt = sqrt(AridityIndex))
+
+qqnorm(des8rm.sqrt$AridityIndex_sqrt)
+qqline(des8rm.sqrt$AridityIndex_sqrt)
+hist(weed8rm.sqrt$AridityIndex_sqrt)
+qqnorm(weed8rm.sqrt$AridityIndex_sqrt)
+qqline(weed8rm.sqrt$AridityIndex_sqrt) # also did not help
 
 
 ## Pairplot ---------------------------------------------------------------
