@@ -1,5 +1,5 @@
 # Created: 2024-03-06
-# Last updated: 2024-08-26
+# Last updated: 2024-08-29
 
 # Purpose: Begin to examine subplot trends as they relate to precip.
 
@@ -552,12 +552,53 @@ dev.off()
 
 # 2024-08 draft figures ---------------------------------------------------
 
-## Count by Sonoran Desert, N AZ, Utah ------------------------------------
+## Count -------------------------------------------------------------------
 
 # Includes all treatments, outliers not removed
 
-# Sonoran Desert
-sonoran.des <- dat |> 
+
+### Sonoran Desert --------------------------------------------------------
+
+# Single panel by PlantSource2
+sonoran.des.count <- dat |> 
+  filter(Weedy != "Weedy") |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = PlantSource2,
+                 shape = PlantSource2),
+             alpha = 0.7) +
+  geom_smooth() +
+  ggtitle("Sonoran Desert, desirable species") +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_shape_manual(values = c(20, 17, 15)) +
+  scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+sonoran.des.count
+sonoran.weed.count <- dat |> 
+  filter(Weedy != "Desirable") |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = PlantSource2,
+                 shape = PlantSource2),
+             alpha = 0.7) +
+  geom_smooth() +
+  ggtitle("Sonoran Desert, weedy species")  +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_shape_manual(values = c(20, 15, 17)) +
+  scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+sonoran.weed.count
+
+# By PlotMix_Climate and PlantSource2
+sonoran.des.count.plotmixclimate <- dat |> 
   filter(Weedy != "Weedy") |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
@@ -575,8 +616,8 @@ sonoran.des <- dat |>
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
-sonoran.des
-sonoran.weed <- dat |> 
+sonoran.des.count.plotmixclimate
+sonoran.weed.count.plotmixclimate <- dat |> 
   filter(Weedy != "Desirable") |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
@@ -594,11 +635,206 @@ sonoran.weed <- dat |>
   scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77")) +
   theme(legend.title = element_blank()) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
-sonoran.weed
+sonoran.weed.count.plotmixclimate
+
+# By Lifeform (forb & grass) and PlantSource2
+#   There are hardly any shrubs
+sonoran.des.count.forbgrass.plantsource2 <- dat |> 
+  filter(Weedy != "Weedy") |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  filter(Lifeform %in% c("Forb", "Grass")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = PlantSource2,
+                 shape = PlantSource2),
+             alpha = 0.7) +
+  geom_smooth() +
+  facet_wrap(~Lifeform) +
+  ggtitle("Sonoran Desert, desirable species") +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_shape_manual(values = c(17, 15)) +
+  scale_color_manual(values = c("#1B9E77", "#D95F02")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+sonoran.des.count.forbgrass.plantsource2
+sonoran.weed.count.forbgrass.plantsource2 <- dat |> 
+  filter(Weedy != "Desirable") |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  filter(Lifeform %in% c("Forb", "Grass")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = PlantSource2,
+                 shape = PlantSource2),
+             alpha = 0.7) +
+  geom_smooth() +
+  facet_wrap(~Lifeform) +
+  ggtitle("Sonoran Desert, weedy species") +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_shape_manual(values = c(15, 17)) +
+  scale_color_manual(values = c("#D95F02", "#1B9E77")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+sonoran.weed.count.forbgrass.plantsource2
+
+# By Duration (annual & perennial only) and Lifeform
+sonoran.des.count.perennial.annual.lifeform <- dat |> 
+  filter(Weedy != "Weedy") |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  filter(Duration %in% c("Annual", "Perennial")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = Lifeform,
+                 shape = Lifeform),
+             alpha = 0.7) +
+  geom_smooth() +
+  facet_wrap(~Duration) +
+  ggtitle("Sonoran Desert, desirable species") +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_shape_manual(values = c(19, 15, 17, 20)) +
+  scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02", "#666666")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+sonoran.des.count.perennial.annual.lifeform
+sonoran.weed.count.perennial.annual.lifeform <- dat |> 
+  filter(Weedy != "Desirable") |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  filter(Duration %in% c("Annual", "Perennial")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = Lifeform,
+                 shape = Lifeform),
+             alpha = 0.7) +
+  geom_smooth() +
+  facet_wrap(~Duration) +
+  ggtitle("Sonoran Desert, weedy species") +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_shape_manual(values = c(19, 15, 17, 20)) +
+  scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02", "#666666")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+sonoran.weed.count.perennial.annual.lifeform
+
+# By Treatment and PlantSource2
+sonoran.des.count.treatment <- dat |> 
+  filter(Weedy != "Weedy") |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = PlantSource2,
+                 shape = PlantSource2),
+             alpha = 0.7) +
+  geom_smooth() +
+  facet_wrap(~Treatment) +
+  ggtitle("Sonoran Desert, desirable species") +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_shape_manual(values = c(20, 17, 15)) +
+  scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+sonoran.des.count.treatment
+sonoran.weed.count.treatment <- dat |> 
+  filter(Weedy != "Desirable") |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = PlantSource2,
+                 shape = PlantSource2),
+             alpha = 0.7) +
+  geom_smooth() +
+  facet_wrap(~Treatment) +
+  ggtitle("Sonoran Desert, weedy species")  +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_shape_manual(values = c(20, 15, 17)) +
+  scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+sonoran.weed.count.treatment
+
+# Single by AridityIndex
+sonoran.des.count.ai <- dat |> 
+  filter(Weedy != "Weedy") |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = AridityIndex)) +
+  geom_smooth() +
+  ggtitle("Sonoran Desert, desirable species") +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_color_viridis(direction = -1) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+sonoran.des.count.ai
+sonoran.weed.count.ai <- dat |> 
+  filter(Weedy != "Desirable") |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = AridityIndex)) +
+  geom_smooth() +
+  ggtitle("Sonoran Desert, weedy species")  +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_color_viridis(direction = -1) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+sonoran.weed.count.ai
 
 
-# Northern AZ (CO Plateau)
-naz.des <- dat |> 
+### Northern Arizona Plateau ----------------------------------------------
+
+# Single panel by PlantSource2
+naz.des.count <- dat |> 
+  filter(Weedy != "Weedy") |> 
+  filter(Region == "Colorado Plateau") |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = PlantSource2,
+                 shape = PlantSource2),
+             alpha = 0.7) +
+  geom_smooth() +
+  ggtitle("Northern Arizona Plateau, desirable species") +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_shape_manual(values = c(20, 17, 15)) +
+  scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+naz.des.count
+naz.weed.count <- dat |> 
+  filter(Weedy != "Desirable") |> 
+  filter(Region == "Colorado Plateau") |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = PlantSource2,
+                 shape = PlantSource2),
+             alpha = 0.7) +
+  geom_smooth() +
+  ggtitle("Northern Arizona Plateau, weedy species") +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_shape_manual(values = c(20, 17, 15)) +
+  scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+naz.weed.count
+
+# By PlotMix_Climate and PlantSource2
+naz.des.count.plotmixclimate <- dat |> 
   filter(Weedy != "Weedy") |> 
   filter(Region == "Colorado Plateau") |> 
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
@@ -615,9 +851,10 @@ naz.des <- dat |>
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
+  theme(axis.text.x = element_text(angle = 35)) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
-naz.des
-naz.weed <- dat |> 
+naz.des.count.plotmixclimate
+naz.weed.count.plotmixclimate <- dat |> 
   filter(Weedy != "Desirable") |> 
   filter(Region == "Colorado Plateau") |> 
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
@@ -634,12 +871,172 @@ naz.weed <- dat |>
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
+  theme(axis.text.x = element_text(angle = 35)) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
-naz.weed
+naz.weed.count.plotmixclimate
+
+# By Lifeform (forb, grass, shrub) and PlantSource2
+#   Very little weedy shrubs
+naz.des.count.forbgrassshrub.plantsource2 <- dat |> 
+  filter(Weedy != "Weedy") |> 
+  filter(Region == "Colorado Plateau") |> 
+  filter(Lifeform %in% c("Forb", "Grass", "Shrub")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = PlantSource2,
+                 shape = PlantSource2),
+             alpha = 0.7) +
+  geom_smooth() +
+  facet_wrap(~Lifeform) +
+  ggtitle("Northern Arizona Plateau, desirable species") +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_shape_manual(values = c(17, 15)) +
+  scale_color_manual(values = c("#1B9E77", "#D95F02")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+naz.des.count.forbgrassshrub.plantsource2
+naz.weed.count.forbgrass.plantsource2 <- dat |> 
+  filter(Weedy != "Desirable") |> 
+  filter(Region == "Colorado Plateau") |> 
+  filter(Lifeform %in% c("Forb", "Grass")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = PlantSource2,
+                 shape = PlantSource2),
+             alpha = 0.7) +
+  geom_smooth() +
+  facet_wrap(~Lifeform) +
+  ggtitle("Northern Arizona Plateau, weedy species") +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_shape_manual(values = c(15, 17)) +
+  scale_color_manual(values = c("#D95F02", "#1B9E77")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+naz.weed.count.forbgrass.plantsource2
+
+# By Duration (annual & perennial only) and Lifeform
+#   Almost all weedy species are annuals
+naz.des.count.perennial.annual.lifeform <- dat |> 
+  filter(Weedy != "Weedy") |> 
+  filter(Region == "Colorado Plateau") |> 
+  filter(Duration %in% c("Annual", "Perennial")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = Lifeform,
+                 shape = Lifeform),
+             alpha = 0.7) +
+  geom_smooth() +
+  facet_wrap(~Duration) +
+  ggtitle("Northern Arizona Plateau, desirable species") +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_shape_manual(values = c(19, 15, 17, 20)) +
+  scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02", "#666666")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+naz.des.count.perennial.annual.lifeform
+naz.weed.count.perennial.annual.lifeform <- dat |> 
+  filter(Weedy != "Desirable") |> 
+  filter(Region == "Colorado Plateau") |> 
+  filter(Duration %in% c("Annual", "Perennial")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = Lifeform,
+                 shape = Lifeform),
+             alpha = 0.7) +
+  geom_smooth() +
+  facet_wrap(~Duration) +
+  ggtitle("Northern Arizona Plateau, weedy species") +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_shape_manual(values = c(19, 15, 17, 20)) +
+  scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02", "#666666")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+naz.weed.count.perennial.annual.lifeform
+
+# By Treatment and PlantSource2
+naz.des.count.treatment <- dat |> 
+  filter(Weedy != "Weedy") |> 
+  filter(Region == "Colorado Plateau") |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = PlantSource2,
+                 shape = PlantSource2),
+             alpha = 0.7) +
+  geom_smooth() +
+  facet_wrap(~Treatment) +
+  ggtitle("Northern Arizona Plateau, desirable species") +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_shape_manual(values = c(20, 17, 15)) +
+  scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
+  theme(legend.title = element_blank()) +
+  theme(axis.text.x = element_text(angle = 35)) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+naz.des.count.treatment
+naz.weed.count.treatment <- dat |> 
+  filter(Weedy != "Desirable") |> 
+  filter(Region == "Colorado Plateau") |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = PlantSource2,
+                 shape = PlantSource2),
+             alpha = 0.7) +
+  geom_smooth() +
+  facet_wrap(~Treatment) +
+  ggtitle("Northern Arizona Plateau, weedy species")  +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_shape_manual(values = c(20, 15, 17)) +
+  scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77")) +
+  theme(legend.title = element_blank()) +
+  theme(axis.text.x = element_text(angle = 35)) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+naz.weed.count.treatment
+
+# Single by AridityIndex
+naz.des.count.ai <- dat |> 
+  filter(Weedy != "Weedy") |> 
+  filter(Region == "Colorado Plateau") |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = AridityIndex)) +
+  geom_smooth() +
+  ggtitle("Northern Arizona Plateau, desirable species") +
+  theme_minimal() +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_color_viridis(direction = -1) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+naz.des.count.ai
+naz.weed.count.ai <- dat |> 
+  filter(Weedy != "Desirable") |> 
+  filter(Region == "Colorado Plateau") |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = AridityIndex)) +
+  geom_smooth() +
+  ggtitle("Northern Arizona Plateau, weedy species")  +
+  theme_minimal() +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_color_viridis(direction = -1) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+naz.weed.count.ai
 
 
-# Utah
-utah.des <- dat |> 
+
+### Utah ------------------------------------------------------------------
+
+# By PlotMix_Climate and PlantSource2
+utah.des.count.plotmixclimate <- dat |> 
   filter(Weedy != "Weedy") |> 
   filter(Region == "Utah") |> 
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
@@ -657,8 +1054,8 @@ utah.des <- dat |>
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
-utah.des
-utah.weed <- dat |> 
+utah.des.count.plotmixclimate
+utah.weed.count.plotmixclimate <- dat |> 
   filter(Weedy != "Desirable") |> 
   filter(Region == "Utah") |> 
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
@@ -676,13 +1073,42 @@ utah.weed <- dat |>
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
-utah.weed
+utah.weed.count.plotmixclimate
 
 
-## Height by Sonoran Desert, N AZ, Utah -----------------------------------
+### Write out draft figures -----------------------------------------------
 
 # Sonoran Desert
-sonoran.des.height <- dat |> 
+tiff("figures/2024-08_draft-figures/Sonoran_desirable_Count-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+sonoran.des.count
+dev.off()
+tiff("figures/2024-08_draft-figures/Sonoran_weedy_Count-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+sonoran.weed.count
+dev.off()
+
+tiff("figures/2024-08_draft-figures/Sonoran_desirable_Count-by-PlotMix_Climate-and-PlantSource2.tiff", units = "in", height = 5, width = 7, res = 150)
+sonoran.des.count.plotmixclimate
+dev.off()
+tiff("figures/2024-08_draft-figures/Sonoran_weedy_Count-by-PlotMix_Climate-and-PlantSource2.tiff", units = "in", height = 5, width = 7, res = 150)
+sonoran.weed.count.plotmixclimate
+dev.off()
+
+tiff("figures/2024-08_draft-figures/Sonoran_desirable_Count-by-forb-grass-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+sonoran.des.count.forbgrass.plantsource2
+dev.off()
+tiff("figures/2024-08_draft-figures/Sonoran_weedy_Count-by-forb-grass-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+sonoran.weed.count.forbgrass.plantsource2
+dev.off()
+
+
+
+
+## Height -----------------------------------------------------------------
+
+### Sonoran Desert --------------------------------------------------------
+
+# By PlotMix_Climate and PlantSource2
+sonoran.des.height.plotmixclimate <- dat |> 
   filter(Weedy != "Weedy") |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Height)) +
@@ -700,8 +1126,8 @@ sonoran.des.height <- dat |>
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
-sonoran.des.height
-sonoran.weed.height <- dat |> 
+sonoran.des.height.plotmixclimate
+sonoran.weed.height.plotmixclimate <- dat |> 
   filter(Weedy != "Desirable") |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Height)) +
@@ -719,10 +1145,13 @@ sonoran.weed.height <- dat |>
   scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77")) +
   theme(legend.title = element_blank()) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
-sonoran.weed.height
+sonoran.weed.height.plotmixclimate
 
 
-# Northern AZ (CO Plateau)
+
+### Northern Arizona Plateau ----------------------------------------------
+
+# By PlotMix_Climate and PlantSource2
 naz.des.height <- dat |> 
   filter(Weedy != "Weedy") |> 
   filter(Region == "Colorado Plateau") |> 
@@ -763,7 +1192,9 @@ naz.weed.height <- dat |>
 naz.weed.height
 
 
-# Utah
+### Utah ------------------------------------------------------------------
+
+# By PlotMix_Climate and PlantSource2
 utah.des.height <- dat |> 
   filter(Weedy != "Weedy") |> 
   filter(Region == "Utah") |> 
