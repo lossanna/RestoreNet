@@ -554,7 +554,7 @@ dev.off()
 
 ## Count -------------------------------------------------------------------
 
-# Includes all treatments, outliers not removed
+# Includes all treatments, outliers not removed (except for 800% precip deviation in all data)
 
 
 ### Sonoran Desert --------------------------------------------------------
@@ -771,7 +771,6 @@ sonoran.des.count.ai <- dat |>
   geom_smooth() +
   ggtitle("Sonoran Desert, desirable species") +
   theme_minimal() +
-  theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
   xlab("Cumulative precip deviation from normals")  +
   scale_color_viridis(direction = -1) +
@@ -785,7 +784,6 @@ sonoran.weed.count.ai <- dat |>
   geom_smooth() +
   ggtitle("Sonoran Desert, weedy species")  +
   theme_minimal() +
-  theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
   xlab("Cumulative precip deviation from normals")  +
   scale_color_viridis(direction = -1) +
@@ -1074,6 +1072,254 @@ utah.weed.count.plotmixclimate <- dat |>
   theme(legend.title = element_blank()) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 utah.weed.count.plotmixclimate
+
+
+
+## All sites --------------------------------------------------------------
+
+# Extreme precip deviation outliers removed (8000% deviation) for better visualization
+dat |> 
+  filter(Perc_dev_cum > 1) |> 
+  select(Region, Site, Date_Monitored, Perc_dev_cum) |> 
+  distinct(.keep_all = TRUE)
+
+# Single panel by PlantSource2
+all.des.count <- dat |> 
+  filter(Weedy != "Weedy") |> 
+  filter(Perc_dev_cum < 8) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = PlantSource2,
+                 shape = PlantSource2),
+             alpha = 0.7) +
+  geom_smooth() +
+  ggtitle("All sites, desirable species") +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_shape_manual(values = c(20, 17, 15)) +
+  scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+all.des.count
+all.weed.count <- dat |> 
+  filter(Weedy != "Desirable") |> 
+  filter(Perc_dev_cum < 8) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = PlantSource2,
+                 shape = PlantSource2),
+             alpha = 0.7) +
+  geom_smooth() +
+  ggtitle("All sites, weedy species")  +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_shape_manual(values = c(20, 15, 17)) +
+  scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+all.weed.count
+
+# By PlotMix_Climate and PlantSource2
+all.des.count.plotmixclimate <- dat |> 
+  filter(Weedy != "Weedy") |> 
+  filter(Perc_dev_cum < 8) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = PlantSource2,
+                 shape = PlantSource2),
+             alpha = 0.7) +
+  geom_smooth() +
+  facet_wrap(~PlotMix_Climate) +
+  ggtitle("All sites, desirable species") +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_shape_manual(values = c(20, 17, 15)) +
+  scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
+  theme(legend.title = element_blank()) +
+  theme(axis.text.x = element_text(angle = 35)) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+all.des.count.plotmixclimate
+all.weed.count.plotmixclimate <- dat |> 
+  filter(Weedy != "Desirable") |> 
+  filter(Perc_dev_cum < 8) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = PlantSource2,
+                 shape = PlantSource2),
+             alpha = 0.7) +
+  geom_smooth() +
+  facet_wrap(~PlotMix_Climate) +
+  ggtitle("All sites, weedy species")  +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_shape_manual(values = c(20, 15, 17)) +
+  scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77")) +
+  theme(legend.title = element_blank()) +
+  theme(axis.text.x = element_text(angle = 35)) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+all.weed.count.plotmixclimate
+
+# By Lifeform (forb, grass, shrub) and PlantSource2
+all.des.count.forbgrassshrub.plantsource2 <- dat |> 
+  filter(Weedy != "Weedy") |> 
+  filter(Perc_dev_cum < 8) |>
+  filter(Lifeform %in% c("Forb", "Grass", "Shrub")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = PlantSource2,
+                 shape = PlantSource2),
+             alpha = 0.7) +
+  geom_smooth() +
+  facet_wrap(~Lifeform) +
+  ggtitle("All sites, desirable species") +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_shape_manual(values = c(17, 15)) +
+  scale_color_manual(values = c("#1B9E77", "#D95F02")) +
+  theme(legend.title = element_blank()) +
+  theme(axis.text.x = element_text(angle = 35)) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+all.des.count.forbgrassshrub.plantsource2
+all.weed.count.forbgrassshrub.plantsource2 <- dat |> 
+  filter(Weedy != "Desirable") |> 
+  filter(Perc_dev_cum < 8) |>
+  filter(Lifeform %in% c("Forb", "Grass", "Shrub")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = PlantSource2,
+                 shape = PlantSource2),
+             alpha = 0.7) +
+  geom_smooth() +
+  facet_wrap(~Lifeform) +
+  ggtitle("All sites, weedy species") +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_shape_manual(values = c(15, 17)) +
+  scale_color_manual(values = c("#D95F02", "#1B9E77")) +
+  theme(legend.title = element_blank()) +
+  theme(axis.text.x = element_text(angle = 35)) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+all.weed.count.forbgrassshrub.plantsource2
+
+# By Duration (annual & perennial only) and Lifeform
+all.des.count.perennial.annual.lifeform <- dat |> 
+  filter(Weedy != "Weedy") |> 
+  filter(Perc_dev_cum < 8) |>
+  filter(Duration %in% c("Annual", "Perennial")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = Lifeform,
+                 shape = Lifeform),
+             alpha = 0.7) +
+  geom_smooth() +
+  facet_wrap(~Duration) +
+  ggtitle("All sites, desirable species") +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_shape_manual(values = c(19, 15, 17, 20)) +
+  scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02", "#666666")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+all.des.count.perennial.annual.lifeform
+all.weed.count.perennial.annual.lifeform <- dat |> 
+  filter(Weedy != "Desirable") |> 
+  filter(Perc_dev_cum < 8) |>
+  filter(Duration %in% c("Annual", "Perennial")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = Lifeform,
+                 shape = Lifeform),
+             alpha = 0.7) +
+  geom_smooth() +
+  facet_wrap(~Duration) +
+  ggtitle("All sites, weedy species") +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_shape_manual(values = c(19, 15, 17, 20)) +
+  scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02", "#666666")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+all.weed.count.perennial.annual.lifeform
+
+# By Treatment and PlantSource2
+all.des.count.treatment <- dat |> 
+  filter(Weedy != "Weedy") |> 
+  filter(Perc_dev_cum < 8) |>
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = PlantSource2,
+                 shape = PlantSource2),
+             alpha = 0.7) +
+  geom_smooth() +
+  facet_wrap(~Treatment) +
+  ggtitle("All sites, desirable species") +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_shape_manual(values = c(20, 17, 15)) +
+  scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
+  theme(legend.title = element_blank()) +
+  theme(axis.text.x = element_text(angle = 35)) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+all.des.count.treatment
+all.weed.count.treatment <- dat |> 
+  filter(Weedy != "Desirable") |> 
+  filter(Perc_dev_cum < 8) |>
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = PlantSource2,
+                 shape = PlantSource2),
+             alpha = 0.7) +
+  geom_smooth() +
+  facet_wrap(~Treatment) +
+  ggtitle("All sites, weedy species")  +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_shape_manual(values = c(20, 15, 17)) +
+  scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77")) +
+  theme(legend.title = element_blank()) +
+  theme(axis.text.x = element_text(angle = 35)) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+all.weed.count.treatment
+
+# Single by AridityIndex
+all.des.count.ai <- dat |> 
+  filter(Weedy != "Weedy") |> 
+  filter(Perc_dev_cum < 8) |>
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = AridityIndex)) +
+  geom_smooth() +
+  ggtitle("All sites, desirable species") +
+  theme_minimal() +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_color_viridis(direction = -1) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+all.des.count.ai
+all.weed.count.ai <- dat |> 
+  filter(Weedy != "Desirable") |> 
+  filter(Perc_dev_cum < 8) |>
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = AridityIndex)) +
+  geom_smooth() +
+  ggtitle("All sites, weedy species")  +
+  theme_minimal() +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals")  +
+  scale_color_viridis(direction = -1) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+all.weed.count.ai
+
+
 
 
 ### Write out draft figures -----------------------------------------------
