@@ -161,7 +161,7 @@ dat |>
   geom_point(aes(color = PlantSource)) +
   geom_smooth() +
   facet_wrap(~PlotMix_Climate) +
-  ggtitle("Sonoran Desert, weedy")  +
+  ggtitle("Sonoran Desert, weedy") +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent)
 dat |> 
@@ -171,7 +171,7 @@ dat |>
   geom_point(aes(color = PlantSource)) +
   geom_smooth(aes(color = PlantSource)) +
   facet_wrap(~PlotMix_Climate) +
-  ggtitle("Sonoran Desert, desirable species")  +
+  ggtitle("Sonoran Desert, desirable species") +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent)
 dat |> 
@@ -181,7 +181,7 @@ dat |>
   geom_point(aes(color = PlantSource)) +
   geom_smooth(aes(color = PlantSource)) +
   facet_wrap(~PlotMix_Climate) +
-  ggtitle("Sonoran Desert, weedy")  +
+  ggtitle("Sonoran Desert, weedy") +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent)
 
@@ -319,7 +319,7 @@ seedcon.all.weed <- dat2.seed.trt |>
   geom_point(aes(color = PlantSource)) +
   geom_smooth() +
   facet_wrap(~PlotMix_Climate) +
-  ggtitle("All sites, weedy")  +
+  ggtitle("All sites, weedy") +
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
@@ -332,7 +332,7 @@ seedcon.all.weed.outrm <- dat2.seed.trt |>
   geom_point(aes(color = PlantSource)) +
   geom_smooth() +
   facet_wrap(~PlotMix_Climate) +
-  ggtitle("All sites, weedy (outlier removed)")  +
+  ggtitle("All sites, weedy (outlier removed)") +
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
@@ -353,7 +353,7 @@ seedcon.sonoran.des <- dat2.seed.trt |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02"))
 seedcon.sonoran.des
@@ -365,11 +365,11 @@ seedcon.sonoran.weed <- dat2.seed.trt |>
                  shape = PlantSource2)) +
   geom_smooth() +
   facet_wrap(~PlotMix_Climate) +
-  ggtitle("Sonoran Desert, weedy species")  +
+  ggtitle("Sonoran Desert, weedy species") +
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 15, 17)) +
   scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77"))
 seedcon.sonoran.weed
@@ -391,7 +391,7 @@ dat.seed.trt |>
   geom_point(aes(color = PlantSource)) +
   geom_smooth(method = "lm") +
   facet_wrap(~PlotMix_Climate) +
-  ggtitle("Sonoran Desert, weedy")  +
+  ggtitle("Sonoran Desert, weedy") +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent)
 
@@ -408,7 +408,7 @@ seedcon.co.des <- dat2.seed.trt |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02"))
 seedcon.co.des
@@ -425,7 +425,7 @@ seedcon.co.weed <- dat2.seed.trt |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 15, 17)) +
   scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77"))
 seedcon.co.weed
@@ -572,7 +572,7 @@ sonoran.des.count <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -586,11 +586,11 @@ sonoran.weed.count <- dat |>
                  shape = PlantSource2),
              alpha = 0.7) +
   geom_smooth() +
-  ggtitle("Sonoran Desert, weedy species")  +
+  ggtitle("Sonoran Desert, weedy species") +
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 15, 17)) +
   scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77")) +
   theme(legend.title = element_blank()) +
@@ -611,7 +611,7 @@ sonoran.des.count.plotmixclimate <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -626,11 +626,11 @@ sonoran.weed.count.plotmixclimate <- dat |>
              alpha = 0.7) +
   geom_smooth() +
   facet_wrap(~PlotMix_Climate) +
-  ggtitle("Sonoran Desert, weedy species")  +
+  ggtitle("Sonoran Desert, weedy species") +
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 15, 17)) +
   scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77")) +
   theme(legend.title = element_blank()) +
@@ -653,7 +653,7 @@ sonoran.des.count.forbgrass.plantsource2 <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(17, 15)) +
   scale_color_manual(values = c("#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -673,7 +673,7 @@ sonoran.weed.count.forbgrass.plantsource2 <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(15, 17)) +
   scale_color_manual(values = c("#D95F02", "#1B9E77")) +
   theme(legend.title = element_blank()) +
@@ -695,7 +695,7 @@ sonoran.des.count.perennial.annual.lifeform <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(19, 15, 17, 20)) +
   scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02", "#666666")) +
   theme(legend.title = element_blank()) +
@@ -715,7 +715,7 @@ sonoran.weed.count.perennial.annual.lifeform <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(19, 15, 17, 20)) +
   scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02", "#666666")) +
   theme(legend.title = element_blank()) +
@@ -736,7 +736,7 @@ sonoran.des.count.treatment <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -751,11 +751,11 @@ sonoran.weed.count.treatment <- dat |>
              alpha = 0.7) +
   geom_smooth() +
   facet_wrap(~Treatment) +
-  ggtitle("Sonoran Desert, weedy species")  +
+  ggtitle("Sonoran Desert, weedy species") +
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 15, 17)) +
   scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77")) +
   theme(legend.title = element_blank()) +
@@ -772,7 +772,7 @@ sonoran.des.count.ai <- dat |>
   ggtitle("Sonoran Desert, desirable species") +
   theme_minimal() +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_color_viridis(direction = -1) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 sonoran.des.count.ai
@@ -782,10 +782,10 @@ sonoran.weed.count.ai <- dat |>
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
   geom_point(aes(color = AridityIndex)) +
   geom_smooth() +
-  ggtitle("Sonoran Desert, weedy species")  +
+  ggtitle("Sonoran Desert, weedy species") +
   theme_minimal() +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_color_viridis(direction = -1) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 sonoran.weed.count.ai
@@ -806,7 +806,7 @@ naz.des.count <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -824,7 +824,7 @@ naz.weed.count <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -845,7 +845,7 @@ naz.des.count.plotmixclimate <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -865,7 +865,7 @@ naz.weed.count.plotmixclimate <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -889,7 +889,7 @@ naz.des.count.forbgrassshrub.plantsource2 <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(17, 15)) +
   scale_color_manual(values = c("#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -909,7 +909,7 @@ naz.weed.count.forbgrass.plantsource2 <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(15, 17)) +
   scale_color_manual(values = c("#D95F02", "#1B9E77")) +
   theme(legend.title = element_blank()) +
@@ -932,7 +932,7 @@ naz.des.count.perennial.annual.lifeform <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(19, 15, 17, 20)) +
   scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02", "#666666")) +
   theme(legend.title = element_blank()) +
@@ -952,7 +952,7 @@ naz.weed.count.perennial.annual.lifeform <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(19, 15, 17, 20)) +
   scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02", "#666666")) +
   theme(legend.title = element_blank()) +
@@ -973,7 +973,7 @@ naz.des.count.treatment <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -989,11 +989,11 @@ naz.weed.count.treatment <- dat |>
              alpha = 0.7) +
   geom_smooth() +
   facet_wrap(~Treatment) +
-  ggtitle("Northern Arizona Plateau, weedy species")  +
+  ggtitle("Northern Arizona Plateau, weedy species") +
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 15, 17)) +
   scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77")) +
   theme(legend.title = element_blank()) +
@@ -1011,7 +1011,7 @@ naz.des.count.ai <- dat |>
   ggtitle("Northern Arizona Plateau, desirable species") +
   theme_minimal() +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_color_viridis(direction = -1) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 naz.des.count.ai
@@ -1021,10 +1021,10 @@ naz.weed.count.ai <- dat |>
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
   geom_point(aes(color = AridityIndex)) +
   geom_smooth() +
-  ggtitle("Northern Arizona Plateau, weedy species")  +
+  ggtitle("Northern Arizona Plateau, weedy species") +
   theme_minimal() +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_color_viridis(direction = -1) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 naz.weed.count.ai
@@ -1047,7 +1047,7 @@ utah.des.count.plotmixclimate <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -1066,7 +1066,7 @@ utah.weed.count.plotmixclimate <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -1096,7 +1096,7 @@ all.des.count <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -1110,11 +1110,11 @@ all.weed.count <- dat |>
                  shape = PlantSource2),
              alpha = 0.7) +
   geom_smooth() +
-  ggtitle("All sites, weedy species")  +
+  ggtitle("All sites, weedy species") +
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 15, 17)) +
   scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77")) +
   theme(legend.title = element_blank()) +
@@ -1135,7 +1135,7 @@ all.des.count.plotmixclimate <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -1151,11 +1151,11 @@ all.weed.count.plotmixclimate <- dat |>
              alpha = 0.7) +
   geom_smooth() +
   facet_wrap(~PlotMix_Climate) +
-  ggtitle("All sites, weedy species")  +
+  ggtitle("All sites, weedy species") +
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 15, 17)) +
   scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77")) +
   theme(legend.title = element_blank()) +
@@ -1178,7 +1178,7 @@ all.des.count.forbgrassshrub.plantsource2 <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(17, 15)) +
   scale_color_manual(values = c("#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -1199,7 +1199,7 @@ all.weed.count.forbgrassshrub.plantsource2 <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(15, 17)) +
   scale_color_manual(values = c("#D95F02", "#1B9E77")) +
   theme(legend.title = element_blank()) +
@@ -1222,7 +1222,7 @@ all.des.count.perennial.annual.lifeform <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(19, 15, 17, 20)) +
   scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02", "#666666")) +
   theme(legend.title = element_blank()) +
@@ -1242,7 +1242,7 @@ all.weed.count.perennial.annual.lifeform <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(19, 15, 17, 20)) +
   scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02", "#666666")) +
   theme(legend.title = element_blank()) +
@@ -1263,7 +1263,7 @@ all.des.count.treatment <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -1279,11 +1279,11 @@ all.weed.count.treatment <- dat |>
              alpha = 0.7) +
   geom_smooth() +
   facet_wrap(~Treatment) +
-  ggtitle("All sites, weedy species")  +
+  ggtitle("All sites, weedy species") +
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 15, 17)) +
   scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77")) +
   theme(legend.title = element_blank()) +
@@ -1301,7 +1301,7 @@ all.des.count.ai <- dat |>
   ggtitle("All sites, desirable species") +
   theme_minimal() +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_color_viridis(direction = -1) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 all.des.count.ai
@@ -1311,10 +1311,10 @@ all.weed.count.ai <- dat |>
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
   geom_point(aes(color = AridityIndex)) +
   geom_smooth() +
-  ggtitle("All sites, weedy species")  +
+  ggtitle("All sites, weedy species") +
   theme_minimal() +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_color_viridis(direction = -1) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 all.weed.count.ai
@@ -1409,7 +1409,7 @@ sonoran.des.height <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -1423,11 +1423,11 @@ sonoran.weed.height <- dat |>
                  shape = PlantSource2),
              alpha = 0.7) +
   geom_smooth() +
-  ggtitle("Sonoran Desert, weedy species")  +
+  ggtitle("Sonoran Desert, weedy species") +
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 15, 17)) +
   scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77")) +
   theme(legend.title = element_blank()) +
@@ -1448,7 +1448,7 @@ sonoran.des.height.plotmixclimate <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -1463,11 +1463,11 @@ sonoran.weed.height.plotmixclimate <- dat |>
              alpha = 0.7) +
   geom_smooth() +
   facet_wrap(~PlotMix_Climate) +
-  ggtitle("Sonoran Desert, weedy species")  +
+  ggtitle("Sonoran Desert, weedy species") +
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 15, 17)) +
   scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77")) +
   theme(legend.title = element_blank()) +
@@ -1490,7 +1490,7 @@ sonoran.des.height.forbgrass.plantsource2 <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(17, 15)) +
   scale_color_manual(values = c("#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -1510,7 +1510,7 @@ sonoran.weed.height.forbgrass.plantsource2 <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(15, 17)) +
   scale_color_manual(values = c("#D95F02", "#1B9E77")) +
   theme(legend.title = element_blank()) +
@@ -1532,7 +1532,7 @@ sonoran.des.height.perennial.annual.lifeform <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(19, 15, 17, 20)) +
   scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02", "#666666")) +
   theme(legend.title = element_blank()) +
@@ -1552,7 +1552,7 @@ sonoran.weed.height.perennial.annual.lifeform <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(19, 15, 17, 20)) +
   scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02", "#666666")) +
   theme(legend.title = element_blank()) +
@@ -1573,7 +1573,7 @@ sonoran.des.height.treatment <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -1588,11 +1588,11 @@ sonoran.weed.height.treatment <- dat |>
              alpha = 0.7) +
   geom_smooth() +
   facet_wrap(~Treatment) +
-  ggtitle("Sonoran Desert, weedy species")  +
+  ggtitle("Sonoran Desert, weedy species") +
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 15, 17)) +
   scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77")) +
   theme(legend.title = element_blank()) +
@@ -1609,7 +1609,7 @@ sonoran.des.height.ai <- dat |>
   ggtitle("Sonoran Desert, desirable species") +
   theme_minimal() +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_color_viridis(direction = -1) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 sonoran.des.height.ai
@@ -1619,10 +1619,10 @@ sonoran.weed.height.ai <- dat |>
   ggplot(aes(x = Perc_dev_cum, y = Height)) +
   geom_point(aes(color = AridityIndex)) +
   geom_smooth() +
-  ggtitle("Sonoran Desert, weedy species")  +
+  ggtitle("Sonoran Desert, weedy species") +
   theme_minimal() +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_color_viridis(direction = -1) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 sonoran.weed.height.ai
@@ -1644,7 +1644,7 @@ naz.des.height <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -1662,7 +1662,7 @@ naz.weed.height <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -1683,7 +1683,7 @@ naz.des.height.plotmixclimate <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -1703,7 +1703,7 @@ naz.weed.height.plotmixclimate <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -1727,7 +1727,7 @@ naz.des.height.forbgrassshrub.plantsource2 <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(17, 15)) +
   scale_color_manual(values = c("#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -1747,7 +1747,7 @@ naz.weed.height.forbgrass.plantsource2 <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(15, 17)) +
   scale_color_manual(values = c("#D95F02", "#1B9E77")) +
   theme(legend.title = element_blank()) +
@@ -1770,7 +1770,7 @@ naz.des.height.perennial.annual.lifeform <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(19, 15, 17, 20)) +
   scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02", "#666666")) +
   theme(legend.title = element_blank()) +
@@ -1790,7 +1790,7 @@ naz.weed.height.perennial.annual.lifeform <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(19, 15, 17, 20)) +
   scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02", "#666666")) +
   theme(legend.title = element_blank()) +
@@ -1811,7 +1811,7 @@ naz.des.height.treatment <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -1827,11 +1827,11 @@ naz.weed.height.treatment <- dat |>
              alpha = 0.7) +
   geom_smooth() +
   facet_wrap(~Treatment) +
-  ggtitle("Northern Arizona Plateau, weedy species")  +
+  ggtitle("Northern Arizona Plateau, weedy species") +
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 15, 17)) +
   scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77")) +
   theme(legend.title = element_blank()) +
@@ -1849,7 +1849,7 @@ naz.des.height.ai <- dat |>
   ggtitle("Northern Arizona Plateau, desirable species") +
   theme_minimal() +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_color_viridis(direction = -1) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 naz.des.height.ai
@@ -1859,10 +1859,10 @@ naz.weed.height.ai <- dat |>
   ggplot(aes(x = Perc_dev_cum, y = Height)) +
   geom_point(aes(color = AridityIndex)) +
   geom_smooth() +
-  ggtitle("Northern Arizona Plateau, weedy species")  +
+  ggtitle("Northern Arizona Plateau, weedy species") +
   theme_minimal() +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_color_viridis(direction = -1) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 naz.weed.height.ai
@@ -1885,7 +1885,7 @@ utah.des.height <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -1904,7 +1904,7 @@ utah.weed.height <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -1929,7 +1929,7 @@ all.des.height <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -1943,11 +1943,11 @@ all.weed.height <- dat |>
                  shape = PlantSource2),
              alpha = 0.7) +
   geom_smooth() +
-  ggtitle("All sites, weedy species")  +
+  ggtitle("All sites, weedy species") +
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 15, 17)) +
   scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77")) +
   theme(legend.title = element_blank()) +
@@ -1968,7 +1968,7 @@ all.des.height.plotmixclimate <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -1984,11 +1984,11 @@ all.weed.height.plotmixclimate <- dat |>
              alpha = 0.7) +
   geom_smooth() +
   facet_wrap(~PlotMix_Climate) +
-  ggtitle("All sites, weedy species")  +
+  ggtitle("All sites, weedy species") +
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 15, 17)) +
   scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77")) +
   theme(legend.title = element_blank()) +
@@ -2011,7 +2011,7 @@ all.des.height.forbgrassshrub.plantsource2 <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(17, 15)) +
   scale_color_manual(values = c("#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -2032,7 +2032,7 @@ all.weed.height.forbgrassshrub.plantsource2 <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(15, 17)) +
   scale_color_manual(values = c("#D95F02", "#1B9E77")) +
   theme(legend.title = element_blank()) +
@@ -2055,7 +2055,7 @@ all.des.height.perennial.annual.lifeform <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(19, 15, 17, 20)) +
   scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02", "#666666")) +
   theme(legend.title = element_blank()) +
@@ -2075,7 +2075,7 @@ all.weed.height.perennial.annual.lifeform <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(19, 15, 17, 20)) +
   scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02", "#666666")) +
   theme(legend.title = element_blank()) +
@@ -2096,7 +2096,7 @@ all.des.height.treatment <- dat |>
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
@@ -2112,11 +2112,11 @@ all.weed.height.treatment <- dat |>
              alpha = 0.7) +
   geom_smooth() +
   facet_wrap(~Treatment) +
-  ggtitle("All sites, weedy species")  +
+  ggtitle("All sites, weedy species") +
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(20, 15, 17)) +
   scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77")) +
   theme(legend.title = element_blank()) +
@@ -2134,7 +2134,7 @@ all.des.height.ai <- dat |>
   ggtitle("All sites, desirable species") +
   theme_minimal() +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_color_viridis(direction = -1) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 all.des.height.ai
@@ -2144,10 +2144,10 @@ all.weed.height.ai <- dat |>
   ggplot(aes(x = Perc_dev_cum, y = Height)) +
   geom_point(aes(color = AridityIndex)) +
   geom_smooth() +
-  ggtitle("All sites, weedy species")  +
+  ggtitle("All sites, weedy species") +
   theme_minimal() +
   scale_x_continuous(labels = scales::percent) +
-  xlab("Cumulative precip deviation from normals")  +
+  xlab("Cumulative precip deviation from normals") +
   scale_color_viridis(direction = -1) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 all.weed.height.ai
