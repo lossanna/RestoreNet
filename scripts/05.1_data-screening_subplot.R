@@ -1,8 +1,11 @@
 # Created: 2024-04-30
-# Last updated: 2024-05-29
+# Last updated: 2024-08-29
 
 # Purpose: Examine distributions, outliers, and variable relationships for subplot data response
 #   variables, Count and Height.
+
+# Determine if the relationship between response variables and continuous explanatory varibles is linear.
+#   Honestly who knows what is happening with Perc_dev_cum and Cum_precip
 
 library(tidyverse)
 library(GGally)
@@ -44,12 +47,51 @@ subplot <- subplot |>
 pitseed <- subplot |>
   filter(Treatment %in% c("Control", "Seed", "Pits"))
 
+# Add AridityIndex_log and Cum_precip_sqrt
+#   05.3.R showed these transformations help improve normality
+subplot <- subplot |> 
+  mutate(Cum_precip_sqrt = sqrt(Cum_precip)) |> 
+  mutate(AridityIndex_log = log(AridityIndex))
+
+# Make separate Desirable/Weedy data sets, with 8000% precip deviation removed
+subplot.des8rm <- subplot |> 
+  filter(Weedy != "Weedy",
+         Perc_dev_cum < 8)
+
+subplot.weed8rm <- subplot |> 
+  filter(Weedy != "Desirable",
+         Perc_dev_cum < 8)
+
+# Separate out Sonoran sites by Weedy/Desirable
+sonoran.des <- subplot |> 
+  filter(Region %in% c("Sonoran SE", "Sonoran Central")) |> 
+  filter(Weedy != "Weedy")
+sonoran.weed <- subplot |> 
+  filter(Region %in% c("Sonoran SE", "Sonoran Central")) |> 
+  filter(Weedy != "Desirable")
+
+# Separate out CO Plateau (Northern Arizona) sites by Weedy/Desirable
+naz.des <- subplot |> 
+  filter(Region == "Colorado Plateau") |> 
+  filter(Weedy != "Weedy")
+naz.weed <- subplot |> 
+  filter(Region == "Colorado Plateau") |>
+  filter(Weedy != "Desirable")
+
 # Separate out continuous variables
 pairs.cont <- subplot |>
   select(Region, Perc_dev_cum, AridityIndex, MAT, MAP, Cum_precip, Elevation_ft)
 pairs.cont <- pairs.cont |>
   distinct(.keep_all = TRUE)
 
+pairs.cont.des8rm <- subplot.des8rm |> 
+  select(Region, Perc_dev_cum, AridityIndex, AridityIndex_log, MAT, MAP, Cum_precip, Cum_precip_sqrt) 
+pairs.cont.des8rm <- pairs.cont.des8rm |> 
+  distinct(.keep_all = TRUE)
+pairs.cont.weed8rm <- subplot.weed8rm |> 
+  select(Region, Perc_dev_cum, AridityIndex, AridityIndex_log, MAT, MAP, Cum_precip, Cum_precip_sqrt) 
+pairs.cont.weed8rm <- pairs.cont.weed8rm |> 
+  distinct(.keep_all = TRUE)
 
 
 
@@ -59,6 +101,12 @@ pairs.cont <- pairs.cont |>
 
 # Histograms generally show what we would expect (Poisson distribution of counts,
 #   possible overdispersion or zero-inflation).
+
+# All, desirable
+hist(subplot.des8rm$Count, breaks = 50)
+
+# All, weedy
+hist(subplot.weed8rm$Count, breaks = 50)
 
 # All
 hist(subplot$Count, breaks = 100)
@@ -166,7 +214,7 @@ dotchart(filter(subplot, Region == "Chihuahuan")$Count,
 
 ## Pairplot ---------------------------------------------------------------
 
-# Response variables, all
+# Response variables (Height vs. Count)
 subplot |>
   ggplot(aes(x = Count, y = Height)) +
   geom_point()
@@ -177,12 +225,258 @@ subplot |>
   geom_point() +
   facet_wrap(~Region)
 
+# Continuous variables
+subplot |>
+  select(Perc_dev_cum, AridityIndex, MAT, MAP, Cum_precip, Elevation_ft) |>
+  distinct(.keep_all = TRUE) |>
+  ggpairs() # Elevation & MAT correlated; AridityIndex and MAP correlated
+
 # Count and continuous variables
 subplot |>
-  select(Count, Perc_dev_cum, MAT, MAP, Cum_precip, Elevation_ft) |>
+  select(Count, Perc_dev_cum, AridityIndex, MAT, MAP, Cum_precip, Elevation_ft) |>
   distinct(.keep_all = TRUE) |>
-  ggpairs() # nothing strongly correlated with Count
+  ggpairs() 
 
+
+## Perc_dev_cum -----------------------------------------------------------
+
+# All sites, desirable
+subplot.des8rm |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point() +
+  geom_smooth() +
+  ggtitle("All sites, desirable species") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+
+#   Zoom in by removing high Count
+subplot.des8rm |> 
+  filter(Count < 100) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point() +
+  geom_smooth() +
+  ggtitle("All sites, desirable species, Count outliers removed") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+
+# All sites, weedy
+subplot.weed8rm |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point() +
+  geom_smooth() +
+  ggtitle("All sites, weedy species") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+
+#   Zoom in by removing high Count
+subplot.weed8rm |> 
+  filter(Count < 100) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point() +
+  geom_smooth() +
+  ggtitle("All sites, weedy species, Count outliers removed") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+
+
+# Sonoran Desert, desirable
+sonoran.des |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point() +
+  geom_smooth() +
+  ggtitle("Sonoran Desert, desirable species") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+
+# Sonoran Desert, weedy
+sonoran.weed |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point() +
+  geom_smooth() +
+  ggtitle("Sonoran Desert, weedy species") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+
+
+# CO Plateau, desirable
+naz.des |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point() +
+  geom_smooth() +
+  ggtitle("Northern Arizona Plateau, desirable species") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+
+# CO Plateau, weedy
+naz.weed |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point() +
+  geom_smooth() +
+  ggtitle("Nothern Arizona Plateau, weedy species") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+
+#   Zoom in by removing high Count
+naz.weed |> 
+  filter(Count < 100) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point() +
+  geom_smooth() +
+  ggtitle("Northern Arizona Plateau, weedy species, Count outliers removed") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+
+
+## Cum_precip -------------------------------------------------------------
+
+# All sites, desirable
+subplot.des8rm |> 
+  ggplot(aes(x = Cum_precip, y = Count)) +
+  geom_point() +
+  geom_smooth() +
+  ggtitle("All sites, desirable species") +
+  xlab("Cumulative precip")  
+
+#   Zoom in by removing high Count
+subplot.des8rm |> 
+  filter(Count < 100) |> 
+  ggplot(aes(x = Cum_precip, y = Count)) +
+  geom_point() +
+  geom_smooth() +
+  ggtitle("All sites, desirable species") +
+  xlab("Cumulative precip") 
+
+# All sites, weedy
+subplot.weed8rm |> 
+  ggplot(aes(x = Cum_precip, y = Count)) +
+  geom_point() +
+  geom_smooth() +
+  ggtitle("All sites, weedy species") +
+  xlab("Cumulative precip")   
+
+#   Zoom in by removing high Count
+subplot.weed8rm |> 
+  filter(Count < 100) |> 
+  ggplot(aes(x = Cum_precip, y = Count)) +
+  geom_point() +
+  geom_smooth() +
+  ggtitle("All sites, weedy species") +
+  xlab("Cumulative precip")  
+
+
+# Sonoran Desert, desirable
+sonoran.des |> 
+  ggplot(aes(x = Cum_precip, y = Count)) +
+  geom_point() +
+  geom_smooth() +
+  ggtitle("Sonoran Desert, desirable species") +
+  xlab("Cumulative precip")  
+
+# Sonoran Desert, weedy
+sonoran.weed |> 
+  ggplot(aes(x = Cum_precip, y = Count)) +
+  geom_point() +
+  geom_smooth() +
+  ggtitle("Sonoran Desert, weedy species") +
+  xlab("Cumulative precip") 
+
+
+# CO Plateau, desirable
+naz.des |> 
+  ggplot(aes(x = Cum_precip, y = Count)) +
+  geom_point() +
+  geom_smooth() +
+  ggtitle("Northern Arizona Plateau, desirable species") +
+  xlab("Cumulative precip")  
+
+# CO Plateau, weedy
+naz.weed |> 
+  ggplot(aes(x = Cum_precip, y = Count)) +
+  geom_point() +
+  geom_smooth() +
+  ggtitle("Nothern Arizona Plateau, weedy species") +
+  xlab("Cumulative precip")  
+
+
+
+## Cum_precip_sqrt --------------------------------------------------------
+
+# All sites, desirable
+subplot.des8rm |> 
+  ggplot(aes(x = Cum_precip_sqrt, y = Count)) +
+  geom_point() +
+  geom_smooth() +
+  ggtitle("All sites, desirable species") +
+  xlab("Cumulative precip (sqrt)")  
+
+#   Zoom in by removing high Count
+subplot.des8rm |> 
+  filter(Count < 100) |> 
+  ggplot(aes(x = Cum_precip_sqrt, y = Count)) +
+  geom_point() +
+  geom_smooth() +
+  ggtitle("All sites, desirable species") +
+  xlab("Cumulative precip (sqrt)") 
+
+# All sites, weedy
+subplot.weed8rm |> 
+  ggplot(aes(x = Cum_precip_sqrt, y = Count)) +
+  geom_point() +
+  geom_smooth() +
+  ggtitle("All sites, weedy species") +
+  xlab("Cumulative precip (sqrt)")   
+
+#   Zoom in by removing high Count
+subplot.weed8rm |> 
+  filter(Count < 100) |> 
+  ggplot(aes(x = Cum_precip_sqrt, y = Count)) +
+  geom_point() +
+  geom_smooth() +
+  ggtitle("All sites, weedy species") +
+  xlab("Cumulative precip (sqrt)")  
+
+
+# Sonoran Desert, desirable
+sonoran.des |> 
+  ggplot(aes(x = Cum_precip_sqrt, y = Count)) +
+  geom_point() +
+  geom_smooth() +
+  ggtitle("Sonoran Desert, desirable species") +
+  xlab("Cumulative precip (sqrt)")  
+
+# Sonoran Desert, weedy
+sonoran.weed |> 
+  ggplot(aes(x = Cum_precip_sqrt, y = Count)) +
+  geom_point() +
+  geom_smooth() +
+  ggtitle("Sonoran Desert, weedy species") +
+  xlab("Cumulative precip (sqrt)") 
+
+
+# CO Plateau, desirable
+naz.des |> 
+  ggplot(aes(x = Cum_precip_sqrt, y = Count)) +
+  geom_point() +
+  geom_smooth() +
+  ggtitle("Northern Arizona Plateau, desirable species") +
+  xlab("Cumulative precip (sqrt)")  
+
+# CO Plateau, weedy
+naz.weed |> 
+  ggplot(aes(x = Cum_precip_sqrt, y = Count)) +
+  geom_point() +
+  geom_smooth() +
+  ggtitle("Nothern Arizona Plateau, weedy species") +
+  xlab("Cumulative precip (sqrt)")  
 
 
 
@@ -318,5 +612,3 @@ subplot |>
   distinct(.keep_all = TRUE) |>
   ggpairs() # nothing strongly correlated with Height
 
-
-save.image("RData/05.1_data-screening_subplot.RData")
