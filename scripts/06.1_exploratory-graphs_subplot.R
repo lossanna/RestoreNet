@@ -2154,6 +2154,76 @@ all.weed.height.ai
 
 
 
+### Write out draft figures -----------------------------------------------
+
+# Sonoran Desert
+tiff("figures/2024-08_draft-figures/Sonoran_desirable_Height-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+sonoran.des.height
+dev.off()
+tiff("figures/2024-08_draft-figures/Sonoran_weedy_Height-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+sonoran.weed.height
+dev.off()
+
+tiff("figures/2024-08_draft-figures/Sonoran_desirable_Height-by-PlotMix_Climate-and-PlantSource2.tiff", units = "in", height = 5, width = 7, res = 150)
+sonoran.des.height.plotmixclimate
+dev.off()
+tiff("figures/2024-08_draft-figures/Sonoran_weedy_Height-by-PlotMix_Climate-and-PlantSource2.tiff", units = "in", height = 5, width = 7, res = 150)
+sonoran.weed.height.plotmixclimate
+dev.off()
+
+tiff("figures/2024-08_draft-figures/Sonoran_desirable_Height-by-forb-grass-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+sonoran.des.height.forbgrass.plantsource2
+dev.off()
+tiff("figures/2024-08_draft-figures/Sonoran_weedy_Height-by-forb-grass-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+sonoran.weed.height.forbgrass.plantsource2
+dev.off()
+
+# N AZ
+tiff("figures/2024-08_draft-figures/CO-Plateau_desirable_Height-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+naz.des.height
+dev.off()
+tiff("figures/2024-08_draft-figures/CO-Plateau_weedy_Height-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+naz.weed.height
+dev.off()
+
+tiff("figures/2024-08_draft-figures/CO-Plateau_desirable_Height-by-PlotMix_Climate-and-PlantSource2.tiff", units = "in", height = 5, width = 7, res = 150)
+naz.des.height.plotmixclimate
+dev.off()
+tiff("figures/2024-08_draft-figures/CO-Plateau_weedy_Height-by-PlotMix_Climate-and-PlantSource2.tiff", units = "in", height = 5, width = 7, res = 150)
+naz.weed.height.plotmixclimate
+dev.off()
+
+tiff("figures/2024-08_draft-figures/CO-Plateau_desirable_Height-by-forb-grass-shrub-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+naz.des.height.forbgrassshrub.plantsource2
+dev.off()
+tiff("figures/2024-08_draft-figures/CO-Plateau_weedy_Height-by-forb-grass-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+naz.weed.height.forbgrass.plantsource2
+dev.off()
+
+# All sites
+tiff("figures/2024-08_draft-figures/All-sites_desirable_Height-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+all.des.height
+dev.off()
+tiff("figures/2024-08_draft-figures/All-sites_weedy_Height-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+all.weed.height
+dev.off()
+
+tiff("figures/2024-08_draft-figures/All-sites_desirable_Height-by-PlotMix_Climate-and-PlantSource2.tiff", units = "in", height = 5, width = 7, res = 150)
+all.des.height.plotmixclimate
+dev.off()
+tiff("figures/2024-08_draft-figures/All-sites_weedy_Height-by-PlotMix_Climate-and-PlantSource2.tiff", units = "in", height = 5, width = 7, res = 150)
+all.weed.height.plotmixclimate
+dev.off()
+
+tiff("figures/2024-08_draft-figures/All-sites_desirable_Height-by-forb-grass-shrub-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+all.des.height.forbgrassshrub.plantsource2
+dev.off()
+tiff("figures/2024-08_draft-figures/All-sites_weedy_Height-by-forb-grass-shrub-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+all.weed.height.forbgrassshrub.plantsource2
+dev.off()
+
+
+
 ## Identify outliers (frequency across plots & sites) ---------------------
 
 ### Sonoran Desert --------------------------------------------------------
