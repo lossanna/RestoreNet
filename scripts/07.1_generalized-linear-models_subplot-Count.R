@@ -1,5 +1,5 @@
 # Created: 2024-05-26
-# Last updated: 2024-08-29
+# Last updated: 2024-08-30
 
 # Purpose: Run generalized linear models for subplot data, with Count as response variable. 
 #   Check for overdispersion and zero-inflation.
@@ -15,10 +15,14 @@
 #   potential model overfitting, but dropping explanatory variables doesn't help. I think
 #   it's just the unbalanced nature of the data? Unsure.
 
+# I tried a GAM to model Perc_dev_cum as non-linear, but model fit was still terrible.
+
 library(tidyverse)
 library(glmmTMB)
 library(performance)
 library(DHARMa)
+library(mgcv)
+library(mgcViz)
 
 # Load data ---------------------------------------------------------------
 
@@ -371,7 +375,6 @@ check_zeroinflation(nb.all1.weed8rm) # model is overfitting zeros
 
 
 
-
 # nopellet dataset --------------------------------------------------------
 
 ## Negative binomial ------------------------------------------------------
@@ -663,22 +666,6 @@ check_overdispersion(nb.sonoran.des) # overdispersion detected
 check_zeroinflation(nb.sonoran.des) # model is overfitting zeros
 check_collinearity(nb.sonoran.des) # should drop MAP
 
-# All variables, nested random effect of Site/Plot: Weedy
-nb.sonoran.weed <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
-                            PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
-                            Cum_precip + (1 | Site / Plot),
-                          data = sonoran.weed,
-                          family = nbinom2)
-summary(nb.sonoran.weed)
-r2(nb.sonoran.weed)
-res.nb.sonoran.weed <- simulateResiduals(nb.sonoran.weed)
-plotQQunif(res.nb.sonoran.weed)
-plotResiduals(res.nb.sonoran.weed)
-check_overdispersion(nb.sonoran.weed) # overdispersion detected
-check_zeroinflation(nb.sonoran.weed) # model is overfitting zeros
-check_collinearity(nb.sonoran.weed) # should drop MAP & Duration
-
-
 # 1: Drop MAP (for collinearity): Desirable
 nb.sonoran1.des <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
                             PlotMix_Climate + Duration + Lifeform + MAT + Sand_content + 
@@ -693,6 +680,37 @@ plotResiduals(res.nb.sonoran1.des)
 check_model(nb.sonoran1.des)
 check_overdispersion(nb.sonoran1.des) # overdispersion detected
 check_zeroinflation(nb.sonoran1.des) # model is overfitting zeros
+
+# 2: Drop MAP (for collinearity) & Sand_content (for singularity): Desirable
+nb.sonoran2.des <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
+                             PlotMix_Climate + Duration + Lifeform + MAT +  
+                             Cum_precip + (1 | Site / Plot),
+                           data = sonoran.des,
+                           family = nbinom2)
+summary(nb.sonoran2.des)
+r2(nb.sonoran2.des)
+res.nb.sonoran2.des <- simulateResiduals(nb.sonoran2.des)
+plotQQunif(res.nb.sonoran2.des)
+plotResiduals(res.nb.sonoran2.des)
+check_model(nb.sonoran2.des)
+check_overdispersion(nb.sonoran2.des) # overdispersion detected
+check_zeroinflation(nb.sonoran2.des) # model is overfitting zeros
+
+# All variables, nested random effect of Site/Plot: Weedy
+nb.sonoran.weed <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
+                             PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
+                             Cum_precip + (1 | Site / Plot),
+                           data = sonoran.weed,
+                           family = nbinom2)
+summary(nb.sonoran.weed)
+r2(nb.sonoran.weed)
+res.nb.sonoran.weed <- simulateResiduals(nb.sonoran.weed)
+plotQQunif(res.nb.sonoran.weed)
+plotResiduals(res.nb.sonoran.weed)
+check_overdispersion(nb.sonoran.weed) # overdispersion detected
+check_zeroinflation(nb.sonoran.weed) # model is overfitting zeros
+check_collinearity(nb.sonoran.weed) # should drop MAP & Duration
+
 
 # 1: Drop MAP & Duration (for collinearity): Weedy
 nb.sonoran1.weed <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
@@ -710,20 +728,19 @@ check_overdispersion(nb.sonoran1.weed) # overdispersion detected
 check_zeroinflation(nb.sonoran1.weed) # model is overfitting zeros
 
 
-# 2: Drop MAP (for collinearity) & Sand_content (for singularity): Desirable
-nb.sonoran2.des <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
-                             PlotMix_Climate + Duration + Lifeform + MAT +  
-                             Cum_precip + (1 | Site / Plot),
-                           data = sonoran.des,
-                           family = nbinom2)
-summary(nb.sonoran2.des)
-r2(nb.sonoran2.des)
-res.nb.sonoran2.des <- simulateResiduals(nb.sonoran2.des)
-plotQQunif(res.nb.sonoran2.des)
-plotResiduals(res.nb.sonoran2.des)
-check_model(nb.sonoran2.des)
-check_overdispersion(nb.sonoran2.des) # overdispersion detected
-check_zeroinflation(nb.sonoran2.des) # model is overfitting zeros
+## GAM negative binomial --------------------------------------------------
+
+# MAP dropped, SitePlotID as random effect, Perc_dev_cum as spline: Desirable
+gam.sonoran0.des <- gam(Count ~ s(Perc_dev_cum) + AridityIndex + Treatment + 
+                       PlantSource2 + PlotMix_Climate + Duration + Lifeform + MAT + 
+                       Sand_content + Cum_precip + s(SitePlotID, bs = "re"),
+                     family = nb(), data = sonoran.des)
+summary(gam.sonoran0.des)
+res.gam.sonoran0.des <- simulateResiduals(gam.sonoran0.des)
+plotQQunif(res.gam.sonoran0.des)
+plotResiduals(res.gam.sonoran0.des) # lol this looks even worse
+check_overdispersion(gam.sonoran0.des) # overdispersion detected
+check_zeroinflation(gam.sonoran0.des) # model is overfitting zeros
 
 
 
