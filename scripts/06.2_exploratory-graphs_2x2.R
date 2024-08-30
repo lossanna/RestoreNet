@@ -391,8 +391,49 @@ dev.off()
 
 # 2024-08 draft figures ---------------------------------------------------
 
-# Sonoran Desert
+## Seeded cover -----------------------------------------------------------
+
+# Sonoran Desert, single panel
 sonoran.seed <- dat |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Seeded_Cover)) +
+  geom_point(aes(color = Desirable)) +
+  geom_smooth() +
+  ggtitle("Sonoran Desert, seeded cover") +
+  theme_minimal() +
+  scale_x_continuous(labels = scales::percent) +
+  scale_color_viridis(direction = -1) +
+  xlab("Cumulative precip deviation from normals") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+sonoran.seed
+sonoran.total <- dat |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Total_Veg_Cover)) +
+  geom_point(aes(color = Weedy)) +
+  geom_smooth() +
+  ggtitle("Sonoran Desert, total cover") +
+  theme_minimal() +
+  scale_x_continuous(labels = scales::percent) +
+  scale_color_viridis(direction = -1) +
+  xlab("Cumulative precip deviation from normals") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+sonoran.total
+
+sonoran.seed.quad <- dat |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Seeded_Cover)) +
+  geom_point(aes(color = Desirable)) +
+  geom_smooth(method = "lm", formula = y ~ x + I(x^2)) +
+  ggtitle("Sonoran Desert, seeded cover") +
+  theme_minimal() +
+  scale_x_continuous(labels = scales::percent) +
+  scale_color_viridis(direction = -1) +
+  xlab("Cumulative precip deviation from normals") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+sonoran.seed.quad
+
+# Sonoran Desert, by PlotMix_Climate
+sonoran.seed.plotmixclimate <- dat |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Seeded_Cover)) +
   geom_point(aes(color = Desirable)) +
@@ -405,8 +446,8 @@ sonoran.seed <- dat |>
   xlab("Cumulative precip deviation from normals") +
   theme(legend.position = "bottom") +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
-sonoran.seed
-sonoran.total <- dat |> 
+sonoran.seed.plotmixclimate
+sonoran.total.plotmixclimate <- dat |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Total_Veg_Cover)) +
   geom_point(aes(color = Weedy)) +
@@ -419,21 +460,20 @@ sonoran.total <- dat |>
   xlab("Cumulative precip deviation from normals") +
   theme(legend.position = "bottom") +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
-sonoran.total
+sonoran.total.plotmixclimate
 
-# CO Plateau
+
+# CO Plateau, single panel
 co.seed <- dat |> 
   filter(Region == "Colorado Plateau") |> 
   ggplot(aes(x = Perc_dev_cum, y = Seeded_Cover)) +
   geom_point(aes(color = Desirable)) +
   geom_smooth() +
-  facet_wrap(~PlotMix_Climate) +
-  ggtitle("Colorado Plateau, seeded cover") +
+  ggtitle("Nothern Arizona Plateau, seeded cover") +
   theme_minimal() +
   scale_x_continuous(labels = scales::percent) +
   scale_color_viridis(direction = -1) +
   xlab("Cumulative precip deviation from normals") +
-  theme(legend.position = "bottom") +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 co.seed
 co.total <- dat |> 
@@ -441,15 +481,213 @@ co.total <- dat |>
   ggplot(aes(x = Perc_dev_cum, y = Total_Veg_Cover)) +
   geom_point(aes(color = Weedy)) +
   geom_smooth() +
+  ggtitle("Nothern Arizona Plateau, total cover") +
+  theme_minimal() +
+  scale_x_continuous(labels = scales::percent) +
+  scale_color_viridis(direction = -1) +
+  xlab("Cumulative precip deviation from normals") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+co.total
+
+# CO Plateau, by PlotMix_Climate
+co.seed.plotmixclimate <- dat |> 
+  filter(Region == "Colorado Plateau") |> 
+  ggplot(aes(x = Perc_dev_cum, y = Seeded_Cover)) +
+  geom_point(aes(color = Desirable)) +
+  geom_smooth() +
   facet_wrap(~PlotMix_Climate) +
-  ggtitle("Colorado Plateau, total cover") +
+  ggtitle("Northern Arizona Plateau, seeded cover") +
   theme_minimal() +
   scale_x_continuous(labels = scales::percent) +
   scale_color_viridis(direction = -1) +
   xlab("Cumulative precip deviation from normals") +
   theme(legend.position = "bottom") +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
-co.total
+co.seed.plotmixclimate
+co.total.plotmixclimate <- dat |> 
+  filter(Region == "Colorado Plateau") |> 
+  ggplot(aes(x = Perc_dev_cum, y = Total_Veg_Cover)) +
+  geom_point(aes(color = Weedy)) +
+  geom_smooth() +
+  facet_wrap(~PlotMix_Climate) +
+  ggtitle("Northern Arizona Plateau, total cover") +
+  theme_minimal() +
+  scale_x_continuous(labels = scales::percent) +
+  scale_color_viridis(direction = -1) +
+  xlab("Cumulative precip deviation from normals") +
+  theme(legend.position = "bottom") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+co.total.plotmixclimate
+
+
+# All sites, single panel
+all.seed <- dat |> 
+  filter(Perc_dev_cum < 8) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Seeded_Cover)) +
+  geom_point(aes(color = Desirable)) +
+  geom_smooth() +
+  ggtitle("All sites, seeded cover") +
+  theme_minimal() +
+  scale_x_continuous(labels = scales::percent) +
+  scale_color_viridis(direction = -1) +
+  xlab("Cumulative precip deviation from normals") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+all.seed
+all.total <- dat |> 
+  filter(Perc_dev_cum < 8) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Total_Veg_Cover)) +
+  geom_point(aes(color = Weedy)) +
+  geom_smooth() +
+  ggtitle("All sites, total cover") +
+  theme_minimal() +
+  scale_x_continuous(labels = scales::percent) +
+  scale_color_viridis(direction = -1) +
+  xlab("Cumulative precip deviation from normals") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+all.total
+
+all.seed.quad <- dat |> 
+  filter(Perc_dev_cum < 8) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Seeded_Cover)) +
+  geom_point(aes(color = Desirable)) +
+  geom_smooth(method = "lm", formula = y ~ x + I(x^2)) +
+  ggtitle("All sites, seeded cover") +
+  theme_minimal() +
+  scale_x_continuous(labels = scales::percent) +
+  scale_color_viridis(direction = -1) +
+  xlab("Cumulative precip deviation from normals") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+all.seed.quad
+
+# All sites, by PlotMix_Climate
+all.seed.plotmixclimate <- dat |> 
+  filter(Perc_dev_cum < 8) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Seeded_Cover)) +
+  geom_point(aes(color = Desirable)) +
+  geom_smooth() +
+  facet_wrap(~PlotMix_Climate) +
+  ggtitle("All sites, seeded cover") +
+  theme_minimal() +
+  scale_x_continuous(labels = scales::percent) +
+  scale_color_viridis(direction = -1) +
+  xlab("Cumulative precip deviation from normals") +
+  theme(legend.position = "bottom") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+all.seed.plotmixclimate
+all.total.plotmixclimate <- dat |> 
+  filter(Perc_dev_cum < 8) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Total_Veg_Cover)) +
+  geom_point(aes(color = Weedy)) +
+  geom_smooth() +
+  facet_wrap(~PlotMix_Climate) +
+  ggtitle("All sites, total cover") +
+  theme_minimal() +
+  scale_x_continuous(labels = scales::percent) +
+  scale_color_viridis(direction = -1) +
+  xlab("Cumulative precip deviation from normals") +
+  theme(legend.position = "bottom") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+all.total.plotmixclimate
+
+
+# Richness ----------------------------------------------------------------
+
+# All sites, single panel
+all.des <- dat |> 
+  filter(Perc_dev_cum < 8) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Desirable)) +
+  geom_point() +
+  geom_smooth() +
+  ggtitle("All sites, desirable species richness") +
+  theme_minimal() +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+all.des
+all.weed <- dat |> 
+  filter(Perc_dev_cum < 8) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Weedy)) +
+  geom_point() +
+  geom_smooth() +
+  ggtitle("All sites, weedy species richness") +
+  theme_minimal() +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+all.weed
+
+all.des.quad <- dat |> 
+  filter(Perc_dev_cum < 8) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Desirable)) +
+  geom_point() +
+  geom_smooth(method = "lm", formula = y ~ x + I(x^2)) +
+  ggtitle("All sites, desirable species richness") +
+  theme_minimal() +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+all.des.quad
+
+all.des.linear <- dat |> 
+  filter(Perc_dev_cum < 8) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Desirable)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  ggtitle("All sites, desirable species richness") +
+  theme_minimal() +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5)
+all.des.linear
+
+# Sonoran Desert, single panel
+sonoran.des <- dat |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Desirable)) +
+  geom_point() +
+  geom_smooth() +
+  ggtitle("Sonoran Desert, desirable species richness") +
+  theme_minimal() +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+sonoran.des
+sonoran.weed <- dat |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Weedy)) +
+  geom_point() +
+  geom_smooth() +
+  ggtitle("Sonoran Desert, weedy species richness") +
+  theme_minimal() +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+sonoran.weed
+
+# CO Plateau, single panel
+naz.des <- dat |> 
+  filter(Region == "Colorado Plateau") |> 
+  ggplot(aes(x = Perc_dev_cum, y = Desirable)) +
+  geom_point() +
+  geom_smooth() +
+  ggtitle("Northern Arizona Plateau, desirable species richness") +
+  theme_minimal() +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+naz.des
+naz.weed <- dat |> 
+  filter(Region == "Colorado Plateau") |> 
+  ggplot(aes(x = Perc_dev_cum, y = Weedy)) +
+  geom_point() +
+  geom_smooth() +
+  ggtitle("Northern Arizona Plateau, weedy species richness") +
+  theme_minimal() +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+naz.weed
+
 
 
 save.image("RData/06.2_exploratory-graphs_2x2.RData")
