@@ -125,7 +125,7 @@ check_zeroinflation(pos.all.des0) # zero-inflation detected
 check_collinearity(pos.all.des0)
 
 # All variables, with random effect
-#   nested random effect takes care of disperion issue
+#   nested random effect takes care of dispersion issue
 pos.all.des <- glmmTMB(Desirable ~ Perc_dev_cum + AridityIndex_log + Treatment + 
                           PlotMix_Climate + MAT + MAP + Sand_content + Cum_precip_sqrt + 
                           (1 | Site / Plot),
@@ -227,3 +227,6 @@ zip.nopellet.des1 <- glmmTMB(Desirable ~ Perc_dev_cum + AridityIndex + Treatment
                           (1 | Site / Plot),
                         data = nopellet, family = genpois, ziformula = ~.) 
 summary(zip.nopellet.des1)
+
+
+save.image("RData/07.3_generalized-linear-models_2x2-richness.RData")
