@@ -1,5 +1,5 @@
 # Created: 2024-05-29
-# Last updated: 2024-08-26
+# Last updated: 2024-08-30
 
 # Purpose: Examine distributions, outliers, and variable relationships for 2x2 data response
 #   variables, Seeded Cover and Total Cover.
@@ -31,6 +31,25 @@ p2x2.rich.cover <- p2x2.rich.cover.raw |>
 
 # Check for NAs
 apply(p2x2.rich.cover, 2, anyNA)
+
+# Add AridityIndex_log and Cum_precip_sqrt
+#   05.3.R showed these transformations help improve normality
+p2x2.rich.cover <- p2x2.rich.cover |> 
+  mutate(Cum_precip_sqrt = sqrt(Cum_precip)) |> 
+  mutate(AridityIndex_log = log(AridityIndex))
+
+# Remove Inf and 800% from Perc_dev_cum
+richcover <- p2x2.rich.cover |> 
+  filter(Perc_dev_cum != Inf,
+         Perc_dev_cum < 8)
+
+# Separate out Sonoran sites 
+sonoran <- richcover |> 
+  filter(Region %in% c("Sonoran SE", "Sonoran Central"))
+
+# Separate out CO Plateau (Northern Arizona) sites
+naz <- richcover |> 
+  filter(Region == "Colorado Plateau")
 
 # Separate out continuous variables
 pairs.cont <- p2x2.rich.cover |>
@@ -82,3 +101,19 @@ dotchart(filter(p2x2.rich.cover, Region == "Mojave")$Seeded_Cover,
 dotchart(filter(p2x2.rich.cover, Region == "Chihuahuan")$Seeded_Cover,
          ylab = "Observations", xlab = "Seeded_Cover", main = "Chihuahuan")
 
+
+# Response variable: desirable richness -----------------------------------
+
+## Histogram --------------------------------------------------------------
+
+# All
+hist(richcover$Desirable)
+
+
+
+# Response variable: weedy richness ---------------------------------------
+
+## Histogram --------------------------------------------------------------
+
+# All
+hist(richcover$Weedy)
