@@ -114,7 +114,7 @@ subplot.des <- subplot |>
 subplot.weed <- subplot |> 
   filter(Weedy != "Desirable")
 
-# With 8000% precip dev from Mojave removed
+# With 800% precip dev from Mojave removed
 #   Desirable
 subplot.des8rm <- subplot.des |> 
   filter(Perc_dev_cum < 8)
@@ -159,7 +159,7 @@ naz.weed <- naz |>
 
 
 
-# All data (minus 8000% outlier), subset by Weedy/Desirable ---------------
+# All data (minus 800% outlier), subset by Weedy/Desirable ----------------
 
 # All variables, nested random effect of Site/Plot: Desirable
 nb.all.des8rm <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex_log + Treatment + PlantSource2 + 

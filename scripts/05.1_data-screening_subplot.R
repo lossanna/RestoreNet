@@ -54,7 +54,7 @@ subplot <- subplot |>
   mutate(Cum_precip_sqrt = sqrt(Cum_precip)) |> 
   mutate(AridityIndex_log = log(AridityIndex))
 
-# Make separate Desirable/Weedy data sets, with 8000% precip deviation removed
+# Make separate Desirable/Weedy data sets, with 800% precip deviation removed
 subplot.des8rm <- subplot |> 
   filter(Weedy != "Weedy",
          Perc_dev_cum < 8)

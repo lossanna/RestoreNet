@@ -1077,7 +1077,7 @@ utah.weed.count.plotmixclimate
 
 ### All sites -------------------------------------------------------------
 
-# Extreme precip deviation outliers removed (8000% deviation) for better visualization
+# Extreme precip deviation outliers removed (800% deviation) for better visualization
 dat |> 
   filter(Perc_dev_cum > 1) |> 
   select(Region, Site, Date_Monitored, Perc_dev_cum) |> 
@@ -1914,7 +1914,7 @@ utah.weed.height
 
 ### All sites -------------------------------------------------------------
 
-# Extreme precip deviation outliers removed (8000% deviation) for better visualization
+# Extreme precip deviation outliers removed (800% deviation) for better visualization
 
 # Single panel by PlantSource2
 all.des.height <- dat |> 
