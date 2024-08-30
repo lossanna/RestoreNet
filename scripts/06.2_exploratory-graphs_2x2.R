@@ -690,4 +690,46 @@ naz.weed
 
 
 
+## Write out figures ------------------------------------------------------
+
+# All sites
+tiff("figures/2024-08_draft-figures/All-sites_2x2-seeded-cover.tiff", units = "in", height = 4, width = 6, res = 150)
+all.seed
+dev.off()
+
+tiff("figures/2024-08_draft-figures/All-sites_2x2-desirable-richness.tiff", units = "in", height = 4, width = 5, res = 150)
+all.des
+dev.off()
+
+tiff("figures/2024-08_draft-figures/All-sites_2x2-weedy-richness.tiff", units = "in", height = 4, width = 5, res = 150)
+all.weed
+dev.off()
+
+# Sonoran Desert
+tiff("figures/2024-08_draft-figures/Sonoran_2x2-seeded-cover.tiff", units = "in", height = 4, width = 6, res = 150)
+sonoran.seed
+dev.off()
+
+tiff("figures/2024-08_draft-figures/Sonoran_2x2-desirable-richness.tiff", units = "in", height = 4, width = 5, res = 150)
+sonoran.des
+dev.off()
+
+tiff("figures/2024-08_draft-figures/Sonoran_2x2-weedy-richness.tiff", units = "in", height = 4, width = 5, res = 150)
+sonoran.weed
+dev.off()
+
+# CO Plateau
+tiff("figures/2024-08_draft-figures/CO-Plateau_2x2-seeded-cover.tiff", units = "in", height = 4, width = 6, res = 150)
+co.seed
+dev.off()
+
+tiff("figures/2024-08_draft-figures/CO-Plateau_2x2-desirable-richness.tiff", units = "in", height = 4, width = 5, res = 150)
+naz.des
+dev.off()
+
+tiff("figures/2024-08_draft-figures/CO-Plateau_2x2-weedy-richness.tiff", units = "in", height = 4, width = 5, res = 150)
+naz.weed
+dev.off()
+
+
 save.image("RData/06.2_exploratory-graphs_2x2.RData")
