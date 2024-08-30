@@ -269,8 +269,8 @@ r2(nb.all.des)
 res.nb.all.des <- simulateResiduals(nb.all.des)
 plotResiduals(nb.all.des)
 plotQQunif(res.nb.all.des)
-check_overdispersion(nb.all.des) # overdispersion detected
-check_zeroinflation(nb.all.des) # model is overfitting zeros
+check_overdispersion(nb.all.des) # no overdispersion detected
+check_zeroinflation(nb.all.des) # no zero-inflation
 check_collinearity(nb.all.des)
 
 # All variables, nested random effect of Site/Plot: Weedy
@@ -284,7 +284,7 @@ r2(nb.all.weed)
 res.nb.all.weed <- simulateResiduals(nb.all.weed)
 plotResiduals(res.nb.all.weed)
 plotQQunif(res.nb.all.weed)
-check_overdispersion(nb.all.weed) # overdispersion detected
+check_overdispersion(nb.all.weed) # no overdispersion detected
 check_collinearity(nb.all.weed)
 
 
@@ -299,8 +299,8 @@ r2(nb.all1.des)
 res.nb.all1.des <- simulateResiduals(nb.all1.des)
 plotResiduals(res.nb.all1.des)
 plotQQunif(res.nb.all1.des)
-check_overdispersion(nb.all1.des) # overdispersion detected
-check_zeroinflation(nb.all1.des) # model is overfitting zeros
+check_overdispersion(nb.all1.des) # no overdispersion detected
+check_zeroinflation(nb.all1.des) # no zero-inflation
 
 # 1: Drop MAP (collinearity): Weedy
 nb.all1.weed <- glmmTMB(Height ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 + 
@@ -313,7 +313,7 @@ r2(nb.all1.weed)
 res.nb.all1.weed <- simulateResiduals(nb.all1.weed)
 plotResiduals(res.nb.all1.weed)
 plotQQunif(res.nb.all1.weed)
-check_overdispersion(nb.all1.weed) # overdispersion detected
+check_overdispersion(nb.all1.weed) # underdispersion detected
 check_zeroinflation(nb.all1.weed) # model is overfitting zeros
 
 
@@ -335,8 +335,8 @@ r2(nb.all.des8rm)
 res.nb.all.des8rm <- simulateResiduals(nb.all.des8rm)
 plotResiduals(nb.all.des8rm)
 plotQQunif(res.nb.all.des8rm)
-check_overdispersion(nb.all.des8rm) # overdispersion detected
-check_zeroinflation(nb.all.des8rm) # model is overfitting zeros
+check_overdispersion(nb.all.des8rm) # no overdispersion detected
+check_zeroinflation(nb.all.des8rm) # no zero-inflation
 check_collinearity(nb.all.des8rm)
 
 # All variables, nested random effect of Site/Plot: Weedy
@@ -350,7 +350,7 @@ r2(nb.all.weed8rm)
 res.nb.all.weed8rm <- simulateResiduals(nb.all.weed8rm)
 plotResiduals(res.nb.all.weed8rm)
 plotQQunif(res.nb.all.weed8rm)
-check_overdispersion(nb.all.weed8rm) # overdispersion detected
+check_overdispersion(nb.all.weed8rm) # no overdispersion detected
 check_collinearity(nb.all.weed8rm)
 
 
@@ -441,9 +441,9 @@ plotResiduals(res.nb.sonoran1.des)
 check_overdispersion(nb.sonoran1.des) # no overdispersion detected
 check_zeroinflation(nb.sonoran1.des) # model is overfitting zeros (but it is minor)
 
-# 1: Drop AridityIndex (for collinearity),  Duration & Lifeform (for convergence): Weedy
+# 1: Drop MAP (for collinearity), and Lifeform (for convergence): Weedy
 nb.sonoran1.weed <- glmmTMB(Height ~ Perc_dev_cum + AridityIndex + Treatment + PlantSource2 +
-                              PlotMix_Climate + MAT + Sand_content + 
+                              PlotMix_Climate +  Duration + MAT + Sand_content + 
                               Cum_precip + (1 | Site / Plot),
                             data = sonoran.weed,
                             family = nbinom2)
