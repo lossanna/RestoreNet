@@ -16,6 +16,7 @@
 # "All variables" includes: Perc_dev_cum, AridityIndex_log, Treatment, PlantSource2,
 #     PlotMix_Climate, Duration, Lifeform, MAT, MAP, Sand_content, Cum_precip_sqrt.
 
+# Transformations do not really improve model fit or residuals plots.
 
 library(tidyverse)
 library(glmmTMB)

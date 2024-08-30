@@ -11,6 +11,9 @@
 #     PlotMix_Climate, Duration, Lifeform, MAT, MAP, Sand_content, Cum_precip
 # However, AridityIndex and MAP are usually too correlated to include both, so MAP often dropped.
 
+# Residuals are concerning, but I don't know how to fix it. Combined with high R^2, it implies
+#   potential model overfitting, but dropping explanatory variables doesn't help. I think
+#   it's just the unbalanced nature of the data? Unsure.
 
 library(tidyverse)
 library(glmmTMB)
@@ -721,7 +724,6 @@ plotResiduals(res.nb.sonoran2.des)
 check_model(nb.sonoran2.des)
 check_overdispersion(nb.sonoran2.des) # overdispersion detected
 check_zeroinflation(nb.sonoran2.des) # model is overfitting zeros
-
 
 
 
