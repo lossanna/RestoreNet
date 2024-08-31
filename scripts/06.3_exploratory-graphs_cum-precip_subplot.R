@@ -1,7 +1,7 @@
 # Created: 2024-03-06
 # Last updated: 2024-08-30
 
-# Purpose: Begin to examine subplot trends as they relate to precip.
+# Purpose: Examine relationships between Count/Height and Cum_precip.
 
 library(tidyverse)
 library(scales)
