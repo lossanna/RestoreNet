@@ -534,9 +534,10 @@ check_overdispersion(nb.naz.weed) # overdispersion detected
 check_zeroinflation(nb.naz.weed) # model is overfitting zeros
 check_collinearity(nb.naz.weed) # drop PlantSource2
 
-#   1: Drop PlantSource2 (for collinearity): Weedy
-nb.naz1.weed <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex_log + Treatment +  
-                          PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
+#   1: Drop Duration (for collinearity): Weedy
+#     Basically all of them are annuals
+nb.naz1.weed <- glmmTMB(Count ~ Perc_dev_cum + AridityIndex_log + Treatment + PlantSource2 + 
+                          PlotMix_Climate + Lifeform + MAT + MAP + Sand_content + 
                           Cum_precip_sqrt + (1 | Site / Plot),
                         data = naz.weed,
                         family = nbinom2)
@@ -583,11 +584,12 @@ plotQQunif(res.nb.naz.weed.abs)
 plotResiduals(res.nb.naz.weed.abs)
 check_overdispersion(nb.naz.weed.abs) # overdispersion detected
 check_zeroinflation(nb.naz.weed.abs) # model is overfitting zeros
-check_collinearity(nb.naz.weed.abs) # drop PlantSource2
+check_collinearity(nb.naz.weed.abs) # drop PlantSource2 or Duration
 
-#   1: Drop PlantSource2 (for collinearity): Weedy
-nb.naz1.weed.abs <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex_log + Treatment +  
-                              PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
+#   1: Drop Duration (for collinearity): Weedy
+#     Basically all of them are annuals
+nb.naz1.weed.abs <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex_log + Treatment + PlantSource2 + 
+                              PlotMix_Climate + Lifeform + MAT + MAP + Sand_content + 
                               Cum_precip_sqrt + (1 | Site / Plot),
                             data = naz.weed,
                             family = nbinom2)
@@ -634,11 +636,12 @@ plotQQunif(res.nb.naz.weed.abs2)
 plotResiduals(res.nb.naz.weed.abs2)
 check_overdispersion(nb.naz.weed.abs2) # overdispersion detected
 check_zeroinflation(nb.naz.weed.abs2) # model is overfitting zeros
-check_collinearity(nb.naz.weed.abs2) # drop PlantSource2
+check_collinearity(nb.naz.weed.abs2) # drop PlantSource2 or Duration
 
-#   1: Drop PlantSource2 (for collinearity): Weedy
-nb.naz1.weed.abs2 <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex_log + Treatment +  
-                               PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
+#   1: Drop Duration (for collinearity): Weedy
+#     Basically all of them are annuals
+nb.naz1.weed.abs2 <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex_log + Treatment + PlantSource2 + 
+                               PlotMix_Climate + Lifeform + MAT + MAP + Sand_content + 
                                Since_last_precip_sqrt + (1 | Site / Plot),
                              data = naz.weed,
                              family = nbinom2)
