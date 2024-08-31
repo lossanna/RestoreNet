@@ -1,5 +1,5 @@
 # Created: 2024-03-06
-# Last updated: 2024-08-29
+# Last updated: 2024-08-30
 
 # Purpose: Begin to examine subplot trends as they relate to precip.
 
@@ -645,6 +645,7 @@ all.weed.count.plotmixclimate <- dat |>
 all.weed.count.plotmixclimate
 
 # By Lifeform (forb, grass, shrub) and PlantSource2
+#   Almost no weedy shrubs, so they aren't included
 all.des.count.forbgrassshrub.plantsource2 <- dat |> 
   filter(Weedy != "Weedy") |> 
   filter(Perc_dev_cum < 8) |>
@@ -666,10 +667,10 @@ all.des.count.forbgrassshrub.plantsource2 <- dat |>
   theme(axis.text.x = element_text(angle = 35)) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 all.des.count.forbgrassshrub.plantsource2
-all.weed.count.forbgrassshrub.plantsource2 <- dat |> 
+all.weed.count.forbgrass.plantsource2 <- dat |> 
   filter(Weedy != "Desirable") |> 
   filter(Perc_dev_cum < 8) |>
-  filter(Lifeform %in% c("Forb", "Grass", "Shrub")) |> 
+  filter(Lifeform %in% c("Forb", "Grass")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
   geom_point(aes(color = PlantSource2,
                  shape = PlantSource2),
@@ -686,7 +687,7 @@ all.weed.count.forbgrassshrub.plantsource2 <- dat |>
   theme(legend.title = element_blank()) +
   theme(axis.text.x = element_text(angle = 35)) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
-all.weed.count.forbgrassshrub.plantsource2
+all.weed.count.forbgrass.plantsource2
 
 # By Duration (annual & perennial only) and Lifeform
 all.des.count.perennial.annual.lifeform <- dat |> 
@@ -1384,8 +1385,8 @@ dev.off()
 tiff("figures/2024-08_draft-figures/All-sites_desirable_Count-by-forb-grass-shrub-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
 all.des.count.forbgrassshrub.plantsource2
 dev.off()
-tiff("figures/2024-08_draft-figures/All-sites_weedy_Count-by-forb-grass-shrub-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
-all.weed.count.forbgrassshrub.plantsource2
+tiff("figures/2024-08_draft-figures/All-sites_weedy_Count-by-forb-grass-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+all.weed.count.forbgrass.plantsource2
 dev.off()
 
 
@@ -3102,6 +3103,6 @@ dat |>
 
 
 
-save.image("RData/06.1_exploratory-graphs_subplot.RData")
+save.image("RData/06.1_exploratory-graphs_precip-dev_subplot.RData")
 
 
