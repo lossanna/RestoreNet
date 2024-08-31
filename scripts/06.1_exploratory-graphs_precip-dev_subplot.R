@@ -1,7 +1,9 @@
 # Created: 2024-03-06
 # Last updated: 2024-08-30
 
-# Purpose: Begin to examine subplot trends as they relate to precip.
+# Purpose: Begin to examine subplot trends as they relate to precip. Focus on Perc_dev_cum
+#   and relationship to response variables Count & Height. Identify what seeded species from 
+#   mixes are doing well.
 
 library(tidyverse)
 library(scales)
