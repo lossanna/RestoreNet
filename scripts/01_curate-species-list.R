@@ -433,7 +433,7 @@ head(species.de)
 
 
 
-# Renane code & name for lo-depen -----------------------------------------
+# Rename code & name for lo-depen -----------------------------------------
 
 # Add Site to Name col for location-dependent
 species.de$Name <- apply(species.de[, c("Name", "Site")], 1, paste, collapse = ", ")

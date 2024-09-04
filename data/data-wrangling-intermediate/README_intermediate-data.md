@@ -6,6 +6,8 @@ Notes about `output` and `edited` intermediate data files created in data cleani
 # Notes
 
 ## Raw data
+- `29Palms_Spr22.xlsx`
+	- Data that was missing from `Master.xlsx` that I emailed to get.
 - `2023-09-15_Master 1.0 Germination Data_raw.xlsx`
 	- Shortened name: `Master.xlsx`.
 	- Contains `AllSubplotData` tab (raw `subplot` data), and `AllPlotData` (raw `2x2` plot data).
@@ -116,7 +118,7 @@ Notes about `output` and `edited` intermediate data files created in data cleani
 - List of codes taken from master species list. Species have native and lifeform information, but need duration information added.
 - Manually edited to add plant duration, based on USDA Plants.
 - Manually edited to resolve conflicting/misspelled names for BOAR and SATR12 to remove duplicates.
-- Row length: edited list is 2 rows less than output list (2 rows removed).
+- Row length: edited list is 1 row less than output list (2 rows removed, 1 row of 0s added).
 - Columns: `CodeOriginal`, `Name`, `Native`, `Duration` (added), `Lifeform`.
 
 #### `01b_edited5_location-dependent_native-duration-lifeform.csv`
