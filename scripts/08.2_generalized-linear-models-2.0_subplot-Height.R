@@ -120,6 +120,7 @@ subplot.des <- subplot |>
   filter(Weedy != "Weedy") |> 
   filter(Perc_dev_cum < 8)|> 
   mutate(Perc_dev_cum_abs = abs(Perc_dev_cum))
+subplot.des$PlantSource2 <- relevel(subplot.des$PlantSource2, ref = "Native recruit")
 
 #   Weedy
 subplot.weed <- subplot |> 
@@ -134,11 +135,15 @@ subplot.weed <- subplot |>
 # Desirable
 sonoran.des <- subplot.des |> 
   filter(Region %in% c("Sonoran SE", "Sonoran Central"))
-sonoran.des$PlantSource2 <- relevel(sonoran.des$PlantSource2, ref = "Native recruit")
 
 # Weedy
 sonoran.weed <- subplot.weed |> 
   filter(Region %in% c("Sonoran SE", "Sonoran Central"))
+
+# Seeded
+sonoran.seed <- sonoran.des |> 
+  filter(SpeciesSeeded == "Yes")
+sonoran.seed$Treatment <- relevel(sonoran.seed$Treatment, ref = "Seed")
 
 
 ## Separate out Northern AZ sites (8) -------------------------------------
@@ -355,6 +360,53 @@ check_overdispersion(nb.sonoran1.weed.abs2) # no overdispersion detected
 check_zeroinflation(nb.sonoran1.weed.abs2) # no zero-inflation detected
 check_collinearity(nb.sonoran1.weed.abs2)
 
+
+# Seeded
+nb.sonoran.seed.abs2 <- glmmTMB(Height ~ Perc_dev_cum_abs + AridityIndex_log + Treatment +  
+                                   PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
+                                   Since_last_precip_sqrt + (1 | Site / Plot),
+                                 data = sonoran.seed,
+                                 family = nbinom2)
+summary(nb.sonoran.seed.abs2)
+r2(nb.sonoran.seed.abs2) # can't compute
+res.nb.sonoran.seed.abs2 <- simulateResiduals(nb.sonoran.seed.abs2)
+plotQQunif(res.nb.sonoran.seed.abs2)
+plotResiduals(res.nb.sonoran.seed.abs2)
+check_overdispersion(nb.sonoran.seed.abs2) # no overdispersion detected
+check_zeroinflation(nb.sonoran.seed.abs2) # model is overfitting zeros
+check_collinearity(nb.sonoran.seed.abs2)
+
+#   1: Drop MAP (collinearity): Seeded
+nb.sonoran1.seed.abs2 <- glmmTMB(Height ~ Perc_dev_cum_abs + AridityIndex_log + Treatment +  
+                                  PlotMix_Climate + Duration + Lifeform + MAT + Sand_content + 
+                                  Since_last_precip_sqrt + (1 | Site / Plot),
+                                data = sonoran.seed,
+                                family = nbinom2)
+summary(nb.sonoran1.seed.abs2)
+r2(nb.sonoran1.seed.abs2) # can't compute
+res.nb.sonoran1.seed.abs2 <- simulateResiduals(nb.sonoran1.seed.abs2)
+plotQQunif(res.nb.sonoran1.seed.abs2)
+plotResiduals(res.nb.sonoran1.seed.abs2)
+check_overdispersion(nb.sonoran1.seed.abs2) # no overdispersion detected
+check_zeroinflation(nb.sonoran1.seed.abs2) # model is overfitting zeros
+check_collinearity(nb.sonoran1.seed.abs2)
+check_singularity(nb.sonoran1.seed.abs2)
+
+
+#   2: Drop MAP (collinearity), AridityIndex_log, Sand_content (singularity): Seeded
+nb.sonoran2.seed.abs2 <- glmmTMB(Height ~ Perc_dev_cum_abs + Treatment +  
+                                   PlotMix_Climate + Duration + Lifeform + MAT +  
+                                   Since_last_precip_sqrt + (1 | Site / Plot),
+                                 data = sonoran.seed,
+                                 family = nbinom2)
+summary(nb.sonoran2.seed.abs2)
+r2(nb.sonoran2.seed.abs2)
+res.nb.sonoran2.seed.abs2 <- simulateResiduals(nb.sonoran2.seed.abs2)
+plotQQunif(res.nb.sonoran2.seed.abs2)
+plotResiduals(res.nb.sonoran2.seed.abs2)
+check_overdispersion(nb.sonoran2.seed.abs2) # no overdispersion detected
+check_zeroinflation(nb.sonoran2.seed.abs2) # model is overfitting zeros
+check_collinearity(nb.sonoran2.seed.abs2)
 
 
 # Northern Arizona Plateau ------------------------------------------------
