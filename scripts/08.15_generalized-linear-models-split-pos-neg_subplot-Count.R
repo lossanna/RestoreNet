@@ -206,4 +206,4 @@ check_zeroinflation(nb.sonoran.weed.neg) # model is overfitting zeros
 check_collinearity(nb.sonoran.weed.neg) 
 
 
-save.image("RData/08.15_generalized-linear-models-3.0_subplot-Count.RData")
+save.image("RData/08.15_generalized-linear-models-split-pos-neg_subplot-Count.RData")
