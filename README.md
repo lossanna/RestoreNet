@@ -17,7 +17,8 @@ There are two main datasets, referred to in script names by `_subplot` and `_2x2
 To understand more about data wrangling, see folder-specific READMEs.
 
 ## Scripts
-Scripts include date of creation and last update, as well as a purpose statement, and any major takeaways.
+Scripts include date of creation and last update, as well as a purpose statement, and any major takeaways.  
+Scripts numbered `XX.15_` are deprecated.
 
 # Workflow for current analysis
 Scripts should be run in order of number in name.  
@@ -63,7 +64,10 @@ Exploratory scripts not necessary for producing final results, but explain some 
         - `README_intermediate-data.md`
     - `Farrell_2023_EcologicalApplications_supp_RestoreNetsubpl/` (sub-exploratory)
     - `Global-AI_ET0_annual_v3/`
+        - Data used to extract aridity index values for sites. 
+        - Not pushed to GitHub.
     - `prism-dat/`
+        - Climate data downloaded from PRISM for each site. Used for MAP, MAT, and quantifying precipitation variability.
     - `raw/`
         - `README_raw-data.md`
 - `figures/`

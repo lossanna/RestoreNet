@@ -298,7 +298,7 @@ check_collinearity(nb.sonoran1.weed)
 
 
 
-## By Perc_dev_cum_abs & Cum_precip_sqrt -----------------------------------
+## By Perc_dev_cum_abs & Since_last_precip_sqrt ---------------------------
 
 # Desirable
 #   All variables, nested random effect of Site/Plot: Desirable

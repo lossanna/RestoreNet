@@ -52,5 +52,11 @@ Corrected monitoring info was used during data wrangling for `subplot` and `2x2`
 
 ## From `04.2_data-wrangling_2x2.R`
 #### `04.2_2x2-richness-cover_clean.csv`
-- Columns:  `Region`, `Site`, `Date_Seeded`, `Date_Monitored`, `SiteDateID`, `Plot`, `Treatment`, `PlotMix`,
+- Columns:  `Region`, `Site`, `Date_Seeded`, `Date_Monitored`, `SiteDateID`, `Plot`, `Treatment`, `PlotMix`, `SiteDatePlotID`, `SitePlotID`, `raw.row`, `Richness`, `Seeded`, `Native_recruit`, `LikelyNative_recruit`, `Unknown_recruit`, `Invasive`, `Desirable_recruit`, `Weedy`, `Desirable`, `Seeded_Cover`, `Total_Veg_Cover`, `Not_Seeded_Cover`.
 #### `04.2_2x2-species-present_clean.csv`
+- Columns: `Region`, `Site`, `Date_Seeded`, `Date_Monitored`, `Plot`, `Treatment`, `PlotMix`, `SiteDatePlotID`, `SiteDateID`, `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`,  `SpeciesSeeded`, `ObsSource`, `PlantSource`, `PlantSource2`, `Weedy`, `PlotMix_Climate`, `SitePlotID`.
+
+## From `04.15_data-wrangling_subplot_add-0s.R`
+#### `04.15_subplot-data_clean-0-added.csv`
+- Deprecated.
+- Added 0s to track the absence of all seeded species across plots (versus only the presence); was an attempt to deal with GLMs overfitting zeros.

@@ -1,3 +1,5 @@
+# This analysis is deprecated.
+
 # Created: 2024-08-22
 # Last updated: 2024-08-22
 
@@ -10,7 +12,6 @@
 # "All variables" includes: Perc_dev_cum, AridityIndex, Treatment, PlantSource2,
 #     PlotMix_Climate, Duration, Lifeform, MAT, MAP, Sand_content, Cum_precip
 # However, AridityIndex and MAP are usually too correlated to include both, so MAP often dropped.
-
 
 library(tidyverse)
 library(glmmTMB)
