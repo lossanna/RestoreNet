@@ -129,6 +129,11 @@ sonoran.seed$Treatment <- relevel(sonoran.seed$Treatment, ref = "Seed")
 naz <- richcover |> 
   filter(Region == "Colorado Plateau")
 
+# No control plots, adjust reference levels to match Count & Height
+naz.seed <- naz |> 
+  filter(Treatment != "Control")
+naz.seed$Treatment <- relevel(naz.seed$Treatment, ref = "Seed")
+
 
 
 # All sites ---------------------------------------------------------------
@@ -220,6 +225,8 @@ check_collinearity(pos.sonoran.seed)
 
 # Northern Arizona Plateau ------------------------------------------------
 
+## Poisson ----------------------------------------------------------------
+
 # All variables, with random effect
 pos.naz <- glmmTMB(Seeded_Cover ~ Perc_dev_cum_abs + AridityIndex_log + Treatment + 
                          PlotMix_Climate + MAT + MAP + Sand_content + Since_last_precip_sqrt + 
@@ -231,8 +238,23 @@ res.pos.naz <- simulateResiduals(pos.naz)
 plotQQunif(pos.naz)
 plotResiduals(pos.naz)
 check_overdispersion(pos.naz) # no overdispersion detected
-check_zeroinflation(pos.naz) # model is overfitting zeros
+check_zeroinflation(pos.naz) # no zero-inflation
 check_collinearity(pos.naz)
+
+
+# No Control plots
+pos.naz.seed <- glmmTMB(Seeded_Cover ~ Perc_dev_cum_abs + AridityIndex_log + Treatment + 
+                              PlotMix_Climate + MAT + Sand_content + Since_last_precip_sqrt + 
+                              (1 | Site / Plot),
+                            data = naz.seed, family = genpois)
+summary(pos.naz.seed)
+r2(pos.naz.seed)
+res.pos.naz.seed <- simulateResiduals(pos.naz.seed)
+plotQQunif(pos.naz.seed)
+plotResiduals(pos.naz.seed) 
+check_overdispersion(pos.naz.seed) # no overdispersion detected
+check_zeroinflation(pos.naz.seed) # no zero-inflation
+check_collinearity(pos.naz.seed)
 
 
 save.image("RData/07.4_generalized-linear-models_2x2-Seeded-Cover.RData")

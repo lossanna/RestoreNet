@@ -158,6 +158,10 @@ naz.des$PlantSource2 <- relevel(naz.des$PlantSource2, ref = "Native recruit")
 naz.weed <- subplot.weed |> 
   filter(Region == "Colorado Plateau")
 
+# Seeded
+naz.seed <- naz.des |> 
+  filter(SpeciesSeeded == "Yes") # removes Control plots
+naz.seed$Treatment <- relevel(naz.seed$Treatment, ref = "Seed")
 
 
 # All sites ---------------------------------------------------------------
@@ -515,6 +519,20 @@ check_overdispersion(nb.naz1.weed.abs2) # no overdispersion detected
 check_zeroinflation(nb.naz1.weed.abs2) # no zero-inflation detected
 check_collinearity(nb.naz1.weed.abs2)
 
+
+# *** Seeded ***
+nb.naz.seed.abs2 <- glmmTMB(Height ~ Perc_dev_cum_abs + AridityIndex_log + Treatment +  
+                              PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
+                              Since_last_precip_sqrt + (1 | Site / Plot),
+                            data = naz.seed,
+                            family = nbinom2)
+summary(nb.naz.seed.abs2)
+r2(nb.naz.seed.abs2)
+res.nb.naz.seed.abs2 <- simulateResiduals(nb.naz.seed.abs2)
+plotQQunif(res.nb.naz.seed.abs2)
+plotResiduals(res.nb.naz.seed.abs2)
+check_overdispersion(nb.naz.seed.abs2) # no overdispersion detected
+check_collinearity(nb.naz.seed.abs2)
 
 
 save.image("RData/08.2_generalized-linear-models-2.0_subplot-Height.RData")
