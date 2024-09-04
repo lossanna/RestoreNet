@@ -188,7 +188,7 @@ check_overdispersion(pos.sonoran) # no overdispersion detected
 check_zeroinflation(pos.sonoran) # model is overfitting zeros
 check_collinearity(pos.sonoran)
 
-# 1: Drop MAP (collinearity)
+#   1: Drop MAP (collinearity)
 pos.sonoran1 <- glmmTMB(Seeded_Cover ~ Perc_dev_cum_abs + AridityIndex_log + Treatment + 
                          PlotMix_Climate + MAT + Sand_content + Since_last_precip_sqrt + 
                          (1 | Site / Plot),
@@ -203,7 +203,7 @@ check_zeroinflation(pos.sonoran1) # model is overfitting zeros
 check_collinearity(pos.sonoran1)
 
 
-# No Control plots
+# *** No Control plots ***
 pos.sonoran.seed <- glmmTMB(Seeded_Cover ~ Perc_dev_cum_abs + AridityIndex_log + Treatment + 
                           PlotMix_Climate + MAT + Sand_content + Since_last_precip_sqrt + 
                           (1 | Site / Plot),

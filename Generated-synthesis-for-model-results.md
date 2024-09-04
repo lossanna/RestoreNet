@@ -272,6 +272,61 @@ Here’s a synthesis of the results from all four models, comparing weedy and de
 This synthesis highlights the contrasting responses of desirable and weedy species to environmental variables and treatments, providing insights into restoration strategies in the Sonoran Desert.
 
 
+## 4. Seeded species response
+Refers to the model summary output of GLMs with:
+ - Random effects of nested `(1|Site/Plot)` included.
+ - `Perc_dev_cum_abs` used to measure response to variability (positive or negative), and `Since_last_precip` used to indicate wetter or drier conditions.
+ - Transformation of `AridityIndex` and `Since_last_precip` to improve normality.
+ - Variables causing collinearity issues have been dropped.
+ - No Control plots included (the reference is `Seed`).
+
+Generated on 2024-09-04:
+- From `07.4_generalized-linear-models_2x2-Seeded-Cover.R`:
+  - Sonoran Desert, Seeded cover, Seeded species: `pos.sonoran.seed` model
+- From `08.1_generalized-linear-models-2.0_subplot-Count.R`:
+   - Sonoran Desert, Count, Seeded species: `nb.sonoran2.seed.abs2` model
+- From `08.2_generalized-linear-models-2.0_subplot-Height.R`:
+   - Sonoran Desert, Height, Seeded species: `nb.sonoran2.seed.abs2` model
+
+### Response generated:
+Here’s a comprehensive summary based on your updated results for the seeded species cover model, along with the Count and Height models for seeded species in the Sonoran Desert:
+
+### 1. **Precipitation Deviation (Perc_dev_cum_abs)**:
+- **Cover**: Strong negative effect. As the deviation from average cumulative precipitation increases (indicating more variable or extreme conditions), cover of seeded species significantly decreases. 
+- **Count**: No significant effect. Variability in precipitation does not seem to affect the density of seeded species as strongly.
+- **Height**: Strong negative effect. Greater precipitation variability reduces plant height, suggesting that more extreme weather patterns negatively affect plant growth.
+
+### 2. **Treatment**:
+- **Cover**: Treatment Pits has a significant positive effect on cover, while ConMod and Mulch show no significant effect.
+- **Count**: None of the soil surface treatments (ConMod, Mulch, or Pits) had a significant impact on seeded species density compared to the Seed-only reference.
+- **Height**: None of the treatments significantly influenced height, meaning soil surface modifications didn’t affect plant growth substantially.
+
+### 3. **PlotMix_Climate**:
+- **Cover**: Projected climate-adapted species increased cover significantly, implying that these species are better suited to future climate conditions.
+- **Count**: The Projected mix had a positive effect on density, indicating higher success of species adapted to projected climates.
+- **Height**: Species adapted to projected climates were taller, further supporting the idea that species pre-adapted to future conditions fare better under current environmental stressors.
+
+### 4. **Sand Content**:
+- **Cover**: Low sand content significantly reduced cover, suggesting that higher sand levels may improve water infiltration or reduce competition.
+- **Count and Height**: Sand content was not included in these models, so direct comparisons are unavailable.
+
+### 5. **Since_last_precip_sqrt**:
+- **Cover, Count, and Height**: Consistently positive and highly significant in all models. Recent precipitation plays a critical role in supporting the growth and establishment of seeded species, highlighting the importance of near-term water availability.
+
+### 6. **Additional Variables**:
+- **AridityIndex_log**: Not significant for cover, suggesting that overall aridity (captured by this index) is less influential on cover than short-term precipitation patterns (Since_last_precip_sqrt).
+- **Duration (Count and Height)**: Perennial species consistently performed worse than annuals in terms of density and height, while unknown durations also had a negative effect.
+- **Lifeform (Height)**: Grasses were significantly taller than forbs, whereas shrubs had no significant difference in height.
+
+### **Implications for Restoration**:
+- **Precipitation Variability**: The negative effects of precipitation variability on cover and height imply that restoration efforts may struggle during extreme weather events. Restoration strategies may need to consider more drought-resistant species or adaptive management during particularly variable years.
+- **Soil Surface Modifications**: Although Pits increased cover, the other treatments didn’t have consistent effects across models. This suggests that surface modifications may have more localized or context-dependent benefits and should be tested further to refine their application.
+- **Climate Adaptation**: Species adapted to projected future climates performed better across all models, suggesting that selecting species based on future climate scenarios could improve restoration success.
+- **Precipitation Timing**: The positive influence of recent rainfall emphasizes the importance of timing restoration efforts with favorable weather conditions, especially when considering future variability in rainfall patterns.
+  
+In conclusion, managing for precipitation variability, utilizing climate-adapted species, and ensuring timely moisture availability are crucial for successful restoration efforts in the Sonoran Desert.
+
+
 
 # Northern Arizona Plateau
 ## 1. Desirable vs. Weedy Count

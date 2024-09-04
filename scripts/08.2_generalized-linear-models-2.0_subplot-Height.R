@@ -1,5 +1,5 @@
 # Created: 2024-08-29
-# Last updated: 2024-08-31
+# Last updated: 2024-09-04
 
 # Purpose: Run generalized linear models for subplot data, with Height as response variable. 
 #   Check for overdispersion and zero-inflation.
@@ -10,17 +10,18 @@
 #   AridityIndex and Cum_precip have been transformed to improve normality.
 #   3 datasets used: (1) all data, minus Perc_dev_cum outliers; (2) Sonoran Desert; (3) CO Plateau
 #   Added model that uses Perc_dev_cum_abs and Since_last_precip_sqrt for each data set
-#   Changed reference of PlantSource2 fo weedy species to "Recruit"
+#   Changed reference of PlantSource2 for weedy species to "Recruit"
 
 # Negative binomial used to help with overdispersion.
 # Including (1 | Site / Plot) accounts for the non-independence of repeat sampling.
 
-# "All variables" includes: Perc_dev_cum, AridityIndex_log, Treatment, PlantSource2,
-#     PlotMix_Climate, Duration, Lifeform, MAT, MAP, Sand_content, Cum_precip_sqrt.
-
 # Transformations do not really improve model fit or residuals plots,
 #   except for Sonoran Desert weedy (nb.sonoran1.weed).
 
+# For Perc_dev_abs_cum + Since_last_precip_sqrt, also ran model on just seeded species, for better
+#   comparison with GLMs with Seeded_Cover as response variable.
+
+# *** indicates model is included in PPT of draft figures and model results.
 
 library(tidyverse)
 library(glmmTMB)
@@ -142,7 +143,7 @@ sonoran.weed <- subplot.weed |>
 
 # Seeded
 sonoran.seed <- sonoran.des |> 
-  filter(SpeciesSeeded == "Yes")
+  filter(SpeciesSeeded == "Yes") # removes Control plots
 sonoran.seed$Treatment <- relevel(sonoran.seed$Treatment, ref = "Seed")
 
 
@@ -199,7 +200,7 @@ check_collinearity(nb.all.weed)
 ## By Perc_dev_cum_abs & Since_last_precip_sqrt ---------------------------
 
 # Desirable
-#   All variables, nested random effect of Site/Plot: Desirable
+#   *** All variables, nested random effect of Site/Plot: Desirable ***
 nb.all.des.abs2 <- glmmTMB(Height ~ Perc_dev_cum_abs + AridityIndex_log + Treatment + PlantSource2 + 
                              PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
                              Since_last_precip_sqrt + (1 | Site / Plot),
@@ -216,7 +217,7 @@ check_collinearity(nb.all.des.abs2)
 
 
 # Weedy
-#   All variables, nested random effect of Site/Plot: Weedy
+#   *** All variables, nested random effect of Site/Plot: Weedy ***
 nb.all.weed.abs2 <- glmmTMB(Height ~ Perc_dev_cum_abs + AridityIndex_log + Treatment + PlantSource2 + 
                               PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
                               Since_last_precip_sqrt + (1 | Site / Plot),
@@ -321,7 +322,7 @@ check_overdispersion(nb.sonoran.des.abs2) # no overdispersion detected
 check_zeroinflation(nb.sonoran.des.abs2) # no zero-inflation detected
 check_collinearity(nb.sonoran.des.abs2) # should drop MAP or AridityIndex_log
 
-#   1: Drop MAP (for collinearity): Desirable
+#   *** 1: Drop MAP (for collinearity): Desirable ***
 nb.sonoran1.des.abs2 <- glmmTMB(Height ~ Perc_dev_cum_abs + AridityIndex_log + Treatment + PlantSource2 + 
                                   PlotMix_Climate + Duration + Lifeform + MAT + Sand_content + 
                                   Since_last_precip_sqrt + (1 | Site / Plot),
@@ -345,7 +346,7 @@ nb.sonoran.weed.abs2 <- glmmTMB(Height ~ Perc_dev_cum_abs + AridityIndex_log + T
                                 data = sonoran.weed,
                                 family = nbinom2) # did not converge
 
-#   1: Drop MAP & Duration (for convergence): Weedy: does not converge
+#   *** 1: Drop MAP & Duration (for convergence): Weedy ***
 nb.sonoran1.weed.abs2 <- glmmTMB(Height ~ Perc_dev_cum_abs + AridityIndex_log + Treatment + PlantSource2 +
                                    PlotMix_Climate + Lifeform + MAT + Sand_content + 
                                    Since_last_precip_sqrt + (1 | Site / Plot),
@@ -393,7 +394,7 @@ check_collinearity(nb.sonoran1.seed.abs2)
 check_singularity(nb.sonoran1.seed.abs2)
 
 
-#   2: Drop MAP (collinearity), AridityIndex_log, Sand_content (singularity): Seeded
+#   *** 2: Drop MAP (collinearity), AridityIndex_log, Sand_content (singularity): Seeded ***
 nb.sonoran2.seed.abs2 <- glmmTMB(Height ~ Perc_dev_cum_abs + Treatment +  
                                    PlotMix_Climate + Duration + Lifeform + MAT +  
                                    Since_last_precip_sqrt + (1 | Site / Plot),
@@ -466,7 +467,7 @@ check_collinearity(nb.naz1.weed)
 ## By Perc_dev_cum_abs & Since_last_precip_sqrt ---------------------------
 
 # Desirable
-#   All variables, nested random effect of Site/Plot: Desirable
+#   *** All variables, nested random effect of Site/Plot: Desirable ***
 nb.naz.des.abs2 <- glmmTMB(Height ~ Perc_dev_cum_abs + AridityIndex_log + Treatment + PlantSource2 + 
                              PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
                              Since_last_precip_sqrt + (1 | Site / Plot),
@@ -498,7 +499,7 @@ check_overdispersion(nb.naz.weed.abs2) # no overdispersion detected
 check_zeroinflation(nb.naz.weed.abs2) # no zero-inflation detected
 check_collinearity(nb.naz.weed.abs2) # should drop PlantSource2 or Duration
 
-#   1: Drop Duration (for collinearity): Weedy
+#   *** 1: Drop Duration (for collinearity): Weedy ***
 #     Basically all of them are annuals
 nb.naz1.weed.abs2 <- glmmTMB(Height ~ Perc_dev_cum_abs + AridityIndex_log + Treatment +  PlantSource2 +
                                PlotMix_Climate + Lifeform + MAT + MAP + Sand_content + 
