@@ -1,5 +1,5 @@
 # Created: 2024-08-31
-# Last updated: 2024-08-31
+# Last updated: 2024-09-05
 
 # Purpose: Examine linear relationship between Perc_dev_cum_abs and Count & Height.
 #   Who knows what is happening
@@ -187,6 +187,15 @@ dat |>
   ggtitle("Northern Arizona Plateau, desirable species") +
   theme_minimal() # what is happening
 
+dat |> 
+  filter(Weedy != "Weedy") |> 
+  filter(Region == "Colorado Plateau") |> 
+  ggplot(aes(x = Perc_dev_cum_abs, y = Count)) +
+  stat_poly_line() +
+  stat_poly_eq(use_label(c("eq", "R2"))) +
+  ggtitle("Northern Arizona Plateau, desirable species") +
+  theme_minimal()
+
 #   Without high Perc_dev_cum_abs
 dat |> 
   filter(Weedy != "Weedy") |> 
@@ -255,6 +264,16 @@ dat |>
   stat_poly_eq(use_label(c("eq", "R2"))) +
   ggtitle("All sites, desirable species") +
   theme_minimal() # yikes
+
+dat |> 
+  filter(Weedy != "Weedy") |> 
+  filter(Perc_dev_cum_abs < 8) |> 
+  filter(!is.na(Height)) |> 
+  ggplot(aes(x = Perc_dev_cum_abs, y = Height)) +
+  stat_poly_line() +
+  stat_poly_eq(use_label(c("eq", "R2"))) +
+  ggtitle("All sites, desirable species") +
+  theme_minimal()
 
 #   Without x & y outliers
 dat |> 
@@ -340,6 +359,16 @@ dat |>
   ggtitle("Sonoran Desert, desirable species") +
   theme_minimal() # I mean maybe slightly better
 
+dat |> 
+  filter(Weedy != "Weedy") |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  filter(!is.na(Height)) |> 
+  ggplot(aes(x = Perc_dev_cum_abs, y = Height)) +
+  stat_poly_line() +
+  stat_poly_eq(use_label(c("eq", "R2"))) +
+  ggtitle("Sonoran Desert, desirable species") +
+  theme_minimal()
+
 # Cubic
 dat |> 
   filter(Weedy != "Weedy") |> 
@@ -385,6 +414,16 @@ dat |>
   stat_poly_eq(use_label(c("eq", "R2"))) +
   ggtitle("Northern Arizona Plateau, desirable species") +
   theme_minimal() # not great
+
+dat |> 
+  filter(Weedy != "Weedy") |> 
+  filter(Region == "Colorado Plateau") |> 
+  filter(!is.na(Height)) |> 
+  ggplot(aes(x = Perc_dev_cum_abs, y = Height)) +
+  stat_poly_line() +
+  stat_poly_eq(use_label(c("eq", "R2"))) +
+  ggtitle("Northern Arizona Plateau, desirable species") +
+  theme_minimal()
 
 #   Without high Perc_dev_cum_abs
 dat |> 
@@ -434,6 +473,16 @@ dat |>
   filter(!is.na(Height)) |> 
   ggplot(aes(x = Perc_dev_cum_abs, y = Height)) +
   geom_point() +
+  stat_poly_line() +
+  stat_poly_eq(use_label(c("eq", "R2"))) +
+  ggtitle("Northern Arizona Plateau, weedy species") +
+  theme_minimal() 
+
+dat |> 
+  filter(Weedy != "Desirable") |> 
+  filter(Region == "Colorado Plateau") |>
+  filter(!is.na(Height)) |> 
+  ggplot(aes(x = Perc_dev_cum_abs, y = Height)) +
   stat_poly_line() +
   stat_poly_eq(use_label(c("eq", "R2"))) +
   ggtitle("Northern Arizona Plateau, weedy species") +
