@@ -1,20 +1,20 @@
 # ChatGPT synthesis for model results
 Created: 2024-08-30  
-Last updated: 2024-09-04
+Last updated: 2024-09-05
   
 Generated from ChatGPT-4o by giving it the summary output for models and asking it to interpret the results.
 
 
 # Sonoran Desert
 ## 1. Desirable vs. Weedy Count
-Refers to the model summary output of GLMs with:
+Refers to the model summary output of GLMs with:  
  - Random effects of nested `(1|Site/Plot)` included.
  - `Perc_dev_cum_abs` used to measure response to variability (positive or negative), and `Since_last_precip` used instead of `Cum_precip` to indicate wetter or drier conditions.
  - Transformation of `AridityIndex` and `Since_last_precip` to improve normality.
  - Variables causing collinearity issues have been dropped.
 
-Generated on 2024-08-31:
-- From `08.1_generalized-linear-models-2.0_subplot-Count.R`:
+Generated on 2024-08-31:  
+- From `08.1_generalized-linear-models-2.0_subplot-Count.R`:  
     - Sonoran Desert, Count, Desirable: `nb.sonoran1.des.abs2` model
     - Sonoran Desert, Count, Weedy: `nb.sonoran1.weed.abs2` model
 
@@ -77,13 +77,13 @@ This comparison highlights how desirable and weedy species respond differently t
 
 
 ## 2. Desirable vs. Weedy Height
-Refers to the model summary output of GLMs with:
+Refers to the model summary output of GLMs with:  
  - Random effects of nested `(1|Site/Plot)` included.
  - `Perc_dev_cum_abs` used to measure response to variability (positive or negative), and `Since_last_precip` used instead of `Cum_precip` to indicate wetter or drier conditions.
  - Transformation of `AridityIndex` and `Since_last_precip` to improve normality.
  - Variables causing collinearity issues have been dropped.
 
-Generated on 2024-08-31:
+Generated on 2024-08-31:  
 - From `08.2_generalized-linear-models-2.0_subplot-Height.R`:
     - Sonoran Desert, Height, Desirable: `nb.sonoran1.des.abs2` model
     - Sonoran Desert, Height, Weedy: `nb.sonoran1.weed.abs2` model
@@ -157,13 +157,13 @@ This comparison suggests that while both desirable and weedy species share some 
 
 
 ## 3. Overall desirable vs. weedy (all four models compared)
-Refers to the model summary output of GLMs with:
+Refers to the model summary output of GLMs with:  
  - Random effects of nested `(1|Site/Plot)` included.
  - `Perc_dev_cum_abs` used to measure response to variability (positive or negative), and `Since_last_precip` used instead of `Cum_precip` to indicate wetter or drier conditions.
  - Transformation of `AridityIndex` and `Since_last_precip` to improve normality.
  - Variables causing collinearity issues have been dropped.
 
-Generated on 2024-08-31:
+Generated on 2024-08-31:  
 - From `08.1_generalized-linear-models-2.0_subplot-Count.R`:
     - Sonoran Desert, Count, Desirable: `nb.sonoran1.des.abs2` model
     - Sonoran Desert, Count, Weedy: `nb.sonoran1.weed.abs2` model
@@ -273,14 +273,14 @@ This synthesis highlights the contrasting responses of desirable and weedy speci
 
 
 ## 4. Seeded species (cover, count, height)
-Refers to the model summary output of GLMs with:
+Refers to the model summary output of GLMs with:  
  - Random effects of nested `(1|Site/Plot)` included.
  - `Perc_dev_cum_abs` used to measure response to variability (positive or negative), and `Since_last_precip` used to indicate wetter or drier conditions.
  - Transformation of `AridityIndex` and `Since_last_precip` to improve normality.
  - Variables causing collinearity issues have been dropped.
  - No Control plots included (the reference is `Seed`).
 
-Generated on 2024-09-04:
+Generated on 2024-09-04:  
 - From `07.4_generalized-linear-models_2x2-Seeded-Cover.R`:
   - Sonoran Desert, Seeded cover, Seeded species: `pos.sonoran.seed` model
 - From `08.1_generalized-linear-models-2.0_subplot-Count.R`:
@@ -330,13 +330,13 @@ In conclusion, managing for precipitation variability, utilizing climate-adapted
 
 # Northern Arizona Plateau
 ## 1. Desirable vs. Weedy Count
-Refers to the model summary output of GLMs with:
+Refers to the model summary output of GLMs with:  
  - Random effects of nested `(1|Site/Plot)` included.
  - `Perc_dev_cum_abs` used to measure response to variability (positive or negative), and `Since_last_precip` used instead of `Cum_precip` to indicate wetter or drier conditions.
  - Transformation of `AridityIndex` and `Since_last_precip` to improve normality.
  - Variables causing collinearity issues have been dropped.
 
-Generated on 2024-08-31:
+Generated on 2024-08-31:  
 - From `08.1_generalized-linear-models-2.0_subplot-Count.R`:
     - Northern Arizona Plateau, Count, Desirable: `nb.naz.des.abs2` model
     - Northern Arizona Plateau, Count, Weedy: `nb.naz1.weed.abs2` model
@@ -392,13 +392,13 @@ Generated on 2024-08-31:
 
 
 ## 2. Desirable vs. Weedy Height
-Refers to the model summary output of GLMs with:
+Refers to the model summary output of GLMs with:  
  - Random effects of nested `(1|Site/Plot)` included.
  - `Perc_dev_cum_abs` used to measure response to variability (positive or negative), and `Since_last_precip` used instead of `Cum_precip` to indicate wetter or drier conditions.
  - Transformation of `AridityIndex` and `Since_last_precip` to improve normality.
  - Variables causing collinearity issues have been dropped.
 
-Generated on 2024-08-31:
+Generated on 2024-08-31:  
 - From `08.2_generalized-linear-models-2.0_subplot-Height.R`:
     - Northern Arizona Plateau, Height, Desirable: `nb.naz.des.abs2` model
     - Northern Arizona Plateau, Height, Weedy: `nb.naz1.weed.abs2` model
@@ -455,13 +455,13 @@ Generated on 2024-08-31:
 
 
 ## 3. Overall desirable vs. weedy (all four models compared)
-Refers to the model summary output of GLMs with:
+Refers to the model summary output of GLMs with:  
  - Random effects of nested `(1|Site/Plot)` included.
  - `Perc_dev_cum_abs` used to measure response to variability (positive or negative), and `Since_last_precip` used instead of `Cum_precip` to indicate wetter or drier conditions.
  - Transformation of `AridityIndex` and `Since_last_precip` to improve normality.
  - Variables causing collinearity issues have been dropped.
 
-Generated on 2024-08-31:
+Generated on 2024-08-31:  
 - From `08.1_generalized-linear-models-2.0_subplot-Count.R`:
     - Northern Arizona Plateau, Count, Desirable: `nb.naz.des.abs2` model
     - Northern Arizona Plateau, Count, Weedy: `nb.naz1.weed.abs2` model
@@ -537,15 +537,100 @@ This synthesis summarizes the effects of various environmental factors and treat
 - **Broader Implication:** For restoration efforts, managing precipitation variability and timing, careful selection of plant sources, and understanding species-specific lifeform traits are essential for optimizing the growth and establishment of desirable species while controlling weedy species proliferation.
 
 
+## 4. Seeded species (cover, count, height)
+Refers to the model summary output of GLMs with:  
+ - Random effects of nested `(1|Site/Plot)` included.
+ - `Perc_dev_cum_abs` used to measure response to variability (positive or negative), and `Since_last_precip` used to indicate wetter or drier conditions.
+ - Transformation of `AridityIndex` and `Since_last_precip` to improve normality.
+ - Variables causing collinearity issues have been dropped.
+ - No Control plots included (the reference is `Seed`).
+
+Generated on 2024-09-04:  
+- From `07.4_generalized-linear-models_2x2-Seeded-Cover.R`:
+  - Northern Arizona Plateau, Seeded cover, Seeded species: `pos.naz.seed` model
+- From `08.1_generalized-linear-models-2.0_subplot-Count.R`:
+   - Northern Arizona Plateau, Count, Seeded species: `nb.naz.seed.abs2` model
+- From `08.2_generalized-linear-models-2.0_subplot-Height.R`:
+   - Northern Arizona Plateau, Height, Seeded species: `nb.naz.seed.abs2` model
+
+
+### Response generated: 
+Here is the updated comprehensive summary incorporating the results of **seeded species cover** from the `pos.naz.seed` model, in addition to the **count** and **height** models from the Northern Arizona Plateau:
+
+### Comprehensive Summary of Seeded Species in the Northern Arizona Plateau
+
+#### 1. **Perc_dev_cum_abs** (Percent deviation from average, absolute value)
+   - **Count:** Negative effect. Greater variability from average precipitation conditions decreases the count of seeded species, indicating a preference for more stable moisture conditions.
+   - **Height:** Negative effect. Higher variability in precipitation stunts the growth of seeded species, reducing their height.
+   - **Cover:** Negative effect. Increased precipitation variability also reduces the overall cover of seeded species, reinforcing that seeded species perform best under more stable climatic conditions.
+
+#### 2. **AridityIndex_log** (Log-transformed Aridity Index)
+   - **Count:** Significant negative effect. Seeded species are less abundant in drier conditions, suggesting that their establishment is more successful in areas with higher moisture availability.
+   - **Height:** Negative but not significant. While drier conditions may slightly reduce height, the effect is not strong enough to be statistically significant.
+   - **Cover:** Negative effect. Although not significant, there is a trend where seeded species cover is reduced in drier areas, consistent with the decrease in count and height.
+
+#### 3. **Treatment**
+   - **Count:**
+     - **ConMod:** Significant positive effect. Connectivity modifiers significantly increase the count of seeded species, highlighting the effectiveness of this treatment for plant establishment.
+     - **Mulch:** Positive effect, though not significant. Mulching leads to a slight increase in seeded species count, but the effect is not as pronounced.
+     - **Pits:** Significant positive effect. Soil pits lead to a higher count of seeded species, likely due to better water retention.
+   - **Height:**
+     - **ConMod:** Positive but not significant. Seeded species tend to grow taller in connectivity modifier plots, though this effect is not statistically strong.
+     - **Mulch:** Positive but not significant. There is a slight increase in height in mulched plots, but it is not a major factor.
+     - **Pits:** Significant positive effect. Seeded species grow taller in plots with soil pits, indicating that this treatment improves both establishment and growth.
+   - **Cover:**
+     - **ConMod:** Positive effect, but not significant. Connectivity modifiers slightly increase seeded species cover, though the effect is weaker compared to the count model.
+     - **Mulch:** Positive effect, but not significant. Mulching also has a slight positive influence on cover, but it is not statistically significant.
+     - **Pits:** Significant positive effect. Soil pits significantly increase the cover of seeded species, making this the most consistently beneficial treatment across count, height, and cover.
+
+#### 4. **PlotMix_Climate** (Current vs. Projected climate mix)
+   - **Count:** Not significant. The climate mix (current vs. projected) does not have a strong effect on the count of seeded species.
+   - **Height:** Significant positive effect. Seeded species from the projected climate mix tend to grow taller, suggesting that these species may be more adaptable to future conditions in the Northern Arizona Plateau.
+   - **Cover:** Positive effect, though not significant. There is a trend towards greater cover in plots with species from projected climates, although it does not reach statistical significance.
+
+#### 5. **MAT** (Mean Annual Temperature)
+   - **Count:** Not significant. Mean annual temperature has no clear impact on the count of seeded species.
+   - **Height:** Positive but not significant. There is a slight increase in height with higher MAT, though the effect is not strong.
+   - **Cover:** Not significant. MAT does not have a clear impact on cover in the seeded species model.
+
+#### 6. **Sand_content** (High vs. Low sand content)
+   - **Count:** Significant negative effect. Seeded species are less abundant in plots with high sand content, likely due to reduced water retention in sandy soils.
+   - **Height:** Not significant. Sand content does not appear to impact the height of seeded species.
+   - **Cover:** Significant negative effect. High sand content reduces the cover of seeded species, suggesting that low sand content is more favorable for their growth and spread.
+
+#### 7. **Since_last_precip_sqrt** (Square root of precipitation since last monitoring)
+   - **Count:** Significant positive effect. Recent rainfall boosts the count of seeded species, indicating that water availability is a key driver of their establishment.
+   - **Height:** Significant positive effect. Seeded species grow taller when more precipitation has occurred recently, reinforcing the importance of water for growth.
+   - **Cover:** Significant positive effect. More recent precipitation significantly increases the cover of seeded species, underscoring the critical role of water availability in promoting both abundance and coverage.
+
+### General Implications for Restoration in the Northern Arizona Plateau
+
+1. **Perc_dev_cum_abs**: The consistently negative effects of precipitation variability on count, height, and cover highlight the importance of stable moisture conditions for seeded species. These species thrive when precipitation patterns are more predictable and less variable.
+   
+2. **AridityIndex_log**: Drier conditions reduce the count and cover of seeded species, although the effect on height is less clear. Restoration efforts may be more challenging in arid areas, as moisture availability is critical for both establishment and growth.
+   
+3. **Treatment**: Soil pits stand out as the most effective treatment for improving the count, height, and cover of seeded species, while connectivity modifiers also have a strong positive effect on count. Mulching, although beneficial, has a weaker effect across the models.
+   
+4. **Since_last_precip_sqrt**: Water availability is a key driver of success for seeded species, influencing their count, height, and cover. More recent and consistent rainfall leads to better outcomes, emphasizing the need for moisture-retentive treatments or irrigation in dry periods.
+   
+5. **Sand_content**: High sand content is detrimental to seeded species, reducing both their abundance and cover. Restoration in sandy areas may require additional soil amendments or treatments to improve water retention and create a more favorable environment for seeded species.
+   
+6. **PlotMix_Climate**: While not significant across all models, there is evidence that species from the projected climate mix may perform better in terms of height and potentially cover. This suggests that planning for future climate conditions could improve long-term restoration success.
+
+### Conclusion
+Restoration of seeded species in the Northern Arizona Plateau relies heavily on stable water availability and moisture-retaining treatments like soil pits. Precipitation variability and drier conditions negatively impact both the establishment and growth of these species. Treatments that improve water retention (e.g., soil pits) consistently enhance seeded species performance across count, height, and cover, making them critical tools in arid restoration efforts. Additionally, incorporating species adapted to future climates may offer benefits for resilience and growth in a changing environment.
+
+
+
 # Sonoran vs. Northern Arizona Plateau
 ## 1. All eight models compared
-Refers to the model summary output of GLMs with:
+Refers to the model summary output of GLMs with:  
  - Random effects of nested `(1|Site/Plot)` included.
  - `Perc_dev_cum_abs` used to measure response to variability (positive or negative), and `Since_last_precip` used instead of `Cum_precip` to indicate wetter or drier conditions.
  - Transformation of `AridityIndex` and `Since_last_precip` to improve normality.
  - Variables causing collinearity issues have been dropped.
 
-Generated on 2024-08-31:
+Generated on 2024-08-31:  
 - From `08.1_generalized-linear-models-2.0_subplot-Count.R`:
     - Sonoran Desert, Count, Desirable: `nb.sonoran1.des.abs2` model
     - Sonoran Desert, Count, Weedy: `nb.sonoran1.weed.abs2` model
@@ -613,20 +698,24 @@ These insights emphasize the importance of context-specific strategies for ecolo
 
 
 ## 2. Seeded species (cover, height, count)
-Refers to the model summary output of GLMs with:
+Refers to the model summary output of GLMs with:  
  - Random effects of nested `(1|Site/Plot)` included.
  - `Perc_dev_cum_abs` used to measure response to variability (positive or negative), and `Since_last_precip` used to indicate wetter or drier conditions.
  - Transformation of `AridityIndex` and `Since_last_precip` to improve normality.
  - Variables causing collinearity issues have been dropped.
  - No Control plots included (the reference is `Seed`).
 
-Generated on 2024-09-04:
+Generated on 2024-09-04:  
 - From `07.4_generalized-linear-models_2x2-Seeded-Cover.R`:
-  - Sonoran Desert, Seeded cover, Seeded species: `pos.naz.seed` model
+  - Sonoran Desert, Seeded cover, Seeded species: `pos.sonoran.seed` model
+  - Northern AZ Plateau, Seeded cover, Seeded species: `pos.naz.seed` model
 - From `08.1_generalized-linear-models-2.0_subplot-Count.R`:
-   - Sonoran Desert, Count, Seeded species: `nb.naz.seed.abs2` model
+   - Sonoran Desert, Count, Seeded species: `nb.sonoran2.seed.abs2` model
+   - Northern AZ Plateau, Count, Seeded species: `nb.naz.seed.abs2` model
 - From `08.2_generalized-linear-models-2.0_subplot-Height.R`:
-   - Sonoran Desert, Height, Seeded species: `nb.naz.seed.abs2` model
+   - Sonoran Desert, Height, Seeded species: `nb.sonoran2.seed.abs2` model
+   - Northern AZ Plateau, Height, Seeded species: `nb.naz.seed.abs2` model
+
 
 ### Response generated:
 ### Summary of Findings for Seeded Species in the Sonoran Desert and Northern Arizona Plateau
@@ -681,3 +770,133 @@ Generated on 2024-09-04:
 - **Life Form Considerations**: Grasses performed well in terms of height and count in the Northern Arizona Plateau, while forbs were less prominent. Restoration plans should consider the dominance of different life forms based on region and intended restoration outcomes.
 
 This summary provides a comprehensive comparison of the factors influencing seeded species' performance in two distinct desert ecosystems, offering guidance for targeted restoration strategies.
+
+
+
+
+# All sites
+## 1. Overall desirable vs. weedy (all four models compared)
+Refers to the model summary output of GLMs with:  
+ - Random effects of nested `(1|Site/Plot)` included.
+ - `Perc_dev_cum_abs` used to measure response to variability (positive or negative), and `Since_last_precip` used to indicate wetter or drier conditions.
+ - Transformation of `AridityIndex` and `Since_last_precip` to improve normality.
+ - Variables causing collinearity issues have been dropped.
+
+Generated on 2024-09-05:  
+- From `08.1_generalized-linear-models-2.0_subplot-Count.R`:
+    - All sites, Count, Desirable: `nb.all.des.abs2` model
+    - All sites, Count, Weedy: `nb.all1.weed.abs2` model
+- From `08.2_generalized-linear-models-2.0_subplot-Height.R`:
+    - All sites, Height, Desirable: `nb.all.des.abs2` model
+    - All sites, Height, Weedy: `nb.all.weed.abs2` model
+
+### Response generated (1, by model):
+Here is a summary of the results for the four models across the arid/semiarid Southwest dataset:
+
+### 1. **Desirable Species - Count (nb.all.des.abs2)**
+- **Perc_dev_cum_abs**: Positive effect (significant, \( p = 0.00281 \)), indicating that as the absolute deviation from normal precipitation increases, so does the count of desirable species.
+- **Treatment**:
+  - **ConMod**: Positive effect (significant, \( p = 0.04823 \)).
+  - **Pits**: Strong positive effect (significant, \( p = 0.00065 \)).
+- **PlantSource2 (Seeded)**: Negative effect (highly significant, \( p < 0.001 \)), suggesting that seeded desirable species have lower counts than native recruits.
+- **Duration (Perennial)**: Negative effect (highly significant, \( p < 0.001 \)), while unknown duration is positive (significant, \( p = 6.62e-06 \)).
+- **Lifeform (Grass)**: Positive effect (highly significant, \( p = 2.94e-05 \)).
+- **Lifeform (Shrub)**: Negative effect (significant, \( p = 0.04685 \)).
+- **MAT**: Slight positive effect (significant, \( p = 0.04015 \)).
+- **Since_last_precip_sqrt**: Strong positive effect (highly significant, \( p = 4.02e-07 \)).
+
+### 2. **Weedy Species - Count (nb.all1.weed.abs2)**
+- **Perc_dev_cum_abs**: Positive effect (significant, \( p = 0.00623 \)).
+- **Treatment**:
+  - **Pits**: Positive effect (significant, \( p = 0.00262 \)).
+- **Duration (Unknown)**: Positive effect (highly significant, \( p = 3.89e-06 \)).
+- **Lifeform (Grass)**: Strong negative effect (highly significant, \( p < 0.001 \)).
+- **MAT**: Positive effect (significant, \( p = 0.00085 \)).
+- **Since_last_precip_sqrt**: Positive effect (significant, \( p = 0.00245 \)).
+
+### 3. **Desirable Species - Height (nb.all.des.abs2)**
+- **Perc_dev_cum_abs**: Strong negative effect (highly significant, \( p < 2e-16 \)), suggesting that higher deviations from average precipitation reduce desirable species height.
+- **PlantSource2 (Seeded)**: Negative effect (highly significant, \( p < 0.001 \)).
+- **Duration (Annual)**: Positive effect (highly significant, \( p < 0.001 \)).
+- **Lifeform (Grass)**: Strong positive effect (highly significant, \( p < 2e-16 \)).
+- **Lifeform (Shrub)**: Positive effect (highly significant, \( p = 2.45e-08 \)).
+- **Since_last_precip_sqrt**: Strong positive effect (highly significant, \( p < 2e-16 \)).
+
+### 4. **Weedy Species - Height (nb.all.weed.abs2)**
+- **Perc_dev_cum_abs**: Negative effect (marginally significant, \( p = 0.0866 \)).
+- **Duration (Annual and Perennial)**: Strong positive effects for both (highly significant, \( p < 0.001 \)).
+- **Lifeform (Grass)**: Strong positive effect (highly significant, \( p < 0.001 \)).
+- **Sand_content (Low)**: Positive effect (significant, \( p = 0.0428 \)).
+- **Since_last_precip_sqrt**: Strong positive effect (highly significant, \( p < 2e-16 \)).
+
+### Key Patterns:
+- **Precipitation Deviations**: Higher deviations from average precipitation negatively affect height for both weedy and desirable species but positively affect counts, especially for desirable species.
+- **Treatments**: The Pits treatment consistently has positive effects on both weedy and desirable species counts, while ConMod has a positive effect on desirable species count.
+- **Since_last_precip_sqrt**: This variable consistently has strong positive effects on both count and height, suggesting that recent precipitation boosts plant growth across species and regions.
+
+This synthesis highlights the differential response of weedy vs desirable species to treatments and environmental conditions, with deviations from average precipitation being particularly influential.
+
+
+### Response generated (2, by explanatory variable):
+Here is the summary of the four models grouped by explanatory variable across the arid/semiarid Southwest dataset:
+
+### **1. Perc_dev_cum_abs**
+- **Desirable Species - Count**: Positive effect (significant, \( p = 0.00281 \)) — more variable precipitation increases desirable species count.
+- **Weedy Species - Count**: Positive effect (significant, \( p = 0.00623 \)) — more variability increases weedy species count.
+- **Desirable Species - Height**: Strong negative effect (highly significant, \( p < 2e-16 \)) — higher variability reduces desirable species height.
+- **Weedy Species - Height**: Negative effect (marginally significant, \( p = 0.0866 \)) — higher variability slightly reduces weedy species height.
+
+### **2. Treatment**
+- **Desirable Species - Count**:
+  - **ConMod**: Positive effect (significant, \( p = 0.04823 \)).
+  - **Pits**: Strong positive effect (significant, \( p = 0.00065 \)).
+- **Weedy Species - Count**:
+  - **Pits**: Positive effect (significant, \( p = 0.00262 \)).
+  
+### **3. PlantSource2 (Seeded)**
+- **Desirable Species - Count**: Negative effect (highly significant, \( p < 0.001 \)) — seeded species have lower counts than native recruits.
+- **Desirable Species - Height**: Negative effect (highly significant, \( p < 0.001 \)) — seeded species are shorter than native recruits.
+
+### **4. Duration**
+- **Desirable Species - Count**:
+  - **Perennial**: Negative effect (highly significant, \( p < 0.001 \)) — perennial species have lower counts than annuals.
+  - **Unknown Duration**: Positive effect (highly significant, \( p = 6.62e-06 \)).
+- **Weedy Species - Count**: 
+  - **Unknown Duration**: Positive effect (highly significant, \( p = 3.89e-06 \)).
+- **Desirable Species - Height**:
+  - **Annual**: Positive effect (highly significant, \( p < 0.001 \)).
+- **Weedy Species - Height**:
+  - **Annual**: Positive effect (highly significant, \( p < 0.001 \)).
+  - **Perennial**: Positive effect (highly significant, \( p < 0.001 \)).
+
+### **5. Lifeform**
+- **Desirable Species - Count**:
+  - **Grass**: Positive effect (highly significant, \( p = 2.94e-05 \)).
+  - **Shrub**: Negative effect (significant, \( p = 0.04685 \)).
+- **Weedy Species - Count**:
+  - **Grass**: Strong negative effect (highly significant, \( p < 0.001 \)).
+- **Desirable Species - Height**:
+  - **Grass**: Strong positive effect (highly significant, \( p < 2e-16 \)).
+  - **Shrub**: Positive effect (highly significant, \( p = 2.45e-08 \)).
+- **Weedy Species - Height**:
+  - **Grass**: Strong positive effect (highly significant, \( p < 0.001 \)).
+
+### **6. Sand_content**
+- **Weedy Species - Height**: Positive effect (significant, \( p = 0.0428 \)) — low sand content increases height.
+
+### **7. MAT (Mean Annual Temperature)**
+- **Desirable Species - Count**: Slight positive effect (significant, \( p = 0.04015 \)).
+- **Weedy Species - Count**: Positive effect (significant, \( p = 0.00085 \)) — warmer temperatures increase weedy species count.
+
+### **8. Since_last_precip_sqrt**
+- **Desirable Species - Count**: Strong positive effect (highly significant, \( p = 4.02e-07 \)) — more recent precipitation increases desirable species count.
+- **Weedy Species - Count**: Positive effect (significant, \( p = 0.00245 \)) — more recent precipitation increases weedy species count.
+- **Desirable Species - Height**: Strong positive effect (highly significant, \( p < 2e-16 \)) — more recent precipitation increases desirable species height.
+- **Weedy Species - Height**: Strong positive effect (highly significant, \( p < 2e-16 \)) — more recent precipitation increases weedy species height.
+
+### Key Insights:
+- **Precipitation variability** (`Perc_dev_cum_abs`) has contrasting effects: It increases counts for both weedy and desirable species but reduces their height.
+- **Treatments**, especially **Pits**, are generally beneficial for species counts.
+- **Seeded species** have lower counts and height compared to native recruits.
+- **Lifeform** plays a critical role: grasses tend to have higher counts and heights for desirable species but lower counts for weedy species.
+- **Recent precipitation** (`Since_last_precip_sqrt`) is highly influential across all models, strongly boosting both count and height for both weedy and desirable species.

@@ -1,5 +1,5 @@
 # Created: 2024-09-04
-# Last updated: 2024-09-04
+# Last updated: 2024-09-05
 
 # Purpose: Run generalized linear models for 2x2 m plot data, with Seeded_Cover as response variable. 
 # Check for overdispersion and zero-inflation.
@@ -242,7 +242,7 @@ check_zeroinflation(pos.naz) # no zero-inflation
 check_collinearity(pos.naz)
 
 
-# No Control plots
+# *** No Control plots ***
 pos.naz.seed <- glmmTMB(Seeded_Cover ~ Perc_dev_cum_abs + AridityIndex_log + Treatment + 
                               PlotMix_Climate + MAT + Sand_content + Since_last_precip_sqrt + 
                               (1 | Site / Plot),
