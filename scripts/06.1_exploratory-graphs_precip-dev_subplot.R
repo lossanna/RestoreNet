@@ -1,5 +1,5 @@
 # Created: 2024-03-06
-# Last updated: 2024-08-30
+# Last updated: 2024-09-05
 
 # Purpose: Begin to examine subplot trends as they relate to precip. Focus on Perc_dev_cum
 #   and relationship to response variables Count & Height. Identify what seeded species from 
@@ -1347,6 +1347,13 @@ tiff("figures/2024-08_draft-figures/Sonoran_weedy_Count-by-forb-grass-and-PlantS
 sonoran.weed.count.forbgrass.plantsource2
 dev.off()
 
+tiff("figures/2024-08_draft-figures/Sonoran_desirable_Count-by-duration-and-lifeform.tiff", units = "in", height = 4, width = 5, res = 150)
+sonoran.des.count.perennial.annual.lifeform
+dev.off()
+tiff("figures/2024-08_draft-figures/Sonoran_weedy_Count-by-duration-and-lifeform.tiff", units = "in", height = 4, width = 5, res = 150)
+sonoran.weed.count.perennial.annual.lifeform
+dev.off()
+
 # N AZ
 tiff("figures/2024-08_draft-figures/CO-Plateau_desirable_Count-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
 naz.des.count
@@ -2180,6 +2187,13 @@ tiff("figures/2024-08_draft-figures/Sonoran_weedy_Height-by-forb-grass-and-Plant
 sonoran.weed.height.forbgrass.plantsource2
 dev.off()
 
+tiff("figures/2024-08_draft-figures/Sonoran_desirable_Height-by-duration-and-lifeform.tiff", units = "in", height = 4, width = 5, res = 150)
+sonoran.des.height.perennial.annual.lifeform
+dev.off()
+tiff("figures/2024-08_draft-figures/Sonoran_weedy_Height-by-duration-and-lifeform.tiff", units = "in", height = 4, width = 5, res = 150)
+sonoran.weed.height.perennial.annual.lifeform
+dev.off()
+
 # N AZ
 tiff("figures/2024-08_draft-figures/CO-Plateau_desirable_Height-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
 naz.des.height
@@ -2326,6 +2340,16 @@ dat |>
 
 ### Sonoran Desert --------------------------------------------------------
 
+# Sonoran Central precip dev: ranged from -43% to +64%
+dat |> 
+  filter(Region == "Sonoran Central") |> 
+  count(Perc_dev_cum)
+
+# Sonoran SE precip dev: ranged from -23% to +46%
+dat |> 
+  filter(Region == "Sonoran SE") |> 
+  count(Perc_dev_cum)
+
 # Desirable (all plots)
 # All plots: High count recruit
 dat |> 
@@ -2382,7 +2406,7 @@ dat |>
          PlotMix_Climate == "Current",
          PlantSource2 == "Seeded")|> 
   filter(Perc_dev_cum > 0.35) |> 
-  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum) |>
+  select(Site, Code, Name, Duration, Lifeform, Count, Perc_dev_cum) |>
   arrange(desc(Count)) |> 
   arrange(Site) |> 
   print(n = 48)
@@ -2429,14 +2453,16 @@ dat |>
   select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum)
 
 # Projected: Seeded highest wet deviation
-#     Plantago ovata doing well
+#     Plantago ovata & ARPU9 doing well
 dat |> 
   filter(Weedy != "Weedy",
          Region %in% c("Sonoran Central", "Sonoran SE"),
          PlotMix_Climate == "Projected",
          PlantSource2 == "Seeded")|> 
   filter(Perc_dev_cum > 0.35) |> 
-  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum)
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum) |> 
+  arrange(desc(Perc_dev_cum)) |> 
+  print(n = 42)
 
 # Projected: Seeded highest dry deviation
 #     Plantago ovata still doing well
@@ -2470,6 +2496,14 @@ dat |>
   count(Name) |> 
   arrange(desc(n))
 
+# ARPU9 driest conditions
+dat |> 
+  filter(Code == "ARPU9",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Projected",
+         PlantSource2 == "Seeded")|> 
+  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum) |> 
+  count(Perc_dev_cum)
 
 
 # Weedy (all plots)
@@ -2776,7 +2810,8 @@ dat |>
 
 ### Sonoran Desert --------------------------------------------------------
 
-# Desirable, None
+# Desirable, by PlotMix_Climate
+# None: Tallest
 dat |> 
   filter(Weedy != "Weedy",
          Region %in% c("Sonoran Central", "Sonoran SE"),
@@ -2784,95 +2819,69 @@ dat |>
   filter(Height > 600) |> 
   select(Site, Name, Duration, Lifeform, Height, Perc_dev_cum)
 
-# Desirable, Current
-#   High Height recruit
+
+# Current: Tallest
 dat |> 
   filter(Weedy != "Weedy",
          Region %in% c("Sonoran Central", "Sonoran SE"),
          PlotMix_Climate == "Current") |> 
   filter(Height > 600) |> 
-  select(Site, Name, Duration, Lifeform, Height, Perc_dev_cum)
+  select(Site, Code, Name, Duration, Lifeform, SpeciesSeeded, Height, Perc_dev_cum)
 
-#   Seeded at ~30% deviation
+# Current: Tallest seeded
 dat |> 
   filter(Weedy != "Weedy",
          Region %in% c("Sonoran Central", "Sonoran SE"),
          PlotMix_Climate == "Current",
-         PlantSource2 == "Seeded")|> 
-  filter(Height > 200) |> 
-  select(Site, Name, Duration, Lifeform, Height, Perc_dev_cum) 
+         SpeciesSeeded == "Yes") |> 
+  select(Site, Code, Name, Duration, Lifeform, Height, Perc_dev_cum) |> 
+  arrange(desc(Height)) |> 
+  print(n = 50)
 
-#   Seeded highest wet deviation
-#     Poa secunda and Elymus elymoides doing well
+# Current: Seeded highest wet deviation
 dat |> 
   filter(Weedy != "Weedy",
          Region %in% c("Sonoran Central", "Sonoran SE"),
          PlotMix_Climate == "Current",
          PlantSource2 == "Seeded")|> 
   filter(Perc_dev_cum > 0.35) |> 
-  select(Site, Name, Duration, Lifeform, Height, Perc_dev_cum) |> 
+  select(Site, Code, Name, Duration, Lifeform, Height, Perc_dev_cum) |> 
   arrange(desc(Height)) |> 
-  arrange(Site) |> 
+  arrange(desc(Perc_dev_cum)) |> 
   print(n = 48)
 
-#   Seeded highest dry deviation
+# Current: Seeded highest dry deviation
 dat |> 
   filter(Weedy != "Weedy",
          Region %in% c("Sonoran Central", "Sonoran SE"),
          PlotMix_Climate == "Current",
          PlantSource2 == "Seeded")|> 
   filter(Perc_dev_cum < -0.35) |> 
-  select(Site, Name, Duration, Lifeform, Height, Perc_dev_cum)
+  select(Site, Code, Name, Duration, Lifeform, Height, Perc_dev_cum)
 
-#   Seeded, species of highest Height
-dat |> 
-  filter(Weedy != "Weedy",
-         Region %in% c("Sonoran Central", "Sonoran SE"),
-         PlotMix_Climate == "Current",
-         PlantSource2 == "Seeded")|> 
-  select(Site, Name, Duration, Lifeform, Height, Perc_dev_cum) |> 
-  arrange(desc(Height)) |> 
-  print(n = 45)
-
-#   Seeded, species frequency (showed up in most plots and sites)
-dat |> 
-  filter(Weedy != "Weedy",
-         Region %in% c("Sonoran Central", "Sonoran SE"),
-         PlotMix_Climate == "Current",
-         PlantSource2 == "Seeded")|> 
-  select(Site, Name, Duration, Lifeform, Height, Perc_dev_cum) |> 
-  count(Name) |> 
-  arrange(desc(n))
-
-
-# Desirable, Projected
-#   High Height recruit
+# Projected: Tallest
 dat |> 
   filter(Weedy != "Weedy",
          Region %in% c("Sonoran Central", "Sonoran SE"),
          PlotMix_Climate == "Projected") |> 
-  filter(Height > 50) |> 
-  select(Site, Name, Duration, Lifeform, Height, Perc_dev_cum)
+  filter(Height > 600) |> 
+  select(Site, Code, Name, Duration, Lifeform, Height, Perc_dev_cum)
 
-#   Seeded at ~35% deviation
-dat |> 
-  filter(Weedy != "Weedy",
-         Region %in% c("Sonoran Central", "Sonoran SE"),
-         PlotMix_Climate == "Projected",
-         PlantSource2 == "Seeded")|> 
-  filter(Height > 10) |> 
-  select(Site, Name, Duration, Lifeform, Height, Perc_dev_cum)
-
-#   Seeded highest wet deviation
+# Projected: Seeded highest wet deviation
+#   None of them are that tall
 dat |> 
   filter(Weedy != "Weedy",
          Region %in% c("Sonoran Central", "Sonoran SE"),
          PlotMix_Climate == "Projected",
          PlantSource2 == "Seeded")|> 
   filter(Perc_dev_cum > 0.35) |> 
-  select(Site, Name, Duration, Lifeform, Height, Perc_dev_cum)
+  select(Site, Code, Name, Duration, Lifeform, Height, Perc_dev_cum) |> 
+  arrange(desc(Height)) |> 
+  arrange(desc(Perc_dev_cum)) |> 
+  print(n = 42)
 
-#   Seeded highest dry deviation
+# Projected: Seeded highest dry deviation
+#   These are also pretty short
 dat |> 
   filter(Weedy != "Weedy",
          Region %in% c("Sonoran Central", "Sonoran SE"),
@@ -2881,26 +2890,16 @@ dat |>
   filter(Perc_dev_cum < -0.35) |> 
   select(Site, Name, Duration, Lifeform, Height, Perc_dev_cum)
 
-#   Seeded, species of highest Height
+# Projected: Seeded, tallest species
 dat |> 
   filter(Weedy != "Weedy",
          Region %in% c("Sonoran Central", "Sonoran SE"),
          PlotMix_Climate == "Projected",
-         PlantSource2 == "Seeded")|> 
-  select(Site, Name, Duration, Lifeform, Height, Perc_dev_cum) |> 
+         PlantSource2 == "Seeded",
+         Height > 200)|> 
+  select(Site, Code, Name, Duration, Lifeform, Height, Perc_dev_cum) |> 
   arrange(desc(Height)) |> 
-  print(n = 49)
-
-#   Seeded, species frequency (showed up in most plots and sites)
-dat |> 
-  filter(Weedy != "Weedy",
-         Region %in% c("Sonoran Central", "Sonoran SE"),
-         PlotMix_Climate == "Projected",
-         PlantSource2 == "Seeded")|> 
-  select(Site, Name, Duration, Lifeform, Height, Perc_dev_cum) |> 
-  count(Name) |> 
-  arrange(desc(n))
-
+  print(n = 39)
 
 
 # Weedy, None
@@ -2977,6 +2976,8 @@ dat |>
 
 
 ## Top species in mixes (Count) -------------------------------------------
+
+# Most common seeded species across all Treatments for Current or Projected mixes
 
 ### Sonoran Desert --------------------------------------------------------
 
