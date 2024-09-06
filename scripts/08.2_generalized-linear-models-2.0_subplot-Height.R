@@ -234,7 +234,7 @@ plotResiduals(res.nb.all.weed.abs2)
 plotQQunif(res.nb.all.weed.abs2)
 check_overdispersion(nb.all.weed.abs2) # no overdispersion detected
 check_zeroinflation(nb.all.weed.abs2) # no zero-inflation detected
-check_collinearity(nb.all.weed.abs2) # 
+check_collinearity(nb.all.weed.abs2) 
 
 
 
@@ -420,6 +420,7 @@ count(sonoran.seed, Duration)
 count(filter(sonoran.seed, PlotMix_Climate == "Current"), Duration)
 count(filter(sonoran.seed, PlotMix_Climate == "Projected"), Duration)
 #     I don't understand how DurationPerennial can be negative when obviously Perennials are taller?
+
 
 
 # Northern Arizona Plateau ------------------------------------------------
