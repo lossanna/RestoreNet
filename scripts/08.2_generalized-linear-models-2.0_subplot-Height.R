@@ -1,5 +1,5 @@
 # Created: 2024-08-29
-# Last updated: 2024-09-04
+# Last updated: 2024-09-06
 
 # Purpose: Run generalized linear models for subplot data, with Height as response variable. 
 #   Check for overdispersion and zero-inflation.
@@ -412,6 +412,14 @@ plotResiduals(res.nb.sonoran2.seed.abs2)
 check_overdispersion(nb.sonoran2.seed.abs2) # no overdispersion detected
 check_zeroinflation(nb.sonoran2.seed.abs2) # model is overfitting zeros
 check_collinearity(nb.sonoran2.seed.abs2)
+
+#   Investigate Height by Duration 
+summary(filter(sonoran.seed, Duration == "Annual")$Height)
+summary(filter(sonoran.seed, Duration == "Perennial")$Height)
+count(sonoran.seed, Duration)
+count(filter(sonoran.seed, PlotMix_Climate == "Current"), Duration)
+count(filter(sonoran.seed, PlotMix_Climate == "Projected"), Duration)
+#     I don't understand how DurationPerennial can be negative when obviously Perennials are taller?
 
 
 # Northern Arizona Plateau ------------------------------------------------
