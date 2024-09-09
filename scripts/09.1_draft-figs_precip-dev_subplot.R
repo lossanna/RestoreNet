@@ -2,8 +2,7 @@
 # Last updated: 2024-09-09
 
 # Purpose: Graph relationships of Perc_dev_cum vs. Count or Height for Sonoran Desert
-#   and Northern Arizona Plateau. Identify what seeded species from 
-#   mixes are doing well.
+#   and Northern Arizona Plateau. Identify what seeded species from mixes are doing well.
 
 library(tidyverse)
 library(scales)
@@ -49,6 +48,10 @@ apply(dat, 2, anyNA)
 #     at CO Plateau (BarTBar).
 dat <- dat |> 
   filter(Perc_dev_cum != Inf)
+
+# Reorder PlotMix_Climate
+dat$PlotMix_Climate <- factor(dat$PlotMix_Climate,
+                              levels = c("None", "Current", "Projected"))
 
 
 # Sonoran Desert ----------------------------------------------------------
@@ -323,6 +326,7 @@ sonoran.seed.count.plotmixclimate.duration <- dat |>
   xlab("Cumulative precip deviation from normals") +
   scale_shape_manual(values = c(19, 15, 17)) +
   scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02")) +
+  theme(legend.title = element_blank()) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 sonoran.seed.count.plotmixclimate.duration
 
@@ -331,6 +335,7 @@ sonoran.seed.count.plotmixclimate.duration
 
 # Single panel by PlantSource2
 sonoran.des.height <- dat |> 
+  filter(!is.na(Height)) |> 
   filter(Weedy != "Weedy") |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Height)) +
@@ -349,6 +354,7 @@ sonoran.des.height <- dat |>
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 sonoran.des.height
 sonoran.weed.height <- dat |> 
+  filter(!is.na(Height)) |>
   filter(Weedy != "Desirable") |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Height)) +
@@ -369,6 +375,7 @@ sonoran.weed.height
 
 # By PlotMix_Climate and PlantSource2
 sonoran.des.height.plotmixclimate <- dat |> 
+  filter(!is.na(Height)) |>
   filter(Weedy != "Weedy") |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Height)) +
@@ -388,6 +395,7 @@ sonoran.des.height.plotmixclimate <- dat |>
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 sonoran.des.height.plotmixclimate
 sonoran.weed.height.plotmixclimate <- dat |> 
+  filter(!is.na(Height)) |>
   filter(Weedy != "Desirable") |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Height)) +
@@ -410,6 +418,7 @@ sonoran.weed.height.plotmixclimate
 # By Lifeform (forb & grass) and PlantSource2
 #   There are hardly any shrubs
 sonoran.des.height.forbgrass.plantsource2 <- dat |> 
+  filter(!is.na(Height)) |>
   filter(Weedy != "Weedy") |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   filter(Lifeform %in% c("Forb", "Grass")) |> 
@@ -430,6 +439,7 @@ sonoran.des.height.forbgrass.plantsource2 <- dat |>
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 sonoran.des.height.forbgrass.plantsource2
 sonoran.weed.height.forbgrass.plantsource2 <- dat |> 
+  filter(!is.na(Height)) |>
   filter(Weedy != "Desirable") |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   filter(Lifeform %in% c("Forb", "Grass")) |> 
@@ -452,6 +462,7 @@ sonoran.weed.height.forbgrass.plantsource2
 
 # By Duration (annual & perennial only) and Lifeform
 sonoran.des.height.perennial.annual.lifeform <- dat |> 
+  filter(!is.na(Height)) |>
   filter(Weedy != "Weedy") |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   filter(Duration %in% c("Annual", "Perennial")) |> 
@@ -472,6 +483,7 @@ sonoran.des.height.perennial.annual.lifeform <- dat |>
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 sonoran.des.height.perennial.annual.lifeform
 sonoran.weed.height.perennial.annual.lifeform <- dat |> 
+  filter(!is.na(Height)) |>
   filter(Weedy != "Desirable") |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   filter(Duration %in% c("Annual", "Perennial")) |> 
@@ -494,6 +506,7 @@ sonoran.weed.height.perennial.annual.lifeform
 
 # By Treatment and PlantSource2
 sonoran.des.height.treatment <- dat |> 
+  filter(!is.na(Height)) |>
   filter(Weedy != "Weedy") |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Height)) +
@@ -513,6 +526,7 @@ sonoran.des.height.treatment <- dat |>
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 sonoran.des.height.treatment
 sonoran.weed.height.treatment <- dat |> 
+  filter(!is.na(Height)) |>
   filter(Weedy != "Desirable") |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Height)) +
@@ -534,6 +548,7 @@ sonoran.weed.height.treatment
 
 # Single by AridityIndex
 sonoran.des.height.ai <- dat |> 
+  filter(!is.na(Height)) |>
   filter(Weedy != "Weedy") |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Height)) +
@@ -546,7 +561,8 @@ sonoran.des.height.ai <- dat |>
   scale_color_viridis(direction = -1) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 sonoran.des.height.ai
-sonoran.weed.height.ai <- dat |> 
+sonoran.weed.height.ai <- dat |>
+  filter(!is.na(Height)) |>
   filter(Weedy != "Desirable") |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Height)) +
@@ -637,8 +653,8 @@ naz.weed.count <- dat |>
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
   xlab("Cumulative precip deviation from normals") +
-  scale_shape_manual(values = c(20, 17, 15)) +
-  scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
+  scale_shape_manual(values = c(20, 15, 17)) +
+  scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77")) +
   theme(legend.title = element_blank()) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 naz.weed.count
@@ -678,8 +694,8 @@ naz.weed.count.plotmixclimate <- dat |>
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
   xlab("Cumulative precip deviation from normals") +
-  scale_shape_manual(values = c(20, 17, 15)) +
-  scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
+  scale_shape_manual(values = c(20, 15, 17)) +
+  scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77")) +
   theme(legend.title = element_blank()) +
   theme(axis.text.x = element_text(angle = 35)) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
@@ -876,8 +892,8 @@ naz.weed.height <- dat |>
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
   xlab("Cumulative precip deviation from normals") +
-  scale_shape_manual(values = c(20, 17, 15)) +
-  scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
+  scale_shape_manual(values = c(20, 15, 17)) +
+  scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77")) +
   theme(legend.title = element_blank()) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 naz.weed.height
@@ -917,8 +933,8 @@ naz.weed.height.plotmixclimate <- dat |>
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
   xlab("Cumulative precip deviation from normals") +
-  scale_shape_manual(values = c(20, 17, 15)) +
-  scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
+  scale_shape_manual(values = c(20, 15, 17)) +
+  scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77")) +
   theme(legend.title = element_blank()) +
   theme(axis.text.x = element_text(angle = 35)) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
@@ -1084,113 +1100,113 @@ naz.weed.height.ai
 # Write out draft figures -------------------------------------------------
 
 # Sonoran Desert: Count
-tiff("figures/2024-08_draft-figures/Sonoran_desirable_Count-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+tiff("figures/2024-09_draft-figures/Sonoran_desirable_Count-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
 sonoran.des.count
 dev.off()
-tiff("figures/2024-08_draft-figures/Sonoran_weedy_Count-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+tiff("figures/2024-09_draft-figures/Sonoran_weedy_Count-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
 sonoran.weed.count
 dev.off()
 
-tiff("figures/2024-08_draft-figures/Sonoran_desirable_Count-by-PlotMix_Climate-and-PlantSource2.tiff", units = "in", height = 5, width = 7, res = 150)
+tiff("figures/2024-09_draft-figures/Sonoran_desirable_Count-by-PlotMix_Climate-and-PlantSource2.tiff", units = "in", height = 5, width = 7, res = 150)
 sonoran.des.count.plotmixclimate
 dev.off()
-tiff("figures/2024-08_draft-figures/Sonoran_weedy_Count-by-PlotMix_Climate-and-PlantSource2.tiff", units = "in", height = 5, width = 7, res = 150)
+tiff("figures/2024-09_draft-figures/Sonoran_weedy_Count-by-PlotMix_Climate-and-PlantSource2.tiff", units = "in", height = 5, width = 7, res = 150)
 sonoran.weed.count.plotmixclimate
 dev.off()
 
-tiff("figures/2024-08_draft-figures/Sonoran_desirable_Count-by-forb-grass-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+tiff("figures/2024-09_draft-figures/Sonoran_desirable_Count-by-forb-grass-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
 sonoran.des.count.forbgrass.plantsource2
 dev.off()
-tiff("figures/2024-08_draft-figures/Sonoran_weedy_Count-by-forb-grass-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+tiff("figures/2024-09_draft-figures/Sonoran_weedy_Count-by-forb-grass-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
 sonoran.weed.count.forbgrass.plantsource2
 dev.off()
 
-tiff("figures/2024-08_draft-figures/Sonoran_desirable_Count-by-duration-and-lifeform.tiff", units = "in", height = 4, width = 5, res = 150)
+tiff("figures/2024-09_draft-figures/Sonoran_desirable_Count-by-duration-and-lifeform.tiff", units = "in", height = 4, width = 5, res = 150)
 sonoran.des.count.perennial.annual.lifeform
 dev.off()
-tiff("figures/2024-08_draft-figures/Sonoran_weedy_Count-by-duration-and-lifeform.tiff", units = "in", height = 4, width = 5, res = 150)
+tiff("figures/2024-09_draft-figures/Sonoran_weedy_Count-by-duration-and-lifeform.tiff", units = "in", height = 4, width = 5, res = 150)
 sonoran.weed.count.perennial.annual.lifeform
 dev.off()
 
-tiff("figures/2024-08_draft-figures/Sonoran_seeded_Count-by-PlotMix_Climate-and-duration.tiff", units = "in", height = 5, width = 7, res = 150)
+tiff("figures/2024-09_draft-figures/Sonoran_seeded_Count-by-PlotMix_Climate-and-duration.tiff", units = "in", height = 5, width = 7, res = 150)
 sonoran.seed.count.plotmixclimate.duration
 dev.off()
 
 # Sonoran Desert: Height
-tiff("figures/2024-08_draft-figures/Sonoran_desirable_Height-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+tiff("figures/2024-09_draft-figures/Sonoran_desirable_Height-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
 sonoran.des.height
 dev.off()
-tiff("figures/2024-08_draft-figures/Sonoran_weedy_Height-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+tiff("figures/2024-09_draft-figures/Sonoran_weedy_Height-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
 sonoran.weed.height
 dev.off()
 
-tiff("figures/2024-08_draft-figures/Sonoran_desirable_Height-by-PlotMix_Climate-and-PlantSource2.tiff", units = "in", height = 5, width = 7, res = 150)
+tiff("figures/2024-09_draft-figures/Sonoran_desirable_Height-by-PlotMix_Climate-and-PlantSource2.tiff", units = "in", height = 5, width = 7, res = 150)
 sonoran.des.height.plotmixclimate
 dev.off()
-tiff("figures/2024-08_draft-figures/Sonoran_weedy_Height-by-PlotMix_Climate-and-PlantSource2.tiff", units = "in", height = 5, width = 7, res = 150)
+tiff("figures/2024-09_draft-figures/Sonoran_weedy_Height-by-PlotMix_Climate-and-PlantSource2.tiff", units = "in", height = 5, width = 7, res = 150)
 sonoran.weed.height.plotmixclimate
 dev.off()
 
-tiff("figures/2024-08_draft-figures/Sonoran_desirable_Height-by-forb-grass-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+tiff("figures/2024-09_draft-figures/Sonoran_desirable_Height-by-forb-grass-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
 sonoran.des.height.forbgrass.plantsource2
 dev.off()
-tiff("figures/2024-08_draft-figures/Sonoran_weedy_Height-by-forb-grass-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+tiff("figures/2024-09_draft-figures/Sonoran_weedy_Height-by-forb-grass-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
 sonoran.weed.height.forbgrass.plantsource2
 dev.off()
 
-tiff("figures/2024-08_draft-figures/Sonoran_desirable_Height-by-duration-and-lifeform.tiff", units = "in", height = 4, width = 5, res = 150)
+tiff("figures/2024-09_draft-figures/Sonoran_desirable_Height-by-duration-and-lifeform.tiff", units = "in", height = 4, width = 5, res = 150)
 sonoran.des.height.perennial.annual.lifeform
 dev.off()
-tiff("figures/2024-08_draft-figures/Sonoran_weedy_Height-by-duration-and-lifeform.tiff", units = "in", height = 4, width = 5, res = 150)
+tiff("figures/2024-09_draft-figures/Sonoran_weedy_Height-by-duration-and-lifeform.tiff", units = "in", height = 4, width = 5, res = 150)
 sonoran.weed.height.perennial.annual.lifeform
 dev.off()
 
-tiff("figures/2024-08_draft-figures/Sonoran_seeded_Height-by-PlotMix_Climate-and-duration.tiff", units = "in", height = 5, width = 7, res = 150)
+tiff("figures/2024-09_draft-figures/Sonoran_seeded_Height-by-PlotMix_Climate-and-duration.tiff", units = "in", height = 5, width = 7, res = 150)
 sonoran.seed.height.plotmixclimate.duration
 dev.off()
 
 
 # Northern AZ: Count
-tiff("figures/2024-08_draft-figures/CO-Plateau_desirable_Count-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_desirable_Count-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
 naz.des.count
 dev.off()
-tiff("figures/2024-08_draft-figures/CO-Plateau_weedy_Count-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_weedy_Count-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
 naz.weed.count
 dev.off()
 
-tiff("figures/2024-08_draft-figures/CO-Plateau_desirable_Count-by-PlotMix_Climate-and-PlantSource2.tiff", units = "in", height = 5, width = 7, res = 150)
+tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_desirable_Count-by-PlotMix_Climate-and-PlantSource2.tiff", units = "in", height = 5, width = 7, res = 150)
 naz.des.count.plotmixclimate
 dev.off()
-tiff("figures/2024-08_draft-figures/CO-Plateau_weedy_Count-by-PlotMix_Climate-and-PlantSource2.tiff", units = "in", height = 5, width = 7, res = 150)
+tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_weedy_Count-by-PlotMix_Climate-and-PlantSource2.tiff", units = "in", height = 5, width = 7, res = 150)
 naz.weed.count.plotmixclimate
 dev.off()
 
-tiff("figures/2024-08_draft-figures/CO-Plateau_desirable_Count-by-forb-grass-shrub-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_desirable_Count-by-forb-grass-shrub-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
 naz.des.count.forbgrassshrub.plantsource2
 dev.off()
-tiff("figures/2024-08_draft-figures/CO-Plateau_weedy_Count-by-forb-grass-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_weedy_Count-by-forb-grass-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
 naz.weed.count.forbgrass.plantsource2
 dev.off()
 
 # Northern AZ: Height
-tiff("figures/2024-08_draft-figures/CO-Plateau_desirable_Height-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_desirable_Height-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
 naz.des.height
 dev.off()
-tiff("figures/2024-08_draft-figures/CO-Plateau_weedy_Height-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_weedy_Height-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
 naz.weed.height
 dev.off()
 
-tiff("figures/2024-08_draft-figures/CO-Plateau_desirable_Height-by-PlotMix_Climate-and-PlantSource2.tiff", units = "in", height = 5, width = 7, res = 150)
+tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_desirable_Height-by-PlotMix_Climate-and-PlantSource2.tiff", units = "in", height = 5, width = 7, res = 150)
 naz.des.height.plotmixclimate
 dev.off()
-tiff("figures/2024-08_draft-figures/CO-Plateau_weedy_Height-by-PlotMix_Climate-and-PlantSource2.tiff", units = "in", height = 5, width = 7, res = 150)
+tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_weedy_Height-by-PlotMix_Climate-and-PlantSource2.tiff", units = "in", height = 5, width = 7, res = 150)
 naz.weed.height.plotmixclimate
 dev.off()
 
-tiff("figures/2024-08_draft-figures/CO-Plateau_desirable_Height-by-forb-grass-shrub-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_desirable_Height-by-forb-grass-shrub-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
 naz.des.height.forbgrassshrub.plantsource2
 dev.off()
-tiff("figures/2024-08_draft-figures/CO-Plateau_weedy_Height-by-forb-grass-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_weedy_Height-by-forb-grass-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
 naz.weed.height.forbgrass.plantsource2
 dev.off()
 
