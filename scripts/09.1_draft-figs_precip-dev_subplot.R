@@ -857,6 +857,47 @@ naz.weed.count.ai <- dat |>
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 naz.weed.count.ai
 
+# Seeded species by PlotMix_Climate
+naz.seed.count.plotmixclimate <- dat |> 
+  filter(PlotMix_Climate %in% c("Current", "Projected"),
+         SpeciesSeeded == "Yes") |> 
+  filter(Region == "Colorado Plateau") |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(color = "#D95F02",
+             shape = 15,
+             alpha = 0.7) +
+  facet_wrap(~PlotMix_Climate) +
+  geom_smooth() +
+  ggtitle("Northern Arizona Plateau, seeded species") +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+naz.seed.count.plotmixclimate
+
+# Seeded species by PlotMix_Climate and Duration
+naz.seed.count.plotmixclimate.duration <- dat |> 
+  filter(PlotMix_Climate %in% c("Current", "Projected"),
+         SpeciesSeeded == "Yes") |> 
+  filter(Region == "Colorado Plateau") |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = Duration,
+                 shape = Duration),
+             alpha = 0.7) +
+  facet_wrap(~PlotMix_Climate) +
+  geom_smooth() +
+  ggtitle("Northern Arizona Plateau, seeded species") +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  scale_shape_manual(values = c(19, 15, 17)) +
+  scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+naz.seed.count.plotmixclimate.duration
+
 
 ## Height -----------------------------------------------------------------
 
@@ -1097,6 +1138,50 @@ naz.weed.height.ai <- dat |>
 naz.weed.height.ai
 
 
+# Seeded species by PlotMix_Climate
+naz.seed.height.plotmixclimate <- dat |> 
+  filter(PlotMix_Climate %in% c("Current", "Projected"),
+         SpeciesSeeded == "Yes") |> 
+  filter(Region == "Colorado Plateau") |> 
+  ggplot(aes(x = Perc_dev_cum, y = Height)) +
+  geom_point(color = "#D95F02",
+             shape = 15,
+             alpha = 0.7) +
+  facet_wrap(~PlotMix_Climate) +
+  geom_smooth() +
+  ggtitle("Northern Arizona Plateau, seeded species") +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+naz.seed.height.plotmixclimate
+
+# Seeded species by PlotMix_Climate and Duration
+naz.seed.height.plotmixclimate.duration <- dat |> 
+  filter(PlotMix_Climate %in% c("Current", "Projected"),
+         SpeciesSeeded == "Yes") |> 
+  filter(Region == "Colorado Plateau") |> 
+  ggplot(aes(x = Perc_dev_cum, y = Height)) +
+  geom_point(aes(color = Duration,
+                 shape = Duration),
+             alpha = 0.7) +
+  facet_wrap(~PlotMix_Climate) +
+  geom_smooth() +
+  ggtitle("Northern Arizona Plateau, seeded species") +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  scale_shape_manual(values = c(19, 15, 17)) +
+  scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+naz.seed.height.plotmixclimate.duration
+
+
+
+
 # Write out draft figures -------------------------------------------------
 
 # Sonoran Desert: Count
@@ -1188,6 +1273,10 @@ tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_weedy_Count-by-forb-gras
 naz.weed.count.forbgrass.plantsource2
 dev.off()
 
+tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_seeded_Count-by-PlotMix_Climate-and-duration.tiff", units = "in", height = 5, width = 7, res = 150)
+naz.seed.count.plotmixclimate.duration
+dev.off()
+
 # Northern AZ: Height
 tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_desirable_Height-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
 naz.des.height
@@ -1210,6 +1299,9 @@ tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_weedy_Height-by-forb-gra
 naz.weed.height.forbgrass.plantsource2
 dev.off()
 
+tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_seeded_Height-by-PlotMix_Climate-and-duration.tiff", units = "in", height = 5, width = 7, res = 150)
+naz.seed.height.plotmixclimate.duration
+dev.off()
 
 
 # Identify outliers (frequency across plots & sites) ----------------------
