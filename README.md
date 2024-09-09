@@ -1,9 +1,9 @@
 # RestoreNet
 Created: 2022-11-15  
-Last updated: 2024-09-04
+Last updated: 2024-09-09
   
 ## Description  
-Complete data analysis on response to variable precipitation using the RestoreNet 1.0 data, which was the first iteration of [RAMPS RestoreNet](https://www.usgs.gov/centers/southwest-biological-science-center/science/restorenet-distributed-field-trial-network). For other analysis on the RestoreNet 1.0 data, see [Farrell et al. 2023, *Ecological Applications*](https://doi.org/10.1002/eap.2834).
+Complete data analysis on response to intra- and inter-annual precipitation variability using the RestoreNet 1.0 data, which was the first iteration of [RAMPS RestoreNet](https://www.usgs.gov/centers/southwest-biological-science-center/science/restorenet-distributed-field-trial-network). For other analysis on the RestoreNet 1.0 data, see [Farrell et al. 2023, *Ecological Applications*](https://doi.org/10.1002/eap.2834).
 
   
 ## Author
@@ -18,43 +18,43 @@ To understand more about data wrangling, see folder-specific READMEs.
 
 ## Scripts
 Scripts include date of creation and last update, as well as a purpose statement, and any major takeaways.  
-Scripts numbered `XX.15_` are deprecated.
 
-# Workflow for current analysis
-Scripts should be run in order of number in name.  
-Exploratory scripts not necessary for producing final results, but explain some of the analysis discoveries and decisions along the way.
-1. **Data wrangling**:
+Scripts were numbered approximately according to creation date and workflow of analysis. 
+- Top-level folder has scripts needed for final analysis.
+- `exploratory/` subfolder has scripts not used for final analysis but explain some of the analysis discoveries and decisions along the way.
+- `not-pursued/` subfolder has scripts whose analysis routes were discontinued and not pursued.
+
+The complete workflow for current analysis is:  
+1. Data wrangling: scripts numbered `01`, `02`, `03`, `04`.  
+2. Data screening: scripts numbered `05`.
+3. Exploratory graphs: scripts numbered `06`.
+4. Exploratory generalized linear models: scripts numbered `07` and `08`.
+5. Draft figures: scripts numbered `09`.
+6. Generalized linear models: scripts numbered `10`.
+
+
+# Workflow for final analysis
+**1. Data wrangling**:
 - `01_curate-species-list.R` and `01-dependency_assign-seeded-species-native-status.R`
 - `02_correct-monitoring-info.R`
-- `03.1_monitor-info-comparison-with-Farrell-2023.R` (sub-exploratory)
 - `03.2_PRISM-data-wrangling.R`
 - `03.3_explore-precip-trends.R`
 - `03.4_aridity-index.R`
 - `04.1_data-wrangling_subplot.R`
 - `04.2_data-wrangling_2x2.R`
-- `04.15_data-wrangling_subplot_add-0s.R` (deprecated)
 
-2. **Data screening**:
+**2. Data screening**:
 - `05.1_data-screening_subplot.R`
 - `05.2_data-screening_2x2.R`
 - `05.3_data-screening_continuous-explanatory-variables.R`
 
-3. **Exploratory graphs**:
-- `06.1_exploratory-graphs_precip-dev_subplot.R`
-- `06.2_exploratory-graphs_2x2.R`
-- `06.3_exploratory-graphs_cum-precip_subplot.R` (exploratory)
-- `06.4_exploratory-graphs_precip-dev-abs_subplot.R` (exploratory)
-- `06.5_exploratory-graphs_since-last-precip_subplot.R` (exploratory)
-- `06.15_exploratory-graphs_subplot-0-added.R` (deprecated)
+**3. Draft figures**:
+- `09.1_draft-figs_precip-dev_subplot.R`
 
-4. **Generalized linear models**
-- `07.1_generalized-linear-models_subplot-Count.R` (exploratory)
-- `07.2_generalized-linear-models_subplot-Count.R` (exploratory)
-- `07.3_generalized-linear-models_2x2-richness.R`
-- `07.15_generalized-linear-models_subplot-0-added-Count.R` (deprecated)
-- `08.1_generalized-linear-models-2.0_subplot-Count.R`
-- `08.2_generalized-linear-models-2.0_subplot-Height.R`
-- `08.15_generalized-linear-models-split-pos-neg_subplot-Count.R` (deprecated)
+
+**4. Generalized linear models**
+- `10
+
 
 # Directory
 - `data/`
@@ -72,12 +72,14 @@ Exploratory scripts not necessary for producing final results, but explain some 
         - `README_raw-data.md`
 - `figures/`
     - `2024-03_draft-figures/`
+        - Produced from exploratory scripts.
     - `2024-04_ALVSCE/`
         - Files not pushed to GitHub due to size.
     - `2024-04_NCER/`
         - Files not pushed to GitHub due to size.
     - `2024-08_draft-figures/`
-- `old_pre-2023-09-18_Farrell-data/` (deprecated)
+        - Produced from exploratory scripts.
+- `old_pre-2023-09-18_Farrell-data/` (do not run; used older dataset)
     - `data/`
     - `RData/`
     - `scripts/`
@@ -85,3 +87,21 @@ Exploratory scripts not necessary for producing final results, but explain some 
 - `RData/`
     - `.RData` files not pushed to GitHub.
 - `scripts/`
+    - See "Workflow for final analysis" for top folder.
+    - `exploratory/`
+        - `03.1_monitor-info-comparison-with-Farrell-2023.R`
+        - `06.1_exploratory-graphs_precip-dev_subplot.R` 
+        - `06.2_exploratory-graphs_2x2.R` 
+        - `06.3_exploratory-graphs_cum-precip_subplot.R` 
+        - `06.4_exploratory-graphs_precip-dev-abs_subplot.R`
+        - `06.5_exploratory-graphs_since-last-precip_subplot.R` 
+        - `07.1_generalized-linear-models_subplot-Count.R` 
+        - `07.2_generalized-linear-models_subplot-Count.R` 
+        - `07.3_generalized-linear-models_2x2-richness.R` 
+        - `08.1_generalized-linear-models-2.0_subplot-Count.R` 
+        - `08.2_generalized-linear-models-2.0_subplot-Height.R`
+    - `not-pursued/`
+        - `04.15_data-wrangling_subplot_add-0s.R`
+        - `06.15_exploratory-graphs_subplot-0-added.R`
+        - `07.15_generalized-linear-models_subplot-0-added-Count.R` 
+        - `08.15_generalized-linear-models-split-pos-neg_subplot-Count.R`
