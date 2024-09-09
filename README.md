@@ -53,7 +53,8 @@ The complete workflow for current analysis is:
 
 
 **4. Generalized linear models**
-- `10
+- `10.1_generalized-linear-models_subplot-Count.R`
+- `10.2_generalized-linear-models_subplot-Height.R`
 
 
 # Directory
