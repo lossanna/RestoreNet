@@ -602,7 +602,7 @@ Generated on 2024-09-06:
     - All sites, Height, Desirable: `nb.all.des.abs2` model
     - All sites, Height, Weedy: `nb.all.weed.abs2` model
 
-### Response generated (1, by model):
+### Response generated:
 Here’s a synthesis of the findings grouped by explanatory variables across all models (Count and Height for both weedy and desirable species) in the arid/semiarid Southwest:
 
 ### 1. **Perc_dev_cum_abs (Percent Deviation from Average Cumulative Precipitation - Absolute)**
