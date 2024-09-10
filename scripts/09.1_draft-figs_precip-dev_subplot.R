@@ -1462,6 +1462,14 @@ tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_weedy_Count-by-forb-gras
 naz.weed.count.forbgrass.plantsource2
 dev.off()
 
+tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_desirable_Count-by-duration-and-lifeform.tiff", units = "in", height = 4, width = 5, res = 150)
+naz.des.count.perennial.annual.lifeform
+dev.off()
+tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_weedy_Count-by-duration-and-lifeform.tiff", units = "in", height = 4, width = 5, res = 150)
+naz.weed.count.perennial.annual.lifeform
+dev.off()
+
+
 tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_seeded_Count-by-PlotMix_Climate-and-duration.tiff", units = "in", height = 5, width = 7, res = 150)
 naz.seed.count.plotmixclimate.duration
 dev.off()
@@ -1493,6 +1501,13 @@ naz.des.height.forbgrassshrub.plantsource2
 dev.off()
 tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_weedy_Height-by-forb-grass-and-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
 naz.weed.height.forbgrass.plantsource2
+dev.off()
+
+tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_desirable_Height-by-duration-and-lifeform.tiff", units = "in", height = 4, width = 5, res = 150)
+naz.des.height.perennial.annual.lifeform
+dev.off()
+tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_weedy_Height-by-duration-and-lifeform.tiff", units = "in", height = 4, width = 5, res = 150)
+naz.weed.height.perennial.annual.lifeform
 dev.off()
 
 tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_seeded_Height-by-PlotMix_Climate-and-duration.tiff", units = "in", height = 5, width = 7, res = 150)
@@ -1606,6 +1621,14 @@ dat |>
 
 
 # Weedy
+# All plots: Highest species frequency overall
+dat |> 
+  filter(Weedy != "Desirable",
+         Region == "Colorado Plateau") |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  print(n = 20)
+
 # All plots: Highest species frequency (showed up in most plots and sites) when wetter
 dat |> 
   filter(Weedy != "Desirable",
@@ -2061,6 +2084,9 @@ dat |>
 
 ## Northern Arizona Plateau: Weedy ----------------------------------------
 
+# Overall not that much differs between Current and Projected for weedy species;
+#   most prominent invasives are SATR12, BRNI, BRRU2
+
 # All plots: High count recruit
 #   Mostly unknowns, SATR12
 dat |> 
@@ -2077,7 +2103,7 @@ dat |>
 dat |> 
   filter(Weedy != "Desirable",
          Region == "Colorado Plateau")|> 
-  filter(Perc_dev_cum > 1) |> 
+  filter(Perc_dev_cum > 0.8) |> 
   filter(Count > 30) |> 
   select(Site, Code, Name, Duration, Lifeform, SpeciesSeeded, Count, Perc_dev_cum) |>
   arrange(desc(Count)) |> 
@@ -2133,12 +2159,16 @@ dat |>
   print(n = 43)
 
 # Projected: High count recruit 
+#   Mostly unknowns, SAT12
 dat |> 
   filter(Weedy == "Weedy",
          Region == "Colorado Plateau",
          PlotMix_Climate == "Projected") |> 
   filter(Count > 30) |> 
-  select(Site, Name, Duration, Lifeform, Count, Perc_dev_cum)
+  select(Site, Code, Name, Duration, Lifeform, SpeciesSeeded, Count, Perc_dev_cum) |> 
+  arrange(desc(Count)) |> 
+  arrange(Site) |> 
+  print(n = 46)
 
 # Projected: High wet deviation
 #   BRNI
@@ -2163,9 +2193,6 @@ dat |>
   arrange(desc(Count)) |> 
   arrange(Perc_dev_cum) |> 
   print(n = 35)
-
-
-
 
 
 # Identify outliers (Height) ----------------------------------------------
