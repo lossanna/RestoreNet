@@ -4,6 +4,8 @@ Last updated: 2024-09-09
   
 Generated from ChatGPT-4o by giving it the summary output for models and asking it to interpret the results. See GitHub for previous versions.
 
+Responses have been corrected for only about half of this document, so later information might be wrong. Instead, see `ChatGPT-synthesis-for-model-results-2.0.md` for updated and correct responses.
+
 
 # Sonoran Desert
 ## 1. Overall desirable vs. weedy (all four models compared)
@@ -416,6 +418,7 @@ Here is the updated comprehensive summary incorporating the results of **seeded 
    - **Cover:** Significant positive effect. More recent precipitation significantly increases the cover of seeded species, underscoring the critical role of water availability in promoting both abundance and coverage.
 
 ### General Implications for Restoration in the Northern Arizona Plateau
+*[Responses after this point are pontentially wrong and have not been corrected.]*
 
 1. **Perc_dev_cum_abs**: The consistently negative effects of precipitation variability on count, height, and cover highlight the importance of stable moisture conditions for seeded species. These species thrive when precipitation patterns are more predictable and less variable.
    
