@@ -1,5 +1,5 @@
 # Created: 2024-09-09
-# Last updated: 2024-09-09
+# Last updated: 2024-09-11
 
 # Purpose: Graph relationships of Perc_dev_cum vs. Count or Height for Sonoran Desert
 #   and Northern Arizona Plateau. Identify what seeded species from mixes are doing well.
@@ -57,6 +57,8 @@ dat$PlotMix_Climate <- factor(dat$PlotMix_Climate,
 # Sonoran Desert ----------------------------------------------------------
 
 ## Count -------------------------------------------------------------------
+
+### Desirable & Weedy -----------------------------------------------------
 
 # Single panel by PlantSource2
 sonoran.des.count <- dat |> 
@@ -289,6 +291,9 @@ sonoran.weed.count.ai <- dat |>
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 sonoran.weed.count.ai
 
+
+### Seeded species --------------------------------------------------------
+
 # Seeded species by PlotMix_Climate
 sonoran.seed.count.plotmixclimate <- dat |> 
   filter(PlotMix_Climate %in% c("Current", "Projected"),
@@ -330,6 +335,9 @@ sonoran.seed.count.plotmixclimate.duration <- dat |>
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 sonoran.seed.count.plotmixclimate.duration
 
+
+### Species facet_wrap ----------------------------------------------------
+
 # By seeded species: Current
 sonoran.seed.count.current.species <- dat |> 
   filter(PlotMix_Climate == "Current",
@@ -337,7 +345,7 @@ sonoran.seed.count.current.species <- dat |>
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
   geom_point(aes(color = Lifeform,
-                 shape = Lifeform),
+                 shape = Duration),
              alpha = 0.7) +
   facet_wrap(~Code) +
   ggtitle("Sonoran Desert, seeded species (Current)") +
@@ -358,7 +366,7 @@ sonoran.seed.count.projected.species <- dat |>
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
   geom_point(aes(color = Lifeform,
-                 shape = Lifeform),
+                 shape = Duration),
              alpha = 0.7) +
   facet_wrap(~Code) +
   ggtitle("Sonoran Desert, seeded species (Projected)") +
@@ -372,8 +380,74 @@ sonoran.seed.count.projected.species <- dat |>
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 sonoran.seed.count.projected.species
 
+# By known desirable native recruits: grasses
+dat |> 
+  filter(Weedy == "Desirable",
+         SpeciesSeeded == "No",
+         Lifeform == "Grass") |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  filter(!str_detect(Code, "SRER|Patagonia|Pleasant|Roosevelt|SCC")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = Duration,
+                 shape = Duration),
+             alpha = 0.7) +
+  facet_wrap(~Code) +
+  ggtitle("Sonoran Desert, native recruits") +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  scale_shape_manual(values = c(19, 15, 17)) +
+  scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+
+# By known desirable native recruits: forbs
+dat |> 
+  filter(Weedy == "Desirable",
+         SpeciesSeeded == "No",
+         Lifeform == "Forb") |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  filter(!str_detect(Code, "SRER|Patagonia|Pleasant|Roosevelt|SCC")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = Duration,
+                 shape = Duration),
+             alpha = 0.7) +
+  facet_wrap(~Code) +
+  ggtitle("Sonoran Desert, native recruits") +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  scale_shape_manual(values = c(19, 15, 17)) +
+  scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+
+# By invasives
+dat |> 
+  filter(PlantSource2 == "Introduced/Invasive") |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = Lifeform,
+                 shape = Duration),
+             alpha = 0.7) +
+  facet_wrap(~Code) +
+  ggtitle("Sonoran Desert, invasives") +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  scale_shape_manual(values = c(19, 15, 17)) +
+  scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+
+
 
 ## Height -----------------------------------------------------------------
+
+### Desirable & Weedy -----------------------------------------------------
 
 # Single panel by PlantSource2
 sonoran.des.height <- dat |> 
@@ -618,6 +692,9 @@ sonoran.weed.height.ai <- dat |>
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 sonoran.weed.height.ai
 
+
+### Seeded species --------------------------------------------------------
+
 # Seeded species by PlotMix_Climate
 sonoran.seed.height.plotmixclimate <- dat |> 
   filter(PlotMix_Climate %in% c("Current", "Projected"),
@@ -658,6 +735,8 @@ sonoran.seed.height.plotmixclimate.duration <- dat |>
 sonoran.seed.height.plotmixclimate.duration
 
 
+### Species facet_wrap ----------------------------------------------------
+
 # By seeded species: Current
 sonoran.seed.height.current.species <- dat |> 
   filter(PlotMix_Climate == "Current",
@@ -665,7 +744,7 @@ sonoran.seed.height.current.species <- dat |>
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Height)) +
   geom_point(aes(color = Lifeform,
-                 shape = Lifeform),
+                 shape = Duration),
              alpha = 0.7) +
   facet_wrap(~Code) +
   ggtitle("Sonoran Desert, seeded species (Current)") +
@@ -686,7 +765,7 @@ sonoran.seed.height.projected.species <- dat |>
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Height)) +
   geom_point(aes(color = Lifeform,
-                 shape = Lifeform),
+                 shape = Duration),
              alpha = 0.7) +
   facet_wrap(~Code) +
   ggtitle("Sonoran Desert, seeded species (Projected)") +
@@ -700,11 +779,76 @@ sonoran.seed.height.projected.species <- dat |>
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 sonoran.seed.height.projected.species
 
+# By known desirable native recruits: grasses
+dat |> 
+  filter(Weedy == "Desirable",
+         SpeciesSeeded == "No",
+         Lifeform == "Grass") |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  filter(!str_detect(Code, "SRER|Patagonia|Pleasant|Roosevelt|SCC")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Height)) +
+  geom_point(aes(color = Duration,
+                 shape = Duration),
+             alpha = 0.7) +
+  facet_wrap(~Code) +
+  ggtitle("Sonoran Desert, native recruits") +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  scale_shape_manual(values = c(19, 15, 17)) +
+  scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+
+# By known desirable native recruits: forbs
+dat |> 
+  filter(Weedy == "Desirable",
+         SpeciesSeeded == "No",
+         Lifeform == "Forb") |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  filter(!str_detect(Code, "SRER|Patagonia|Pleasant|Roosevelt|SCC")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Height)) +
+  geom_point(aes(color = Duration,
+                 shape = Duration),
+             alpha = 0.7) +
+  facet_wrap(~Code) +
+  ggtitle("Sonoran Desert, native recruits") +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  scale_shape_manual(values = c(19, 15, 17)) +
+  scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+
+# By invasives
+dat |> 
+  filter(PlantSource2 == "Introduced/Invasive") |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Height)) +
+  geom_point(aes(color = Lifeform,
+                 shape = Duration),
+             alpha = 0.7) +
+  facet_wrap(~Code) +
+  ggtitle("Sonoran Desert, invasives") +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  scale_shape_manual(values = c(19, 15, 17)) +
+  scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+
 
 
 # Northern Arizona Plateau ------------------------------------------------
 
 ## Count ------------------------------------------------------------------
+
+### Desirable & Weedy -----------------------------------------------------
 
 # Single panel by PlantSource2
 naz.des.count <- dat |> 
@@ -942,6 +1086,9 @@ naz.weed.count.ai <- dat |>
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 naz.weed.count.ai
 
+
+### Seeded species --------------------------------------------------------
+
 # Seeded species by PlotMix_Climate
 naz.seed.count.plotmixclimate <- dat |> 
   filter(PlotMix_Climate %in% c("Current", "Projected"),
@@ -983,6 +1130,9 @@ naz.seed.count.plotmixclimate.duration <- dat |>
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 naz.seed.count.plotmixclimate.duration
 
+
+### Species facet_wrap ----------------------------------------------------
+
 # By seeded species: Current
 naz.seed.count.current.species <- dat |> 
   filter(PlotMix_Climate == "Current",
@@ -991,7 +1141,7 @@ naz.seed.count.current.species <- dat |>
   filter(!str_detect(Code, "SPP|SUNGR|UNFO|UNGR")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
   geom_point(aes(color = Lifeform,
-                 shape = Lifeform),
+                 shape = Duration),
              alpha = 0.7) +
   facet_wrap(~Code) +
   ggtitle("Northern Arizona Plateau, seeded species (Current)") +
@@ -1013,7 +1163,7 @@ naz.seed.count.projected.species <- dat |>
   filter(!str_detect(Code, "SPP|SUNGR|UNFO|UNGR")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
   geom_point(aes(color = Lifeform,
-                 shape = Lifeform),
+                 shape = Duration),
              alpha = 0.7) +
   facet_wrap(~Code) +
   ggtitle("Northern Arizona Plateau, seeded species (Projected)") +
@@ -1027,9 +1177,94 @@ naz.seed.count.projected.species <- dat |>
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 naz.seed.count.projected.species
 
+# By known native recruit: grasses
+dat |> 
+  filter(Weedy == "Desirable",
+         SpeciesSeeded == "No",
+         Lifeform == "Grass") |> 
+  filter(Region == "Colorado Plateau") |> 
+  filter(!str_detect(Code, "FlyingM|MOWE|TLE|BarTBar|PEFO|AguaFria|BabbittPJ|Spiderweb")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = Duration,
+                 shape = Duration),
+             alpha = 0.7) +
+  facet_wrap(~Code) +
+  ggtitle("Northern Arizona Plateau, native recruits") +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  scale_shape_manual(values = c(19, 15, 17)) +
+  scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+
+# By known native recruit: forbs
+dat |> 
+  filter(Weedy == "Desirable",
+         SpeciesSeeded == "No",
+         Lifeform == "Forb") |> 
+  filter(Region == "Colorado Plateau") |> 
+  filter(!str_detect(Code, "FlyingM|MOWE|TLE|BarTBar|PEFO|AguaFria|BabbittPJ|Spiderweb")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = Duration,
+                 shape = Duration),
+             alpha = 0.7) +
+  facet_wrap(~Code) +
+  ggtitle("Northern Arizona Plateau, native recruits") +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  scale_shape_manual(values = c(19, 15, 17)) +
+  scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+
+# By known native recruit: shrubs
+dat |> 
+  filter(Weedy == "Desirable",
+         SpeciesSeeded == "No",
+         Lifeform == "Shrub") |> 
+  filter(Region == "Colorado Plateau") |> 
+  filter(!str_detect(Code, "FlyingM|MOWE|TLE|BarTBar|PEFO|AguaFria|BabbittPJ|Spiderweb")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(color = "#D95F02",
+             alpha = 0.7) +
+  facet_wrap(~Code) +
+  ggtitle("Northern Arizona Plateau, native recruits (shrubs)") +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+
+# By known invasives
+dat |> 
+  filter(PlantSource2 == "Introduced/Invasive") |> 
+  filter(Region == "Colorado Plateau") |> 
+  filter(!str_detect(Code, "FlyingM|MOWE|TLE|BarTBar|PEFO|AguaFria|BabbittPJ|Spiderweb")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = Lifeform,
+                 shape = Duration),
+             alpha = 0.7) +
+  facet_wrap(~Code) +
+  ggtitle("Northern Arizona Plateau, invasives") +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  scale_shape_manual(values = c(19, 15, 17)) +
+  scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+
 
 
 ## Height -----------------------------------------------------------------
+
+### Desirable & Weedy -----------------------------------------------------
 
 # Single panel by PlantSource2
 naz.des.height <- dat |> 
@@ -1268,6 +1503,8 @@ naz.weed.height.ai <- dat |>
 naz.weed.height.ai
 
 
+### Seeded species --------------------------------------------------------
+
 # Seeded species by PlotMix_Climate
 naz.seed.height.plotmixclimate <- dat |> 
   filter(PlotMix_Climate %in% c("Current", "Projected"),
@@ -1309,6 +1546,9 @@ naz.seed.height.plotmixclimate.duration <- dat |>
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 naz.seed.height.plotmixclimate.duration
 
+
+### Species facet_wrap ----------------------------------------------------
+
 # By seeded species: Current
 naz.seed.height.current.species <- dat |> 
   filter(PlotMix_Climate == "Current",
@@ -1317,7 +1557,7 @@ naz.seed.height.current.species <- dat |>
   filter(!str_detect(Code, "SPP|SUNGR|UNFO|UNGR")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Height)) +
   geom_point(aes(color = Lifeform,
-                 shape = Lifeform),
+                 shape = Duration),
              alpha = 0.7) +
   facet_wrap(~Code) +
   ggtitle("Northern Arizona Plateau, seeded species (Current)") +
@@ -1339,7 +1579,7 @@ naz.seed.height.projected.species <- dat |>
   filter(!str_detect(Code, "SPP|SUNGR|UNFO|UNGR")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Height)) +
   geom_point(aes(color = Lifeform,
-                 shape = Lifeform),
+                 shape = Duration),
              alpha = 0.7) +
   facet_wrap(~Code) +
   ggtitle("Northern Arizona Plateau, seeded species (Projected)") +
@@ -1353,7 +1593,88 @@ naz.seed.height.projected.species <- dat |>
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 naz.seed.height.projected.species
 
+# By known native recruit: grasses
+dat |> 
+  filter(Weedy == "Desirable",
+         SpeciesSeeded == "No",
+         Lifeform == "Grass") |> 
+  filter(Region == "Colorado Plateau") |> 
+  filter(!str_detect(Code, "FlyingM|MOWE|TLE|BarTBar|PEFO|AguaFria|BabbittPJ|Spiderweb")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Height)) +
+  geom_point(aes(color = Duration,
+                 shape = Duration),
+             alpha = 0.7) +
+  facet_wrap(~Code) +
+  ggtitle("Northern Arizona Plateau, native recruits") +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  scale_shape_manual(values = c(19, 15, 17)) +
+  scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 
+# By known native recruit: forbs
+dat |> 
+  filter(Weedy == "Desirable",
+         SpeciesSeeded == "No",
+         Lifeform == "Forb") |> 
+  filter(Region == "Colorado Plateau") |> 
+  filter(!str_detect(Code, "FlyingM|MOWE|TLE|BarTBar|PEFO|AguaFria|BabbittPJ|Spiderweb")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Height)) +
+  geom_point(aes(color = Duration,
+                 shape = Duration),
+             alpha = 0.7) +
+  facet_wrap(~Code) +
+  ggtitle("Northern Arizona Plateau, native recruits") +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  scale_shape_manual(values = c(19, 15, 17)) +
+  scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+
+# By known native recruit: shrubs
+dat |> 
+  filter(Weedy == "Desirable",
+         SpeciesSeeded == "No",
+         Lifeform == "Shrub") |> 
+  filter(Region == "Colorado Plateau") |> 
+  filter(!str_detect(Code, "FlyingM|MOWE|TLE|BarTBar|PEFO|AguaFria|BabbittPJ|Spiderweb")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Height)) +
+  geom_point(color = "#D95F02",
+             alpha = 0.7) +
+  facet_wrap(~Code) +
+  ggtitle("Northern Arizona Plateau, native recruits (shrubs)") +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+
+# By known invasives
+dat |> 
+  filter(PlantSource2 == "Introduced/Invasive") |> 
+  filter(Region == "Colorado Plateau") |> 
+  filter(!str_detect(Code, "FlyingM|MOWE|TLE|BarTBar|PEFO|AguaFria|BabbittPJ|Spiderweb")) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Height)) +
+  geom_point(aes(color = Lifeform,
+                 shape = Duration),
+             alpha = 0.7) +
+  facet_wrap(~Code) +
+  ggtitle("Northern Arizona Plateau, invasives") +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  scale_shape_manual(values = c(19, 15, 17)) +
+  scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 
 
 
@@ -2550,7 +2871,7 @@ dat |>
   group_by(Code, Name) |> 
   summarise(SumCount = sum(Count),
             .groups = "keep") |> 
-  arrange(desc(SumCount))
+  arrange(desc(SumCount)) # did best of Current (DACA7, PASM, ELE5, LILE3)
 
 dat |> 
   filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb"),
@@ -2597,7 +2918,7 @@ dat |>
   group_by(Code, Name) |> 
   summarise(SumCount = sum(Count),
             .groups = "keep") |> 
-  arrange(desc(SumCount))
+  arrange(desc(SumCount)) # did best of Projected (BAMU, ASTU)
 
 dat |> 
   filter(Site == "BabbittPJ",
@@ -2615,7 +2936,7 @@ dat |>
   group_by(Code, Name) |> 
   summarise(SumCount = sum(Count),
             .groups = "keep") |> 
-  arrange(desc(SumCount)) # lol nothing grew
+  arrange(desc(SumCount)) # lol basically nothing grew but two ACHY
 
 
 
