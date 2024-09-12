@@ -75,11 +75,10 @@ dat <- dat |>
 sonoran.seed <- dat |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   ggplot(aes(x = Perc_dev_cum, y = Seeded_Cover)) +
-  geom_point(aes(color = Seeded)) +
+  geom_point(aes(color = Desirable)) +
   geom_smooth() +
   ggtitle("Sonoran Desert, seeded cover") +
   theme_minimal() +
-  theme(legend.title = element_text("Richness")) +
   scale_x_continuous(labels = scales::percent) +
   scale_color_viridis(direction = -1) +
   xlab("Cumulative precip deviation from normals") +
@@ -97,9 +96,69 @@ sonoran.seed.plotmixclimate <- dat |>
   ggtitle("Sonoran Desert, seeded cover") +
   theme_minimal() +
   theme(legend.position = "bottom") +
-  theme(legend.title = element_text("Richness")) +
+  labs(color = "Seeded richness") +
   scale_x_continuous(labels = scales::percent) +
   scale_color_viridis(direction = -1) +
   xlab("Cumulative precip deviation from normals") +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 sonoran.seed.plotmixclimate
+
+
+# Northern Arizona Plateau ------------------------------------------------
+
+# Single panel
+naz.seed <- dat |> 
+  filter(Region == "Colorado Plateau") |> 
+  ggplot(aes(x = Perc_dev_cum, y = Seeded_Cover)) +
+  geom_point(aes(color = Desirable)) +
+  geom_smooth() +
+  ggtitle("Northern Arizona Plateau, seeded cover") +
+  theme_minimal() +
+  scale_x_continuous(labels = scales::percent) +
+  scale_color_viridis(direction = -1) +
+  xlab("Cumulative precip deviation from normals") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+naz.seed
+
+# By PlotMix_Climate
+naz.seed.plotmixclimate <- dat |> 
+  filter(Region == "Colorado Plateau") |> 
+  filter(PlotMix_Climate != "None") |> 
+  ggplot(aes(x = Perc_dev_cum, y = Seeded_Cover)) +
+  geom_point(aes(color = Seeded)) +
+  geom_smooth() +
+  facet_wrap(~PlotMix_Climate) +
+  ggtitle("Northern Arizona Plateau, seeded cover") +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  labs(color = "Seeded richness") +
+  scale_x_continuous(labels = scales::percent) +
+  scale_color_viridis(direction = -1) +
+  xlab("Cumulative precip deviation from normals") +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+naz.seed.plotmixclimate
+
+
+
+# Write out draft figures -------------------------------------------------
+
+# Sonoran Desert
+tiff("figures/2024-09_draft-figures/Sonoran_2x2-seeded-cover.tiff", units = "in", height = 4, width = 6, res = 150)
+sonoran.seed
+dev.off()
+
+tiff("figures/2024-09_draft-figures/Sonoran_2x2-seeded-cover-by-PlotMix_Climate.tiff", units = "in", height = 5, width = 7, res = 150)
+sonoran.seed.plotmixclimate
+dev.off()
+
+# Northern AZ
+tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_2x2-seeded-cover.tiff", units = "in", height = 4, width = 6, res = 150)
+naz.seed
+dev.off()
+
+tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_2x2-seeded-cover-by-PlotMix_Climate.tiff", units = "in", height = 5, width = 7, res = 150)
+naz.seed.plotmixclimate
+dev.off()
+
+
+save.image("09.2_draft-figs_precip-dev_2x2.RData")
