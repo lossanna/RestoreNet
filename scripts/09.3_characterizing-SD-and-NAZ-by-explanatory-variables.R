@@ -132,7 +132,7 @@ n1 <- naz.subplot |>
   arrange(Site)
 
 n.precip.max <- naz.subplot |> 
-  group_by(Region, Site) |> 
+  group_by(Site) |> 
   summarise(Dry_max = min(Perc_dev_cum),
             Wet_max = max(Perc_dev_cum),
             Abs_max = max(Perc_dev_cum_abs),
