@@ -161,4 +161,4 @@ naz.seed.plotmixclimate
 dev.off()
 
 
-save.image("09.2_draft-figs_precip-dev_2x2.RData")
+save.image("RData/09.2_draft-figs_precip-dev_2x2.RData")

@@ -1,5 +1,5 @@
 # Created: 2024-09-09
-# Last updated: 2024-09-11
+# Last updated: 2024-09-13
 
 # Purpose: Graph relationships of Perc_dev_cum vs. Count or Height for Sonoran Desert
 #   and Northern Arizona Plateau. Identify what seeded species from mixes are doing well.
@@ -1910,6 +1910,36 @@ dat |>
   print(n = 15)
 
 
+# Seeded (all plots)
+# All plots: Highest species frequency across all monitoring times and plots
+dat |> 
+  filter(SpeciesSeeded == "Yes",
+         Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  count(Name) |> 
+  arrange(desc(n))
+dat |> 
+  filter(SpeciesSeeded == "Yes",
+         Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  count(Code) |> 
+  arrange(desc(n))
+
+# Current
+dat |> 
+  filter(SpeciesSeeded == "Yes",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Current") |> 
+  count(Code) |> 
+  arrange(desc(n))
+
+# Projected
+dat |> 
+  filter(SpeciesSeeded == "Yes",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Projected") |> 
+  count(Code) |> 
+  arrange(desc(n))
+
+
 ## Northern Arizona Plateau -----------------------------------------------
 
 # Precip dev
@@ -1970,6 +2000,37 @@ dat |>
   arrange(desc(n)) |> 
   print(n = 15)
 
+
+# Seeded
+# All plots: Highest species frequency across all monitoring times and plots
+dat |> 
+  filter(SpeciesSeeded == "Yes",
+         Region == "Colorado Plateau") |> 
+  count(Name) |> 
+  arrange(desc(n)) |> 
+  print(n = 38)
+dat |> 
+  filter(SpeciesSeeded == "Yes",
+         Region == "Colorado Plateau") |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  print(n = 38)
+
+# Current
+dat |> 
+  filter(SpeciesSeeded == "Yes",
+         Region == "Colorado Plateau",
+         PlotMix_Climate == "Current") |> 
+  count(Code) |> 
+  arrange(desc(n))
+
+# Projected
+dat |> 
+  filter(SpeciesSeeded == "Yes",
+         Region == "Colorado Plateau",
+         PlotMix_Climate == "Projected") |> 
+  count(Code) |> 
+  arrange(desc(n))
 
 
 
@@ -2400,6 +2461,37 @@ dat |>
   arrange(desc(Count)) |> 
   arrange(Perc_dev_cum) |> 
   print(n = 23)
+
+
+# DACA7 conditions
+#   -74% to + 49% precip dev
+dat |> 
+  filter(Region == "Colorado Plateau",
+         Code == "DACA7") |> 
+  count(Perc_dev_cum) |> 
+  arrange(desc(n)) |> 
+  print(n = 23)
+range(filter(dat, Region == "Colorado Plateau", Code == "DACA7")$Perc_dev_cum)
+dat |> 
+  filter(Region == "Colorado Plateau",
+         Code == "DACA7",
+         Perc_dev_cum < 0) |> 
+  select(Site, Code, Name, Duration, Lifeform, Count, Height, Perc_dev_cum) 
+
+# ELEL5 conditions
+#   -74% to + 49% precip dev
+dat |> 
+  filter(Region == "Colorado Plateau",
+         Code == "ELEL5") |> 
+  count(Perc_dev_cum) |> 
+  arrange(desc(n)) |> 
+  print(n = 21)
+range(filter(dat, Region == "Colorado Plateau", Code == "ELEL5")$Perc_dev_cum)
+dat |> 
+  filter(Region == "Colorado Plateau",
+         Code == "ELEL5",
+         Perc_dev_cum < 0) |> 
+  select(Site, Code, Name, Duration, Lifeform, Count, Height, Perc_dev_cum) 
 
 
 
