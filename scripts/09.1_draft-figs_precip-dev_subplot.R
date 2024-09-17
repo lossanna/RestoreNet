@@ -1,8 +1,37 @@
 # Created: 2024-09-09
-# Last updated: 2024-09-16
+# Last updated: 2024-09-17
 
 # Purpose: Graph relationships of Perc_dev_cum vs. Count or Height for Sonoran Desert
-#   and Northern Arizona Plateau. Identify what seeded species from mixes are doing well.
+#   and Northern Arizona Plateau. Identify what species are doing well. Calculate total
+#   number of plots for various groups to determine percent frequency in which the species
+#   shows up in a plot. Investigate species of interest (seeded, native volunteer, and weedy
+#   that are doing well in variable precip by Count and plot frequency).
+
+# Number of plots for frequency (36 plots * number of sampling events at each site):
+# Sonoran Desert:
+#   Total: 1152; when wetter: 360; when drier: 972
+#   Seeded (no Control plots): 1024 for Current + Projected, 512 for Current/Projected alone
+#   Seeded, when wetter: 320 (C+P) or 160 (C/P alone); when drier: 704 or 352
+# Northern Arizona Plateau:
+#   Total: 3492; when wetter: 2196; when drier: 1296
+#   Seeded: 3106 (C+P) or 1553 (C/P alone); when wetter: 1954 or 977; when drier: 1152 or 576
+
+# Sonoran Desert species of interest:
+#   Current mix, most abundant (all conditions) and did well under var precip: SACO6, LUSP2
+#   Projected mix, did well under var precip: PLOV, SECO10
+#   Projected mix, most abundant: ARPU9, PLOV
+#   Native volunteers, most abundant and did well under var precip: VUOC, LOAR12, CHPO12
+#   Weedy species, most abundant and did well under var precip: SCBA, BRRU2, ERCI6
+
+# Northern Arizona Plateau species of interest:
+#   Current mix, did well under var precip: LECI4, HECO26
+#   Projected mix, did well under var precip: BAMU
+#   Seeded (both mixes), most abundant: PASM, LILE3, DACA7
+#   Native volunteers, most abundant and did well under var precip: CHAL11
+#   Native volunteers, did well under var precip: SOEL
+#   Weedy species, most abundant and did well under var precip: SATR12, BRRU2
+#   Weedy species, did well under var precip: HAGL
+
 
 library(tidyverse)
 library(scales)
@@ -2337,6 +2366,17 @@ dat |>
   arrange(desc(n)) |> 
   print(n = 40)
 
+# Native volunteer
+# All plots: Highest species frequency overall
+#   CHAL11, SCMU6, LEPA6, ATCO, SAAB, SOEL
+dat |> 
+  filter(Weedy != "Weedy",
+         Region == "Colorado Plateau",
+         SpeciesSeeded == "No") |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  print(n = 25)
+
 
 # Weedy
 # All plots: Highest species frequency overall
@@ -2492,9 +2532,8 @@ dat |>
   filter(Weedy != "Weedy",
          Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   filter(Count > 50) |> 
-  select(Site, Code, Name, Duration, Lifeform, Count, Perc_dev_cum) |> 
+  select(Site, Code, Name, Duration, Lifeform, SpeciesSeeded, Count, Perc_dev_cum) |> 
   arrange(desc(Count)) |> 
-  arrange(Site) |> 
   print(n = 24)
 
 # All plots: Highest wet deviation
@@ -2755,7 +2794,7 @@ dat |>
 
 # SACO6, LUSP2, PLOV, SECO10, ARPU9 conditions
 dat |> 
-  filter(Code %in% c("SACO6", "LUSP2", "PLOV", "SECO10", "ARPU9"),
+  filter(Code %in% c("SACO6", "LUSP2", "PLOV", "SECO10", "ARPU9", "0"),
          Region %in% c("Sonoran Central", "Sonoran SE"))|> 
   group_by(Code, Name) |> 
   summarise(min = min(Perc_dev_cum),
@@ -2872,7 +2911,7 @@ dat |>
 ## Northern Arizona Plateau: Desirable & Seeded ---------------------------
 
 # All plots: High count recruit
-#   LEPA6
+#   LEPA6, PLPA2
 dat |> 
   filter(Weedy != "Weedy",
          Region == "Colorado Plateau") |> 
@@ -3153,6 +3192,24 @@ dat |>
   select(Site, Code, Name, Duration, Lifeform, Count, Height, Perc_dev_cum) 
 
 
+# LECI4, HECO26, BAMU, PASM, LILE3, DACA7, CAHL11, SOEL conditions
+dat |> 
+  filter(Code %in% c("LECI4", "HECO26", "BAMU", "PASM", "LILE3", "DACA7",
+                     "CHAL11", "SOEL", "0"),
+         Region == "Colorado Plateau")|> 
+  group_by(Code, Name) |> 
+  summarise(min = min(Perc_dev_cum),
+            max = max(Perc_dev_cum))
+dat |> 
+  filter(Code %in% c("LECI4", "HECO26", "BAMU", "PASM", "LILE3", "DACA7",
+                     "CHAL11", "SOEL"),
+         Region == "Colorado Plateau")|> 
+  group_by(Code, Name, Perc_dev_cum) |> 
+  summarise(max_Count = max(Count)) |> 
+  arrange(desc(max_Count)) |> 
+  arrange(Code) |> 
+  print(n = 148)
+
 
 ## Northern Arizona Plateau: Weedy ----------------------------------------
 
@@ -3265,6 +3322,22 @@ dat |>
   arrange(desc(Count)) |> 
   arrange(Perc_dev_cum) |> 
   print(n = 35)
+
+# SATR12, HAGL, BRRU2 conditions
+dat |> 
+  filter(Code %in% c("SATR12", "HAGL", "BRRU2"),
+         Region == "Colorado Plateau")|> 
+  group_by(Code, Name) |> 
+  summarise(min = min(Perc_dev_cum),
+            max = max(Perc_dev_cum))
+dat |> 
+  filter(Code %in% c("SATR12", "HAGL", "BRRU2"),
+         Region == "Colorado Plateau")|> 
+  group_by(Code, Name, Perc_dev_cum) |> 
+  summarise(max_Count = max(Count)) |> 
+  arrange(desc(max_Count)) |> 
+  arrange(Code) |> 
+  print(n = 66)
 
 
 # Identify outliers (Height) ----------------------------------------------
@@ -3587,6 +3660,206 @@ dat |>
   arrange(desc(max_Height)) |> 
   arrange(Code) |> 
   print(n = 34)
+
+
+
+## Northern Arizona Plateau: Desirable & Seeded ---------------------------
+
+# All plots: Tall recruit
+#   HPOU, PLPA2, DICA14
+dat |> 
+  filter(Weedy != "Weedy",
+         Region == "Colorado Plateau") |> 
+  filter(Height > 200) |> 
+  select(Site, Code, Name, Duration, Lifeform, SpeciesSeeded, Height, Perc_dev_cum) |> 
+  arrange(desc(Height)) |> 
+  arrange(Site) |> 
+  print(n = 68)
+
+# All plots: High wet deviation
+#   BOGR, ACHY, ATCO
+dat |> 
+  filter(Weedy != "Weedy",
+         Region == "Colorado Plateau")|> 
+  filter(Perc_dev_cum > 0.5) |> 
+  filter(Height > 100) |> 
+  select(Site, Code, Name, Duration, Lifeform, SpeciesSeeded, Height, Perc_dev_cum) |>
+  arrange(desc(Height)) |> 
+  arrange(desc(Perc_dev_cum)) |> 
+  print(n = 18)
+
+# All plots: High dry deviation
+#   MEMO4, ELEL5, POSE, HECO26, PASM
+dat |> 
+  filter(Weedy != "Weedy",
+         Region == "Colorado Plateau")|> 
+  filter(Perc_dev_cum < -0.5) |> 
+  filter(Height > 100) |> 
+  select(Site, Code, Name, Duration, Lifeform, SpeciesSeeded, Height, Perc_dev_cum) |>
+  arrange(desc(Height)) |> 
+  arrange(Perc_dev_cum)
+
+
+# By PlotMix_Climate
+# Current: Tall recruit
+#   BOGR, LILE3, HOPU, PLPA2, DEPI
+dat |> 
+  filter(Weedy != "Weedy",
+         Region == "Colorado Plateau",
+         PlotMix_Climate == "Current",
+         SpeciesSeeded == "No") |> 
+  filter(Height > 200) |> 
+  select(Site, Code, Name, Duration, Lifeform, SpeciesSeeded, Height, Perc_dev_cum) |> 
+  arrange(desc(Height)) |> 
+  arrange(desc(Perc_dev_cum)) |> 
+  print(n = 43)
+
+# Current: Tall Seeded
+#   ELTR7, PASM, LILE3, BOGR2
+dat |> 
+  filter(Weedy != "Weedy",
+         Region == "Colorado Plateau",
+         PlotMix_Climate == "Current") |> 
+  filter(Height > 150,
+         PlantSource2 == "Seeded") |> 
+  select(Site, Code, Name, Duration, Lifeform, SpeciesSeeded, Height, Perc_dev_cum) |> 
+  arrange(desc(Height)) |> 
+  print(n = 23)
+
+# Current: Seeded high wet deviation (+80% and wetter)
+#   LECI4, KRLA2, PEPA8
+dat |> 
+  filter(Weedy != "Weedy",
+         Region == "Colorado Plateau",
+         PlotMix_Climate == "Current",
+         PlantSource2 == "Seeded")|> 
+  filter(Perc_dev_cum > 0.8) |> 
+  select(Site, Code, Name, Duration, Lifeform, SpeciesSeeded, Height, Perc_dev_cum) |> 
+  arrange(desc(Height)) |> 
+  arrange(desc(Perc_dev_cum)) |> 
+  print(n = 26)
+
+
+# Current: Seeded high dry deviation
+#   PASM, ELEL5, DACA7
+dat |> 
+  filter(Weedy != "Weedy",
+         Region == "Colorado Plateau",
+         PlotMix_Climate == "Current",
+         PlantSource2 == "Seeded")|> 
+  filter(Perc_dev_cum < -0.5) |> 
+  select(Site, Code, Name, Duration, Lifeform, SpeciesSeeded, Height, Perc_dev_cum) |> 
+  arrange(desc(Height)) |> 
+  arrange(Perc_dev_cum) |> 
+  print(n = 26)
+
+
+# Projected: Tall recruit
+#   HOPU, DICA14, DEPI
+dat |> 
+  filter(Weedy != "Weedy",
+         Region == "Colorado Plateau",
+         PlotMix_Climate == "Projected",
+         SpeciesSeeded == "No") |> 
+  filter(Height > 300) |> 
+  select(Site, Code, Name, Duration, Lifeform, SpeciesSeeded, Height, Perc_dev_cum)
+
+# Projected: Tall Seeded
+#   PLJA, PASM, ELEL5
+dat |> 
+  filter(Weedy != "Weedy",
+         Region == "Colorado Plateau",
+         PlotMix_Climate == "Projected") |> 
+  filter(Height > 200,
+         PlantSource2 == "Seeded") |> 
+  select(Site, Code, Name, Duration, Lifeform, SpeciesSeeded, Height, Perc_dev_cum) |> 
+  arrange(desc(Height)) |> 
+  print(n = 20)
+
+# Projected: Seeded high wet deviation (+80% and wetter)
+#   BOGR2, ACHY, ASTU
+dat |> 
+  filter(Weedy != "Weedy",
+         Region == "Colorado Plateau",
+         PlotMix_Climate == "Projected",
+         PlantSource2 == "Seeded")|> 
+  filter(Perc_dev_cum > 0.8) |> 
+  select(Site, Code, Name, Duration, Lifeform, SpeciesSeeded, Height, Perc_dev_cum) |> 
+  arrange(desc(Height)) |> 
+  arrange(desc(Perc_dev_cum)) |> 
+  print(n = 56)
+
+# Projected: Seeded high dry deviation
+#   PLJA, SPCR, PASM, ELEL5
+dat |> 
+  filter(Weedy != "Weedy",
+         Region == "Colorado Plateau",
+         PlotMix_Climate == "Projected",
+         PlantSource2 == "Seeded")|> 
+  filter(Perc_dev_cum < -0.5) |> 
+  select(Site, Code, Name, Duration, Lifeform, Height, Perc_dev_cum) |> 
+  arrange(desc(Height)) |> 
+  arrange(Perc_dev_cum) |> 
+  print(n = 23)
+
+# LECI4, HECO26, BAMU, PASM, LILE3, DACA7, CHAL11, SOEL tallest
+dat |> 
+  filter(Code %in% c("LECI4", "HECO26", "BAMU", "PASM", "LILE3", "DACA7",
+                     "CHAL11", "SOEL"),
+         Region == "Colorado Plateau")|> 
+  group_by(Code, Name, Perc_dev_cum) |> 
+  summarise(max_Height = max(Height)) |> 
+  arrange(desc(max_Height)) |> 
+  arrange(Code) |> 
+  print(n = 148)
+
+
+## Northern Arizona Plateau: Weedy ----------------------------------------
+
+# All plots: Tall weed
+#   BRNI, AVFA
+dat |> 
+  filter(Weedy != "Desirable",
+         Region == "Colorado Plateau") |> 
+  filter(Height > 300) |> 
+  select(Site, Code, Name, Duration, Lifeform, Height, Perc_dev_cum) |> 
+  arrange(desc(Height)) |> 
+  arrange(Site) |> 
+  print(n = 53)
+
+# All plots: High wet deviation
+#   SATR12, BRNI
+dat |> 
+  filter(Weedy != "Desirable",
+         Region == "Colorado Plateau")|> 
+  filter(Perc_dev_cum > 0.5) |> 
+  filter(Height > 100) |> 
+  select(Site, Code, Name, Duration, Lifeform, Height, Perc_dev_cum) |>
+  arrange(desc(Height)) |> 
+  arrange(desc(Perc_dev_cum)) 
+
+# All plots: High dry deviation
+#   BRTE, BRRU2, HOMU
+dat |> 
+  filter(Weedy != "Desirable",
+         Region == "Colorado Plateau")|> 
+  filter(Perc_dev_cum < -0.5) |> 
+  filter(Height > 100) |> 
+  select(Site, Code, Name, Duration, Lifeform, Height, Perc_dev_cum) |>
+  arrange(desc(Height)) |> 
+  arrange(Perc_dev_cum)
+
+
+# SATR12, HAGL, BRRU2 tallest heights
+dat |> 
+  filter(Code %in% c("SATR12", "HAGL", "BRRU2"),
+         Region == "Colorado Plateau")|> 
+  group_by(Code, Name, Perc_dev_cum) |> 
+  summarise(max_Height = max(Height)) |> 
+  arrange(desc(max_Height)) |> 
+  arrange(Code) |> 
+  print(n = 66)
+
 
 
 # Top species in mixes (Count) --------------------------------------------
