@@ -2224,6 +2224,7 @@ dat |>
          Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   count(Code) |> 
   arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 1152) * 100) |> 
   print(n = 30)
 
 # All plots, Desirable: Highest species frequency when wetter
@@ -2235,6 +2236,7 @@ dat |>
   select(Site, Code, Duration, Lifeform, Count, Perc_dev_cum) |> 
   count(Code) |> 
   arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 360) * 100) |> 
   print(n = 25)
 
 # All plots, Desirable: Highest species frequency when drier
@@ -2246,6 +2248,7 @@ dat |>
   select(Site, Code, Duration, Lifeform, Count, Perc_dev_cum) |> 
   count(Code) |> 
   arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 792) * 100) |> 
   print(n = 25)
 
 
@@ -2258,6 +2261,7 @@ dat |>
   select(Site, Code, Duration, Lifeform, Count, Perc_dev_cum) |> 
   count(Code) |> 
   arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 1152) * 100) |> 
   print(n = 15)
 
 # All plots, Weedy: Highest species frequency (showed up in most plots and sites) when wetter
@@ -2269,6 +2273,7 @@ dat |>
   select(Site, Code, Duration, Lifeform, Count, Perc_dev_cum) |> 
   count(Code) |> 
   arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 360) * 100) |> 
   print(n = 15)
 
 # All plots, Weedy: Highest species frequency (showed up in most plots and sites) when drier
@@ -2280,24 +2285,27 @@ dat |>
   select(Site, Code, Duration, Lifeform, Count, Perc_dev_cum) |> 
   count(Code) |> 
   arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 792) * 100) |> 
   print(n = 15)
 
 
 # Seeded (all plots)
 # All plots, Seeded: Highest species frequency across all monitoring times and plots
+#   There is no overlap in species between Current & Projected except BAMU
 dat |> 
   filter(SpeciesSeeded == "Yes",
          Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   count(Code) |> 
+  mutate(perc_freq = (n / 512) * 100) |> 
   arrange(desc(n))
 
 # All plots, Seeded: when wetter
-#   species of interest do not exist in both Current & Projected mix, so only one list is needed
 dat |> 
   filter(SpeciesSeeded == "Yes",
          Region %in% c("Sonoran Central", "Sonoran SE"),
          Perc_dev_cum > 0) |> 
   count(Code) |> 
+  mutate(perc_freq = (n / 160) * 100) |> 
   arrange(desc(n))
 
 # All plots, Seeded: when drier
@@ -2306,6 +2314,7 @@ dat |>
          Region %in% c("Sonoran Central", "Sonoran SE"),
          Perc_dev_cum < 0) |> 
   count(Code) |> 
+  mutate(perc_freq = (n / 352) * 100) |> 
   arrange(desc(n))
 
 
@@ -2314,6 +2323,7 @@ dat |>
   filter(PlotMix_Climate != "None",
          Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   count(Code) |> 
+  mutate(perc_freq = (n / 1024) * 100) |> 
   arrange(desc(n))
 
 # Empty seeded plots (Current + Projected): when wetter
@@ -2323,6 +2333,7 @@ dat |>
          Perc_dev_cum > 0) |> 
   count(Code) |> 
   arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 320) * 100) |> 
   print(n = 20)
 
 # Empty seeded plots (Current + Projected): when drier
@@ -2331,6 +2342,7 @@ dat |>
          Region %in% c("Sonoran Central", "Sonoran SE"),
          Perc_dev_cum < 0) |> 
   count(Code) |> 
+  mutate(perc_freq = (n / 704) * 100) |> 
   arrange(desc(n))
 
 
@@ -2375,7 +2387,32 @@ dat |>
          SpeciesSeeded == "No") |> 
   count(Code) |> 
   arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 3492) * 100) |> 
   print(n = 25)
+
+# All plots: when wetter
+#   CHAL11, SCMU6, LEPA6, SAAB
+dat |> 
+  filter(Weedy != "Weedy",
+         Region == "Colorado Plateau",
+         SpeciesSeeded == "No",
+         Perc_dev_cum > 0) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 2196) * 100) |> 
+  print(n = 25)
+
+# All plots: when drier
+#   MONU, GUSA2, HECI, PHNE3
+dat |> 
+  filter(Weedy != "Weedy",
+         Region == "Colorado Plateau",
+         SpeciesSeeded == "No",
+         Perc_dev_cum < 0) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 1296) * 100) |> 
+  print(n = 40)
 
 
 # Weedy
@@ -2386,6 +2423,7 @@ dat |>
          Region == "Colorado Plateau") |> 
   count(Code) |> 
   arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 3492) * 100) |> 
   print(n = 20)
 
 # All plots: Highest species frequency (showed up in most plots and sites) when wetter
@@ -2397,6 +2435,7 @@ dat |>
   select(Site, Code, Duration, Lifeform, Count, Perc_dev_cum) |> 
   count(Code) |> 
   arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 2196) * 100) |> 
   print(n = 25)
 
 # All plots: Highest species frequency (showed up in most plots and sites) when drier
@@ -2408,17 +2447,19 @@ dat |>
   select(Site, Code, Duration, Lifeform, Count, Perc_dev_cum) |> 
   count(Code) |> 
   arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 1296) * 100) |> 
   print(n = 15)
 
 
 # Seeded
 # All plots: Highest species frequency across all monitoring times and plots
-#   BAMU, PASM, LILE3, DACA7
+#   BAMU (only in Projected), PASM, LILE3, DACA7
 dat |> 
   filter(SpeciesSeeded == "Yes",
          Region == "Colorado Plateau") |> 
   count(Code) |> 
   arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 3106) * 100) |> 
   print(n = 38)
 
 # All plots: when wetter
@@ -2447,7 +2488,9 @@ dat |>
          Region == "Colorado Plateau",
          PlotMix_Climate == "Current") |> 
   count(Code) |> 
-  arrange(desc(n))
+  mutate(perc_freq = (n / 1553) * 100) |> 
+  arrange(desc(n)) |> 
+  print(n = 20)
 
 # Current: when wetter
 dat |> 
@@ -2456,7 +2499,9 @@ dat |>
          PlotMix_Climate == "Current",
          Perc_dev_cum > 0) |> 
   count(Code) |> 
-  arrange(desc(n))
+  mutate(perc_freq = (n / 977) * 100) |> 
+  arrange(desc(n)) |> 
+  print(n = 20)
 
 # Current: when drier
 dat |> 
@@ -2465,6 +2510,7 @@ dat |>
          PlotMix_Climate == "Current",
          Perc_dev_cum < 0) |> 
   count(Code) |> 
+  mutate(perc_freq = (n / 576) * 100) |> 
   arrange(desc(n))
 
 # Projected
@@ -2475,6 +2521,7 @@ dat |>
          PlotMix_Climate == "Projected") |> 
   count(Code) |> 
   arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 1553) * 100) |> 
   print(n = 28)
 
 # Projected: when wetter
@@ -2485,6 +2532,7 @@ dat |>
          Perc_dev_cum > 0) |> 
   count(Code) |> 
   arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 977) * 100) |> 
   print(n = 27)
 
 # Projected: when drier
@@ -2494,6 +2542,7 @@ dat |>
          PlotMix_Climate == "Projected",
          Perc_dev_cum < 0) |> 
   count(Code) |> 
+  mutate(perc_freq = (n / 576) * 100) |> 
   arrange(desc(n))
 
 
