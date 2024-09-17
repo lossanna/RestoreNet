@@ -2099,6 +2099,51 @@ dat |>
   filter(Region == "Sonoran SE") |> 
   count(Perc_dev_cum)
 
+# 4 types of species, based on how they were seeded
+#   1: Seeded only at Sonoran Central in just one mix
+#   2: Seeded at only Sonoran SE in just one mix
+#   3: Seeded at both regions in the same mix type: SPCR, ARPU9, BOCU, SECO10
+#   4: Seeded at both regions in opposite mix types: BAMU
+
+# 1: Sonoran Central only, total number of plots for species in just 1 mix: 720
+dat |> 
+  filter(Region == "Sonoran Central") |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
+36 * (5 + 4 + 6 + 5)
+
+# 1: Sonoran Central only, when wetter: 216
+dat |> 
+  filter(Region == "Sonoran Central", 
+         Perc_dev_cum > 0) |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
+
+# 1: Sonoran Central only, when drier: 504
+dat |> 
+  filter(Region == "Sonoran Central", 
+         Perc_dev_cum < 0) |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
+
+# 2: Sonoran SE only, total number of plots for species in just 1 mix: 432
+dat |> 
+  filter(Region == "Sonoran SE") |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
+36 * (6 + 6)
+
+# 2: Sonoran SE only, when wetter:
+dat |> 
+  filter(Region == "Sonoran SE") |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
+
 # Total number of plots: 1152
 dat |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
