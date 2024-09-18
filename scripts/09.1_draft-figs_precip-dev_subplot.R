@@ -1,5 +1,5 @@
 # Created: 2024-09-09
-# Last updated: 2024-09-17
+# Last updated: 2024-09-18
 
 # Purpose: Graph relationships of Perc_dev_cum vs. Count or Height for Sonoran Desert
 #   and Northern Arizona Plateau. Examine based on groups, and also by single species.
@@ -35,6 +35,9 @@ subplot <- read_csv("data/cleaned/04.1_subplot-data_clean.csv")
 prism.data <- read_csv("data/cleaned/03.2_monitoring-events-with-PRISM-climate-data_clean.csv")
 cum.pd <- read_csv("data/cleaned/03.3_cumulative-precip_percent-deviation-from-norm_clean.csv")
 ai <- read_csv("data/cleaned/03.4_aridity-index-values_clean.csv")
+
+# From 09.1_identify-species-of-interest
+sonoran.interest <- read_csv("data/cleaned/09.1_Sonoran-Desert_frequency_species-of-interest.csv")
 
 
 # Data wrangling ----------------------------------------------------------
@@ -531,16 +534,16 @@ dat |>
 # Species of interest
 sonoran.species.count <- dat |> 
   filter(Code %in% c("SACO6", "LUSP2", "PLOV", "SECO10", "ARPU9", "VUOC", "LOAR12", "CHPO12",
-                     "SCBA", "BRRU2", "ERCI6")) |> 
+                     "LOHU2", "SCBA", "BRRU2", "ERCI6")) |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   mutate(Code = factor(Code, levels = c("SACO6", "LUSP2", "PLOV", "SECO10", "ARPU9", "VUOC", "LOAR12", "CHPO12",
-                                        "SCBA", "BRRU2", "ERCI6"))) |> 
+                                        "LOHU2", "SCBA", "BRRU2", "ERCI6"))) |> 
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
   geom_point(aes(color = PlantSource2,
                  shape = Lifeform),
              alpha = 0.7) +
   facet_wrap(~Code) +
-  ggtitle("Sonoran Desert species") +
+  ggtitle("Sonoran Desert species of interest") +
   theme_bw() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
@@ -950,18 +953,19 @@ dat |>
   theme(legend.title = element_blank()) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 
+# Species of interest
 sonoran.species.height <- dat |> 
   filter(Code %in% c("SACO6", "LUSP2", "PLOV", "SECO10", "ARPU9", "VUOC", "LOAR12", "CHPO12",
-                     "SCBA", "BRRU2", "ERCI6")) |> 
+                     "LOHU2", "SCBA", "BRRU2", "ERCI6")) |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   mutate(Code = factor(Code, levels = c("SACO6", "LUSP2", "PLOV", "SECO10", "ARPU9", "VUOC", "LOAR12", "CHPO12",
-                                        "SCBA", "BRRU2", "ERCI6"))) |> 
+                                        "LOHU2", "SCBA", "BRRU2", "ERCI6"))) |> 
   ggplot(aes(x = Perc_dev_cum, y = Height)) +
   geom_point(aes(color = PlantSource2,
                  shape = Lifeform),
              alpha = 0.7) +
   facet_wrap(~Code) +
-  ggtitle("Sonoran Desert species") +
+  ggtitle("Sonoran Desert species of interest") +
   theme_bw() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
@@ -972,6 +976,62 @@ sonoran.species.height <- dat |>
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 sonoran.species.height
 
+
+## Frequency (occurrence in plots) ----------------------------------------
+
+# Histogram
+sonoran.species.freq <- dat |> 
+  filter(Code %in% c("SACO6", "LUSP2", "PLOV", "SECO10", "ARPU9", "VUOC", "LOAR12", "CHPO12",
+                     "LOHU2", "SCBA", "BRRU2", "ERCI6")) |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  mutate(Code = factor(Code, levels = c("SACO6", "LUSP2", "PLOV", "SECO10", "ARPU9", "VUOC", "LOAR12", "CHPO12",
+                                        "LOHU2", "SCBA", "BRRU2", "ERCI6"))) |> 
+  ggplot(aes(x = Perc_dev_cum,
+             fill = PlantSource2)) +
+  geom_histogram() +
+  facet_wrap(~Code) +
+  ggtitle("Sonoran Desert species of interest") +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  ylab("Frequency (presence in plots)") +
+  scale_fill_manual(values = c("#7570B3", "#1B9E77", "#D95F02")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+sonoran.species.freq
+
+# Bar graph
+sonoran.interest.wetdry <- sonoran.interest |> 
+  filter(Plot != "Total") 
+unique(sonoran.interest.wetdry$Type)
+sonoran.interest.wetdry$Type <- factor(sonoran.interest.wetdry$Type, 
+                                       levels = c("Current mix, Drier", "Current mix, Wetter",
+                                                  "Projected mix, Drier", "Projected mix, Wetter",
+                                                  "Native recruit, Drier", "Native recruit, Wetter",
+                                                  "Invasive, Drier", "Invasive, Wetter",
+                                                  "Empty, Drier", "Empty, Wetter"))
+sonoran.interest.wetdry$Code <- factor(sonoran.interest.wetdry$Code,
+                                       levels = c("SACO6", "LUSP2", "PLOV", "SECO10", "ARPU9", 
+                                                  "VUOC", "LOAR12", "CHPO12",
+                                                  "LOHU2", "SCBA", "BRRU2", "ERCI6", "Empty"))
+sonoran.species.bar <- sonoran.interest.wetdry |> 
+  ggplot(aes(x = Code, y = Frequency, fill = Type)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  ggtitle("Sonoran Desert species of interest") +
+  theme_bw() +
+  scale_y_continuous(labels = scales::percent) +
+  xlab(NULL) +
+  ylab("Frequency (presence in plots)") +
+  theme(legend.title = element_blank()) +
+  scale_fill_manual(values = c("#E5D4A7", "#A6761D", "#FBB4AE", "#D95F02",
+                               "#B3E2D6", "#1B9E77", "#B3C8E8", "#7570B3",
+                               "#D9D9D9", "#666666")) +
+  theme(axis.text.x = element_text(color = "black"))
+sonoran.species.bar
+  
+  
+  
 
 # Northern Arizona Plateau ------------------------------------------------
 
@@ -1935,11 +1995,6 @@ tiff("figures/2024-09_draft-figures/Sonoran_seeded_Count-by-seeded-species_Proje
 sonoran.seed.count.projected.species
 dev.off()
 
-tiff("figures/2024-09_draft-figures/Sonoran_species-of-interest_Count.tiff", units = "in", height = 5, width = 7, res = 150)
-sonoran.species.count
-dev.off()
-
-
 # Sonoran Desert: Height
 tiff("figures/2024-09_draft-figures/Sonoran_desirable_Height-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
 sonoran.des.height
@@ -1979,8 +2034,18 @@ tiff("figures/2024-09_draft-figures/Sonoran_seeded_Height-by-seeded-species_Proj
 sonoran.seed.height.projected.species
 dev.off()
 
+# Sonoran Desert: Species of interest
+tiff("figures/2024-09_draft-figures/Sonoran_species-of-interest_Count.tiff", units = "in", height = 5, width = 7, res = 150)
+sonoran.species.count
+dev.off()
 tiff("figures/2024-09_draft-figures/Sonoran_species-of-interest_Height.tiff", units = "in", height = 5, width = 7, res = 150)
 sonoran.species.height
+dev.off()
+tiff("figures/2024-09_draft-figures/Sonoran_species-of-interest_frequency-histogram.tiff", units = "in", height = 5, width = 7, res = 150)
+sonoran.species.freq
+dev.off()
+tiff("figures/2024-09_draft-figures/Sonoran_species-of-interest_frequency-paired-bar.tiff", units = "in", height = 4, width = 9, res = 150)
+sonoran.species.bar
 dev.off()
 
 
