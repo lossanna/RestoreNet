@@ -60,16 +60,8 @@ apply(dat, 2, anyNA)
 
 
 # Data without Infinity
-#   Inf created when there was no rain in the time period (can't divide by 0),
-#     but this only occurs when the time period is small and in all cases there is another
-#     monitoring date less than 2 weeks away with a non-Inf percent change. Occurs once
-#     at CO Plateau (BarTBar).
 dat <- dat |> 
   filter(Perc_dev_cum != Inf)
-
-# Reorder PlotMix_Climate
-dat$PlotMix_Climate <- factor(dat$PlotMix_Climate,
-                              levels = c("None", "Current", "Projected"))
 
 
 
@@ -282,13 +274,15 @@ dat |>
 
 # 4 seed mixes:
 # (Note that Current vs. Projected doesn't affect plot number, just the site, because
-# some sites were monitored more frequently than others.)
+# some sites were monitored more frequently than others.No species was included 
+# more than one in each mix, so for all species, they were seeded in half the seeded plots,
+# which is the same number for Current and Projected.)
 #   1. Warm: seeded at AguaFria, MOWE, PEFO, Spiderweb, TLE as Projected
 #   2. Med-Warm: seeded at AguaFria, MOWE, PEFO, Spiderweb as Current; BarTBar, FlyingM as Projected
 #   3. Cool-Med: seeded at BarTBar, FlyingM as Current; BabbittPJ as Projected
 #   4. Cool: seeded at BabbittPJ, TLE as Current
 
-# 1. Warm, total:
+# 1. Warm, total: 831
 dat |> 
   filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "TLE"),
          PlotMix_Climate == "Projected") |> 
@@ -296,10 +290,103 @@ dat |>
   distinct(.keep_all = TRUE) |> 
   nrow()
 
+# 2. Med-Warm, total: 1231
+dat |> 
+  filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "BarTBar", "FlyingM"),
+         PlotMix_Climate == "Projected") |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
+
+# 3. Cool-Med, total: 720
+dat |> 
+  filter(Site %in% c("BarTBar", "FlyingM", "BabbittPJ"),
+         PlotMix_Climate == "Projected") |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
+
+# 4. Cool, total: 320
+dat |> 
+  filter(Site %in% c("BabbittPJ", "TLE"),
+         PlotMix_Climate == "Projected") |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
 
 
+# 1. Warm, when wetter: 479
+dat |> 
+  filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "TLE"),
+         PlotMix_Climate == "Projected",
+         Perc_dev_cum > 0) |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
+
+# 2. Med-Warm, when wetter: 783
+dat |> 
+  filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "BarTBar", "FlyingM"),
+         PlotMix_Climate == "Projected",
+         Perc_dev_cum > 0) |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
+
+# 3. Cool-Med, when wetter: 496
+dat |> 
+  filter(Site %in% c("BarTBar", "FlyingM", "BabbittPJ"),
+         PlotMix_Climate == "Projected", 
+         Perc_dev_cum > 0) |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
+
+# 4. Cool, when wetter: 192
+dat |> 
+  filter(Site %in% c("BabbittPJ", "TLE"),
+         PlotMix_Climate == "Projected", 
+         Perc_dev_cum > 0) |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
 
 
+# 1. Warm, when drier: 352
+dat |> 
+  filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "TLE"),
+         PlotMix_Climate == "Projected",
+         Perc_dev_cum < 0) |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
+
+# 2. Med-Warm, when drier: 448
+dat |> 
+  filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "BarTBar", "FlyingM"),
+         PlotMix_Climate == "Projected",
+         Perc_dev_cum < 0) |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
+
+# 3. Cool-Med, when drier: 224
+dat |> 
+  filter(Site %in% c("BarTBar", "FlyingM", "BabbittPJ"),
+         PlotMix_Climate == "Projected", 
+         Perc_dev_cum < 0) |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
+
+# 4. Cool, when drier: 128
+dat |> 
+  filter(Site %in% c("BabbittPJ", "TLE"),
+         PlotMix_Climate == "Projected", 
+         Perc_dev_cum < 0) |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
 
 
 # 0. Empty plot comparison total: 3104
@@ -573,40 +660,13 @@ dat |>
   mutate(perc_freq = (n / 704) * 100) 
 
 
-## Northern Arizona Plateau -----------------------------------------------
+# Northern Arizona Plateau ------------------------------------------------
 
-# Desirable
-# All plots: Highest species frequency overall
-#   BAMU, CHAL11, SCMU6, LILE3, PASM, LEPA6, DACA7
-dat |> 
-  filter(Weedy != "Weedy",
-         Region == "Colorado Plateau") |> 
-  count(Code) |> 
-  arrange(desc(n)) |> 
-  print(n = 25)
+## Most frequent species (in highest # of plots) --------------------------
 
-# All plots: Highest species frequency (showed up in most plots and sites) when wetter
-#   BAMU, CHAL11, SCMU6, LILE3, LEPA6, DACA7, PASM
-dat |> 
-  filter(Weedy != "Weedy",
-         Region == "Colorado Plateau",
-         Perc_dev_cum > 0) |> 
-  count(Code) |> 
-  arrange(desc(n)) |> 
-  print(n = 25)
+### Weedy & Native recruit ------------------------------------------------
 
-# All plots: Highest species frequency (showed up in most plots and sites) when drier
-#   MONU, GUSA2, PASM, SPCR, HECI, PHNE3, DAPU7
-dat |> 
-  filter(Weedy != "Weedy",
-         Region == "Colorado Plateau",
-         Perc_dev_cum < 0) |> 
-  count(Code) |> 
-  arrange(desc(n)) |> 
-  print(n = 40)
-
-# Native volunteer
-# All plots: Highest species frequency overall
+# Native volunteer (all plots): Highest species frequency overall
 #   CHAL11, SCMU6, LEPA6, ATCO, SAAB, SOEL
 dat |> 
   filter(Weedy != "Weedy",
@@ -617,7 +677,7 @@ dat |>
   mutate(perc_freq = (n / 3492) * 100) |> 
   print(n = 25)
 
-# All plots: when wetter
+# Native volunteer: when wetter
 #   CHAL11, SCMU6, LEPA6, SAAB
 dat |> 
   filter(Weedy != "Weedy",
@@ -629,7 +689,7 @@ dat |>
   mutate(perc_freq = (n / 2196) * 100) |> 
   print(n = 25)
 
-# All plots: when drier
+# Native volunteer: when drier
 #   MONU, GUSA2, HECI, PHNE3
 dat |> 
   filter(Weedy != "Weedy",
@@ -642,8 +702,7 @@ dat |>
   print(n = 40)
 
 
-# Weedy
-# All plots: Highest species frequency overall
+# Weedy (all plots): Highest species frequency overall
 #   SATR12, BRNI, ERCI6, BRRU2, HAGL
 dat |> 
   filter(Weedy != "Desirable",
@@ -653,7 +712,7 @@ dat |>
   mutate(perc_freq = (n / 3492) * 100) |> 
   print(n = 20)
 
-# All plots: Highest species frequency (showed up in most plots and sites) when wetter
+# Weedy: when wetter
 #   SATR12, BRNI, ERCI6
 dat |> 
   filter(Weedy != "Desirable",
@@ -665,7 +724,7 @@ dat |>
   mutate(perc_freq = (n / 2196) * 100) |> 
   print(n = 25)
 
-# All plots: Highest species frequency (showed up in most plots and sites) when drier
+# Weedy: when drier
 #   SATR12, BRRU2, HAGL
 dat |> 
   filter(Weedy != "Desirable",
@@ -678,99 +737,290 @@ dat |>
   print(n = 15)
 
 
-# Seeded
-# All plots: Highest species frequency across all monitoring times and plots
-#   BAMU (only in Projected), PASM, LILE3, DACA7
-dat |> 
+### Seeded species --------------------------------------------------------
+
+# Total: (1) Warm mix 
+#   BAMU, ASTU, SECO10 (6-25%)
+naz.total.seed1p <- dat |> 
   filter(SpeciesSeeded == "Yes",
-         Region == "Colorado Plateau") |> 
+         Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "TLE"),
+         Code %in% c("ACHY", "ARPU9", "ASTU", "BAMU", "BOCU", "PLMU3", "SECO10")) |> 
   count(Code) |> 
   arrange(desc(n)) |> 
-  mutate(perc_freq = (n / 3106) * 100) |> 
-  print(n = 38)
+  mutate(perc_freq = (n / 831) * 100,
+         Sites = "AguaFria, MOWE, PEFO, Spiderweb, TLE",
+         mix = "Projected")
+naz.total.seed1p
 
-# All plots: when wetter
-dat |> 
+# Total: (2) Med-Warm mix, Current 
+#   PEPA8, SPCR, KRLA2 (1-2%)
+naz.total.seed2c <- dat |> 
   filter(SpeciesSeeded == "Yes",
-         Region == "Colorado Plateau",
+         Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb"),
+         Code %in% c("BOER4", "KRLA2", "MATA2", "PEPA8", "PLJA", "POSE", "SPCR")) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 1231) * 100,
+         Sites = "AguaFria, MOWE, PEFO, Spiderweb",
+         mix = "Current")
+naz.total.seed2c
+
+# Total: (2) Med-Warm mix, Projected
+#   BOER4, POSE, PEPA8 (2-5%)
+naz.total.seed2p <- dat |> 
+  filter(SpeciesSeeded == "Yes",
+         Site %in% c("BarTBar", "FlyingM"),
+         Code %in% c("BOER4", "KRLA2", "MATA2", "PEPA8", "PLJA", "POSE", "SPCR")) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 1231) * 100,
+         Sites = "BarTBar, FlyingM",
+         mix = "Projected")
+naz.total.seed2p
+
+# Total: (3) Cool-Med mix, Current
+#   PASM, DACA7, LILE3 (17-19%)
+naz.total.seed3c <- dat |> 
+  filter(SpeciesSeeded == "Yes",
+         Site %in% c("BarTBar", "FlyingM"),
+         Code %in% c("ACMI2", "BOGR2", "DACA7", "ELEL5", "HEMU3", "LILE3", "PASM")) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 720) * 100,
+         Sites = "BarTBar, FlyingM",
+         mix = "Current")
+naz.total.seed3c
+
+# Total: (3) Cool-Med mix, Projected
+#   PASM, LILE3, ACMI2 (1-4%)
+naz.total.seed3p <- dat |> 
+  filter(SpeciesSeeded == "Yes",
+         Site == "BabbittPJ",
+         Code %in% c("ACMI2", "BOGR2", "DACA7", "ELEL5", "HEMU3", "LILE3", "PASM")) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 720) * 100,
+         Sites = "BabbitPJ",
+         mix = "Projected")
+naz.total.seed3p
+
+# Total: (4) Cool mix, Current
+#   LECI4, HECO26, HEBO (6-18%)
+naz.total.seed4c <- dat |> 
+  filter(SpeciesSeeded == "Yes",
+         Site %in% c("BabbittPJ", "TLE"),
+         Code %in% c("ELTR7", "ELWA2", "HEBO", "HECO26", "LECI4", "PSSP6", "SPGR2")) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 320) * 100,
+         Sites = "BabbittPJ, TLE",
+         mix = "Current")
+naz.total.seed4c
+
+# Wetter: (1) Warm mix 
+#   BAMU, ASTU, SECO10 (11-43%)
+naz.wet.seed1p <- dat |> 
+  filter(SpeciesSeeded == "Yes",
+         Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "TLE"),
+         Code %in% c("ACHY", "ARPU9", "ASTU", "BAMU", "BOCU", "PLMU3", "SECO10"),
          Perc_dev_cum > 0) |> 
   count(Code) |> 
   arrange(desc(n)) |> 
-  print(n = 36)
+  mutate(perc_freq = (n / 479) * 100,
+         Sites = "AguaFria, MOWE, PEFO, Spiderweb, TLE",
+         mix = "Projected")
+naz.wet.seed1p
 
-# All plots: when drier
-dat |> 
+# Wetter: (2) Med-Warm mix, Current 
+#   PEPA8, KRLA2, MATA2 (1-4%)
+naz.wet.seed2c <- dat |> 
   filter(SpeciesSeeded == "Yes",
-         Region == "Colorado Plateau",
-         Perc_dev_cum < 0) |> 
-  count(Code) |> 
-  arrange(desc(n)) |> 
-  print(n = 23)
-
-
-# Current, all seeded plots
-#   PASM, LILE3, DACA7
-dat |> 
-  filter(SpeciesSeeded == "Yes",
-         Region == "Colorado Plateau",
-         PlotMix_Climate == "Current") |> 
-  count(Code) |> 
-  mutate(perc_freq = (n / 1553) * 100) |> 
-  arrange(desc(n)) |> 
-  print(n = 20)
-
-# Current: when wetter
-dat |> 
-  filter(SpeciesSeeded == "Yes",
-         Region == "Colorado Plateau",
-         PlotMix_Climate == "Current",
-         Perc_dev_cum > 0) |> 
-  count(Code) |> 
-  mutate(perc_freq = (n / 977) * 100) |> 
-  arrange(desc(n)) |> 
-  print(n = 20)
-
-# Current: when drier
-dat |> 
-  filter(SpeciesSeeded == "Yes",
-         Region == "Colorado Plateau",
-         PlotMix_Climate == "Current",
-         Perc_dev_cum < 0) |> 
-  count(Code) |> 
-  mutate(perc_freq = (n / 576) * 100) |> 
-  arrange(desc(n))
-
-# Projected
-#   BAMU, ASTU, SECO10, BOER4
-dat |> 
-  filter(SpeciesSeeded == "Yes",
-         Region == "Colorado Plateau",
-         PlotMix_Climate == "Projected") |> 
-  count(Code) |> 
-  arrange(desc(n)) |> 
-  mutate(perc_freq = (n / 1553) * 100) |> 
-  print(n = 28)
-
-# Projected: when wetter
-dat |> 
-  filter(SpeciesSeeded == "Yes",
-         Region == "Colorado Plateau",
-         PlotMix_Climate == "Projected",
+         Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb"),
+         Code %in% c("BOER4", "KRLA2", "MATA2", "PEPA8", "PLJA", "POSE", "SPCR"),
          Perc_dev_cum > 0) |> 
   count(Code) |> 
   arrange(desc(n)) |> 
-  mutate(perc_freq = (n / 977) * 100) |> 
-  print(n = 27)
+  mutate(perc_freq = (n / 783) * 100,
+         Sites = "AguaFria, MOWE, PEFO, Spiderweb",
+         mix = "Current")
+naz.wet.seed2c
 
-# Projected: when drier
-dat |> 
+# Wetter: (2) Med-Warm mix, Projected
+#   BOER4, POSE, PLJA (1-7%)
+naz.wet.seed2p <- dat |> 
   filter(SpeciesSeeded == "Yes",
-         Region == "Colorado Plateau",
-         PlotMix_Climate == "Projected",
+         Site %in% c("BarTBar", "FlyingM"),
+         Code %in% c("BOER4", "KRLA2", "MATA2", "PEPA8", "PLJA", "POSE", "SPCR"),
+         Perc_dev_cum > 0) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 783) * 100,
+         Sites = "BarTBar, FlyingM",
+         mix = "Projected")
+naz.wet.seed2p
+
+# Wetter: (3) Cool-Med mix, Current
+#   LILE3, DACA7, PASM (25-26%)
+naz.wet.seed3c <- dat |> 
+  filter(SpeciesSeeded == "Yes",
+         Site %in% c("BarTBar", "FlyingM"),
+         Code %in% c("ACMI2", "BOGR2", "DACA7", "ELEL5", "HEMU3", "LILE3", "PASM"),
+         Perc_dev_cum > 0) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 496) * 100,
+         Sites = "BarTBar, FlyingM",
+         mix = "Current")
+naz.wet.seed3c
+
+# Wetter: (3) Cool-Med mix, Projected
+#   LILE3, PASM ACMI2 (1-4%)
+naz.wet.seed3p <- dat |> 
+  filter(SpeciesSeeded == "Yes",
+         Site == "BabbittPJ",
+         Code %in% c("ACMI2", "BOGR2", "DACA7", "ELEL5", "HEMU3", "LILE3", "PASM"),
+         Perc_dev_cum > 0) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 496) * 100,
+         Sites = "BabbitPJ",
+         mix = "Projected")
+naz.wet.seed3p
+
+# Wetter: (4) Cool mix, Current
+#   LECI4, HEBO, HECO26 (9-25%)
+naz.wet.seed4c <- dat |> 
+  filter(SpeciesSeeded == "Yes",
+         Site %in% c("BabbittPJ", "TLE"),
+         Code %in% c("ELTR7", "ELWA2", "HEBO", "HECO26", "LECI4", "PSSP6", "SPGR2"),
+         Perc_dev_cum > 0) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 192) * 100,
+         Sites = "BabbittPJ, TLE",
+         mix = "Current")
+naz.wet.seed4c
+
+# Drier: (1) Warm mix 
+#   BAMU, BOCU, SECO10 (1-3%)
+naz.dry.seed1p <- dat |> 
+  filter(SpeciesSeeded == "Yes",
+         Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "TLE"),
+         Code %in% c("ACHY", "ARPU9", "ASTU", "BAMU", "BOCU", "PLMU3", "SECO10"),
          Perc_dev_cum < 0) |> 
   count(Code) |> 
-  mutate(perc_freq = (n / 576) * 100) |> 
-  arrange(desc(n))
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 352) * 100,
+         Sites = "AguaFria, MOWE, PEFO, Spiderweb, TLE",
+         mix = "Projected")
+naz.dry.seed1p
+
+# Drier: Med-Warm mix, Current 
+#   SPCR, PLJA, POSE (1-2%)
+naz.dry.seed2c <- dat |> 
+  filter(SpeciesSeeded == "Yes",
+         Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb"),
+         Code %in% c("BOER4", "KRLA2", "MATA2", "PEPA8", "PLJA", "POSE", "SPCR"),
+         Perc_dev_cum < 0) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 448) * 100,
+         Sites = "AguaFria, MOWE, PEFO, Spiderweb",
+         mix = "Current")
+naz.dry.seed2c
+
+# Drier: Med-Warm mix, Projected
+#   PLJA, POSE, SPCR (1-2%)
+naz.dry.seed2p <- dat |> 
+  filter(SpeciesSeeded == "Yes",
+         Site %in% c("BarTBar", "FlyingM"),
+         Code %in% c("BOER4", "KRLA2", "MATA2", "PEPA8", "PLJA", "POSE", "SPCR"),
+         Perc_dev_cum < 0) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 448) * 100,
+         Sites = "BarTBar, FlyingM",
+         mix = "Projected")
+naz.dry.seed2p
+
+# Drier: Cool-Med mix, Current
+#   PASM, DACA7, ELEL5 (1-6%)
+naz.dry.seed3c <- dat |> 
+  filter(SpeciesSeeded == "Yes",
+         Site %in% c("BarTBar", "FlyingM"),
+         Code %in% c("ACMI2", "BOGR2", "DACA7", "ELEL5", "HEMU3", "LILE3", "PASM"),
+         Perc_dev_cum < 0) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 224) * 100,
+         Sites = "BarTBar, FlyingM",
+         mix = "Current")
+naz.dry.seed3c
+
+# Drier: Cool-Med mix, Projected
+#   PASM, ELEL5, LILE3 (1-7%)
+naz.dry.seed3p <- dat |> 
+  filter(SpeciesSeeded == "Yes",
+         Site == "BabbittPJ",
+         Code %in% c("ACMI2", "BOGR2", "DACA7", "ELEL5", "HEMU3", "LILE3", "PASM"),
+         Perc_dev_cum < 0) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 224) * 100,
+         Sites = "BabbitPJ",
+         mix = "Projected")
+naz.dry.seed3p
+
+# Drier: Cool mix, Current
+#   LECI4, HECO26, HEBO (2-7%)
+naz.dry.seed4c <- dat |> 
+  filter(SpeciesSeeded == "Yes",
+         Site %in% c("BabbittPJ", "TLE"),
+         Code %in% c("ELTR7", "ELWA2", "HEBO", "HECO26", "LECI4", "PSSP6", "SPGR2"),
+         Perc_dev_cum < 0) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 128) * 100,
+         Sites = "BabbittPJ, TLE",
+         mix = "Current")
+naz.dry.seed4c
+
+
+# Current: total combined
+#   PASM, DACA7, LILE3, LECI4
+naz.total.seedc <- bind_rows(naz.total.seed2c, naz.total.seed3c, naz.total.seed4c) |> 
+  arrange(desc(perc_freq))
+naz.total.seedc
+
+# Current: wetter combined
+#   LILE3, DACA7, LECI4, PASM
+naz.wet.seedc <- bind_rows(naz.wet.seed2c, naz.wet.seed3c, naz.wet.seed4c) |> 
+  arrange(desc(perc_freq))
+naz.wet.seedc
+
+# Current: drier combined
+#   LECI4, PASM, HECO26
+naz.dry.seedc <- bind_rows(naz.dry.seed2c, naz.dry.seed3c, naz.dry.seed4c) |> 
+  arrange(desc(perc_freq))
+naz.dry.seedc
+
+# Projected: total combined
+#   BAMU, ASTU, SECO10
+naz.total.seedp <- bind_rows(naz.total.seed1p, naz.total.seed2p, naz.total.seed3p) |> 
+  arrange(desc(perc_freq))
+naz.total.seedp 
+
+# Projected: wetter combined
+#   BAMU, ASTU, SECO10
+naz.wet.seedp <- bind_rows(naz.wet.seed1p, naz.dry.seed2p, naz.dry.seed3p) |> 
+  arrange(desc(perc_freq))
+naz.wet.seedp
+
+# Projected: drier combined
+#   PASM, BAMU, BOCU
+naz.dry.seedp <- bind_rows(naz.dry.seed1p, naz.dry.seed2p, naz.dry.seed3p) |> 
+  arrange(desc(perc_freq))
+naz.dry.seedp
 
 
 # Empty seeded plots (Current + Projected): total
@@ -796,6 +1046,42 @@ dat |>
          Perc_dev_cum < 0) |> 
   count(Code) |> 
   arrange(desc(n))
+
+
+## Precip range------------------------------------------------------------
+
+# Native volunteer
+dat |> 
+  filter(Code %in% c("CHAL11", "SOEL", "0"),
+         Region == "Colorado Plateau")|> 
+  group_by(Code, Name) |> 
+  summarise(min = min(Perc_dev_cum),
+            max = max(Perc_dev_cum))
+
+# Weedy
+dat |> 
+  filter(Code %in% c("SATR12", "HAGL", "BRRU2"),
+         Region == "Colorado Plateau")|> 
+  group_by(Code, Name) |> 
+  summarise(min = min(Perc_dev_cum),
+            max = max(Perc_dev_cum))
+
+# Current mix
+dat |> 
+  filter(Code %in% c("PASM", "LECI4", "HECO26", "LILE3", "DACA7"),
+         Region == "Colorado Plateau",
+         PlotMix_Climate == "Current")|> 
+  group_by(Code, Name) |> 
+  summarise(min = min(Perc_dev_cum),
+            max = max(Perc_dev_cum))
+
+
+
+
+
+
+
+
 
 
 
