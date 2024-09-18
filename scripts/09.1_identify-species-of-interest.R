@@ -1962,6 +1962,133 @@ dat |>
   mutate(perc_freq = (n / 1152) * 100)
 
 
+### Construct table -------------------------------------------------------
+
+# Native volunteers
+naz.total.nativevolun <- dat |> 
+  filter(Code %in% c("CHAL11", "SOEL", "LEPA6"),
+         Region == "Colorado Plateau") |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(Frequency = (n / 3492),
+         Plant = "Native recruit",
+         Plot = "Total")
+naz.wet.nativevolun <- dat |> 
+  filter(Code %in% c("CHAL11", "SOEL", "LEPA6"),
+         Region == "Colorado Plateau",
+         Perc_dev_cum > 0) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(Frequency = (n / 2196),
+         Plant = "Native recruit",
+         Plot = "Wetter")
+naz.dry.nativevolun <- dat |> 
+  filter(Code %in% c("CHAL11", "SOEL", "LEPA6"),
+         Region == "Colorado Plateau",
+         Perc_dev_cum < 0) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(Frequency = (n / 1296),
+         Plant = "Native recruit",
+         Plot = "Drier")
+add0 <- data.frame(Code = "LEPA6", n = 0, Frequency = 0,
+                   Plant = "Native recruit", Plot = "Drier")
+naz.dry.nativevolun <- bind_rows(naz.dry.nativevolun, add0)
+
+# Weedy
+naz.total.weedy <- dat |> 
+  filter(Code %in% c("SATR12", "HAGL", "BRRU2", "ERCI6", "BRNI"),
+         Region == "Colorado Plateau") |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(Frequency = (n / 3492),
+         Plant = "Invasive",
+         Plot = "Total")
+naz.wet.weedy <- dat |> 
+  filter(Code %in% c("SATR12", "HAGL", "BRRU2", "ERCI6", "BRNI"),
+         Region == "Colorado Plateau",
+         Perc_dev_cum > 0) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(Frequency = (n / 2196),
+         Plant = "Invasive",
+         Plot = "Wetter")
+naz.dry.weedy <- dat |> 
+  filter(Code %in% c("SATR12", "HAGL", "BRRU2", "ERCI6", "BRNI"),
+         Region == "Colorado Plateau",
+         Perc_dev_cum < 0) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(Frequency = (n / 1296),
+         Plant = "Invasive",
+         Plot = "Drier")
+add0 <- data.frame(Code = "BRNI", n = 0, Frequency = 0,
+                   Plant = "Invasive", Plot = "Drier")
+naz.dry.weedy <- bind_rows(naz.dry.weedy, add0)
+
+# Empty plots (out of all plots)
+naz.total.empty <- dat |> 
+  filter(Code == "0",
+         Region == "Colorado Plateau") |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(Frequency = (n / 3492),
+         Plant = "Empty",
+         Plot = "Total")
+naz.wet.empty <- dat |> 
+  filter(Code == "0",
+         Region == "Colorado Plateau",
+         Perc_dev_cum > 0) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(Frequency = (n / 2196),
+         Plant = "Empty",
+         Plot = "Wetter")
+naz.dry.empty <- dat |> 
+  filter(Code == "0",
+         Region == "Colorado Plateau",
+         Perc_dev_cum < 0) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(Frequency = (n / 1296),
+         Plant = "Empty",
+         Plot = "Drier")
+
+# Seeded, Current
+naz.seedc.interest <- bind_rows(naz.total.seedc, naz.wet.seedc, naz.dry.seedc) |> 
+  mutate(Frequency = perc_freq / 100) |> 
+  mutate(Plant = paste(mix, "mix"),
+         Plot = c(rep("Total", nrow(naz.total.seedc)), rep("Wetter", nrow(naz.wet.seedc)),
+                  rep("Drier", nrow(naz.dry.seedc)))) |> 
+  select(-mix, -perc_freq, -Sites) |> 
+  filter(Code %in% c("LECI4", "HECO26", "LILE3", "PASM", "DACA7"))
+
+# Seeded, Projected
+naz.seedp.interest <- bind_rows(naz.total.seedp, naz.wet.seedp, naz.dry.seedp) |> 
+  mutate(Frequency = perc_freq / 100) |> 
+  mutate(Plant = paste(mix, "mix"),
+         Plot = c(rep("Total", nrow(naz.total.seedp)), rep("Wetter", nrow(naz.wet.seedp)),
+                  rep("Drier", nrow(naz.dry.seedp)))) |> 
+  select(-mix, -perc_freq, -Sites) |> 
+  filter(Code %in% c("BAMU", "SECO10", "ASTU")) 
+add0 <- data.frame(Code = "ASTU", n = 0, Frequency = 0,
+                   Plant = "Projected mix", Plot = "Drier")
+naz.seedp.interest <- bind_rows(naz.seedp.interest, add0)
+  
+
+# Combine all
+naz.interest <- bind_rows(naz.total.nativevolun, naz.wet.nativevolun, naz.dry.nativevolun,
+                          naz.total.weedy, naz.wet.weedy, naz.dry.weedy, naz.seedc.interest,
+                          naz.seedp.interest, naz.total.empty, naz.wet.empty, naz.dry.empty) |> 
+  mutate(Type = paste0(Plant, ", ", Plot))
+naz.interest$Code[naz.interest$Code == "0"] <- "Empty"  
+
+# Write to csv
+write_csv(naz.interest,
+          file = "data/cleaned/09.1_Northern-AZ-Plateau_frequency_species-of-interest.csv")
+
+
+
 
 ## Precip range -----------------------------------------------------------
 

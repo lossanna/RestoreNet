@@ -38,6 +38,7 @@ ai <- read_csv("data/cleaned/03.4_aridity-index-values_clean.csv")
 
 # From 09.1_identify-species-of-interest
 sonoran.interest <- read_csv("data/cleaned/09.1_Sonoran-Desert_frequency_species-of-interest.csv")
+naz.interest <- read_csv("data/cleaned/09.1_Northern-AZ-Plateau_frequency_species-of-interest.csv")
 
 
 # Data wrangling ----------------------------------------------------------
@@ -1001,7 +1002,30 @@ sonoran.species.freq <- dat |>
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 sonoran.species.freq
 
-# Bar graph
+
+# Bar graph (total)
+sonoran.interest.total <- sonoran.interest |> 
+  filter(Plot == "Total") |> 
+  mutate(Plant = factor(Plant, levels = c("Current mix", "Projected mix",
+                                          "Native recruit", "Invasive",
+                                          "Empty")),
+         Code = factor(Code, levels = c("SACO6", "LUSP2", "PLOV", "SECO10", "ARPU9", 
+                                        "VUOC", "LOAR12", "CHPO12",
+                                        "LOHU2", "SCBA", "BRRU2", "ERCI6", "Empty")))
+sonoran.species.total <- sonoran.interest.total |> 
+  ggplot(aes(x = Code, y = Frequency, fill = Plant)) +
+  geom_bar(stat = "identity") +
+  ggtitle("Sonoran Desert species of interest") +
+  theme_bw() +
+  scale_y_continuous(labels = scales::percent) +
+  xlab(NULL) +
+  ylab("Frequency (presence in plots)") +
+  theme(legend.title = element_blank()) +
+  scale_fill_manual(values = c("#E5C494", "#FC8D62", "#66C2A5", "#8DA0CB", "#B3B3B3")) +
+  theme(axis.text.x = element_text(color = "black"))
+sonoran.species.total
+  
+# Paired bar graph (wetter & drier)
 sonoran.interest.wetdry <- sonoran.interest |> 
   filter(Plot != "Total") 
 unique(sonoran.interest.wetdry$Type)
@@ -1015,7 +1039,7 @@ sonoran.interest.wetdry$Code <- factor(sonoran.interest.wetdry$Code,
                                        levels = c("SACO6", "LUSP2", "PLOV", "SECO10", "ARPU9", 
                                                   "VUOC", "LOAR12", "CHPO12",
                                                   "LOHU2", "SCBA", "BRRU2", "ERCI6", "Empty"))
-sonoran.species.bar <- sonoran.interest.wetdry |> 
+sonoran.species.wetdry <- sonoran.interest.wetdry |> 
   ggplot(aes(x = Code, y = Frequency, fill = Type)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Sonoran Desert species of interest") +
@@ -1028,7 +1052,7 @@ sonoran.species.bar <- sonoran.interest.wetdry |>
                                "#B3E2D6", "#1B9E77", "#B3C8E8", "#7570B3",
                                "#D9D9D9", "#666666")) +
   theme(axis.text.x = element_text(color = "black"))
-sonoran.species.bar
+sonoran.species.wetdry
   
   
   
@@ -1451,17 +1475,19 @@ dat |>
 
 # Species of interest
 naz.species.count <- dat |> 
-  filter(Code %in% c("LECI4", "HECO26", "BAMU", "PASM", "LILE3", "DACA7", "CHAL11", "SOEL",
-                     "SATR12", "HAGL", "BRRU2")) |> 
+  filter(Code %in% c("LECI4", "HECO26", "LILE3", "PASM", "DACA7", "BAMU", "SECO10", "ASTU",
+                     "CHAL11", "SOEL", "LEPA6",
+                     "SATR12", "HAGL", "BRRU2", "ERCI6", "BRNI")) |> 
   filter(Region == "Colorado Plateau") |> 
-  mutate(Code = factor(Code, levels = c("LECI4", "HECO26", "BAMU", "PASM", "LILE3", "DACA7", "CHAL11", "SOEL",
-                                        "SATR12", "HAGL", "BRRU2"))) |> 
+  mutate(Code = factor(Code, levels = c("LECI4", "HECO26", "LILE3", "PASM", "DACA7", "BAMU", "SECO10", "ASTU",
+                                        "CHAL11", "SOEL", "LEPA6",
+                                        "SATR12", "HAGL", "BRRU2", "ERCI6", "BRNI"))) |> 
   ggplot(aes(x = Perc_dev_cum, y = Count)) +
   geom_point(aes(color = PlantSource2,
                  shape = Lifeform),
              alpha = 0.7) +
   facet_wrap(~Code) +
-  ggtitle("Northern Arizona Plateau species") +
+  ggtitle("Northern Arizona Plateau species of interest") +
   theme_bw() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
@@ -1931,17 +1957,19 @@ dat |>
 
 # Species of interest
 naz.species.height <- dat |> 
-  filter(Code %in% c("LECI4", "HECO26", "BAMU", "PASM", "LILE3", "DACA7", "CHAL11", "SOEL",
-                     "SATR12", "HAGL", "BRRU2")) |> 
+  filter(Code %in% c("LECI4", "HECO26", "LILE3", "PASM", "DACA7", "BAMU", "SECO10", "ASTU",
+                     "CHAL11", "SOEL", "LEPA6",
+                     "SATR12", "HAGL", "BRRU2", "ERCI6", "BRNI")) |> 
   filter(Region == "Colorado Plateau") |> 
-  mutate(Code = factor(Code, levels = c("LECI4", "HECO26", "BAMU", "PASM", "LILE3", "DACA7", "CHAL11", "SOEL",
-                                        "SATR12", "HAGL", "BRRU2"))) |> 
+  mutate(Code = factor(Code, levels = c("LECI4", "HECO26", "LILE3", "PASM", "DACA7", "BAMU", "SECO10", "ASTU",
+                                        "CHAL11", "SOEL", "LEPA6",
+                                        "SATR12", "HAGL", "BRRU2", "ERCI6", "BRNI"))) |> 
   ggplot(aes(x = Perc_dev_cum, y = Height)) +
   geom_point(aes(color = PlantSource2,
                  shape = Lifeform),
              alpha = 0.7) +
   facet_wrap(~Code) +
-  ggtitle("Northern Arizona Plateau species") +
+  ggtitle("Northern Arizona Plateau species of interest") +
   theme_bw() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
@@ -1954,7 +1982,93 @@ naz.species.height
 
 
 
+## Frequency (occurrence in plots) ----------------------------------------
+
+# Histogram
+naz.species.freq <- dat |> 
+  filter(Code %in% c("LECI4", "HECO26", "LILE3", "PASM", "DACA7", "BAMU", "SECO10", "ASTU",
+                     "CHAL11", "SOEL", "LEPA6",
+                     "SATR12", "HAGL", "BRRU2", "ERCI6", "BRNI")) |> 
+  filter(Region == "Colorado Plateau") |> 
+  mutate(Code = factor(Code, levels = c("LECI4", "HECO26", "LILE3", "PASM", "DACA7", "BAMU", "SECO10", "ASTU",
+                                        "CHAL11", "SOEL", "LEPA6",
+                                        "SATR12", "HAGL", "BRRU2", "ERCI6", "BRNI"))) |> 
+  ggplot(aes(x = Perc_dev_cum,
+             fill = PlantSource2)) +
+  geom_histogram() +
+  facet_wrap(~Code) +
+  ggtitle("Northern Arizona Plateau species of interest") +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  ylab("Frequency (presence in plots)") +
+  scale_fill_manual(values = c("#7570B3", "#1B9E77", "#D95F02")) +
+  theme(legend.title = element_blank()) +
+  theme(axis.text.x = element_text(angle = 35)) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+naz.species.freq
+
+
+# Bar graph (total)
+naz.interest.total <- naz.interest |> 
+  filter(Plot == "Total") |> 
+  mutate(Plant = factor(Plant, levels = c("Current mix", "Projected mix",
+                                          "Native recruit", "Invasive",
+                                          "Empty")),
+         Code = factor(Code, levels = c("LECI4", "HECO26", "LILE3", "PASM", "DACA7", "BAMU", "SECO10", "ASTU",
+                                        "CHAL11", "SOEL", "LEPA6",
+                                        "SATR12", "HAGL", "BRRU2", "ERCI6", "BRNI", "Empty")))
+naz.species.total <- naz.interest.total |> 
+  ggplot(aes(x = Code, y = Frequency, fill = Plant)) +
+  geom_bar(stat = "identity") +
+  ggtitle("Northern Arizona Plateau species of interest") +
+  theme_minimal() +
+  scale_y_continuous(labels = scales::percent) +
+  xlab(NULL) +
+  ylab("Frequency (presence in plots)") +
+  theme(legend.title = element_blank()) +
+  theme(axis.text.x = element_text(angle = 35)) +
+  scale_fill_manual(values = c("#E5C494", "#FC8D62", "#66C2A5", "#8DA0CB", "#B3B3B3")) +
+  theme(axis.text.x = element_text(color = "black"))
+naz.species.total
+
+# Paired bar graph (wetter & drier)
+naz.interest.wetdry <- naz.interest |> 
+  filter(Plot != "Total") 
+unique(naz.interest.wetdry$Type)
+naz.interest.wetdry$Type <- factor(naz.interest.wetdry$Type, 
+                                   levels = c("Current mix, Drier", "Current mix, Wetter",
+                                              "Projected mix, Drier", "Projected mix, Wetter",
+                                              "Native recruit, Drier", "Native recruit, Wetter",
+                                              "Invasive, Drier", "Invasive, Wetter",
+                                              "Empty, Drier", "Empty, Wetter"))
+naz.interest.wetdry$Code <- factor(naz.interest.wetdry$Code,
+                                   levels = c("LECI4", "HECO26", "LILE3", "PASM", "DACA7", "BAMU", "SECO10", "ASTU",
+                                              "CHAL11", "SOEL", "LEPA6",
+                                              "SATR12", "HAGL", "BRRU2", "ERCI6", "BRNI", "Empty"))
+naz.species.wetdry <- naz.interest.wetdry |> 
+  ggplot(aes(x = Code, y = Frequency, fill = Type)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  ggtitle("Northern Arizona Plateau species of interest") +
+  theme_minimal() +
+  scale_y_continuous(labels = scales::percent) +
+  xlab(NULL) +
+  ylab("Frequency (presence in plots)") +
+  theme(legend.title = element_blank()) +
+  scale_fill_manual(values = c("#E5D4A7", "#A6761D", "#FBB4AE", "#D95F02",
+                               "#B3E2D6", "#1B9E77", "#B3C8E8", "#7570B3",
+                               "#D9D9D9", "#666666")) +
+  theme(axis.text.x = element_text(angle = 40)) +
+  theme(axis.text.x = element_text(color = "black"))
+naz.species.wetdry
+
+
+
+
 # Write out draft figures -------------------------------------------------
+
+## Sonoran Desert ---------------------------------------------------------
 
 # Sonoran Desert: Count
 tiff("figures/2024-09_draft-figures/Sonoran_desirable_Count-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
@@ -2044,11 +2158,16 @@ dev.off()
 tiff("figures/2024-09_draft-figures/Sonoran_species-of-interest_frequency-histogram.tiff", units = "in", height = 5, width = 7, res = 150)
 sonoran.species.freq
 dev.off()
-tiff("figures/2024-09_draft-figures/Sonoran_species-of-interest_frequency-paired-bar.tiff", units = "in", height = 4, width = 9, res = 150)
-sonoran.species.bar
+tiff("figures/2024-09_draft-figures/Sonoran_species-of-interest_frequency-wet-dry.tiff", units = "in", height = 4, width = 9, res = 150)
+sonoran.species.wetdry
+dev.off()
+tiff("figures/2024-09_draft-figures/Sonoran_species-of-interest_frequency-total.tiff", units = "in", height = 4, width = 9, res = 150)
+sonoran.species.total
 dev.off()
 
 
+
+## Northern Arizona Plateau -----------------------------------------------
 
 # Northern AZ: Count
 tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_desirable_Count-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
@@ -2088,10 +2207,6 @@ naz.seed.count.current.species
 dev.off()
 tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_seeded_Count-by-seeded-species_Projected.tiff", units = "in", height = 5, width = 7, res = 150)
 naz.seed.count.projected.species
-dev.off()
-
-tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_species-of-interest_Count.tiff", units = "in", height = 5, width = 7, res = 150)
-naz.species.count
 dev.off()
 
 
@@ -2134,8 +2249,22 @@ tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_seeded_Height-by-seeded-
 naz.seed.height.projected.species
 dev.off()
 
+
+# Northern AZ: Species of interest
+tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_species-of-interest_Count.tiff", units = "in", height = 5, width = 7, res = 150)
+naz.species.count
+dev.off()
 tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_species-of-interest_Height.tiff", units = "in", height = 5, width = 7, res = 150)
 naz.species.height
+dev.off()
+tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_species-of-interest_frequency-histogram.tiff", units = "in", height = 5, width = 7, res = 150)
+naz.species.freq
+dev.off()
+tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_species-of-interest_frequency-wet-dry.tiff", units = "in", height = 4, width = 9, res = 150)
+naz.species.wetdry
+dev.off()
+tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_species-of-interest_frequency-total.tiff", units = "in", height = 4, width = 9, res = 150)
+naz.species.total
 dev.off()
 
 
