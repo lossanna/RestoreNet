@@ -25,12 +25,15 @@
 
 # Northern Arizona Plateau species of interest:
 #   Current mix, did well under var precip: LECI4, HECO26
+#   Current mix, higher frequency: LECI4, LILE3, PASM, DACA7
 #   Projected mix, did well under var precip: BAMU
-#   Seeded (both mixes), most abundant: PASM, LILE3, DACA7
-#   Native volunteers, most abundant and did well under var precip: CHAL11
-#   Native volunteers, did well under var precip: SOEL
-#   Weedy species, most abundant and did well under var precip: SATR12, BRRU2
-#   Weedy species, did well under var precip: HAGL
+#   Projected mix, high frequency when wetter: SECO10, ASTU
+#   Native volunteers, did well under var precip: CHAL11, SOEL
+#   Native volunteers, higher frequency in wet conditions: LEPA6
+#   Native volunteers, high frequency: CHAL11
+#   Weedy species, did well under var precip: SATR12, HAGL, BRRU2
+#   Weedy species, higher frequency: SATR12, ERCI6
+#   Weedy species, high frequency when wettest: BRNI
 
 
 library(tidyverse)
