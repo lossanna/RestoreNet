@@ -2749,5 +2749,325 @@ dat |>
   arrange(Code) |>
   print(n = 44)
 
+
+
+# Unsuccessful seeded species ---------------------------------------------
+
+# Sonoran Desert
+# Current, none grew: MUPO2, SPCR (Central) | BOGR2, HEMU3, HENE5 (SE)
+# Current, pretty unsuccessful: AMDE4, SPAM2 (Central)
+# Projected, none grew: BOCU, CAER, ENFA (Central) | PLJA, PEPA8 (SE; BOCU was successful at SE)
+# Projected, pretty unsuccessful: BOAR (Central)
+
+# Northern AZ
+# Current, none grew: PSSP6, SPGR2 (Cool)
+# Current, pretty unsuccessful: BOER4, KRLA2, PLJA (Med-Warm) | HEMU3 (Cool-Med) | ELWA2 (Cool)
+# Projected, none grew: PLMU3 (Warm) | HEMU3 (Cool-Med)
+# Projected, pretty unsuccessful: ARPU9 (Warm) | MATA2, PEPA8, SPCR (Med-Warm) 
+
+
+## Sonoran Desert ---------------------------------------------------------
+
+# Sonoran Central
+# Current mix (8): AMDE4, BAMU, DICA8, LUSP2, MUPO2, SACO6, SPAM2, SPCR
+dat |> 
+  filter(Region == "Sonoran Central",
+         SpeciesSeeded == "Yes",
+         PlotMix_Climate == "Current") |> 
+  group_by(Site, Code) |> 
+  summarise(Presence = n())
+#   missing from Pleasant: MUPO2, SPAM2, SPCR
+#   missing from Preserve: AMDE4, SPCR
+#   missing from Roosevelt: AMDE4, DICA8, SPCR
+#   missing from SCC: DICA8, MUPO2, SPAM2, SPCR
+
+# Sonoran Central, Current: appeared at no sites: MUPO2, SPCR
+dat |> 
+  filter(Region == "Sonoran Central",
+         SpeciesSeeded == "Yes",
+         PlotMix_Climate == "Current",
+         Code %in% c("MUPO2", "SPCR")) 
+
+# Sonoran Central, Current: did not appear at all sites
+#   Would say overall that SPAM2 and AMDE4 were not very successful
+sonoran.total.seed |> 
+  filter(Code %in% c("AMDE4", "DICA8", "SPAM2"))
+dat |> 
+  filter(Region == "Sonoran Central",
+         SpeciesSeeded == "Yes",
+         PlotMix_Climate == "Current",
+         Code %in% c("AMDE4", "DICA8", "SPAM2")) |> 
+  group_by(Code) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount)) 
+
+
+# Sonoran Central, Projected mix (8): ARPU9, BOAR, BORO2, BOCU, CAER, ENFA, PLOV, SECO10
+dat |> 
+  filter(Region == "Sonoran Central",
+         SpeciesSeeded == "Yes",
+         PlotMix_Climate == "Projected") |> 
+  group_by(Site, Code) |> 
+  summarise(Presence = n())
+#   missing from Pleasant: BOAR, BORO2, BOCU, CAER, ENFA
+#   missing from Preserve: BOCU, CAER, ENFA
+#   missing from Roosevelt: ARPU9, BOAR, BOCU, CAER, ENFA
+#   missing from SCC: BOAR, BOCU, CAER, ENFA
+
+# Sonoran Central, Projected: appeared at no sites: BOCU, CAER, ENFA
+dat |> 
+  filter(Region == "Sonoran Central",
+         SpeciesSeeded == "Yes",
+         PlotMix_Climate == "Current",
+         Code %in% c("BOCU", "CAER", "ENFA")) 
+
+# Sonoran Central, Current: did not appear at all sites
+#   Would say overall that BOAR was not very successful
+sonoran.total.seed |> 
+  filter(Code %in% c("ARPU9", "BOAR", "BORO2"))
+dat |> 
+  filter(Region == "Sonoran Central",
+         SpeciesSeeded == "Yes",
+         PlotMix_Climate == "Projected",
+         Code %in% c("ARPU9", "BOAR", "BORO2")) |> 
+  group_by(Code) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount)) 
+
+
+# Sonoran SE
+# Current mix (7): BOGR2, ELEL5, HEMU3, HENE5, MATA2, POSE, SPCR
+dat |> 
+  filter(Region == "Sonoran SE",
+         SpeciesSeeded == "Yes",
+         PlotMix_Climate == "Current") |> 
+  group_by(Site, Code) |> 
+  summarise(Presence = n())
+#   missing from Patagonia: BOGR2, HEMU3, HENE5
+#   missing from SRER: BOGR2, HEMU3, HENE5, POSE, SPCR
+
+# Sonoran SE, Current: appeared at no sites: BOGR2, HEMU3, HENE5
+dat |> 
+  filter(Region == "Sonoran SE",
+         SpeciesSeeded == "Yes",
+         PlotMix_Climate == "Current",
+         Code %in% c("BOGR2", "HEMU3", "HENE5")) 
+
+# Sonoran SE, Current: did not appear at all sites
+sonoran.total.seed |> 
+  filter(Code %in% c("POSE", "SPCR"))
+dat |> 
+  filter(Region == "Sonoran SE",
+         SpeciesSeeded == "Yes",
+         PlotMix_Climate == "Current",
+         Code %in% c("POSE", "SPCR")) |> 
+  group_by(Code) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount)) 
+
+
+# Sonoran SE, Projected mix (7): ARPU9, ASTU, BAMU, BOCU, PLJA, PEPA8, SECO10
+dat |> 
+  filter(Region == "Sonoran SE",
+         SpeciesSeeded == "Yes",
+         PlotMix_Climate == "Projected") |> 
+  group_by(Site, Code) |> 
+  summarise(Presence = n())
+#   missing from Patagonia: PLJA, PEPA8
+#   missing from SRER: BAMU, PLJA, PEPA8
+
+# Sonoran SE, Projected: appeared at no sites: PLJA, PEPA8
+dat |> 
+  filter(Region == "Sonoran SE",
+         SpeciesSeeded == "Yes",
+         PlotMix_Climate == "Current",
+         Code %in% c("PLJA", "PEPA8")) 
+
+# Sonoran SE, Current: did not appear at all sites
+sonoran.total.seed |> 
+  filter(Code == "BAMU")
+dat |> 
+  filter(Region == "Sonoran SE",
+         SpeciesSeeded == "Yes",
+         PlotMix_Climate == "Projected",
+         Code == "BAMU") |> 
+  group_by(Code) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount)) 
+
+
+
+## Northern Arizona Plateau -----------------------------------------------
+
+# Warm mix, Projected (7): ACHY, ARPU9, ASTU, BAMU, BOCU, PLMU3, SECO10
+dat |> 
+  filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "TLE"),
+         SpeciesSeeded == "Yes",
+         PlotMix_Climate == "Projected") |> 
+  group_by(Site, Code) |> 
+  summarise(Presence = n()) |> 
+  print(n = 25)
+#   missing from AguaFria: ARPU9, BOCU, PLMU3
+#   missing from MOWE: BOCU, PLMU3
+#   missing from PEFO: ASTU, PLMU3, SECO10
+#   missing from Spiderweb: ARPU9, PLMU3
+#   missing from TLE: ARPU9, ASTU, BAMU, BOCU, PLMU3, SECO10
+
+# Warm mix, Projected: appeared at no sites: PLMU3
+dat |> 
+  filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "TLE"),
+         SpeciesSeeded == "Yes",
+         PlotMix_Climate == "Projected",
+         Code == "PLMU3") 
+
+# Warm mix, Projected: did not appear at all sites
+#   Would say that ARPU9 did not do that well
+naz.total.seedp |> 
+  filter(Code %in% c("ARPU9", "ASTU", "BAMU", "BOCU", "SECO10"))
+dat |> 
+  filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "TLE"),
+         SpeciesSeeded == "Yes",
+         PlotMix_Climate == "Projected",
+         Code %in% c("ARPU9", "ASTU", "BAMU", "BOCU", "SECO10")) |> 
+  group_by(Code) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount)) 
+
+
+# Med-Warm mix, Current (7): BOER4, KRLA2, MATA2, PEPA8, PLJA, POSE, SPCR
+dat |> 
+  filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb"),
+         SpeciesSeeded == "Yes",
+         PlotMix_Climate == "Current") |> 
+  group_by(Site, Code) |> 
+  summarise(Presence = n()) |> 
+  print(n = 19)
+#   missing from AguaFria: BOER4, KRLA2, MATA2, PEPA8, PLJA, POSE, SPCR
+#   missing from MOWE: BOER4, POSE
+#   missing from PEFO: PEPA8, PLJA
+#   missing from Spiderweb: KRLA2, POSE, SPCR
+
+# Med-Warm mix, Current: appeared at no sites: none
+
+# Med-Warm mix, Current: did not appear at MOWE, PEFO, and Spiderweb (AguaFria just did not do well)
+#   Would say that BOER4, KRLA2, PLJA did not do that well
+naz.total.seedc |> 
+  filter(Code %in% c("BOER4", "KRLA2", "PEPA8", "PLJA", "POSE", "SPCR"))
+dat |> 
+  filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb"),
+         SpeciesSeeded == "Yes",
+         PlotMix_Climate == "Current",
+         Code %in% c("BOER4", "KRLA2", "PEPA8", "PLJA", "POSE", "SPCR")) |> 
+  group_by(Code) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount)) 
+
+# Med-Warm mix, Projected (7): BOER4, KRLA2, MATA2, PEPA8, PLJA, POSE, SPCR
+dat |> 
+  filter(Site %in% c("BarTBar", "FlyingM"),
+         SpeciesSeeded == "Yes",
+         PlotMix_Climate == "Projected") |> 
+  group_by(Site, Code) |> 
+  summarise(Presence = n())
+#   missing from BarTBar: SPCR
+#   missing from FlyingM: MATA2, PEPA8
+
+# Med-Warm mix, Projected: appeared at no sites: none
+
+# Med-Warm mix, Projected: did not appear at all sites
+#   Would say that MATA2, PEPA8, SPCR did not do that well
+naz.total.seedp |> 
+  filter(Code %in% c("MATA2", "PEPA8", "SPCR"))
+dat |> 
+  filter(Site %in% c("BarTBar", "FlyingM"),
+         SpeciesSeeded == "Yes",
+         PlotMix_Climate == "Projected",
+         Code %in% c("MATA2", "PEPA8", "SPCR")) |> 
+  group_by(Code) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount)) 
+
+
+# Cool-Med mix, Current (7): ACMI2, BOGR2, DACA7, ELEL5, HEMU3, LILE3, PASM
+dat |> 
+  filter(Site %in% c("BarTBar", "FlyingM"),
+         SpeciesSeeded == "Yes",
+         PlotMix_Climate == "Current") |> 
+  group_by(Site, Code) |> 
+  summarise(Presence = n())
+#   missing from BarTBar: HEMU3
+#   missing from FlyingM: none
+
+# Cool-Med mix, Current: appeared at no sites: none
+
+# Cool-Med mix, Current: did not appear at all sites
+#   Would say that HEMU3 did terribly
+naz.total.seedc |> 
+  filter(Code == "HEMU3")
+dat |> 
+  filter(Site %in% c("BarTBar", "FlyingM"),
+         SpeciesSeeded == "Yes",
+         PlotMix_Climate == "Current",
+         Code == "HEMU3") |> 
+  group_by(Code) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount)) 
+
+# Cool-Med mix, Projected (7): ACMI2, BOGR2, DACA7, ELEL5, HEMU3, LILE3, PASM
+dat |> 
+  filter(Site == "BabbittPJ",
+         SpeciesSeeded == "Yes",
+         PlotMix_Climate == "Projected") |> 
+  group_by(Site, Code) |> 
+  summarise(Presence = n())
+#   missing from BabbittPJ: HEMU3
+
+# Cool-Med mix, Projected: appeared at no sites: HEMU3
+dat |> 
+  filter(Site == "BabbittPJ",
+         SpeciesSeeded == "Yes",
+         PlotMix_Climate == "Projected",
+         Code == "HEMU3") 
+
+
+# Cool mix, Current (7): ELTR7, ELWA2, HEBO, HECO26, LECI4, PSSP6, SPGR2
+dat |> 
+  filter(Site %in% c("BabbittPJ", "TLE"),
+         SpeciesSeeded == "Yes",
+         PlotMix_Climate == "Current") |> 
+  group_by(Site, Code) |> 
+  summarise(Presence = n())
+#   missing from BabbittPJ: PSSP6, SPGR2
+#   missing from TLE: ELTR7, ELWA2, HEBO, HECO26, LECI4, PSSP6, SPGR2
+
+# Cool mix, Current: appeared at no sites: PSSP6, SPGR2
+dat |> 
+  filter(Site %in% c("BabbittPJ", "TLE"),
+         SpeciesSeeded == "Yes",
+         PlotMix_Climate == "Projected",
+         Code %in% c("PSSP6, SPGR2")) 
+
+# Cool mix, Current: did not appear at all sites
+#   Would say that ELWA2 did not do that well
+naz.total.seedc |> 
+  filter(Code %in% c("ELTR7", "ELWA2", "HEBO", "HECO26", "LECI4", "PSSP6", "SPGR2"))
+dat |> 
+  filter(Site %in% c("BabbittPJ", "TLE"),
+         SpeciesSeeded == "Yes",
+         PlotMix_Climate == "Current",
+         Code %in% c("ELTR7", "ELWA2", "HEBO", "HECO26", "LECI4", "PSSP6", "SPGR2")) |> 
+  group_by(Code) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount)) 
+
 save.image("RData/09.1_identify-species-of-interest.RData")
 
