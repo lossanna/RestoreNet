@@ -38,6 +38,7 @@ subplot <- read_csv("data/cleaned/04.1_subplot-data_clean.csv")
 prism.data <- read_csv("data/cleaned/03.2_monitoring-events-with-PRISM-climate-data_clean.csv")
 cum.pd <- read_csv("data/cleaned/03.3_cumulative-precip_percent-deviation-from-norm_clean.csv")
 ai <- read_csv("data/cleaned/03.4_aridity-index-values_clean.csv")
+since.pd <- read_csv("data/cleaned/03.3_since-last-precip_percent-deviation-from-norm_clean.csv")
 
 # From 09.1_identify-species-of-interest
 sonoran.interest <- read_csv("data/cleaned/09.1_Sonoran-Desert_frequency_species-of-interest.csv")
@@ -81,6 +82,41 @@ dat$PlotMix_Climate <- factor(dat$PlotMix_Climate,
 
 
 # Sonoran Desert ----------------------------------------------------------
+
+## Precip deviation -------------------------------------------------------
+
+# Cumulative
+cum.pd |> 
+  filter(Perc_deviation != Inf) |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  ggtitle("Sonoran Desert, cumulative precip") +
+  xlab(NULL) +
+  theme_bw() +
+  scale_y_continuous(labels = percent) +
+  geom_hline(yintercept = 0,
+             linetype = "dashed",
+             color = "red")
+
+# Since last
+since.pd |> 
+  filter(Perc_deviation != Inf) |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  ggtitle("Sonoran Desert, precip since last monitoring event") +
+  xlab(NULL) +
+  theme_bw() +
+  scale_y_continuous(labels = percent) +
+  geom_hline(yintercept = 0,
+             linetype = "dashed",
+             color = "red")
+
 
 ## Count ------------------------------------------------------------------
 
@@ -1061,6 +1097,41 @@ sonoran.species.wetdry
   
 
 # Northern Arizona Plateau ------------------------------------------------
+
+## Precip deviation -------------------------------------------------------
+
+# Cumulative
+cum.pd |> 
+  filter(Perc_deviation != Inf) |> 
+  filter(Region == "Colorado Plateau") |> 
+  ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  ggtitle("Northern Arizona Plateau, cumulative precip") +
+  xlab(NULL) +
+  theme_bw() +
+  scale_y_continuous(labels = percent) +
+  geom_hline(yintercept = 0,
+             linetype = "dashed",
+             color = "red")
+
+# Since last
+since.pd |> 
+  filter(Perc_deviation != Inf) |> 
+  filter(Region == "Colorado Plateau") |> 
+  ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  ggtitle("Northern Arizona Plateau, precip since last monitoring event") +
+  xlab(NULL) +
+  theme_bw() +
+  scale_y_continuous(labels = percent) +
+  geom_hline(yintercept = 0,
+             linetype = "dashed",
+             color = "red")
+
 
 ## Count ------------------------------------------------------------------
 
