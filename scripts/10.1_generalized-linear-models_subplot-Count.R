@@ -1,5 +1,5 @@
 # Created: 024-09-09
-# Last updated: 2024-09-09
+# Last updated: 2024-09-19
 
 # Purpose: Run generalized linear models for subplot data, with Count as response variable. 
 
@@ -124,6 +124,35 @@ sonoran.weed <- subplot |>
 sonoran.seed <- sonoran.des |> 
   filter(SpeciesSeeded == "Yes") # removes Control plots
 sonoran.seed$Treatment <- relevel(sonoran.seed$Treatment, ref = "Seed")
+
+# Desirable, extremes
+sonoran.des.extreme.wet <- sonoran.des |> 
+  filter(Perc_dev_cum > 0.24)
+sonoran.des.extreme.dry <- sonoran.des |> 
+  filter(Perc_dev_cum < -0.23)
+sonoran.des.extreme.codes <- intersect(sonoran.des.extreme.wet$Code, sonoran.des.extreme.dry$Code)
+sonoran.des.extreme <- sonoran.des |> 
+  filter(Code %in% sonoran.des.extreme.codes) |> 
+  filter(Perc_dev_cum > 0.24 | Perc_dev_cum < -0.23) |> 
+  filter(Code != "0") 
+
+#   Normalize by sum of all desirable individuals per plot
+sonoran.des.extreme2 <- sonoran.des.extreme|> 
+  group_by(Site, Date_Seeded, Date_Monitored, Plot, Duration, Lifeform, AridityIndex_log,
+           Perc_dev_cum_abs, Since_last_precip_sqrt) |> 
+  summarise(SumCount = sum(Count), .groups = "keep")
+
+
+# Weedy, extremes
+sonoran.weed.extreme.wet <- sonoran.weed |> 
+  filter(Perc_dev_cum > 0.24)
+sonoran.weed.extreme.dry <- sonoran.weed |> 
+  filter(Perc_dev_cum < -0.23)
+sonoran.weed.extreme.codes <- intersect(sonoran.weed.extreme.wet$Code, sonoran.weed.extreme.dry$Code)
+sonoran.weed.extreme <- sonoran.weed |> 
+  filter(Code %in% sonoran.weed.extreme.codes) |> 
+  filter(Perc_dev_cum > 0.24 | Perc_dev_cum < -0.23) |> 
+  filter(Code != "0")
 
 
 ## Separate out Northern AZ sites (8) -------------------------------------
@@ -326,5 +355,52 @@ plotResiduals(res.nb.naz.seed.abs2)
 check_overdispersion(nb.naz.seed.abs2) # overdispersion detected
 check_collinearity(nb.naz.seed.abs2)
 
+
+# Sonoran Desert, precip extremes -----------------------------------------
+
+## Desirable --------------------------------------------------------------
+
+nb.sonoran.des.ex <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex_log +
+                               PlotMix_Climate + Duration + Lifeform + 
+                                Since_last_precip_sqrt + (1 | Site / Plot),
+                              data = sonoran.des.extreme,
+                              family = nbinom2)
+summary(nb.sonoran.des.ex)
+r2(nb.sonoran.des.ex) # can't compute
+res.nb.sonoran.des.ex <- simulateResiduals(nb.sonoran.des.ex)
+plotQQunif(res.nb.sonoran.des.ex)
+plotResiduals(res.nb.sonoran.des.ex)
+check_overdispersion(nb.sonoran.des.ex) # no overdispersion detected
+check_collinearity(nb.sonoran.des.ex)
+
+
+nb.sonoran.des.ex2 <- glmmTMB(SumCount ~ Perc_dev_cum_abs + AridityIndex_log +
+                                Duration + Lifeform + 
+                                 Since_last_precip_sqrt + (1 | Site / Plot),
+                               data = sonoran.des.extreme2,
+                               family = nbinom2)
+summary(nb.sonoran.des.ex2)
+r2(nb.sonoran.des.ex2) # can't compute
+res.nb.sonoran.des.ex2 <- simulateResiduals(nb.sonoran.des.ex2)
+plotQQunif(res.nb.sonoran.des.ex2)
+plotResiduals(res.nb.sonoran.des.ex2)
+check_overdispersion(nb.sonoran.des.ex2) # no overdispersion detected
+check_collinearity(nb.sonoran.des.ex2)
+
+
+## Weedy ------------------------------------------------------------------
+
+nb.sonoran.weed.ex <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex_log +  
+                               Duration + Lifeform + 
+                               Since_last_precip_sqrt + (1 | Site / Plot),
+                             data = sonoran.weed.extreme,
+                             family = nbinom2)
+summary(nb.sonoran.weed.ex)
+r2(nb.sonoran.weed.ex) # can't compute
+res.nb.sonoran.weed.ex <- simulateResiduals(nb.sonoran.weed.ex)
+plotQQunif(res.nb.sonoran.weed.ex)
+plotResiduals(res.nb.sonoran.weed.ex)
+check_overdispersion(nb.sonoran.weed.ex) # no overdispersion detected
+check_collinearity(nb.sonoran.weed.ex)
 
 save.image("RData/10.1_generalized-linear-models_subplot-Count.RData")
