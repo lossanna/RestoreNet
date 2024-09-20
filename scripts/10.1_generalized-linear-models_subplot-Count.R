@@ -25,6 +25,9 @@
 #   model fit of weedy model slightly. (Northern AZ models are fine because they are more balanced.)
 # Also tried to model just the observations from "extremes" (+24% or wetter, and -23% or drier),
 #   but that didn't really work.
+# Removed sq-root and log transformation from later models because GLMs can handle non-normal
+#   explanatory variables, and this makes interpretation easier.
+# Added "Days_elapsed", which is the number of days between seeding and monitoring.
 
 library(tidyverse)
 library(glmmTMB)
@@ -110,6 +113,14 @@ subplot <- subplot |>
 
 subplot <- subplot |> 
   mutate(Perc_dev_cum_abs = abs(Perc_dev_cum))
+
+
+## Add Days_elapsed col ----------------------------------------------------
+
+subplot <- subplot |> 
+  mutate(Days_elapsed = difftime(Date_Monitored, Date_Seeded)) |> 
+  mutate(Days_elapsed = as.numeric(Days_elapsed))
+
 
 
 ## Separate out Sonoran sites (6) -----------------------------------------
@@ -214,7 +225,7 @@ check_overdispersion(nb.sonoran1.des.abs2) # overdispersion detected
 check_zeroinflation(nb.sonoran1.des.abs2) # model is overfitting zeros
 check_collinearity(nb.sonoran1.des.abs2)
 
-# 2: *** Drop Sand_content (only 1 site had low sand content): Desirable ***
+# 2: Drop Sand_content (only 1 site had low sand content): Desirable
 nb.sonoran2.des.abs2 <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex_log + Treatment + PlantSource2 + 
                                   PlotMix_Climate + Duration + Lifeform + MAT + 
                                   Since_last_precip_sqrt + (1 | Site / Plot),
@@ -228,6 +239,21 @@ plotResiduals(res.nb.sonoran2.des.abs2)
 check_overdispersion(nb.sonoran2.des.abs2) # overdispersion detected
 check_zeroinflation(nb.sonoran2.des.abs2) # model is overfitting zeros
 check_collinearity(nb.sonoran2.des.abs2)
+
+# 3: *** Add Days_elapsed, no transformations: Desirable ***
+nb.sonoran3.des.abs2 <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex + Treatment + PlantSource2 + 
+                                  PlotMix_Climate + Duration + Lifeform + MAT + 
+                                  Since_last_precip + Days_elapsed + (1 | Site / Plot),
+                                data = sonoran.des,
+                                family = nbinom2)
+summary(nb.sonoran3.des.abs2)
+r2(nb.sonoran3.des.abs2)
+res.nb.sonoran3.des.abs2 <- simulateResiduals(nb.sonoran3.des.abs2)
+plotQQunif(res.nb.sonoran3.des.abs2)
+plotResiduals(res.nb.sonoran3.des.abs2)
+check_overdispersion(nb.sonoran3.des.abs2) # overdispersion detected
+check_zeroinflation(nb.sonoran3.des.abs2) # model is overfitting zeros
+check_collinearity(nb.sonoran3.des.abs2)
 
 
 ## Weedy ------------------------------------------------------------------
@@ -255,7 +281,7 @@ check_overdispersion(nb.sonoran1.weed.abs2) # overdispersion detected
 check_zeroinflation(nb.sonoran1.weed.abs2) # model is overfitting zeros
 check_collinearity(nb.sonoran1.weed.abs2)
 
-# *** 2: Drop Sand_content (only 1 site had low sand content): Weedy ***
+# 2: Drop Sand_content (only 1 site had low sand content): Weedy
 nb.sonoran2.weed.abs2 <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex_log + Treatment + PlantSource2 + 
                                    PlotMix_Climate + Lifeform + MAT +  
                                    Since_last_precip_sqrt + (1 | Site / Plot),
@@ -270,6 +296,20 @@ check_overdispersion(nb.sonoran2.weed.abs2) # no overdispersion detected
 check_zeroinflation(nb.sonoran2.weed.abs2) # model is overfitting zeros
 check_collinearity(nb.sonoran2.weed.abs2)
 
+# 3: *** Add Days_elapsed, no transformations: Desirable ***
+nb.sonoran3.weed.abs2 <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex + Treatment + PlantSource2 + 
+                                  PlotMix_Climate + Duration + Lifeform + MAT + 
+                                  Since_last_precip + Days_elapsed + (1 | Site / Plot),
+                                data = sonoran.weed,
+                                family = nbinom2)
+summary(nb.sonoran3.weed.abs2)
+r2(nb.sonoran3.weed.abs2)
+res.nb.sonoran3.weed.abs2 <- simulateResiduals(nb.sonoran3.weed.abs2)
+plotQQunif(res.nb.sonoran3.weed.abs2)
+plotResiduals(res.nb.sonoran3.weed.abs2)
+check_overdispersion(nb.sonoran3.weed.abs2) # no overdispersion detected
+check_zeroinflation(nb.sonoran3.weed.abs2) # model is overfitting zeros
+check_collinearity(nb.sonoran3.weed.abs2)
 
 
 ## Seeded -----------------------------------------------------------------
@@ -305,7 +345,7 @@ check_collinearity(nb.sonoran1.seed.abs2)
 check_singularity(nb.sonoran1.seed.abs2)
 
 
-# *** 2: Drop MAP (collinearity), AridityIndex_log, Sand_content (singularity): Seeded ***
+# 2: Drop MAP (collinearity), AridityIndex_log, Sand_content (singularity): Seeded 
 nb.sonoran2.seed.abs2 <- glmmTMB(Count ~ Perc_dev_cum_abs + Treatment +  
                                    PlotMix_Climate + Duration + Lifeform + MAT +  
                                    Since_last_precip_sqrt + (1 | Site / Plot),
@@ -318,6 +358,20 @@ plotQQunif(res.nb.sonoran2.seed.abs2)
 plotResiduals(res.nb.sonoran2.seed.abs2)
 check_overdispersion(nb.sonoran2.seed.abs2) # no overdispersion detected
 check_collinearity(nb.sonoran2.seed.abs2)
+
+# 3: *** Add Days_elapsed, no transformations: Seeded ***
+nb.sonoran3.seed.abs2 <- glmmTMB(Count ~ Perc_dev_cum_abs + Treatment +  
+                                   PlotMix_Climate + Duration + Lifeform + MAT +  
+                                   Since_last_precip + Days_elapsed + (1 | Site / Plot),
+                                 data = sonoran.seed,
+                                 family = nbinom2)
+summary(nb.sonoran3.seed.abs2)
+r2(nb.sonoran3.seed.abs2)
+res.nb.sonoran3.seed.abs2 <- simulateResiduals(nb.sonoran3.seed.abs2)
+plotQQunif(res.nb.sonoran3.seed.abs2)
+plotResiduals(res.nb.sonoran3.seed.abs2)
+check_overdispersion(nb.sonoran3.seed.abs2) # overdispersion detected
+check_collinearity(nb.sonoran3.seed.abs2)
 
 
 

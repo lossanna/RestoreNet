@@ -1,5 +1,5 @@
 # Created: 2024-09-09
-# Last updated: 2024-09-09
+# Last updated: 2024-09-20
 
 # Purpose: Run generalized linear models for 2x2 m plot data, with Seeded_Cover as response variable. 
 
@@ -12,6 +12,9 @@
 # *** indicates model is included in PPT of draft figures and model results.
 
 # Models are the same as 07.4.R script, results are condensed here (results are identical).
+# Removed sq-root and log transformation from later models because GLMs can handle non-normal
+#   explanatory variables, and this makes interpretation easier.
+# Added "Days_elapsed", which is the number of days between seeding and monitoring.
 
 library(tidyverse)
 library(glmmTMB)
@@ -102,6 +105,12 @@ richcover <- richcover |>
   mutate(AridityIndex_log = log(AridityIndex)) |> 
   mutate(Since_last_precip_sqrt = sqrt(Since_last_precip))
 
+## Add Days_elapsed col ----------------------------------------------------
+
+richcover <- richcover |> 
+  mutate(Days_elapsed = difftime(Date_Monitored, Date_Seeded)) |> 
+  mutate(Days_elapsed = as.numeric(Days_elapsed))
+
 
 ## Round cover values -----------------------------------------------------
 
@@ -174,7 +183,7 @@ check_collinearity(pos.sonoran1)
 
 ## Control plots excluded -------------------------------------------------
 
-# ***All variables, with nested random effect***
+# All variables, with nested random effect
 pos.sonoran.seed <- glmmTMB(Seeded_Cover ~ Perc_dev_cum_abs + AridityIndex_log + Treatment + 
                               PlotMix_Climate + MAT + Sand_content + Since_last_precip_sqrt + 
                               (1 | Site / Plot),
@@ -187,6 +196,21 @@ plotResiduals(pos.sonoran.seed) # residuals are actually okay lol
 check_overdispersion(pos.sonoran.seed) # no overdispersion detected
 check_zeroinflation(pos.sonoran.seed) # no zero-inflation detected
 check_collinearity(pos.sonoran.seed)
+
+
+# *** 1: Drop Sand_content, add Days_elapsed, no transformations: Seeded ***
+pos.sonoran1.seed <- glmmTMB(Seeded_Cover ~ Perc_dev_cum_abs + AridityIndex + Treatment + 
+                              PlotMix_Climate + MAT + Since_last_precip + 
+                              Days_elapsed + (1 | Site / Plot),
+                            data = sonoran.seed, family = genpois)
+summary(pos.sonoran1.seed)
+r2(pos.sonoran1.seed)
+res.pos.sonoran1.seed <- simulateResiduals(pos.sonoran1.seed)
+plotQQunif(pos.sonoran1.seed)
+plotResiduals(pos.sonoran1.seed) # residuals are actually okay lol
+check_overdispersion(pos.sonoran1.seed) # no overdispersion detected
+check_zeroinflation(pos.sonoran1.seed) # no zero-inflation detected
+check_collinearity(pos.sonoran1.seed)
 
 
 # Northern Arizona Plateau ------------------------------------------------
