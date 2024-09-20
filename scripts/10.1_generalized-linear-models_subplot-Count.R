@@ -194,7 +194,7 @@ check_overdispersion(nb.sonoran.des.abs2) # overdispersion detected
 check_zeroinflation(nb.sonoran.des.abs2) # model is overfitting zeros
 check_collinearity(nb.sonoran.des.abs2) # should drop MAP
 
-# *** 1: Drop MAP (for collinearity): Desirable ***
+# 1: Drop MAP (for collinearity): Desirable
 nb.sonoran1.des.abs2 <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex_log + Treatment + PlantSource2 + 
                                   PlotMix_Climate + Duration + Lifeform + MAT + Sand_content + 
                                   Since_last_precip_sqrt + (1 | Site / Plot),
@@ -209,6 +209,21 @@ check_overdispersion(nb.sonoran1.des.abs2) # overdispersion detected
 check_zeroinflation(nb.sonoran1.des.abs2) # model is overfitting zeros
 check_collinearity(nb.sonoran1.des.abs2)
 
+# 2: *** Drop Sand_content (only 1 site had low sand content): Desirable ***
+nb.sonoran2.des.abs2 <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex_log + Treatment + PlantSource2 + 
+                                  PlotMix_Climate + Duration + Lifeform + MAT + 
+                                  Since_last_precip_sqrt + (1 | Site / Plot),
+                                data = sonoran.des,
+                                family = nbinom2)
+summary(nb.sonoran2.des.abs2)
+r2(nb.sonoran2.des.abs2)
+res.nb.sonoran2.des.abs2 <- simulateResiduals(nb.sonoran2.des.abs2)
+plotQQunif(res.nb.sonoran2.des.abs2)
+plotResiduals(res.nb.sonoran2.des.abs2)
+check_overdispersion(nb.sonoran2.des.abs2) # overdispersion detected
+check_zeroinflation(nb.sonoran2.des.abs2) # model is overfitting zeros
+check_collinearity(nb.sonoran2.des.abs2)
+
 
 ## Weedy ------------------------------------------------------------------
 
@@ -219,7 +234,7 @@ nb.sonoran.weed.abs2 <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex_log + Tr
                                 data = sonoran.weed,
                                 family = nbinom2) # did not converge
 
-# *** 1: Drop MAP & Duration (for collinearity): Weedy ***
+# 1: Drop MAP & Duration (for collinearity): Weedy
 #   Most weeds are annuals
 nb.sonoran1.weed.abs2 <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex_log + Treatment + PlantSource2 + 
                                    PlotMix_Climate + Lifeform + MAT + Sand_content + 
@@ -234,6 +249,22 @@ plotResiduals(res.nb.sonoran1.weed.abs2)
 check_overdispersion(nb.sonoran1.weed.abs2) # overdispersion detected
 check_zeroinflation(nb.sonoran1.weed.abs2) # model is overfitting zeros
 check_collinearity(nb.sonoran1.weed.abs2)
+
+# *** 2: Drop Sand_content (only 1 site had low sand content): Weedy ***
+nb.sonoran2.weed.abs2 <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex_log + Treatment + PlantSource2 + 
+                                   PlotMix_Climate + Lifeform + MAT +  
+                                   Since_last_precip_sqrt + (1 | Site / Plot),
+                                 data = sonoran.weed,
+                                 family = nbinom2)
+summary(nb.sonoran2.weed.abs2)
+r2(nb.sonoran2.weed.abs2)
+res.nb.sonoran2.weed.abs2 <- simulateResiduals(nb.sonoran2.weed.abs2)
+plotQQunif(res.nb.sonoran2.weed.abs2)
+plotResiduals(res.nb.sonoran2.weed.abs2)
+check_overdispersion(nb.sonoran2.weed.abs2) # no overdispersion detected
+check_zeroinflation(nb.sonoran2.weed.abs2) # model is overfitting zeros
+check_collinearity(nb.sonoran2.weed.abs2)
+
 
 
 ## Seeded -----------------------------------------------------------------
