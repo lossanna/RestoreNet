@@ -1,5 +1,5 @@
 # Created: 024-09-09
-# Last updated: 2024-09-19
+# Last updated: 2024-09-20
 
 # Purpose: Run generalized linear models for subplot data, with Count as response variable. 
 
@@ -16,10 +16,15 @@
 
 # *** indicates model is included in PPT of draft figures and model results.
 
-# Models are the same as those run in 08.1.R script (including same name); this script
+# Most of the models are the same as those run in 08.1.R script (including same name); this script
 #   is just to condense results. (Technically nb.naz.des.abs2 wasn't identical to the one
 #   saved in .RData for 08.1.R, and I'm not sure why because everything else is identical,
 #   but the changes are so minute it doesn't affect interpretation or significance.)
+# Decided to drop Sand_content from Sonoran Desert desirable & weedy models because only one
+#   site had low sand content - seeded model already had Sand_content dropped. This improved
+#   model fit of weedy model slightly. (Northern AZ models are fine because they are more balanced.)
+# Also tried to model just the observations from "extremes" (+24% or wetter, and -23% or drier),
+#   but that didn't really work.
 
 library(tidyverse)
 library(glmmTMB)
