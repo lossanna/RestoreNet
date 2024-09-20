@@ -248,5 +248,19 @@ check_overdispersion(pos.naz.seed) # no overdispersion detected
 check_zeroinflation(pos.naz.seed) # no zero-inflation
 check_collinearity(pos.naz.seed)
 
+# *** 1: Add Days_elapsed, no transformations: Seeded ***
+pos.naz1.seed <- glmmTMB(Seeded_Cover ~ Perc_dev_cum_abs + AridityIndex + Treatment + 
+                          PlotMix_Climate + MAT + Sand_content + Since_last_precip + 
+                          Days_elapsed + (1 | Site / Plot),
+                        data = naz.seed, family = genpois)
+summary(pos.naz1.seed)
+r2(pos.naz1.seed)
+res.pos.naz1.seed <- simulateResiduals(pos.naz1.seed)
+plotQQunif(pos.naz1.seed)
+plotResiduals(pos.naz1.seed) 
+check_overdispersion(pos.naz1.seed) # no overdispersion detected
+check_zeroinflation(pos.naz1.seed) # no zero-inflation
+check_collinearity(pos.naz1.seed)
+
 
 save.image("RData/10.3_generalized-linear-models_2x2-Seeded-Cover.RData")

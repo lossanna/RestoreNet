@@ -375,11 +375,12 @@ check_collinearity(nb.sonoran3.seed.abs2)
 
 
 
+
 # Northern Arizona Plateau ------------------------------------------------
 
 ## Desirable --------------------------------------------------------------
 
-# *** All variables, nested random effect of Site/Plot: Desirable ***
+# All variables, nested random effect of Site/Plot: Desirable 
 nb.naz.des.abs2 <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex_log + Treatment + PlantSource2 + 
                              PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
                              Since_last_precip_sqrt + (1 | Site / Plot),
@@ -393,6 +394,22 @@ plotResiduals(res.nb.naz.des.abs2)
 check_overdispersion(nb.naz.des.abs2) # overdispersion detected
 check_zeroinflation(nb.naz.des.abs2) # model is overfitting zeros
 check_collinearity(nb.naz.des.abs2)
+
+
+# *** 1. Add Days_elapsed, no transformations: Desirable ***
+nb.naz1.des.abs2 <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex + Treatment + PlantSource2 + 
+                             PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content +  
+                             Since_last_precip + Days_elapsed + (1 | Site / Plot),
+                           data = naz.des,
+                           family = nbinom2)
+summary(nb.naz1.des.abs2)
+r2(nb.naz1.des.abs2)
+res.nb.naz1.des.abs2 <- simulateResiduals(nb.naz1.des.abs2)
+plotQQunif(res.nb.naz1.des.abs2)
+plotResiduals(res.nb.naz1.des.abs2)
+check_overdispersion(nb.naz1.des.abs2) # overdispersion detected
+check_zeroinflation(nb.naz1.des.abs2) # model is overfitting zeros
+check_collinearity(nb.naz1.des.abs2)
 
 
 ## Weedy ------------------------------------------------------------------
@@ -412,7 +429,7 @@ check_overdispersion(nb.naz.weed.abs2) # overdispersion detected
 check_zeroinflation(nb.naz.weed.abs2) # model is overfitting zeros
 check_collinearity(nb.naz.weed.abs2) # drop PlantSource2 or Duration
 
-# *** 1: Drop Duration (for collinearity): Weedy ***
+# 1: Drop Duration (for collinearity): Weedy 
 #   Basically all of them are annuals
 nb.naz1.weed.abs2 <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex_log + Treatment + PlantSource2 + 
                                PlotMix_Climate + Lifeform + MAT + MAP + Sand_content + 
@@ -428,10 +445,25 @@ check_overdispersion(nb.naz1.weed.abs2) # overdispersion detected
 check_zeroinflation(nb.naz1.weed.abs2) # model is overfitting zeros
 check_collinearity(nb.naz1.weed.abs2)
 
+# *** 2: Add Days_elapsed, no transformations: Weedy ***
+nb.naz2.weed.abs2 <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex + Treatment + PlantSource2 + 
+                               PlotMix_Climate + Lifeform + MAT + MAP + Sand_content + 
+                               Since_last_precip + Days_elapsed + (1 | Site / Plot),
+                             data = naz.weed,
+                             family = nbinom2)
+summary(nb.naz2.weed.abs2)
+r2(nb.naz2.weed.abs2)
+res.nb.naz2.weed.abs2 <- simulateResiduals(nb.naz2.weed.abs2)
+plotQQunif(res.nb.naz2.weed.abs2)
+plotResiduals(res.nb.naz2.weed.abs2)
+check_overdispersion(nb.naz2.weed.abs2) # overdispersion detected
+check_zeroinflation(nb.naz2.weed.abs2) # model is overfitting zeros
+check_collinearity(nb.naz2.weed.abs2)
+
 
 ## Seeded -----------------------------------------------------------------
 
-# *** All variables, nested random effect of Site/Plot: Seeded ***
+# All variables, nested random effect of Site/Plot: Seeded 
 nb.naz.seed.abs2 <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex_log + Treatment +  
                               PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
                               Since_last_precip_sqrt + (1 | Site / Plot),
@@ -444,6 +476,22 @@ plotQQunif(res.nb.naz.seed.abs2)
 plotResiduals(res.nb.naz.seed.abs2)
 check_overdispersion(nb.naz.seed.abs2) # overdispersion detected
 check_collinearity(nb.naz.seed.abs2)
+
+# *** 1. Add Days_elapsed, no transformations: Seeded ***
+nb.naz1.seed.abs2 <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex + Treatment +  
+                              PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content + 
+                              Since_last_precip + Days_elapsed + (1 | Site / Plot),
+                            data = naz.seed,
+                            family = nbinom2)
+summary(nb.naz1.seed.abs2)
+r2(nb.naz1.seed.abs2)
+res.nb.naz1.seed.abs2 <- simulateResiduals(nb.naz1.seed.abs2)
+plotQQunif(res.nb.naz1.seed.abs2)
+plotResiduals(res.nb.naz1.seed.abs2)
+check_overdispersion(nb.naz1.seed.abs2) # overdispersion detected
+check_collinearity(nb.naz1.seed.abs2)
+
+
 
 
 # Sonoran Desert, precip extremes -----------------------------------------
