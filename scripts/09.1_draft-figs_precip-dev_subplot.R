@@ -86,7 +86,7 @@ dat$PlotMix_Climate <- factor(dat$PlotMix_Climate,
 ## Precip deviation -------------------------------------------------------
 
 # Cumulative
-cum.pd |> 
+cum.pd.sonoran <- cum.pd |> 
   filter(Perc_deviation != Inf) |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
@@ -100,9 +100,10 @@ cum.pd |>
   geom_hline(yintercept = 0,
              linetype = "dashed",
              color = "red")
+cum.pd.sonoran
 
 # Since last
-since.pd |> 
+since.pd.sonoran <- since.pd |> 
   filter(Perc_deviation != Inf) |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
@@ -116,6 +117,7 @@ since.pd |>
   geom_hline(yintercept = 0,
              linetype = "dashed",
              color = "red")
+since.pd.sonoran
 
 
 ## Count ------------------------------------------------------------------
@@ -1101,7 +1103,7 @@ sonoran.species.wetdry
 ## Precip deviation -------------------------------------------------------
 
 # Cumulative
-cum.pd |> 
+cum.pd.naz <- cum.pd |> 
   filter(Perc_deviation != Inf) |> 
   filter(Region == "Colorado Plateau") |> 
   ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
@@ -1115,9 +1117,10 @@ cum.pd |>
   geom_hline(yintercept = 0,
              linetype = "dashed",
              color = "red")
+cum.pd.naz
 
 # Since last
-since.pd |> 
+since.pd.naz <- since.pd |> 
   filter(Perc_deviation != Inf) |> 
   filter(Region == "Colorado Plateau") |> 
   ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
@@ -1131,6 +1134,7 @@ since.pd |>
   geom_hline(yintercept = 0,
              linetype = "dashed",
              color = "red")
+since.pd.naz
 
 
 ## Count ------------------------------------------------------------------
@@ -2144,6 +2148,14 @@ naz.species.wetdry
 
 ## Sonoran Desert ---------------------------------------------------------
 
+# Sonoran Desert: Precip deviation
+tiff("figures/2024-09_draft-figures/Sonoran_percent-deviation_cumulative-precip.tiff", units = "in", height = 5, width = 7, res = 150)
+cum.pd.sonoran
+dev.off()
+tiff("figures/2024-09_draft-figures/Sonoran_percent-deviation_since-last-monitoring-precip.tiff", units = "in", height = 5, width = 7, res = 150)
+since.pd.sonoran
+dev.off()
+
 # Sonoran Desert: Count
 tiff("figures/2024-09_draft-figures/Sonoran_desirable_Count-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
 sonoran.des.count
@@ -2242,6 +2254,14 @@ dev.off()
 
 
 ## Northern Arizona Plateau -----------------------------------------------
+
+# Northern AZ: Precip deviation
+tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_percent-deviation_cumulative-precip.tiff", units = "in", height = 5, width = 7, res = 150)
+cum.pd.naz
+dev.off()
+tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_percent-deviation_since-last-monitoring-precip.tiff", units = "in", height = 5, width = 7, res = 150)
+since.pd.naz
+dev.off()
 
 # Northern AZ: Count
 tiff("figures/2024-09_draft-figures/Northern-AZ-Plateau_desirable_Count-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
