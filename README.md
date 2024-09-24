@@ -1,9 +1,9 @@
 # RestoreNet
 Created: 2022-11-15  
-Last updated: 2024-09-09
+Last updated: 2024-09-24
   
 ## Description  
-Complete data analysis on response to intra- and inter-annual precipitation variability using the RestoreNet 1.0 data, which was the first iteration of [RAMPS RestoreNet](https://www.usgs.gov/centers/southwest-biological-science-center/science/restorenet-distributed-field-trial-network). For other analysis on the RestoreNet 1.0 data, see [Farrell et al. 2023, *Ecological Applications*](https://doi.org/10.1002/eap.2834).
+Complete data analysis on response to intra- and inter-annual precipitation variability using the RestoreNet 1.0 data, which was the first iteration of [RAMPS RestoreNet](https://www.usgs.gov/centers/southwest-biological-science-center/science/restorenet-distributed-field-trial-network). For other analysis on the RestoreNet 1.0 data, see [Farrell et al. 2023, *Ecological Applications*](https://doi.org/10.1002/eap.2834) and [Havrilla et al. 2020, *Journal of Applied Ecology*]( https://doi.org/10.1111/1365-2664.13715).
 
   
 ## Author
@@ -48,14 +48,16 @@ The complete workflow for current analysis is:
 - `05.2_data-screening_2x2.R`
 - `05.3_data-screening_continuous-explanatory-variables.R`
 
-**3. Draft figures**:
+**3. Draft figures and species of interest**:
 - `09.1_draft-figs_precip-dev_subplot.R`
+- `09.1_identify-species-of-interest.R`
+- `09.2_draft-figs_precip-dev_2x2.R`
 
-
-**4. Generalized linear models**
+**4. Generalized linear models**:
 - `10.1_generalized-linear-models_subplot-Count.R`
 - `10.2_generalized-linear-models_subplot-Height.R`
 - `10.3_generalized-linear-models_2x2-Seeded-Cover.R`
+- `09.3_characterizing-SD-and-NAZ-by-explanatory-variables.R`
 
 # Directory
 - `data/`
@@ -80,6 +82,8 @@ The complete workflow for current analysis is:
         - Files not pushed to GitHub due to size.
     - `2024-08_draft-figures/`
         - Produced from exploratory scripts.
+    - `2024-09_draft-figures/`
+        - Produced from `09.1_draft-figs_precip-dev_subplot.R`.
 - `old_pre-2023-09-18_Farrell-data/` (do not run; used older dataset)
     - `data/`
     - `RData/`

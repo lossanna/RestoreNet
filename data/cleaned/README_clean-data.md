@@ -1,5 +1,5 @@
 Created: 2023-10-20  
-Last updated: 2024-09-04
+Last updated: 2024-09-24
   
 Notes about cleaned data for RAMPS RestoreNet 1.0 project.
 
@@ -60,3 +60,10 @@ Corrected monitoring info was used during data wrangling for `subplot` and `2x2`
 #### `04.15_subplot-data_clean-0-added.csv`
 - Deprecated.
 - Added 0s to track the absence of all seeded species across plots (versus only the presence); was an attempt to deal with GLMs overfitting zeros.
+
+## From `09.1_draft-figs_precip-dev_subplot.R`
+#### `09.1_Northern-AZ-Plateau_frequency_species-of-interest.csv`
+#### `09.1_Sonoran-Desert_frequency_species-of-interest.csv`
+- Columns (both files): `Code`, `n`, `Freqency`, `Plant`, `Plot`, `Type`.
+- Frequency (percent presence in plots) for species of interest, in all conditions, just wetter conditions, and just drier conditions.
+- Used to make bar graphs of frequency.
