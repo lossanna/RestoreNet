@@ -234,7 +234,7 @@ check_collinearity(pos.naz)
 
 ## Control plots excluded -------------------------------------------------
 
-# ***All variables, with nested random effect***
+# All variables, with nested random effect
 pos.naz.seed <- glmmTMB(Seeded_Cover ~ Perc_dev_cum_abs + AridityIndex_log + Treatment + 
                           PlotMix_Climate + MAT + Sand_content + Since_last_precip_sqrt + 
                           (1 | Site / Plot),
