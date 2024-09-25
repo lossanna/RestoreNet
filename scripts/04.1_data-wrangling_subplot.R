@@ -318,7 +318,7 @@ write_csv(species.seeded.in.mix,
 # EDITED: manually review and fix SpeciesSeeded status
 #   Standardize responses so all are in format "Yes"
 #   Incorrect ones corrected
-species.seeded.in.mix <- read_xlsx("data/data-wrangling-intermediate/04.1b_edited-species-seeded2_corrected-seeded-in-mix_subplot.xlsx")
+species.seeded.in.mix <- read_xlsx("data/data-wrangling-intermediate/04.1b_edited2_corrected-seeded-in-mix_subplot.xlsx")
 
 # Remove duplicates that resulted from standardizing "Yes"
 species.seeded.in.mix <- species.seeded.in.mix |>
