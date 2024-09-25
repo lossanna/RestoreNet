@@ -1,14 +1,14 @@
-Region,Site,Date_Seeded,Date_Monitored,SiteDateID,Plot,Treatment,PlotMix,SiteDatePlotID,CodeOriginal,Code,Name,Native,Duration,Lifeform,Count,Height,raw.row,SpeciesSeeded,PlantSource,PlantSource2,Weedy,PlotMix_Climate
-Utah,Salt_Desert,2018-10-31,2019-05-09,175,11,ConMod,Cool-Med,4187,BRTE,BRTE,Bromus tectorum,Introduced,Annual,Grass,NA,NA,10842,No,Introduced/Invasive,Introduced/Invasive,Weedy,Current
-Utah,CRC,2018-10-17,2019-05-17,167,18,Control,None,4268,CHTE2,CHTE2,Chorispora tenella,Introduced,Annual,Forb,NA,NA,11297,No,Introduced/Invasive,Introduced/Invasive,Weedy,None
-Chihuahuan,Mesquite,2020-08-05,2021-10-10,13,218,Control,None,6143,CRPO5,CRPO5,Croton pottsii,Native,Perennial,Forb,NA,125,16798,No,Native_recruit,Native recruit,Desirable,None
-Chihuahuan,Mesquite,2020-08-05,2021-10-10,13,222,Pits,Warm,6147,AMPA,AMPA,Amaranthus palmeri,Native,Annual,Forb,NA,230,16810,No,Native_recruit,Native recruit,Desirable,Projected
-Chihuahuan,Mesquite,2020-08-05,2021-10-10,13,222,Pits,Warm,6147,CRPO5,CRPO5,Croton pottsii,Native,Perennial,Forb,NA,275,16811,No,Native_recruit,Native recruit,Desirable,Projected
-Chihuahuan,Mesquite,2020-08-05,2021-10-10,13,222,Pits,Warm,6147,PAHI5,PAHI5,Panicum hirticaule,Native,Annual,Grass,NA,210,16812,No,Native_recruit,Native recruit,Desirable,Projected
-Chihuahuan,Mesquite,2020-08-05,2021-10-10,13,222,Pits,Warm,6147,POPI3,POPI3,Portulaca pilosa,Native,Unknown,Forb,NA,90,16813,No,Native_recruit,Native recruit,Desirable,Projected
-Chihuahuan,Mesquite,2020-08-05,2021-10-10,13,222,Pits,Warm,6147,TILA2,TILA2,Tidestromia lanuginosa,Native,Annual,Forb,NA,117,16814,No,Native_recruit,Native recruit,Desirable,Projected
-Chihuahuan,Mesquite,2020-08-05,2021-10-10,13,222,Pits,Warm,6147,Unksporo,Unksporo.Mesquite,"Unknown grass; Sporobolus and Eragrostis, Mesquite",Unknown,Unknown,Grass,NA,130,16815,No,Unknown_recruit,Recruit,Weedy,Projected
-Sonoran Central,Roosevelt,2019-11-22,2022-03-28,135,26,Mulch,Warm,6259,SCBA,SCBA,Schismus barbatus,Introduced,Annual,Grass,NA,30,17607,No,Introduced/Invasive,Introduced/Invasive,Weedy,Projected
-Mojave,AVRCD,2022-01-17,2022-04-13,117,18,Control,None,6286,AMIN3,AMMEI2,Amsinckia menziesii,Native,Annual,Forb,NA,NA,17737,No,Native_recruit,Native recruit,Desirable,None
-Mojave,AVRCD,2022-01-17,2022-04-13,117,18,Control,None,6286,BRNI,BRNI,Brassica nigra,Introduced,Annual,Forb,NA,NA,17742,No,Introduced/Invasive,Introduced/Invasive,Weedy,None
-Mojave,AVRCD,2022-01-17,2022-04-13,117,36,ConMod,Cool,6304,SIIR,SIIR,Sisymbrium irio,Introduced,Annual,Forb,NA,NA,17822,No,Introduced/Invasive,Introduced/Invasive,Weedy,Current
+Region,Site,Date_Seeded,Date_Monitored,SiteDateID,Plot,Treatment,PlotMix,SitePlotID,SiteDatePlotID,CodeOriginal,Code,Name,Native,Duration,Lifeform,Count,Height,raw.row,SpeciesSeeded,PlantSource,PlantSource2,Weedy,PlotMix_Climate
+Utah,Salt_Desert,2018-10-31,2019-05-09,175,11,ConMod,Cool-Med,675,4187,BRTE,BRTE,Bromus tectorum,Introduced,Annual,Grass,NA,NA,10842,No,Introduced/Invasive,Introduced/Invasive,Weedy,Current
+Utah,CRC,2018-10-17,2019-05-17,167,18,Control,None,610,4268,CHTE2,CHTE2,Chorispora tenella,Introduced,Annual,Forb,NA,NA,11297,No,Introduced/Invasive,Introduced/Invasive,Weedy,None
+Chihuahuan,Mesquite,2020-08-05,2021-10-10,13,218,Control,None,970,6143,CRPO5,CRPO5,Croton pottsii,Native,Perennial,Forb,NA,125,16798,No,Native_recruit,Native recruit,Desirable,None
+Chihuahuan,Mesquite,2020-08-05,2021-10-10,13,222,Pits,Warm,974,6147,AMPA,AMPA,Amaranthus palmeri,Native,Annual,Forb,NA,230,16810,No,Native_recruit,Native recruit,Desirable,Projected
+Chihuahuan,Mesquite,2020-08-05,2021-10-10,13,222,Pits,Warm,974,6147,CRPO5,CRPO5,Croton pottsii,Native,Perennial,Forb,NA,275,16811,No,Native_recruit,Native recruit,Desirable,Projected
+Chihuahuan,Mesquite,2020-08-05,2021-10-10,13,222,Pits,Warm,974,6147,PAHI5,PAHI5,Panicum hirticaule,Native,Annual,Grass,NA,210,16812,No,Native_recruit,Native recruit,Desirable,Projected
+Chihuahuan,Mesquite,2020-08-05,2021-10-10,13,222,Pits,Warm,974,6147,POPI3,POPI3,Portulaca pilosa,Native,Unknown,Forb,NA,90,16813,No,Native_recruit,Native recruit,Desirable,Projected
+Chihuahuan,Mesquite,2020-08-05,2021-10-10,13,222,Pits,Warm,974,6147,TILA2,TILA2,Tidestromia lanuginosa,Native,Annual,Forb,NA,117,16814,No,Native_recruit,Native recruit,Desirable,Projected
+Chihuahuan,Mesquite,2020-08-05,2021-10-10,13,222,Pits,Warm,974,6147,Unksporo,Unksporo.Mesquite,"Unknown grass; Sporobolus and Eragrostis, Mesquite",Unknown,Unknown,Grass,NA,130,16815,No,Unknown_recruit,Recruit,Weedy,Projected
+Sonoran Central,Roosevelt,2019-11-22,2022-03-28,135,26,Mulch,Warm,798,6259,SCBA,SCBA,Schismus barbatus,Introduced,Annual,Grass,NA,30,17607,No,Introduced/Invasive,Introduced/Invasive,Weedy,Projected
+Mojave,AVRCD,2022-01-17,2022-04-13,117,18,Control,None,1002,6286,AMIN3,AMMEI2,Amsinckia menziesii,Native,Annual,Forb,NA,NA,17737,No,Native_recruit,Native recruit,Desirable,None
+Mojave,AVRCD,2022-01-17,2022-04-13,117,18,Control,None,1002,6286,BRNI,BRNI,Brassica nigra,Introduced,Annual,Forb,NA,NA,17742,No,Introduced/Invasive,Introduced/Invasive,Weedy,None
+Mojave,AVRCD,2022-01-17,2022-04-13,117,36,ConMod,Cool,1017,6304,SIIR,SIIR,Sisymbrium irio,Introduced,Annual,Forb,NA,NA,17822,No,Introduced/Invasive,Introduced/Invasive,Weedy,Current
