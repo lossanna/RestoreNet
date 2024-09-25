@@ -255,20 +255,32 @@ fix.sub.AVRCD2$Date_Seeded <- rep("2020-03-17", nrow(fix.sub.AVRCD2))
 
 # 3. Plot 2 conflict
 # Extract differing rows
-filter(monitor.diff, Site == "AVRCD", Plot == "2", Date_Monitored == "2022-04-13")
+filter(monitor.diff, Site == "AVRCD", Plot == "2")
 filter(monitor.sub, Site == "AVRCD", Plot == "2") # Plot 2 monitored twice
 filter(monitor.2x2, Site == "AVRCD", Plot == "2") # Plot 2 monitored 3 times (additional on 2022-04-13)
 
 # Figure out which version is correct
 #   2x2 is correct, entire site was probably monitored on 2022-04-13, and
-#     missing value probably indicates Plot 2 had no subplot recruitment.
+#     missing value probably indicates Plot 2 had no subplot recruitment. But 2x2 is also 
+#     missing an existing SiteDatePlotID (3664).
 
-# Do not need to extract an incorrect row for 2x2 because all the monitoring info is correct,
-#   it just needs a SiteDatePlotID.
+# Create incorrect 2x2 rows for 2x2 wrangling
+wrong.2x2.AVRCD1 <- monitor.2x2 |> 
+  filter(Site == "AVRCD", Date_Monitored == "2021-04-06", Plot == "2")
+wrong.2x2.AVRCD2 <- monitor.2x2 |> 
+  filter(Site == "AVRCD", Date_Monitored == "2022-04-13", Plot == "2")
 
-# Create new row to be added
+# Create correct 2x2 rows
+fix.2x2.AVRCD1 <- monitor.sub |> 
+  filter(Site == "AVRCD", Date_Monitored == "2021-04-06", Plot == "2")
 range(monitor.sub$SiteDatePlotID)
-add.AVRCD1 <- monitor.2x2 |> 
+fix.2x2.AVRCD2 <- monitor.2x2 |> 
+  filter(Site == "AVRCD", Plot == "2",
+         Date_Monitored == "2022-04-13") |> 
+  mutate(SiteDatePlotID = 6392)
+
+# Create new row to be added to subplot
+add.sub.AVRCD1 <- monitor.2x2 |> 
   filter(Site == "AVRCD", Plot == "2",
          Date_Monitored == "2022-04-13") |> 
   mutate(SiteDatePlotID = 6392)
@@ -276,19 +288,31 @@ add.AVRCD1 <- monitor.2x2 |>
 
 # 4. Plot 44 conflict
 # Extract differing rows
-filter(monitor.diff, Site == "AVRCD", Plot == "44", Date_Monitored == "2022-04-13")
+filter(monitor.diff, Site == "AVRCD", Plot == "44")
 filter(monitor.sub, Site == "AVRCD", Plot == "44") # Plot 44 monitored twice
 filter(monitor.2x2, Site == "AVRCD", Plot == "44") # Plot 44 monitored 3 times (additional on 2022-04-13)
 
 # Figure out which version is correct
 #   2x2 is correct, entire site was probably monitored on 2022-04-13, and
 #     missing value probably indicates Plot 44 had no subplot recruitment (same deal as with Plot 2).
+#     But 2x2 is also missing an existing SiteDatePlotID (3706).
 
-# Do not need to extract an incorrect row for 2x2 because all the monitoring info is correct,
-#   it just needs a SiteDatePlotID.
+# Create incorrect 2x2 rows for 2x2 wrangling
+wrong.2x2.AVRCD3 <- monitor.2x2 |> 
+  filter(Site == "AVRCD", Date_Monitored == "2021-04-06", Plot == "44")
+wrong.2x2.AVRCD4 <- monitor.2x2 |> 
+  filter(Site == "AVRCD", Date_Monitored == "2022-04-13", Plot == "44")
 
-# Create new row to be added
-add.AVRCD2 <- monitor.2x2 |> 
+# Create correct 2x2 rows
+fix.2x2.AVRCD3 <- monitor.sub |> 
+  filter(Site == "AVRCD", Date_Monitored == "2021-04-06", Plot == "44")
+fix.2x2.AVRCD4 <- monitor.2x2 |> 
+  filter(Site == "AVRCD", Plot == "44",
+         Date_Monitored == "2022-04-13") |> 
+  mutate(SiteDatePlotID = 6393)
+
+# Create new row to be added to subplot
+add.sub.AVRCD2 <- monitor.2x2 |> 
   filter(Site == "AVRCD", Plot == "44",
          Date_Monitored == "2022-04-13") |> 
   mutate(SiteDatePlotID = 6393)
@@ -297,8 +321,10 @@ add.AVRCD2 <- monitor.2x2 |>
 wrong.sub.AVRCD <- bind_rows(wrong.sub.AVRCD1, wrong.sub.AVRCD2)
 fix.sub.AVRCD <- bind_rows(fix.sub.AVRCD1, fix.sub.AVRCD2)
 
-add.AVRCD <- bind_rows(add.AVRCD1, add.AVRCD2)
+wrong.2x2.AVRCD <- bind_rows(wrong.2x2.AVRCD1, wrong.2x2.AVRCD2, wrong.2x2.AVRCD3, wrong.2x2.AVRCD4)
+fix.2x2.AVRCD <- bind_rows(fix.2x2.AVRCD1, fix.2x2.AVRCD2, fix.2x2.AVRCD3, fix.2x2.AVRCD4)
 
+add.sub.AVRCD <- bind_rows(add.sub.AVRCD1, add.sub.AVRCD2)
 
 
 
@@ -1402,7 +1428,7 @@ write_csv(fix.sub,
 
 
 # Write csv of the 2 missing AVRCD plots (data needs to be added in subplot wrangling)
-write_csv(add.AVRCD,
+write_csv(add.sub.AVRCD,
   file = "data/data-wrangling-intermediate/02_subplot-wrong-monitor-events-add-AVRCD.csv"
 )
 
