@@ -9,8 +9,6 @@
 # Calculate frequencies for total (all plots/conditions), wetter conditions, extremely
 #   wet conditions (+24% and wetter), drier conditions, and extremely dry conditions (-23% and drier).
 
-
-
 # Sonoran Desert precip deviation extremes (to determine performance in variable precip):
 #   Wet: +24% and wetter includes all sites but Roosevelt.
 #   Dry: -23% and drier includes all sites but Patagonia.
@@ -52,8 +50,6 @@ present_species <- read_csv("data/cleaned/04.2_2x2-species-present_clean.csv")
 
 # Check for NAs
 apply(subplot, 2, anyNA)
-height.na <- subplot |> 
-  filter(is.na(Height)) # some have no Height recorded but do have Count
 
 # Reorganize columns for left_join()
 cum.pd.subplot <- cum.pd |> 
@@ -79,22 +75,12 @@ present_species <- present_species |>
   left_join(cum.pd.subplot)
 
 
-# Site info ---------------------------------------------------------------
+
+# Number of plots ---------------------------------------------------------
 
 ## Sonoran Desert ---------------------------------------------------------
 
-# Sonoran Central precip dev: ranged from -43% to +64%
-dat |> 
-  filter(Region == "Sonoran Central") |> 
-  count(Perc_dev_cum)
-
-# Sonoran SE precip dev: ranged from -23% to +46%
-dat |> 
-  filter(Region == "Sonoran SE") |> 
-  count(Perc_dev_cum)
-
-
-### Weedy & Native recruit ------------------------------------------------
+### Native recruit & Weedy ------------------------------------------------
 
 # Values for weedy species, native recruits, and empty plot comparison
 
@@ -245,17 +231,9 @@ dat |>
   nrow()
 
 
-
 ## Northern Arizona Plateau -----------------------------------------------
 
-# Precip dev
-#   Ranges from -99% to 193%
-summary(filter(dat, Region == "Colorado Plateau")$Perc_dev_cum)
-hist(filter(dat, Region == "Colorado Plateau")$Perc_dev_cum)
-count(filter(dat, Region == "Colorado Plateau"), Perc_dev_cum) |> 
-  print(n = 97)
-
-### Weedy & Native recruit ------------------------------------------------
+### Native recruit & Weedy ------------------------------------------------
 
 # Values for weedy species, native recruits, and empty plot comparison
 
@@ -431,12 +409,9 @@ dat |>
 
 
 
-# Sonoran Desert ----------------------------------------------------------
+# Sonoran Desert: Frequency -----------------------------------------------
 
-## Most frequent species (in highest # of plots) --------------------------
-
-
-### Native recruit --------------------------------------------------------
+## Native recruit ---------------------------------------------------------
 
 # Native volunteers (all plots): Highest species frequency overall
 #   LOHU2, LOAR12, CHPO12, PERE, PLAR, VUOC, LAGR10
@@ -499,7 +474,7 @@ sonoran.driest.nativevolun <- present_species |>
 
 
 
-### Weedy -----------------------------------------------------------------
+## Weedy ------------------------------------------------------------------
 
 # Weedy (all plots): Highest species frequency overall
 #   ERCI6, SCBA, BRRU2, ERLE
@@ -557,7 +532,7 @@ sonoran.driest.weedy <- present_species |>
 
 
 
-### Seeded species --------------------------------------------------------
+## Seeded species ---------------------------------------------------------
 
 # Total: Seeded version 1
 sonoran.total.seed1 <- present_species |> 
@@ -926,7 +901,7 @@ sonoran.driest.seed <- bind_rows(sonoran.driest.seed1, sonoran.driest.seed3,
 sonoran.driest.seed
 
 
-### Empty plots -----------------------------------------------------------
+## Empty plots ------------------------------------------------------------
 
 # Empty plots (out of all plots)
 sonoran.total.empty <- present_species |> 
@@ -1003,7 +978,7 @@ dat |>
 
 
 
-### Construct table -------------------------------------------------------
+## Construct table --------------------------------------------------------
 
 # Native recruit
 sonoran.nativevolun <- bind_rows(sonoran.total.nativevolun, sonoran.wet.nativevolun, sonoran.dry.nativevolun,
@@ -1033,18 +1008,18 @@ sonoran.seed <- bind_rows(sonoran.total.seed, sonoran.wet.seed, sonoran.dry.seed
                   rep("Extremely dry", nrow(sonoran.driest.seed)))) 
 
 # Combine all
-sonoran.interest <- bind_rows(sonoran.nativevolun, sonoran.weedy, sonoran.seed,
+sonoran.freq <- bind_rows(sonoran.nativevolun, sonoran.weedy, sonoran.seed,
                               sonoran.total.empty, sonoran.wet.empty, sonoran.dry.empty,
                               sonoran.wettest.empty, sonoran.driest.empty) |> 
   mutate(Type = paste0(Plant, ", ", Plot))
-sonoran.interest$Code[sonoran.interest$Code == "0"] <- "Empty"  
+sonoran.freq$Code[sonoran.freq$Code == "0"] <- "Empty"  
 
 # Write to csv
-write_csv(sonoran.interest,
-          file = "data/cleaned/09.1_Sonoran-Desert_frequency_species-of-interest.csv")
+write_csv(sonoran.freq,
+          file = "data/cleaned/11.1_Sonoran-Desert_frequency-by-species.csv")
 
 
-## Precip range -----------------------------------------------------------
+# Sonoran Desert: Precip range --------------------------------------------
 
 # Native volunteer
 #   MONU, ASNU4, DICA14, ESCAM, LOAR12, LOHU2, LOSTT, PEHE, PERE, PLPA2, BAMU, 
