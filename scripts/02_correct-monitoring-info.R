@@ -272,7 +272,8 @@ wrong.2x2.AVRCD2 <- monitor.2x2 |>
 
 # Create correct 2x2 rows
 fix.2x2.AVRCD1 <- monitor.sub |> 
-  filter(Site == "AVRCD", Date_Monitored == "2021-04-06", Plot == "2")
+  filter(Site == "AVRCD", Date_Monitored == "2021-04-06", Plot == "2") |> 
+  mutate(Date_Seeded = "2020-03-17")
 range(monitor.sub$SiteDatePlotID)
 fix.2x2.AVRCD2 <- monitor.2x2 |> 
   filter(Site == "AVRCD", Plot == "2",
@@ -305,7 +306,8 @@ wrong.2x2.AVRCD4 <- monitor.2x2 |>
 
 # Create correct 2x2 rows
 fix.2x2.AVRCD3 <- monitor.sub |> 
-  filter(Site == "AVRCD", Date_Monitored == "2021-04-06", Plot == "44")
+  filter(Site == "AVRCD", Date_Monitored == "2021-04-06", Plot == "44") |> 
+  mutate(Date_Seeded = "2020-03-17")
 fix.2x2.AVRCD4 <- monitor.2x2 |> 
   filter(Site == "AVRCD", Plot == "44",
          Date_Monitored == "2022-04-13") |> 
