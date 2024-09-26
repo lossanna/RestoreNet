@@ -79,9 +79,7 @@ present_species <- present_species |>
 
 ## Sonoran Desert ---------------------------------------------------------
 
-### Native recruit & Weedy ------------------------------------------------
-
-# Values for weedy species, native recruits, and empty plot comparison
+### All plots (Native recruit, Weedy) -------------------------------------
 
 # Total number of plots: 1152
 dat |> 
@@ -99,6 +97,14 @@ dat |>
   filter(Perc_dev_cum > 0) |> 
   nrow()
 
+# Number of extremely wet plots (+24% and wetter): 180
+dat |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  select(Region, Site, Date_Monitored, Plot, Perc_dev_cum) |> 
+  distinct(.keep_all = TRUE) |> 
+  filter(Perc_dev_cum > 0.24) |> 
+  nrow()
+
 # Number of drier plots: 792
 dat |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
@@ -107,8 +113,16 @@ dat |>
   filter(Perc_dev_cum < 0) |> 
   nrow()
 
+# Number of extremely dry plots (-23% and drier): 288
+dat |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  select(Region, Site, Date_Monitored, Plot, Perc_dev_cum) |> 
+  distinct(.keep_all = TRUE) |> 
+  filter(Perc_dev_cum < -0.23) |> 
+  nrow()
 
-### Seeded species --------------------------------------------------------
+
+### Seeded plots ----------------------------------------------------------
 
 # 4 types of seeded species, based on how they were seeded:
 # (Note that Current vs. Projected doesn't affect plot number, just the site, because
@@ -138,6 +152,15 @@ dat |>
   distinct(.keep_all = TRUE) |> 
   nrow()
 
+# 1: Sonoran Central only, when extremely wet (+24% and wetter): 48
+dat |> 
+  filter(Region == "Sonoran Central", 
+         PlotMix_Climate == "Current",
+         Perc_dev_cum > 0.24) |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
+
 # 1: Sonoran Central only, when drier: 224
 dat |> 
   filter(Region == "Sonoran Central", 
@@ -146,6 +169,16 @@ dat |>
   select(Region, Site, Date_Monitored, Plot) |> 
   distinct(.keep_all = TRUE) |> 
   nrow()
+
+# 1: Sonoran Central only, when extremely dry (-23% and drier): 112
+dat |> 
+  filter(Region == "Sonoran Central", 
+         PlotMix_Climate == "Current",
+         Perc_dev_cum < -0.23) |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
+
 
 # 2: Sonoran SE only, total number of plots for species in just 1 mix: 192
 dat |> 
@@ -164,11 +197,29 @@ dat |>
   distinct(.keep_all = TRUE) |> 
   nrow()
 
+# 2: Sonoran SE only, when extremely wet (+24% and wetter): 32
+dat |> 
+  filter(Region == "Sonoran SE",
+         PlotMix_Climate == "Current",
+         Perc_dev_cum > 0.24) |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
+
 # 2: Sonoran SE only, when drier: 128
 dat |> 
   filter(Region == "Sonoran SE",
          PlotMix_Climate == "Current",
          Perc_dev_cum < 0) |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
+
+# 2: Sonoran SE only, when extremely dry (-23% and drier): 16
+dat |> 
+  filter(Region == "Sonoran SE",
+         PlotMix_Climate == "Current",
+         Perc_dev_cum < -0.23) |> 
   select(Region, Site, Date_Monitored, Plot) |> 
   distinct(.keep_all = TRUE) |> 
   nrow()
@@ -190,6 +241,15 @@ dat |>
   distinct(.keep_all = TRUE) |> 
   nrow()
 
+# 3: Both sites, same mix, extremely wet (+24% and wetter): 80
+dat |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Current",
+         Perc_dev_cum > 0.24) |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
+
 # 3. Both sites, same mix, drier: 352
 dat |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE"),
@@ -199,32 +259,60 @@ dat |>
   distinct(.keep_all = TRUE) |> 
   nrow()
 
-# 4. Both sites, species in opposite mixes, total plots: 512
-#     when wetter: 160; when drier: 352
-#   Same as 3 because BAMU was still seeded in only half the plots at each site
-
-# 0. Empty plot comparison, total: 1024
+# 3. Both sites, same mix, extremely dry (-23% and drier): 128
 dat |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE"),
-         PlotMix_Climate != "None") |> 
+         PlotMix_Climate == "Current",
+         Perc_dev_cum < -0.23) |> 
   select(Region, Site, Date_Monitored, Plot) |> 
   distinct(.keep_all = TRUE) |> 
   nrow()
 
-# 0: Empty plot comparison, wetter: 320
+# 4. Both sites, species in opposite mixes, total plots: 512
+#     when wetter: 160; when drier: 352; when extremely wet: 80; when extremely dry: 128
+#   Same as 3 because BAMU was still seeded in only half the plots at each site
+
+
+# 0. Empty plot comparison (Current or Projected), total: 512
 dat |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE"),
-         PlotMix_Climate != "None",
+         PlotMix_Climate == "Current") |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
+
+# 0: Empty plot comparison, wetter: 160
+dat |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Current",
          Perc_dev_cum > 0) |> 
   select(Region, Site, Date_Monitored, Plot) |> 
   distinct(.keep_all = TRUE) |> 
   nrow()
 
-# 0. Empty plot comparison, drier: 704
+# 0: Empty plot comparison, extremely wet (+24% and wetter): 80
 dat |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE"),
-         PlotMix_Climate != "None",
+         PlotMix_Climate == "Current",
+         Perc_dev_cum > 0.24) |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
+
+# 0. Empty plot comparison, drier: 352
+dat |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Current",
          Perc_dev_cum < 0) |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
+
+# 0. Empty plot comparison, extremely dry (-23% and drier): 128
+dat |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Current",
+         Perc_dev_cum < -0.23) |> 
   select(Region, Site, Date_Monitored, Plot) |> 
   distinct(.keep_all = TRUE) |> 
   nrow()
@@ -232,9 +320,7 @@ dat |>
 
 ## Northern Arizona -------------------------------------------------------
 
-### Native recruit & Weedy ------------------------------------------------
-
-# Values for weedy species, native recruits, and empty plot comparison
+### All plots (Native recruit, Weedy) -------------------------------------
 
 # Total number of plots: 3492
 dat |> 
@@ -252,6 +338,14 @@ dat |>
   filter(Perc_dev_cum > 0) |> 
   nrow()
 
+# Number of extremely wet plots (+48% and wetter): 792
+dat |> 
+  filter(Region == "Colorado Plateau") |> 
+  select(Region, Site, Date_Monitored, Plot, Perc_dev_cum) |> 
+  distinct(.keep_all = TRUE) |> 
+  filter(Perc_dev_cum > 0.48) |> 
+  nrow()
+
 # Number of drier plots: 1296
 dat |> 
   filter(Region == "Colorado Plateau") |> 
@@ -260,8 +354,16 @@ dat |>
   filter(Perc_dev_cum < 0) |> 
   nrow()
 
+# Number of extremely dry plots (-50% and drier): 540
+dat |> 
+  filter(Region == "Colorado Plateau") |> 
+  select(Region, Site, Date_Monitored, Plot, Perc_dev_cum) |> 
+  distinct(.keep_all = TRUE) |> 
+  filter(Perc_dev_cum < -0.5) |> 
+  nrow()
 
-### Seeded species --------------------------------------------------------
+
+### Seeded plots ----------------------------------------------------------
 
 # 4 seed mixes:
 # (Note that Current vs. Projected doesn't affect plot number, just the site, because
@@ -342,6 +444,42 @@ dat |>
   distinct(.keep_all = TRUE) |> 
   nrow()
 
+# 1. Warm, when extremely wet (+48% and wetter): 191
+dat |> 
+  filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "TLE"),
+         PlotMix_Climate == "Projected",
+         Perc_dev_cum > 0.48) |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
+
+# 2. Med-Warm, when extremely wet (+48% and wetter): 207
+dat |> 
+  filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "BarTBar", "FlyingM"),
+         PlotMix_Climate == "Projected",
+         Perc_dev_cum > 0.48) |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
+
+# 3. Cool-Med, when extremely wet (+48% and wetter): 160
+dat |> 
+  filter(Site %in% c("BarTBar", "FlyingM", "BabbittPJ"),
+         PlotMix_Climate == "Projected", 
+         Perc_dev_cum > 0.48) |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
+
+# 4. Cool, when extremely wet (+48% and wetter): 144
+dat |> 
+  filter(Site %in% c("BabbittPJ", "TLE"),
+         PlotMix_Climate == "Projected", 
+         Perc_dev_cum > 0.48) |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
+
 
 # 1. Warm, when drier: 352
 dat |> 
@@ -379,6 +517,42 @@ dat |>
   distinct(.keep_all = TRUE) |> 
   nrow()
 
+# 1. Warm, when extremely dry (-50% and drier): 144
+dat |> 
+  filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "TLE"),
+         PlotMix_Climate == "Projected",
+         Perc_dev_cum < -0.5) |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
+
+# 2. Med-Warm, when extremely dry (-50% and drier): 192
+dat |> 
+  filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "BarTBar", "FlyingM"),
+         PlotMix_Climate == "Projected",
+         Perc_dev_cum < -0.5) |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
+
+# 3. Cool-Med, when extremely dry (-50% and drier): 96
+dat |> 
+  filter(Site %in% c("BarTBar", "FlyingM", "BabbittPJ"),
+         PlotMix_Climate == "Projected", 
+         Perc_dev_cum < -0.5) |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
+
+# 4. Cool, when extremely dry (-50% and drier): 48
+dat |> 
+  filter(Site %in% c("BabbittPJ", "TLE"),
+         PlotMix_Climate == "Projected", 
+         Perc_dev_cum < -0.5) |> 
+  select(Region, Site, Date_Monitored, Plot) |> 
+  distinct(.keep_all = TRUE) |> 
+  nrow()
+
 
 # 0. Empty plot comparison total: 3104
 dat |> 
@@ -397,6 +571,15 @@ dat |>
   filter(Perc_dev_cum > 0) |> 
   nrow()
 
+# 0. Empty plot comparison, extremely wet (+48% and wetter): 704
+dat |> 
+  filter(Region == "Colorado Plateau",
+         PlotMix_Climate != "None") |> 
+  select(Region, Site, Date_Monitored, Plot, Perc_dev_cum) |> 
+  distinct(.keep_all = TRUE) |> 
+  filter(Perc_dev_cum > 0.48) |> 
+  nrow()
+
 # 0. Empty plot comparison, drier: 1152
 dat |> 
   filter(Region == "Colorado Plateau",
@@ -413,7 +596,7 @@ dat |>
 ## Native recruit ---------------------------------------------------------
 
 # Native volunteers (all plots): Highest species frequency overall
-#   LOHU2, LOAR12, CHPO12, PERE, PLAR, VUOC, LAGR10
+#   LOHU2, LOAR12, CHPO12, PERE, VUOC, PLAR, LAGR10
 sonoran.total.nativevolun <- present_species |> 
   filter(Weedy == "Desirable",
          Region %in% c("Sonoran Central", "Sonoran SE"),
@@ -444,7 +627,7 @@ sonoran.wettest.nativevolun <- present_species |>
          Perc_dev_cum > 0.24) |> 
   count(Code) |> 
   arrange(desc(n)) |> 
-  mutate(perc_freq = (n / 360) * 100) |> 
+  mutate(perc_freq = (n / 180) * 100) |> 
   print(n = 25) 
 
 # Native volunteers: Highest species frequency when drier
@@ -468,7 +651,7 @@ sonoran.driest.nativevolun <- present_species |>
          Perc_dev_cum < -0.23) |> 
   count(Code) |> 
   arrange(desc(n)) |> 
-  mutate(perc_freq = (n / 792) * 100) |> 
+  mutate(perc_freq = (n / 288) * 100) |> 
   print(n = 25) 
 
 
@@ -497,14 +680,14 @@ sonoran.wet.weedy <- present_species |>
   print(n = 15)
 
 # Weedy: Highest species frequency when extremely wet (+24% and more)
-#   SCBA, ERCI6, MAPA5, SIIR
+#   SCBA, ERCI6, MAPA5, SIIR, HEHIC, BRRU2, UNFO3.SRER
 sonoran.wettest.weedy <- present_species |> 
   filter(Weedy == "Weedy",
          Region %in% c("Sonoran Central", "Sonoran SE"),
          Perc_dev_cum > 0.24) |> 
   count(Code) |> 
   arrange(desc(n)) |> 
-  mutate(perc_freq = (n / 360) * 100) |> 
+  mutate(perc_freq = (n / 180) * 100) |> 
   print(n = 15)
 
 # Weedy: Highest species frequency when drier
@@ -526,7 +709,7 @@ sonoran.driest.weedy <- present_species |>
          Perc_dev_cum < -0.23) |> 
   count(Code) |> 
   arrange(desc(n)) |> 
-  mutate(perc_freq = (n / 792) * 100) |> 
+  mutate(perc_freq = (n / 288) * 100) |> 
   print(n = 15)
 
 
@@ -670,7 +853,7 @@ sonoran.wettest.seed1 <- present_species |>
          SpeciesSeeded == "Yes",
          Perc_dev_cum > 0.24) |> 
   count(Code) |> 
-  mutate(perc_freq = (n / 96) * 100) |> 
+  mutate(perc_freq = (n / 48) * 100) |> 
   arrange(desc(n))
 sonoran.wettest.seed1
 sonoran.wettest.seed1 <- sonoran.wettest.seed1 |> 
@@ -686,7 +869,7 @@ sonoran.wettest.seed2 <- present_species |>
          SpeciesSeeded == "Yes",
          Perc_dev_cum > 0.24) |> 
   count(Code) |> 
-  mutate(perc_freq = (n / 64) * 100) |> 
+  mutate(perc_freq = (n / 32) * 100) |> 
   arrange(desc(n))
 sonoran.wettest.seed2
 sonoran.wettest.seed2 <- sonoran.wettest.seed2 |> 
@@ -700,7 +883,7 @@ sonoran.wettest.seed3 <- present_species |>
          SpeciesSeeded == "Yes",
          Perc_dev_cum > 0.24) |> 
   count(Code) |> 
-  mutate(perc_freq = (n / 160) * 100) |> 
+  mutate(perc_freq = (n / 80) * 100) |> 
   arrange(desc(n))
 sonoran.wettest.seed3
 sonoran.wettest.seed3 <- sonoran.wettest.seed3 |> 
@@ -714,7 +897,7 @@ sonoran.wettest.seed4c <- present_species |>
          SpeciesSeeded == "Yes",
          Perc_dev_cum > 0.24) |> 
   count(Code) |> 
-  mutate(perc_freq = (n / 160) * 100,
+  mutate(perc_freq = (n / 80) * 100,
          mix = "Current") 
 sonoran.wettest.seed4c
 
@@ -725,7 +908,7 @@ sonoran.wettest.seed4p <- present_species |>
          SpeciesSeeded == "Yes",
          Perc_dev_cum > 0.24) |> 
   count(Code) |> 
-  mutate(perc_freq = (n / 160) * 100,
+  mutate(perc_freq = (n / 80) * 100,
          mix = "Projected") 
 sonoran.wettest.seed4p
 
@@ -781,7 +964,7 @@ sonoran.dry.seed4c <- present_species |>
          SpeciesSeeded == "Yes",
          Perc_dev_cum < 0) |> 
   count(Code) |> 
-  mutate(perc_freq = (n / 160) * 100,
+  mutate(perc_freq = (n / 352) * 100,
          mix = "Current") 
 sonoran.dry.seed4c
 
@@ -792,7 +975,7 @@ sonoran.dry.seed4p <- present_species |>
          SpeciesSeeded == "Yes",
          Perc_dev_cum < 0) |> 
   count(Code) |> 
-  mutate(perc_freq = (n / 160) * 100,
+  mutate(perc_freq = (n / 352) * 100,
          mix = "Projected") 
 sonoran.dry.seed4p
 
@@ -804,7 +987,7 @@ sonoran.driest.seed1 <- present_species |>
          SpeciesSeeded == "Yes",
          Perc_dev_cum < -0.23) |> 
   count(Code) |> 
-  mutate(perc_freq = (n / 224) * 100) |> 
+  mutate(perc_freq = (n / 112) * 100) |> 
   arrange(desc(n))
 sonoran.driest.seed1
 sonoran.driest.seed1 <- sonoran.driest.seed1 |> 
@@ -820,7 +1003,7 @@ present_species |>
          SpeciesSeeded == "Yes",
          Perc_dev_cum < -0.23) |> 
   count(Code) |> 
-  mutate(perc_freq = (n / 128) * 100) |> 
+  mutate(perc_freq = (n / 16) * 100) |> 
   arrange(desc(n)) # none
 
 # Extremely dry: Seeded version 3
@@ -830,7 +1013,7 @@ sonoran.driest.seed3 <- present_species |>
          SpeciesSeeded == "Yes",
          Perc_dev_cum < -0.23) |> 
   count(Code) |> 
-  mutate(perc_freq = (n / 352) * 100) |> 
+  mutate(perc_freq = (n / 128) * 100) |> 
   arrange(desc(n))
 sonoran.driest.seed3
 sonoran.driest.seed3 <- sonoran.driest.seed3 |> 
@@ -844,7 +1027,7 @@ sonoran.driest.seed4c <- present_species |>
          SpeciesSeeded == "Yes",
          Perc_dev_cum < -0.23) |> 
   count(Code) |> 
-  mutate(perc_freq = (n / 160) * 100,
+  mutate(perc_freq = (n / 128) * 100,
          mix = "Current") 
 sonoran.driest.seed4c
 
@@ -855,13 +1038,13 @@ present_species |>
          SpeciesSeeded == "Yes",
          Perc_dev_cum < -0.23) |> 
   count(Code) |> 
-  mutate(perc_freq = (n / 160) * 100,
+  mutate(perc_freq = (n / 128) * 100,
          mix = "Projected") # nothing grew
 
 
 # Total: combined
 #   Current: SACO6, LUSP2
-#   Projected: PLOV, ARPU9
+#   Projected: ARPU9, SECO10, PLOV
 sonoran.total.seed <- bind_rows(sonoran.total.seed1, sonoran.total.seed2, sonoran.total.seed3, 
                                 sonoran.total.seed4c, sonoran.total.seed4p) |> 
   arrange(desc(perc_freq))
@@ -869,7 +1052,7 @@ sonoran.total.seed
 
 # Wetter: combined
 #   Current: LUSP2, SACO6
-#   Projected: PLOV, ARPU9
+#   Projected: ARPU9, PLOV
 sonoran.wet.seed <- bind_rows(sonoran.wet.seed1, sonoran.wet.seed2, sonoran.wet.seed3,
                               sonoran.wet.seed4c, sonoran.wet.seed4p) |> 
   arrange(desc(perc_freq))
@@ -885,14 +1068,14 @@ sonoran.wettest.seed
 
 # Drier: combined
 #   Current: SACO6, LUSP2
-#   Projected: PLOV, SECO10
+#   Projected: SECO10, ARPU9, SPAM2, PLOV
 sonoran.dry.seed <- bind_rows(sonoran.dry.seed1, sonoran.dry.seed2, sonoran.dry.seed3,
                               sonoran.dry.seed4c) |> 
   arrange(desc(perc_freq))
 sonoran.dry.seed
 
 # Extremely dry (-23% and less): combined
-#   Current: SACO6, BAMU, LUSP2
+#   Current: SACO6, LUSP2, SPAM2
 #   Projected: PLOV, SECO10
 sonoran.driest.seed <- bind_rows(sonoran.driest.seed1, sonoran.driest.seed3,
                                  sonoran.driest.seed4c) |> 
@@ -919,7 +1102,7 @@ sonoran.wettest.empty <- present_species |>
          Region %in% c("Sonoran Central", "Sonoran SE"),
          Perc_dev_cum > 0.24) |> 
   count(Code) |> 
-  mutate(perc_freq = (n / 360) * 100)
+  mutate(perc_freq = (n / 180) * 100)
 sonoran.dry.empty <- present_species |> 
   filter(Code == "0",
          Region %in% c("Sonoran Central", "Sonoran SE"),
@@ -931,34 +1114,44 @@ sonoran.driest.empty <- present_species |>
          Region %in% c("Sonoran Central", "Sonoran SE"),
          Perc_dev_cum < -0.23) |> 
   count(Code) |> 
-  mutate(perc_freq = (n / 792) * 100)
+  mutate(perc_freq = (n / 288) * 100)
 
 
-# Empty seeded plots (Current + Projected): total
-dat |> 
-  filter(PlotMix_Climate != "None",
+# Empty seeded plots (Current or Projected)
+sonoran.total.empty.seed <- present_species |> 
+  filter(PlotMix_Climate == "Current",
          Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   count(Code) |> 
   filter(Code == "0") |> 
-  mutate(perc_freq = (n / 1024) * 100) 
-
-# Empty seeded plots (Current + Projected): when wetter
-dat |> 
-  filter(PlotMix_Climate != "None",
+  mutate(perc_freq = (n / 512) * 100) 
+sonoran.wet.empty.seed <- present_species |> 
+  filter(PlotMix_Climate == "Current",
          Region %in% c("Sonoran Central", "Sonoran SE"),
          Perc_dev_cum > 0) |> 
   count(Code) |> 
   filter(Code == "0") |> 
-  mutate(perc_freq = (n / 320) * 100)
-
-# Empty seeded plots (Current + Projected): when drier
-dat |> 
-  filter(PlotMix_Climate != "None",
+  mutate(perc_freq = (n / 160) * 100)
+sonoran.wettest.empty.seed <- present_species |> 
+  filter(PlotMix_Climate == "Current",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         Perc_dev_cum > 0.24) |> 
+  count(Code) |> 
+  filter(Code == "0") |> 
+  mutate(perc_freq = (n / 80) * 100)
+sonoran.dry.empty.seed <- present_species |> 
+  filter(PlotMix_Climate == "Current",
          Region %in% c("Sonoran Central", "Sonoran SE"),
          Perc_dev_cum < 0) |> 
   count(Code) |> 
   filter(Code == "0") |> 
-  mutate(perc_freq = (n / 704) * 100) 
+  mutate(perc_freq = (n / 352) * 100) 
+sonoran.driest.empty.seed <- present_species |> 
+  filter(PlotMix_Climate == "Current",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         Perc_dev_cum < -0.23) |> 
+  count(Code) |> 
+  filter(Code == "0") |> 
+  mutate(perc_freq = (n / 128) * 100) 
 
 
 
@@ -992,16 +1185,23 @@ sonoran.seed <- bind_rows(sonoran.total.seed, sonoran.wet.seed, sonoran.dry.seed
                   rep("Driest", nrow(sonoran.driest.seed)))) |> 
   select(-mix)
 
-# Combine Empty
+# Combine Empty (all)
 sonoran.empty <- bind_rows(sonoran.total.empty, sonoran.wet.empty, sonoran.dry.empty,
                           sonoran.wettest.empty, sonoran.driest.empty) |> 
   mutate(Frequency = perc_freq / 100) |> 
   mutate(Plant = "Empty",
          Plot = c("Total", "Wetter", "Drier", "Wettest", "Driest"))
 
+# Combine Empty (seeded plots)
+sonoran.empty.seed <- bind_rows(sonoran.total.empty.seed, sonoran.wet.empty.seed, sonoran.dry.empty.seed,
+                           sonoran.wettest.empty.seed, sonoran.driest.empty.seed) |> 
+  mutate(Frequency = perc_freq / 100) |> 
+  mutate(Plant = "Empty seeded",
+         Plot = c("Total", "Wetter", "Drier", "Wettest", "Driest"))
+
 # All
 sonoran.freq <- bind_rows(sonoran.nativevolun, sonoran.weedy, sonoran.seed,
-                              sonoran.empty) |> 
+                          sonoran.empty, sonoran.empty.seed) |> 
   mutate(Type = paste0(Plant, ", ", Plot))
 sonoran.freq$Code[sonoran.freq$Code == "0"] <- "Empty"  
 
@@ -1017,7 +1217,8 @@ sonoran.freq.interest <- sonoran.freq |>
            Code == "SECO10" & Plant == "Projected mix" | 
            Code == "ARPU9" & Plant == "Projected mix" |
            Code %in% c("VUOC", "LOAR12", "CHPO12",
-                       "LOHU2", "SCBA", "BRRU2", "ERCI6", "Empty")) |> 
+                       "LOHU2", "SCBA", "BRRU2", "ERCI6") |
+           Code == "Empty" & Plant == "Empty") |> 
   mutate(Plant = str_replace(Plant, "Weed", "Invasive"),
          Type = str_replace(Type, "Weed", "Invasive"))
 
@@ -1037,11 +1238,11 @@ sonoran.freq.weed <- sonoran.freq |>
 
 # Current mix
 sonoran.freq.current <- sonoran.freq |> 
-  filter(Plant == "Current mix")
+  filter(Plant %in% c("Current mix", "Empty seeded"))
 
 # Projected mix
 sonoran.freq.projected <- sonoran.freq |> 
-  filter(Plant == "Projected mix")
+  filter(Plant %in% c("Current mix", "Empty seeded"))
 
 # Write to csv
 write_csv(sonoran.freq.interest,
@@ -1112,13 +1313,14 @@ present_species |>
 
 
 
+
 # Northern Arizona: Frequency ---------------------------------------------
 
 ## Native recruit ---------------------------------------------------------
 
 # Native volunteer (all plots): Highest species frequency overall
-#   CHAL11, SCMU6, LEPA6, ATCO, SAAB, SOEL
-dat |> 
+#   ATCO, SPSP.BarTBar, HESP.BabbittPJ, SOEL, CHAL11, SCMU6
+naz.total.nativevolun <- present_species |> 
   filter(Weedy != "Weedy",
          Region == "Colorado Plateau",
          SpeciesSeeded == "No") |> 
@@ -1128,8 +1330,8 @@ dat |>
   print(n = 25)
 
 # Native volunteer: when wetter
-#   CHAL11, SCMU6, LEPA6, SAAB
-dat |> 
+#   HESP.BabbittPJ, SPSP.BarTBar, ATCO, CHAL11, SCMU6
+naz.wet.nativevolun <- present_species |> 
   filter(Weedy != "Weedy",
          Region == "Colorado Plateau",
          SpeciesSeeded == "No",
@@ -1139,9 +1341,21 @@ dat |>
   mutate(perc_freq = (n / 2196) * 100) |> 
   print(n = 25)
 
+# Native volunteer: when extremely wet (+48% and wetter)
+#   HESP.BabbittPJ, LEPA6, CHAL11, ATCO
+naz.wettest.nativevolun <- present_species |> 
+  filter(Weedy != "Weedy",
+         Region == "Colorado Plateau",
+         SpeciesSeeded == "No",
+         Perc_dev_cum > 0.48) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 2196) * 100) |> 
+  print(n = 25)
+
 # Native volunteer: when drier
-#   MONU, GUSA2, HECI, PHNE3
-dat |> 
+#   ATCO, SOEL, SPSP.TLE, HECI
+naz.dry.nativevolun <- present_species |> 
   filter(Weedy != "Weedy",
          Region == "Colorado Plateau",
          SpeciesSeeded == "No",
@@ -1149,15 +1363,27 @@ dat |>
   count(Code) |> 
   arrange(desc(n)) |> 
   mutate(perc_freq = (n / 1296) * 100) |> 
-  print(n = 47)
+  print(n = 25)
+
+# Native volunteer: when extremely dry (-50% and drier)
+#   SOEL, ATCO, CHEN.BabbittPJ, PHNE3
+naz.driest.nativevolun <- present_species |> 
+  filter(Weedy != "Weedy",
+         Region == "Colorado Plateau",
+         SpeciesSeeded == "No",
+         Perc_dev_cum < -0.5) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 1296) * 100) |> 
+  print(n = 25)
 
 
 
 ## Weedy ------------------------------------------------------------------
 
 # Weedy (all plots): Highest species frequency overall
-#   SATR12, BRNI, ERCI6, BRRU2, HAGL
-dat |> 
+#   SATR12, UNFO1.FlyingM, ERCI6, UNGR.FlyingM, UNGR.BarTBar, UNFO8.BarTBar, HAGL
+naz.total.weedy <- present_species |> 
   filter(Weedy != "Desirable",
          Region == "Colorado Plateau") |> 
   count(Code) |> 
@@ -1166,34 +1392,54 @@ dat |>
   print(n = 20)
 
 # Weedy: when wetter
-#   SATR12, BRNI, ERCI6
-dat |> 
+#   SATR12, UNFO1.FlyingM, UNGR.BarTBar, UNGR.FlyingM, UNFO8.BarTBar, ERCI6, UNGR1.MOWE
+naz.wet.weedy <- present_species |> 
   filter(Weedy != "Desirable",
          Region == "Colorado Plateau",
          Perc_dev_cum > 0) |> 
-  select(Site, Code, Duration, Lifeform, Count, Perc_dev_cum) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 2196) * 100) |> 
+  print(n = 25)
+
+# Weedy: when extremely wet (+48% and wetter)
+#   BRINI, SATR12, ERCI6, UNFO1.PEFO, UNGR1.MOWE, HAGL
+naz.wettest.weedy <- present_species |> 
+  filter(Weedy != "Desirable",
+         Region == "Colorado Plateau",
+         Perc_dev_cum > 0.48) |> 
   count(Code) |> 
   arrange(desc(n)) |> 
   mutate(perc_freq = (n / 2196) * 100) |> 
   print(n = 25)
 
 # Weedy: when drier
-#   SATR12, BRRU2, HAGL
-dat |> 
+#   SATR12, UNFO1.FlyingM, BRRU2, HAGL, ERCI6, TRTE
+naz.dry.weedy <- present_species |> 
   filter(Weedy != "Desirable",
          Region == "Colorado Plateau",
          Perc_dev_cum < 0) |> 
-  select(Site, Code, Duration, Lifeform, Count, Perc_dev_cum) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 1296) * 100) |> 
+  print(n = 15)
+
+# Weedy: when extremely dry (-50% and drier)
+#   SATR12, BRRU2, ERCI6, TRTE
+naz.dry.weedy <- present_species |> 
+  filter(Weedy != "Desirable",
+         Region == "Colorado Plateau",
+         Perc_dev_cum < -0.5) |> 
   count(Code) |> 
   arrange(desc(n)) |> 
   mutate(perc_freq = (n / 1296) * 100) |> 
   print(n = 15)
 
 
-### Seeded species --------------------------------------------------------
+## Seeded species ---------------------------------------------------------
 
 # Total: (1) Warm mix 
-naz.total.seed1p <- dat |> 
+naz.total.seed1p <- present_species |> 
   filter(SpeciesSeeded == "Yes",
          Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "TLE"),
          Code %in% c("ACHY", "ARPU9", "ASTU", "BAMU", "BOCU", "PLMU3", "SECO10")) |> 
@@ -1205,7 +1451,7 @@ naz.total.seed1p <- dat |>
 naz.total.seed1p
 
 # Total: (2) Med-Warm mix, Current 
-naz.total.seed2c <- dat |> 
+naz.total.seed2c <- present_species |> 
   filter(SpeciesSeeded == "Yes",
          Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb"),
          Code %in% c("BOER4", "KRLA2", "MATA2", "PEPA8", "PLJA", "POSE", "SPCR")) |> 
@@ -1217,7 +1463,7 @@ naz.total.seed2c <- dat |>
 naz.total.seed2c
 
 # Total: (2) Med-Warm mix, Projected
-naz.total.seed2p <- dat |> 
+naz.total.seed2p <- present_species |> 
   filter(SpeciesSeeded == "Yes",
          Site %in% c("BarTBar", "FlyingM"),
          Code %in% c("BOER4", "KRLA2", "MATA2", "PEPA8", "PLJA", "POSE", "SPCR")) |> 
@@ -1229,7 +1475,7 @@ naz.total.seed2p <- dat |>
 naz.total.seed2p
 
 # Total: (3) Cool-Med mix, Current
-naz.total.seed3c <- dat |> 
+naz.total.seed3c <- present_species |> 
   filter(SpeciesSeeded == "Yes",
          Site %in% c("BarTBar", "FlyingM"),
          Code %in% c("ACMI2", "BOGR2", "DACA7", "ELEL5", "HEMU3", "LILE3", "PASM")) |> 
@@ -1241,7 +1487,7 @@ naz.total.seed3c <- dat |>
 naz.total.seed3c
 
 # Total: (3) Cool-Med mix, Projected
-naz.total.seed3p <- dat |> 
+naz.total.seed3p <- present_species |> 
   filter(SpeciesSeeded == "Yes",
          Site == "BabbittPJ",
          Code %in% c("ACMI2", "BOGR2", "DACA7", "ELEL5", "HEMU3", "LILE3", "PASM")) |> 
@@ -1253,7 +1499,7 @@ naz.total.seed3p <- dat |>
 naz.total.seed3p
 
 # Total: (4) Cool mix, Current
-naz.total.seed4c <- dat |> 
+naz.total.seed4c <- present_species |> 
   filter(SpeciesSeeded == "Yes",
          Site %in% c("BabbittPJ", "TLE"),
          Code %in% c("ELTR7", "ELWA2", "HEBO", "HECO26", "LECI4", "PSSP6", "SPGR2")) |> 
@@ -1265,7 +1511,7 @@ naz.total.seed4c <- dat |>
 naz.total.seed4c
 
 # Wetter: (1) Warm mix 
-naz.wet.seed1p <- dat |> 
+naz.wet.seed1p <- present_species |> 
   filter(SpeciesSeeded == "Yes",
          Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "TLE"),
          Code %in% c("ACHY", "ARPU9", "ASTU", "BAMU", "BOCU", "PLMU3", "SECO10"),
@@ -1278,7 +1524,7 @@ naz.wet.seed1p <- dat |>
 naz.wet.seed1p
 
 # Wetter: (2) Med-Warm mix, Current 
-naz.wet.seed2c <- dat |> 
+naz.wet.seed2c <- present_species |> 
   filter(SpeciesSeeded == "Yes",
          Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb"),
          Code %in% c("BOER4", "KRLA2", "MATA2", "PEPA8", "PLJA", "POSE", "SPCR"),
@@ -1291,7 +1537,7 @@ naz.wet.seed2c <- dat |>
 naz.wet.seed2c
 
 # Wetter: (2) Med-Warm mix, Projected
-naz.wet.seed2p <- dat |> 
+naz.wet.seed2p <- present_species |> 
   filter(SpeciesSeeded == "Yes",
          Site %in% c("BarTBar", "FlyingM"),
          Code %in% c("BOER4", "KRLA2", "MATA2", "PEPA8", "PLJA", "POSE", "SPCR"),
@@ -1304,7 +1550,7 @@ naz.wet.seed2p <- dat |>
 naz.wet.seed2p
 
 # Wetter: (3) Cool-Med mix, Current
-naz.wet.seed3c <- dat |> 
+naz.wet.seed3c <- present_species |> 
   filter(SpeciesSeeded == "Yes",
          Site %in% c("BarTBar", "FlyingM"),
          Code %in% c("ACMI2", "BOGR2", "DACA7", "ELEL5", "HEMU3", "LILE3", "PASM"),
@@ -1317,7 +1563,7 @@ naz.wet.seed3c <- dat |>
 naz.wet.seed3c
 
 # Wetter: (3) Cool-Med mix, Projected
-naz.wet.seed3p <- dat |> 
+naz.wet.seed3p <- present_species |> 
   filter(SpeciesSeeded == "Yes",
          Site == "BabbittPJ",
          Code %in% c("ACMI2", "BOGR2", "DACA7", "ELEL5", "HEMU3", "LILE3", "PASM"),
@@ -1330,7 +1576,7 @@ naz.wet.seed3p <- dat |>
 naz.wet.seed3p
 
 # Wetter: (4) Cool mix, Current
-naz.wet.seed4c <- dat |> 
+naz.wet.seed4c <- present_species |> 
   filter(SpeciesSeeded == "Yes",
          Site %in% c("BabbittPJ", "TLE"),
          Code %in% c("ELTR7", "ELWA2", "HEBO", "HECO26", "LECI4", "PSSP6", "SPGR2"),
@@ -1342,8 +1588,86 @@ naz.wet.seed4c <- dat |>
          mix = "Current")
 naz.wet.seed4c
 
+# Extremely wet: (1) Warm mix 
+naz.wettest.seed1p <- present_species |> 
+  filter(SpeciesSeeded == "Yes",
+         Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "TLE"),
+         Code %in% c("ACHY", "ARPU9", "ASTU", "BAMU", "BOCU", "PLMU3", "SECO10"),
+         Perc_dev_cum > 0.48) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 479) * 100,
+         Sites = "AguaFria, MOWE, PEFO, Spiderweb, TLE",
+         mix = "Projected")
+naz.wettest.seed1p
+
+# Extremely wet: (2) Med-Warm mix, Current 
+naz.wettest.seed2c <- present_species |> 
+  filter(SpeciesSeeded == "Yes",
+         Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb"),
+         Code %in% c("BOER4", "KRLA2", "MATA2", "PEPA8", "PLJA", "POSE", "SPCR"),
+         Perc_dev_cum > 0.48) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 783) * 100,
+         Sites = "AguaFria, MOWE, PEFO, Spiderweb",
+         mix = "Current")
+naz.wettest.seed2c
+
+# Extremely wet: (2) Med-Warm mix, Projected
+naz.wettest.seed2p <- present_species |> 
+  filter(SpeciesSeeded == "Yes",
+         Site %in% c("BarTBar", "FlyingM"),
+         Code %in% c("BOER4", "KRLA2", "MATA2", "PEPA8", "PLJA", "POSE", "SPCR"),
+         Perc_dev_cum > 0.48) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 783) * 100,
+         Sites = "BarTBar, FlyingM",
+         mix = "Projected")
+naz.wettest.seed2p
+
+# Extremely wet: (3) Cool-Med mix, Current
+naz.wettest.seed3c <- present_species |> 
+  filter(SpeciesSeeded == "Yes",
+         Site %in% c("BarTBar", "FlyingM"),
+         Code %in% c("ACMI2", "BOGR2", "DACA7", "ELEL5", "HEMU3", "LILE3", "PASM"),
+         Perc_dev_cum > 0.48) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 496) * 100,
+         Sites = "BarTBar, FlyingM",
+         mix = "Current")
+naz.wettest.seed3c
+
+# Extremely wet: (3) Cool-Med mix, Projected
+naz.wettest.seed3p <- present_species |> 
+  filter(SpeciesSeeded == "Yes",
+         Site == "BabbittPJ",
+         Code %in% c("ACMI2", "BOGR2", "DACA7", "ELEL5", "HEMU3", "LILE3", "PASM"),
+         Perc_dev_cum > 0.48) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 496) * 100,
+         Sites = "BabbitPJ",
+         mix = "Projected")
+naz.wettest.seed3p
+
+# Extremely wet: (4) Cool mix, Current
+naz.wettest.seed4c <- present_species |> 
+  filter(SpeciesSeeded == "Yes",
+         Site %in% c("BabbittPJ", "TLE"),
+         Code %in% c("ELTR7", "ELWA2", "HEBO", "HECO26", "LECI4", "PSSP6", "SPGR2"),
+         Perc_dev_cum > 0.48) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 192) * 100,
+         Sites = "BabbittPJ, TLE",
+         mix = "Current")
+naz.wettest.seed4c
+
 # Drier: (1) Warm mix 
-naz.dry.seed1p <- dat |> 
+naz.dry.seed1p <- present_species |> 
   filter(SpeciesSeeded == "Yes",
          Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "TLE"),
          Code %in% c("ACHY", "ARPU9", "ASTU", "BAMU", "BOCU", "PLMU3", "SECO10"),
@@ -1355,8 +1679,8 @@ naz.dry.seed1p <- dat |>
          mix = "Projected")
 naz.dry.seed1p
 
-# Drier: Med-Warm mix, Current 
-naz.dry.seed2c <- dat |> 
+# Drier: (2) Med-Warm mix, Current 
+naz.dry.seed2c <- present_species |> 
   filter(SpeciesSeeded == "Yes",
          Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb"),
          Code %in% c("BOER4", "KRLA2", "MATA2", "PEPA8", "PLJA", "POSE", "SPCR"),
@@ -1368,8 +1692,8 @@ naz.dry.seed2c <- dat |>
          mix = "Current")
 naz.dry.seed2c
 
-# Drier: Med-Warm mix, Projected
-naz.dry.seed2p <- dat |> 
+# Drier: (2) Med-Warm mix, Projected
+naz.dry.seed2p <- present_species |> 
   filter(SpeciesSeeded == "Yes",
          Site %in% c("BarTBar", "FlyingM"),
          Code %in% c("BOER4", "KRLA2", "MATA2", "PEPA8", "PLJA", "POSE", "SPCR"),
@@ -1381,8 +1705,8 @@ naz.dry.seed2p <- dat |>
          mix = "Projected")
 naz.dry.seed2p
 
-# Drier: Cool-Med mix, Current
-naz.dry.seed3c <- dat |> 
+# Drier: (3) Cool-Med mix, Current
+naz.dry.seed3c <- present_species |> 
   filter(SpeciesSeeded == "Yes",
          Site %in% c("BarTBar", "FlyingM"),
          Code %in% c("ACMI2", "BOGR2", "DACA7", "ELEL5", "HEMU3", "LILE3", "PASM"),
@@ -1394,8 +1718,8 @@ naz.dry.seed3c <- dat |>
          mix = "Current")
 naz.dry.seed3c
 
-# Drier: Cool-Med mix, Projected
-naz.dry.seed3p <- dat |> 
+# Drier: (3) Cool-Med mix, Projected
+naz.dry.seed3p <- present_species |> 
   filter(SpeciesSeeded == "Yes",
          Site == "BabbittPJ",
          Code %in% c("ACMI2", "BOGR2", "DACA7", "ELEL5", "HEMU3", "LILE3", "PASM"),
@@ -1407,8 +1731,8 @@ naz.dry.seed3p <- dat |>
          mix = "Projected")
 naz.dry.seed3p
 
-# Drier: Cool mix, Current
-naz.dry.seed4c <- dat |> 
+# Drier: (4) Cool mix, Current
+naz.dry.seed4c <- present_species |> 
   filter(SpeciesSeeded == "Yes",
          Site %in% c("BabbittPJ", "TLE"),
          Code %in% c("ELTR7", "ELWA2", "HEBO", "HECO26", "LECI4", "PSSP6", "SPGR2"),
@@ -1420,24 +1744,114 @@ naz.dry.seed4c <- dat |>
          mix = "Current")
 naz.dry.seed4c
 
+# Extremely dry: (1) Warm mix 
+naz.driest.seed1p <- present_species |> 
+  filter(SpeciesSeeded == "Yes",
+         Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "TLE"),
+         Code %in% c("ACHY", "ARPU9", "ASTU", "BAMU", "BOCU", "PLMU3", "SECO10"),
+         Perc_dev_cum < -0.5) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 352) * 100,
+         Sites = "AguaFria, MOWE, PEFO, Spiderweb, TLE",
+         mix = "Projected")
+naz.driest.seed1p
+
+# Extremely dry: (2) Med-Warm mix, Current 
+naz.driest.seed2c <- present_species |> 
+  filter(SpeciesSeeded == "Yes",
+         Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb"),
+         Code %in% c("BOER4", "KRLA2", "MATA2", "PEPA8", "PLJA", "POSE", "SPCR"),
+         Perc_dev_cum < -0.5) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 448) * 100,
+         Sites = "AguaFria, MOWE, PEFO, Spiderweb",
+         mix = "Current")
+naz.driest.seed2c
+
+# Extremely dry: (2) Med-Warm mix, Projected
+naz.driest.seed2p <- present_species |> 
+  filter(SpeciesSeeded == "Yes",
+         Site %in% c("BarTBar", "FlyingM"),
+         Code %in% c("BOER4", "KRLA2", "MATA2", "PEPA8", "PLJA", "POSE", "SPCR"),
+         Perc_dev_cum < -0.5) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 448) * 100,
+         Sites = "BarTBar, FlyingM",
+         mix = "Projected")
+naz.driest.seed2p
+
+# Extremely dry: (3) Cool-Med mix, Current
+naz.driest.seed3c <- present_species |> 
+  filter(SpeciesSeeded == "Yes",
+         Site %in% c("BarTBar", "FlyingM"),
+         Code %in% c("ACMI2", "BOGR2", "DACA7", "ELEL5", "HEMU3", "LILE3", "PASM"),
+         Perc_dev_cum < -0.5) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 224) * 100,
+         Sites = "BarTBar, FlyingM",
+         mix = "Current")
+naz.driest.seed3c
+
+# Extremely dry: (3) Cool-Med mix, Projected
+naz.driest.seed3p <- present_species |> 
+  filter(SpeciesSeeded == "Yes",
+         Site == "BabbittPJ",
+         Code %in% c("ACMI2", "BOGR2", "DACA7", "ELEL5", "HEMU3", "LILE3", "PASM"),
+         Perc_dev_cum < -0.5) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 224) * 100,
+         Sites = "BabbitPJ",
+         mix = "Projected")
+naz.driest.seed3p
+
+# Extremely dry: (4) Cool mix, Current
+naz.driest.seed4c <- present_species |> 
+  filter(SpeciesSeeded == "Yes",
+         Site %in% c("BabbittPJ", "TLE"),
+         Code %in% c("ELTR7", "ELWA2", "HEBO", "HECO26", "LECI4", "PSSP6", "SPGR2"),
+         Perc_dev_cum < -0.5) |> 
+  count(Code) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_freq = (n / 128) * 100,
+         Sites = "BabbittPJ, TLE",
+         mix = "Current")
+naz.driest.seed4c
+
 
 # Current: total combined
-#   PASM, DACA7, LILE3, LECI4
+#   LILE3, PASM, DACA7, LECI4, HEBO, AMCI2, HECO26, ELEL5
 naz.total.seedc <- bind_rows(naz.total.seed2c, naz.total.seed3c, naz.total.seed4c) |> 
   arrange(desc(perc_freq))
 naz.total.seedc
 
 # Current: wetter combined
-#   LILE3, DACA7, LECI4, PASM
+#   LILE3, DACA7, PASM, LECI4, HEBO, AMCI2, ELEL5, ELTR7
 naz.wet.seedc <- bind_rows(naz.wet.seed2c, naz.wet.seed3c, naz.wet.seed4c) |> 
   arrange(desc(perc_freq))
 naz.wet.seedc
 
+# Current: Extremely wet (+48% and wetter) combined
+#   LECI4, HEBO, ELTR7, HECO26, ELWA2
+naz.wettest.seedc <- bind_rows(naz.wettest.seed2c, naz.wettest.seed3c, naz.wettest.seed4c) |> 
+  arrange(desc(perc_freq))
+naz.wettest.seedc
+
 # Current: drier combined
-#   LECI4, PASM, HECO26
+#   HECO26, PASM, HEBO, LECI4, LILE3
 naz.dry.seedc <- bind_rows(naz.dry.seed2c, naz.dry.seed3c, naz.dry.seed4c) |> 
   arrange(desc(perc_freq))
 naz.dry.seedc
+
+# Current: Extremely dry (-50% and drier) combined
+#   HECO26, LECI4, HEBO
+naz.driest.seedc <- bind_rows(naz.driest.seed2c, naz.driest.seed3c, naz.driest.seed4c) |> 
+  arrange(desc(perc_freq))
+naz.driest.seedc
 
 # Projected: total combined
 #   BAMU, ASTU, SECO10
@@ -1446,20 +1860,67 @@ naz.total.seedp <- bind_rows(naz.total.seed1p, naz.total.seed2p, naz.total.seed3
 naz.total.seedp 
 
 # Projected: wetter combined
-#   BAMU, ASTU, SECO10
+#   BAMU, ASTU, SECO10, PASM
 naz.wet.seedp <- bind_rows(naz.wet.seed1p, naz.dry.seed2p, naz.dry.seed3p) |> 
   arrange(desc(perc_freq))
 naz.wet.seedp
 
+# Projected: Extremely wet (+48% and wetter) combined
+#   BAMU, PASM, ASTU, SECO10
+naz.wettest.seedp <- bind_rows(naz.wettest.seed1p, naz.dry.seed2p, naz.dry.seed3p) |> 
+  arrange(desc(perc_freq))
+naz.wettest.seedp
+
 # Projected: drier combined
-#   PASM, BAMU, BOCU
+#   PASM, ACHY, BAMU
 naz.dry.seedp <- bind_rows(naz.dry.seed1p, naz.dry.seed2p, naz.dry.seed3p) |> 
   arrange(desc(perc_freq))
 naz.dry.seedp
 
+# Projected: Extremely dry (-50% and drier) combined
+#   PASM, ELEL5, HEMU3
+naz.driest.seedp <- bind_rows(naz.driest.seed1p, naz.driest.seed2p, naz.driest.seed3p) |> 
+  arrange(desc(perc_freq))
+naz.driest.seedp
+
+
+
+## Empty plots ------------------------------------------------------------
+
+# Empty plots (out of all plots)
+naz.total.empty <- present_species |> 
+  filter(Code == "0",
+         Region == "Colorado Plateau") |> 
+  count(Code) |> 
+  mutate(perc_freq = (n / 3492) * 100)
+naz.wet.empty <- present_species |> 
+  filter(Code == "0",
+         Region == "Colorado Plateau",
+         Perc_dev_cum > 0) |> 
+  count(Code) |> 
+  mutate(perc_freq = (n / 2196) * 100)
+naz.wettest.empty <- present_species |> 
+  filter(Code == "0",
+         Region == "Colorado Plateau",
+         Perc_dev_cum > 0.24) |> 
+  count(Code) |> 
+  mutate(perc_freq = (n / 360) * 100)
+naz.dry.empty <- present_species |> 
+  filter(Code == "0",
+         Region == "Colorado Plateau",
+         Perc_dev_cum < 0) |> 
+  count(Code) |> 
+  mutate(perc_freq = (n / 792) * 100)
+naz.driest.empty <- present_species |> 
+  filter(Code == "0",
+         Region == "Colorado Plateau",
+         Perc_dev_cum < -0.23) |> 
+  count(Code) |> 
+  mutate(perc_freq = (n / 792) * 100)
+
 
 # Empty seeded plots (Current + Projected): total
-dat |> 
+present_species |> 
   filter(PlotMix_Climate != "None",
          Region == "Colorado Plateau") |> 
   count(Code) |> 
@@ -1467,7 +1928,7 @@ dat |>
   mutate(perc_freq = (n / 3104) * 100)
 
 # Empty seeded plots (Current + Projected): when wetter
-dat |> 
+present_species |> 
   filter(PlotMix_Climate != "None",
          Region == "Colorado Plateau",
          Perc_dev_cum > 0) |> 
@@ -1477,7 +1938,7 @@ dat |>
 
 
 # Empty seeded plots (Current + Projected): when drier
-dat |> 
+present_species |> 
   filter(PlotMix_Climate != "None",
          Region == "Colorado Plateau",
          Perc_dev_cum < 0) |> 
@@ -1487,130 +1948,6 @@ dat |>
 
 
 ### Construct table -------------------------------------------------------
-
-# Native volunteers
-naz.total.nativevolun <- dat |> 
-  filter(Code %in% c("CHAL11", "SOEL", "LEPA6"),
-         Region == "Colorado Plateau") |> 
-  count(Code) |> 
-  arrange(desc(n)) |> 
-  mutate(Frequency = (n / 3492),
-         Plant = "Native recruit",
-         Plot = "Total")
-naz.wet.nativevolun <- dat |> 
-  filter(Code %in% c("CHAL11", "SOEL", "LEPA6"),
-         Region == "Colorado Plateau",
-         Perc_dev_cum > 0) |> 
-  count(Code) |> 
-  arrange(desc(n)) |> 
-  mutate(Frequency = (n / 2196),
-         Plant = "Native recruit",
-         Plot = "Wetter")
-naz.dry.nativevolun <- dat |> 
-  filter(Code %in% c("CHAL11", "SOEL", "LEPA6"),
-         Region == "Colorado Plateau",
-         Perc_dev_cum < 0) |> 
-  count(Code) |> 
-  arrange(desc(n)) |> 
-  mutate(Frequency = (n / 1296),
-         Plant = "Native recruit",
-         Plot = "Drier")
-add0 <- data.frame(Code = "LEPA6", n = 0, Frequency = 0,
-                   Plant = "Native recruit", Plot = "Drier")
-naz.dry.nativevolun <- bind_rows(naz.dry.nativevolun, add0)
-
-# Weedy
-naz.total.weedy <- dat |> 
-  filter(Code %in% c("SATR12", "HAGL", "BRRU2", "ERCI6", "BRNI"),
-         Region == "Colorado Plateau") |> 
-  count(Code) |> 
-  arrange(desc(n)) |> 
-  mutate(Frequency = (n / 3492),
-         Plant = "Invasive",
-         Plot = "Total")
-naz.wet.weedy <- dat |> 
-  filter(Code %in% c("SATR12", "HAGL", "BRRU2", "ERCI6", "BRNI"),
-         Region == "Colorado Plateau",
-         Perc_dev_cum > 0) |> 
-  count(Code) |> 
-  arrange(desc(n)) |> 
-  mutate(Frequency = (n / 2196),
-         Plant = "Invasive",
-         Plot = "Wetter")
-naz.dry.weedy <- dat |> 
-  filter(Code %in% c("SATR12", "HAGL", "BRRU2", "ERCI6", "BRNI"),
-         Region == "Colorado Plateau",
-         Perc_dev_cum < 0) |> 
-  count(Code) |> 
-  arrange(desc(n)) |> 
-  mutate(Frequency = (n / 1296),
-         Plant = "Invasive",
-         Plot = "Drier")
-add0 <- data.frame(Code = "BRNI", n = 0, Frequency = 0,
-                   Plant = "Invasive", Plot = "Drier")
-naz.dry.weedy <- bind_rows(naz.dry.weedy, add0)
-
-# Empty plots (out of all plots)
-naz.total.empty <- dat |> 
-  filter(Code == "0",
-         Region == "Colorado Plateau") |> 
-  count(Code) |> 
-  arrange(desc(n)) |> 
-  mutate(Frequency = (n / 3492),
-         Plant = "Empty",
-         Plot = "Total")
-naz.wet.empty <- dat |> 
-  filter(Code == "0",
-         Region == "Colorado Plateau",
-         Perc_dev_cum > 0) |> 
-  count(Code) |> 
-  arrange(desc(n)) |> 
-  mutate(Frequency = (n / 2196),
-         Plant = "Empty",
-         Plot = "Wetter")
-naz.dry.empty <- dat |> 
-  filter(Code == "0",
-         Region == "Colorado Plateau",
-         Perc_dev_cum < 0) |> 
-  count(Code) |> 
-  arrange(desc(n)) |> 
-  mutate(Frequency = (n / 1296),
-         Plant = "Empty",
-         Plot = "Drier")
-
-# Seeded, Current
-naz.seedc.interest <- bind_rows(naz.total.seedc, naz.wet.seedc, naz.dry.seedc) |> 
-  mutate(Frequency = perc_freq / 100) |> 
-  mutate(Plant = paste(mix, "mix"),
-         Plot = c(rep("Total", nrow(naz.total.seedc)), rep("Wetter", nrow(naz.wet.seedc)),
-                  rep("Drier", nrow(naz.dry.seedc)))) |> 
-  select(-mix, -perc_freq, -Sites) |> 
-  filter(Code %in% c("LECI4", "HECO26", "LILE3", "PASM", "DACA7"))
-
-# Seeded, Projected
-naz.seedp.interest <- bind_rows(naz.total.seedp, naz.wet.seedp, naz.dry.seedp) |> 
-  mutate(Frequency = perc_freq / 100) |> 
-  mutate(Plant = paste(mix, "mix"),
-         Plot = c(rep("Total", nrow(naz.total.seedp)), rep("Wetter", nrow(naz.wet.seedp)),
-                  rep("Drier", nrow(naz.dry.seedp)))) |> 
-  select(-mix, -perc_freq, -Sites) |> 
-  filter(Code %in% c("BAMU", "SECO10", "ASTU")) 
-add0 <- data.frame(Code = "ASTU", n = 0, Frequency = 0,
-                   Plant = "Projected mix", Plot = "Drier")
-naz.seedp.interest <- bind_rows(naz.seedp.interest, add0)
-
-
-# Combine all
-naz.interest <- bind_rows(naz.total.nativevolun, naz.wet.nativevolun, naz.dry.nativevolun,
-                          naz.total.weedy, naz.wet.weedy, naz.dry.weedy, naz.seedc.interest,
-                          naz.seedp.interest, naz.total.empty, naz.wet.empty, naz.dry.empty) |> 
-  mutate(Type = paste0(Plant, ", ", Plot))
-naz.interest$Code[naz.interest$Code == "0"] <- "Empty"  
-
-# Write to csv
-write_csv(naz.interest,
-          file = "data/cleaned/09.1_Northern-AZ-Plateau_frequency_species-of-interest.csv")
-
 
 
 save.image("RData/11.1_calculate-frequency-by-species.RData")
