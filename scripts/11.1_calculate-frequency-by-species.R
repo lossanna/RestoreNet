@@ -39,39 +39,21 @@ library(tidyverse)
 
 # Load data ---------------------------------------------------------------
 
-subplot <- read_csv("data/cleaned/04.1_subplot-data_clean.csv")
-prism.data <- read_csv("data/cleaned/03.2_monitoring-events-with-PRISM-climate-data_clean.csv")
 cum.pd <- read_csv("data/cleaned/03.3_cumulative-precip_percent-deviation-from-norm_clean.csv")
-ai <- read_csv("data/cleaned/03.4_aridity-index-values_clean.csv")
 present_species <- read_csv("data/cleaned/04.2_2x2-species-present_clean.csv")
 
 # Data wrangling ----------------------------------------------------------
 
-# Check for NAs
-apply(subplot, 2, anyNA)
-
 # Reorganize columns for left_join()
-cum.pd.subplot <- cum.pd |> 
+cum.pd.join <- cum.pd |> 
   select(Region, Site, SiteDateID, Date_Seeded, Date_Monitored, Perc_deviation, Deviation_mm) |> 
   rename(Perc_dev_cum = Perc_deviation,
          Dev_mm_cum = Deviation_mm)
 
-# Combine all variables
-dat <- subplot |> 
-  left_join(prism.data) |> 
-  left_join(ai) |> 
-  left_join(cum.pd.subplot) 
-
-# Check for NAs
-apply(dat, 2, anyNA)
-
-# Data without Infinity
-dat <- dat |> 
-  filter(Perc_dev_cum != Inf)
-
-# Add Perc_dev_cum to present_species
+# Add Perc_dev_cum to present_species and remove infinity
 present_species <- present_species |> 
-  left_join(cum.pd.subplot)
+  left_join(cum.pd.join) |> 
+  filter(Perc_dev_cum != Inf)
 
 
 # Number of plots ---------------------------------------------------------
@@ -81,7 +63,7 @@ present_species <- present_species |>
 ### All plots (Native recruit, Weedy) -------------------------------------
 
 # Total number of plots: 1152
-dat |> 
+present_species |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   select(Region, Site, Date_Monitored, Plot) |> 
   distinct(.keep_all = TRUE) |> 
@@ -89,7 +71,7 @@ dat |>
 36 * (6 + 6 + 5 + 4 + 6 + 5) # 36 plots * number of monitoring events at each site
 
 # Number of wetter plots: 360
-dat |> 
+present_species |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   select(Region, Site, Date_Monitored, Plot, Perc_dev_cum) |> 
   distinct(.keep_all = TRUE) |> 
@@ -97,7 +79,7 @@ dat |>
   nrow()
 
 # Number of extremely wet plots (+24% and wetter): 180
-dat |> 
+present_species |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   select(Region, Site, Date_Monitored, Plot, Perc_dev_cum) |> 
   distinct(.keep_all = TRUE) |> 
@@ -105,7 +87,7 @@ dat |>
   nrow()
 
 # Number of drier plots: 792
-dat |> 
+present_species |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   select(Region, Site, Date_Monitored, Plot, Perc_dev_cum) |> 
   distinct(.keep_all = TRUE) |> 
@@ -113,7 +95,7 @@ dat |>
   nrow()
 
 # Number of extremely dry plots (-23% and drier): 288
-dat |> 
+present_species |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   select(Region, Site, Date_Monitored, Plot, Perc_dev_cum) |> 
   distinct(.keep_all = TRUE) |> 
@@ -135,7 +117,7 @@ dat |>
 #   0: Empty plot comparison, both regions and both mixes
 
 # 1: Sonoran Central only, total number of plots for species in just 1 mix: 320
-dat |> 
+present_species |> 
   filter(Region == "Sonoran Central",
          PlotMix_Climate == "Current") |> 
   select(Region, Site, Date_Monitored, Plot) |> 
@@ -143,7 +125,7 @@ dat |>
   nrow()
 
 # 1: Sonoran Central only, when wetter: 96
-dat |> 
+present_species |> 
   filter(Region == "Sonoran Central", 
          PlotMix_Climate == "Current",
          Perc_dev_cum > 0) |> 
@@ -152,7 +134,7 @@ dat |>
   nrow()
 
 # 1: Sonoran Central only, when extremely wet (+24% and wetter): 48
-dat |> 
+present_species |> 
   filter(Region == "Sonoran Central", 
          PlotMix_Climate == "Current",
          Perc_dev_cum > 0.24) |> 
@@ -161,7 +143,7 @@ dat |>
   nrow()
 
 # 1: Sonoran Central only, when drier: 224
-dat |> 
+present_species |> 
   filter(Region == "Sonoran Central", 
          PlotMix_Climate == "Current",
          Perc_dev_cum < 0) |> 
@@ -170,7 +152,7 @@ dat |>
   nrow()
 
 # 1: Sonoran Central only, when extremely dry (-23% and drier): 112
-dat |> 
+present_species |> 
   filter(Region == "Sonoran Central", 
          PlotMix_Climate == "Current",
          Perc_dev_cum < -0.23) |> 
@@ -180,7 +162,7 @@ dat |>
 
 
 # 2: Sonoran SE only, total number of plots for species in just 1 mix: 192
-dat |> 
+present_species |> 
   filter(Region == "Sonoran SE",
          PlotMix_Climate == "Current") |> 
   select(Region, Site, Date_Monitored, Plot) |> 
@@ -188,7 +170,7 @@ dat |>
   nrow()
 
 # 2: Sonoran SE only, when wetter: 64
-dat |> 
+present_species |> 
   filter(Region == "Sonoran SE",
          PlotMix_Climate == "Current",
          Perc_dev_cum > 0) |> 
@@ -197,7 +179,7 @@ dat |>
   nrow()
 
 # 2: Sonoran SE only, when extremely wet (+24% and wetter): 32
-dat |> 
+present_species |> 
   filter(Region == "Sonoran SE",
          PlotMix_Climate == "Current",
          Perc_dev_cum > 0.24) |> 
@@ -206,7 +188,7 @@ dat |>
   nrow()
 
 # 2: Sonoran SE only, when drier: 128
-dat |> 
+present_species |> 
   filter(Region == "Sonoran SE",
          PlotMix_Climate == "Current",
          Perc_dev_cum < 0) |> 
@@ -215,7 +197,7 @@ dat |>
   nrow()
 
 # 2: Sonoran SE only, when extremely dry (-23% and drier): 16
-dat |> 
+present_species |> 
   filter(Region == "Sonoran SE",
          PlotMix_Climate == "Current",
          Perc_dev_cum < -0.23) |> 
@@ -224,7 +206,7 @@ dat |>
   nrow()
 
 # 3: Both sites, species in same mix type, total plots: 512
-dat |> 
+present_species |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE"),
          PlotMix_Climate == "Current") |> 
   select(Region, Site, Date_Monitored, Plot) |> 
@@ -232,7 +214,7 @@ dat |>
   nrow()
 
 # 3: Both sites, same mix, wetter: 160
-dat |> 
+present_species |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE"),
          PlotMix_Climate == "Current",
          Perc_dev_cum > 0) |> 
@@ -241,7 +223,7 @@ dat |>
   nrow()
 
 # 3: Both sites, same mix, extremely wet (+24% and wetter): 80
-dat |> 
+present_species |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE"),
          PlotMix_Climate == "Current",
          Perc_dev_cum > 0.24) |> 
@@ -250,7 +232,7 @@ dat |>
   nrow()
 
 # 3. Both sites, same mix, drier: 352
-dat |> 
+present_species |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE"),
          PlotMix_Climate == "Current",
          Perc_dev_cum < 0) |> 
@@ -259,7 +241,7 @@ dat |>
   nrow()
 
 # 3. Both sites, same mix, extremely dry (-23% and drier): 128
-dat |> 
+present_species |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE"),
          PlotMix_Climate == "Current",
          Perc_dev_cum < -0.23) |> 
@@ -273,7 +255,7 @@ dat |>
 
 
 # 0. Empty plot comparison (Current or Projected), total: 512
-dat |> 
+present_species |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE"),
          PlotMix_Climate == "Current") |> 
   select(Region, Site, Date_Monitored, Plot) |> 
@@ -281,7 +263,7 @@ dat |>
   nrow()
 
 # 0: Empty plot comparison, wetter: 160
-dat |> 
+present_species |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE"),
          PlotMix_Climate == "Current",
          Perc_dev_cum > 0) |> 
@@ -290,7 +272,7 @@ dat |>
   nrow()
 
 # 0: Empty plot comparison, extremely wet (+24% and wetter): 80
-dat |> 
+present_species |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE"),
          PlotMix_Climate == "Current",
          Perc_dev_cum > 0.24) |> 
@@ -299,7 +281,7 @@ dat |>
   nrow()
 
 # 0. Empty plot comparison, drier: 352
-dat |> 
+present_species |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE"),
          PlotMix_Climate == "Current",
          Perc_dev_cum < 0) |> 
@@ -308,7 +290,7 @@ dat |>
   nrow()
 
 # 0. Empty plot comparison, extremely dry (-23% and drier): 128
-dat |> 
+present_species |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE"),
          PlotMix_Climate == "Current",
          Perc_dev_cum < -0.23) |> 
@@ -322,15 +304,15 @@ dat |>
 ### All plots (Native recruit, Weedy) -------------------------------------
 
 # Total number of plots: 3492
-dat |> 
+present_species |> 
   filter(Region == "Colorado Plateau") |> 
-  select(Region, Site, Date_Monitored, Plot) |> 
+  select(Region, Site, Date_Monitored, Plot, SiteDatePlotID) |> 
   distinct(.keep_all = TRUE) |> 
   nrow()
 36 * (7 + 16 + 15 + 14 + 13 + 14 + 14 + 4) # 36 plots * number of monitoring events at each site
 
 # Number of wetter plots: 2196
-dat |> 
+present_species |> 
   filter(Region == "Colorado Plateau") |> 
   select(Region, Site, Date_Monitored, Plot, Perc_dev_cum) |> 
   distinct(.keep_all = TRUE) |> 
@@ -338,7 +320,7 @@ dat |>
   nrow()
 
 # Number of extremely wet plots (+48% and wetter): 792
-dat |> 
+present_species |> 
   filter(Region == "Colorado Plateau") |> 
   select(Region, Site, Date_Monitored, Plot, Perc_dev_cum) |> 
   distinct(.keep_all = TRUE) |> 
@@ -346,7 +328,7 @@ dat |>
   nrow()
 
 # Number of drier plots: 1296
-dat |> 
+present_species |> 
   filter(Region == "Colorado Plateau") |> 
   select(Region, Site, Date_Monitored, Plot, Perc_dev_cum) |> 
   distinct(.keep_all = TRUE) |> 
@@ -354,7 +336,7 @@ dat |>
   nrow()
 
 # Number of extremely dry plots (-50% and drier): 540
-dat |> 
+present_species |> 
   filter(Region == "Colorado Plateau") |> 
   select(Region, Site, Date_Monitored, Plot, Perc_dev_cum) |> 
   distinct(.keep_all = TRUE) |> 
@@ -375,7 +357,7 @@ dat |>
 #   4. Cool: seeded at BabbittPJ, TLE as Current
 
 # 1. Warm, total: 831
-dat |> 
+present_species |> 
   filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "TLE"),
          PlotMix_Climate == "Projected") |> 
   select(Region, Site, Date_Monitored, Plot) |> 
@@ -383,7 +365,7 @@ dat |>
   nrow()
 
 # 2. Med-Warm, total: 1231
-dat |> 
+present_species |> 
   filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "BarTBar", "FlyingM"),
          PlotMix_Climate == "Projected") |> 
   select(Region, Site, Date_Monitored, Plot) |> 
@@ -391,7 +373,7 @@ dat |>
   nrow()
 
 # 3. Cool-Med, total: 720
-dat |> 
+present_species |> 
   filter(Site %in% c("BarTBar", "FlyingM", "BabbittPJ"),
          PlotMix_Climate == "Projected") |> 
   select(Region, Site, Date_Monitored, Plot) |> 
@@ -399,7 +381,7 @@ dat |>
   nrow()
 
 # 4. Cool, total: 320
-dat |> 
+present_species |> 
   filter(Site %in% c("BabbittPJ", "TLE"),
          PlotMix_Climate == "Projected") |> 
   select(Region, Site, Date_Monitored, Plot) |> 
@@ -408,7 +390,7 @@ dat |>
 
 
 # 1. Warm, when wetter: 479
-dat |> 
+present_species |> 
   filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "TLE"),
          PlotMix_Climate == "Projected",
          Perc_dev_cum > 0) |> 
@@ -417,7 +399,7 @@ dat |>
   nrow()
 
 # 2. Med-Warm, when wetter: 783
-dat |> 
+present_species |> 
   filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "BarTBar", "FlyingM"),
          PlotMix_Climate == "Projected",
          Perc_dev_cum > 0) |> 
@@ -426,7 +408,7 @@ dat |>
   nrow()
 
 # 3. Cool-Med, when wetter: 496
-dat |> 
+present_species |> 
   filter(Site %in% c("BarTBar", "FlyingM", "BabbittPJ"),
          PlotMix_Climate == "Projected", 
          Perc_dev_cum > 0) |> 
@@ -435,7 +417,7 @@ dat |>
   nrow()
 
 # 4. Cool, when wetter: 192
-dat |> 
+present_species |> 
   filter(Site %in% c("BabbittPJ", "TLE"),
          PlotMix_Climate == "Projected", 
          Perc_dev_cum > 0) |> 
@@ -444,7 +426,7 @@ dat |>
   nrow()
 
 # 1. Warm, when extremely wet (+48% and wetter): 191
-dat |> 
+present_species |> 
   filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "TLE"),
          PlotMix_Climate == "Projected",
          Perc_dev_cum > 0.48) |> 
@@ -453,7 +435,7 @@ dat |>
   nrow()
 
 # 2. Med-Warm, when extremely wet (+48% and wetter): 207
-dat |> 
+present_species |> 
   filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "BarTBar", "FlyingM"),
          PlotMix_Climate == "Projected",
          Perc_dev_cum > 0.48) |> 
@@ -462,7 +444,7 @@ dat |>
   nrow()
 
 # 3. Cool-Med, when extremely wet (+48% and wetter): 160
-dat |> 
+present_species |> 
   filter(Site %in% c("BarTBar", "FlyingM", "BabbittPJ"),
          PlotMix_Climate == "Projected", 
          Perc_dev_cum > 0.48) |> 
@@ -471,7 +453,7 @@ dat |>
   nrow()
 
 # 4. Cool, when extremely wet (+48% and wetter): 144
-dat |> 
+present_species |> 
   filter(Site %in% c("BabbittPJ", "TLE"),
          PlotMix_Climate == "Projected", 
          Perc_dev_cum > 0.48) |> 
@@ -481,7 +463,7 @@ dat |>
 
 
 # 1. Warm, when drier: 352
-dat |> 
+present_species |> 
   filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "TLE"),
          PlotMix_Climate == "Projected",
          Perc_dev_cum < 0) |> 
@@ -490,7 +472,7 @@ dat |>
   nrow()
 
 # 2. Med-Warm, when drier: 448
-dat |> 
+present_species |> 
   filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "BarTBar", "FlyingM"),
          PlotMix_Climate == "Projected",
          Perc_dev_cum < 0) |> 
@@ -499,7 +481,7 @@ dat |>
   nrow()
 
 # 3. Cool-Med, when drier: 224
-dat |> 
+present_species |> 
   filter(Site %in% c("BarTBar", "FlyingM", "BabbittPJ"),
          PlotMix_Climate == "Projected", 
          Perc_dev_cum < 0) |> 
@@ -508,7 +490,7 @@ dat |>
   nrow()
 
 # 4. Cool, when drier: 128
-dat |> 
+present_species |> 
   filter(Site %in% c("BabbittPJ", "TLE"),
          PlotMix_Climate == "Projected", 
          Perc_dev_cum < 0) |> 
@@ -517,7 +499,7 @@ dat |>
   nrow()
 
 # 1. Warm, when extremely dry (-50% and drier): 144
-dat |> 
+present_species |> 
   filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "TLE"),
          PlotMix_Climate == "Projected",
          Perc_dev_cum < -0.5) |> 
@@ -526,7 +508,7 @@ dat |>
   nrow()
 
 # 2. Med-Warm, when extremely dry (-50% and drier): 192
-dat |> 
+present_species |> 
   filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "BarTBar", "FlyingM"),
          PlotMix_Climate == "Projected",
          Perc_dev_cum < -0.5) |> 
@@ -535,7 +517,7 @@ dat |>
   nrow()
 
 # 3. Cool-Med, when extremely dry (-50% and drier): 96
-dat |> 
+present_species |> 
   filter(Site %in% c("BarTBar", "FlyingM", "BabbittPJ"),
          PlotMix_Climate == "Projected", 
          Perc_dev_cum < -0.5) |> 
@@ -544,7 +526,7 @@ dat |>
   nrow()
 
 # 4. Cool, when extremely dry (-50% and drier): 48
-dat |> 
+present_species |> 
   filter(Site %in% c("BabbittPJ", "TLE"),
          PlotMix_Climate == "Projected", 
          Perc_dev_cum < -0.5) |> 
@@ -554,7 +536,7 @@ dat |>
 
 
 # 0. Empty plot comparison total: 1553
-dat |> 
+present_species |> 
   filter(Region == "Colorado Plateau",
          PlotMix_Climate == "Current") |> 
   select(Region, Site, Date_Monitored, Plot) |> 
@@ -562,7 +544,7 @@ dat |>
   nrow()
 
 # 0. Empty plot comparison, wetter: 977
-dat |> 
+present_species |> 
   filter(Region == "Colorado Plateau",
          PlotMix_Climate == "Current") |> 
   select(Region, Site, Date_Monitored, Plot, Perc_dev_cum) |> 
@@ -571,7 +553,7 @@ dat |>
   nrow()
 
 # 0. Empty plot comparison, extremely wet (+48% and wetter): 353
-dat |> 
+present_species |> 
   filter(Region == "Colorado Plateau",
          PlotMix_Climate == "Current") |> 
   select(Region, Site, Date_Monitored, Plot, Perc_dev_cum) |> 
@@ -580,7 +562,7 @@ dat |>
   nrow()
 
 # 0. Empty plot comparison, drier: 576
-dat |> 
+present_species |> 
   filter(Region == "Colorado Plateau",
          PlotMix_Climate == "Current") |> 
   select(Region, Site, Date_Monitored, Plot, Perc_dev_cum) |> 
@@ -589,7 +571,7 @@ dat |>
   nrow()
 
 # 0. Empty plot comparison, extremely dry (-50% and drier): 240
-dat |> 
+present_species |> 
   filter(Region == "Colorado Plateau",
          PlotMix_Climate == "Current") |> 
   select(Region, Site, Date_Monitored, Plot, Perc_dev_cum) |> 
