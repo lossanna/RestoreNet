@@ -1,6 +1,6 @@
 # RestoreNet
 Created: 2022-11-15  
-Last updated: 2024-09-24
+Last updated: 2024-09-25
   
 ## Description  
 Complete data analysis on response to intra- and inter-annual precipitation variability using the RestoreNet 1.0 data, which was the first iteration of [RAMPS RestoreNet](https://www.usgs.gov/centers/southwest-biological-science-center/science/restorenet-distributed-field-trial-network). For other analysis on the RestoreNet 1.0 data, see [Farrell et al. 2023, *Ecological Applications*](https://doi.org/10.1002/eap.2834) and [Havrilla et al. 2020, *Journal of Applied Ecology*]( https://doi.org/10.1111/1365-2664.13715).
@@ -49,9 +49,10 @@ The complete workflow for current analysis is:
 - `05.3_data-screening_continuous-explanatory-variables.R`
 
 **3. Draft figures and species of interest**:
-- `09.1_draft-figs_precip-dev_subplot.R`
-- `09.1_identify-species-of-interest.R`
-- `09.2_draft-figs_precip-dev_2x2.R`
+- `09.3_characterizing-SD-and-NAZ-by-explanatory-variables.R`
+- `11.1_calculate-species-frequency-by-species.R`
+- `11.2_examine-species-by-Count.R`
+- `12.1_draft-figs-2.0_density-and-frequency.R`
 
 **4. Generalized linear models**:
 - `10.1_generalized-linear-models_subplot-Count.R`
@@ -94,6 +95,7 @@ The complete workflow for current analysis is:
 - `scripts/`
     - See "Workflow for final analysis" for top folder.
     - `exploratory/`
+        - Exploratory scripts might not be able to be re-run and reproduced exactly, because cleaned data might have changed slightly (`present_species` table in particular).
         - `03.1_monitor-info-comparison-with-Farrell-2023.R`
         - `06.1_exploratory-graphs_precip-dev_subplot.R` 
         - `06.2_exploratory-graphs_2x2.R` 
@@ -105,6 +107,12 @@ The complete workflow for current analysis is:
         - `07.3_generalized-linear-models_2x2-richness.R` 
         - `08.1_generalized-linear-models-2.0_subplot-Count.R` 
         - `08.2_generalized-linear-models-2.0_subplot-Height.R`
+        - `09.1_draft-figs_precip-dev_subplot.R`
+        - `09.1_identify-species-of-interest.R`
+        - `09.2_draft-figs_precip-dev_2x2.R`
+        - `10.1_generalized-linear-models_subplot-Count.R`
+        - `10.2_generalized-linear-models_subplot-Height.R`
+        - `10.3_generalized-linear-models_2x2-Seeded-Cover.R`
     - `not-pursued/`
         - `04.15_data-wrangling_subplot_add-0s.R`
         - `06.15_exploratory-graphs_subplot-0-added.R`
