@@ -1,5 +1,5 @@
 # Created: 2023-09-18
-# Last updated: 2024-04-30
+# Last updated: 2024-09-25
 
 # Purpose: Create 2 clean data tables for 2x2 plot data: one with cover, species richness,
 #   and grouping cols (one row for each monitoring event/SiteDatePlotID), and one with
@@ -9,6 +9,8 @@
 #   and SpeciesSeeded column based on site-specific seed mixes and plot.
 # Note that a lot of the Utah plots did not have Additional Species in Plot recorded, but did
 #   have cover data. These plots were removed from dataset since they weren't full observations.
+
+# I don't know what happened to SiteDatePlotID 4268.
 
 
 library(readxl)
@@ -506,13 +508,14 @@ present_species <- bind_rows(present_species, subplot.species) |>
   arrange(SiteDateID)
 
 
-# Remove rows where subplots were observed but 2x2 plots were not observed
-present_species <- present_species |>
-  filter(!SiteDatePlotID %in% c(id.missing$SiteDatePlotID, code0$SiteDatePlotID))
-
 # Check for SiteDatePlotIDs present
-#   2x2 plots that weren't observed have been removed
-length(unique(present_species$SiteDatePlotID)) == (nrow(monitor.info) - nrow(id.missing) - nrow(code0))
+length(unique(present_species$SiteDatePlotID)) == (nrow(monitor.info))
+setdiff(monitor.info$SiteDatePlotID, present_species$SiteDatePlotID)
+monitor.info |> 
+  filter(SiteDatePlotID == 4268)
+
+subplot |> 
+  filter(SiteDatePlotID == 4268) # for some reason this row is missing
 
 # Save intermediate
 #   All species present in plot with correct species info; 2x2 plots not recorded have been removed
@@ -529,7 +532,7 @@ ps5 <- present_species
 
 ## Separate out completely empty plots -------------------------------------
 
-#  Empty subplots have Code 0 and only one row (one SiteDatePlotID observation).
+# Empty subplots have Code 0 and only one row (one SiteDatePlotID observation).
 # Empty 2x2 plots do not have a row in present_species,
 #   because it would have been a "0" that was dropped earlier.
 # Therefore, completely empty plots are those with only one row per SiteDatePlotID
@@ -584,7 +587,8 @@ richness <- bind_rows(nonempty.plots.richness, empty.plots.richness)
 
 # Check that all SiteDatePlotIDs are present
 #   2x2 plots that weren't observed have been removed
-length(unique(richness$SiteDatePlotID)) == (nrow(monitor.info) - nrow(id.missing) - nrow(code0))
+length(unique(richness$SiteDatePlotID)) == nrow(monitor.info)
+setdiff(monitor.info$SiteDatePlotID, richness$SiteDatePlotID) # I seriously don't know what happened to 4268
 
 
 
@@ -642,8 +646,8 @@ plantsource <- bind_rows(nonempty.plots.plantsource, empty.plots.plantsource)
 
 # Check that all SiteDatePlotIDs are present
 #   2x2 plots that weren't observed have been removed
-length(unique(plantsource$SiteDatePlotID)) == (nrow(monitor.info) - nrow(id.missing) - nrow(code0))
-
+length(unique(plantsource$SiteDatePlotID)) == nrow(monitor.info)
+setdiff(monitor.info$SiteDatePlotID, plantsource$SiteDatePlotID) # 4268 is just gone forever
 
 
 # Create cover table ------------------------------------------------------
@@ -753,6 +757,25 @@ empty.plots.not0seeded <- empty.plots.cover |>
   filter(Seeded_Cover > 0)
 
 # not sure what to do about this tbh
+# maybe it was just trace amounts of cover but the species couldn't be identified?
+
+# label non-empty plots with "Unknown seeded"
+empty.plots.not0seeded.fix <- empty.plots.not0seeded |> 
+  mutate(Code = "UNK-S",
+         Name = "Unknown seeded",
+         Native = "Native",
+         Duration = "Unknown",
+         Lifeform = "Unknown",
+         SpeciesSeeded = "Yes",
+         PlantSource = "Seeded",
+         PlantSource2 = "Seeded",
+         Weedy = "Desirable")
+
+#   Add back in fix to cover data
+cover <- cover |>
+  filter(!SiteDatePlotID %in% empty.plots.not0seeded.fix$SiteDatePlotID) |>
+  bind_rows(empty.plots.not0seeded.fix) |>
+  arrange(SiteDatePlotID)
 
 
 
@@ -789,7 +812,7 @@ cover.total.na <- cover |>
 
 # Check for matching row number
 nrow(richness) == nrow(plantsource)
-nrow(plantsource) == nrow(cover)
+nrow(plantsource) == (nrow(cover) + nrow(id.missing))
 
 # Combine
 p2x2.richness.cover <- left_join(richness, plantsource)
@@ -801,8 +824,6 @@ p2x2.richness.cover <- left_join(p2x2.richness.cover, cover) |>
     Seeded_Cover, Total_Veg_Cover, Not_Seeded_Cover
   ) |>
   arrange(SiteDatePlotID)
-
-
 
 
 

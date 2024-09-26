@@ -1,5 +1,5 @@
 # Created: 2023-09-18
-# Last updated: 2024-09-04
+# Last updated: 2024-09-25
 
 # Purpose: In comparing the monitoring information from the subplot vs. 2x2 plot data,
 #   there were discrepancies, but there should be only one correct version.
@@ -672,7 +672,7 @@ nrow(monitor.correct) == nrow(monitor.sub)
 
 
 # Add extra 2 rows from AVRCD
-monitor.correct <- bind_rows(monitor.correct, add.AVRCD)
+monitor.correct <- bind_rows(monitor.correct, add.sub.AVRCD)
 
 
 
