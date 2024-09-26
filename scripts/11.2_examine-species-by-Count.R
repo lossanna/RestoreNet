@@ -1,12 +1,10 @@
 # Created: 2024-09-25
-# Last updated: 2024-09-25
+# Last updated: 2024-09-26
 
-# Purpose: Identify what species are doing well based on Count and frequency for Sonoran Desert 
+# Purpose: Identify what species are doing well based on Count for Sonoran Desert 
 #   and Northern Arizona.
-#   Investigate species of interest (seeded, native volunteer, and weedy
-#   that are doing well in variable precip by Count and plot frequency). Use graphs from
-#   09.1_draft-figs_precip-dev_subplot.R to determine precip extremes, tall heights, and high
-#   count values, as well as graphs of individual species to visualize performance.
+# Investigate which seeded, native volunteer, and weedy species are doing well by Count
+#   in variable precip. 
 
 # Sonoran Desert precip deviation extremes (to determine performance in variable precip):
 #   Wet: +24% and wetter includes all sites but Roosevelt.
@@ -26,13 +24,13 @@
 #   Current mix, did well under var precip: LECI4, HECO26
 #   Current mix, higher frequency: LECI4, LILE3, PASM, DACA7
 #   Projected mix, did well under var precip: BAMU
-#   Projected mix, high frequency when wetter: SECO10, ASTU
+#   Projected mix, high occurrence when wetter: SECO10, ASTU
 #   Native volunteers, did well under var precip: CHAL11, SOEL
 #   Native volunteers, higher frequency in wet conditions: LEPA6
-#   Native volunteers, high frequency: CHAL11
+#   Native volunteers, high occurrence: CHAL11
 #   Weedy species, did well under var precip: SATR12, HAGL, BRRU2
 #   Weedy species, higher frequency: SATR12, ERCI6
-#   Weedy species, high frequency when wettest: BRNI
+#   Weedy species, high occurrence when wettest: BRNI
 
 
 library(tidyverse)
@@ -43,7 +41,6 @@ subplot <- read_csv("data/cleaned/04.1_subplot-data_clean.csv")
 prism.data <- read_csv("data/cleaned/03.2_monitoring-events-with-PRISM-climate-data_clean.csv")
 cum.pd <- read_csv("data/cleaned/03.3_cumulative-precip_percent-deviation-from-norm_clean.csv")
 ai <- read_csv("data/cleaned/03.4_aridity-index-values_clean.csv")
-present_species <- read_csv("data/cleaned/04.2_2x2-species-present_clean.csv")
 
 # Data wrangling ----------------------------------------------------------
 
@@ -69,76 +66,29 @@ apply(dat, 2, anyNA)
 dat <- dat |> 
   filter(Perc_dev_cum != Inf)
 
-# Add Perc_dev_cum to present_species
-present_species <- present_species |> 
-  left_join(cum.pd.subplot)
-
 
 
 # Sonoran Desert ----------------------------------------------------------
 
-## Precip range -----------------------------------------------------------
+## Native recruit ---------------------------------------------------------
 
-# Native volunteer
-#   MONU, ASNU4, DICA14, ESCAM, LOAR12, LOHU2, LOSTT, PEHE, PERE, PLPA2, BAMU, 
-#     AMMEI2, CHPO12, DAPU3, PLAR, SIAN2, VUOC, LAGR10, PEPL
-present_species |> 
+# Native volunteers (all plots): All conditions, count of all individuals
+#   CHPO12, CRYSPP.SRER, VUOC, LOAR12, MENSPP.SRER, GIST
+dat |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE"),
          Weedy != "Weedy",
          SpeciesSeeded == "No") |> 
-  group_by(Code, Name) |> 
-  summarise(min = min(Perc_dev_cum),
-            max = max(Perc_dev_cum)) |> 
-  mutate(range = max - min) |> 
-  arrange(desc(range)) |> 
+  group_by(Code, Name, Duration, Lifeform, SpeciesSeeded) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount)) |> 
   print(n = 30)
 
-# Weedy
-#   ERCI6, SCBA, MAPA5, ONPI, SIIR, SATR12, SOOL, BRRU2
-present_species |> 
-  filter(Region %in% c("Sonoran Central", "Sonoran SE"),
-         Weedy != "Desirable") |> 
-  group_by(Code, Name) |> 
-  summarise(min = min(Perc_dev_cum),
-            max = max(Perc_dev_cum)) |> 
-  mutate(range = max - min) |> 
-  arrange(desc(range)) |> 
-  print(n = 20)
-
-# Seeded, Current
-#   BAMU, LUSP2, SACO6, AMDE4
-present_species |> 
-  filter(Region %in% c("Sonoran Central", "Sonoran SE"),
-         Weedy != "Weedy",
-         SpeciesSeeded == "Yes",
-         PlotMix_Climate == "Current") |> 
-  group_by(Code, Name) |> 
-  summarise(min = min(Perc_dev_cum),
-            max = max(Perc_dev_cum)) |> 
-  mutate(range = max - min) |> 
-  arrange(desc(range))
-
-# Seeded, Projected
-#   PLOV, ENFA, SECO10, ARPU9
-present_species |> 
-  filter(Region %in% c("Sonoran Central", "Sonoran SE"),
-         Weedy != "Weedy",
-         SpeciesSeeded == "Yes",
-         PlotMix_Climate == "Projected") |> 
-  group_by(Code, Name) |> 
-  summarise(min = min(Perc_dev_cum),
-            max = max(Perc_dev_cum)) |> 
-  mutate(range = max - min) |> 
-  arrange(desc(range))
-
-
-
-## Native recruit ---------------------------------------------------------
-
-# Native volunteers (all plots): All conditions, high count per plot
+# Native volunteers: All conditions, high count per plot
 #   CRYSPP/CRAN4, PECTO, GIST, CHPO12, VUOC, MENSPP, MEAL6
 dat |> 
   filter(Weedy != "Weedy",
+         SpeciesSeeded == "No",
          Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   filter(Count > 50) |> 
   select(Site, Code, Name, Duration, Lifeform, SpeciesSeeded, Count, Perc_dev_cum) |> 
@@ -160,7 +110,7 @@ dat |>
 
 # Native volunteers: +24% and wetter, with at least 10 individuals in a plot
 #   PSCA11, BAMU, VUOC, LOAR12 - high count per plot when wettest
-#   GIST, LOAR12, VUOC - high frequency of plots
+#   GIST, LOAR12, VUOC - high occurrence of plots
 dat |> 
   filter(Weedy != "Weedy",
          SpeciesSeeded == "No",
@@ -195,7 +145,7 @@ dat |>
 
 # Native volunteers: -23% and drier, with at least 10 individuals in a plot
 #   CHPO12, VUOC, MENSPP, CRYSPP - high count per plot when driest
-#   CRYSPP, MENSPP, LOHU2, VUOC - high frequency of plots
+#   CRYSPP, MENSPP, LOHU2, VUOC - high occurrence of plots
 dat |> 
   filter(Weedy != "Weedy",
          SpeciesSeeded == "No",
@@ -230,6 +180,18 @@ dat |>
 
 ## Weedy ------------------------------------------------------------------
 
+# Weedy (all plots): All conditions, count of all individuals
+#   SCBA, ERCI6, BRRU2, ERLE
+dat |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE"),
+         Weedy != "Desirable") |> 
+  group_by(Code, Name, Duration, Lifeform, SpeciesSeeded) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount)) |> 
+  print(n = 30)
+
+
 # Weedy (all plots): All conditions, high count recruit per plot
 #   ERCI6, BRRU2, SCBA
 dat |> 
@@ -238,18 +200,6 @@ dat |>
   filter(Count > 50) |> 
   select(Site, Code, Name, Duration, Lifeform, Count, Perc_dev_cum) |> 
   arrange(desc(Count)) |> 
-  print(n = 29)
-
-# Weedy: Highest wet deviation
-#   MAPA5
-dat |> 
-  filter(Weedy != "Desirable",
-         Region %in% c("Sonoran Central", "Sonoran SE")) |> 
-  filter(Perc_dev_cum > 0.35) |> 
-  filter(Count > 5) |> 
-  select(Site, Code, Name, Duration, Lifeform, Count, Perc_dev_cum) |>
-  arrange(desc(Count)) |> 
-  arrange(desc(Perc_dev_cum)) |> 
   print(n = 29)
 
 # Weedy: +24% and wetter, count of all individuals
@@ -265,8 +215,8 @@ dat |>
   print(n = 30)
 
 # Weedy: +24% and wetter, with at least 11 individuals in a plot
-#   MAPA5, UNFO.Patagonia, BRRU2, SCBA - high count per plot when wettest
-#   BRRU2, SCBA, MAPA5, UNFO3.SRER - high frequency of plots
+#   UNFO.Patagonia, BRRU2, SCBA, UNFO1.SRER, MAPA5 - high count per plot when wettest
+#   BRRU2, SCBA, MAPA5, UNFO3.SRER - high occurrence of plots
 dat |> 
   filter(Weedy != "Desirable",
          Region %in% c("Sonoran Central", "Sonoran SE")) |> 
@@ -274,7 +224,6 @@ dat |>
   filter(Count > 10) |> 
   select(Site, Code, Name, Duration, Lifeform, Count, Perc_dev_cum) |>
   arrange(desc(Count)) |> 
-  arrange(desc(Perc_dev_cum)) |> 
   print(n = 41)
 dat |> 
   filter(Weedy != "Desirable",
@@ -283,16 +232,6 @@ dat |>
   filter(Count > 10) |> 
   count(Code) |> 
   arrange(desc(n))
-
-# Weedy: Highest dry deviation
-#   ERCI6, SCBA, BRRU2
-dat |> 
-  filter(Weedy != "Desirable",
-         Region %in% c("Sonoran Central", "Sonoran SE")) |> 
-  filter(Perc_dev_cum < -0.35) |> 
-  filter(Count > 50) |> 
-  select(Site, Code, Name, Duration, Lifeform, Count, Perc_dev_cum) |>
-  arrange(desc(Count))
 
 # Weedy: -23% and drier, count of all individuals
 #   ERCI6, SCBA, BRRU2
@@ -306,7 +245,7 @@ dat |>
   arrange(desc(SumCount)) 
 
 # Weedy: -23% and drier, with at least 51 individuals in a plot
-#   It's just endless SCBA, BRRU2, ERCI6
+#   ERCI6, BRRU2, SCBA - all have high count per plot and high occurrence of plots
 dat |> 
   filter(Weedy != "Desirable",
          Region %in% c("Sonoran Central", "Sonoran SE")) |> 
@@ -314,7 +253,7 @@ dat |>
   filter(Count > 50) |> 
   select(Site, Code, Name, Duration, Lifeform, Count, Perc_dev_cum) |>
   arrange(desc(Count)) |> 
-  arrange(Perc_dev_cum)
+  print(n = 25)
 dat |> 
   filter(Weedy != "Desirable",
          Region %in% c("Sonoran Central", "Sonoran SE")) |> 
@@ -323,28 +262,6 @@ dat |>
   count(Code) |> 
   arrange(desc(n))
 
-# Weedy: highest number of individuals across all sites, plots, and conditions
-#   SCBA, ERCI6, BRRU2
-dat |> 
-  filter(Region %in% c("Sonoran Central", "Sonoran SE"),
-         Weedy != "Desirable") |> 
-  group_by(Code, Name, Duration, Lifeform, SpeciesSeeded) |> 
-  summarise(SumCount = sum(Count),
-            .groups = "keep") |> 
-  arrange(desc(SumCount)) |> 
-  print(n = 30)
-
-# Sonoran SE plots: High dry deviation
-#   SATR12, ERLE, lots of unknowns
-dat |> 
-  filter(Weedy != "Desirable",
-         Region == "Sonoran SE") |> 
-  filter(Perc_dev_cum < 0) |> 
-  filter(Count > 10) |> 
-  select(Site, Code, Name, Duration, Lifeform, Count, Perc_dev_cum) |>
-  arrange(desc(Count)) |> 
-  arrange(Site) |> 
-  print(n = 22)
 
 # SCBA, BRRU2, ERCI6 max count
 dat |> 
@@ -360,6 +277,17 @@ dat |>
 
 ## Seeded -----------------------------------------------------------------
 
+# Current: All conditions, count of all individuals
+#   SACO6, LUSP2
+dat |> 
+  filter(SpeciesSeeded == "Yes",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Current") |> 
+  group_by(Code, Name, Duration, Lifeform, SpeciesSeeded) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount)) 
+
 # Current: All conditions, high count per plot
 #   SACO6
 dat |> 
@@ -370,9 +298,21 @@ dat |>
   select(Site, Code, Name, Duration, Lifeform, Count, Perc_dev_cum) |> 
   arrange(desc(Count)) 
 
+# Current: +24% and wetter, count of all individuals
+#   SACO6, LUSP2
+dat |> 
+  filter(SpeciesSeeded == "Yes",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Current") |> 
+  filter(Perc_dev_cum > 0.24) |> 
+  group_by(Code, Name, Duration, Lifeform, SpeciesSeeded) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount)) 
+
 # Current: +24% and wetter, with at least 3 individuals in a plot
-#   SACO6, BAMU, MATA2, ELEL5, POSE - high count per plot when wettest
-#   SACO6, LUSP2 - high frequency of plots
+#   SACO6, MATA2, ELEL5 - high count per plot when wettest
+#   SACO6, LUSP2 - high occurrence of 3+ individuals 
 dat |> 
   filter(SpeciesSeeded == "Yes",
          Region %in% c("Sonoran Central", "Sonoran SE"),
@@ -381,7 +321,6 @@ dat |>
          Count > 2) |> 
   select(Site, Code, Name, Duration, Lifeform, Count, Perc_dev_cum) |>
   arrange(desc(Count)) |> 
-  arrange(desc(Perc_dev_cum)) |> 
   print(n = 42)
 dat |> 
   filter(SpeciesSeeded == "Yes",
@@ -391,6 +330,18 @@ dat |>
          Count > 2) |> 
   count(Code) |> 
   arrange(desc(n))
+
+# Current: -23% and drier, count of all individuals
+#   SACO6, LUSP2
+dat |> 
+  filter(SpeciesSeeded == "Yes",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Current") |> 
+  filter(Perc_dev_cum < -0.23) |> 
+  group_by(Code, Name, Duration, Lifeform, SpeciesSeeded) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount)) 
 
 # Current: -23% and drier, with at least 2 individuals in a plot
 #   SACO6, LUSP2 
@@ -402,7 +353,6 @@ dat |>
   filter(Count > 1) |> 
   select(Site, Code, Name, Duration, Lifeform, Count, Perc_dev_cum) |> 
   arrange(desc(Count)) |> 
-  arrange(Perc_dev_cum) |> 
   print(n = 24)
 dat |> 
   filter(SpeciesSeeded == "Yes",
@@ -414,6 +364,17 @@ dat |>
   arrange(desc(n))
 
 
+# Projected: All conditions, count of all individuals
+#   PLOV, ARPU9
+dat |> 
+  filter(SpeciesSeeded == "Yes",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Projected") |> 
+  group_by(Code, Name, Duration, Lifeform, SpeciesSeeded) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount)) 
+
 # Projected: All conditions, high count per plot
 #   PLOV, BAMU
 dat |> 
@@ -423,6 +384,18 @@ dat |>
   filter(Count > 10) |> 
   select(Site, Code, Name, Duration, Lifeform, Count, Perc_dev_cum) |> 
   arrange(desc(Count)) 
+
+# Projected: +24% and wetter, count of all individuals
+#   PLOV, ARPU9, BAMU
+dat |> 
+  filter(SpeciesSeeded == "Yes",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Projected") |> 
+  filter(Perc_dev_cum > 0.24) |> 
+  group_by(Code, Name, Duration, Lifeform, SpeciesSeeded) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount)) 
 
 # Projected: +24% and wetter, with at least 3 individuals in a plot
 #   ARPU9, BAMU, PLOV
@@ -444,6 +417,18 @@ dat |>
          Count > 2) |> 
   count(Code) |> 
   arrange(desc(n))
+
+# Projected: -23% and drier, count of all individuals
+#   PLOV
+dat |> 
+  filter(SpeciesSeeded == "Yes",
+         Region %in% c("Sonoran Central", "Sonoran SE"),
+         PlotMix_Climate == "Projected") |> 
+  filter(Perc_dev_cum < -0.23) |> 
+  group_by(Code, Name, Duration, Lifeform, SpeciesSeeded) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount)) 
 
 # Projected: -23% and drier, with at least 1 individual in a plot
 #     PLOV
@@ -496,88 +481,18 @@ dat |>
 
 # Northern Arizona --------------------------------------------------------
 
-## Precip range -----------------------------------------------------------
+## Native recruit ---------------------------------------------------------
 
-# Native volunteer
-#   CHAL11, BOSI2, SOEL, BOGR2
+# Native volunteers: All conditions, count of all individuals
+#   LEPA6
 dat |> 
   filter(Weedy != "Weedy",
          SpeciesSeeded == "No",
          Region == "Colorado Plateau") |> 
-  group_by(Code, Name) |> 
-  summarise(min = min(Perc_dev_cum),
-            max = max(Perc_dev_cum)) |> 
-  mutate(range = max - min) |> 
-  arrange(desc(range)) |> 
-  print(n = 30)
-
-dat |> 
-  filter(Code %in% c("CHAL11", "SOEL", "LEPA6", "0"),
-         Region == "Colorado Plateau") |> 
-  group_by(Code, Name) |> 
-  summarise(min = min(Perc_dev_cum),
-            max = max(Perc_dev_cum))
-
-# Weedy
-#   SATR12, ERCI6, TRTE, BRNI (but only when wetter), HAGL
-dat |> 
-  filter(Weedy != "Desirable",
-         Region == "Colorado Plateau") |> 
-  group_by(Code, Name) |> 
-  summarise(min = min(Perc_dev_cum),
-            max = max(Perc_dev_cum)) |> 
-  mutate(range = max - min) |> 
-  arrange(desc(range)) |> 
-  print(n = 30)
-dat |> 
-  filter(Code %in% c("SATR12", "ERCI6", "HAGL", "BRRU2", "BRNI"),
-         Region == "Colorado Plateau") |> 
-  group_by(Code, Name) |> 
-  summarise(min = min(Perc_dev_cum),
-            max = max(Perc_dev_cum))
-
-# Current mix
-#   LECI4, HEBO, HECO26, POSE, KRLA2
-dat |> 
-  filter(SpeciesSeeded == "Yes",
-         PlotMix_Climate == "Current",
-         Region == "Colorado Plateau") |> 
-  group_by(Code, Name) |> 
-  summarise(min = min(Perc_dev_cum),
-            max = max(Perc_dev_cum)) |> 
-  mutate(range = max - min) |> 
-  arrange(desc(range)) |> 
-  print(n = 30)
-dat |> 
-  filter(Code %in% c("PASM", "LECI4", "HECO26", "LILE3", "DACA7"),
-         Region == "Colorado Plateau",
-         PlotMix_Climate == "Current") |> 
-  group_by(Code, Name) |> 
-  summarise(min = min(Perc_dev_cum),
-            max = max(Perc_dev_cum))
-
-# Projected mix
-#   SECO10, ACHY, BAMU, ASTU, BOGR2
-dat |> 
-  filter(SpeciesSeeded == "Yes",
-         PlotMix_Climate == "Projected",
-         Region == "Colorado Plateau") |> 
-  group_by(Code, Name) |> 
-  summarise(min = min(Perc_dev_cum),
-            max = max(Perc_dev_cum)) |> 
-  mutate(range = max - min) |> 
-  arrange(desc(range)) |> 
-  print(n = 28)
-dat |> 
-  filter(Code %in% c("BAMU", "ASTU", "SECO10"),
-         Region == "Colorado Plateau",
-         PlotMix_Climate == "Projected") |> 
-  group_by(Code, Name) |> 
-  summarise(min = min(Perc_dev_cum),
-            max = max(Perc_dev_cum))
-
-
-## Native recruit ---------------------------------------------------------
+  group_by(Code, Name, Duration, Lifeform, SpeciesSeeded) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount)) 
 
 # Native volunteers: All conditions, high count per plot
 #   LEPA6, TOIN, PLPA2, CHEN.BabbittPJ, MONU
@@ -672,6 +587,16 @@ dat |>
 
 ## Weedy ------------------------------------------------------------------
 
+# Weedy: All conditions, count of all individuals
+#   UNFO1.FlyingM, UNGR1.MOWE, SATR12
+dat |> 
+  filter(Weedy != "Desirable",
+         Region == "Colorado Plateau") |> 
+  group_by(Code, Name, Duration, Lifeform, SpeciesSeeded) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount))
+
 # Weedy: All conditions, high count per plot
 #   UNFO1.FlyingM, SATR12, UNGR1.MOWE
 dat |> 
@@ -759,8 +684,19 @@ dat |>
 
 ## Seeded -----------------------------------------------------------------
 
+# Current: All conditions, count of all individuals
+#   DACA7, PASM, UNGR2.PEFO, ELEL5
+dat |> 
+  filter(SpeciesSeeded == "Yes",
+         Region == "Colorado Plateau",
+         PlotMix_Climate == "Current") |> 
+  group_by(Code, Name, Duration, Lifeform, SpeciesSeeded) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount)) 
+
 # Current: All conditions, high count per plot
-#   ELEL5, BOGR2
+#   BOGR2, UNGR2.PEFO, ELEL5
 dat |> 
   filter(SpeciesSeeded == "Yes",
          Region == "Colorado Plateau",
@@ -768,7 +704,6 @@ dat |>
   filter(Count > 15) |> 
   select(Site, Code, Name, Duration, Lifeform, SpeciesSeeded, Count, Perc_dev_cum) |> 
   arrange(desc(Count)) |> 
-  arrange(desc(Perc_dev_cum)) |> 
   print(n = 17)
 
 # Current: +48% and wetter, with at least 4 individuals in a plot
@@ -781,7 +716,6 @@ dat |>
          Count > 3) |> 
   select(Site, Code, Name, Duration, Lifeform, Count, Perc_dev_cum) |>
   arrange(desc(Count)) |> 
-  arrange(desc(Perc_dev_cum)) |> 
   print(n = 41)
 dat |> 
   filter(SpeciesSeeded == "Yes",
@@ -801,8 +735,7 @@ dat |>
   filter(Perc_dev_cum < -0.5) |> 
   filter(Count > 1) |> 
   select(Site, Code, Name, Duration, Lifeform, Count, Perc_dev_cum) |> 
-  arrange(desc(Count)) |> 
-  arrange(Perc_dev_cum)
+  arrange(desc(Count))
 dat |> 
   filter(SpeciesSeeded == "Yes",
          Region == "Colorado Plateau",
@@ -813,6 +746,17 @@ dat |>
   arrange(desc(n))
 
 
+# Projected: All conditions, count of all individuals
+#   BAMU, ASTU
+dat |> 
+  filter(SpeciesSeeded == "Yes",
+         Region == "Colorado Plateau",
+         PlotMix_Climate == "Projected") |> 
+  group_by(Code, Name, Duration, Lifeform, SpeciesSeeded) |> 
+  summarise(SumCount = sum(Count),
+            .groups = "keep") |> 
+  arrange(desc(SumCount)) 
+
 # Projected: All conditions, high count per plot
 #   BAMU
 dat |> 
@@ -821,8 +765,7 @@ dat |>
          PlotMix_Climate == "Projected") |> 
   filter(Count > 10) |> 
   select(Site, Code, Name, Duration, Lifeform, SpeciesSeeded, Count, Perc_dev_cum) |> 
-  arrange(desc(Count)) |> 
-  arrange(desc(Perc_dev_cum))
+  arrange(desc(Count)) 
 
 # Projected: +48% and wetter, with at least 4 individuals in a plot
 #   BAMU, ASTU
