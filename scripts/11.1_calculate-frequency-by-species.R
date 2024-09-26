@@ -75,7 +75,6 @@ present_species <- present_species |>
   left_join(cum.pd.subplot)
 
 
-
 # Number of plots ---------------------------------------------------------
 
 ## Sonoran Desert ---------------------------------------------------------
@@ -857,7 +856,7 @@ present_species |>
          Perc_dev_cum < -0.23) |> 
   count(Code) |> 
   mutate(perc_freq = (n / 160) * 100,
-         mix = "Projected") 
+         mix = "Projected") # nothing grew
 
 
 # Total: combined
@@ -1005,7 +1004,8 @@ sonoran.seed <- bind_rows(sonoran.total.seed, sonoran.wet.seed, sonoran.dry.seed
   mutate(Plant = paste(mix, "mix"),
          Plot = c(rep("Total", nrow(sonoran.total.seed)), rep("Wetter", nrow(sonoran.wet.seed)),
                   rep("Drier", nrow(sonoran.dry.seed)), rep("Extremely wet", nrow(sonoran.wettest.seed)),
-                  rep("Extremely dry", nrow(sonoran.driest.seed)))) 
+                  rep("Extremely dry", nrow(sonoran.driest.seed)))) |> 
+  select(-mix)
 
 # Combine all
 sonoran.freq <- bind_rows(sonoran.nativevolun, sonoran.weedy, sonoran.seed,
