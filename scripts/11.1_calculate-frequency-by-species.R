@@ -2245,6 +2245,9 @@ sonoran.seed.site <- bind_rows(sonoran.seed1c.site, sonoran.seed1p.site, sonoran
   left_join(sonoran.freq) |> 
   arrange(Code) |> 
   arrange(Plant)
+sonoran.seed.site |> 
+  select(Code, Perc_sites, Plant, perc_freq, Plot) |> 
+  print(n = 88)
 
 
 
@@ -2257,33 +2260,21 @@ present_species |>
          PlotMix_Climate == "Projected") |> 
   group_by(Site, Code) |> 
   summarise(Presence = n()) |> 
-  print(n = 25)
+  print(n = 28)
 #   missing from AguaFria: ARPU9, BOCU, PLMU3
 #   missing from MOWE: BOCU, PLMU3
-#   missing from PEFO: ASTU, PLMU3, SECO10
+#   missing from PEFO: none
 #   missing from Spiderweb: ARPU9, PLMU3
-#   missing from TLE: ARPU9, ASTU, BAMU, BOCU, PLMU3, SECO10
-
-# Warm mix, Projected: appeared at no sites: PLMU3
-present_species |> 
+#   missing from TLE: ARPU9, ASTU, BAMU, BOCU, PLMU3, SECO10 (lol things were rough at TLE)
+naz.seed1p.site <- present_species |> 
   filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "TLE"),
          SpeciesSeeded == "Yes",
-         PlotMix_Climate == "Projected",
-         Code == "PLMU3") 
-
-# Warm mix, Projected: did not appear at all sites
-#   Would say that ARPU9 did not do that well
-naz.total.seedp |> 
-  filter(Code %in% c("ARPU9", "ASTU", "BAMU", "BOCU", "SECO10"))
-present_species |> 
-  filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb", "TLE"),
-         SpeciesSeeded == "Yes",
-         PlotMix_Climate == "Projected",
-         Code %in% c("ARPU9", "ASTU", "BAMU", "BOCU", "SECO10")) |> 
-  group_by(Code) |> 
-  summarise(SumCount = sum(Count),
-            .groups = "keep") |> 
-  arrange(desc(SumCount)) 
+         PlotMix_Climate == "Projected") |> 
+  select(Site, Code) |> 
+  distinct(.keep_all = TRUE) |> 
+  count(Code) |> 
+  mutate(Perc_sites = n / 5,
+         Plant = "Projected mix") 
 
 
 # Med-Warm mix, Current (7): BOER4, KRLA2, MATA2, PEPA8, PLJA, POSE, SPCR
@@ -2293,27 +2284,20 @@ present_species |>
          PlotMix_Climate == "Current") |> 
   group_by(Site, Code) |> 
   summarise(Presence = n()) |> 
-  print(n = 19)
-#   missing from AguaFria: BOER4, KRLA2, MATA2, PEPA8, PLJA, POSE, SPCR
+  print(n = 20)
+#   missing from AguaFria: BOER4, KRLA2, MATA2, PEPA8, PLJA, POSE, SPCR (that's rough, buddy)
 #   missing from MOWE: BOER4, POSE
-#   missing from PEFO: PEPA8, PLJA
+#   missing from PEFO: PEPA8
 #   missing from Spiderweb: KRLA2, POSE, SPCR
-
-# Med-Warm mix, Current: appeared at no sites: none
-
-# Med-Warm mix, Current: did not appear at MOWE, PEFO, and Spiderweb (AguaFria just did not do well)
-#   Would say that BOER4, KRLA2, PLJA did not do that well
-naz.total.seedc |> 
-  filter(Code %in% c("BOER4", "KRLA2", "PEPA8", "PLJA", "POSE", "SPCR"))
-present_species |> 
+naz.seed2c.site <- present_species |> 
   filter(Site %in% c("AguaFria", "MOWE", "PEFO", "Spiderweb"),
          SpeciesSeeded == "Yes",
-         PlotMix_Climate == "Current",
-         Code %in% c("BOER4", "KRLA2", "PEPA8", "PLJA", "POSE", "SPCR")) |> 
-  group_by(Code) |> 
-  summarise(SumCount = sum(Count),
-            .groups = "keep") |> 
-  arrange(desc(SumCount)) 
+         PlotMix_Climate == "Current") |> 
+  select(Site, Code) |> 
+  distinct(.keep_all = TRUE) |> 
+  count(Code) |> 
+  mutate(Perc_sites = n / 4,
+         Plant = "Current mix") 
 
 # Med-Warm mix, Projected (7): BOER4, KRLA2, MATA2, PEPA8, PLJA, POSE, SPCR
 present_species |> 
@@ -2322,24 +2306,17 @@ present_species |>
          PlotMix_Climate == "Projected") |> 
   group_by(Site, Code) |> 
   summarise(Presence = n())
-#   missing from BarTBar: SPCR
-#   missing from FlyingM: MATA2, PEPA8
-
-# Med-Warm mix, Projected: appeared at no sites: none
-
-# Med-Warm mix, Projected: did not appear at all sites
-#   Would say that MATA2, PEPA8, SPCR did not do that well
-naz.total.seedp |> 
-  filter(Code %in% c("MATA2", "PEPA8", "SPCR"))
-present_species |> 
+#   missing from BarTBar: none
+#   missing from FlyingM: none
+naz.seed2p.site <- present_species |> 
   filter(Site %in% c("BarTBar", "FlyingM"),
          SpeciesSeeded == "Yes",
-         PlotMix_Climate == "Projected",
-         Code %in% c("MATA2", "PEPA8", "SPCR")) |> 
-  group_by(Code) |> 
-  summarise(SumCount = sum(Count),
-            .groups = "keep") |> 
-  arrange(desc(SumCount)) 
+         PlotMix_Climate == "Projected") |> 
+  select(Site, Code) |> 
+  distinct(.keep_all = TRUE) |> 
+  count(Code) |> 
+  mutate(Perc_sites = n / 2,
+         Plant = "Projected mix") 
 
 
 # Cool-Med mix, Current (7): ACMI2, BOGR2, DACA7, ELEL5, HEMU3, LILE3, PASM
@@ -2351,22 +2328,15 @@ present_species |>
   summarise(Presence = n())
 #   missing from BarTBar: HEMU3
 #   missing from FlyingM: none
-
-# Cool-Med mix, Current: appeared at no sites: none
-
-# Cool-Med mix, Current: did not appear at all sites
-#   Would say that HEMU3 did terribly
-naz.total.seedc |> 
-  filter(Code == "HEMU3")
-present_species |> 
+naz.seed3c.site <- present_species |> 
   filter(Site %in% c("BarTBar", "FlyingM"),
          SpeciesSeeded == "Yes",
-         PlotMix_Climate == "Current",
-         Code == "HEMU3") |> 
-  group_by(Code) |> 
-  summarise(SumCount = sum(Count),
-            .groups = "keep") |> 
-  arrange(desc(SumCount)) 
+         PlotMix_Climate == "Current") |> 
+  select(Site, Code) |> 
+  distinct(.keep_all = TRUE) |> 
+  count(Code) |> 
+  mutate(Perc_sites = n / 2,
+         Plant = "Current mix") 
 
 # Cool-Med mix, Projected (7): ACMI2, BOGR2, DACA7, ELEL5, HEMU3, LILE3, PASM
 present_species |> 
@@ -2375,14 +2345,16 @@ present_species |>
          PlotMix_Climate == "Projected") |> 
   group_by(Site, Code) |> 
   summarise(Presence = n())
-#   missing from BabbittPJ: HEMU3
-
-# Cool-Med mix, Projected: appeared at no sites: HEMU3
-present_species |> 
+#   missing from BabbittPJ: none
+naz.seed3p.site <- present_species |> 
   filter(Site == "BabbittPJ",
          SpeciesSeeded == "Yes",
-         PlotMix_Climate == "Projected",
-         Code == "HEMU3") 
+         PlotMix_Climate == "Projected") |> 
+  select(Site, Code) |> 
+  distinct(.keep_all = TRUE) |> 
+  count(Code) |> 
+  mutate(Perc_sites = n / 1,
+         Plant = "Projected mix") 
 
 
 # Cool mix, Current (7): ELTR7, ELWA2, HEBO, HECO26, LECI4, PSSP6, SPGR2
@@ -2392,28 +2364,34 @@ present_species |>
          PlotMix_Climate == "Current") |> 
   group_by(Site, Code) |> 
   summarise(Presence = n())
-#   missing from BabbittPJ: PSSP6, SPGR2
-#   missing from TLE: ELTR7, ELWA2, HEBO, HECO26, LECI4, PSSP6, SPGR2
-
-# Cool mix, Current: appeared at no sites: PSSP6, SPGR2
-present_species |> 
+#   missing from BabbittPJ: none
+#   missing from TLE: ELTR7, ELWA2, HEBO, HECO26, LECI4, PSSP6, SPGR2 (nothing grew)
+naz.seed4c.site <- present_species |> 
   filter(Site %in% c("BabbittPJ", "TLE"),
          SpeciesSeeded == "Yes",
-         PlotMix_Climate == "Projected",
-         Code %in% c("PSSP6, SPGR2")) 
+         PlotMix_Climate == "Current") |> 
+  select(Site, Code) |> 
+  distinct(.keep_all = TRUE) |> 
+  count(Code) |> 
+  mutate(Perc_sites = n / 2,
+         Plant = "Current mix") 
 
-# Cool mix, Current: did not appear at all sites
-#   Would say that ELWA2 did not do that well
-naz.total.seedc |> 
-  filter(Code %in% c("ELTR7", "ELWA2", "HEBO", "HECO26", "LECI4", "PSSP6", "SPGR2"))
-present_species |> 
-  filter(Site %in% c("BabbittPJ", "TLE"),
-         SpeciesSeeded == "Yes",
-         PlotMix_Climate == "Current",
-         Code %in% c("ELTR7", "ELWA2", "HEBO", "HECO26", "LECI4", "PSSP6", "SPGR2")) |> 
-  group_by(Code) |> 
-  summarise(SumCount = sum(Count),
-            .groups = "keep") |> 
-  arrange(desc(SumCount)) 
+
+# Compile table of site frequencies
+naz.seed.site <- bind_rows(naz.seed1p.site, naz.seed2c.site, naz.seed2p.site, 
+                           naz.seed3c.site, naz.seed3p.site, naz.seed4c.site) |> 
+  select(-n) |> 
+  left_join(naz.freq) |> 
+  arrange(Code) |> 
+  arrange(Plant)
+naz.seed.site |> 
+  select(Code, Perc_sites, Plant, perc_freq, Plot) |> 
+  filter(Plant == "Current mix") |> 
+  print(n = 98)
+naz.seed.site |> 
+  select(Code, Perc_sites, Plant, perc_freq, Plot) |> 
+  filter(Plant == "Projected mix") |> 
+  print(n = 87)
+ 
 
 save.image("RData/11.1_calculate-frequency-by-species.RData")
