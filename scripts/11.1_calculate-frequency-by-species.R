@@ -256,45 +256,45 @@ present_species |>
 #   Same as 3 because BAMU was still seeded in only half the plots at each site
 
 
-# 0. Empty plot comparison (Current or Projected), total: 512
+# 0. Empty plot comparison (Current and Projected), total: 1024
 present_species |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE"),
-         PlotMix_Climate == "Current") |> 
+         PlotMix_Climate != "None") |> 
   select(Region, Site, Date_Monitored, Plot) |> 
   distinct(.keep_all = TRUE) |> 
   nrow()
 
-# 0: Empty plot comparison, wetter: 160
+# 0: Empty plot comparison, wetter: 320
 present_species |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE"),
-         PlotMix_Climate == "Current",
+         PlotMix_Climate != "None",
          Perc_dev_cum > 0) |> 
   select(Region, Site, Date_Monitored, Plot) |> 
   distinct(.keep_all = TRUE) |> 
   nrow()
 
-# 0: Empty plot comparison, extremely wet (+24% and wetter): 80
+# 0: Empty plot comparison, extremely wet (+24% and wetter): 160
 present_species |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE"),
-         PlotMix_Climate == "Current",
+         PlotMix_Climate != "None",
          Perc_dev_cum > 0.24) |> 
   select(Region, Site, Date_Monitored, Plot) |> 
   distinct(.keep_all = TRUE) |> 
   nrow()
 
-# 0. Empty plot comparison, drier: 352
+# 0. Empty plot comparison, drier: 704
 present_species |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE"),
-         PlotMix_Climate == "Current",
+         PlotMix_Climate != "None",
          Perc_dev_cum < 0) |> 
   select(Region, Site, Date_Monitored, Plot) |> 
   distinct(.keep_all = TRUE) |> 
   nrow()
 
-# 0. Empty plot comparison, extremely dry (-23% and drier): 128
+# 0. Empty plot comparison, extremely dry (-23% and drier): 256
 present_species |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE"),
-         PlotMix_Climate == "Current",
+         PlotMix_Climate != "None",
          Perc_dev_cum < -0.23) |> 
   select(Region, Site, Date_Monitored, Plot) |> 
   distinct(.keep_all = TRUE) |> 
@@ -537,45 +537,45 @@ present_species |>
   nrow()
 
 
-# 0. Empty plot comparison total: 1553
+# 0. Empty plot comparison (Current and Projected), total: 3104
 present_species |> 
   filter(Region == "Colorado Plateau",
-         PlotMix_Climate == "Current") |> 
+         PlotMix_Climate != "None") |> 
   select(Region, Site, Date_Monitored, Plot) |> 
   distinct(.keep_all = TRUE) |> 
   nrow()
 
-# 0. Empty plot comparison, wetter: 977
+# 0. Empty plot comparison, wetter: 1952
 present_species |> 
   filter(Region == "Colorado Plateau",
-         PlotMix_Climate == "Current") |> 
+         PlotMix_Climate != "None") |> 
   select(Region, Site, Date_Monitored, Plot, Perc_dev_cum) |> 
   distinct(.keep_all = TRUE) |> 
   filter(Perc_dev_cum > 0) |> 
   nrow()
 
-# 0. Empty plot comparison, extremely wet (+48% and wetter): 353
+# 0. Empty plot comparison, extremely wet (+48% and wetter): 704
 present_species |> 
   filter(Region == "Colorado Plateau",
-         PlotMix_Climate == "Current") |> 
+         PlotMix_Climate != "None") |> 
   select(Region, Site, Date_Monitored, Plot, Perc_dev_cum) |> 
   distinct(.keep_all = TRUE) |> 
   filter(Perc_dev_cum > 0.48) |> 
   nrow()
 
-# 0. Empty plot comparison, drier: 576
+# 0. Empty plot comparison, drier: 1152
 present_species |> 
   filter(Region == "Colorado Plateau",
-         PlotMix_Climate == "Current") |> 
+         PlotMix_Climate != "None") |> 
   select(Region, Site, Date_Monitored, Plot, Perc_dev_cum) |> 
   distinct(.keep_all = TRUE) |> 
   filter(Perc_dev_cum < 0) |> 
   nrow()
 
-# 0. Empty plot comparison, extremely dry (-50% and drier): 240
+# 0. Empty plot comparison, extremely dry (-50% and drier): 480
 present_species |> 
   filter(Region == "Colorado Plateau",
-         PlotMix_Climate == "Current") |> 
+         PlotMix_Climate != "None") |> 
   select(Region, Site, Date_Monitored, Plot, Perc_dev_cum) |> 
   distinct(.keep_all = TRUE) |> 
   filter(Perc_dev_cum < -0.5) |> 
@@ -1115,35 +1115,35 @@ sonoran.total.empty.seed <- present_species |>
          Region %in% c("Sonoran Central", "Sonoran SE")) |> 
   count(Code) |> 
   filter(Code == "0") |> 
-  mutate(perc_freq = (n / 512) * 100) 
+  mutate(perc_freq = (n / 1024) * 100) 
 sonoran.wet.empty.seed <- present_species |> 
   filter(PlotMix_Climate == "Current",
          Region %in% c("Sonoran Central", "Sonoran SE"),
          Perc_dev_cum > 0) |> 
   count(Code) |> 
   filter(Code == "0") |> 
-  mutate(perc_freq = (n / 160) * 100)
+  mutate(perc_freq = (n / 320) * 100)
 sonoran.wettest.empty.seed <- present_species |> 
   filter(PlotMix_Climate == "Current",
          Region %in% c("Sonoran Central", "Sonoran SE"),
          Perc_dev_cum > 0.24) |> 
   count(Code) |> 
   filter(Code == "0") |> 
-  mutate(perc_freq = (n / 80) * 100)
+  mutate(perc_freq = (n / 160) * 100)
 sonoran.dry.empty.seed <- present_species |> 
   filter(PlotMix_Climate == "Current",
          Region %in% c("Sonoran Central", "Sonoran SE"),
          Perc_dev_cum < 0) |> 
   count(Code) |> 
   filter(Code == "0") |> 
-  mutate(perc_freq = (n / 352) * 100) 
+  mutate(perc_freq = (n / 704) * 100) 
 sonoran.driest.empty.seed <- present_species |> 
   filter(PlotMix_Climate == "Current",
          Region %in% c("Sonoran Central", "Sonoran SE"),
          Perc_dev_cum < -0.23) |> 
   count(Code) |> 
   filter(Code == "0") |> 
-  mutate(perc_freq = (n / 128) * 100) 
+  mutate(perc_freq = (n / 256) * 100) 
 
 
 
@@ -1921,14 +1921,14 @@ naz.driest.empty <- present_species |>
   mutate(perc_freq = (n / 540) * 100)
 
 
-# Empty seeded plots (Current or Projected)
+# Empty seeded plots (Current and Projected)
 naz.total.empty.seed <- present_species |> 
   filter(PlotMix_Climate != "None",
          Region == "Colorado Plateau",
          Code == "0") |> 
   count(Code) |> 
   arrange(desc(n)) |> 
-  mutate(perc_freq = (n / 1553) * 100)
+  mutate(perc_freq = (n / 3104) * 100)
 naz.wet.empty.seed <- present_species |> 
   filter(PlotMix_Climate != "None",
          Region == "Colorado Plateau",
@@ -1936,7 +1936,7 @@ naz.wet.empty.seed <- present_species |>
          Perc_dev_cum > 0) |> 
   count(Code) |> 
   arrange(desc(n)) |> 
-  mutate(perc_freq = (n / 977) * 100)
+  mutate(perc_freq = (n / 1952) * 100)
 naz.wettest.empty.seed <- present_species |> 
   filter(PlotMix_Climate != "None",
          Region == "Colorado Plateau",
@@ -2014,7 +2014,7 @@ naz.empty.seed <- bind_rows(naz.total.empty.seed, naz.wet.empty.seed, naz.dry.em
 
 # All
 naz.freq <- bind_rows(naz.nativevolun, naz.weedy, naz.seed,
-                      naz.empty) |> 
+                      naz.empty, naz.empty.seed) |> 
   mutate(Type = paste0(Plant, ", ", Plot))
 naz.freq$Code[naz.freq$Code == "0"] <- "Empty"  
 
