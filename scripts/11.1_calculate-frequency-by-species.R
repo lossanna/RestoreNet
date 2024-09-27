@@ -1853,13 +1853,13 @@ naz.total.seedp
 
 # Projected: wetter combined
 #   BAMU, ASTU, SECO10, PASM
-naz.wet.seedp <- bind_rows(naz.wet.seed1p, naz.dry.seed2p, naz.dry.seed3p) |> 
+naz.wet.seedp <- bind_rows(naz.wet.seed1p, naz.wet.seed2p, naz.wet.seed3p) |> 
   arrange(desc(perc_freq))
 naz.wet.seedp
 
 # Projected: Extremely wet (+48% and wetter) combined
 #   BAMU, ASTU, SECO10, PASM
-naz.wettest.seedp <- bind_rows(naz.wettest.seed1p, naz.dry.seed2p, naz.dry.seed3p) |> 
+naz.wettest.seedp <- bind_rows(naz.wettest.seed1p, naz.wettest.seed2p, naz.wettest.seed3p) |> 
   arrange(desc(perc_freq))
 naz.wettest.seedp
 
@@ -2017,6 +2017,7 @@ naz.freq.interest <- naz.freq |>
   filter(Code == "LECI4" & Plant == "Current mix"| 
            Code == "HEBO" & Plant == "Current mix" | 
            Code == "HECO26" & Plant == "Current mix" | 
+           Code == "LILE3" & Plant == "Current mix" | 
            Code == "BAMU" & Plant == "Projected mix" | 
            Code == "PASM" & Plant == "Projected mix" |
            Code == "ASTU" & Plant == "Projected mix" |
