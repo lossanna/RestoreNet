@@ -1944,7 +1944,7 @@ naz.wettest.empty.seed <- present_species |>
          Perc_dev_cum > 0.48) |> 
   count(Code) |> 
   arrange(desc(n)) |> 
-  mutate(perc_freq = (n / 353) * 100)
+  mutate(perc_freq = (n / 1152) * 100)
 naz.dry.empty.seed <- present_species |> 
   filter(PlotMix_Climate != "None",
          Region == "Colorado Plateau",
@@ -1952,7 +1952,7 @@ naz.dry.empty.seed <- present_species |>
          Perc_dev_cum < 0) |> 
   count(Code) |> 
   arrange(desc(n)) |> 
-  mutate(perc_freq = (n / 576) * 100)
+  mutate(perc_freq = (n / 704) * 100)
 naz.driest.empty.seed <- present_species |> 
   filter(PlotMix_Climate != "None",
          Region == "Colorado Plateau",
@@ -1960,7 +1960,7 @@ naz.driest.empty.seed <- present_species |>
          Perc_dev_cum < -0.5) |> 
   count(Code) |> 
   arrange(desc(n)) |> 
-  mutate(perc_freq = (n / 240) * 100)
+  mutate(perc_freq = (n / 480) * 100)
 
 
 ## Construct tables -------------------------------------------------------
