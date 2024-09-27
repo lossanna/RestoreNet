@@ -1322,7 +1322,7 @@ present_species |>
 # Native volunteer (all plots): Highest species frequency overall
 #   ATCO, SPSP.BarTBar, HESP.BabbittPJ, SOEL, CHAL11, SCMU6
 naz.total.nativevolun <- present_species |> 
-  filter(Weedy != "Weedy",
+  filter(Weedy == "Desirable",
          Region == "Colorado Plateau",
          SpeciesSeeded == "No") |> 
   count(Code) |> 
@@ -1333,7 +1333,7 @@ naz.total.nativevolun <- present_species |>
 # Native volunteer: when wetter
 #   HESP.BabbittPJ, SPSP.BarTBar, ATCO, CHAL11, SCMU6, LEPA6, SAAB, SOEL
 naz.wet.nativevolun <- present_species |> 
-  filter(Weedy != "Weedy",
+  filter(Weedy == "Desirable",
          Region == "Colorado Plateau",
          SpeciesSeeded == "No",
          Perc_dev_cum > 0) |> 
@@ -1345,7 +1345,7 @@ naz.wet.nativevolun <- present_species |>
 # Native volunteer: when extremely wet (+48% and wetter)
 #   HESP.BabbittPJ, LEPA6, CHAL11, ATCO
 naz.wettest.nativevolun <- present_species |> 
-  filter(Weedy != "Weedy",
+  filter(Weedy == "Desirable",
          Region == "Colorado Plateau",
          SpeciesSeeded == "No",
          Perc_dev_cum > 0.48) |> 
@@ -1357,7 +1357,7 @@ naz.wettest.nativevolun <- present_species |>
 # Native volunteer: when drier
 #   ATCO, SOEL, SPSP.TLE, HECI
 naz.dry.nativevolun <- present_species |> 
-  filter(Weedy != "Weedy",
+  filter(Weedy == "Desirable",
          Region == "Colorado Plateau",
          SpeciesSeeded == "No",
          Perc_dev_cum < 0) |> 
@@ -1369,7 +1369,7 @@ naz.dry.nativevolun <- present_species |>
 # Native volunteer: when extremely dry (-50% and drier)
 #   SOEL, ATCO, CHEN.BabbittPJ, PHNE3
 naz.driest.nativevolun <- present_species |> 
-  filter(Weedy != "Weedy",
+  filter(Weedy == "Desirable",
          Region == "Colorado Plateau",
          SpeciesSeeded == "No",
          Perc_dev_cum < -0.5) |> 
@@ -1385,7 +1385,7 @@ naz.driest.nativevolun <- present_species |>
 # Weedy (all plots): Highest species frequency overall
 #   SATR12, UNFO1.FlyingM, ERCI6, UNGR.FlyingM, UNGR.BarTBar, UNFO8.BarTBar, HAGL
 naz.total.weedy <- present_species |> 
-  filter(Weedy != "Desirable",
+  filter(Weedy == "Weedy",
          Region == "Colorado Plateau") |> 
   count(Code) |> 
   arrange(desc(n)) |> 
@@ -1395,7 +1395,7 @@ naz.total.weedy <- present_species |>
 # Weedy: when wetter
 #   SATR12, UNFO1.FlyingM, UNGR.BarTBar, UNGR.FlyingM, UNFO8.BarTBar, ERCI6, UNGR1.MOWE
 naz.wet.weedy <- present_species |> 
-  filter(Weedy != "Desirable",
+  filter(Weedy == "Weedy",
          Region == "Colorado Plateau",
          Perc_dev_cum > 0) |> 
   count(Code) |> 
@@ -1406,7 +1406,7 @@ naz.wet.weedy <- present_species |>
 # Weedy: when extremely wet (+48% and wetter)
 #   BRINI, SATR12, ERCI6, UNFO1.PEFO, UNGR1.MOWE, HAGL
 naz.wettest.weedy <- present_species |> 
-  filter(Weedy != "Desirable",
+  filter(Weedy == "Weedy",
          Region == "Colorado Plateau",
          Perc_dev_cum > 0.48) |> 
   count(Code) |> 
@@ -1417,7 +1417,7 @@ naz.wettest.weedy <- present_species |>
 # Weedy: when drier
 #   SATR12, UNFO1.FlyingM, BRRU2, HAGL, ERCI6, TRTE
 naz.dry.weedy <- present_species |> 
-  filter(Weedy != "Desirable",
+  filter(Weedy == "Weedy",
          Region == "Colorado Plateau",
          Perc_dev_cum < 0) |> 
   count(Code) |> 
@@ -1428,7 +1428,7 @@ naz.dry.weedy <- present_species |>
 # Weedy: when extremely dry (-50% and drier)
 #   SATR12, BRRU2, ERCI6, TRTE
 naz.driest.weedy <- present_species |> 
-  filter(Weedy != "Desirable",
+  filter(Weedy == "Weedy",
          Region == "Colorado Plateau",
          Perc_dev_cum < -0.5) |> 
   count(Code) |> 
