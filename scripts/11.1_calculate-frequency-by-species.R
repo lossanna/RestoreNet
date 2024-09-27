@@ -1201,15 +1201,15 @@ sonoran.freq$Code[sonoran.freq$Code == "0"] <- "Empty"
 write_csv(sonoran.freq,
           file = "data/cleaned/11.1_Sonoran-Desert_frequency_all_clean.csv")
 
-# Species of interest
+# Species of interest (include based on frequency and count)
 sonoran.freq.interest <- sonoran.freq |> 
   filter(Code == "SACO6" & Plant == "Current mix"| 
            Code == "LUSP2" & Plant == "Current mix" | 
            Code == "PLOV" & Plant == "Projected mix" | 
            Code == "SECO10" & Plant == "Projected mix" | 
            Code == "ARPU9" & Plant == "Projected mix" |
-           Code %in% c("LOHU2", "LOAR12",
-                       "ERCI6", "SCBA") |
+           Code %in% c("LOHU2", "LOAR12", "VUOC",
+                       "ERCI6", "SCBA", "BRRU2") |
            Code == "Empty" & Plant == "Empty") |> 
   mutate(Plant = str_replace(Plant, "Weed", "Invasive"),
          Type = str_replace(Type, "Weed", "Invasive"))
@@ -2022,16 +2022,19 @@ naz.freq$Code[naz.freq$Code == "0"] <- "Empty"
 write_csv(naz.freq,
           file = "data/cleaned/11.1_Northern-AZ_frequency_all_clean.csv")
 
-# Species of interest
+# Species of interest (include based on frequency and count)
 naz.freq.interest <- naz.freq |> 
   filter(Code == "LECI4" & Plant == "Current mix"| 
            Code == "HEBO" & Plant == "Current mix" | 
            Code == "HECO26" & Plant == "Current mix" | 
-           Code == "LILE3" & Plant == "Current mix" | 
+           Code == "LILE3" & Plant == "Current mix" |
+           Code == "DACA7" & Plant == "Current mix" |
+           Code == "PASM" & Plant == "Current mix" |
+           Code == "ELEL5" & Plant == "Current mix" |
            Code == "BAMU" & Plant == "Projected mix" | 
            Code == "PASM" & Plant == "Projected mix" |
            Code == "ASTU" & Plant == "Projected mix" |
-           Code %in% c("ATCO", "SOEL", "SATR12", "Empty")) |> 
+           Code %in% c("ATCO", "SOEL", "LEPA6", "SATR12", "Empty")) |> 
   mutate(Plant = str_replace(Plant, "Weed", "Invasive"),
          Type = str_replace(Type, "Weed", "Invasive"))
 

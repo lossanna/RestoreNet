@@ -4,7 +4,8 @@
 # Purpose: Identify what species are doing well based on Count for Sonoran Desert 
 #   and Northern Arizona.
 # Investigate which seeded, native volunteer, and weedy species are doing well by Count
-#   in variable precip. 
+#   in variable precip (both extremes), and high count in all conditions.
+# Use graphs from 12.1.R to also help visualize comparisons to determine best-performing species.
 
 # Sonoran Desert precip deviation extremes (to determine performance in variable precip):
 #   Wet: +24% and wetter includes all sites but Roosevelt.
