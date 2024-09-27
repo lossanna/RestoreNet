@@ -28,6 +28,7 @@
 
 # Northern Arizona Plateau species of interest:
 #   Current mix, most frequent (all conditions) and did well under var precip: LECI4, HEBO, HECO26
+#   Current mix, most frequent overall (in moderate & wet conditions): LILE3
 #   Projected mix, most frequent (all conditions) and did well under var precip: BAMU, PASM
 #   Projected mix, large precip range, grew in extremely wet and moderate dry: ASTU, SECO10
 #   Native volunteers, most frequent (all conditions) and did well under var precip: ATCO, SOEL
@@ -1232,7 +1233,7 @@ sonoran.freq.current <- sonoran.freq |>
 
 # Projected mix
 sonoran.freq.projected <- sonoran.freq |> 
-  filter(Plant %in% c("Current mix", "Empty seeded"))
+  filter(Plant %in% c("Projected mix", "Empty seeded"))
 
 # Write to csv
 write_csv(sonoran.freq.interest,
@@ -2045,7 +2046,7 @@ naz.freq.current <- naz.freq |>
 
 # Projected mix
 naz.freq.projected <- naz.freq |> 
-  filter(Plant %in% c("Current mix", "Empty seeded"))
+  filter(Plant %in% c("Projected mix", "Empty seeded"))
 
 # Write to csv
 write_csv(naz.freq.interest,
