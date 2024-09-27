@@ -518,6 +518,50 @@ naz.seed.count.plotmixclimate <- dat |>
 naz.seed.count.plotmixclimate
 
 
+
+### By species ------------------------------------------------------------
+
+# By known native recruits: narrow down contenders for best under var precip
+dat |> 
+  filter(Code %in% c("LEPA6", "CHEN.BabbittPJ", "CHAL11", "PHNE3", "DAPU7", "TOIN", "PLPA2", "SCMU6",
+                     "HESP.BabbittPJ", "SPSP.BarTBar")) |> 
+  filter(Region == "Colorado Plateau") |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = Lifeform,
+                 shape = Lifeform),
+             alpha = 0.7) +
+  facet_wrap(~Code) +
+  ggtitle("Northern Arizona Plateau, native recruits") +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  scale_shape_manual(values = c(19, 17)) +
+  scale_color_manual(values = c("#1B9E77", "#D95F02")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+
+# By known weeds: narrow down contenders for best under var precip
+dat |> 
+  filter(Code %in% c("UNFO1.FlyingM", "UNGR1.MOWE", "SATR12", "BRNI", "UNFO8.BarTBar", 
+                     "UNGR.BarTBar", "UNGR.FlyingM", "HAGL", "BRRU2")) |> 
+  filter(Region == "Colorado Plateau") |> 
+  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  geom_point(aes(color = Lifeform,
+                 shape = Lifeform),
+             alpha = 0.7) +
+  facet_wrap(~Code) +
+  ggtitle("Northern Arizona Plateau, native recruits") +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  xlab("Cumulative precip deviation from normals") +
+  scale_shape_manual(values = c(19, 17)) +
+  scale_color_manual(values = c("#1B9E77", "#D95F02")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+
+
 # Seeded species
 # By seeded species: Current
 naz.seed.count.current.species <- dat |> 
@@ -544,7 +588,7 @@ naz.seed.count.current.species
 
 # By seeded species: Projected
 naz.seed.count.projected.species <- dat |> 
-  filter(PlotMix_Climate == "Projected",
+  filter(PlotMix_Climate == "Projected-adapted mix",
          SpeciesSeeded == "Yes") |> 
   filter(Region == "Colorado Plateau") |> 
   filter(!str_detect(Code, "SPP|SUNGR|UNFO|UNGR")) |> 
