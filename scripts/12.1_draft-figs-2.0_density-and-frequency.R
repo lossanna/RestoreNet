@@ -220,6 +220,21 @@ sonoran.freq.nativevolun |>
   theme(axis.text.x = element_text(angle = 35)) +
   theme(axis.text.x = element_text(color = "black"))
 
+# Native recruit, wetter/drier
+sonoran.freq.nativevolun |> 
+  filter(Plot %in% c("Wetter", "Drier")) |> 
+  ggplot(aes(x = Code, y = Frequency, fill = Plot)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  ggtitle("Sonoran Desert, native recruit") +
+  theme_minimal() +
+  scale_y_continuous(labels = scales::percent) +
+  xlab(NULL) +
+  ylab("Frequency (presence in plots)") +
+  theme(legend.title = element_blank()) +
+  theme(axis.text.x = element_text(color = "black")) +
+  theme(axis.text.x = element_text(angle = 35)) +
+  theme(legend.position = "bottom")
+
 # Native recruit, extremes
 sonoran.freq.nativevolun |> 
   filter(Plot %in% c("Wettest", "Driest")) |> 
@@ -266,7 +281,8 @@ sonoran.freq.weed |>
 
 # Current mix, all plots
 sonoran.freq.current |> 
-  filter(Plot == "Total") |> 
+  filter(Plot == "Total",
+         Code != "Empty") |> 
   ggplot(aes(x = Code, y = Frequency)) +
   geom_bar(stat = "identity") +
   ggtitle("Sonoran Desert, Current mix, all plots") +
@@ -278,9 +294,26 @@ sonoran.freq.current |>
   theme(axis.text.x = element_text(color = "black")) +
   theme(axis.text.x = element_text(angle = 35))
 
+# Current mix, wetter/drier
+sonoran.freq.current |> 
+  filter(Plot %in% c("Wetter", "Drier"),
+         Code != "Empty") |> 
+  ggplot(aes(x = Code, y = Frequency, fill = Plot)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  ggtitle("Sonoran Desert, Current mix") +
+  theme_minimal() +
+  scale_y_continuous(labels = scales::percent) +
+  xlab(NULL) +
+  ylab("Frequency (presence in plots)") +
+  theme(legend.title = element_blank()) +
+  theme(axis.text.x = element_text(color = "black")) +
+  theme(axis.text.x = element_text(angle = 35)) +
+  theme(legend.position = "bottom")
+
 # Current mix, extremes
 sonoran.freq.current |> 
-  filter(Plot %in% c("Wettest", "Driest")) |> 
+  filter(Plot %in% c("Wettest", "Driest"),
+         Code != "Empty") |> 
   ggplot(aes(x = Code, y = Frequency, fill = Plot)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Sonoran Desert, Current mix") +
@@ -295,7 +328,8 @@ sonoran.freq.current |>
 
 # Projected mix, all plots
 sonoran.freq.projected |> 
-  filter(Plot == "Total") |> 
+  filter(Plot == "Total",
+         Code != "Empty") |> 
   ggplot(aes(x = Code, y = Frequency)) +
   geom_bar(stat = "identity") +
   ggtitle("Sonoran Desert, Projected mix, all plots") +
@@ -307,9 +341,26 @@ sonoran.freq.projected |>
   theme(axis.text.x = element_text(color = "black")) +
   theme(axis.text.x = element_text(angle = 35))
 
+# Projected mix, wetter/drier
+sonoran.freq.projected |> 
+  filter(Plot %in% c("Wetter", "Drier"),
+         Code != "Empty") |> 
+  ggplot(aes(x = Code, y = Frequency, fill = Plot)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  ggtitle("Sonoran Desert, Projected mix") +
+  theme_minimal() +
+  scale_y_continuous(labels = scales::percent) +
+  xlab(NULL) +
+  ylab("Frequency (presence in plots)") +
+  theme(legend.title = element_blank()) +
+  theme(axis.text.x = element_text(color = "black")) +
+  theme(axis.text.x = element_text(angle = 35)) +
+  theme(legend.position = "bottom")
+
 # Projected mix, extremes
 sonoran.freq.projected |> 
-  filter(Plot %in% c("Wettest", "Driest")) |> 
+  filter(Plot %in% c("Wettest", "Driest"),
+         Code != "Empty") |> 
   ggplot(aes(x = Code, y = Frequency, fill = Plot)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Sonoran Desert, Projected mix") +
@@ -574,6 +625,21 @@ naz.freq.weed |>
   theme(axis.text.x = element_text(angle = 35)) +
   theme(axis.text.x = element_text(color = "black"))
 
+# Weedy, wetter/drier
+naz.freq.weed |> 
+  filter(Plot %in% c("Wetter", "Drier")) |> 
+  filter(Code != "Empty") |> 
+  ggplot(aes(x = Code, y = Frequency, fill = Plot)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  ggtitle("Northern Arizona, weeds") +
+  theme_minimal() +
+  scale_y_continuous(labels = scales::percent) +
+  xlab(NULL) +
+  ylab("Frequency (presence in plots)") +
+  theme(legend.title = element_blank()) +
+  theme(axis.text.x = element_text(angle = 35)) +
+  theme(axis.text.x = element_text(color = "black"))
+
 # Weedy, extremes
 naz.freq.weed |> 
   filter(Plot %in% c("Wettest", "Driest")) |> 
@@ -615,6 +681,7 @@ naz.freq.current |>
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
   theme(axis.text.x = element_text(angle = 35)) +
+  theme(legend.position = "bottom") +
   theme(axis.text.x = element_text(color = "black"))
 
 # Current mix, extremes
@@ -629,6 +696,7 @@ naz.freq.current |>
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
   theme(axis.text.x = element_text(angle = 35)) +
+  theme(legend.position = "bottom") +
   theme(axis.text.x = element_text(color = "black"))
 
 # Projected mix, all plots
@@ -657,6 +725,7 @@ naz.freq.projected |>
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
   theme(axis.text.x = element_text(angle = 35)) +
+  theme(legend.position = "bottom") +
   theme(axis.text.x = element_text(color = "black"))
 
 # Projected mix, extremes
@@ -671,6 +740,7 @@ naz.freq.projected |>
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
   theme(axis.text.x = element_text(angle = 35)) +
+  theme(legend.position = "bottom") +
   theme(axis.text.x = element_text(color = "black"))
 
 

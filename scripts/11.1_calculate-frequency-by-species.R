@@ -9,6 +9,7 @@
 # Calculate frequencies for total (all plots/conditions), wetter conditions, extremely
 #   wet conditions (+24% and wetter for Sonoran Desert; 48% and wetter for N AZ), drier
 #   conditions, and extremely dry conditions (-23% and drier for SD and -50% and drier for NAZ).
+# Use graphs from 12.1.R to also help visualize comparisons to determine best-performing species.
 
 # Sonoran Desert precip deviation extremes (to determine performance in variable precip):
 #   Wet: +24% and wetter includes all sites but Roosevelt.
@@ -19,20 +20,20 @@
 
 # Sonoran Desert, best performers based on frequency:
 #   Current mix, most frequent (all conditions) and did well under var precip: SACO6, LUSP2
-#   Projected mix, most frequent (all conditions) and did well under var precip: PLOV
-#   Projected mix, most frequent (but not present in both extremes): ARPU9, SECO10
-#   Projected mix, frequent in extremely wet conditions: PLOV, ARPU9
-#   Projected mix, frequent in extremely dry conditions: PLOV, SECO10
+#   Projected mix, most frequent (all conditions): ARPU9, SECO10, PLOV
+#   Projected mix, did best with var precip: PLOV
+#   Projected mix, present in both extremes, but did much better in wetter: ARPU9
+#   Projected mix, present in both extremes but did better drier: SECO10
 #   Native volunteers, most frequent and did well under var precip: LOAR12, LOHU2
-#   Weedy species, most frequent and did well under var precip: SCBA, BRRU2, ERCI6
+#   Weedy species, most frequent and did well under var precip: ERCI6, SCBA
 
 # Northern Arizona Plateau species of interest:
 #   Current mix, most frequent (all conditions) and did well under var precip: LECI4, HEBO, HECO26
 #   Current mix, most frequent overall (in moderate & wet conditions): LILE3
 #   Projected mix, most frequent (all conditions) and did well under var precip: BAMU, PASM
-#   Projected mix, large precip range, grew in extremely wet and moderate dry: ASTU, SECO10
+#   Projected mix, large precip range, grew in extremely wet and moderate dry: ASTU
 #   Native volunteers, most frequent (all conditions) and did well under var precip: ATCO, SOEL
-#   Weedy species, most frequent (all conditions) and did well under var precip: SATR12, ERCI6
+#   Weedy species, most frequent (all conditions) and did well under var precip: SATR12
 
 
 
