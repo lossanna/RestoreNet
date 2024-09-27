@@ -2393,7 +2393,7 @@ naz.seed.site |>
 naz.seed.site |> 
   select(Code, Perc_sites, Plant, perc_freq, Plot) |> 
   filter(Plant == "Projected mix") |> 
-  print(n = 87)
+  print(n = 90)
  
 
 save.image("RData/11.1_calculate-frequency-by-species.RData")
