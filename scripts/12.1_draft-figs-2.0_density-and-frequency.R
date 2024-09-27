@@ -1,5 +1,5 @@
 # Created: 2024-09-25
-# Last updated: 2024-09-26
+# Last updated: 2024-09-27
 
 # Purpose: Narrow down and improve figures from 09.1_draft-figs_precip-dev_subplot.R. In particular,
 #   change Count to density (individuals per m2), and change N AZ Plateau to just Northern Arizona
@@ -212,11 +212,12 @@ sonoran.freq.nativevolun |>
   ggplot(aes(x = Code, y = Frequency)) +
   geom_bar(stat = "identity") +
   ggtitle("Sonoran Desert, native recruit, all plots") +
-  theme_bw() +
+  theme_minimal() +
   scale_y_continuous(labels = scales::percent) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
+  theme(axis.text.x = element_text(angle = 35)) +
   theme(axis.text.x = element_text(color = "black"))
 
 # Native recruit, extremes
@@ -225,12 +226,14 @@ sonoran.freq.nativevolun |>
   ggplot(aes(x = Code, y = Frequency, fill = Plot)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Sonoran Desert, native recruit") +
-  theme_bw() +
+  theme_minimal() +
   scale_y_continuous(labels = scales::percent) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
-  theme(axis.text.x = element_text(color = "black"))
+  theme(axis.text.x = element_text(color = "black")) +
+  theme(axis.text.x = element_text(angle = 35)) +
+  theme(legend.position = "bottom")
 
 # Weedy, all plots
 sonoran.freq.weed |> 
@@ -238,12 +241,13 @@ sonoran.freq.weed |>
   ggplot(aes(x = Code, y = Frequency)) +
   geom_bar(stat = "identity") +
   ggtitle("Sonoran Desert, weeds, all plots") +
-  theme_bw() +
+  theme_minimal() +
   scale_y_continuous(labels = scales::percent) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
-  theme(axis.text.x = element_text(color = "black"))
+  theme(axis.text.x = element_text(color = "black")) +
+  theme(axis.text.x = element_text(angle = 35)) 
 
 # Weedy, extremes
 sonoran.freq.weed |> 
@@ -251,12 +255,14 @@ sonoran.freq.weed |>
   ggplot(aes(x = Code, y = Frequency, fill = Plot)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Sonoran Desert, weeds") +
-  theme_bw() +
+  theme_minimal() +
   scale_y_continuous(labels = scales::percent) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
-  theme(axis.text.x = element_text(color = "black"))
+  theme(axis.text.x = element_text(color = "black")) +
+  theme(axis.text.x = element_text(angle = 35)) +
+  theme(legend.position = "bottom")
 
 # Current mix, all plots
 sonoran.freq.current |> 
@@ -264,12 +270,13 @@ sonoran.freq.current |>
   ggplot(aes(x = Code, y = Frequency)) +
   geom_bar(stat = "identity") +
   ggtitle("Sonoran Desert, Current mix, all plots") +
-  theme_bw() +
+  theme_minimal() +
   scale_y_continuous(labels = scales::percent) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
-  theme(axis.text.x = element_text(color = "black"))
+  theme(axis.text.x = element_text(color = "black")) +
+  theme(axis.text.x = element_text(angle = 35))
 
 # Current mix, extremes
 sonoran.freq.current |> 
@@ -277,12 +284,14 @@ sonoran.freq.current |>
   ggplot(aes(x = Code, y = Frequency, fill = Plot)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Sonoran Desert, Current mix") +
-  theme_bw() +
+  theme_minimal() +
   scale_y_continuous(labels = scales::percent) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
-  theme(axis.text.x = element_text(color = "black"))
+  theme(axis.text.x = element_text(color = "black")) +
+  theme(axis.text.x = element_text(angle = 35)) +
+  theme(legend.position = "bottom")
 
 # Projected mix, all plots
 sonoran.freq.projected |> 
@@ -290,12 +299,13 @@ sonoran.freq.projected |>
   ggplot(aes(x = Code, y = Frequency)) +
   geom_bar(stat = "identity") +
   ggtitle("Sonoran Desert, Projected mix, all plots") +
-  theme_bw() +
+  theme_minimal() +
   scale_y_continuous(labels = scales::percent) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
-  theme(axis.text.x = element_text(color = "black"))
+  theme(axis.text.x = element_text(color = "black")) +
+  theme(axis.text.x = element_text(angle = 35))
 
 # Projected mix, extremes
 sonoran.freq.projected |> 
@@ -303,12 +313,14 @@ sonoran.freq.projected |>
   ggplot(aes(x = Code, y = Frequency, fill = Plot)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Sonoran Desert, Projected mix") +
-  theme_bw() +
+  theme_minimal() +
   scale_y_continuous(labels = scales::percent) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
-  theme(axis.text.x = element_text(color = "black"))
+  theme(axis.text.x = element_text(color = "black")) +
+  theme(axis.text.x = element_text(angle = 35)) +
+  theme(legend.position = "bottom")
 
 
 # Species of interest, all plots
@@ -317,13 +329,15 @@ sonoran.species.total <- sonoran.freq.interest |>
   ggplot(aes(x = Code, y = Frequency, fill = Plant)) +
   geom_bar(stat = "identity") +
   ggtitle("Sonoran Desert species of interest") +
-  theme_bw() +
+  theme_minimal() +
   scale_y_continuous(labels = scales::percent) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
   scale_fill_manual(values = c("#E5C494", "#FC8D62", "#66C2A5", "#8DA0CB", "#B3B3B3")) +
-  theme(axis.text.x = element_text(color = "black"))
+  theme(axis.text.x = element_text(color = "black")) +
+  theme(axis.text.x = element_text(angle = 35)) +
+  theme(legend.position = "bottom")
 sonoran.species.total
 
 # Species of interest, paired wetter & drier
@@ -338,7 +352,7 @@ sonoran.species.wetdry <- sonoran.freq.interest |>
   ggplot(aes(x = Code, y = Frequency, fill = Type)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Sonoran Desert species of interest") +
-  theme_bw() +
+  theme_minimal() +
   scale_y_continuous(labels = scales::percent) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
@@ -346,7 +360,9 @@ sonoran.species.wetdry <- sonoran.freq.interest |>
   scale_fill_manual(values = c("#E5D4A7", "#A6761D", "#FBB4AE", "#D95F02",
                                "#B3E2D6", "#1B9E77", "#B3C8E8", "#7570B3",
                                "#D9D9D9", "#666666")) +
-  theme(axis.text.x = element_text(color = "black"))
+  theme(axis.text.x = element_text(color = "black")) +
+  theme(axis.text.x = element_text(angle = 35)) +
+  theme(legend.position = "bottom")
 sonoran.species.wetdry
 
 # Species of interest, wettest & driest (extremes)
@@ -361,7 +377,7 @@ sonoran.species.ex <- sonoran.freq.interest |>
   ggplot(aes(x = Code, y = Frequency, fill = Type)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Sonoran Desert, species of interest under variable precipitation") +
-  theme_bw() +
+  theme_minimal() +
   scale_y_continuous(labels = scales::percent) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
@@ -369,7 +385,9 @@ sonoran.species.ex <- sonoran.freq.interest |>
   scale_fill_manual(values = c("#E5D4A7", "#A6761D", "#FBB4AE", "#D95F02",
                                "#B3E2D6", "#1B9E77", "#B3C8E8", "#7570B3",
                                "#D9D9D9", "#666666")) +
-  theme(axis.text.x = element_text(color = "black"))
+  theme(axis.text.x = element_text(color = "black")) +
+  theme(axis.text.x = element_text(angle = 35)) +
+  theme(legend.position = "bottom")
 sonoran.species.ex
 
 
@@ -504,7 +522,21 @@ naz.freq.nativevolun |>
   filter(Plot == "Total") |> 
   ggplot(aes(x = Code, y = Frequency)) +
   geom_bar(stat = "identity") +
-  ggtitle("Northern Arizona, native recruit, all plots") +
+  ggtitle("Northern Arizona, top native recruits, all plots") +
+  theme_minimal() +
+  scale_y_continuous(labels = scales::percent) +
+  xlab(NULL) +
+  ylab("Frequency (presence in plots)") +
+  theme(legend.title = element_blank()) +
+  theme(axis.text.x = element_text(angle = 35)) +
+  theme(axis.text.x = element_text(color = "black"))
+
+# Native recruit, wetter/drier
+naz.freq.nativevolun |> 
+  filter(Plot %in% c("Wetter", "Drier")) |> 
+  ggplot(aes(x = Code, y = Frequency, fill = Plot)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  ggtitle("Northern Arizona, native recruit") +
   theme_minimal() +
   scale_y_continuous(labels = scales::percent) +
   xlab(NULL) +

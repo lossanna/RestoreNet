@@ -1,5 +1,5 @@
 # Created: 2024-09-25
-# Last updated: 2024-09-26
+# Last updated: 2024-09-27
 
 # Purpose: Calculate frequency for all species. 
 
@@ -1213,19 +1213,28 @@ sonoran.freq.interest <- sonoran.freq |>
   mutate(Plant = str_replace(Plant, "Weed", "Invasive"),
          Type = str_replace(Type, "Weed", "Invasive"))
 
-# Top 10 native volunteers
-sonoran.freq.nativevolun <- sonoran.freq |> 
+# Top 7 native volunteers
+#   Top 7 in any category, then all conditions for that species
+sonoran.freq.nativevolun.code <- sonoran.freq |> 
   filter(Plant == "Native recruit") |> 
   group_by(Plot, Type) |> 
   arrange(desc(Frequency)) |> 
-  slice_head(n = 10)
+  slice_head(n = 7)
+length(unique(sonoran.freq.nativevolun.code$Code))
+sonoran.freq.nativevolun <- sonoran.freq |> 
+  filter(Plant == "Native recruit",
+         Code %in% sonoran.freq.nativevolun.code$Code)
 
-# Top 10 weeds
-sonoran.freq.weed <- sonoran.freq |> 
+# Top 8 weeds
+sonoran.freq.weed.code <- sonoran.freq |> 
   filter(Plant == "Weed") |> 
   group_by(Plot, Type) |> 
   arrange(desc(Frequency)) |> 
-  slice_head(n = 10)
+  slice_head(n = 8)
+length(unique(sonoran.freq.weed.code$Code))
+sonoran.freq.weed <- sonoran.freq |> 
+  filter(Plant == "Weed",
+         Code %in% sonoran.freq.weed.code$Code)
 
 # Current mix
 sonoran.freq.current <- sonoran.freq |> 
@@ -2027,19 +2036,28 @@ naz.freq.interest <- naz.freq |>
   mutate(Plant = str_replace(Plant, "Weed", "Invasive"),
          Type = str_replace(Type, "Weed", "Invasive"))
 
-# Top 10 native volunteers
-naz.freq.nativevolun <- naz.freq |> 
+# Top 7 native volunteers
+#   Top 7 in any category, then all conditions for that species
+naz.freq.nativevolun.code <- naz.freq |> 
   filter(Plant == "Native recruit") |> 
   group_by(Plot, Type) |> 
   arrange(desc(Frequency)) |> 
-  slice_head(n = 10)
+  slice_head(n = 7)
+length(unique(naz.freq.nativevolun.code$Code))
+naz.freq.nativevolun <- naz.freq |> 
+  filter(Plant == "Native recruit",
+         Code %in% naz.freq.nativevolun.code$Code)
 
-# Top 10 weeds
-naz.freq.weed <- naz.freq |> 
+# Top 8 weeds
+naz.freq.weed.code <- naz.freq |> 
   filter(Plant == "Weed") |> 
   group_by(Plot, Type) |> 
   arrange(desc(Frequency)) |> 
-  slice_head(n = 10)
+  slice_head(n = 8)
+length(unique(naz.freq.weed.code$Code))
+naz.freq.weed <- naz.freq |> 
+  filter(Plant == "Weed",
+         Code %in% naz.freq.weed.code$Code)
 
 # Current mix
 naz.freq.current <- naz.freq |> 
