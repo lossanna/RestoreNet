@@ -1154,27 +1154,27 @@ sonoran.nativevolun <- bind_rows(sonoran.total.nativevolun, sonoran.wet.nativevo
                                  sonoran.wettest.nativevolun, sonoran.driest.nativevolun) |> 
   mutate(Frequency = perc_freq / 100) |> 
   mutate(Plant = "Native recruit",
-         Plot = c(rep("Total", nrow(sonoran.total.nativevolun)), rep("Wetter", nrow(sonoran.wet.nativevolun)),
-                  rep("Drier", nrow(sonoran.dry.nativevolun)), rep("Wettest", nrow(sonoran.wettest.nativevolun)),
-                  rep("Driest", nrow(sonoran.driest.nativevolun)))) 
+         Plot = c(rep("total", nrow(sonoran.total.nativevolun)), rep("wetter", nrow(sonoran.wet.nativevolun)),
+                  rep("drier", nrow(sonoran.dry.nativevolun)), rep("wettest", nrow(sonoran.wettest.nativevolun)),
+                  rep("driest", nrow(sonoran.driest.nativevolun)))) 
 
 # Combine Weedy
 sonoran.weedy <- bind_rows(sonoran.total.weedy, sonoran.wet.weedy, sonoran.dry.weedy,
                            sonoran.wettest.weedy, sonoran.driest.weedy) |> 
   mutate(Frequency = perc_freq / 100) |> 
   mutate(Plant = "Weed",
-         Plot = c(rep("Total", nrow(sonoran.total.weedy)), rep("Wetter", nrow(sonoran.wet.weedy)),
-                  rep("Drier", nrow(sonoran.dry.weedy)), rep("Wettest", nrow(sonoran.wettest.weedy)),
-                  rep("Driest", nrow(sonoran.driest.weedy)))) 
+         Plot = c(rep("total", nrow(sonoran.total.weedy)), rep("wetter", nrow(sonoran.wet.weedy)),
+                  rep("drier", nrow(sonoran.dry.weedy)), rep("wettest", nrow(sonoran.wettest.weedy)),
+                  rep("driest", nrow(sonoran.driest.weedy)))) 
 
 # Combine Seeded
 sonoran.seed <- bind_rows(sonoran.total.seed, sonoran.wet.seed, sonoran.dry.seed,
                           sonoran.wettest.seed, sonoran.driest.seed) |> 
   mutate(Frequency = perc_freq / 100) |> 
   mutate(Plant = paste(mix, "mix"),
-         Plot = c(rep("Total", nrow(sonoran.total.seed)), rep("Wetter", nrow(sonoran.wet.seed)),
-                  rep("Drier", nrow(sonoran.dry.seed)), rep("Wettest", nrow(sonoran.wettest.seed)),
-                  rep("Driest", nrow(sonoran.driest.seed)))) |> 
+         Plot = c(rep("total", nrow(sonoran.total.seed)), rep("wetter", nrow(sonoran.wet.seed)),
+                  rep("drier", nrow(sonoran.dry.seed)), rep("wettest", nrow(sonoran.wettest.seed)),
+                  rep("driest", nrow(sonoran.driest.seed)))) |> 
   select(-mix)
 
 # Combine Empty (all)
@@ -1182,14 +1182,14 @@ sonoran.empty <- bind_rows(sonoran.total.empty, sonoran.wet.empty, sonoran.dry.e
                           sonoran.wettest.empty, sonoran.driest.empty) |> 
   mutate(Frequency = perc_freq / 100) |> 
   mutate(Plant = "Empty",
-         Plot = c("Total", "Wetter", "Drier", "Wettest", "Driest"))
+         Plot = c("total", "wetter", "drier", "wettest", "driest"))
 
 # Combine Empty (seeded plots)
 sonoran.empty.seed <- bind_rows(sonoran.total.empty.seed, sonoran.wet.empty.seed, sonoran.dry.empty.seed,
                            sonoran.wettest.empty.seed, sonoran.driest.empty.seed) |> 
   mutate(Frequency = perc_freq / 100) |> 
   mutate(Plant = "Empty seeded",
-         Plot = c("Total", "Wetter", "Drier", "Wettest", "Driest"))
+         Plot = c("total", "wetter", "drier", "wettest", "driest"))
 
 # All
 sonoran.freq <- bind_rows(sonoran.nativevolun, sonoran.weedy, sonoran.seed,
@@ -1970,18 +1970,18 @@ naz.nativevolun <- bind_rows(naz.total.nativevolun, naz.wet.nativevolun, naz.dry
                              naz.wettest.nativevolun, naz.driest.nativevolun) |> 
   mutate(Frequency = perc_freq / 100) |> 
   mutate(Plant = "Native recruit",
-         Plot = c(rep("Total", nrow(naz.total.nativevolun)), rep("Wetter", nrow(naz.wet.nativevolun)),
-                  rep("Drier", nrow(naz.dry.nativevolun)), rep("Wettest", nrow(naz.wettest.nativevolun)),
-                  rep("Driest", nrow(naz.driest.nativevolun)))) 
+         Plot = c(rep("total", nrow(naz.total.nativevolun)), rep("wetter", nrow(naz.wet.nativevolun)),
+                  rep("drier", nrow(naz.dry.nativevolun)), rep("wettest", nrow(naz.wettest.nativevolun)),
+                  rep("driest", nrow(naz.driest.nativevolun)))) 
 
 # Combine Weedy
 naz.weedy <- bind_rows(naz.total.weedy, naz.wet.weedy, naz.dry.weedy,
                        naz.wettest.weedy, naz.driest.weedy) |> 
   mutate(Frequency = perc_freq / 100) |> 
   mutate(Plant = "Weed",
-         Plot = c(rep("Total", nrow(naz.total.weedy)), rep("Wetter", nrow(naz.wet.weedy)),
-                  rep("Drier", nrow(naz.dry.weedy)), rep("Wettest", nrow(naz.wettest.weedy)),
-                  rep("Driest", nrow(naz.driest.weedy)))) 
+         Plot = c(rep("total", nrow(naz.total.weedy)), rep("wetter", nrow(naz.wet.weedy)),
+                  rep("drier", nrow(naz.dry.weedy)), rep("wettest", nrow(naz.wettest.weedy)),
+                  rep("driest", nrow(naz.driest.weedy)))) 
 
 # Combine Seeded
 naz.seed <- bind_rows(naz.total.seedc, naz.wet.seedc, naz.dry.seedc,
@@ -1990,12 +1990,12 @@ naz.seed <- bind_rows(naz.total.seedc, naz.wet.seedc, naz.dry.seedc,
                       naz.wettest.seedp, naz.driest.seedp) |> 
   mutate(Frequency = perc_freq / 100) |> 
   mutate(Plant = paste(mix, "mix"),
-         Plot = c(rep("Total", nrow(naz.total.seedc)), rep("Wetter", nrow(naz.wet.seedc)),
-                  rep("Drier", nrow(naz.dry.seedc)), rep("Wettest", nrow(naz.wettest.seedc)),
-                  rep("Driest", nrow(naz.driest.seedc)),
-                  rep("Total", nrow(naz.total.seedp)), rep("Wetter", nrow(naz.wet.seedp)),
-                  rep("Drier", nrow(naz.dry.seedp)), rep("Wettest", nrow(naz.wettest.seedp)),
-                  rep("Driest", nrow(naz.driest.seedp)))) |> 
+         Plot = c(rep("total", nrow(naz.total.seedc)), rep("wetter", nrow(naz.wet.seedc)),
+                  rep("drier", nrow(naz.dry.seedc)), rep("wettest", nrow(naz.wettest.seedc)),
+                  rep("driest", nrow(naz.driest.seedc)),
+                  rep("total", nrow(naz.total.seedp)), rep("wetter", nrow(naz.wet.seedp)),
+                  rep("drier", nrow(naz.dry.seedp)), rep("wettest", nrow(naz.wettest.seedp)),
+                  rep("driest", nrow(naz.driest.seedp)))) |> 
   select(-mix)
 
 # Combine Empty (all)
@@ -2003,14 +2003,14 @@ naz.empty <- bind_rows(naz.total.empty, naz.wet.empty, naz.dry.empty,
                        naz.wettest.empty, naz.driest.empty) |> 
   mutate(Frequency = perc_freq / 100) |> 
   mutate(Plant = "Empty",
-         Plot = c("Total", "Wetter", "Drier", "Wettest", "Driest"))
+         Plot = c("total", "wetter", "drier", "wettest", "driest"))
 
 # Combine Empty (seeded plots)
 naz.empty.seed <- bind_rows(naz.total.empty.seed, naz.wet.empty.seed, naz.dry.empty.seed,
                                 naz.wettest.empty.seed, naz.driest.empty.seed) |> 
   mutate(Frequency = perc_freq / 100) |> 
   mutate(Plant = "Empty seeded",
-         Plot = c("Total", "Wetter", "Drier", "Wettest", "Driest"))
+         Plot = c("total", "wetter", "drier", "wettest", "driest"))
 
 # All
 naz.freq <- bind_rows(naz.nativevolun, naz.weedy, naz.seed,
