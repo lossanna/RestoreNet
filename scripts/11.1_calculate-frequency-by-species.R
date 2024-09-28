@@ -2034,7 +2034,8 @@ naz.freq.interest <- naz.freq |>
            Code == "BAMU" & Plant == "Projected mix" | 
            Code == "PASM" & Plant == "Projected mix" |
            Code == "ASTU" & Plant == "Projected mix" |
-           Code %in% c("ATCO", "SOEL", "LEPA6", "SATR12", "Empty")) |> 
+           Code %in% c("ATCO", "SOEL", "LEPA6", "SATR12")|
+         Code == "Empty" & Plant == "Empty") |> 
   mutate(Plant = str_replace(Plant, "Weed", "Invasive"),
          Type = str_replace(Type, "Weed", "Invasive"))
 

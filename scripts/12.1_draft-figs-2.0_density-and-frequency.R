@@ -20,21 +20,23 @@ cum.pd <- read_csv("data/cleaned/03.3_cumulative-precip_percent-deviation-from-n
 ai <- read_csv("data/cleaned/03.4_aridity-index-values_clean.csv")
 
 sonoran.freq <- read_csv("data/cleaned/11.1_Sonoran-Desert_frequency_all_clean.csv")
-sonoran.freq.interest <- read_csv("data/cleaned/11.1_Sonoran-Desert_frequency_interest_clean.csv")
+sonoran.freq.interest.raw <- read_csv("data/cleaned/11.1_Sonoran-Desert_frequency_interest_clean.csv")
 sonoran.freq.nativevolun <- read_csv("data/cleaned/11.1_Sonoran-Desert_frequency_native-volunteer_clean.csv")
 sonoran.freq.weed <- read_csv("data/cleaned/11.1_Sonoran-Desert_frequency_weed_clean.csv")
-sonoran.freq.current <- read_csv("data/cleaned/11.1_Sonoran-Desert_frequency_seeded-current_clean.csv")
-sonoran.freq.projected <- read_csv("data/cleaned/11.1_Sonoran-Desert_frequency_seeded-projected_clean.csv")
+sonoran.freq.current.raw <- read_csv("data/cleaned/11.1_Sonoran-Desert_frequency_seeded-current_clean.csv")
+sonoran.freq.projected.raw <- read_csv("data/cleaned/11.1_Sonoran-Desert_frequency_seeded-projected_clean.csv")
 
 naz.freq <- read_csv("data/cleaned/11.1_Northern-AZ_frequency_all_clean.csv")
-naz.freq.interest <- read_csv("data/cleaned/11.1_Northern-AZ_frequency_interest_clean.csv")
+naz.freq.interest.raw <- read_csv("data/cleaned/11.1_Northern-AZ_frequency_interest_clean.csv")
 naz.freq.nativevolun <- read_csv("data/cleaned/11.1_Northern-AZ_frequency_native-volunteer_clean.csv")
 naz.freq.weed <- read_csv("data/cleaned/11.1_Northern-AZ_frequency_weed_clean.csv")
-naz.freq.current <- read_csv("data/cleaned/11.1_Northern-AZ_frequency_seeded-current_clean.csv")
-naz.freq.projected <- read_csv("data/cleaned/11.1_Northern-AZ_frequency_seeded-projected_clean.csv")
+naz.freq.current.raw <- read_csv("data/cleaned/11.1_Northern-AZ_frequency_seeded-current_clean.csv")
+naz.freq.projected.raw <- read_csv("data/cleaned/11.1_Northern-AZ_frequency_seeded-projected_clean.csv")
 
 
 # Data wrangling ----------------------------------------------------------
+
+## Count -------------------------------------------------------------------
 
 # Reorganize columns for left_join()
 cum.pd.subplot <- cum.pd |> 
@@ -94,7 +96,7 @@ naz.count.interest <- dat |>
   filter(Code == "LECI4" & PlotMix_Climate == "Current-adapted mix"| 
            Code == "HEBO" & PlotMix_Climate == "Current-adapted mix" | 
            Code == "HECO26" & PlotMix_Climate == "Current-adapted mix" | 
-           Code == "LILE3" & PlotMix_Climate == "Current-adapted mix" |
+           Code == "LILE3" & PlotMix_Climate == "Current-adapted mix" & SpeciesSeeded == "Yes" |
            Code == "DACA7" & PlotMix_Climate == "Current-adapted mix" |
            Code == "PASM" & PlotMix_Climate == "Current-adapted mix" |
            Code == "ELEL5" & PlotMix_Climate == "Current-adapted mix" |
@@ -112,8 +114,34 @@ naz.count.interest <- dat |>
                                         "ATCO", "SOEL", "LEPA6", "SATR12")))
 
 
+## Frequency --------------------------------------------------------------
+
+# Attach Lifeform and Duration info to seeded species
+seed.lifeform.duration <- dat |> 
+  filter(Region %in% c("Colorado Plateau", "Sonoran Central", "Sonoran SE"),
+         SpeciesSeeded == "Yes") |> 
+  select(Code, Lifeform, Duration) |> 
+  distinct(.keep_all = TRUE) |> 
+  add_row(Code = "Empty", Lifeform = "Empty", Duration = "Empty") |> 
+  add_row(Code = "ENFA", Lifeform = "Shrub", Duration = "Perennial") |> 
+  add_row(Code = "PSSP6",  Lifeform = "Grass", Duration = "Perennial") |> 
+  add_row(Code = "SPGR2", Lifeform = "Forb", Duration = "Perennial") |> 
+  add_row(Code = "PLMU3", Lifeform = "Grass", Duration = "Perennial") |> 
+  mutate(Duration = case_when(
+    Duration == "Unknown" ~ "Both",
+    TRUE ~ Duration))  
+
+sonoran.freq.current <- left_join(sonoran.freq.current.raw, seed.lifeform.duration) |>
+  mutate(Type2 = paste0(Lifeform, ", ", Plot)) 
+sonoran.freq.projected <- left_join(sonoran.freq.projected.raw, seed.lifeform.duration) |>
+  mutate(Type2 = paste0(Lifeform, ", ", Plot)) 
+naz.freq.current <- left_join(naz.freq.current.raw, seed.lifeform.duration) |>
+  mutate(Type2 = paste0(Lifeform, ", ", Plot)) 
+naz.freq.projected <- left_join(naz.freq.projected.raw, seed.lifeform.duration) |>
+  mutate(Type2 = paste0(Lifeform, ", ", Plot))   
+
 # Reorder frequency for species of interest
-sonoran.freq.interest <- sonoran.freq.interest |> 
+sonoran.freq.interest <- sonoran.freq.interest.raw |> 
   mutate(Plant = factor(Plant, levels = c("Current mix", "Projected mix",
                                           "Native recruit", "Invasive",
                                           "Empty")),
@@ -121,7 +149,7 @@ sonoran.freq.interest <- sonoran.freq.interest |>
                                         "LOHU2", "LOAR12", "VUOC", 
                                         "ERCI6", "SCBA", "BRRU2", "Empty"))) 
 
-naz.freq.interest <- naz.freq.interest |> 
+naz.freq.interest <- naz.freq.interest.raw |> 
   mutate(Code = case_when(
     Code == "PASM" & Plant == "Current mix" ~ "PASM_c",
     Code == "PASM" & Plant == "Projected mix" ~ "PASM_p",
@@ -137,6 +165,28 @@ naz.freq.interest <- naz.freq.interest |>
 
 # Sonoran Desert ----------------------------------------------------------
 
+## Precip deviation -------------------------------------------------------
+
+# Cumulative
+cum.pd.sonoran <- cum.pd |> 
+  filter(Perc_deviation != Inf) |> 
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  ggtitle("Sonoran Desert precipitation conditions") +
+  xlab(NULL) +
+  ylab("Cumulative precip deviation from normals") +
+  theme_bw() +
+  scale_y_continuous(labels = percent) +
+  geom_hline(yintercept = 0,
+             linetype = "dashed",
+             color = "red") +
+  theme(axis.text.x = element_text(color = "black"))
+cum.pd.sonoran
+
+
 ## Count ------------------------------------------------------------------
 
 # Desirable by PlotMix_Climate and PlantSource2 (native recruit outliers removed)
@@ -150,7 +200,7 @@ sonoran.des.count.plotmixclimate <- dat |>
              alpha = 0.7) +
   geom_smooth() +
   facet_wrap(~PlotMix_Climate) +
-  labs(title = "Sonoran Desert, desirable species",
+  labs(title = "Sonoran Desert desirable species",
        x = "Cumulative precipitation deviation from normals",
        y = expression(paste("Density (individuals / ", m^2, ")"))) +
   theme_minimal() +
@@ -171,7 +221,7 @@ sonoran.weed.count <- dat |>
                  shape = PlantSource2),
              alpha = 0.7) +
   geom_smooth() +
-  labs(title = "Sonoran Desert, weedy species",
+  labs(title = "Sonoran Desert weedy species",
        x = "Cumulative precipitation deviation from normals",
        y = expression(paste("Density (individuals / ", m^2, ")"))) +
   theme_minimal() +
@@ -183,29 +233,6 @@ sonoran.weed.count <- dat |>
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 sonoran.weed.count
 
-# Seeded species by PlotMix_Climate and Duration/Lifeform
-sonoran.seed.count.plotmixclimate.lifeform <- dat |> 
-  filter(PlotMix_Climate %in% c("Current-adapted mix", "Projected-adapted mix"),
-         SpeciesSeeded == "Yes") |> 
-  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
-  ggplot(aes(x = Perc_dev_cum, y = Density)) +
-  geom_point(aes(color = Lifeform,
-                 shape = Lifeform),
-             alpha = 0.7) +
-  facet_wrap(~PlotMix_Climate) +
-  geom_smooth() +
-  labs(title = "Sonoran Desert, seeded species",
-       x = "Cumulative precipitation deviation from normals",
-       y = expression(paste("Density (individuals / ", m^2, ")"))) +
-  theme_minimal() +
-  theme(legend.position = "bottom") +
-  scale_x_continuous(labels = scales::percent) +
-  scale_shape_manual(values = c(19, 15, 17)) +
-  scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02")) +
-  theme(legend.title = element_blank()) +
-  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
-sonoran.seed.count.plotmixclimate.lifeform
-
 
 # Seeded, by species
 # By seeded species: Current
@@ -213,18 +240,25 @@ sonoran.seed.count.current.species <- dat |>
   filter(PlotMix_Climate == "Current-adapted mix",
          SpeciesSeeded == "Yes") |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  mutate(Code = factor(Code, levels = c("SACO6", "LUSP2", "SPAM2", "BAMU", "MATA2", "HEMU3", 
+                                        "DICA8", "SPCR", "ELEL5", "POSE", "BOGR2",
+                                        "AMDE4"))) |> 
+  mutate(Duration = case_when(
+    Duration == "Unknown" ~ "Both",
+    TRUE ~ Duration)) |> 
+  mutate(Duration = factor(Duration, levels = c("Annual", "Perennial", "Both"))) |> 
   ggplot(aes(x = Perc_dev_cum, y = Density)) +
   geom_point(aes(color = Lifeform,
                  shape = Duration),
              alpha = 0.7) +
   facet_wrap(~Code) +
-  labs(title = "Sonoran Desert, seeded species (Current-adapted mix)",
+  labs(title = "Sonoran Desert seeded species (current-adapted mix)",
        x = "Cumulative precipitation deviation from normals",
        y = expression(paste("Density (individuals / ", m^2, ")"))) +
   theme_bw() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  scale_shape_manual(values = c(19, 15, 17)) +
+  scale_shape_manual(values = c(17, 19, 15)) +
   scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
@@ -235,18 +269,24 @@ sonoran.seed.count.projected.species <- dat |>
   filter(PlotMix_Climate == "Projected-adapted mix",
          SpeciesSeeded == "Yes") |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  mutate(Duration = case_when(
+    Duration == "Unknown" ~ "Both",
+    TRUE ~ Duration)) |> 
+  mutate(Duration = factor(Duration, levels = c("Annual", "Perennial", "Both")),
+         Code = factor(Code, levels = c("SECO10", "PLOV", "ASTU", "BAMU", "ARPU9", "BOCU", 
+                                        "BORO2", "BOAR",
+                                        "ENFA"))) |> 
   ggplot(aes(x = Perc_dev_cum, y = Density)) +
   geom_point(aes(color = Lifeform,
                  shape = Duration),
              alpha = 0.7) +
   facet_wrap(~Code) +
-  labs(title = "Sonoran Desert, seeded species (Projected-adapted mix)",
-       x = "Cumulative precipitation deviation from normals",
-       y = expression(paste("Density (individuals / ", m^2, ")"))) +
+  ggtitle("Sonoran Desert Plateau seeded species (projected-adapted mix)") +
   theme_bw() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  scale_shape_manual(values = c(19, 15, 17)) +
+  xlab("Cumulative precip deviation from normals") +
+  scale_shape_manual(values = c(17, 19, 15)) +
   scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
@@ -259,7 +299,7 @@ sonoran.species.count <- sonoran.count.interest |>
                  shape = Lifeform),
              alpha = 0.7) +
   facet_wrap(~Code) +
-  labs(title = "Sonoran Desert, species of interest",
+  labs(title = "Sonoran Desert species of interest",
        x = "Cumulative precipitation deviation from normals",
        y = expression(paste("Density (individuals / ", m^2, ")"))) +
   theme_bw() +
@@ -276,7 +316,7 @@ sonoran.species.count
 
 # Native recruit, all plots
 sonoran.freq.nativevolun |> 
-  filter(Plot == "Total") |> 
+  filter(Plot == "total") |> 
   ggplot(aes(x = Code, y = Frequency)) +
   geom_bar(stat = "identity") +
   ggtitle("Sonoran Desert, native recruit, all plots") +
@@ -290,7 +330,7 @@ sonoran.freq.nativevolun |>
 
 # Native recruit, wetter/drier
 sonoran.freq.nativevolun |> 
-  filter(Plot %in% c("Wetter", "Drier")) |> 
+  filter(Plot %in% c("wetter", "drier")) |> 
   ggplot(aes(x = Code, y = Frequency, fill = Plot)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Sonoran Desert, native recruit") +
@@ -305,7 +345,7 @@ sonoran.freq.nativevolun |>
 
 # Native recruit, extremes
 sonoran.freq.nativevolun |> 
-  filter(Plot %in% c("Wettest", "Driest")) |> 
+  filter(Plot %in% c("wettest", "driest")) |> 
   ggplot(aes(x = Code, y = Frequency, fill = Plot)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Sonoran Desert, native recruit") +
@@ -320,7 +360,7 @@ sonoran.freq.nativevolun |>
 
 # Weedy, all plots
 sonoran.freq.weed |> 
-  filter(Plot == "Total") |> 
+  filter(Plot == "total") |> 
   ggplot(aes(x = Code, y = Frequency)) +
   geom_bar(stat = "identity") +
   ggtitle("Sonoran Desert, weeds, all plots") +
@@ -334,7 +374,7 @@ sonoran.freq.weed |>
 
 # Weedy, extremes
 sonoran.freq.weed |> 
-  filter(Plot %in% c("Wettest", "Driest")) |> 
+  filter(Plot %in% c("wettest", "driest")) |> 
   ggplot(aes(x = Code, y = Frequency, fill = Plot)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Sonoran Desert, weeds") +
@@ -348,90 +388,135 @@ sonoran.freq.weed |>
   theme(legend.position = "bottom")
 
 # Current mix, all plots
-sonoran.freq.current |> 
-  filter(Plot == "Total",
-         Code != "Empty") |> 
-  ggplot(aes(x = Code, y = Frequency)) +
+sonoran.current.total <- sonoran.freq.current |> 
+  filter(Plot == "total") |> 
+  mutate(Lifeform = factor(Lifeform, levels = c("Forb", "Grass", "Shrub", "Empty")),
+         Code = factor(Code, levels = c("SACO6", "LUSP2", "SPAM2", "BAMU", "MATA2", "HEMU3", 
+                                        "DICA8", "SPCR", "ELEL5", "POSE", "BOGR2",
+                                        "AMDE4", "Empty"))) |> 
+  ggplot(aes(x = Code, y = Frequency, fill = Lifeform)) +
   geom_bar(stat = "identity") +
-  ggtitle("Sonoran Desert, Current mix, all plots") +
+  ggtitle("Sonoran Desert current-adapted mix, all conditions") +
   theme_minimal() +
   scale_y_continuous(labels = scales::percent) +
+  scale_fill_manual(values = c("#8DA0CB", "#66C2A5", "#FC8D62", "#B3B3B3")) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
   theme(axis.text.x = element_text(color = "black")) +
-  theme(axis.text.x = element_text(angle = 35))
+  theme(axis.text.x = element_text(angle = 35))  +
+  theme(legend.position = "bottom")
+sonoran.current.total
 
 # Current mix, wetter/drier
-sonoran.freq.current |> 
-  filter(Plot %in% c("Wetter", "Drier"),
-         Code != "Empty") |> 
-  ggplot(aes(x = Code, y = Frequency, fill = Plot)) +
+sonoran.current.wetdry <- sonoran.freq.current |> 
+  filter(Plot %in% c("wetter", "drier")) |> 
+  mutate(Type2 = factor(Type2, levels = c("Forb, drier", "Forb, wetter", 
+                                             "Grass, drier", "Grass, wetter",
+                                             "Shrub, drier", "Shrub, wetter", 
+                                             "Empty, drier", "Empty, wetter")),
+         Code = factor(Code, levels = c("SACO6", "LUSP2", "SPAM2", "BAMU", "MATA2", "HEMU3", 
+                                        "DICA8", "SPCR", "ELEL5", "POSE", "BOGR2",
+                                        "AMDE4", "Empty"))) |> 
+  ggplot(aes(x = Code, y = Frequency, fill = Type2)) +
   geom_bar(stat = "identity", position = position_dodge()) +
-  ggtitle("Sonoran Desert, Current mix") +
+  ggtitle("Sonoran Desert current-adapted mix, wetter vs. drier conditions") +
   theme_minimal() +
   scale_y_continuous(labels = scales::percent) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
+  scale_fill_manual(values = c("#B3C8E8", "#7570B3", "#B3E2D6", "#1B9E77", "#FBB4AE", "#D95F02",
+                               "#D9D9D9", "#666666")) +
   theme(legend.title = element_blank()) +
   theme(axis.text.x = element_text(color = "black")) +
   theme(axis.text.x = element_text(angle = 35)) +
   theme(legend.position = "bottom")
+sonoran.current.wetdry
 
 # Current mix, extremes
-sonoran.freq.current |> 
-  filter(Plot %in% c("Wettest", "Driest"),
-         Code != "Empty") |> 
-  ggplot(aes(x = Code, y = Frequency, fill = Plot)) +
+sonoran.current.ex <- sonoran.freq.current |> 
+  filter(Plot %in% c("wettest", "driest")) |> 
+  mutate(Type2 = factor(Type2, levels = c("Forb, driest", "Forb, wettest", 
+                                          "Grass, driest", "Grass, wettest",
+                                          "Shrub, driest", "Shrub, wettest", 
+                                          "Empty, driest", "Empty, wettest")),
+         Code = factor(Code, levels = c("SACO6", "LUSP2", "SPAM2", "BAMU", "MATA2", "HEMU3", 
+                                        "DICA8", "SPCR", "ELEL5", "POSE", "BOGR2",
+                                        "AMDE4", "Empty"))) |> 
+  ggplot(aes(x = Code, y = Frequency, fill = Type2)) +
   geom_bar(stat = "identity", position = position_dodge()) +
-  ggtitle("Sonoran Desert, Current mix") +
+  ggtitle("Sonoran Desert current-adapted mix, highly variable precipitation") +
   theme_minimal() +
   scale_y_continuous(labels = scales::percent) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
+  scale_fill_manual(values = c("#B3C8E8", "#7570B3", "#B3E2D6", "#1B9E77", "#FBB4AE", "#D95F02",
+                               "#D9D9D9", "#666666")) +
   theme(axis.text.x = element_text(color = "black")) +
   theme(axis.text.x = element_text(angle = 35)) +
   theme(legend.position = "bottom")
+sonoran.current.ex
 
 # Projected mix, all plots
-sonoran.freq.projected |> 
-  filter(Plot == "Total",
-         Code != "Empty") |> 
-  ggplot(aes(x = Code, y = Frequency)) +
+sonoran.projected.total <- sonoran.freq.projected |> 
+  filter(Plot == "total") |> 
+  mutate(Lifeform = factor(Lifeform, levels = c("Forb", "Grass", "Shrub", "Empty")),
+         Code = factor(Code, levels = c("SECO10", "PLOV", "ASTU", "BAMU", "ARPU9", "BOCU", 
+                                        "BORO2", "BOAR",
+                                        "ENFA", "Empty"))) |> 
+  ggplot(aes(x = Code, y = Frequency, fill = Lifeform)) +
   geom_bar(stat = "identity") +
-  ggtitle("Sonoran Desert, Projected mix, all plots") +
+  ggtitle("Sonoran Desert projected-adapted mix, all conditions") +
   theme_minimal() +
   scale_y_continuous(labels = scales::percent) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
+  scale_fill_manual(values = c("#8DA0CB", "#66C2A5", "#FC8D62", "#B3B3B3")) +
   theme(legend.title = element_blank()) +
   theme(axis.text.x = element_text(color = "black")) +
-  theme(axis.text.x = element_text(angle = 35))
+  theme(axis.text.x = element_text(angle = 35)) +
+  theme(legend.position = "bottom")
+sonoran.projected.total
 
 # Projected mix, wetter/drier
-sonoran.freq.projected |> 
-  filter(Plot %in% c("Wetter", "Drier"),
-         Code != "Empty") |> 
-  ggplot(aes(x = Code, y = Frequency, fill = Plot)) +
+sonoran.projected.wetdry <- sonoran.freq.projected |> 
+  filter(Plot %in% c("wetter", "drier")) |> 
+  mutate(Type2 = factor(Type2, levels = c("Forb, drier", "Forb, wetter", 
+                                          "Grass, drier", "Grass, wetter",
+                                          "Shrub, drier", "Shrub, wetter", 
+                                          "Empty, drier", "Empty, wetter")),
+         Code = factor(Code, levels = c("SECO10", "PLOV", "ASTU", "BAMU", "ARPU9", "BOCU", 
+                                        "BORO2", "BOAR",
+                                        "ENFA", "Empty"))) |> 
+  ggplot(aes(x = Code, y = Frequency, fill = Type2)) +
   geom_bar(stat = "identity", position = position_dodge()) +
-  ggtitle("Sonoran Desert, Projected mix") +
+  ggtitle("Sonoran Desert projected-adapted mix, wetter vs. drier conditions") +
   theme_minimal() +
   scale_y_continuous(labels = scales::percent) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
+  scale_fill_manual(values = c("#B3C8E8", "#7570B3", "#B3E2D6", "#1B9E77", "#FBB4AE", "#D95F02",
+                               "#D9D9D9", "#666666")) +
   theme(axis.text.x = element_text(color = "black")) +
   theme(axis.text.x = element_text(angle = 35)) +
   theme(legend.position = "bottom")
+sonoran.projected.wetdry
 
 # Projected mix, extremes
-sonoran.freq.projected |> 
-  filter(Plot %in% c("Wettest", "Driest"),
-         Code != "Empty") |> 
-  ggplot(aes(x = Code, y = Frequency, fill = Plot)) +
+sonoran.projected.ex <- sonoran.freq.projected |> 
+  filter(Plot %in% c("wettest", "driest")) |> 
+  mutate(Type2 = factor(Type2, levels = c("Forb, driest", "Forb, wettest", 
+                                          "Grass, driest", "Grass, wettest",
+                                          "Shrub, driest", "Shrub, wettest", 
+                                          "Empty, driest", "Empty, wettest")),
+         Code = factor(Code, levels = c("SECO10", "PLOV", "ASTU", "BAMU", "ARPU9", "BOCU", 
+                                        "BORO2", "BOAR",
+                                        "ENFA", "Empty"))) |> 
+  ggplot(aes(x = Code, y = Frequency, fill = Type2)) +
   geom_bar(stat = "identity", position = position_dodge()) +
-  ggtitle("Sonoran Desert, Projected mix") +
+  ggtitle("Sonoran Desert projected-adapted mix, highly variable precipitation") +
   theme_minimal() +
   scale_y_continuous(labels = scales::percent) +
   xlab(NULL) +
@@ -439,12 +524,14 @@ sonoran.freq.projected |>
   theme(legend.title = element_blank()) +
   theme(axis.text.x = element_text(color = "black")) +
   theme(axis.text.x = element_text(angle = 35)) +
+  scale_fill_manual(values = c("#B3C8E8", "#7570B3", "#B3E2D6", "#1B9E77", "#FBB4AE", "#D95F02",
+                               "#D9D9D9", "#666666")) +
   theme(legend.position = "bottom")
-
+sonoran.projected.ex
 
 # Species of interest, all plots
 sonoran.species.total <- sonoran.freq.interest |> 
-  filter(Plot == "Total") |> 
+  filter(Plot == "total") |> 
   ggplot(aes(x = Code, y = Frequency, fill = Plant)) +
   geom_bar(stat = "identity") +
   ggtitle("Sonoran Desert species of interest, all conditions") +
@@ -461,13 +548,13 @@ sonoran.species.total
 
 # Species of interest, paired wetter & drier
 sonoran.species.wetdry <- sonoran.freq.interest |> 
-  filter(Plot %in% c("Wetter", "Drier")) |> 
+  filter(Plot %in% c("wetter", "drier")) |> 
   mutate(Type = factor(Type, 
-                       levels = c("Current mix, Drier", "Current mix, Wetter",
-                                  "Projected mix, Drier", "Projected mix, Wetter",
-                                  "Native recruit, Drier", "Native recruit, Wetter",
-                                  "Invasive, Drier", "Invasive, Wetter",
-                                  "Empty, Drier", "Empty, Wetter"))) |> 
+                       levels = c("Current mix, drier", "Current mix, wetter",
+                                  "Projected mix, drier", "Projected mix, wetter",
+                                  "Native recruit, drier", "Native recruit, wetter",
+                                  "Invasive, drier", "Invasive, wetter",
+                                  "Empty, drier", "Empty, wetter"))) |> 
   ggplot(aes(x = Code, y = Frequency, fill = Type)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Sonoran Desert species of interest, wetter vs. drier conditions") +
@@ -486,13 +573,13 @@ sonoran.species.wetdry
 
 # Species of interest, wettest & driest (extremes)
 sonoran.species.ex <- sonoran.freq.interest |> 
-  filter(Plot %in% c("Wettest", "Driest")) |> 
+  filter(Plot %in% c("wettest", "driest")) |> 
   mutate(Type = factor(Type, 
-                       levels = c("Current mix, Driest", "Current mix, Wettest",
-                                  "Projected mix, Driest", "Projected mix, Wettest",
-                                  "Native recruit, Driest", "Native recruit, Wettest",
-                                  "Invasive, Driest", "Invasive, Wettest",
-                                  "Empty, Driest", "Empty, Wettest"))) |> 
+                       levels = c("Current mix, driest", "Current mix, wettest",
+                                  "Projected mix, driest", "Projected mix, wettest",
+                                  "Native recruit, driest", "Native recruit, wettest",
+                                  "Invasive, driest", "Invasive, wettest",
+                                  "Empty, driest", "Empty, wettest"))) |> 
   ggplot(aes(x = Code, y = Frequency, fill = Type)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Sonoran Desert species of interest, highly variable precipitation") +
@@ -513,6 +600,28 @@ sonoran.species.ex
 
 # Northern Arizona --------------------------------------------------------
 
+## Precip deviation -------------------------------------------------------
+
+# Cumulative
+cum.pd.naz <- cum.pd |> 
+  filter(Perc_deviation != Inf) |> 
+  filter(Region == "Colorado Plateau") |> 
+  ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~Site) +
+  ggtitle("Northern Arizona precipitation conditions") +
+  xlab(NULL) +
+  ylab("Cumulative precip deviation from normals") +
+  theme_bw() +
+  scale_y_continuous(labels = percent) +
+  geom_hline(yintercept = 0,
+             linetype = "dashed",
+             color = "red") +
+  theme(axis.text.x = element_text(color = "black"))
+cum.pd.naz
+
+
 ## Count ------------------------------------------------------------------
 
 # Desirable by PlotMix_Climate and PlantSource2 (native recruit outliers removed)
@@ -526,7 +635,7 @@ naz.des.count.plotmixclimate <- dat |>
              alpha = 0.7) +
   geom_smooth() +
   facet_wrap(~PlotMix_Climate) +
-  labs(title = "Northern Arizona, desirable species",
+  labs(title = "Northern Arizona desirable species",
        x = "Cumulative precipitation deviation from normals",
        y = expression(paste("Density (individuals / ", m^2, ")"))) +
   theme_minimal() +
@@ -549,7 +658,7 @@ naz.weed.count <- dat |>
                  shape = PlantSource2),
              alpha = 0.7) +
   geom_smooth() +
-  labs(title = "Northern Arizona, weedy species",
+  labs(title = "Northern Arizona weedy species",
        x = "Cumulative precipitation deviation from normals",
        y = expression(paste("Density (individuals / ", m^2, ")"))) +
   theme_minimal() +
@@ -560,31 +669,6 @@ naz.weed.count <- dat |>
   theme(legend.title = element_blank()) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 naz.weed.count
-
-
-# Seeded species by PlotMix_Climate and Duration/Lifeform
-naz.seed.count.plotmixclimate <- dat |> 
-  filter(PlotMix_Climate %in% c("Current-adapted mix", "Projected-adapted mix"),
-         SpeciesSeeded == "Yes") |> 
-  filter(Region == "Colorado Plateau") |> 
-  ggplot(aes(x = Perc_dev_cum, y = Density)) +
-  geom_point(aes(color = Lifeform,
-                 shape = Lifeform),
-             alpha = 0.7) +
-  facet_wrap(~PlotMix_Climate) +
-  geom_smooth() +
-  labs(title = "Northern Arizona, seeded species",
-       x = "Cumulative precipitation deviation from normals",
-       y = expression(paste("Density (individuals / ", m^2, ")"))) +
-  theme_minimal() +
-  theme(legend.position = "bottom") +
-  scale_x_continuous(labels = scales::percent) +
-  scale_shape_manual(values = c(19, 15, 17)) +
-  scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02")) +
-  theme(legend.title = element_blank()) +
-  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
-naz.seed.count.plotmixclimate
-
 
 
 ### By species ------------------------------------------------------------
@@ -637,18 +721,22 @@ naz.seed.count.current.species <- dat |>
          SpeciesSeeded == "Yes") |> 
   filter(Region == "Colorado Plateau") |> 
   filter(!str_detect(Code, "SPP|SUNGR|UNFO|UNGR")) |> 
-  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  mutate(Code = factor(Code, levels = c("LILE3", "DACA7", "HEBO", "ACMI2", "MATA2", "PEPA8", 
+                                        "SPGR2", "HEMU3", "PASM", "LECI4", "HECO26", "ELEL5", "ELTR7",
+                                        "ELWA2", "BOGR2", "SPCR", "POSE", "PLJA", "BOER4", "PSSP6",
+                                        "KRLA2"))) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Density)) +
   geom_point(aes(color = Lifeform,
                  shape = Duration),
              alpha = 0.7) +
   facet_wrap(~Code) +
-  labs(title = "Northern Arizona, seeded species (Current-adapted)",
+  labs(title = "Northern Arizona seeded species (current-adapted mix)",
        x = "Cumulative precipitation deviation from normals",
        y = expression(paste("Density (individuals / ", m^2, ")"))) +
   theme_bw() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
-  scale_shape_manual(values = c(19, 15, 17)) +
+  scale_shape_manual(values = c(17, 19, 15)) +
   scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
@@ -660,29 +748,51 @@ naz.seed.count.projected.species <- dat |>
          SpeciesSeeded == "Yes") |> 
   filter(Region == "Colorado Plateau") |> 
   filter(!str_detect(Code, "SPP|SUNGR|UNFO|UNGR")) |> 
-  ggplot(aes(x = Perc_dev_cum, y = Count)) +
+  mutate(Duration = case_when(
+    Duration == "Unknown" ~ "Both",
+    TRUE ~ Duration)) |> 
+  mutate(Duration = factor(Duration, levels = c("Annual", "Perennial", "Both"))) |> 
+  ggplot(aes(x = Perc_dev_cum, y = Density)) +
   geom_point(aes(color = Lifeform,
                  shape = Duration),
              alpha = 0.7) +
   facet_wrap(~Code) +
-  ggtitle("Northern Arizona Plateau, seeded species (Projected)") +
+  ggtitle("Northern Arizona Plateau seeded species (projected-adapted mix)") +
   theme_bw() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
   xlab("Cumulative precip deviation from normals") +
-  scale_shape_manual(values = c(19, 15, 17)) +
+  scale_shape_manual(values = c(17, 19, 15)) +
   scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
   geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
 naz.seed.count.projected.species
 
+# Species of interest
+naz.species.count <- naz.count.interest |> 
+  ggplot(aes(x = Perc_dev_cum, y = Density)) +
+  geom_point(aes(color = PlantSource2,
+                 shape = Lifeform),
+             alpha = 0.7) +
+  facet_wrap(~Code) +
+  labs(title = "Northern Arizona species of interest",
+       x = "Cumulative precipitation deviation from normals",
+       y = expression(paste("Density (individuals / ", m^2, ")"))) +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(labels = scales::percent) +
+  scale_shape_manual(values = c(19, 17, 15)) +
+  scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02")) +
+  theme(legend.title = element_blank()) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+naz.species.count
 
 
 ## Frequency --------------------------------------------------------------
 
 # Native recruit, all plots
 naz.freq.nativevolun |> 
-  filter(Plot == "Total") |> 
+  filter(Plot == "total") |> 
   ggplot(aes(x = Code, y = Frequency)) +
   geom_bar(stat = "identity") +
   ggtitle("Northern Arizona, top native recruits, all plots") +
@@ -696,7 +806,7 @@ naz.freq.nativevolun |>
 
 # Native recruit, wetter/drier
 naz.freq.nativevolun |> 
-  filter(Plot %in% c("Wetter", "Drier")) |> 
+  filter(Plot %in% c("wetter", "drier")) |> 
   ggplot(aes(x = Code, y = Frequency, fill = Plot)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Northern Arizona, native recruit") +
@@ -710,7 +820,7 @@ naz.freq.nativevolun |>
 
 # Native recruit, extremes
 naz.freq.nativevolun |> 
-  filter(Plot %in% c("Wettest", "Driest")) |> 
+  filter(Plot %in% c("wettest", "driest")) |> 
   ggplot(aes(x = Code, y = Frequency, fill = Plot)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Northern Arizona, native recruit") +
@@ -724,7 +834,7 @@ naz.freq.nativevolun |>
 
 # Weedy, all plots
 naz.freq.weed |> 
-  filter(Plot == "Total") |> 
+  filter(Plot == "total") |> 
   filter(Code != "Empty") |> 
   ggplot(aes(x = Code, y = Frequency)) +
   geom_bar(stat = "identity") +
@@ -739,7 +849,7 @@ naz.freq.weed |>
 
 # Weedy, wetter/drier
 naz.freq.weed |> 
-  filter(Plot %in% c("Wetter", "Drier")) |> 
+  filter(Plot %in% c("wetter", "drier")) |> 
   filter(Code != "Empty") |> 
   ggplot(aes(x = Code, y = Frequency, fill = Plot)) +
   geom_bar(stat = "identity", position = position_dodge()) +
@@ -754,7 +864,7 @@ naz.freq.weed |>
 
 # Weedy, extremes
 naz.freq.weed |> 
-  filter(Plot %in% c("Wettest", "Driest")) |> 
+  filter(Plot %in% c("wettest", "driest")) |> 
   filter(Code != "Empty") |> 
   ggplot(aes(x = Code, y = Frequency, fill = Plot)) +
   geom_bar(stat = "identity", position = position_dodge()) +
@@ -768,97 +878,157 @@ naz.freq.weed |>
   theme(axis.text.x = element_text(color = "black"))
 
 # Current mix, all plots
-naz.freq.current |> 
-  filter(Plot == "Total") |> 
-  ggplot(aes(x = Code, y = Frequency)) +
+naz.current.total <- naz.freq.current |> 
+  filter(Plot == "total") |> 
+  mutate(Lifeform = factor(Lifeform, levels = c("Forb", "Grass", "Shrub", "Empty")),
+         Code = factor(Code, levels = c("LILE3", "DACA7", "HEBO", "ACMI2", "MATA2", "PEPA8", 
+                                        "SPGR2", "HEMU3", "PASM", "LECI4", "HECO26", "ELEL5", "ELTR7",
+                                        "ELWA2", "BOGR2", "SPCR", "POSE", "PLJA", "BOER4", "PSSP6",
+                                        "KRLA2", "Empty"))) |> 
+  ggplot(aes(x = Code, y = Frequency, fill = Lifeform)) +
   geom_bar(stat = "identity") +
-  ggtitle("Northern Arizona, Current mix, all plots") +
+  ggtitle("Northern Arizona current-adapted mix, all conditions") +
   theme_minimal() +
   scale_y_continuous(labels = scales::percent) +
+  scale_fill_manual(values = c("#8DA0CB", "#66C2A5", "#FC8D62", "#B3B3B3")) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
-  theme(axis.text.x = element_text(angle = 35)) +
-  theme(axis.text.x = element_text(color = "black"))
+  theme(axis.text.x = element_text(color = "black")) +
+  theme(axis.text.x = element_text(angle = 35))  +
+  theme(legend.position = "bottom")
+naz.current.total
 
 # Current mix, wetter/drier
-naz.freq.current |> 
-  filter(Plot %in% c("Wetter", "Drier")) |> 
-  ggplot(aes(x = Code, y = Frequency, fill = Plot)) +
+naz.current.wetdry <- naz.freq.current |> 
+  filter(Plot %in% c("wetter", "drier")) |> 
+  mutate(Type2 = factor(Type2, levels = c("Forb, drier", "Forb, wetter", 
+                                          "Grass, drier", "Grass, wetter",
+                                          "Shrub, drier", "Shrub, wetter", 
+                                          "Empty, drier", "Empty, wetter")),
+         Code = factor(Code, levels = c("LILE3", "DACA7", "HEBO", "ACMI2", "MATA2", "PEPA8", 
+                                        "SPGR2", "HEMU3", "PASM", "LECI4", "HECO26", "ELEL5", "ELTR7",
+                                        "ELWA2", "BOGR2", "SPCR", "POSE", "PLJA", "BOER4", "PSSP6",
+                                        "KRLA2", "Empty"))) |> 
+  ggplot(aes(x = Code, y = Frequency, fill = Type2)) +
   geom_bar(stat = "identity", position = position_dodge()) +
-  ggtitle("Northern Arizona, Current mix") +
+  ggtitle("Northern Arizona current-adapted mix, wetter vs. drier conditions") +
   theme_minimal() +
   scale_y_continuous(labels = scales::percent) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
+  scale_fill_manual(values = c("#B3C8E8", "#7570B3", "#B3E2D6", "#1B9E77", "#FBB4AE", "#D95F02",
+                               "#D9D9D9", "#666666")) +
   theme(legend.title = element_blank()) +
+  theme(axis.text.x = element_text(color = "black")) +
   theme(axis.text.x = element_text(angle = 35)) +
-  theme(legend.position = "bottom") +
-  theme(axis.text.x = element_text(color = "black"))
+  theme(legend.position = "bottom")
+naz.current.wetdry
 
 # Current mix, extremes
-naz.freq.current |> 
-  filter(Plot %in% c("Wettest", "Driest")) |> 
-  ggplot(aes(x = Code, y = Frequency, fill = Plot)) +
+naz.current.ex <- naz.freq.current |> 
+  filter(Plot %in% c("wettest", "driest")) |> 
+  mutate(Type2 = factor(Type2, levels = c("Forb, driest", "Forb, wettest", 
+                                          "Grass, driest", "Grass, wettest",
+                                          "Shrub, driest", "Shrub, wettest", 
+                                          "Empty, driest", "Empty, wettest")),
+         Code = factor(Code, levels = c("LILE3", "DACA7", "HEBO", "ACMI2", "MATA2", "PEPA8", 
+                                        "SPGR2", "HEMU3", "PASM", "LECI4", "HECO26", "ELEL5", "ELTR7",
+                                        "ELWA2", "BOGR2", "SPCR", "POSE", "PLJA", "BOER4", "PSSP6",
+                                        "KRLA2", "Empty"))) |> 
+  ggplot(aes(x = Code, y = Frequency, fill = Type2)) +
   geom_bar(stat = "identity", position = position_dodge()) +
-  ggtitle("Northern Arizona, Current mix") +
+  ggtitle("Northern Arizona current-adapted mix, highly variable precipitation") +
   theme_minimal() +
   scale_y_continuous(labels = scales::percent) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
+  scale_fill_manual(values = c("#B3C8E8", "#7570B3", "#B3E2D6", "#1B9E77", "#FBB4AE", "#D95F02",
+                               "#D9D9D9", "#666666")) +
+  theme(axis.text.x = element_text(color = "black")) +
   theme(axis.text.x = element_text(angle = 35)) +
-  theme(legend.position = "bottom") +
-  theme(axis.text.x = element_text(color = "black"))
+  theme(legend.position = "bottom")
+naz.current.ex
 
 # Projected mix, all plots
-naz.freq.projected |> 
-  filter(Plot == "Total") |> 
-  ggplot(aes(x = Code, y = Frequency)) +
+naz.projected.total <- naz.freq.projected |> 
+  filter(Plot == "total") |> 
+  mutate(Lifeform = factor(Lifeform, levels = c("Forb", "Grass", "Shrub", "Empty")),
+         Code = factor(Code, levels = c("BAMU", "ASTU", "SECO10", "LILE3", "ACMI2", "HEMU3", 
+                                        "DACA7", "MATA2", "PEPA8", "PASM", "ACHY", "ELEL5",
+                                        "BOER4", "POSE", "PLJA", "BOCU", "ARPU9", "BOGR2",
+                                        "SPCR", "PLMU3", "KRLA2", "Empty"))) |> 
+  ggplot(aes(x = Code, y = Frequency, fill = Lifeform)) +
   geom_bar(stat = "identity") +
-  ggtitle("Northern Arizona, Projected mix, all plots") +
+  ggtitle("Northern Arizona projected-adapted mix, all conditions") +
   theme_minimal() +
   scale_y_continuous(labels = scales::percent) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
+  scale_fill_manual(values = c("#8DA0CB", "#66C2A5", "#FC8D62", "#B3B3B3")) +
   theme(legend.title = element_blank()) +
+  theme(axis.text.x = element_text(color = "black")) +
   theme(axis.text.x = element_text(angle = 35)) +
-  theme(axis.text.x = element_text(color = "black"))
+  theme(legend.position = "bottom")
+naz.projected.total
 
 # Projected mix, wetter/drier
-naz.freq.projected |> 
-  filter(Plot %in% c("Wetter", "Drier")) |> 
-  ggplot(aes(x = Code, y = Frequency, fill = Plot)) +
+naz.projected.wetdry <- naz.freq.projected |> 
+  filter(Plot %in% c("wetter", "drier")) |> 
+  mutate(Type2 = factor(Type2, levels = c("Forb, drier", "Forb, wetter", 
+                                          "Grass, drier", "Grass, wetter",
+                                          "Shrub, drier", "Shrub, wetter", 
+                                          "Empty, drier", "Empty, wetter")),
+         Code = factor(Code, levels = c("BAMU", "ASTU", "SECO10", "LILE3", "ACMI2", "HEMU3", 
+                                        "DACA7", "MATA2", "PEPA8", "PASM", "ACHY", "ELEL5",
+                                        "BOER4", "POSE", "PLJA", "BOCU", "ARPU9", "BOGR2",
+                                        "SPCR", "PLMU3", "KRLA2", "Empty"))) |> 
+  ggplot(aes(x = Code, y = Frequency, fill = Type2)) +
   geom_bar(stat = "identity", position = position_dodge()) +
-  ggtitle("Northern Arizona, Projected mix") +
+  ggtitle("Northern Arizona projected-adapted mix, wetter vs. drier conditions") +
   theme_minimal() +
   scale_y_continuous(labels = scales::percent) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
+  scale_fill_manual(values = c("#B3C8E8", "#7570B3", "#B3E2D6", "#1B9E77", "#FBB4AE", "#D95F02",
+                               "#D9D9D9", "#666666")) +
+  theme(axis.text.x = element_text(color = "black")) +
   theme(axis.text.x = element_text(angle = 35)) +
-  theme(legend.position = "bottom") +
-  theme(axis.text.x = element_text(color = "black"))
+  theme(legend.position = "bottom")
+naz.projected.wetdry
 
 # Projected mix, extremes
-naz.freq.projected |> 
-  filter(Plot %in% c("Wettest", "Driest")) |> 
-  ggplot(aes(x = Code, y = Frequency, fill = Plot)) +
+naz.projected.ex <- naz.freq.projected |> 
+  filter(Plot %in% c("wettest", "driest")) |> 
+  mutate(Type2 = factor(Type2, levels = c("Forb, driest", "Forb, wettest", 
+                                          "Grass, driest", "Grass, wettest",
+                                          "Shrub, driest",  
+                                          "Empty, driest", "Empty, wettest")),
+         Code = factor(Code, levels = c("BAMU", "ASTU", "SECO10", "LILE3", "ACMI2", "HEMU3", 
+                                        "DACA7", "MATA2", "PEPA8", "PASM", "ACHY", "ELEL5",
+                                        "BOER4", "POSE", "PLJA", "BOCU", "ARPU9", "BOGR2",
+                                        "SPCR", "PLMU3", "KRLA2", "Empty"))) |> 
+  ggplot(aes(x = Code, y = Frequency, fill = Type2)) +
   geom_bar(stat = "identity", position = position_dodge()) +
-  ggtitle("Northern Arizona, Projected mix") +
+  ggtitle("Northern Arizona projected-adapted mix, highly variable precipitation") +
   theme_minimal() +
   scale_y_continuous(labels = scales::percent) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
+  theme(axis.text.x = element_text(color = "black")) +
   theme(axis.text.x = element_text(angle = 35)) +
-  theme(legend.position = "bottom") +
-  theme(axis.text.x = element_text(color = "black"))
+  scale_fill_manual(values = c("#B3C8E8", "#7570B3", "#B3E2D6", "#1B9E77", "#FBB4AE",
+                               "#D9D9D9", "#666666")) +
+  theme(legend.position = "bottom")
+naz.projected.ex
 
 
 # Species of interest, all plots
 naz.species.total <- naz.freq.interest |> 
-  filter(Plot == "Total") |> 
+  filter(Plot == "total") |> 
   ggplot(aes(x = Code, y = Frequency, fill = Plant)) +
   geom_bar(stat = "identity") +
   ggtitle("Northern Arizona species of interest, all conditions") +
@@ -875,13 +1045,13 @@ naz.species.total
 
 # Species of interest, paired wetter & drier
 naz.species.wetdry <- naz.freq.interest |> 
-  filter(Plot %in% c("Wetter", "Drier")) |> 
+  filter(Plot %in% c("wetter", "drier")) |> 
   mutate(Type = factor(Type, 
-                       levels = c("Current mix, Drier", "Current mix, Wetter",
-                                  "Projected mix, Drier", "Projected mix, Wetter",
-                                  "Native recruit, Drier", "Native recruit, Wetter",
-                                  "Invasive, Drier", "Invasive, Wetter",
-                                  "Empty, Drier", "Empty, Wetter"))) |> 
+                       levels = c("Current mix, drier", "Current mix, wetter",
+                                  "Projected mix, drier", "Projected mix, wetter",
+                                  "Native recruit, drier", "Native recruit, wetter",
+                                  "Invasive, drier", "Invasive, wetter",
+                                  "Empty, drier", "Empty, wetter"))) |> 
   ggplot(aes(x = Code, y = Frequency, fill = Type)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Northern Arizona species of interest, wetter vs. drier conditions") +
@@ -900,13 +1070,13 @@ naz.species.wetdry
 
 # Species of interest, wettest & driest (extremes)
 naz.species.ex <- naz.freq.interest |> 
-  filter(Plot %in% c("Wettest", "Driest")) |> 
+  filter(Plot %in% c("wettest", "driest")) |> 
   mutate(Type = factor(Type, 
-                       levels = c("Current mix, Driest", "Current mix, Wettest",
-                                  "Projected mix, Driest", "Projected mix, Wettest",
-                                  "Native recruit, Driest", "Native recruit, Wettest",
-                                  "Invasive, Driest", "Invasive, Wettest",
-                                  "Empty, Driest", "Empty, Wettest"))) |> 
+                       levels = c("Current mix, driest", "Current mix, wettest",
+                                  "Projected mix, driest", "Projected mix, wettest",
+                                  "Native recruit, driest", "Native recruit, wettest",
+                                  "Invasive, driest", "Invasive, wettest",
+                                  "Empty, driest", "Empty, wettest"))) |> 
   ggplot(aes(x = Code, y = Frequency, fill = Type)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Northern Arizona species of interest, highly variable precipitation") +
@@ -922,5 +1092,125 @@ naz.species.ex <- naz.freq.interest |>
   theme(axis.text.x = element_text(angle = 35)) +
   theme(legend.position = "bottom")
 naz.species.ex
+
+
+# Write out draft figures -------------------------------------------------
+
+## Sonoran Desert ---------------------------------------------------------
+
+# Sonoran Desert: Precip deviation
+tiff("figures/2024-09_draft-figures-2.0/Sonoran_percent-deviation_cumulative-precip.tiff", units = "in", height = 5, width = 7, res = 150)
+cum.pd.sonoran
+dev.off()
+
+# Sonoran Desert: Count
+tiff("figures/2024-09_draft-figures-2.0/Sonoran_desirable_Count-by-PlotMix_Climate-and-PlantSource2.tiff", units = "in", height = 5, width = 7, res = 150)
+sonoran.des.count.plotmixclimate
+dev.off()
+tiff("figures/2024-09_draft-figures-2.0/Sonoran_weedy_Count-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+sonoran.weed.count
+dev.off()
+
+tiff("figures/2024-09_draft-figures-2.0/Sonoran_seeded_Count-by-seeded-species_Current.tiff", units = "in", height = 5, width = 7, res = 150)
+sonoran.seed.count.current.species
+dev.off()
+tiff("figures/2024-09_draft-figures-2.0/Sonoran_seeded_Count-by-seeded-species_Projected.tiff", units = "in", height = 5, width = 7, res = 150)
+sonoran.seed.count.projected.species
+dev.off()
+
+# Sonoran Desert: Frequency
+tiff("figures/2024-09_draft-figures-2.0/Sonoran_seeded_frequency-total_Current.tiff", units = "in", height = 5, width = 8, res = 150)
+sonoran.current.total
+dev.off()
+tiff("figures/2024-09_draft-figures-2.0/Sonoran_seeded_frequency-wet-dry_Current.tiff", units = "in", height = 5, width = 8, res = 150)
+sonoran.current.wetdry
+dev.off()
+tiff("figures/2024-09_draft-figures-2.0/Sonoran_seeded_frequency-extremes_Current.tiff", units = "in", height = 5, width = 8, res = 150)
+sonoran.current.ex
+dev.off()
+
+tiff("figures/2024-09_draft-figures-2.0/Sonoran_seeded_frequency-total_Projected.tiff", units = "in", height = 5, width = 8, res = 150)
+sonoran.projected.total
+dev.off()
+tiff("figures/2024-09_draft-figures-2.0/Sonoran_seeded_frequency-wet-dry_Projected.tiff", units = "in", height = 5, width = 8, res = 150)
+sonoran.projected.wetdry
+dev.off()
+tiff("figures/2024-09_draft-figures-2.0/Sonoran_seeded_frequency-extremes_Projected.tiff", units = "in", height = 5, width = 8, res = 150)
+sonoran.projected.ex
+dev.off()
+
+# Sonoran Desert: Species of interest
+tiff("figures/2024-09_draft-figures-2.0/Sonoran_species-of-interest_Count.tiff", units = "in", height = 5, width = 7, res = 150)
+sonoran.species.count
+dev.off()
+tiff("figures/2024-09_draft-figures-2.0/Sonoran_species-of-interest_frequency-total.tiff", units = "in", height = 5, width = 8, res = 150)
+sonoran.species.total
+dev.off()
+tiff("figures/2024-09_draft-figures-2.0/Sonoran_species-of-interest_frequency-wet-dry.tiff", units = "in", height = 5, width = 8, res = 150)
+sonoran.species.wetdry
+dev.off()
+tiff("figures/2024-09_draft-figures-2.0/Sonoran_species-of-interest_frequency-extremes.tiff", units = "in", height = 5, width = 8, res = 150)
+sonoran.species.ex
+dev.off()
+
+
+
+## Northern Arizona Plateau -----------------------------------------------
+
+# Northern Arizona: Precip deviation
+tiff("figures/2024-09_draft-figures-2.0/Northern-AZ_percent-deviation_cumulative-precip.tiff", units = "in", height = 5, width = 7, res = 150)
+cum.pd.naz
+dev.off()
+
+# Northern Arizona: Count
+tiff("figures/2024-09_draft-figures-2.0/Northern-AZ_desirable_Count-by-PlotMix_Climate-and-PlantSource2.tiff", units = "in", height = 5, width = 7, res = 150)
+naz.des.count.plotmixclimate
+dev.off()
+tiff("figures/2024-09_draft-figures-2.0/Northern-AZ_weedy_Count-single-by-PlantSource2.tiff", units = "in", height = 4, width = 5, res = 150)
+naz.weed.count
+dev.off()
+
+tiff("figures/2024-09_draft-figures-2.0/Northern-AZ_seeded_Count-by-seeded-species_Current.tiff", units = "in", height = 5, width = 7, res = 150)
+naz.seed.count.current.species
+dev.off()
+tiff("figures/2024-09_draft-figures-2.0/Northern-AZ_seeded_Count-by-seeded-species_Projected.tiff", units = "in", height = 5, width = 7, res = 150)
+naz.seed.count.projected.species
+dev.off()
+
+# Northern Arizona: Frequency
+tiff("figures/2024-09_draft-figures-2.0/Northern-AZ_seeded_frequency-total_Current.tiff", units = "in", height = 5, width = 8, res = 150)
+naz.current.total
+dev.off()
+tiff("figures/2024-09_draft-figures-2.0/Northern-AZ_seeded_frequency-wet-dry_Current.tiff", units = "in", height = 5, width = 8, res = 150)
+naz.current.wetdry
+dev.off()
+tiff("figures/2024-09_draft-figures-2.0/Northern-AZ_seeded_frequency-extremes_Current.tiff", units = "in", height = 5, width = 8, res = 150)
+naz.current.ex
+dev.off()
+
+tiff("figures/2024-09_draft-figures-2.0/Northern-AZ_seeded_frequency-total_Projected.tiff", units = "in", height = 5, width = 8, res = 150)
+naz.projected.total
+dev.off()
+tiff("figures/2024-09_draft-figures-2.0/Northern-AZ_seeded_frequency-wet-dry_Projected.tiff", units = "in", height = 5, width = 8, res = 150)
+naz.projected.wetdry
+dev.off()
+tiff("figures/2024-09_draft-figures-2.0/Northern-AZ_seeded_frequency-extremes_Projected.tiff", units = "in", height = 5, width = 8, res = 150)
+naz.projected.ex
+dev.off()
+
+# Northern Arizona: Species of interest
+tiff("figures/2024-09_draft-figures-2.0/Northern-AZ_species-of-interest_Count.tiff", units = "in", height = 5, width = 7, res = 150)
+naz.species.count
+dev.off()
+tiff("figures/2024-09_draft-figures-2.0/Northern-AZ_species-of-interest_frequency-total.tiff", units = "in", height = 5, width = 8, res = 150)
+naz.species.total
+dev.off()
+tiff("figures/2024-09_draft-figures-2.0/Northern-AZ_species-of-interest_frequency-wet-dry.tiff", units = "in", height = 5, width = 8, res = 150)
+naz.species.wetdry
+dev.off()
+tiff("figures/2024-09_draft-figures-2.0/Northern-AZ_species-of-interest_frequency-extremes.tiff", units = "in", height = 5, width = 8, res = 150)
+naz.species.ex
+dev.off()
+
 
 save.image("RData/12.1_draft-figs-2.0_density-and-frequency.RData")
