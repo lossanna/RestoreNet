@@ -1,5 +1,5 @@
 # Created: 024-09-09
-# Last updated: 2024-09-20
+# Last updated: 2024-10-01
 
 # Purpose: Run generalized linear models for subplot data, with Count as response variable. 
 
@@ -122,6 +122,12 @@ subplot <- subplot |>
   mutate(Days_elapsed = as.numeric(Days_elapsed))
 
 
+# Scale numeric variables -------------------------------------------------
+
+numeric.vars <- c("Perc_dev_cum_abs", "AridityIndex", "MAT", "MAP", "Since_last_precip", "Days_elapsed")
+subplot <- subplot |> 
+  mutate(across(all_of(numeric.vars), ~ scale(.)[, 1], .names = "{.col}_scaled"))
+  
 
 ## Separate out Sonoran sites (6) -----------------------------------------
 
@@ -254,6 +260,23 @@ plotResiduals(res.nb.sonoran3.des.abs2)
 check_overdispersion(nb.sonoran3.des.abs2) # overdispersion detected
 check_zeroinflation(nb.sonoran3.des.abs2) # model is overfitting zeros
 check_collinearity(nb.sonoran3.des.abs2)
+
+# 4: Center and scale numeric variables
+nb.sonoran4.des.abs2 <- glmmTMB(Count ~ Perc_dev_cum_abs_scaled + AridityIndex_scaled + 
+                                  Treatment + PlantSource2 + 
+                                  PlotMix_Climate + Duration + Lifeform + MAT_scaled + 
+                                  Since_last_precip_scaled + Days_elapsed_scaled + (1 | Site / Plot),
+                                data = sonoran.des,
+                                family = nbinom2)
+summary(nb.sonoran4.des.abs2)
+r2(nb.sonoran4.des.abs2)
+res.nb.sonoran4.des.abs2 <- simulateResiduals(nb.sonoran4.des.abs2)
+plotQQunif(res.nb.sonoran4.des.abs2)
+plotResiduals(res.nb.sonoran4.des.abs2)
+check_overdispersion(nb.sonoran4.des.abs2) # overdispersion detected
+check_zeroinflation(nb.sonoran4.des.abs2) # model is overfitting zeros
+check_collinearity(nb.sonoran4.des.abs2)
+
 
 
 ## Weedy ------------------------------------------------------------------
