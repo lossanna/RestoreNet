@@ -515,7 +515,7 @@ monitor.info |>
   filter(SiteDatePlotID == 4268)
 
 subplot |> 
-  filter(SiteDatePlotID == 4268) # for some reason this row is missing
+  filter(SiteDatePlotID == 4268) # for some reason this row is missing (but it's from Utah so ultimately I don't really care)
 
 # Save intermediate
 #   All species present in plot with correct species info; 2x2 plots not recorded have been removed
@@ -755,24 +755,19 @@ empty.plots.not0total <- empty.plots.cover |>
 
 empty.plots.not0seeded <- empty.plots.cover |>
   filter(Seeded_Cover > 0)
+summary(empty.plots.not0seeded$Seeded_Cover) # only ranges from 0.5 to 5%
+#   I think it was just trace amounts of cover but the species couldn't be identified
+#     I will make a fix for 2x2 data, but just leave subplot data how it is
 
-# not sure what to do about this tbh
-# maybe it was just trace amounts of cover but the species couldn't be identified?
+# label non-empty plots with "Unknown seeded" to fix for plantsource (assume there was just 1 species)
+empty.plots.not0seeded.fix <- plantsource |> 
+  filter(SiteDatePlotID %in% empty.plots.not0seeded$SiteDatePlotID) |> 
+  mutate(Native_recruit = 1,
+         Seeded = 1,
+         Desirable = 1)
 
-# label non-empty plots with "Unknown seeded"
-empty.plots.not0seeded.fix <- empty.plots.not0seeded |> 
-  mutate(Code = "UNK-S",
-         Name = "Unknown seeded",
-         Native = "Native",
-         Duration = "Unknown",
-         Lifeform = "Unknown",
-         SpeciesSeeded = "Yes",
-         PlantSource = "Seeded",
-         PlantSource2 = "Seeded",
-         Weedy = "Desirable")
-
-#   Add back in fix to cover data
-cover <- cover |>
+#   Add back in fix to plantsource data
+plantsource <- plantsource |>
   filter(!SiteDatePlotID %in% empty.plots.not0seeded.fix$SiteDatePlotID) |>
   bind_rows(empty.plots.not0seeded.fix) |>
   arrange(SiteDatePlotID)
