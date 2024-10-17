@@ -319,7 +319,7 @@ check_overdispersion(nb.sonoran2.weed.abs2) # no overdispersion detected
 check_zeroinflation(nb.sonoran2.weed.abs2) # model is overfitting zeros
 check_collinearity(nb.sonoran2.weed.abs2)
 
-# 3: *** Add Days_elapsed, no transformations: Desirable ***
+# 3: *** Add Days_elapsed, no transformations: Weedy ***
 nb.sonoran3.weed.abs2 <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex + Treatment + PlantSource2 + 
                                   PlotMix_Climate + Duration + Lifeform + MAT + 
                                   Since_last_precip + Days_elapsed + (1 | Site / Plot),
