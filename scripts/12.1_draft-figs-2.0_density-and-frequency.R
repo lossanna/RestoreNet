@@ -345,7 +345,7 @@ sonoran.freq.nativevolun |>
 
 # Native recruit, extremes
 sonoran.freq.nativevolun |> 
-  filter(Plot %in% c("wettest", "driest")) |> 
+  filter(Plot %in% c("very wet", "very dry")) |> 
   ggplot(aes(x = Code, y = Frequency, fill = Plot)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Sonoran Desert, native recruit") +
@@ -374,7 +374,7 @@ sonoran.freq.weed |>
 
 # Weedy, extremes
 sonoran.freq.weed |> 
-  filter(Plot %in% c("wettest", "driest")) |> 
+  filter(Plot %in% c("very wet", "very dry")) |> 
   ggplot(aes(x = Code, y = Frequency, fill = Plot)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Sonoran Desert, weeds") +
@@ -398,7 +398,8 @@ sonoran.current.total <- sonoran.freq.current |>
   geom_bar(stat = "identity") +
   ggtitle("Sonoran Desert current-adapted mix, all conditions") +
   theme_minimal() +
-  scale_y_continuous(labels = scales::percent) +
+  scale_y_continuous(labels = scales::percent,
+                     limits = c(0, 1)) +
   scale_fill_manual(values = c("#8DA0CB", "#66C2A5", "#FC8D62", "#B3B3B3")) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
@@ -411,6 +412,15 @@ sonoran.current.total
 # Current mix, wetter/drier
 sonoran.current.wetdry <- sonoran.freq.current |> 
   filter(Plot %in% c("wetter", "drier")) |> 
+  add_row(Code = "HEMU3",
+          Frequency = 0,
+          Type2 = "Forb, drier") |> 
+  add_row(Code = "ELEL5",
+          Frequency = 0,
+          Type2 = "Grass, drier") |> 
+  add_row(Code = "BOGR2",
+          Frequency = 0,
+          Type2 = "Grass, drier") |> 
   mutate(Type2 = factor(Type2, levels = c("Forb, drier", "Forb, wetter", 
                                              "Grass, drier", "Grass, wetter",
                                              "Shrub, drier", "Shrub, wetter", 
@@ -422,7 +432,8 @@ sonoran.current.wetdry <- sonoran.freq.current |>
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Sonoran Desert current-adapted mix, wetter vs. drier conditions") +
   theme_minimal() +
-  scale_y_continuous(labels = scales::percent) +
+  scale_y_continuous(labels = scales::percent,
+                     limits = c(0, 1)) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   scale_fill_manual(values = c("#B3C8E8", "#7570B3", "#B3E2D6", "#1B9E77", "#FBB4AE", "#D95F02",
@@ -435,11 +446,32 @@ sonoran.current.wetdry
 
 # Current mix, extremes
 sonoran.current.ex <- sonoran.freq.current |> 
-  filter(Plot %in% c("wettest", "driest")) |> 
-  mutate(Type2 = factor(Type2, levels = c("Forb, driest", "Forb, wettest", 
-                                          "Grass, driest", "Grass, wettest",
-                                          "Shrub, driest", "Shrub, wettest", 
-                                          "Empty, driest", "Empty, wettest")),
+  filter(Plot %in% c("very wet", "very dry")) |> 
+  add_row(Code = "MATA2",
+          Frequency = 0,
+          Type2 = "Forb, very dry") |> 
+  add_row(Code = "HEMU3",
+          Frequency = 0,
+          Type2 = "Forb, very dry") |> 
+  add_row(Code = "SPCR",
+          Frequency = 0,
+          Type2 = "Grass, very dry") |> 
+  add_row(Code = "ELEL5",
+          Frequency = 0,
+          Type2 = "Grass, very dry") |> 
+  add_row(Code = "POSE",
+          Frequency = 0,
+          Type2 = "Grass, very dry") |> 
+  add_row(Code = "BOGR2",
+          Frequency = 0,
+          Type2 = "Grass, very dry") |> 
+  add_row(Code = "BOGR2",
+          Frequency = 0,
+          Type2 = "Grass, very wet") |> 
+  mutate(Type2 = factor(Type2, levels = c("Forb, very dry", "Forb, very wet", 
+                                          "Grass, very dry", "Grass, very wet",
+                                          "Shrub, very dry", "Shrub, very wet", 
+                                          "Empty, very dry", "Empty, very wet")),
          Code = factor(Code, levels = c("SACO6", "LUSP2", "SPAM2", "BAMU", "MATA2", "HEMU3", 
                                         "DICA8", "SPCR", "ELEL5", "POSE", "BOGR2",
                                         "AMDE4", "Empty"))) |> 
@@ -447,7 +479,8 @@ sonoran.current.ex <- sonoran.freq.current |>
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Sonoran Desert current-adapted mix, highly variable precipitation") +
   theme_minimal() +
-  scale_y_continuous(labels = scales::percent) +
+  scale_y_continuous(labels = scales::percent,
+                     limits = c(0, 1)) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
@@ -469,7 +502,8 @@ sonoran.projected.total <- sonoran.freq.projected |>
   geom_bar(stat = "identity") +
   ggtitle("Sonoran Desert projected-adapted mix, all conditions") +
   theme_minimal() +
-  scale_y_continuous(labels = scales::percent) +
+  scale_y_continuous(labels = scales::percent,
+                     limits = c(0, 1)) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   scale_fill_manual(values = c("#8DA0CB", "#66C2A5", "#FC8D62", "#B3B3B3")) +
@@ -482,6 +516,12 @@ sonoran.projected.total
 # Projected mix, wetter/drier
 sonoran.projected.wetdry <- sonoran.freq.projected |> 
   filter(Plot %in% c("wetter", "drier")) |> 
+  add_row(Code = "BAMU",
+          Frequency = 0,
+          Type2 = "Forb, drier") |>
+  add_row(Code = "BOAR",
+          Frequency = 0,
+          Type2 = "Grass, drier") |>
   mutate(Type2 = factor(Type2, levels = c("Forb, drier", "Forb, wetter", 
                                           "Grass, drier", "Grass, wetter",
                                           "Shrub, drier", "Shrub, wetter", 
@@ -493,7 +533,8 @@ sonoran.projected.wetdry <- sonoran.freq.projected |>
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Sonoran Desert projected-adapted mix, wetter vs. drier conditions") +
   theme_minimal() +
-  scale_y_continuous(labels = scales::percent) +
+  scale_y_continuous(labels = scales::percent,
+                     limits = c(0, 1)) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
@@ -506,11 +547,23 @@ sonoran.projected.wetdry
 
 # Projected mix, extremes
 sonoran.projected.ex <- sonoran.freq.projected |> 
-  filter(Plot %in% c("wettest", "driest")) |> 
-  mutate(Type2 = factor(Type2, levels = c("Forb, driest", "Forb, wettest", 
-                                          "Grass, driest", "Grass, wettest",
-                                          "Shrub, driest", "Shrub, wettest", 
-                                          "Empty, driest", "Empty, wettest")),
+  filter(Plot %in% c("very wet", "very dry")) |> 
+  add_row(Code = "BAMU",
+          Frequency = 0,
+          Type2 = "Forb, very dry") |>
+  add_row(Code = "BORO2",
+          Frequency = 0,
+          Type2 = "Grass, very wet") |>
+  add_row(Code = "BOAR",
+          Frequency = 0,
+          Type2 = "Grass, very dry") |>
+  add_row(Code = "BOAR",
+          Frequency = 0,
+          Type2 = "Grass, very wet") |>
+  mutate(Type2 = factor(Type2, levels = c("Forb, very dry", "Forb, very wet", 
+                                          "Grass, very dry", "Grass, very wet",
+                                          "Shrub, very dry", "Shrub, very wet", 
+                                          "Empty, very dry", "Empty, very wet")),
          Code = factor(Code, levels = c("SECO10", "PLOV", "ASTU", "BAMU", "ARPU9", "BOCU", 
                                         "BORO2", "BOAR",
                                         "ENFA", "Empty"))) |> 
@@ -518,7 +571,8 @@ sonoran.projected.ex <- sonoran.freq.projected |>
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Sonoran Desert projected-adapted mix, highly variable precipitation") +
   theme_minimal() +
-  scale_y_continuous(labels = scales::percent) +
+  scale_y_continuous(labels = scales::percent,
+                     limits = c(0, 1)) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
@@ -536,7 +590,8 @@ sonoran.species.total <- sonoran.freq.interest |>
   geom_bar(stat = "identity") +
   ggtitle("Sonoran Desert species of interest, all conditions") +
   theme_minimal() +
-  scale_y_continuous(labels = scales::percent) +
+  scale_y_continuous(labels = scales::percent,
+                     limits = c(0, 1)) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
@@ -559,7 +614,8 @@ sonoran.species.wetdry <- sonoran.freq.interest |>
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Sonoran Desert species of interest, wetter vs. drier conditions") +
   theme_minimal() +
-  scale_y_continuous(labels = scales::percent) +
+  scale_y_continuous(labels = scales::percent,
+                     limits = c(0, 1)) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
@@ -571,20 +627,21 @@ sonoran.species.wetdry <- sonoran.freq.interest |>
   theme(legend.position = "bottom")
 sonoran.species.wetdry
 
-# Species of interest, wettest & driest (extremes)
+# Species of interest, very wet & very dry (extremes)
 sonoran.species.ex <- sonoran.freq.interest |> 
-  filter(Plot %in% c("wettest", "driest")) |> 
+  filter(Plot %in% c("very wet", "very dry")) |> 
   mutate(Type = factor(Type, 
-                       levels = c("Current mix, driest", "Current mix, wettest",
-                                  "Projected mix, driest", "Projected mix, wettest",
-                                  "Native recruit, driest", "Native recruit, wettest",
-                                  "Invasive, driest", "Invasive, wettest",
-                                  "Empty, driest", "Empty, wettest"))) |> 
+                       levels = c("Current mix, very dry", "Current mix, very wet",
+                                  "Projected mix, very dry", "Projected mix, very wet",
+                                  "Native recruit, very dry", "Native recruit, very wet",
+                                  "Invasive, very dry", "Invasive, very wet",
+                                  "Empty, very dry", "Empty, very wet"))) |> 
   ggplot(aes(x = Code, y = Frequency, fill = Type)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Sonoran Desert species of interest, highly variable precipitation") +
   theme_minimal() +
-  scale_y_continuous(labels = scales::percent) +
+  scale_y_continuous(labels = scales::percent,
+                     limits = c(0, 1)) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
@@ -820,7 +877,7 @@ naz.freq.nativevolun |>
 
 # Native recruit, extremes
 naz.freq.nativevolun |> 
-  filter(Plot %in% c("wettest", "driest")) |> 
+  filter(Plot %in% c("very wet", "very dry")) |> 
   ggplot(aes(x = Code, y = Frequency, fill = Plot)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Northern Arizona, native recruit") +
@@ -864,7 +921,7 @@ naz.freq.weed |>
 
 # Weedy, extremes
 naz.freq.weed |> 
-  filter(Plot %in% c("wettest", "driest")) |> 
+  filter(Plot %in% c("very wet", "very dry")) |> 
   filter(Code != "Empty") |> 
   ggplot(aes(x = Code, y = Frequency, fill = Plot)) +
   geom_bar(stat = "identity", position = position_dodge()) +
@@ -889,7 +946,8 @@ naz.current.total <- naz.freq.current |>
   geom_bar(stat = "identity") +
   ggtitle("Northern Arizona current-adapted mix, all conditions") +
   theme_minimal() +
-  scale_y_continuous(labels = scales::percent) +
+  scale_y_continuous(labels = scales::percent,
+                     limits = c(0, 1)) +
   scale_fill_manual(values = c("#8DA0CB", "#66C2A5", "#FC8D62", "#B3B3B3")) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
@@ -902,6 +960,15 @@ naz.current.total
 # Current mix, wetter/drier
 naz.current.wetdry <- naz.freq.current |> 
   filter(Plot %in% c("wetter", "drier")) |> 
+  add_row(Code = "SPGR2",
+          Frequency = 0,
+          Type2 = "Forb, wetter") |>
+  add_row(Code = "HEMU3",
+          Frequency = 0,
+          Type2 = "Forb, wetter") |>
+  add_row(Code = "PSSP6",
+          Frequency = 0,
+          Type2 = "Grass, drier") |>
   mutate(Type2 = factor(Type2, levels = c("Forb, drier", "Forb, wetter", 
                                           "Grass, drier", "Grass, wetter",
                                           "Shrub, drier", "Shrub, wetter", 
@@ -914,7 +981,8 @@ naz.current.wetdry <- naz.freq.current |>
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Northern Arizona current-adapted mix, wetter vs. drier conditions") +
   theme_minimal() +
-  scale_y_continuous(labels = scales::percent) +
+  scale_y_continuous(labels = scales::percent,
+                     limits = c(0, 1)) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   scale_fill_manual(values = c("#B3C8E8", "#7570B3", "#B3E2D6", "#1B9E77", "#FBB4AE", "#D95F02",
@@ -927,11 +995,38 @@ naz.current.wetdry
 
 # Current mix, extremes
 naz.current.ex <- naz.freq.current |> 
-  filter(Plot %in% c("wettest", "driest")) |> 
-  mutate(Type2 = factor(Type2, levels = c("Forb, driest", "Forb, wettest", 
-                                          "Grass, driest", "Grass, wettest",
-                                          "Shrub, driest", "Shrub, wettest", 
-                                          "Empty, driest", "Empty, wettest")),
+  filter(Plot %in% c("very wet", "very dry")) |> 
+  add_row(Code = "LILE3",
+          Frequency = 0,
+          Type2 = "Forb, very dry") |>
+  add_row(Code = "ACMI2",
+          Frequency = 0,
+          Type2 = "Forb, very dry") |>
+  add_row(Code = "MATA2",
+          Frequency = 0,
+          Type2 = "Forb, very dry") |>
+  add_row(Code = "HEMU3",
+          Frequency = 0,
+          Type2 = "Forb, very wet") |>
+  add_row(Code = "ELTR7",
+          Frequency = 0,
+          Type2 = "Grass, very dry") |>
+  add_row(Code = "ELWA2",
+          Frequency = 0,
+          Type2 = "Grass, very dry") |>
+  add_row(Code = "BOGR2",
+          Frequency = 0,
+          Type2 = "Grass, very dry") |>
+  add_row(Code = "SPCR",
+          Frequency = 0,
+          Type2 = "Grass, very dry") |>
+  add_row(Code = "BOER4",
+          Frequency = 0,
+          Type2 = "Grass, very wet") |>
+  mutate(Type2 = factor(Type2, levels = c("Forb, very dry", "Forb, very wet", 
+                                          "Grass, very dry", "Grass, very wet",
+                                          "Shrub, very dry", "Shrub, very wet", 
+                                          "Empty, very dry", "Empty, very wet")),
          Code = factor(Code, levels = c("LILE3", "DACA7", "HEBO", "ACMI2", "MATA2", "PEPA8", 
                                         "SPGR2", "HEMU3", "PASM", "LECI4", "HECO26", "ELEL5", "ELTR7",
                                         "ELWA2", "BOGR2", "SPCR", "POSE", "PLJA", "BOER4", "PSSP6",
@@ -940,7 +1035,8 @@ naz.current.ex <- naz.freq.current |>
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Northern Arizona current-adapted mix, highly variable precipitation") +
   theme_minimal() +
-  scale_y_continuous(labels = scales::percent) +
+  scale_y_continuous(labels = scales::percent,
+                     limits = c(0, 1)) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
@@ -963,7 +1059,8 @@ naz.projected.total <- naz.freq.projected |>
   geom_bar(stat = "identity") +
   ggtitle("Northern Arizona projected-adapted mix, all conditions") +
   theme_minimal() +
-  scale_y_continuous(labels = scales::percent) +
+  scale_y_continuous(labels = scales::percent,
+                     limits = c(0, 1)) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   scale_fill_manual(values = c("#8DA0CB", "#66C2A5", "#FC8D62", "#B3B3B3")) +
@@ -976,6 +1073,27 @@ naz.projected.total
 # Projected mix, wetter/drier
 naz.projected.wetdry <- naz.freq.projected |> 
   filter(Plot %in% c("wetter", "drier")) |> 
+  add_row(Code = "ACMI2",
+          Frequency = 0,
+          Type2 = "Forb, drier") |>
+  add_row(Code = "HEMU3",
+          Frequency = 0,
+          Type2 = "Forb, wetter") |>
+  add_row(Code = "DACA7",
+          Frequency = 0,
+          Type2 = "Forb, drier") |>
+  add_row(Code = "MATA2",
+          Frequency = 0,
+          Type2 = "Forb, drier") |>
+  add_row(Code = "BOER4",
+          Frequency = 0,
+          Type2 = "Grass, drier") |>
+  add_row(Code = "BOGR2",
+          Frequency = 0,
+          Type2 = "Grass, drier") |>
+  add_row(Code = "PLMU3",
+          Frequency = 0,
+          Type2 = "Grass, wetter") |>
   mutate(Type2 = factor(Type2, levels = c("Forb, drier", "Forb, wetter", 
                                           "Grass, drier", "Grass, wetter",
                                           "Shrub, drier", "Shrub, wetter", 
@@ -988,7 +1106,8 @@ naz.projected.wetdry <- naz.freq.projected |>
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Northern Arizona projected-adapted mix, wetter vs. drier conditions") +
   theme_minimal() +
-  scale_y_continuous(labels = scales::percent) +
+  scale_y_continuous(labels = scales::percent,
+                     limits = c(0, 1)) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
@@ -1001,11 +1120,62 @@ naz.projected.wetdry
 
 # Projected mix, extremes
 naz.projected.ex <- naz.freq.projected |> 
-  filter(Plot %in% c("wettest", "driest")) |> 
-  mutate(Type2 = factor(Type2, levels = c("Forb, driest", "Forb, wettest", 
-                                          "Grass, driest", "Grass, wettest",
-                                          "Shrub, driest",  
-                                          "Empty, driest", "Empty, wettest")),
+  filter(Plot %in% c("very wet", "very dry")) |> 
+  add_row(Code = "ASTU",
+          Frequency = 0,
+          Type2 = "Forb, very dry") |>
+  add_row(Code = "SECO10",
+          Frequency = 0,
+          Type2 = "Forb, very dry") |>
+  add_row(Code = "ACMI2",
+          Frequency = 0,
+          Type2 = "Forb, very dry") |>
+  add_row(Code = "HEMU3",
+          Frequency = 0,
+          Type2 = "Forb, very wet") |>
+  add_row(Code = "DACA7",
+          Frequency = 0,
+          Type2 = "Forb, very dry") |>
+  add_row(Code = "MATA2",
+          Frequency = 0,
+          Type2 = "Forb, very dry") |>
+  add_row(Code = "PEPA8",
+          Frequency = 0,
+          Type2 = "Forb, very wet") |>
+  add_row(Code = "BOER4",
+          Frequency = 0,
+          Type2 = "Grass, very dry") |>
+  add_row(Code = "POSE",
+          Frequency = 0,
+          Type2 = "Grass, very wet") |>
+  add_row(Code = "PLJA",
+          Frequency = 0,
+          Type2 = "Grass, very wet") |>
+  add_row(Code = "BOCU",
+          Frequency = 0,
+          Type2 = "Grass, very dry") |>
+  add_row(Code = "ARPU9",
+          Frequency = 0,
+          Type2 = "Grass, very dry") |>
+  add_row(Code = "BOGR2",
+          Frequency = 0,
+          Type2 = "Grass, very dry") |>
+  add_row(Code = "SPCR",
+          Frequency = 0,
+          Type2 = "Grass, very wet") |>
+  add_row(Code = "PLMU3",
+          Frequency = 0,
+          Type2 = "Grass, very dry") |>
+  add_row(Code = "PLMU3",
+          Frequency = 0,
+          Type2 = "Grass, very wet") |>
+  add_row(Code = "KRLA2",
+          Frequency = 0,
+          Type2 = "Shrub, very wet") |>
+  mutate(Type2 = factor(Type2, levels = c("Forb, very dry", "Forb, very wet", 
+                                          "Grass, very dry", "Grass, very wet",
+                                          "Shrub, very dry",  "Shrub, very wet",
+                                          "Empty, very dry", "Empty, very wet")),
          Code = factor(Code, levels = c("BAMU", "ASTU", "SECO10", "LILE3", "ACMI2", "HEMU3", 
                                         "DACA7", "MATA2", "PEPA8", "PASM", "ACHY", "ELEL5",
                                         "BOER4", "POSE", "PLJA", "BOCU", "ARPU9", "BOGR2",
@@ -1014,13 +1184,14 @@ naz.projected.ex <- naz.freq.projected |>
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Northern Arizona projected-adapted mix, highly variable precipitation") +
   theme_minimal() +
-  scale_y_continuous(labels = scales::percent) +
+  scale_y_continuous(labels = scales::percent,
+                     limits = c(0, 1)) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
   theme(axis.text.x = element_text(color = "black")) +
   theme(axis.text.x = element_text(angle = 35)) +
-  scale_fill_manual(values = c("#B3C8E8", "#7570B3", "#B3E2D6", "#1B9E77", "#FBB4AE",
+  scale_fill_manual(values = c("#B3C8E8", "#7570B3", "#B3E2D6", "#1B9E77", "#FBB4AE", "#D95F02",
                                "#D9D9D9", "#666666")) +
   theme(legend.position = "bottom")
 naz.projected.ex
@@ -1033,7 +1204,8 @@ naz.species.total <- naz.freq.interest |>
   geom_bar(stat = "identity") +
   ggtitle("Northern Arizona species of interest, all conditions") +
   theme_minimal() +
-  scale_y_continuous(labels = scales::percent) +
+  scale_y_continuous(labels = scales::percent,
+                     limits = c(0, 1)) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
@@ -1046,17 +1218,24 @@ naz.species.total
 # Species of interest, paired wetter & drier
 naz.species.wetdry <- naz.freq.interest |> 
   filter(Plot %in% c("wetter", "drier")) |> 
+  add_row(Code = "LEPA6",
+          Frequency = 0,
+          Type = "Native recruit, drier") |>
   mutate(Type = factor(Type, 
                        levels = c("Current mix, drier", "Current mix, wetter",
                                   "Projected mix, drier", "Projected mix, wetter",
                                   "Native recruit, drier", "Native recruit, wetter",
                                   "Invasive, drier", "Invasive, wetter",
-                                  "Empty, drier", "Empty, wetter"))) |> 
+                                  "Empty, drier", "Empty, wetter")),
+         Code = factor(Code, levels = c("LECI4", "HEBO", "HECO26", "LILE3", "DACA7", 
+                                        "PASM_c", "ELEL5", "BAMU", "PASM_p", "ASTU", 
+                                        "ATCO", "SOEL", "LEPA6", "SATR12", "Empty"))) |> 
   ggplot(aes(x = Code, y = Frequency, fill = Type)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Northern Arizona species of interest, wetter vs. drier conditions") +
   theme_minimal() +
-  scale_y_continuous(labels = scales::percent) +
+  scale_y_continuous(labels = scales::percent,
+                     limits = c(0, 1)) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
@@ -1068,20 +1247,33 @@ naz.species.wetdry <- naz.freq.interest |>
   theme(legend.position = "bottom")
 naz.species.wetdry
 
-# Species of interest, wettest & driest (extremes)
+# Species of interest, very wet & very dry (extremes)
 naz.species.ex <- naz.freq.interest |> 
-  filter(Plot %in% c("wettest", "driest")) |> 
+  filter(Plot %in% c("very wet", "very dry")) |> 
+  add_row(Code = "LILE3",
+          Frequency = 0,
+          Type = "Current mix, very dry") |>
+  add_row(Code = "ASTU",
+          Frequency = 0,
+          Type = "Projected mix, very dry") |>
+  add_row(Code = "LEPA6",
+          Frequency = 0,
+          Type = "Native recruit, very dry") |>
   mutate(Type = factor(Type, 
-                       levels = c("Current mix, driest", "Current mix, wettest",
-                                  "Projected mix, driest", "Projected mix, wettest",
-                                  "Native recruit, driest", "Native recruit, wettest",
-                                  "Invasive, driest", "Invasive, wettest",
-                                  "Empty, driest", "Empty, wettest"))) |> 
+                       levels = c("Current mix, very dry", "Current mix, very wet",
+                                  "Projected mix, very dry", "Projected mix, very wet",
+                                  "Native recruit, very dry", "Native recruit, very wet",
+                                  "Invasive, very dry", "Invasive, very wet",
+                                  "Empty, very dry", "Empty, very wet")),
+         Code = factor(Code, levels = c("LECI4", "HEBO", "HECO26", "LILE3", "DACA7", 
+                                        "PASM_c", "ELEL5", "BAMU", "PASM_p", "ASTU", 
+                                        "ATCO", "SOEL", "LEPA6", "SATR12", "Empty"))) |> 
   ggplot(aes(x = Code, y = Frequency, fill = Type)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   ggtitle("Northern Arizona species of interest, highly variable precipitation") +
   theme_minimal() +
-  scale_y_continuous(labels = scales::percent) +
+  scale_y_continuous(labels = scales::percent,
+                     limits = c(0, 1)) +
   xlab(NULL) +
   ylab("Frequency (presence in plots)") +
   theme(legend.title = element_blank()) +
