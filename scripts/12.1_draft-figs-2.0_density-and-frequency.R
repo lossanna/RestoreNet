@@ -548,6 +548,9 @@ sonoran.projected.wetdry
 # Projected mix, extremes
 sonoran.projected.ex <- sonoran.freq.projected |> 
   filter(Plot %in% c("very wet", "very dry")) |> 
+  add_row(Code = "ASTU",
+          Frequency = 0,
+          Type2 = "Forb, very dry") |>
   add_row(Code = "BAMU",
           Frequency = 0,
           Type2 = "Forb, very dry") |>
