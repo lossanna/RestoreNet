@@ -1,5 +1,5 @@
 # Created: 2023-09-18
-# Last updated: 2024-09-25
+# Last updated: 2024-10-17
 
 # Purpose: Create 2 clean data tables for 2x2 plot data: one with cover, species richness,
 #   and grouping cols (one row for each monitoring event/SiteDatePlotID), and one with
@@ -758,6 +758,7 @@ empty.plots.not0seeded <- empty.plots.cover |>
 summary(empty.plots.not0seeded$Seeded_Cover) # only ranges from 0.5 to 5%
 #   I think it was just trace amounts of cover but the species couldn't be identified
 #     I will make a fix for 2x2 data, but just leave subplot data how it is
+#     present_species isn't changed and Code is still 0, but that's fine
 
 # label non-empty plots with "Unknown seeded" to fix for plantsource (assume there was just 1 species)
 empty.plots.not0seeded.fix <- plantsource |> 
