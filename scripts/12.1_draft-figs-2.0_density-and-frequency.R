@@ -1,5 +1,5 @@
 # Created: 2024-09-25
-# Last updated: 2024-09-27
+# Last updated: 2024-10-17
 
 # Purpose: Narrow down and improve figures from 09.1_draft-figs_precip-dev_subplot.R. In particular,
 #   change Count to density (individuals per m2), and change N AZ Plateau to just Northern Arizona
