@@ -1,5 +1,5 @@
 # Created: 2024-09-25
-# Last updated: 2024-10-17
+# Last updated: 2024-10-18
 
 # Purpose: Narrow down and improve figures from 09.1_draft-figs_precip-dev_subplot.R. In particular,
 #   change Count to density (individuals per m2), and change N AZ Plateau to just Northern Arizona
@@ -11,6 +11,7 @@ library(scales)
 library(viridis)
 library(ggbreak)
 library(ggpmisc)
+library(ggpubr)
 
 # Load data ---------------------------------------------------------------
 
@@ -171,6 +172,8 @@ naz.freq.interest <- naz.freq.interest.raw |>
 cum.pd.sonoran <- cum.pd |> 
   filter(Perc_deviation != Inf) |> 
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
+  mutate(Site = factor(Site, 
+                       levels = c("SRER", "Patagonia", "Roosevelt", "Preserve", "Pleasant", "SCC"))) |> 
   ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
   geom_point() +
   geom_line() +
@@ -202,7 +205,7 @@ sonoran.des.count.plotmixclimate <- dat |>
   facet_wrap(~PlotMix_Climate) +
   labs(title = "Sonoran Desert desirable species",
        x = "Cumulative precipitation deviation from normals",
-       y = expression(paste("Density (individuals / ", m^2, ")"))) +
+       y = expression(paste("Density (individuals /  ", m^2, ")"))) +
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
@@ -223,7 +226,7 @@ sonoran.weed.count <- dat |>
   geom_smooth() +
   labs(title = "Sonoran Desert weedy species",
        x = "Cumulative precipitation deviation from normals",
-       y = expression(paste("Density (individuals / ", m^2, ")"))) +
+       y = expression(paste("Density (individuals /  ", m^2, ")"))) +
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
@@ -254,7 +257,7 @@ sonoran.seed.count.current.species <- dat |>
   facet_wrap(~Code) +
   labs(title = "Sonoran Desert seeded species (current-adapted mix)",
        x = "Cumulative precipitation deviation from normals",
-       y = expression(paste("Density (individuals / ", m^2, ")"))) +
+       y = expression(paste("Density (individuals /  ", m^2, ")"))) +
   theme_bw() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
@@ -281,7 +284,9 @@ sonoran.seed.count.projected.species <- dat |>
                  shape = Duration),
              alpha = 0.7) +
   facet_wrap(~Code) +
-  ggtitle("Sonoran Desert Plateau seeded species (projected-adapted mix)") +
+  labs(title = "Sonoran Desert seeded species (projected-adapted mix)",
+       x = "Cumulative precipitation deviation from normals",
+       y = expression(paste("Density (individuals /  ", m^2, ")"))) +
   theme_bw() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
@@ -301,7 +306,7 @@ sonoran.species.count <- sonoran.count.interest |>
   facet_wrap(~Code) +
   labs(title = "Sonoran Desert species of interest",
        x = "Cumulative precipitation deviation from normals",
-       y = expression(paste("Density (individuals / ", m^2, ")"))) +
+       y = expression(paste("Density (individuals /  ", m^2, ")"))) +
   theme_bw() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
@@ -663,10 +668,18 @@ sonoran.species.ex
 ## Precip deviation -------------------------------------------------------
 
 # Cumulative
+vlines <- data.frame(
+  Site = factor(c("FlyingM", "BabbittPJ", "BarTBar", "MOWE", "PEFO", "Spiderweb")),
+  Date_Monitored = as.Date(c("2020-07-17", "2020-07-16", "2020-07-20",
+                             "2020-07-22", "2020-07-23", "2020-07-21"))
+)
 cum.pd.naz <- cum.pd |> 
   filter(Perc_deviation != Inf) |> 
   filter(Region == "Colorado Plateau") |> 
-  ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
+  mutate(Site = factor(Site,
+                       levels = c("FlyingM", "BabbittPJ", "BarTBar", "AguaFria",
+                                  "MOWE", "PEFO", "Spiderweb", "TLE"))) |> 
+  ggplot(aes(x = as.Date(Date_Monitored), y = Perc_deviation)) +
   geom_point() +
   geom_line() +
   facet_wrap(~Site) +
@@ -678,6 +691,10 @@ cum.pd.naz <- cum.pd |>
   geom_hline(yintercept = 0,
              linetype = "dashed",
              color = "red") +
+  geom_vline(data = vlines,
+             aes(xintercept = Date_Monitored),
+             linetype = "dashed",
+             color = "blue") +
   theme(axis.text.x = element_text(color = "black"))
 cum.pd.naz
 
@@ -697,7 +714,7 @@ naz.des.count.plotmixclimate <- dat |>
   facet_wrap(~PlotMix_Climate) +
   labs(title = "Northern Arizona desirable species",
        x = "Cumulative precipitation deviation from normals",
-       y = expression(paste("Density (individuals / ", m^2, ")"))) +
+       y = expression(paste("Density (individuals /  ", m^2, ")"))) +
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
@@ -720,7 +737,7 @@ naz.weed.count <- dat |>
   geom_smooth() +
   labs(title = "Northern Arizona weedy species",
        x = "Cumulative precipitation deviation from normals",
-       y = expression(paste("Density (individuals / ", m^2, ")"))) +
+       y = expression(paste("Density (individuals /  ", m^2, ")"))) +
   theme_minimal() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
@@ -792,7 +809,7 @@ naz.seed.count.current.species <- dat |>
   facet_wrap(~Code) +
   labs(title = "Northern Arizona seeded species (current-adapted mix)",
        x = "Cumulative precipitation deviation from normals",
-       y = expression(paste("Density (individuals / ", m^2, ")"))) +
+       y = expression(paste("Density (individuals /  ", m^2, ")"))) +
   theme_bw() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
@@ -817,7 +834,9 @@ naz.seed.count.projected.species <- dat |>
                  shape = Duration),
              alpha = 0.7) +
   facet_wrap(~Code) +
-  ggtitle("Northern Arizona Plateau seeded species (projected-adapted mix)") +
+  labs(title = "Northern Arizona seeded species (projected-adapted mix)",
+       x = "Cumulative precipitation deviation from normals",
+       y = expression(paste("Density (individuals /  ", m^2, ")"))) +
   theme_bw() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
@@ -837,7 +856,7 @@ naz.species.count <- naz.count.interest |>
   facet_wrap(~Code) +
   labs(title = "Northern Arizona species of interest",
        x = "Cumulative precipitation deviation from normals",
-       y = expression(paste("Density (individuals / ", m^2, ")"))) +
+       y = expression(paste("Density (individuals /  ", m^2, ")"))) +
   theme_bw() +
   theme(legend.position = "bottom") +
   scale_x_continuous(labels = scales::percent) +
@@ -1287,6 +1306,11 @@ naz.species.ex <- naz.freq.interest |>
   theme(axis.text.x = element_text(angle = 35)) +
   theme(legend.position = "bottom")
 naz.species.ex
+
+
+
+# Figure 1: Combine desirable & weedy count -------------------------------
+
 
 
 # Write out draft figures -------------------------------------------------
