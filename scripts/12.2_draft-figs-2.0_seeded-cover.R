@@ -6,6 +6,7 @@
 library(tidyverse)
 library(scales)
 library(viridis)
+library(ggpubr)
 
 # Load data ---------------------------------------------------------------
 
@@ -41,28 +42,28 @@ dat <- richness.cover |>
 dat <- dat |> 
   mutate(PlotMix_Climate = case_when(
     str_detect(dat$Site, "Creosote|Mesquite|Patagonia|SRER") & 
-      dat$PlotMix == "Medium" ~ "Current",
+      dat$PlotMix == "Medium" ~ "Current-adapted mix",
     str_detect(dat$Site, "Creosote|Mesquite|Patagonia|SRER") & 
-      dat$PlotMix == "Warm" ~ "Projected",
+      dat$PlotMix == "Warm" ~ "Projected-adapted mix",
     str_detect(dat$Site, "AguaFria|MOWE|PEFO|Spiderweb") & 
-      dat$PlotMix == "Med-Warm" ~ "Current",
+      dat$PlotMix == "Med-Warm" ~ "Current-adapted mix",
     str_detect(dat$Site, "AguaFria|MOWE|PEFO|Spiderweb") & 
-      dat$PlotMix == "Warm" ~ "Projected",
+      dat$PlotMix == "Warm" ~ "Projected-adapted mix",
     str_detect(dat$Site, "BarTBar|FlyingM|CRC|Salt_Desert") & 
-      dat$PlotMix == "Cool-Med" ~ "Current",
+      dat$PlotMix == "Cool-Med" ~ "Current-adapted mix",
     str_detect(dat$Site, "BarTBar|FlyingM|CRC|Salt_Desert") & 
-      dat$PlotMix == "Med-Warm" ~ "Projected",
+      dat$PlotMix == "Med-Warm" ~ "Projected-adapted mix",
     str_detect(dat$Site, "BabbittPJ|UtahPJ") & 
-      dat$PlotMix == "Cool" ~ "Current",
+      dat$PlotMix == "Cool" ~ "Current-adapted mix",
     str_detect(dat$Site, "BabbittPJ|UtahPJ") & 
-      dat$PlotMix == "Cool-Med" ~ "Projected",
+      dat$PlotMix == "Cool-Med" ~ "Projected-adapted mix",
     str_detect(dat$Site, "29_Palms|AVRCD|Preserve|SCC|Roosevelt|Pleasant|TLE") & 
-      dat$PlotMix == "Cool" ~ "Current",
+      dat$PlotMix == "Cool" ~ "Current-adapted mix",
     str_detect(dat$Site, "29_Palms|AVRCD|Preserve|SCC|Roosevelt|Pleasant|TLE") & 
-      dat$PlotMix == "Warm" ~ "Projected",
-    TRUE ~ dat$PlotMix))
+      dat$PlotMix == "Warm" ~ "Projected-adapted mix",
+    TRUE ~ "None"))
 dat$PlotMix_Climate <- factor(dat$PlotMix_Climate, 
-                              levels = c("None", "Current", "Projected"))
+                              levels = c("None", "Current-adapted mix", "Projected-adapted mix"))
 
 # Remove infinity
 dat <- dat |> 
@@ -110,7 +111,8 @@ sonoran.seed.plotmixclimate <- dat |>
   scale_color_viridis(direction = -1) +
   xlab("Cumulative precipitation deviation from normals") +
   ylab("Cover") +
-  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) 
 sonoran.seed.plotmixclimate
 
 
@@ -152,7 +154,8 @@ naz.seed.plotmixclimate <- dat |>
   labs(color = "Seeded species richness") +
   theme(legend.position = "bottom") +
   theme(axis.text.x = element_text(angle = 35)) +
-  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in"))
 naz.seed.plotmixclimate
 
 
@@ -177,5 +180,14 @@ tiff("figures/2024-09_draft-figures-2.0/Northern-AZ_2x2-seeded-cover-by-PlotMix_
 naz.seed.plotmixclimate
 dev.off()
 
+
+## Figure S3: Seeded species cover ----------------------------------------
+
+tiff("figures/2024-09_draft-figures-2.0/FigS3_seeded-cover_2x2.tiff", units = "in", height = 5, width = 11, res = 150)
+ggarrange(sonoran.seed.plotmixclimate, naz.seed.plotmixclimate,
+          ncol = 2, nrow = 1,
+          labels = c("(A)", "(B)"),
+          common.legend = TRUE, legend = "bottom") 
+dev.off()
 
 save.image("RData/12.2_draft-figs-2.0_seeded-cover.RData")

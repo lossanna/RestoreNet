@@ -186,7 +186,8 @@ cum.pd.sonoran <- cum.pd |>
   geom_hline(yintercept = 0,
              linetype = "dashed",
              color = "red") +
-  theme(axis.text.x = element_text(color = "black"))
+  theme(axis.text.x = element_text(color = "black")) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) 
 cum.pd.sonoran
 
 
@@ -212,7 +213,8 @@ sonoran.des.count.plotmixclimate <- dat |>
   scale_shape_manual(values = c(20, 17, 15)) +
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
-  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) +
+  theme(plot.margin = margin(0.1, 0.1, 0.2, 0.1, "in")) 
 sonoran.des.count.plotmixclimate
 
 # Weedy as single panel by PlantSource2
@@ -233,7 +235,8 @@ sonoran.weed.count <- dat |>
   scale_shape_manual(values = c(20, 15, 17)) +
   scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77")) +
   theme(legend.title = element_blank()) +
-  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) +
+  theme(plot.margin = margin(0.1, 0.2, 0.2, 0.2, "in")) 
 sonoran.weed.count
 
 
@@ -264,7 +267,8 @@ sonoran.seed.count.current.species <- dat |>
   scale_shape_manual(values = c(17, 19, 15)) +
   scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
-  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) +
+  theme(plot.margin = margin(0.1, 0.1, 0.2, 0.1, "in")) 
 sonoran.seed.count.current.species
 
 # By seeded species: Projected
@@ -294,7 +298,8 @@ sonoran.seed.count.projected.species <- dat |>
   scale_shape_manual(values = c(17, 19, 15)) +
   scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
-  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) +
+  theme(plot.margin = margin(0.1, 0.1, 0.2, 0.1, "in")) 
 sonoran.seed.count.projected.species
 
 # Species of interest
@@ -313,7 +318,8 @@ sonoran.species.count <- sonoran.count.interest |>
   scale_shape_manual(values = c(19, 17)) +
   scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
-  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) 
 sonoran.species.count
 
 
@@ -411,7 +417,8 @@ sonoran.current.total <- sonoran.freq.current |>
   theme(legend.title = element_blank()) +
   theme(axis.text.x = element_text(color = "black")) +
   theme(axis.text.x = element_text(angle = 35))  +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom") +
+  theme(plot.margin = margin(0.1, 0.1, 0.2, 0.1, "in")) 
 sonoran.current.total
 
 # Current mix, wetter/drier
@@ -493,7 +500,8 @@ sonoran.current.ex <- sonoran.freq.current |>
                                "#D9D9D9", "#666666")) +
   theme(axis.text.x = element_text(color = "black")) +
   theme(axis.text.x = element_text(angle = 35)) +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom") +
+  theme(plot.margin = margin(0.1, 0.1, 0.2, 0.1, "in")) 
 sonoran.current.ex
 
 # Projected mix, all plots
@@ -515,7 +523,8 @@ sonoran.projected.total <- sonoran.freq.projected |>
   theme(legend.title = element_blank()) +
   theme(axis.text.x = element_text(color = "black")) +
   theme(axis.text.x = element_text(angle = 35)) +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom") +
+  theme(plot.margin = margin(0.1, 0.1, 0.2, 0.1, "in")) 
 sonoran.projected.total
 
 # Projected mix, wetter/drier
@@ -588,7 +597,8 @@ sonoran.projected.ex <- sonoran.freq.projected |>
   theme(axis.text.x = element_text(angle = 35)) +
   scale_fill_manual(values = c("#B3C8E8", "#7570B3", "#B3E2D6", "#1B9E77", "#FBB4AE", "#D95F02",
                                "#D9D9D9", "#666666")) +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom") +
+  theme(plot.margin = margin(0.1, 0.1, 0.2, 0.1, "in")) 
 sonoran.projected.ex
 
 # Species of interest, all plots
@@ -606,7 +616,8 @@ sonoran.species.total <- sonoran.freq.interest |>
   scale_fill_manual(values = c("#E5C494", "#FC8D62", "#66C2A5", "#8DA0CB", "#B3B3B3")) +
   theme(axis.text.x = element_text(color = "black")) +
   theme(axis.text.x = element_text(angle = 35)) +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom") +
+  theme(plot.margin = margin(0.1, 0.1, 0.2, 0.1, "in")) 
 sonoran.species.total
 
 # Species of interest, paired wetter & drier
@@ -658,7 +669,8 @@ sonoran.species.ex <- sonoran.freq.interest |>
                                "#D9D9D9", "#666666")) +
   theme(axis.text.x = element_text(color = "black")) +
   theme(axis.text.x = element_text(angle = 35)) +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom")  +
+  theme(plot.margin = margin(0.1, 0.1, 0.2, 0.1, "in")) 
 sonoran.species.ex
 
 
@@ -695,7 +707,8 @@ cum.pd.naz <- cum.pd |>
              aes(xintercept = Date_Monitored),
              linetype = "dashed",
              color = "blue") +
-  theme(axis.text.x = element_text(color = "black"))
+  theme(axis.text.x = element_text(color = "black")) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) 
 cum.pd.naz
 
 
@@ -722,7 +735,8 @@ naz.des.count.plotmixclimate <- dat |>
   scale_color_manual(values = c("#8DA0CB", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
   theme(axis.text.x = element_text(angle = 35)) +
-  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5)  +
+  theme(plot.margin = margin(0.1, 0.1, 0.2, 0.1, "in")) 
 naz.des.count.plotmixclimate
 
 # Weedy as single panel by PlantSource2 (unknown outliers removed)
@@ -744,7 +758,8 @@ naz.weed.count <- dat |>
   scale_shape_manual(values = c(20, 15, 17)) +
   scale_color_manual(values = c("#8DA0CB", "#D95F02", "#1B9E77")) +
   theme(legend.title = element_blank()) +
-  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) +
+  theme(plot.margin = margin(0.1, 0.2, 0.2, 0.2, "in")) 
 naz.weed.count
 
 
@@ -816,7 +831,8 @@ naz.seed.count.current.species <- dat |>
   scale_shape_manual(values = c(17, 19, 15)) +
   scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
-  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) +
+  theme(plot.margin = margin(0.1, 0.1, 0.2, 0.1, "in")) 
 naz.seed.count.current.species
 
 # By seeded species: Projected
@@ -844,7 +860,8 @@ naz.seed.count.projected.species <- dat |>
   scale_shape_manual(values = c(17, 19, 15)) +
   scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
-  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) 
 naz.seed.count.projected.species
 
 # Species of interest
@@ -863,7 +880,8 @@ naz.species.count <- naz.count.interest |>
   scale_shape_manual(values = c(19, 17, 15)) +
   scale_color_manual(values = c("#7570B3", "#1B9E77", "#D95F02")) +
   theme(legend.title = element_blank()) +
-  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) 
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.5) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) 
 naz.species.count
 
 
@@ -976,7 +994,8 @@ naz.current.total <- naz.freq.current |>
   theme(legend.title = element_blank()) +
   theme(axis.text.x = element_text(color = "black")) +
   theme(axis.text.x = element_text(angle = 35))  +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom") +
+  theme(plot.margin = margin(0.1, 0.1, 0.2, 0.1, "in"))
 naz.current.total
 
 # Current mix, wetter/drier
@@ -1027,6 +1046,12 @@ naz.current.ex <- naz.freq.current |>
   add_row(Code = "MATA2",
           Frequency = 0,
           Type2 = "Forb, very dry") |>
+  add_row(Code = "SPGR2",
+          Frequency = 0,
+          Type2 = "Forb, very dry") |>
+  add_row(Code = "SPGR2",
+          Frequency = 0,
+          Type2 = "Forb, very wet") |>
   add_row(Code = "HEMU3",
           Frequency = 0,
           Type2 = "Forb, very wet") |>
@@ -1042,7 +1067,19 @@ naz.current.ex <- naz.freq.current |>
   add_row(Code = "SPCR",
           Frequency = 0,
           Type2 = "Grass, very dry") |>
+  add_row(Code = "PLJA",
+          Frequency = 0,
+          Type2 = "Grass, very dry") |>
+  add_row(Code = "PLJA",
+          Frequency = 0,
+          Type2 = "Grass, very wet") |>
   add_row(Code = "BOER4",
+          Frequency = 0,
+          Type2 = "Grass, very wet") |>
+  add_row(Code = "PSSP6",
+          Frequency = 0,
+          Type2 = "Grass, very dry") |>
+  add_row(Code = "PSSP6",
           Frequency = 0,
           Type2 = "Grass, very wet") |>
   mutate(Type2 = factor(Type2, levels = c("Forb, very dry", "Forb, very wet", 
@@ -1066,7 +1103,8 @@ naz.current.ex <- naz.freq.current |>
                                "#D9D9D9", "#666666")) +
   theme(axis.text.x = element_text(color = "black")) +
   theme(axis.text.x = element_text(angle = 35)) +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom") +
+  theme(plot.margin = margin(0.1, 0.1, 0.2, 0.1, "in"))
 naz.current.ex
 
 # Projected mix, all plots
@@ -1089,7 +1127,8 @@ naz.projected.total <- naz.freq.projected |>
   theme(legend.title = element_blank()) +
   theme(axis.text.x = element_text(color = "black")) +
   theme(axis.text.x = element_text(angle = 35)) +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom") +
+  theme(plot.margin = margin(0.1, 0.1, 0.2, 0.1, "in"))
 naz.projected.total
 
 # Projected mix, wetter/drier
@@ -1215,7 +1254,8 @@ naz.projected.ex <- naz.freq.projected |>
   theme(axis.text.x = element_text(angle = 35)) +
   scale_fill_manual(values = c("#B3C8E8", "#7570B3", "#B3E2D6", "#1B9E77", "#FBB4AE", "#D95F02",
                                "#D9D9D9", "#666666")) +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom") +
+  theme(plot.margin = margin(0.1, 0.1, 0.2, 0.1, "in"))
 naz.projected.ex
 
 
@@ -1234,7 +1274,8 @@ naz.species.total <- naz.freq.interest |>
   scale_fill_manual(values = c("#E5C494", "#FC8D62", "#66C2A5", "#8DA0CB", "#B3B3B3")) +
   theme(axis.text.x = element_text(color = "black")) +
   theme(axis.text.x = element_text(angle = 35)) +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom") +
+  theme(plot.margin = margin(0.1, 0.1, 0.2, 0.1, "in")) 
 naz.species.total
 
 # Species of interest, paired wetter & drier
@@ -1304,12 +1345,10 @@ naz.species.ex <- naz.freq.interest |>
                                "#D9D9D9", "#666666")) +
   theme(axis.text.x = element_text(color = "black")) +
   theme(axis.text.x = element_text(angle = 35)) +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom") +
+  theme(plot.margin = margin(0.1, 0.1, 0.2, 0.1, "in")) 
 naz.species.ex
 
-
-
-# Figure 1: Combine desirable & weedy count -------------------------------
 
 
 
@@ -1431,5 +1470,111 @@ tiff("figures/2024-09_draft-figures-2.0/Northern-AZ_species-of-interest_frequenc
 naz.species.ex
 dev.off()
 
+
+
+## Figure 1: Desirable & weedy density ------------------------------------
+
+tiff("figures/2024-09_draft-figures-2.0/Fig1_desirable-weedy-count.tiff", units = "in", height = 9, width = 13, res = 150)
+ggarrange(sonoran.des.count.plotmixclimate, sonoran.weed.count,
+          naz.des.count.plotmixclimate, naz.weed.count,
+          ncol = 2, nrow = 2,
+          labels = c("(A)", "(B)", "(C)", "(D)")) 
+dev.off()
+
+
+## Figure 2: SD species of interest, frequency ----------------------------
+
+tiff("figures/2024-09_draft-figures-2.0/Fig2_Sonoran-species-of-interest-frequency.tiff", units = "in", height = 10, width = 9, res = 150)
+ggarrange(sonoran.species.total, sonoran.species.ex,
+          ncol = 1, nrow = 2,
+          labels = c("(A)", "(B)")) 
+dev.off()
+
+
+## Figure 3: NAZ species of interest, frequency ---------------------------
+
+tiff("figures/2024-09_draft-figures-2.0/Fig3_Northern-AZ-species-of-interest-frequency.tiff", units = "in", height = 10, width = 9, res = 150)
+ggarrange(naz.species.total, naz.species.ex,
+          ncol = 1, nrow = 2,
+          labels = c("(A)", "(B)")) 
+dev.off()
+
+
+
+
+## Figure S1: Precip deviation conditions ---------------------------------
+
+tiff("figures/2024-09_draft-figures-2.0/FigS01_percent-deviation_cumulative-precip.tiff", units = "in", height = 5, width = 14, res = 150)
+ggarrange(cum.pd.sonoran, cum.pd.naz,
+          ncol = 2, nrow = 1,
+          labels = c("(A)", "(B)")) 
+dev.off()
+
+
+## Figure S4: Species of interest, density --------------------------------
+
+tiff("figures/2024-09_draft-figures-2.0/FigS04_species-of-interest-density.tiff", units = "in", height = 5, width = 14, res = 150)
+ggarrange(sonoran.species.count, naz.species.count,
+          ncol = 2, nrow = 1,
+          labels = c("(A)", "(B)"),
+          common.legend = TRUE, legend = "bottom") 
+dev.off()
+
+
+## Figure S5: SD current mix, frequency -----------------------------------
+
+tiff("figures/2024-09_draft-figures-2.0/FigS05_Sonoran-current-frequency.tiff", units = "in", height = 10, width = 9, res = 150)
+ggarrange(sonoran.current.total, sonoran.current.ex,
+          ncol = 1, nrow = 2,
+          labels = c("(A)", "(B)")) 
+dev.off()
+
+
+## Figure S6: SD projected mix, frequency ---------------------------------
+
+tiff("figures/2024-09_draft-figures-2.0/FigS06_Sonoran-projected-frequency.tiff", units = "in", height = 10, width = 9, res = 150)
+ggarrange(sonoran.projected.total, sonoran.projected.ex,
+          ncol = 1, nrow = 2,
+          labels = c("(A)", "(B)")) 
+dev.off()
+
+
+## Figure S7: SD seeded species, density ----------------------------------
+
+tiff("figures/2024-09_draft-figures-2.0/FigS07_Sonoran-seeded-species-density.tiff", units = "in", height = 5, width = 14, res = 150)
+ggarrange(sonoran.seed.count.current.species, sonoran.seed.count.projected.species,
+          ncol = 2, nrow = 1,
+          labels = c("(A)", "(B)"),
+          common.legend = TRUE, legend = "bottom") 
+dev.off()
+
+
+## Figure S8: NAZ current mix, frequency ----------------------------------
+
+tiff("figures/2024-09_draft-figures-2.0/FigS08_Nothern-AZ-current-frequency.tiff", units = "in", height = 10, width = 9, res = 150)
+ggarrange(naz.current.total, naz.current.ex,
+          ncol = 1, nrow = 2,
+          labels = c("(A)", "(B)")) 
+dev.off()
+
+
+## Figure S9: NAZ projected mix, frequency --------------------------------
+
+tiff("figures/2024-09_draft-figures-2.0/FigS09_Northnern-AZ-projected-frequency.tiff", units = "in", height = 10, width = 9, res = 150)
+ggarrange(naz.projected.total, naz.projected.ex,
+          ncol = 1, nrow = 2,
+          labels = c("(A)", "(B)")) 
+dev.off()
+
+
+
+## Figure S10: NAZ seeded species, density --------------------------------
+
+tiff("figures/2024-09_draft-figures-2.0/FigS10_Northern-AZ-seeded-species-density.tiff", units = "in", height = 5, width = 14, res = 150)
+ggarrange(naz.seed.count.current.species, naz.seed.count.projected.species,
+          ncol = 2, nrow = 1,
+          labels = c("(A)", "(B)"),
+          common.legend = TRUE, legend = "bottom") 
+dev.off()
 
 save.image("RData/12.1_draft-figs-2.0_density-and-frequency.RData")
