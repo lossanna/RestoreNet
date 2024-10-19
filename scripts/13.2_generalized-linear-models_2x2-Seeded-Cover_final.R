@@ -1,10 +1,12 @@
 # Created: 024-10-17
-# Last updated: 2024-10-17
+# Last updated: 2024-10-18
 
 # Purpose: Run *finalized* generalized linear models for 2x2 data, with Seeded_Cover as response variable.
-#   Models already have some variables dropped to improve convergence. For previous exploration, see
-#   10.3_generalized-linear-models_2x2-Seeded-Cover.R. Model names have been changed, but names from 10.3.R
-#   are noted (they are the same models).
+#   Models already have some variables dropped to improve convergence. Is the same as
+#   10.3.R because Treatment reference was already set to "Seed" before (no seeded cover was
+#   measured in control plots).
+
+# For previous exploration, see 10.3_generalized-linear-models_2x2-Seeded-Cover.R.
 
 # 2 models: Sonoran Desert, Northern Arizona
 
@@ -20,6 +22,7 @@ p2x2.rich.cover.raw <- read_csv("data/cleaned/04.2_2x2-richness-cover_clean.csv"
 prism.data <- read_csv("data/cleaned/03.2_monitoring-events-with-PRISM-climate-data_clean.csv")
 cum.pd <- read_csv("data/cleaned/03.3_cumulative-precip_percent-deviation-from-norm_clean.csv")
 ai <- read_csv("data/cleaned/03.4_aridity-index-values_clean.csv")
+
 
 # Data wrangling ----------------------------------------------------------
 
@@ -78,7 +81,7 @@ richcover$PlotMix_Climate <- factor(richcover$PlotMix_Climate)
 # Treatment
 unique(richcover$Treatment)
 richcover$Treatment <- as.factor(richcover$Treatment)
-richcover$Treatment <- relevel(richcover$Treatment, ref = "Control")
+richcover$Treatment <- relevel(richcover$Treatment, ref = "Seed")
 
 # PlotMix_Climate
 unique(richcover$PlotMix_Climate)
@@ -110,20 +113,18 @@ richcover$Seeded_Cover <- ifelse(richcover$Seeded_Cover != floor(richcover$Seede
 
 ## Separate out Sonoran sites (6) -----------------------------------------
 
-# No control plots, adjust reference levels to match Count GLM for seeded
+# Remove control plots to match Count GLM for seeded
 sonoran.seed <- richcover |> 
   filter(Region %in% c("Sonoran SE", "Sonoran Central")) |> 
   filter(Treatment != "Control")
-sonoran.seed$Treatment <- relevel(sonoran.seed$Treatment, ref = "Seed")
 
 
 ## Separate out Northern AZ sites (8) -------------------------------------
 
-# No control plots, adjust reference levels to match Count GLM for seeded
+# Remove control plots to match Count GLM for seeded
 naz.seed <- richcover |> 
   filter(Region == "Colorado Plateau") |> 
   filter(Treatment != "Control")
-naz.seed$Treatment <- relevel(naz.seed$Treatment, ref = "Seed")
 
 
 # Sonoran Desert ----------------------------------------------------------

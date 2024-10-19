@@ -3,9 +3,10 @@
 
 # Purpose: Run *finalized* generalized linear models for subplot data, with Count as response variable.
 #   Models already have some variables dropped to improve convergence. 
-#   Difference from 10.1: "Seed" used as reference for Treatment instead of "Control" because
-#     this better captures the effect of just the soil surface treatments alone. This changes
-#     the weedy and desirable models, but not the seeded one (ref was already "Seed" for those).
+
+# Difference from 10.1: "Seed" used as reference for Treatment instead of "Control" because
+#   this better captures the effect of just the soil surface treatments alone. This changes
+#   the weedy and desirable models, but not the seeded one (ref was already "Seed" for those).
 
 # For previous exploration, see 10.1_generalized-linear-models_subplot-Count.R. 
 
