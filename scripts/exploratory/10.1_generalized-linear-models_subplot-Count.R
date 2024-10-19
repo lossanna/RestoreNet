@@ -1,5 +1,5 @@
 # Created: 024-09-09
-# Last updated: 2024-10-01
+# Last updated: 2024-10-18
 
 # Purpose: Run generalized linear models for subplot data, with Count as response variable. 
 
@@ -14,7 +14,7 @@
 # Run for desirable, weedy, and seeded species (with no control plots), for better
 #   comparison with GLMs with Seeded_Cover as response variable.
 
-# *** indicates model is included in PPT of draft figures and model results.
+# *** indicates model is included in PPT of draft figures and model results (2024-09-25 version and prior).
 
 # Most of the models are the same as those run in 08.1.R script (including same name); this script
 #   is just to condense results. (Technically nb.naz.des.abs2 wasn't identical to the one
@@ -23,11 +23,16 @@
 # Decided to drop Sand_content from Sonoran Desert desirable & weedy models because only one
 #   site had low sand content - seeded model already had Sand_content dropped. This improved
 #   model fit of weedy model slightly. (Northern AZ models are fine because they are more balanced.)
-# Also tried to model just the observations from "extremes" (+24% or wetter, and -23% or drier),
-#   but that didn't really work.
 # Removed sq-root and log transformation from later models because GLMs can handle non-normal
 #   explanatory variables, and this makes interpretation easier.
 # Added "Days_elapsed", which is the number of days between seeding and monitoring.
+
+# Other exploratory things:
+#   Tried to model just the observations from "extremes" (+24% or wetter, and -23% or drier),
+#     but that didn't really work.
+#   Checked if there were any differences in significance when "Seed" was used as the reference
+#     for Treatment instead of "Control", to better test effect of soil surface treatments alone,
+#     not seeding + soil surface treatment.
 
 library(tidyverse)
 library(glmmTMB)
@@ -176,6 +181,14 @@ sonoran.weed.extreme <- sonoran.weed |>
   filter(Perc_dev_cum > 0.24 | Perc_dev_cum < -0.23) |> 
   filter(Code != "0")
 
+# With Seed as Treatment ref
+sonoran.des2 <- sonoran.des
+sonoran.des2$Treatment <- relevel(sonoran.des2$Treatment, ref = "Seed")
+
+sonoran.weed2 <- sonoran.weed
+sonoran.weed2$Treatment <- relevel(sonoran.weed2$Treatment, ref = "Seed")
+
+
 
 ## Separate out Northern AZ sites (8) -------------------------------------
 
@@ -194,6 +207,14 @@ naz.weed <- subplot |>
 naz.seed <- naz.des |> 
   filter(SpeciesSeeded == "Yes") # removes Control plots
 naz.seed$Treatment <- relevel(naz.seed$Treatment, ref = "Seed")
+
+
+# With Seed as Treatment ref
+naz.des2 <- naz.des
+naz.des2$Treatment <- relevel(naz.des2$Treatment, ref = "Seed")
+
+naz.weed2 <- naz.weed
+naz.weed2$Treatment <- relevel(naz.weed2$Treatment, ref = "Seed")
 
 
 
@@ -519,6 +540,9 @@ check_collinearity(nb.naz1.seed.abs2)
 
 # Sonoran Desert, precip extremes -----------------------------------------
 
+# This analysis is exploratory and not pursued because it can't compute R^2.
+#   I think it's because there are too few observations that fit the precip extremes.
+
 ## Desirable --------------------------------------------------------------
 
 nb.sonoran.des.ex <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex_log +
@@ -563,5 +587,76 @@ plotQQunif(res.nb.sonoran.weed.ex)
 plotResiduals(res.nb.sonoran.weed.ex)
 check_overdispersion(nb.sonoran.weed.ex) # no overdispersion detected
 check_collinearity(nb.sonoran.weed.ex)
+
+
+
+# Seed as Treatment reference ---------------------------------------------
+
+
+## Sonoran Desert ---------------------------------------------------------
+
+# Same as 3 for comparison: Desirable (ConMod no longer significant)
+nb.sonoran3.des2.abs2 <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex + Treatment + PlantSource2 + 
+                                  PlotMix_Climate + Duration + Lifeform + MAT + 
+                                  Since_last_precip + Days_elapsed + (1 | Site / Plot),
+                                data = sonoran.des2,
+                                family = nbinom2)
+summary(nb.sonoran3.des2.abs2)
+r2(nb.sonoran3.des2.abs2)
+res.nb.sonoran3.des2.abs2 <- simulateResiduals(nb.sonoran3.des2.abs2)
+plotQQunif(res.nb.sonoran3.des2.abs2)
+plotResiduals(res.nb.sonoran3.des2.abs2)
+check_overdispersion(nb.sonoran3.des2.abs2) # overdispersion detected
+check_zeroinflation(nb.sonoran3.des2.abs2) # model is overfitting zeros
+check_collinearity(nb.sonoran3.des2.abs2)
+
+# Same as 3 for comparison: Weedy (Pits no longer significant)
+nb.sonoran3.weed2.abs2 <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex + Treatment + PlantSource2 + 
+                                   PlotMix_Climate + Duration + Lifeform + MAT + 
+                                   Since_last_precip + Days_elapsed + (1 | Site / Plot),
+                                 data = sonoran.weed2,
+                                 family = nbinom2)
+summary(nb.sonoran3.weed2.abs2)
+r2(nb.sonoran3.weed2.abs2)
+res.nb.sonoran3.weed2.abs2 <- simulateResiduals(nb.sonoran3.weed2.abs2)
+plotQQunif(res.nb.sonoran3.weed2.abs2)
+plotResiduals(res.nb.sonoran3.weed2.abs2)
+check_overdispersion(nb.sonoran3.weed2.abs2) # no overdispersion detected
+check_zeroinflation(nb.sonoran3.weed2.abs2) # model is overfitting zeros
+check_collinearity(nb.sonoran3.weed2.abs2)
+
+
+## Northern Arizona -------------------------------------------------------
+
+# Same as 1 for comparison: Desirable (no Treatment significance changes)
+nb.naz1.des2.abs2 <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex + Treatment + PlantSource2 + 
+                              PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content +  
+                              Since_last_precip + Days_elapsed + (1 | Site / Plot),
+                            data = naz.des2,
+                            family = nbinom2)
+summary(nb.naz1.des2.abs2)
+r2(nb.naz1.des2.abs2)
+res.nb.naz1.des2.abs2 <- simulateResiduals(nb.naz1.des2.abs2)
+plotQQunif(res.nb.naz1.des2.abs2)
+plotResiduals(res.nb.naz1.des2.abs2)
+check_overdispersion(nb.naz1.des2.abs2) # overdispersion detected
+check_zeroinflation(nb.naz1.des2.abs2) # model is overfitting zeros
+check_collinearity(nb.naz1.des2.abs2)
+
+
+# Same as 2 for comparison: Weedy (ConMod becomes significant)
+nb.naz2.weed2.abs2 <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex + Treatment + PlantSource2 + 
+                               PlotMix_Climate + Lifeform + MAT + MAP + Sand_content + 
+                               Since_last_precip + Days_elapsed + (1 | Site / Plot),
+                             data = naz.weed2,
+                             family = nbinom2)
+summary(nb.naz2.weed2.abs2)
+r2(nb.naz2.weed2.abs2)
+res.nb.naz2.weed2.abs2 <- simulateResiduals(nb.naz2.weed2.abs2)
+plotQQunif(res.nb.naz2.weed2.abs2)
+plotResiduals(res.nb.naz2.weed2.abs2)
+check_overdispersion(nb.naz2.weed2.abs2) # overdispersion detected
+check_zeroinflation(nb.naz2.weed2.abs2) # model is overfitting zeros
+check_collinearity(nb.naz2.weed2.abs2)
 
 save.image("RData/10.1_generalized-linear-models_subplot-Count.RData")
