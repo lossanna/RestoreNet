@@ -1,18 +1,21 @@
 # Created: 024-10-17
-# Last updated: 2024-10-17
+# Last updated: 2024-10-18
 
 # Purpose: Run *finalized* generalized linear models for subplot data, with Count as response variable.
-#   Models already have some variables dropped to improve convergence. For previous exploration, see
-#   10.1_generalized-linear-models_subplot-Count.R. Model names have been changed, but names from 10.1.R
-#   are noted (they are the same models).
+#   Models already have some variables dropped to improve convergence. 
+#   Difference from 10.1: "Seed" used as reference for Treatment instead of "Control" because
+#     this better captures the effect of just the soil surface treatments alone. This changes
+#     the weedy and desirable models, but not the seeded one (ref was already "Seed" for those).
+
+# For previous exploration, see 10.1_generalized-linear-models_subplot-Count.R. 
 
 # 6 models:
 #   Sonoran Desert, Desirable
 #   Sonoran Desert, Weedy
 #   Sonoran Desert, Seeded
-#   Nothern AZ, Desirable
-#   Sonoran Desert, Weedy
-#   Sonoran Desert, Seeded
+#   Northern Arizona, Desirable
+#   Northern Arizona, Weedy
+#   Northern Arizona, Seeded
 
 
 library(tidyverse)
@@ -26,6 +29,7 @@ subplot.raw <- read_csv("data/cleaned/04.1_subplot-data_clean.csv")
 prism.data <- read_csv("data/cleaned/03.2_monitoring-events-with-PRISM-climate-data_clean.csv")
 cum.pd <- read_csv("data/cleaned/03.3_cumulative-precip_percent-deviation-from-norm_clean.csv")
 ai <- read_csv("data/cleaned/03.4_aridity-index-values_clean.csv")
+
 
 # Data wrangling ----------------------------------------------------------
 
@@ -57,7 +61,7 @@ subplot <- subplot |>
 # Treatment
 unique(subplot$Treatment)
 subplot$Treatment <- as.factor(subplot$Treatment)
-subplot$Treatment <- relevel(subplot$Treatment, ref = "Control")
+subplot$Treatment <- relevel(subplot$Treatment, ref = "Seed")
 
 # PlotMix_Climate
 unique(subplot$PlotMix_Climate)
@@ -110,7 +114,6 @@ sonoran.weed <- subplot |>
 # Seeded
 sonoran.seed <- sonoran.des |> 
   filter(SpeciesSeeded == "Yes") # removes Control plots
-sonoran.seed$Treatment <- relevel(sonoran.seed$Treatment, ref = "Seed")
 
 
 ## Separate out Northern AZ sites (8) -------------------------------------
@@ -129,7 +132,6 @@ naz.weed <- subplot |>
 # Seeded
 naz.seed <- naz.des |> 
   filter(SpeciesSeeded == "Yes") # removes Control plots
-naz.seed$Treatment <- relevel(naz.seed$Treatment, ref = "Seed")
 
 
 
@@ -137,7 +139,7 @@ naz.seed$Treatment <- relevel(naz.seed$Treatment, ref = "Seed")
 
 ## Desirable --------------------------------------------------------------
 
-# From 10.1.R: nb.sonoran3.des.abs2
+# MAP dropped for collinearity
 nb.sonoran.des <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex + Treatment + PlantSource2 + 
                                   PlotMix_Climate + Duration + Lifeform + MAT + 
                                   Since_last_precip + Days_elapsed + (1 | Site / Plot),
@@ -155,7 +157,7 @@ check_collinearity(nb.sonoran.des)
 
 ## Weedy ------------------------------------------------------------------
 
-# From 10.1.R: nb.sonoran3.weed.abs2
+# MAP & Duration dropped for collinearity; most weeds were annuals
 nb.sonoran.weed <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex + Treatment + PlantSource2 + 
                                    PlotMix_Climate + Duration + Lifeform + MAT + 
                                    Since_last_precip + Days_elapsed + (1 | Site / Plot),
@@ -173,7 +175,7 @@ check_collinearity(nb.sonoran.weed)
 
 ## Seeded -----------------------------------------------------------------
 
-# From 10.1.R: nb.sonoran3.seed.abs2
+# Same as nb.sonoran3.seed.abs2 from 10.1.R
 nb.sonoran.seed <- glmmTMB(Count ~ Perc_dev_cum_abs + Treatment +  
                                    PlotMix_Climate + Duration + Lifeform + MAT +  
                                    Since_last_precip + Days_elapsed + (1 | Site / Plot),
@@ -192,7 +194,7 @@ check_collinearity(nb.sonoran.seed)
 
 ## Desirable --------------------------------------------------------------
 
-# From 10.1.R: nb.naz1.des.abs2
+# All variables
 nb.naz.des <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex + Treatment + PlantSource2 + 
                               PlotMix_Climate + Duration + Lifeform + MAT + MAP + Sand_content +  
                               Since_last_precip + Days_elapsed + (1 | Site / Plot),
@@ -210,7 +212,7 @@ check_collinearity(nb.naz.des)
 
 ## Weedy ------------------------------------------------------------------
 
-# From 10.1.R: nb.naz2.weed.abs2
+# Duration dropped for collinearity
 nb.naz.weed <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex + Treatment + PlantSource2 + 
                                PlotMix_Climate + Lifeform + MAT + MAP + Sand_content + 
                                Since_last_precip + Days_elapsed + (1 | Site / Plot),
