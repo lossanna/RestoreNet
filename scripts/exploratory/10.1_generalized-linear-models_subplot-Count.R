@@ -610,7 +610,7 @@ check_overdispersion(nb.sonoran3.des2.abs2) # overdispersion detected
 check_zeroinflation(nb.sonoran3.des2.abs2) # model is overfitting zeros
 check_collinearity(nb.sonoran3.des2.abs2)
 
-# Same as 3 for comparison: Weedy (Pits no longer significant)
+# Same as 3 for comparison: Weedy (Pits becomes significant)
 nb.sonoran3.weed2.abs2 <- glmmTMB(Count ~ Perc_dev_cum_abs + AridityIndex + Treatment + PlantSource2 + 
                                    PlotMix_Climate + Duration + Lifeform + MAT + 
                                    Since_last_precip + Days_elapsed + (1 | Site / Plot),
