@@ -1511,9 +1511,9 @@ ggarrange(cum.pd.sonoran, cum.pd.naz,
 dev.off()
 
 
-## Figure S4: Species of interest, density --------------------------------
+## Figure S3: Species of interest, density --------------------------------
 
-tiff("figures/2024-09_draft-figures-2.0/FigS04_species-of-interest-density.tiff", units = "in", height = 5, width = 14, res = 150)
+tiff("figures/2024-09_draft-figures-2.0/FigS03_species-of-interest-density.tiff", units = "in", height = 5, width = 14, res = 150)
 ggarrange(sonoran.species.count, naz.species.count,
           ncol = 2, nrow = 1,
           labels = c("(A)", "(B)"),
@@ -1521,27 +1521,27 @@ ggarrange(sonoran.species.count, naz.species.count,
 dev.off()
 
 
-## Figure S5: SD current mix, frequency -----------------------------------
+## Figure S4: SD current mix, frequency -----------------------------------
 
-tiff("figures/2024-09_draft-figures-2.0/FigS05_Sonoran-current-frequency.tiff", units = "in", height = 10, width = 9, res = 150)
+tiff("figures/2024-09_draft-figures-2.0/FigS04_Sonoran-current-frequency.tiff", units = "in", height = 10, width = 9, res = 150)
 ggarrange(sonoran.current.total, sonoran.current.ex,
           ncol = 1, nrow = 2,
           labels = c("(A)", "(B)")) 
 dev.off()
 
 
-## Figure S6: SD projected mix, frequency ---------------------------------
+## Figure S5: SD projected mix, frequency ---------------------------------
 
-tiff("figures/2024-09_draft-figures-2.0/FigS06_Sonoran-projected-frequency.tiff", units = "in", height = 10, width = 9, res = 150)
+tiff("figures/2024-09_draft-figures-2.0/FigS05_Sonoran-projected-frequency.tiff", units = "in", height = 10, width = 9, res = 150)
 ggarrange(sonoran.projected.total, sonoran.projected.ex,
           ncol = 1, nrow = 2,
           labels = c("(A)", "(B)")) 
 dev.off()
 
 
-## Figure S7: SD seeded species, density ----------------------------------
+## Figure S6: SD seeded species, density ----------------------------------
 
-tiff("figures/2024-09_draft-figures-2.0/FigS07_Sonoran-seeded-species-density.tiff", units = "in", height = 5, width = 14, res = 150)
+tiff("figures/2024-09_draft-figures-2.0/FigS06_Sonoran-seeded-species-density.tiff", units = "in", height = 5, width = 14, res = 150)
 ggarrange(sonoran.seed.count.current.species, sonoran.seed.count.projected.species,
           ncol = 2, nrow = 1,
           labels = c("(A)", "(B)"),
@@ -1549,18 +1549,18 @@ ggarrange(sonoran.seed.count.current.species, sonoran.seed.count.projected.speci
 dev.off()
 
 
-## Figure S8: NAZ current mix, frequency ----------------------------------
+## Figure S7: NAZ current mix, frequency ----------------------------------
 
-tiff("figures/2024-09_draft-figures-2.0/FigS08_Nothern-AZ-current-frequency.tiff", units = "in", height = 10, width = 9, res = 150)
+tiff("figures/2024-09_draft-figures-2.0/FigS07_Nothern-AZ-current-frequency.tiff", units = "in", height = 10, width = 9, res = 150)
 ggarrange(naz.current.total, naz.current.ex,
           ncol = 1, nrow = 2,
           labels = c("(A)", "(B)")) 
 dev.off()
 
 
-## Figure S9: NAZ projected mix, frequency --------------------------------
+## Figure S8: NAZ projected mix, frequency --------------------------------
 
-tiff("figures/2024-09_draft-figures-2.0/FigS09_Northnern-AZ-projected-frequency.tiff", units = "in", height = 10, width = 9, res = 150)
+tiff("figures/2024-09_draft-figures-2.0/FigS08_Northnern-AZ-projected-frequency.tiff", units = "in", height = 10, width = 9, res = 150)
 ggarrange(naz.projected.total, naz.projected.ex,
           ncol = 1, nrow = 2,
           labels = c("(A)", "(B)")) 
@@ -1568,9 +1568,9 @@ dev.off()
 
 
 
-## Figure S10: NAZ seeded species, density --------------------------------
+## Figure S9: NAZ seeded species, density ---------------------------------
 
-tiff("figures/2024-09_draft-figures-2.0/FigS10_Northern-AZ-seeded-species-density.tiff", units = "in", height = 5, width = 14, res = 150)
+tiff("figures/2024-09_draft-figures-2.0/FigS09_Northern-AZ-seeded-species-density.tiff", units = "in", height = 5, width = 14, res = 150)
 ggarrange(naz.seed.count.current.species, naz.seed.count.projected.species,
           ncol = 2, nrow = 1,
           labels = c("(A)", "(B)"),

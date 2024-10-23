@@ -181,9 +181,9 @@ naz.seed.plotmixclimate
 dev.off()
 
 
-## Figure S3: Seeded species cover ----------------------------------------
+## Figure S2: Seeded species cover ----------------------------------------
 
-tiff("figures/2024-09_draft-figures-2.0/FigS3_seeded-cover_2x2.tiff", units = "in", height = 5, width = 11, res = 150)
+tiff("figures/2024-09_draft-figures-2.0/FigS02_seeded-cover_2x2.tiff", units = "in", height = 5, width = 11, res = 150)
 ggarrange(sonoran.seed.plotmixclimate, naz.seed.plotmixclimate,
           ncol = 2, nrow = 1,
           labels = c("(A)", "(B)"),
