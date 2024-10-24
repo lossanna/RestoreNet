@@ -1,10 +1,10 @@
 # Created: 2024-09-25
-# Last updated: 2024-10-18
+# Last updated: 2024-10-24
 
 # Purpose: Narrow down and improve figures from 09.1_draft-figs_precip-dev_subplot.R. In particular,
 #   change Count to density (individuals per m2), and change N AZ Plateau to just Northern Arizona
 #   (it contains both the Mountains and Plateau Level III ecoregions). Also frequency has changed a bit
-#   since I updated (corrected) present_species.
+#   since I updated (corrected) present_species. Update species of interest.
 
 library(tidyverse)
 library(scales)
@@ -98,20 +98,13 @@ naz.count.interest <- dat |>
            Code == "HEBO" & PlotMix_Climate == "Current-adapted mix" | 
            Code == "HECO26" & PlotMix_Climate == "Current-adapted mix" | 
            Code == "LILE3" & PlotMix_Climate == "Current-adapted mix" & SpeciesSeeded == "Yes" |
-           Code == "DACA7" & PlotMix_Climate == "Current-adapted mix" |
-           Code == "PASM" & PlotMix_Climate == "Current-adapted mix" |
-           Code == "ELEL5" & PlotMix_Climate == "Current-adapted mix" |
            Code == "BAMU" & PlotMix_Climate == "Projected-adapted mix" | 
            Code == "PASM" & PlotMix_Climate == "Projected-adapted mix" |
            Code == "ASTU" & PlotMix_Climate == "Projected-adapted mix" |
            Code %in% c("ATCO", "SOEL", "LEPA6", "SATR12"),
          Region == "Colorado Plateau") |> 
-  mutate(Code = case_when(
-    Code == "PASM" & PlotMix_Climate == "Current-adapted mix" ~ "PASM_c",
-    Code == "PASM" & PlotMix_Climate == "Projected-adapted mix" ~ "PASM_p",
-    TRUE ~ Code)) |> 
-  mutate(Code = factor(Code, levels = c("LECI4", "HEBO", "HECO26", "LILE3", "DACA7", 
-                                        "PASM_c", "ELEL5", "BAMU", "PASM_p", "ASTU", 
+  mutate(Code = factor(Code, levels = c("LECI4", "HEBO", "HECO26", "LILE3", 
+                                        "BAMU", "PASM", "ASTU", 
                                         "ATCO", "SOEL", "LEPA6", "SATR12")))
 
 
@@ -151,15 +144,11 @@ sonoran.freq.interest <- sonoran.freq.interest.raw |>
                                         "ERCI6", "SCBA", "BRRU2", "Empty"))) 
 
 naz.freq.interest <- naz.freq.interest.raw |> 
-  mutate(Code = case_when(
-    Code == "PASM" & Plant == "Current mix" ~ "PASM_c",
-    Code == "PASM" & Plant == "Projected mix" ~ "PASM_p",
-    TRUE ~ Code)) |> 
   mutate(Plant = factor(Plant, levels = c("Current mix", "Projected mix",
                                           "Native recruit", "Invasive",
                                           "Empty")),
-         Code = factor(Code, levels = c("LECI4", "HEBO", "HECO26", "LILE3", "DACA7", 
-                                        "PASM_c", "ELEL5", "BAMU", "PASM_p", "ASTU", 
+         Code = factor(Code, levels = c("LECI4", "HEBO", "HECO26", "LILE3",  
+                                        "BAMU", "PASM", "ASTU", 
                                         "ATCO", "SOEL", "LEPA6", "SATR12", "Empty"))) 
 
 
@@ -1290,8 +1279,8 @@ naz.species.wetdry <- naz.freq.interest |>
                                   "Native recruit, drier", "Native recruit, wetter",
                                   "Invasive, drier", "Invasive, wetter",
                                   "Empty, drier", "Empty, wetter")),
-         Code = factor(Code, levels = c("LECI4", "HEBO", "HECO26", "LILE3", "DACA7", 
-                                        "PASM_c", "ELEL5", "BAMU", "PASM_p", "ASTU", 
+         Code = factor(Code, levels = c("LECI4", "HEBO", "HECO26", "LILE3", 
+                                        "BAMU", "PASM", "ASTU", 
                                         "ATCO", "SOEL", "LEPA6", "SATR12", "Empty"))) |> 
   ggplot(aes(x = Code, y = Frequency, fill = Type)) +
   geom_bar(stat = "identity", position = position_dodge()) +
@@ -1328,8 +1317,8 @@ naz.species.ex <- naz.freq.interest |>
                                   "Native recruit, very dry", "Native recruit, very wet",
                                   "Invasive, very dry", "Invasive, very wet",
                                   "Empty, very dry", "Empty, very wet")),
-         Code = factor(Code, levels = c("LECI4", "HEBO", "HECO26", "LILE3", "DACA7", 
-                                        "PASM_c", "ELEL5", "BAMU", "PASM_p", "ASTU", 
+         Code = factor(Code, levels = c("LECI4", "HEBO", "HECO26", "LILE3", 
+                                        "BAMU", "PASM", "ASTU", 
                                         "ATCO", "SOEL", "LEPA6", "SATR12", "Empty"))) |> 
   ggplot(aes(x = Code, y = Frequency, fill = Type)) +
   geom_bar(stat = "identity", position = position_dodge()) +

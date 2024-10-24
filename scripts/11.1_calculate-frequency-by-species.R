@@ -1,5 +1,5 @@
 # Created: 2024-09-25
-# Last updated: 2024-10-17
+# Last updated: 2024-10-24
 
 # Purpose: Calculate frequency for all species. 
 
@@ -2028,9 +2028,6 @@ naz.freq.interest <- naz.freq |>
            Code == "HEBO" & Plant == "Current mix" | 
            Code == "HECO26" & Plant == "Current mix" | 
            Code == "LILE3" & Plant == "Current mix" |
-           Code == "DACA7" & Plant == "Current mix" |
-           Code == "PASM" & Plant == "Current mix" |
-           Code == "ELEL5" & Plant == "Current mix" |
            Code == "BAMU" & Plant == "Projected mix" | 
            Code == "PASM" & Plant == "Projected mix" |
            Code == "ASTU" & Plant == "Projected mix" |
