@@ -1560,7 +1560,7 @@ dev.off()
 
 ## Figure S8: NAZ projected mix, frequency --------------------------------
 
-tiff("figures/2024-09_draft-figures-2.0/FigS08_Northnern-AZ-projected-frequency.tiff", units = "in", height = 10, width = 9, res = 150)
+tiff("figures/2024-09_draft-figures-2.0/FigS08_Northern-AZ-projected-frequency.tiff", units = "in", height = 10, width = 9, res = 150)
 ggarrange(naz.projected.total, naz.projected.ex,
           ncol = 1, nrow = 2,
           labels = c("(A)", "(B)")) 
