@@ -1,5 +1,5 @@
 # Created: 2024-09-25
-# Last updated: 2024-10-28
+# Last updated: 2024-11-19
 
 # Purpose: Narrow down and improve figures from 09.1_draft-figs_precip-dev_subplot.R. In particular,
 #   change Count to density (individuals per m2), and change N AZ Plateau to just Northern Arizona
@@ -1938,9 +1938,9 @@ dev.off()
 
 
 
-## Figure 1: Desirable & weedy density ------------------------------------
+## Figure 2: Desirable & weedy density ------------------------------------
 
-tiff("figures/2024-09_draft-figures-2.0/Fig1_desirable-weedy-count.tiff", units = "in", height = 9, width = 13, res = 150)
+tiff("figures/2024-09_draft-figures-2.0/Fig2_desirable-weedy-count.tiff", units = "in", height = 9, width = 13, res = 150)
 ggarrange(sonoran.des.count.plotmixclimate, sonoran.weed.count,
           naz.des.count.plotmixclimate, naz.weed.count,
           ncol = 2, nrow = 2,
@@ -1948,18 +1948,18 @@ ggarrange(sonoran.des.count.plotmixclimate, sonoran.weed.count,
 dev.off()
 
 
-## Figure 2: SD species of interest, frequency ----------------------------
+## Figure 3: SD species of interest, frequency ----------------------------
 
-tiff("figures/2024-09_draft-figures-2.0/Fig2_Sonoran-species-of-interest-frequency.tiff", units = "in", height = 10, width = 9, res = 150)
+tiff("figures/2024-09_draft-figures-2.0/Fig3_Sonoran-species-of-interest-frequency.tiff", units = "in", height = 10, width = 9, res = 150)
 ggarrange(sonoran.species.total, sonoran.species.ex,
           ncol = 1, nrow = 2,
           labels = c("(A)", "(B)")) 
 dev.off()
 
 
-## Figure 3: NAZ species of interest, frequency ---------------------------
+## Figure 4: NAZ species of interest, frequency ---------------------------
 
-tiff("figures/2024-09_draft-figures-2.0/Fig3_Northern-AZ-species-of-interest-frequency.tiff", units = "in", height = 10, width = 9, res = 150)
+tiff("figures/2024-09_draft-figures-2.0/Fig4_Northern-AZ-species-of-interest-frequency.tiff", units = "in", height = 10, width = 9, res = 150)
 ggarrange(naz.species.total, naz.species.ex,
           ncol = 1, nrow = 2,
           labels = c("(A)", "(B)")) 
