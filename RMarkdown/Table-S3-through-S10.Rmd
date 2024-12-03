@@ -1,0 +1,75 @@
+---
+title: "RestoreNet GLMMs, Tables S3 through S10"
+author: "Lia Ossanna"
+date: "2024-11-25"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE)
+library(tidyverse)
+library(glmmTMB)
+library(performance)
+library(DHARMa)
+load("../RData/13.1_generalized-linear-models_subplot-Count_final.RData")
+load("../RData/13.2_generalized-linear-models_2x2-Seeded-Cover_final.RData")
+```
+
+
+## Description of variables
+Response variables:
+- `Count`: Number of individuals per 0.0625 m^2^, the size of the subplots.
+- `Cover`: Percent cover.
+
+
+## Table S3. Density of Sonoran Desert desirable species
+```{r}
+summary(nb.sonoran.des)
+r2(nb.sonoran.des)
+```
+  
+
+## Table S4. Density of Sonoran Desert weedy species
+```{r}
+summary(nb.sonoran.weed)
+r2(nb.sonoran.weed)
+```
+  
+
+## Table S5. Density of Sonoran Desert seeded species
+```{r}
+summary(nb.sonoran.seed)
+r2(nb.sonoran.seed)
+```
+
+Table S6. Cover of Sonoran Desert seeded species
+```{r}
+summary(pos.sonoran.seed)
+r2(pos.sonoran.seed)
+```
+
+
+## Table S7. Density of Northern Arizona desirable species
+```{r}
+summary(nb.naz.des)
+r2(nb.naz.des)
+```
+
+## Table S8. Density of Northern Arizona weedy species
+```{r}
+summary(nb.naz.weed)
+r2(nb.naz.weed)
+```
+
+## Table S9. Density of Northern Arizona seeded species
+```{r}
+summary(nb.naz.seed)
+r2(nb.naz.seed)
+```
+
+## Table S10. Cover of Northern Arizona seeded species
+```{r}
+summary(pos.naz.seed)
+r2(pos.naz.seed)
+```
+
