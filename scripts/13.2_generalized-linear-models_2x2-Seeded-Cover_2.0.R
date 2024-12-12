@@ -1,7 +1,8 @@
 # Created: 024-10-17
-# Last updated: 2024-10-18
+# Last updated: 2024-12-11
 
-# Purpose: Run *finalized* generalized linear models for 2x2 data, with Seeded_Cover as response variable.
+# Purpose: Run *finalized* (update: these are not actually finalized, they were 1st draft dissertation) 
+#   generalized linear models for 2x2 data, with Seeded_Cover as response variable.
 #   Models already have some variables dropped to improve convergence. Is the same as
 #   10.3.R because Treatment reference was already set to "Seed" before (no seeded cover was
 #   measured in control plots).

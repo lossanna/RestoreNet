@@ -1,7 +1,8 @@
 # Created: 024-10-17
-# Last updated: 2024-10-18
+# Last updated: 2024-12-11
 
-# Purpose: Run *finalized* generalized linear models for subplot data, with Count as response variable.
+# Purpose: Run *finalized* (update: these are not actually finalized, they were 1st draft dissertation) 
+#   generalized linear models for subplot data, with Count as response variable.
 #   Models already have some variables dropped to improve convergence. 
 
 # Difference from 10.1: "Seed" used as reference for Treatment instead of "Control" because
