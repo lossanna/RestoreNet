@@ -1,0 +1,450 @@
+CodeOriginal,Code,Name,Native,Duration,Lifeform
+0,0,0,0,0,0
+CEME2,CEME2,Centaurea melitensis,Introduced,Annual,Forb
+ERCI6,ERCI6,Erodium cicutarium,Introduced,Annual,Forb
+HEHIC,HEHIC,Herniaria hirsuta,Introduced,Annual,Forb
+MAPA5,MAPA5,Malva parviflora,Introduced,Unknown,Forb
+MEIN2,MEIN2,Melilotus indicus,Introduced,Annual,Forb
+MOCE,MOCE,Mollugo cerviana,Introduced,Annual,Forb
+ONPI,ONPI,Oncosiphon piluliferum,Introduced,Annual,Forb
+SATR12,SATR12,Salsola tragus,Introduced,Annual,Forb
+SIAB,SIAB,Sida abutifolia,Introduced,Unknown,Forb
+SIIR,SIIR,Sisymbrium irio,Introduced,Annual,Forb
+SOOL,SOOL,Sonchus oleraceus,Introduced,Annual,Forb
+TRTE,TRTE,Tribulus terrestris,Introduced,Annual,Forb
+BRRU2,BRRU2,Bromus rubens,Introduced,Annual,Grass
+ERASPP,ERASPP.Patagonia,"Eragrostis spp., ERCU or ERLE, Patagonia",Introduced,Unknown,Grass
+ERCI,ERCI2.Preserve,"Eragrostis ciliaris, Preserve",Introduced,Annual,Grass
+ERCU2,ERCU2,Eragrostis curvula,Introduced,Perennial,Grass
+Couple small to medium ARPUs throughout and a couple small SECOs in N half of the plot typically hidden under/using ERCU as a shade plant,ERCU2,Eragrostis curvula,Introduced,Perennial,Grass
+Multiple medium to extra large ARPUs throught and SECo in the northwest corner under an ERCU,ERCU2,Eragrostis curvula,Introduced,Perennial,Grass
+ERLE,ERLE,Eragrostis lehmanniana,Introduced,Perennial,Grass
+ERSU,ERSU,Eragrostis superba,Introduced,Perennial,Grass
+SCBA,SCBA,Schismus barbatus,Introduced,Annual,Grass
+UNGRS-1,UNGRS-1.SRER,"Unknown grass seedling (SRER), but most likely ERLE, spring 2022, SRER",Introduced,Unknown,Grass
+ABPA3,ABPA3,Abutilon parvulum,Native,Perennial,Forb
+ACMIS,ACMIS,Acmispon (Lotus),Native,Annual,Forb
+AMCO3,AMCO3,Ambrosia confertiflora,Native,Perennial,Forb
+AMMEI2,AMMEI2,Amsinckia menziesii,Native,Annual,Forb
+AMPA,AMPA,Amaranthus palmeri,Native,Annual,Forb
+AMSIN,AMSIN,Amsinckia,Native,Annual,Forb
+ANCR2,ANCR2,Anoda cristata,Native,Annual,Forb
+ANOC2,ANOC2,Androsace occidentalis,Native,Annual,Forb
+ANOSPP,ANOSPP.SRER,"Anoda spp., SRER",Native,Unknown,Forb
+ARNE2,ARNE2,Argythamnia neomexicana,Native,Unknown,Forb
+ARWA,ARWA,Aristolochia watsonii,Native,Perennial,Forb
+ASNU4,ASNU4,Astragalus nuttallianus,Native,Unknown,Forb
+ASTU,ASTU,Asclepias tuberosa,Native,Perennial,Forb
+"Possible couple small ASTUs along with multiple medium to extra large ARPUs, possibly a few BAMU seedlings as well as a couple tiny to small SECOs throughout",ASTU,Asclepias tuberosa,Native,Perennial,Forb
+Possibly a young ASTU if not seeded species cover is 0%,ASTU,Asclepias tuberosa,Native,Perennial,Forb
+Quite a few small tp extra large BOCUs throughout along with a possible ASTU,ASTU,Asclepias tuberosa,Native,Perennial,Forb
+BAMU,BAMU,Baileya multiradiata,Native,Unknown,Forb
+A few ARPUs and young BOCUs mostly near/in the south half except for a smaller ARPU in the northwest and a BAMU just north of subplot,BAMU,Baileya multiradiata,Native,Unknown,Forb
+ARPU about 5 individuals and an individual BAMU resprouting at base,BAMU,Baileya multiradiata,Native,Unknown,Forb
+Southwest pit has 1 BAMU and 4 small ARPUs. Northwest pit has 2 medium and 2 small ARPUs and 1 dreid up SECO. There are a few more small to medium sized ARPUs throughout,BAMU,Baileya multiradiata,Native,Unknown,Forb
+"ARPU many individuals, BAMU 1 individual, PLMU (2) 1 individual, ACHY (2) 1 individual",BAMU,Baileya multiradiata,Native,Unknown,Forb
+Multiple small to medium ARPUs and BOCUs along with a possible PLMU (rough feeling leaves and similar seeds) with a couple small/medium BAMU that are in or near the N half of the pits and a couple small SECO seedlings sprinkled throughout,BAMU,Baileya multiradiata,Native,Unknown,Forb
+"Medium SECO in/near NW pit with a couple tiny seedlings scattered throughout, medium BAMU in the middle, a few small to medium/large ARPUs sprinkled throughout, possibly a small ACHY in SE section (wirey leaf blades that clasp the stem, hairs at the node, only one seed head but similar to examples)",BAMU,Baileya multiradiata,Native,Unknown,Forb
+Small to medium ARPUs throughout and small/medium BAMU near the NE edge,BAMU,Baileya multiradiata,Native,Unknown,Forb
+"Possible couple small ASTUs along with multiple medium to extra large ARPUs, possibly a few BAMU seedlings as well as a couple tiny to small SECOs throughout",BAMU,Baileya multiradiata,Native,Unknown,Forb
+Multipke medium to large ARPUs and BOCUs as well as a BAMU in the northeast corner but it doesnt have any new/living growth yet,BAMU,Baileya multiradiata,Native,Unknown,Forb
+"No new growth or green vegetation on SECO in the northwest pit but still there, there's a BAMU in the southwest pit as well, possibly ACHY in the south half of the plot, multiple medium to large sized ARPUs mostly in and/or near pits but not all",BAMU,Baileya multiradiata,Native,Unknown,Forb
+No new growth on the BAMU in the northeast corner yet,BAMU,Baileya multiradiata,Native,Unknown,Forb
+BOCO,BOCO,Boerhavia coccinea,Native,Perennial,Forb
+BOIN,BOIN,Boerhavia intermedia,Native,Annual,Forb
+BOIN3,BOIN3,Bowlesia incana,Native,Annual,Forb
+CACI2,CACI2,Calandrinia ciliata,Native,Annual,Forb
+CAEXE,CAEXE,Castilleja exserta,Native,Annual,Forb
+CALSPP,CALSPP.Patagonia,"Calandrinia spp., Patagonia",Native,Unknown,Forb
+EUAB,CHAB2,Chamaesyce abramsiana,Native,Annual,Forb
+CHAL11,CHAL11,Chamaesyce albomarginata,Native,Perennial,Forb
+CHBR,CHBR,Chorizanthe brevicornu,Native,Annual,Forb
+CHFR3,CHFR3,Chenopodium fremontii,Native,Annual,Forb
+CHHY3,CHHY3,Chamaesyce hyssopifolia,Native,Unknown,Forb
+EUME3,CHME5,Chamaesyce melanadenia,Native,Perennial,Forb
+CHPO12,CHPO12,Chamaesyce polycarpa,Native,Unknown,Forb
+EUPO3,CHPO12,Chamaesyce polycarpa,Native,Unknown,Forb
+COCA5,COCA5,Conyza canadensis,Native,Annual,Forb
+COCA8,COCA8,Coreopsis califonica,Native,Annual,Forb
+CRAN4,CRAN4,Cryptantha angustifolia,Native,Annual,Forb
+CRBA5,CRBA5,Cryptantha barbigera,Native,Annual,Forb
+CRCO34,CRCO34,Crassula connata,Native,Annual,Forb
+CRYPT,CRYPT.Pleasant,"Cryptantha spp., Pleasant",Native,Unknown,Forb
+CRYPT,CRYPT.Preserve,"Cryptantha spp., Preserve",Native,Unknown,Forb
+CRYPT,CRYPT.Roosevelt,"Cryptantha spp., Roosevelt",Native,Unknown,Forb
+CRYSPP 1,CRYSPP 1.SRER,"Cryptantha spp. 1, SRER",Native,Unknown,Forb
+CRYSPP 2,CRYSPP 2.SRER,"Cryptantha spp. 2, SRER",Native,Unknown,Forb
+CRYSPP,CRYSPP.SRER,"Cryptantha spp., SRER",Native,Unknown,Forb
+CRYSPP2,CRYSPP2.SRER,"Cryptantha spp. 3, SRER",Native,Unknown,Forb
+DAPU3,DAPU3,Daucus pusillus,Native,Annual,Forb
+DEPI,DEPI,Descurainia pinnata,Native,Unknown,Forb
+DICA14,DICA14,Dichelostemma capitatum,Native,Perennial,Forb
+DINE2,DINE2,Argythamnia neomexicana,Native,Unknown,Forb
+DRCUI,DRCUI,Draba cuneifolia var. integrifolia,Native,Annual,Forb
+ERAB2,ERAB2,Eriogonum abertianum,Native,Annual,Forb
+ERDED4,ERDED4,Eriogonum deflexum,Native,Annual,Forb
+ERDI2,ERDI2,Eriastrum diffusum,Native,Annual,Forb
+ERER2,ERER2,Eriastrum eremicum,Native,Annual,Forb
+ERIAS,ERIAS,Eriastrum,Native,Unknown,Forb
+ERIASPP,ERIASPP.SRER,"Eriastrum spp., SRER",Native,Unknown,Forb
+ERIOG,ERIOG.Pleasant,"Eriogonum spp., Pleasant",Native,Unknown,Forb
+ERISPP,ERISPP.Patagonia,"Erigeron spp., Patagonia",Native,Unknown,Forb
+ERPA11,ERPA11,Eriogonum palmerianum,Native,Annual,Forb
+ERPO4,ERPO4,Eriogonum polycladon,Native,Annual,Forb
+ESCA2,ESCA2,Eschscholzia californica,Native,Unknown,Forb
+ESCAM,ESCAM,Eschscholzia californica ssp. Mexicana,Native,Unknown,Forb
+EVAR,EVAR,Evolvulus arizonicus,Native,Perennial,Forb
+GILSPP 1,GILSPP 1.SRER,"Gilia spp. 1, SRER",Native,Unknown,Forb
+GILSPP 2,GILSPP 2.SRER,"Gilia spp. 2, SRER",Native,Unknown,Forb
+GILSPP,GILSPP.SRER,"Gilia spp., SRER",Native,Unknown,Forb
+GIST,GIST,Gilia stellata,Native,Annual,Forb
+GLGO,GLGO,Glandularia gooddingii,Native,Perennial,Forb
+GNPA,GNPA,Gnaphalium palustre,Native,Annual,Forb
+HAPAA,HAPAA,Harpagonella palmeri,Native,Annual,Forb
+HEMU,HEMU3,Heliomeris multiflora,Native,Perennial,Forb
+KAGR,KAGR,Kallstroemia grandiflora,Native,Annual,Forb
+LACA7,LACA7,Lasthenia californica,Native,Unknown,Forb
+LAGL5,LAGL5,Layia glandulosa,Native,Annual,Forb
+LAGR10,LAGR10,Lasthenia gracilis,Native,Annual,Forb
+LEAU16,LEAU16,Leptosiphon aureus,Native,Annual,Forb
+LELA,LELA,Lepidium lasiocarpum,Native,Annual,Forb
+LETH2,LETH2,Lepidium thurberi,Native,Annual,Forb
+LIBI2,LIBI2,Linanthus bigelovii,Native,Annual,Forb
+LOAR12,LOAR12,Logfia arizonica,Native,Annual,Forb
+LOGR4,LOGR4,Lotus greenei,Native,Perennial,Forb
+LOHU2,LOHU2,Lotus humistratus,Native,Annual,Forb
+LOSQ,LOSQ,Loeflingia squarrosa,Native,Annual,Forb
+LOSTT,LOSTT,Lotus strigosus,Native,Annual,Forb
+LUCO,LUCO,Lupinus concinnus,Native,Annual,Forb
+LUSP2,LUSP2,Lupinus sparsiflorus,Native,Annual,Forb
+MAGL3,MAGL3,Malacothrix glabrata,Native,Annual,Forb
+MAGR10,MAGR10,Machaeranthera gracilis,Native,Annual,Forb
+MATA2,MATA2,Machaeranthera tanacetifolia,Native,Annual,Forb
+MATA seedling in southwest section,MATA2,Machaeranthera tanacetifolia,Native,Annual,Forb
+MATA is the SW corner,MATA2,Machaeranthera tanacetifolia,Native,Annual,Forb
+There're a couple potential MATA seedlings near/under a couple of the larger grass bunches however if not MATA than 0% seeded species cover,MATA2,Machaeranthera tanacetifolia,Native,Annual,Forb
+Possible MATA seedlings in the northwest pit and possibly a SPCR seedling but if neither than seeded species cover would be 0%,MATA2,Machaeranthera tanacetifolia,Native,Annual,Forb
+Possibly a couple of MATA seedlings and possibly a SPCR seedling in the subplot,MATA2,Machaeranthera tanacetifolia,Native,Annual,Forb
+A few possible small SPCRs and a couple MATA seedlings all in the pits,MATA2,Machaeranthera tanacetifolia,Native,Annual,Forb
+MATA seedlings in the southeast corner of the plot,MATA2,Machaeranthera tanacetifolia,Native,Annual,Forb
+There're a couple possible tiny MATA seedlings in some of the pits if not MATA than 0% (too small to ID for sure),MATA2,Machaeranthera tanacetifolia,Native,Annual,Forb
+Possible MATA seedling species in suplot and in the NW pit if not than 0% seeded species cover,MATA2,Machaeranthera tanacetifolia,Native,Annual,Forb
+MEAL6,MEAL6,Mentzelia albicaulis,Native,Annual,Forb
+MENSPP,MENSPP.Patagonia,"Mentzelia spp., Patagonia",Native,Unknown,Forb
+MENSPP,MENSPP.SRER,"Mentzelia spp., SRER",Native,Unknown,Forb
+URLI5,MILI5,Microseris lindleyi,Native,Annual,Forb
+MONU,MONU,Monolepis nuttalliana,Native,Annual,Forb
+MOVE,MOVE,Mollugo verticillata,Native,Annual,Forb
+PECTO,PECTO,Pectocarya,Native,Annual,Forb
+PEHE,PEHE,Pectocarya heterocarpa,Native,Annual,Forb
+SW conmod is overgrown with Blue grama but NO black grama but thee's a possible young PEPA by the NW conmod,PEPA8,Penstemon palmeri,Native,Perennial,Forb
+PEPA (possibly),PEPA8,Penstemon palmeri,Native,Perennial,Forb
+Possible SPCR along the northeast edge as well as a possible PEPA seedling next to the subplot if neither than 0% seeded cover,PEPA8,Penstemon palmeri,Native,Perennial,Forb
+PEPL,PEPL,Pectocarya platycarpa,Native,Annual,Forb
+PERE,PERE,Pectocarya recurvata,Native,Annual,Forb
+PHDI,PHDI,Phacelia distans,Native,Unknown,Forb
+PHYSR,PHYSR.Pleasant,"Physaria sp., Pleasant",Native,Unknown,Forb
+PLAR,PLAR,Plagiobothrys arizonicus,Native,Annual,Forb
+PLOV,PLOV,Plantago ovata,Native,Annual,Forb
+PLPA2,PLPA2,Plantago patagonica,Native,Annual,Forb
+PLPR3,PLPR3,Plagiobothrys pringlei,Native,Annual,Forb
+PORSPP,PORSPP.Patagonia,"Portulaca spp., Patagonia",Native,Unknown,Forb
+POUM,POUM,Portulaca umbraticola,Native,Annual,Forb
+PSCA11,PSCA11,Pseudognaphalium canescens,Native,Unknown,Forb
+SACO6,SACO6,Salvia columbariae,Native,Annual,Forb
+SECO10,SECO10,Senna covesii,Native,Perennial,Forb
+Southwest pit has 1 BAMU and 4 small ARPUs. Northwest pit has 2 medium and 2 small ARPUs and 1 dreid up SECO. There are a few more small to medium sized ARPUs throughout,SECO10,Senna covesii,Native,Perennial,Forb
+Multiple medium to large ARPU and small/medium BOCU near the NE corner and a couple tiny SECOs,SECO10,Senna covesii,Native,Perennial,Forb
+Multiple small to medium ARPUs and BOCUs along with a possible PLMU (rough feeling leaves and similar seeds) with a couple small/medium BAMU that are in or near the N half of the pits and a couple small SECO seedlings sprinkled throughout,SECO10,Senna covesii,Native,Perennial,Forb
+Small to large ARPUs and BOCUs along with a couple small SECOs as well as a possible PLMU in the middle (rough feeling and membranous ligule but no seed heads),SECO10,Senna covesii,Native,Perennial,Forb
+Not in the Med mix but there are a couple young SECOs,SECO10,Senna covesii,Native,Perennial,Forb
+Couple small to medium ARPUs throughout and a couple small SECOs in N half of the plot typically hidden under/using ERCU as a shade plant,SECO10,Senna covesii,Native,Perennial,Forb
+Medium to large ARPUs throughout and a couple small and medium BOCUs near the N conmods and a few teeny tiny SECOs near conmods as well,SECO10,Senna covesii,Native,Perennial,Forb
+"Medium SECO in/near NW pit with a couple tiny seedlings scattered throughout, medium BAMU in the middle, a few small to medium/large ARPUs sprinkled throughout, possibly a small ACHY in SE section (wirey leaf blades that clasp the stem, hairs at the node, only one seed head but similar to examples)",SECO10,Senna covesii,Native,Perennial,Forb
+Small to large ARPUs throughout and a couple of small SECOs,SECO10,Senna covesii,Native,Perennial,Forb
+Small to large ARPUs throughout along with a tiny baby SECO seedling in SE section,SECO10,Senna covesii,Native,Perennial,Forb
+"Multiple ARPUs small to large sized throughout, possible ACHY in the SE pit, and a couple teeny tiny SECOs in/around some of the pits",SECO10,Senna covesii,Native,Perennial,Forb
+Small to medium ARPUs throughout and a few tiny to small SECOs mostly near the conmods,SECO10,Senna covesii,Native,Perennial,Forb
+"Possible couple small ASTUs along with multiple medium to extra large ARPUs, possibly a few BAMU seedlings as well as a couple tiny to small SECOs throughout",SECO10,Senna covesii,Native,Perennial,Forb
+"No new growth or green vegetation on SECO in the northwest pit but still there, there's a BAMU in the southwest pit as well, possibly ACHY in the south half of the plot, multiple medium to large sized ARPUs mostly in and/or near pits but not all",SECO10,Senna covesii,Native,Perennial,Forb
+Multiple medium to extra large ARPUs throught and SECo in the northwest corner under an ERCU,SECO10,Senna covesii,Native,Perennial,Forb
+"Possible ARPUs, SECO seedling in subplot",SECO10,Senna covesii,Native,Perennial,Forb
+Possible young BOCU and ARPU but no seed heads yet therfor unsure ifit is than seeded species cover is 1% but if not it's trace amount because of a few SECOs all found in or near pits,SECO10,Senna covesii,Native,Perennial,Forb
+"A couple small SECOs mostly near conmods and possiblya young POSE near SE conmod, Also decent size patch (~1% cover) of SECO just near/outside N edge",SECO10,Senna covesii,Native,Perennial,Forb
+Extra large to medium large BOCUs throughout and at least 2 tiny SECO near/in SE pit and NE/subplot pit,SECO10,Senna covesii,Native,Perennial,Forb
+"Some possible BOCUs but no seed heads, tillers, culms to verify ID yet but if all are BOCUs than it's 2% seeded species cover however if none are than there are a few SECOs throught mostly found in/near the pits",SECO10,Senna covesii,Native,Perennial,Forb
+There're multiple BOCUs and a couple possible SECO seedlings,SECO10,Senna covesii,Native,Perennial,Forb
+SIAN2,SIAN2,Silene antirrhina,Native,Annual,Forb
+SINE,SINE,Sida neomexicana,Native,Perennial,Forb
+SORO,SORO,Solanum rostratum,Native,Annual,Forb
+SPAMA,SPAM2,Sphaeralcea ambigua,Native,Perennial,Forb
+SPEC2,SPEC2,Spermolepis echinata,Native,Annual,Forb
+STGN,STGN,Stylocline gnaphalioides,Native,Annual,Forb
+STMI2,STMI2,Stylocline micropoides,Native,Annual,Forb
+TRPI,TRPI,Tradescantia pinetorum,Native,Perennial,Forb
+VEPE2,VEPE2,Veronica peregrina,Native,Annual,Forb
+VEPEX2,VEPEX2,Veronica peregrina ssp. xalapensis,Native,Annual,Forb
+Possible ACHY near southwest corner (2 certainty) and about 10 ARPU small to medium in size with 2 of them next to the subplot but not quite in,ACHY,Achnatherum hymenoides,Native,Perennial,Grass
+"ARPU many individuals, BAMU 1 individual, PLMU (2) 1 individual, ACHY (2) 1 individual",ACHY,Achnatherum hymenoides,Native,Perennial,Grass
+"Medium SECO in/near NW pit with a couple tiny seedlings scattered throughout, medium BAMU in the middle, a few small to medium/large ARPUs sprinkled throughout, possibly a small ACHY in SE section (wirey leaf blades that clasp the stem, hairs at the node, only one seed head but similar to examples)",ACHY,Achnatherum hymenoides,Native,Perennial,Grass
+"Multiple ARPUs small to large sized throughout, possible ACHY in the SE pit, and a couple teeny tiny SECOs in/around some of the pits",ACHY,Achnatherum hymenoides,Native,Perennial,Grass
+"No new growth or green vegetation on SECO in the northwest pit but still there, there's a BAMU in the southwest pit as well, possibly ACHY in the south half of the plot, multiple medium to large sized ARPUs mostly in and/or near pits but not all",ACHY,Achnatherum hymenoides,Native,Perennial,Grass
+"Multiple medium to large ARPUs and possibly and ACHY seedling in the southeast pit (wirey, narrow, clasping blades)",ACHY,Achnatherum hymenoides,Native,Perennial,Grass
+ARAD,ARAD,Aristida adscensionis,Native,Annual,Grass
+ARISPP,ARISPP.Patagonia,"Aristida spp., Patagonia",Native,Unknown,Grass
+ARISPP,ARISPP.SRER,"Aristida spp., SRER",Native,Unknown,Grass
+ARPUP6,ARPU9,Aristida purpurea,Native,Perennial,Grass
+ARPU9,ARPU9,Aristida purpurea,Native,Perennial,Grass
+Couple big ARPUs and a few small ones throughout,ARPU9,Aristida purpurea,Native,Perennial,Grass
+Large BOCU in the southeast with a few small ones throughout and about 5 ARPUs small to large in size that're mostly near the conmods,ARPU9,Aristida purpurea,Native,Unknown,Grass
+A few ARPUs and young BOCUs mostly near/in the south half except for a smaller ARPU in the northwest and a BAMU just north of subplot,ARPU9,Aristida purpurea,Native,Perennial,Grass
+3 individual ARPUs  and a BOCU,ARPU9,Aristida purpurea,Native,Perennial,Grass
+3 small ARPUs 1 on north border of subplot and other 2 in southwest section of plot,ARPU9,Aristida purpurea,Native,Perennial,Grass
+ARPU a few individuals,ARPU9,Aristida purpurea,Native,Perennial,Grass
+ARPU about 5 individuals and an individual BAMU resprouting at base,ARPU9,Aristida purpurea,Native,Perennial,Grass
+Southwest pit has 1 BAMU and 4 small ARPUs. Northwest pit has 2 medium and 2 small ARPUs and 1 dreid up SECO. There are a few more small to medium sized ARPUs throughout,ARPU9,Aristida purpurea,Native,Perennial,Grass
+ARPU a few small tufts and 1 taller,ARPU9,Aristida purpurea,Native,Perennial,Grass
+ARPU numerous individuals,ARPU9,Aristida purpurea,Native,Perennial,Grass
+ARPU multiple individuals,ARPU9,Aristida purpurea,Native,Perennial,Grass
+At least 10 ARPUs throughout small to large in size,ARPU9,Aristida purpurea,Native,Perennial,Grass
+ARPU small tufts and a tall individual,ARPU9,Aristida purpurea,Native,Perennial,Grass
+ARPU many small tufts and some with seed,ARPU9,Aristida purpurea,Native,Perennial,Grass
+Possible ACHY near southwest corner (2 certainty) and about 10 ARPU small to medium in size with 2 of them next to the subplot but not quite in,ARPU9,Aristida purpurea,Native,Perennial,Grass
+"ARPU many individuals, BAMU 1 individual, PLMU (2) 1 individual, ACHY (2) 1 individual",ARPU9,Aristida purpurea,Native,Perennial,Grass
+Multiple medium to large ARPU and small/medium BOCU near the NE corner and a couple tiny SECOs,ARPU9,Aristida purpurea,Native,Perennial,Grass
+Small/medium to large ARPUs and small to large BOCU throughout,ARPU9,Aristida purpurea,Native,Perennial,Grass
+Multiple small to medium ARPUs and BOCUs along with a possible PLMU (rough feeling leaves and similar seeds) with a couple small/medium BAMU that are in or near the N half of the pits and a couple small SECO seedlings sprinkled throughout,ARPU9,Aristida purpurea,Native,Perennial,Grass
+Small to large ARPUs and BOCUs along with a couple small SECOs as well as a possible PLMU in the middle (rough feeling and membranous ligule but no seed heads),ARPU9,Aristida purpurea,Native,Perennial,Grass
+Couple small to medium ARPUs throughout and a couple small SECOs in N half of the plot typically hidden under/using ERCU as a shade plant,ARPU9,Aristida purpurea,Native,Perennial,Grass
+Medium to large ARPUs throughout and a couple small and medium BOCUs near the N conmods and a few teeny tiny SECOs near conmods as well,ARPU9,Aristida purpurea,Native,Perennial,Grass
+Multiple small to large ARPUs throughout along with a large BAMU in center and a medium sized BOCU in the NW section,ARPU9,Aristida purpurea,Native,Perennial,Grass
+"Medium SECO in/near NW pit with a couple tiny seedlings scattered throughout, medium BAMU in the middle, a few small to medium/large ARPUs sprinkled throughout, possibly a small ACHY in SE section (wirey leaf blades that clasp the stem, hairs at the node, only one seed head but similar to examples)",ARPU9,Aristida purpurea,Native,Perennial,Grass
+Small to medium ARPUs throughout and small/medium BAMU near the NE edge,ARPU9,Aristida purpurea,Native,Perennial,Grass
+Small to large ARPUs throughout and a couple of small SECOs,ARPU9,Aristida purpurea,Native,Perennial,Grass
+Small to large ARPUs throughout along with a tiny baby SECO seedling in SE section,ARPU9,Aristida purpurea,Native,Perennial,Grass
+Small to medium/large ARPUs throughout especially in the S half of the plot,ARPU9,Aristida purpurea,Native,Perennial,Grass
+"Multiple ARPUs small to large sized throughout, possible ACHY in the SE pit, and a couple teeny tiny SECOs in/around some of the pits",ARPU9,Aristida purpurea,Native,Perennial,Grass
+Small to medium ARPUs throughout and a few tiny to small SECOs mostly near the conmods,ARPU9,Aristida purpurea,Native,Perennial,Grass
+"Possible couple small ASTUs along with multiple medium to extra large ARPUs, possibly a few BAMU seedlings as well as a couple tiny to small SECOs throughout",ARPU9,Aristida purpurea,Native,Perennial,Grass
+Multiple medium to extra large ARPUs and large BAMU along the N edge of the plot along with possible tiny seedlings in same pits,ARPU9,Aristida purpurea,Native,Perennial,Grass
+Multiple medium to large ARPUs and BOCUs along the northeast edge,ARPU9,Aristida purpurea,Native,Perennial,Grass
+Multiple medium to extra large BOCUs and ARPUs throughout but mostly near and aroudn conmods,ARPU9,Aristida purpurea,Native,Perennial,Grass
+Multipke medium to large ARPUs and BOCUs as well as a BAMU in the northeast corner but it doesnt have any new/living growth yet,ARPU9,Aristida purpurea,Native,Perennial,Grass
+Multiple medium to large ARPUs and BOCUs (mostly ARPUs) as well as a possible PLMU in the center of the plot,ARPU9,Aristida purpurea,Native,Perennial,Grass
+Few small to medium ARPUs spaced throughout,ARPU9,Aristida purpurea,Native,Perennial,Grass
+Multiple medium to large ARPUs throughout and a couple small BOCUs near and among the conmods,ARPU9,Aristida purpurea,Native,Perennial,Grass
+Multiple small to large sized ARPUs spread throughout and a medium sized BOCU in the northwest corner,ARPU9,Aristida purpurea,Native,Perennial,Grass
+"No new growth or green vegetation on SECO in the northwest pit but still there, there's a BAMU in the southwest pit as well, possibly ACHY in the south half of the plot, multiple medium to large sized ARPUs mostly in and/or near pits but not all",ARPU9,Aristida purpurea,Native,Perennial,Grass
+Multiple medium to extra large ARPUs mostly in/near conmods,ARPU9,Aristida purpurea,Native,Perennial,Grass
+Multiple medium to extra large ARPUS,ARPU9,Aristida purpurea,Native,Perennial,Grass
+Small to large ARPUs throughout especially in the south half of the plot,ARPU9,Aristida purpurea,Native,Perennial,Grass
+"Multiple medium to large ARPUs and possibly and ACHY seedling in the southeast pit (wirey, narrow, clasping blades)",ARPU9,Aristida purpurea,Native,Perennial,Grass
+Multiple medium to extra large ARPUs throught and SECo in the northwest corner under an ERCU,ARPU9,Aristida purpurea,Native,Perennial,Grass
+Some type of Aristida possibly and ARPU and maybe 1 small maybe BOCU near subplot that's been grazed down,ARPU9,Aristida purpurea,Native,Perennial,Grass
+A couple BOCUs and a couple potential BOCU nubs and a possible ARPU,ARPU9,Aristida purpurea,Native,Perennial,Grass
+A few possible ARPUs (2 certainty) or other ARsp. (ARTE),ARPU9,Aristida purpurea,Native,Perennial,Grass
+1 full BOCU (3) in the northwest corner. A couple potentially smaller grazed down ones throughout as well as a couple potential ARPUs (2),ARPU9,Aristida purpurea,Native,Perennial,Grass
+Multiple BOCU's medium-large and a possible medium sized ARPU,ARPU9,Aristida purpurea,Native,Perennial,Grass
+Couple medium sized ARPUs (not completely sure 2/3 on certainty of ID) and a large BOCU right next to the NW plot marker rooted just outside of the plot but some overhangs into the plot,ARPU9,Aristida purpurea,Native,Perennial,Grass
+"Possible ARPUs, SECO seedling in subplot",ARPU9,Aristida purpurea,Native,Perennial,Grass
+Possible young BOCU and ARPU but no seed heads yet therfor unsure ifit is than seeded species cover is 1% but if not it's trace amount because of a few SECOs all found in or near pits,ARPU9,Aristida purpurea,Native,Perennial,Grass
+Medium sized BOCU and ARPU,ARPU9,Aristida purpurea,Native,Perennial,Grass
+Multiple med to extra large BOCUs and a few small to large ARPUs,ARPU9,Aristida purpurea,Native,Perennial,Grass
+A couple BOCUs and a possible ARPU,ARPU9,Aristida purpurea,Native,Perennial,Grass
+BOCU partially in/on the west edge of the plot and a possible ARPU,ARPU9,Aristida purpurea,Native,Perennial,Grass
+Aristida species between the northeast and southeast pits possibly an ARPU if not than seeded species cover would be 0%,ARPU9,Aristida purpurea,Native,Perennial,Grass
+Multiple BOCUS and a couple possible ARPUs throughout,ARPU9,Aristida purpurea,Native,Perennial,Grass
+Some type of Aristida possibly and ARPU and maybe 1 small maybe BOCU near subplot that's been grazed down,ARPUspp.SRER,"Aristida spp., SRER",Native,Unknown,Grass
+Some possible ARPUs (2 certainty) or ARsp. (ARTE). Mostly dried still or grazed down.,ARPUspp.SRER,"Aristida spp., SRER",Native,Unknown,Grass
+Potentially 3 or 4 BOCU (1 certainty) and possibly an ARPU (2) or othe ARsp. hard to be certain because all the grasses have been grazed down to nubs,ARPUspp.SRER,"Aristida spp., SRER",Native,Unknown,Grass
+ARTE3,ARTE3,Aristida ternipes,Native,Perennial,Grass
+BOAR,BOAR,Bouteloua aristidoides,Native,Annual,Grass
+BOBA2,BOBA2,Bouteloua barbata,Native,Annual,Grass
+BOCU,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Large BOCU in the southeast with a few small ones throughout and about 5 ARPUs small to large in size that're mostly near the conmods,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+A few ARPUs and young BOCUs mostly near/in the south half except for a smaller ARPU in the northwest and a BAMU just north of subplot,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+3 individual ARPUs  and a BOCU,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Multiple medium to large ARPU and small/medium BOCU near the NE corner and a couple tiny SECOs,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Small/medium to large ARPUs and small to large BOCU throughout,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Multiple small to medium ARPUs and BOCUs along with a possible PLMU (rough feeling leaves and similar seeds) with a couple small/medium BAMU that are in or near the N half of the pits and a couple small SECO seedlings sprinkled throughout,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Small to large ARPUs and BOCUs along with a couple small SECOs as well as a possible PLMU in the middle (rough feeling and membranous ligule but no seed heads),BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Medium to large ARPUs throughout and a couple small and medium BOCUs near the N conmods and a few teeny tiny SECOs near conmods as well,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Multiple small to large ARPUs throughout along with a large BAMU in center and a medium sized BOCU in the NW section,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Multiple medium to extra large ARPUs and large BAMU along the N edge of the plot along with possible tiny seedlings in same pits,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Multiple medium to large ARPUs and BOCUs along the northeast edge,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Multiple medium to extra large BOCUs and ARPUs throughout but mostly near and aroudn conmods,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Multipke medium to large ARPUs and BOCUs as well as a BAMU in the northeast corner but it doesnt have any new/living growth yet,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Multiple medium to large ARPUs and BOCUs (mostly ARPUs) as well as a possible PLMU in the center of the plot,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Multiple medium to large ARPUs throughout and a couple small BOCUs near and among the conmods,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Multiple small to large sized ARPUs spread throughout and a medium sized BOCU in the northwest corner,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Probable BOCUs with apparent grazing,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+More of what we called BOCU in last plot,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+1 BOCU,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Possible BOCUs but not in this mix,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Possibly a BOCU but has been grazed down completely and hard to confirm,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+A couple BOCUs and a couple potential BOCU nubs and a possible ARPU,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Possibly 2 BOCUs (2 certainty) but very little green left to help identify,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Potentially 3 or 4 BOCU (1 certainty) and possibly an ARPU (2) or othe ARsp. hard to be certain because all the grasses have been grazed down to nubs,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+1 full BOCU (3) in the northwest corner. A couple potentially smaller grazed down ones throughout as well as a couple potential ARPUs (2),BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Multiple BOCU's medium-large and a possible medium sized ARPU,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Couple medium sized ARPUs (not completely sure 2/3 on certainty of ID) and a large BOCU right next to the NW plot marker rooted just outside of the plot but some overhangs into the plot,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Extra large BOCU,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Large and medium BOCUs in plot,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Possible young BOCU and ARPU but no seed heads yet therfor unsure ifit is than seeded species cover is 1% but if not it's trace amount because of a few SECOs all found in or near pits,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Couple extra large BOCUs,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Extra large to medium large BOCUs throughout and at least 2 tiny SECO near/in SE pit and NE/subplot pit,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Medium sized BOCU and ARPU,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Medium BOCU mostly rooted outside of the SW side of the plot butr partially in with some overhang,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Multiple med to extra large BOCUs and a few small to large ARPUs,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Quite a few small tp extra large BOCUs throughout along with a possible ASTU,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+"BOCUs with some new growth, green vegetation",BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+A couple medium sized BOCU potentails. One is for certain a BOCU if all are not and another Bouteloua species the seeded species cover would be TR,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+BOCUs,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+"Some possible BOCUs but no seed heads, tillers, culms to verify ID yet but if all are BOCUs than it's 2% seeded species cover however if none are than there are a few SECOs throught mostly found in/near the pits",BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Multiple BOCUs throughout,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+There're multiple BOCUs and a couple possible SECO seedlings,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+A couple BOCUs and a possible ARPU,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+BOCU partially in/on the west edge of the plot and a possible ARPU,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+Multiple BOCUS and a couple possible ARPUs throughout,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
+1 Possible PLJA (1 out of 3 on certainty) on south border as well as some BOCUs (might be BOER but probably BOCU or other BOsp.) Mostly grazed,BOCU/BOER4.SRER,"BOCUs, or might be BOER4, SRER",Native,Perennial,Grass
+BOCUs up to this point could also possibly be slender grama BORE or purple BORA,BOCU/BORE/BORA.SRER,"Bouteloua curtipendula/repens/radicosa (spp.), SRER",Native,Perennial,Grass
+BOsp. a lot of possibly BOCU but could also be BORE or BORA,BOCU/BORE/BORA.SRER,"Bouteloua curtipendula/repens/radicosa (spp.), SRER",Native,Perennial,Grass
+BOER in center/near southwest conmod possibly 5-8,BOER4,Bouteloua eriopoda,Native,Perennial,Grass
+BOER (2 certainty) on edge of the southwest pit,BOER4,Bouteloua eriopoda,Native,Perennial,Grass
+BOER4,BOER4,Bouteloua eriopoda,Native,Perennial,Grass
+Extra large BOER in S half and medium sized one next to NE plot  corner that partially hangs in and at least 2 small ones within the plot as well,BOER4,Bouteloua eriopoda,Native,Perennial,Grass
+BOER,BOER4,Bouteloua eriopoda,Native,Perennial,Grass
+Bouteloua on W edge but almost positive it's BOGR (blue gramma) not BOER (black gramma),BOGR2,Bouteloua gracilis,Native,Perennial,Grass
+Blue grama BOGR in the S half of the plot don't confuse with black grama BOER,BOGR2,Bouteloua gracilis,Native,Perennial,Grass
+"Possibly small POSE and SPCR in the S half of the plot, BLUE grama not BLACK",BOGR2,Bouteloua gracilis,Native,Perennial,Grass
+"Possible SPCR in subplot, Blue not Black grama",BOGR2,Bouteloua gracilis,Native,Perennial,Grass
+SW conmod is overgrown with Blue grama but NO black grama but thee's a possible young PEPA by the NW conmod,BOGR2,Bouteloua gracilis,Native,Perennial,Grass
+More Blue grama Don't confuse with Black,BOGR2,Bouteloua gracilis,Native,Perennial,Grass
+BORA,BORA,Bouteloua radicosa,Native,Perennial,Grass
+BORO2,BORO2,Bouteloua rothrockii,Native,Perennial,Grass
+"Couple possible little BOCUs (no seed heads, tiller, culms to verify)",BOSPP.SRER,"Bouteloua spp., SRER",Native,Unknown,Grass
+"Couple of small possible BOER but no tillers, seeds, or culms yet to be certain if different Bouteloua than 0%",BOSPP.SRER,"Bouteloua spp., SRER",Native,Unknown,Grass
+BOUSPP,BOUSPP.SRER,"Bouteloua spp., SRER",Native,Unknown,Grass
+Possibly a BOER if not than other BOsp. possibly BOGR,BOspp.Patagonia,"Bouteloua spp., Patagonia",Native,Unknown,Grass
+Some type of Aristida possibly and ARPU and maybe 1 small maybe BOCU near subplot that's been grazed down,BOspp.SRER,"Bouteloua spp., SRER",Native,Unknown,Grass
+Possible Boutelouas not sure if BOER because they've been grazed down,BOspp.SRER,"Bouteloua spp., SRER",Native,Unknown,Grass
+Possibly 3 small BOER (1 certainty) or other BOsp.,BOspp.SRER,"Bouteloua spp., SRER",Native,Unknown,Grass
+"There are a couple possible small BOERs but no seed, tillers, culms, to help ID but if not BOER and a different bouteloa species than 0%",BOspp.SRER,"Bouteloua spp., SRER",Native,Unknown,Grass
+CHVI4,CHVI4,Chloris virgata,Native,Annual,Grass
+DAPU7,DAPU7,Dasyochloa pulchella,Native,Perennial,Grass
+DICA8,DICA8,Digitaria californica,Native,Perennial,Grass
+ELEL5,ELEL5,Elymus elymoides,Native,Perennial,Grass
+FESSPP,FESSPP.SRER,"Fescue spp., SRER",Native,Unknown,Grass
+PACA6,PACA6,Panicum capillare,Native,Annual,Grass
+PANSPP,PANSPP.SRER,"Panicum spp., SRER",Native,Unknown,Grass
+1 Possible PLJA (1 out of 3 on certainty) on south border as well as some BOCUs (might be BOER but probably BOCU or other BOsp.) Mostly grazed,PLJAspp.SRER,"Possibly Pleuraphis jamesii, SRER",Native,Perennial,Grass
+"ARPU many individuals, BAMU 1 individual, PLMU (2) 1 individual, ACHY (2) 1 individual",PLMU3,Pleuraphis mutica,Native,Perennial,Grass
+Multiple small to medium ARPUs and BOCUs along with a possible PLMU (rough feeling leaves and similar seeds) with a couple small/medium BAMU that are in or near the N half of the pits and a couple small SECO seedlings sprinkled throughout,PLMU3,Pleuraphis mutica,Native,Perennial,Grass
+Small to large ARPUs and BOCUs along with a couple small SECOs as well as a possible PLMU in the middle (rough feeling and membranous ligule but no seed heads),PLMU3,Pleuraphis mutica,Native,Perennial,Grass
+Multiple medium to large ARPUs and BOCUs (mostly ARPUs) as well as a possible PLMU in the center of the plot,PLMU3,Pleuraphis mutica,Native,Perennial,Grass
+POBI,POBI,Poa bigelovii,Native,Annual,Grass
+POSE,POSE,Poa secunda,Native,Perennial,Grass
+Might possibly be a small POSE,POSE,Poa secunda,Native,Perennial,Grass
+"Possibly small POSE and SPCR in the S half of the plot, BLUE grama not BLACK",POSE,Poa secunda,Native,Perennial,Grass
+"Possible small SPCR near middle of the east edge (no tiller, culm, or seed heads but fuzziness/hairs at the ligule) and possible POSE next to the subplot (all leaf blades and midvein on bottome) if not than 0% seeded species cover",POSE,Poa secunda,Native,Perennial,Grass
+"A couple small SECOs mostly near conmods and possiblya young POSE near SE conmod, Also decent size patch (~1% cover) of SECO just near/outside N edge",POSE,Poa secunda,Native,Perennial,Grass
+Small POSE near SW pit,POSE,Poa secunda,Native,Perennial,Grass
+"There's a possible POSE (boat/canoe leaf blades, greener than other grasses currently around, it's very basal and tufted too with a membraneous ligule however if it's not than 0% seeded species cover",POSE,Poa secunda,Native,Perennial,Grass
+SPCR,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass
+"Possibly small POSE and SPCR in the S half of the plot, BLUE grama not BLACK",SPCR,Sporobolus cryptandrus,Native,Perennial,Grass
+"Possible SPCR in subplot, Blue not Black grama",SPCR,Sporobolus cryptandrus,Native,Perennial,Grass
+A few possible small SPCR in/around some of the pits,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass
+Possibly a small SPCR in the S half,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass
+"Possible small SPCR near middle of the east edge (no tiller, culm, or seed heads but fuzziness/hairs at the ligule) and possible POSE next to the subplot (all leaf blades and midvein on bottome) if not than 0% seeded species cover",SPCR,Sporobolus cryptandrus,Native,Perennial,Grass
+Possibly a couple of small SPCRs in/near the northeast pit but if not than 0%,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass
+Possible MATA seedlings in the northwest pit and possibly a SPCR seedling but if neither than seeded species cover would be 0%,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass
+Possibly a couple of MATA seedlings and possibly a SPCR seedling in the subplot,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass
+A few possible small SPCRs and a couple MATA seedlings all in the pits,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass
+Possibly a SPCR,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass
+Possibly two SPCRs (or possibly POSEs?) near the southwest and northwest (No sead heads yet but membraneous ligule with hair and blades at an almost 90 degrees fro the stems however if neither than the seeded species cover would be 0%,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass
+There's a possible SPCR along the north edge and southwest near the center however if neither are SPCRs than seeded species cover would be 0%,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass
+Possible SPCR along the northeast edge as well as a possible PEPA seedling next to the subplot if neither than 0% seeded cover,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass
+TRMU,TRMU,Tridens muticus,Native,Perennial,Grass
+UNGR1,UNGR1.SRER,"Unknown grass (SantaRita); Possibly BOER or Aristida spp (so likely unseeded), SRER",Native,Unknown,Grass
+UNGRS3,UNGRS3.Patagonia,"Unknown grass (Patagonia); Lighter green, thin leaves, possible threeawn?, Patagonia",Native,Unknown,Grass
+UNGR_P_1,UNGR_P_1.Patagonia,"Unknown grass; Possibly small ARIsp. (Spring 2021), Patagonia",Native,Unknown,Grass
+UNGR_S_2,UNGR_S_2.SRER,"Unknown grass; Possibly a BOCU or another Bouteloua (Spring 2021), SRER",Native,Unknown,Grass
+Unk grass,Unk grass.SCC,"Unknown likely associated with warm seed mix, SCC",Native,Unknown,Grass
+VUOC,VUOC,Vulpia octoflora,Native,Annual,Grass
+AMDE4,AMDE4,Ambrosia deltoidea,Native,Perennial,Shrub
+ENFA,ENFA,Encelia farinosa,Native,Perennial,Shrub
+ERLA12,ERLA12,Ericameria laricifolia,Native,Perennial,Shrub
+KRLA2,KRLA2,Krascheninnikovia lanata,Native,Perennial,Shrub
+LATR2,LATR2,Larrea tridentata,Native,Perennial,Shrub
+PAMI5,PAMI5,Parkinsonia microphylla,Native,Perennial,Shrub
+PRVE,PRVE,Prosopis velutina,Native,Perennial,Shrub
+UNSHR-1,UNSHR-1.Patagonia,"Unknown shrub (Patagonia); mesquite or acacia, Patagonia",Native,Unknown,Shrub
+ACASPP,ACASPP.SRER,"Acalypha spp., SRER",Native/Unknown,Unknown,Forb
+ASTSPP,ASTSPP.SRER,"Astragalus spp., SRER",Native/Unknown,Unknown,Forb
+BRASPP,BRASPP.SRER,"Brassica spp. (likely DEPI), SRER",Native/Unknown,Unknown,Forb
+LEPISP,LEPSPP.Pleasant,"Lepidium spp., Pleasant",Native/Unknown,Unknown,Forb
+SIDSPP,SIDSPP.Patagonia,"Sida spp., Patagonia",Native/Unknown,Unknown,Forb
+SIDSPP,SIDSPP.SRER,"Sida spp., SRER",Native/Unknown,Unknown,Forb
+UNFO_P_2,UNFO_P_2.Patagonia,"Unknown forb; Pinated leaves, upright rosette, lighter green, Ambrosia?  (Spring 2021), Patagonia",Native/Unknown,Unknown,Forb
+UNFO_P_4,UNFO_P_4.Patagonia,"Unkown forb; Unknown Fabeacea (Pea), short and fuzzy, chunky, Acmispon Brachycarpus? (Spring 2021), Patagonia",Native/Unknown,Unknown,Forb
+UNFO_P_5,UNFO_P_5.Patagonia,"Unknown forb; Prominent mid-vein, leaf doesn't completely surround/there's good amount of petiole, ovate leaves that're slightly speckled, oenothera? (Spring 2021), Patagonia",Native/Unknown,Unknown,Forb
+UNFO_S_3,UNFO_S_3.SRER,"Unknown forb; Fuzzy green penately arranged leaflets, partially pinated lobes ""thick poppy"" possibly an ambrosia (Spring 2021), SRER",Native/Unknown,Unknown,Forb
+UNFO_S_4,UNFO_S_4.SRER,"Unknown forb; Super tiny, very spikey, pinately lobed, possible cryptantha or plagiobothrys (Spring 2021), SRER",Native/Unknown,Unknown,Forb
+UNFO_S_7,UNFO_S_7.SRER,"Unknown forb; ""artichoke head"", stem leaves alternate, basal rosette, possibly cryptantha? (Spring 2021), SRER",Native/Unknown,Unknown,Forb
+Unk dark,Unk dark.Preserve,"Unknown dark, Preserve",Native/Unknown,Unknown,Forb
+UNGR-2 possibly a Bouteloua (BOCU?) Maybe PLJA? (never seen),UNGR-2.SRER,"Unknown grass 2 possibly a Bouteloua (BOCU?) Maybe PLJA? (never seen), SRER",Native/Unknown,Unknown,Grass
+UNGRS1,UNGRS1.Patagonia,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes, Patagonia",Native/Unknown,Unknown,Grass
+UNGRS1,UNGRS1.SRER,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes, SRER",Native/Unknown,Unknown,Grass
+UNGR_S_1,UNGR_S_1.SRER,"Unknown grass; Grass seedling short erose ligule slight chance ARPU because of 45 degree leaf or possibly a Vulpia sp. like VUOC (Spring 2021), SRER",Native/Unknown,Unknown,Grass
+PROACASPP,PROACASPP.Patagonia,"Mesquite/Acacia spp., Patagonia",Native/Unknown,Perennial,Shrub
+CHESPP,CHESPP.Patagonia,"Chenopodium spp., Patagonia",Unknown,Unknown,Forb
+DeadStem,DeadStem,Dead stem,Unknown,Unknown,Forb
+LUPSPP,LUPSPP.SRER,"Lupinus spp., SRER",Unknown,Unknown,Forb
+PHYSA,PHYSA,Physalis,Unknown,Unknown,Forb
+PLANT,PLANT,Plantago,Unknown,Unknown,Forb
+PLASPP,PLASPP.SRER,"Plantago spp., SRER",Unknown,Unknown,Forb
+POOL,POOL,Portulaca oleracea,Unknown,Annual,Forb
+SCPI3,SCPI3,Schkuhria pinnata,Unknown,Annual,Forb
+SISYM,SISYM.Pleasant,"Sisymbrium sp., Pleasant",Unknown,Unknown,Forb
+UNDPF,UNDPF.SRER,"Unknown dead pod forb, SRER",Unknown,Unknown,Forb
+UNDSF,UNDSF.SRER,"Unknown dead spikey forb, SRER",Unknown,Unknown,Forb
+UNFO-1,UNFO-1.Patagonia,"Unknown forb (Patagonia); Soft and fuzzy/hairy, serated leaves with middle vein underneath on bottom side of the leaf, pickle smell, Patagonia",Unknown,Unknown,Forb
+UNFO-1,UNFO-1.SRER,"Unknown forb (SRER); Umbilliferae family, thin lacey divided leaves with small white flowers in umbels at the top, SRER",Unknown,Unknown,Forb
+UNFO-2,UNFO-2.SRER,"Unknown forb (SRER); Super hairy almost spikey looking with pinately lobed leaves, SRER",Unknown,Unknown,Forb
+UNFO-3,UNFO-3.SRER,"Unknown forb (SRER); Androsace species (or possibly a cynquifoil), small basal leaves typically with a reddish color, with a reddish long thin stem, with artichoke head-like tops, SRER",Unknown,Unknown,Forb
+UNFO-4,UNFO-4.SRER,"Unknown forb (SRER); Possibly a Linum species (Flax), basal rosette, narrow rounded leaves opposite along and close to an upright stem, SRER",Unknown,Unknown,Forb
+UNFO-5,UNFO-5.SRER,"Unknown forb 5, SRER",Unknown,Unknown,Forb
+UNFO1,UNFO1.Patagonia,"Unknown forb (Patagonia and SRER are same); upright mustard with tiny blueish flower, Patagonia",Unknown,Unknown,Forb
+UNFO1,UNFO1.SRER,"Unknown forb (Patagonia and SRER are same); upright mustard with tiny blueish flower, SRER",Unknown,Unknown,Forb
+UNFO1A,UNFO1A.Patagonia,"Unknown forb (Patagonia, Nov 2019); Darker Green, 5 petals radiating out, Patagonia",Unknown,Unknown,Forb
+UNFO2,UNFO2.Patagonia,"Unknown forb (Patagonia); low to ground, succulenty, tiny white flowers, similar to purslane, Patagonia",Unknown,Unknown,Forb
+UNFO3,UNFO3.Patagonia,"Unknown forb (Patagonia); upright mustard with small pods and tiny yellow flowers, Patagonia",Unknown,Unknown,Forb
+UNFO3,UNFO3.SRER,"Unknown forb (SRER); tiny reddish basal leaves, star-like petals, SRER",Unknown,Unknown,Forb
+UNFO4,UNFO4.SRER,"Unknown forb (SRER); very hairy radiating out/up, fuzzy rosettes, SRER",Unknown,Unknown,Forb
+UNFO5,UNFO5.Patagonia,"Unknown forb (Patagonia); Similar to dandelion, yellow closed flowers, Patagonia",Unknown,Unknown,Forb
+UNFO6,UNFO6.Patagonia,"Unknown forb; green, young, radiating basal leaves; slightly fuzzy; Patagonia, Patagonia",Unknown,Unknown,Forb
+UNFO6,UNFO6.SRER,"Unknown forb (SRER); Very small, long slender leaves, fuzzy, leaf toothed around margins. Possibly Heterotheca grandiflora, SRER",Unknown,Unknown,Forb
+UNFO_P_1,UNFO_P_1.Patagonia,"Unknown forb; small reddish purple rosette with ovate leaves (Spring 2021), Patagonia",Unknown,Unknown,Forb
+UNFO_P_3,UNFO_P_3.Patagonia,"Unknown forb; Fabeacea (pea), long and spindly (Spring 2021), Patagonia",Unknown,Unknown,Forb
+UNFO_P_6,UNFO_P_6.Patagonia,"Unknown forb; Super tiny, red thin stem like SAIB but the top leaves are compounded with 3 leaflets, Amaranthaceae? (Spring 2021), Patagonia",Unknown,Unknown,Forb
+UNFO_P_7,UNFO_P_7.Patagonia,"Unknown forb; Rosette leaves slightly fuzzy and silvery light green. simple leaves, smells like bandaids (Spring 2021), Patagonia",Unknown,Unknown,Forb
+UNFO_S_1,UNFO_S_1.SRER,"Unknown forb; Purple vine, sagitate leaves (Spring 2021), SRER",Unknown,Unknown,Forb
+UNFO_S_5,UNFO_S_5.SRER,"Unknown forb; Silky hairy fuzzy, straight leaves, no prominent veination, pseudognaphalium? (Spring 2021), SRER",Unknown,Unknown,Forb
+UNFS,UNFS.Patagonia,"Unknown forb seedling, Patagonia",Unknown,Unknown,Forb
+UNK heart,UNK heart.Preserve,"Unknown  heart, Preserve",Unknown,Unknown,Forb
+UNSFF,UNSFF.SRER,"Unknown shrubby fuzzy forb, munched down, SRER",Unknown,Unknown,Forb
+Unk forb,Unk forb.Pleasant,"Unknown forb, Pleasant",Unknown,Unknown,Forb
+Unk heart,Unk heart.Preserve,"Unknown forb with heart-shaped cotyledon; possibly MAPA5 (although that species not seen growing there), Preserve",Unknown,Unknown,Forb
+unk forb,unk forb.Roosevelt,"Unknown forb, Roosevelt",Unknown,Unknown,Forb
+UNGR,UNGR.SRER,"Unknown grass, SRER",Unknown,Unknown,Grass
+UNGR1,UNGR1.Patagonia,"Unknown grass 1, Patagonia",Unknown,Unknown,Grass
+UNGRS2,UNGRS2.Patagonia,"Unknown grass (Patagonia); Unk grass seedling, leaf divided early like BOGR, possible lovegrass?, Patagonia",Unknown,Unknown,Grass
+Unk bunchGrass #1,Unk bunchGrass #1.Pleasant,"Could be BOCU, Pleasant",Unknown,Unknown,Grass
+Unk grass 1,Unk grass 1.Roosevelt,"Unknown grass, Roosevelt",Unknown,Unknown,Grass
+Unk grass,Unk grass.Pleasant,"Unknown grass, Pleasant",Unknown,Unknown,Grass
+unk grass 1,unk grass 1.Roosevelt,"Unknown grass, Roosevelt",Unknown,Unknown,Grass
+unk grass 2,unk grass 2.Roosevelt,"Unknown grass 2, Roosevelt",Unknown,Unknown,Grass
+unk grass,unk grass.SCC,"Unknown grass, SCC",Unknown,Unknown,Grass
+UNK brown,UNK brown.SCC,"Unknown brown, SCC",Unknown,Unknown,Unknown
+Unk sp.,Unk sp..Pleasant,"Unknown species, Pleasant",Unknown,Unknown,Unknown
+Unk sp.,Unk sp..SCC,"Unknown species, SCC",Unknown,Unknown,Unknown
