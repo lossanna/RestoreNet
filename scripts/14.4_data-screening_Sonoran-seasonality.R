@@ -1,7 +1,8 @@
 # Created: 2024-12-12
 # Last updated: 2024-12-12
 
-# Purpose:
+# Purpose: Look at correlations between continuous variables by seasonality. MAP & MAT should be dropped
+#   from all; AridityIndex should be dropped from year.all (flowers year-round, monitoring from both seasons).
 
 library(tidyverse)
 library(GGally)
@@ -49,3 +50,30 @@ year.all <- dat |>
 hist(cool.spring$Count, breaks = 50)
 hist(warm.fall$Count)
 hist(year.all$Count)
+
+
+# Correlation between continuous variables --------------------------------
+
+# All Sonoran sites
+dat |> 
+  select(Perc_dev_since, AridityIndex, MAT, MAP) |>
+  distinct(.keep_all = TRUE) |>
+  ggpairs() # MAT & AI correlated; MAP & AridityIndex correlated; MAT & MAP correlated
+
+# Cool-Spring
+cool.spring |> 
+  select(Perc_dev_since, AridityIndex, MAT, MAP) |>
+  distinct(.keep_all = TRUE) |>
+  ggpairs()
+
+# Warm-Fall
+warm.fall  |> 
+  select(Perc_dev_since, AridityIndex, MAT, MAP) |>
+  distinct(.keep_all = TRUE) |>
+  ggpairs()
+
+# Year-All
+year.all  |> 
+  select(Perc_dev_since, AridityIndex, MAT, MAP) |>
+  distinct(.keep_all = TRUE) |>
+  ggpairs() # AridityIndex correlated with Perc_dev_since
