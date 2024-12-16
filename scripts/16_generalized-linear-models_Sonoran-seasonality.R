@@ -127,20 +127,20 @@ plotResiduals(res.cool.spring_full)
 ## Cool-Spring top models -------------------------------------------------
 
 # Model selection on UA HPC (do not run)
-# options(na.action = "na.fail")
-# cool.spring_set <- dredge(cool.spring_full)
+#   options(na.action = "na.fail")
+#   cool.spring_set <- dredge(cool.spring_full)
 
 # Examine top model
 cool.spring_best_model <- get.models(cool.spring_set, 1)[[1]]
 summary(cool.spring_best_model)
 
 # Examine models within top 2 AICc units
-cool.spring_top_models.df <- subset(cool.spring_set, delta < 2) |> 
+cool.spring_top_models <- subset(cool.spring_set, delta < 2) |> 
   filter(!is.na(delta)) 
 
-# Assign each model to a separate object (takes a little bit of time to run all 12)
-for (i in 1:nrow(cool.spring_top_models.df)) {
-  assign(paste0("cool.spring_model_", i), get.models(cool.spring_top_models.df, subset = i)[[1]])
+# Assign each model to a separate object (takes a few minutes to run all 12)
+for (i in 1:nrow(cool.spring_top_models)) {
+  assign(paste0("cool.spring_model_", i), get.models(cool.spring_top_models, subset = i)[[1]])
 }
 
 # 1: AridityIndex + Duration + Lifeform + Perc_dev_since + PlantSource2 + Treatment +  
@@ -170,6 +170,110 @@ res.cool.spring_model_3 <- simulateResiduals(cool.spring_model_3)
 plotQQunif(res.cool.spring_model_3)
 plotResiduals(res.cool.spring_model_3)
 
+# 4: Count ~ AridityIndex + Duration + Lifeform + Perc_dev_since + PlantSource2 + Treatment + 
+#   (1 | Site/Plot) + AridityIndex:Duration + AridityIndex:PlantSource2 + 
+#   Duration:Perc_dev_since + Perc_dev_since:PlantSource2 + Perc_dev_since:Treatment
+summary(cool.spring_model_4)
+r2(cool.spring_model_4)
+res.cool.spring_model_4 <- simulateResiduals(cool.spring_model_4)
+plotQQunif(res.cool.spring_model_4)
+plotResiduals(res.cool.spring_model_4)
+
+# 5: AridityIndex + Duration + Lifeform + Perc_dev_since + PlantSource2 + Treatment + 
+#   (1 | Site/Plot) + AridityIndex:Duration +  AridityIndex:Perc_dev_since + 
+#   AridityIndex:PlantSource2 +  AridityIndex:Treatment + Duration:Perc_dev_since + 
+#   Perc_dev_since:PlantSource2 + Perc_dev_since:Treatment
+summary(cool.spring_model_5)
+r2(cool.spring_model_5)
+res.cool.spring_model_5 <- simulateResiduals(cool.spring_model_5)
+plotQQunif(res.cool.spring_model_5)
+plotResiduals(res.cool.spring_model_5)
+
+# 6: AridityIndex + Duration + Lifeform + Perc_dev_since + PlantSource2 + Treatment + 
+#   (1 | Site/Plot) + AridityIndex:Duration + AridityIndex:PlantSource2 + 
+#   Duration:Perc_dev_since + Lifeform:Perc_dev_since + Perc_dev_since:PlantSource2
+summary(cool.spring_model_6)
+r2(cool.spring_model_6)
+res.cool.spring_model_6 <- simulateResiduals(cool.spring_model_6)
+plotQQunif(res.cool.spring_model_6)
+plotResiduals(res.cool.spring_model_6)
+
+# 7: AridityIndex + Duration + Lifeform + Perc_dev_since + PlantSource2 + Treatment + 
+#   (1 | Site/Plot) + AridityIndex:Duration + AridityIndex:PlantSource2 + 
+#   Duration:Perc_dev_since + Lifeform:Perc_dev_since + Perc_dev_since:PlantSource2 + 
+#   Perc_dev_since:Treatment
+summary(cool.spring_model_7)
+r2(cool.spring_model_7)
+res.cool.spring_model_7 <- simulateResiduals(cool.spring_model_7)
+plotQQunif(res.cool.spring_model_7)
+plotResiduals(res.cool.spring_model_7)
+
+# 8: AridityIndex + Duration + Lifeform + Perc_dev_since + PlantSource2 + Treatment + 
+#   (1 | Site/Plot) + AridityIndex:Duration + AridityIndex:Perc_dev_since + 
+#   AridityIndex:PlantSource2 + AridityIndex:Treatment + Duration:Perc_dev_since + 
+#   Perc_dev_since:PlantSource2
+summary(cool.spring_model_8)
+r2(cool.spring_model_8)
+res.cool.spring_model_8 <- simulateResiduals(cool.spring_model_8)
+plotQQunif(res.cool.spring_model_8)
+plotResiduals(res.cool.spring_model_8)
+
+# 9: AridityIndex + Duration + Lifeform + Perc_dev_since + PlantSource2 + Treatment + 
+#   (1 | Site/Plot) + AridityIndex:Duration + AridityIndex:PlantSource2 + 
+#   AridityIndex:Treatment + Duration:Perc_dev_since + Perc_dev_since:PlantSource2 + 
+#   Perc_dev_since:Treatment
+summary(cool.spring_model_9)
+r2(cool.spring_model_9)
+res.cool.spring_model_9 <- simulateResiduals(cool.spring_model_9)
+plotQQunif(res.cool.spring_model_9)
+plotResiduals(res.cool.spring_model_9)
+
+# 10: AridityIndex + Duration + Lifeform + Perc_dev_since + PlantSource2 + Treatment + 
+#   (1 | Site/Plot) + AridityIndex:Duration + AridityIndex:PlantSource2 + 
+#   AridityIndex:Treatment + Duration:Perc_dev_since + Perc_dev_since:PlantSource2
+summary(cool.spring_model_10)
+r2(cool.spring_model_10)
+res.cool.spring_model_10 <- simulateResiduals(cool.spring_model_10)
+plotQQunif(res.cool.spring_model_10)
+plotResiduals(res.cool.spring_model_10)
+
+# 11: AridityIndex + Duration + Lifeform + Perc_dev_since + PlantSource2 + Treatment + 
+#   (1 | Site/Plot) + AridityIndex:Duration + AridityIndex:Perc_dev_since + 
+#   AridityIndex:PlantSource2 + Duration:Perc_dev_since + Lifeform:Perc_dev_since + 
+#   Perc_dev_since:PlantSource2 + Perc_dev_since:Treatment
+summary(cool.spring_model_11)
+r2(cool.spring_model_11)
+res.cool.spring_model_11 <- simulateResiduals(cool.spring_model_11)
+plotQQunif(res.cool.spring_model_11)
+plotResiduals(res.cool.spring_model_11)
+
+# 12: AridityIndex + Duration + Lifeform + Perc_dev_since + PlantSource2 + Treatment + 
+#   (1 | Site/Plot) + AridityIndex:Duration + AridityIndex:PlantSource2 + 
+#   AridityIndex:Treatment + Duration:Perc_dev_since + Lifeform:Perc_dev_since + 
+#   Perc_dev_since:PlantSource2 + Perc_dev_since:Treatment
+summary(cool.spring_model_12)
+r2(cool.spring_model_12)
+res.cool.spring_model_12 <- simulateResiduals(cool.spring_model_12)
+plotQQunif(res.cool.spring_model_12)
+plotResiduals(res.cool.spring_model_12)
+
+
+
+
+## Cool-Spring model averaging --------------------------------------------
+
+# Average top models
+cool.spring_averaged <- model.avg(cool.spring_model_1, cool.spring_model_2,
+                                cool.spring_model_3, cool.spring_model_4,
+                                cool.spring_model_5, cool.spring_model_6,
+                                cool.spring_model_7, cool.spring_model_8,
+                                cool.spring_model_9, cool.spring_model_10,
+                                cool.spring_model_11, cool.spring_model_12) 
+
+summary(cool.spring_averaged)
+
+
+
 
 
 # Warm-Fall ---------------------------------------------------------------
@@ -189,7 +293,7 @@ warm.fall_full <- glmmTMB(Count ~ Perc_dev_since + Treatment + PlantSource2 +
                             data = warm.fall,
                             family = nbinom2)
 summary(warm.fall_full)
-r2(warm.fall_full)
+r2(warm.fall_full) # can't compute
 res.warm.fall_full <- simulateResiduals(warm.fall_full)
 plotQQunif(res.warm.fall_full)
 plotResiduals(res.warm.fall_full)
@@ -199,23 +303,24 @@ plotResiduals(res.warm.fall_full)
 ## Warm-Fall top models ---------------------------------------------------
 
 # Model selection on UA HPC (do not run)
-# options(na.action = "na.fail")
-# warm.fall_set <- dredge(warm.fall_full)
+#   options(na.action = "na.fail")
+#   warm.fall_set <- dredge(warm.fall_full)
 
 # Examine top model
 warm.fall_best_model <- get.models(warm.fall_set, 1)[[1]]
 summary(warm.fall_best_model)
 
 # Examine models within top 2 AICc units
-warm.fall_top_models.df <- subset(warm.fall_set, delta < 2) |> 
+warm.fall_top_models <- subset(warm.fall_set, delta < 2) |> 
   filter(!is.na(delta)) 
 
 # Assign each model to a separate object
-for (i in 1:nrow(warm.fall_top_models.df)) {
-  assign(paste0("warm.fall_model_", i), get.models(warm.fall_top_models.df, subset = i)[[1]])
+for (i in 1:nrow(warm.fall_top_models)) {
+  assign(paste0("warm.fall_model_", i), get.models(warm.fall_top_models, subset = i)[[1]])
 }
 
-# 1: Lifeform + Perc_dev_since + PlantSource2 + (1 | Site/Plot) + Lifeform:Perc_dev_since
+# 1: Lifeform + Perc_dev_since + PlantSource2 + 
+#   (1 | Site/Plot) + Lifeform:Perc_dev_since
 summary(warm.fall_model_1)
 r2(warm.fall_model_1) # can't compute
 res.warm.fall_model_1 <- simulateResiduals(warm.fall_model_1)
@@ -240,16 +345,85 @@ res.warm.fall_model_3 <- simulateResiduals(warm.fall_model_3)
 plotQQunif(res.warm.fall_model_3)
 plotResiduals(res.warm.fall_model_3)
 
+# 4: Duration + Lifeform + Perc_dev_since + PlantSource2 + 
+#   (1 | Site/Plot) + Lifeform:Perc_dev_since
+summary(warm.fall_model_4)
+r2(warm.fall_model_4)
+res.warm.fall_model_4 <- simulateResiduals(warm.fall_model_4)
+plotQQunif(res.warm.fall_model_4)
+plotResiduals(res.warm.fall_model_4)
 
-## Model averaging --------------------------------------------------------
+# 5: AridityIndex + Duration + Lifeform + Perc_dev_since + PlantSource2 + 
+#   (1 | Site/Plot) + AridityIndex:Perc_dev_since + Lifeform:Perc_dev_since + 
+#   Perc_dev_since:PlantSource2
+summary(warm.fall_model_5)
+r2(warm.fall_model_5) # can't compute
+res.warm.fall_model_5 <- simulateResiduals(warm.fall_model_5)
+plotQQunif(res.warm.fall_model_5)
+plotResiduals(res.warm.fall_model_5)
 
-# Convert top models table back to model.selection object
-warm.fall_top_models <- subset(warm.fall_set, delta < 2)
+# 6: AridityIndex + Lifeform + Perc_dev_since + PlantSource2 +  
+#   (1 | Site/Plot) + Lifeform:Perc_dev_since
+summary(warm.fall_model_6)
+r2(warm.fall_model_6) # can't compute
+res.warm.fall_model_6 <- simulateResiduals(warm.fall_model_6)
+plotQQunif(res.warm.fall_model_6)
+plotResiduals(res.warm.fall_model_6)
+
+# 7: AridityIndex + Lifeform + Perc_dev_since + PlantSource2 +  
+#   (1 | Site/Plot) + AridityIndex:Perc_dev_since + Lifeform:Perc_dev_since
+summary(warm.fall_model_7)
+r2(warm.fall_model_7) # can't compute
+res.warm.fall_model_7 <- simulateResiduals(warm.fall_model_7)
+plotQQunif(res.warm.fall_model_7)
+plotResiduals(res.warm.fall_model_7)
+
+# 8: Lifeform + Perc_dev_since + PlantSource2 + 
+#   (1 | Site/Plot) + Lifeform:Perc_dev_since + Perc_dev_since:PlantSource2
+summary(warm.fall_model_8)
+r2(warm.fall_model_8)
+res.warm.fall_model_8 <- simulateResiduals(warm.fall_model_8)
+plotQQunif(res.warm.fall_model_8)
+plotResiduals(res.warm.fall_model_8)
+
+# 9: AridityIndex + Lifeform + Perc_dev_since + PlantSource2 +  
+#   (1 | Site/Plot) + AridityIndex:Perc_dev_since + AridityIndex:PlantSource2 +      
+#   Lifeform:Perc_dev_since
+summary(warm.fall_model_9)
+r2(warm.fall_model_9) # can't compute
+res.warm.fall_model_9 <- simulateResiduals(warm.fall_model_9)
+plotQQunif(res.warm.fall_model_9)
+plotResiduals(res.warm.fall_model_9)
+
+# 10: AridityIndex + Lifeform + Perc_dev_since + PlantSource2 +  
+#   (1 | Site/Plot) + Lifeform:Perc_dev_since + Perc_dev_since:PlantSource2
+summary(warm.fall_model_10)
+r2(warm.fall_model_10)
+res.warm.fall_model_10 <- simulateResiduals(warm.fall_model_10)
+plotQQunif(res.warm.fall_model_10)
+plotResiduals(res.warm.fall_model_10)
+
+# 11: AridityIndex + Duration + Lifeform + Perc_dev_since + PlantSource2 + 
+#   (1 | Site/Plot) + Lifeform:Perc_dev_since + Perc_dev_since:PlantSource2
+summary(warm.fall_model_11)
+r2(warm.fall_model_11)
+res.warm.fall_model_11 <- simulateResiduals(warm.fall_model_11)
+plotQQunif(res.warm.fall_model_11)
+plotResiduals(res.warm.fall_model_11)
+
+
+
+## Warm-Fall model averaging ----------------------------------------------
 
 # Average top models
-warm.fall_averaged <- model.avg(warm.fall_top_models) # there is an issue here
-#   because there aren't consistent fixed effects across models? unsure
+warm.fall_averaged <- model.avg(warm.fall_model_1, warm.fall_model_2,
+                                warm.fall_model_3, warm.fall_model_4,
+                                warm.fall_model_5, warm.fall_model_6,
+                                warm.fall_model_7, warm.fall_model_8,
+                                warm.fall_model_9, warm.fall_model_10,
+                                warm.fall_model_11) 
 
+summary(warm.fall_averaged)
 
 
 
@@ -275,17 +449,21 @@ plotResiduals(res.year.all_full)
 
 ## Year-All top models ----------------------------------------------------
 
+# Model selection on UA HPC (do not run)
+#   options(na.action = "na.fail")
+#   year.all_set <- dredge(year.all_full)
+
 # Examine top model
 year.all_best_model <- get.models(year.all_set, 1)[[1]]
 summary(year.all_best_model)
 
 # Examine models within top 2 AICc units
-year.all_top_models.df <- subset(year.all_set, delta < 2) |> 
+year.all_top_models <- subset(year.all_set, delta < 2) |> 
   filter(!is.na(delta)) 
 
 # Assign each model to a separate object
-for (i in 1:nrow(year.all_top_models.df)) {
-  assign(paste0("year.all_model_", i), get.models(year.all_top_models.df, subset = i)[[1]])
+for (i in 1:nrow(year.all_top_models)) {
+  assign(paste0("year.all_model_", i), get.models(year.all_top_models, subset = i)[[1]])
 }
 
 
@@ -306,6 +484,14 @@ res.year.all_model_2 <- simulateResiduals(year.all_model_2)
 plotQQunif(res.year.all_model_2)
 plotResiduals(res.year.all_model_2)
 
+
+
+## Year-All model averaging -----------------------------------------------
+
+# Average top models
+year.all_averaged <- model.avg(year.all_model_1, year.all_model_2) 
+
+summary(year.all_averaged)
 
 
 save.image("RData/16_generalized-linear-models_Sonoran-seasonality.RData")
