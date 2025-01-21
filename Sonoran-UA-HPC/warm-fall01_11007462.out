@@ -1,0 +1,791 @@
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Rows: 4183 Columns: 25
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (16): Region, Site, Treatment, PlotMix, PlotMix_Climate, CodeOriginal, ...
+dbl   (7): SiteDateID, Plot, SitePlotID, SiteDatePlotID, Count, Height, raw.row
+dttm  (2): Date_Seeded, Date_Monitored
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+Rows: 187 Columns: 14
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (4): Region, Site, Sand_content, Clay_content
+dbl  (8): SiteDateID, Latitude, Longitude, Elevation_ft, MAP, MAT, Cum_preci...
+dttm (2): Date_Seeded, Date_Monitored
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+Rows: 187 Columns: 11
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (2): Region, Site
+dbl  (5): SiteDateID, Since_last_precip, ppt_mm, Perc_deviation, Deviation_mm
+dttm (4): Date_Seeded, Date_Monitored, Seed_estimate, Monitor_estimate
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+Rows: 21 Columns: 5
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (2): Region, Site
+dbl (3): Longitude, Latitude, AridityIndex
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+Rows: 41 Columns: 9
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (3): Region, Site, Monitor_season
+dbl  (3): SiteDateID, Days_elapsed, Days_since_last
+dttm (3): Date_Seeded, Monitored_Previous, Date_Monitored
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+Joining with `by = join_by(Region, Site, Date_Seeded, Date_Monitored,
+SiteDateID)`
+Joining with `by = join_by(Region, Site, Date_Seeded, Date_Monitored,
+SiteDateID)`
+Joining with `by = join_by(Region, Site, Latitude, Longitude)`
+Joining with `by = join_by(Region, Site, Date_Seeded, Date_Monitored,
+SiteDateID)`
+[1] "ConMod"  "Seed"    "Pits"    "Control" "Mulch"  
+[1] "Forb"    "Grass"   "0"       "Shrub"   "Unknown"
+[1] "Perennial" "Annual"    "Unknown"   "0"        
+[1] "Native recruit"      "Introduced/Invasive" "0"                  
+[4] "Recruit"             "Seeded"             
+[1] "Warm"       "Unknown"    "Cool"       "0"          "Year round"
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit, Perc_dev_since:LifeformShrub, AridityIndex:PlantSource2Recruit
+Fixed terms are "cond((Int))" and "disp((Int))"
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+dropping columns from rank-deficient conditional model: AridityIndex:PlantSource2Recruit, LifeformShrub:Perc_dev_since, Perc_dev_since:PlantSource2Recruit
+There were 25 warnings (use warnings() to see them)
+Global model call: glmmTMB(formula = Count ~ Perc_dev_since + AridityIndex + Treatment + 
+    PlantSource2 + Duration + Lifeform + Perc_dev_since * Treatment + 
+    Perc_dev_since * PlantSource2 + Perc_dev_since * Duration + 
+    Perc_dev_since * Lifeform + Perc_dev_since * AridityIndex + 
+    AridityIndex * Treatment + AridityIndex * Duration + AridityIndex * 
+    PlantSource2 + (1 | Site/Plot), data = warm.fall, family = nbinom2, 
+    ziformula = ~0, dispformula = ~1)
+---
+Model selection table 
+     cnd((Int)) dsp((Int)) cnd(ArI) cnd(Drt) cnd(Lff) cnd(Prc_dev_snc) cnd(PS2)
+2077      1.382          +                          +          -0.6377        +
+6302      2.518          +   -5.066                 +          -2.2190        +
+6175      1.248          +                 +        +          -0.6039        +
+2079      1.297          +                 +        +          -0.5539        +
+6304      2.910          +   -7.094        +        +          -2.4540        +
+2078      1.024          +    1.662                 +          -0.5897        +
+     cnd(ArI:Prc_dev_snc) cnd(Lff:Prc_dev_snc) cnd(Prc_dev_snc:PS2) df
+2077                                         +                      11
+6302                7.193                    +                    + 15
+6175                                         +                    + 15
+2079                                         +                      13
+6304                8.385                    +                    + 17
+2078                                         +                      12
+        logLik   AICc delta weight
+2077 -1203.384 2429.3  0.00  0.223
+6302 -1199.352 2429.6  0.35  0.187
+6175 -1199.511 2429.9  0.67  0.160
+2079 -1201.685 2430.1  0.79  0.150
+6304 -1197.508 2430.2  0.91  0.141
+2078 -1202.815 2430.2  0.95  0.138
+Models ranked by AICc(x) 
+Random terms (all models): 
+  cond(1 | Site/Plot)
+
+dropping columns from rank-deficient conditional model: LifeformShrub:Perc_dev_since
+ Family: nbinom2  ( log )
+Formula:          
+Count ~ Lifeform + Perc_dev_since + PlantSource2 + (1 | Site/Plot) +  
+    Lifeform:Perc_dev_since
+Data: warm.fall
+
+     AIC      BIC   logLik deviance df.resid 
+  2428.8   2476.1  -1203.4   2406.8      535 
+
+Random effects:
+
+Conditional model:
+ Groups    Name        Variance  Std.Dev. 
+ Plot:Site (Intercept) 2.680e-02 1.637e-01
+ Site      (Intercept) 1.805e-09 4.249e-05
+Number of obs: 546, groups:  Plot:Site, 136; Site, 6
+
+Dispersion parameter for nbinom2 family (): 2.69 
+
+Conditional model:
+                                Estimate Std. Error z value Pr(>|z|)    
+(Intercept)                      1.38189    0.06084  22.713  < 2e-16 ***
+LifeformGrass                   -0.37016    0.08760  -4.226 2.38e-05 ***
+LifeformShrub                   -1.07833    1.18603  -0.909    0.363    
+Perc_dev_since                  -0.63767    0.10049  -6.346 2.21e-10 ***
+PlantSource2Introduced/Invasive  0.09189    0.10114   0.909    0.364    
+PlantSource2Recruit             -0.62113    1.19132  -0.521    0.602    
+PlantSource2Seeded              -0.59013    0.12366  -4.772 1.82e-06 ***
+LifeformGrass:Perc_dev_since     1.08850    0.13554   8.031 9.70e-16 ***
+LifeformShrub:Perc_dev_since          NA         NA      NA       NA    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+R version 4.4.0 (2024-04-24)
+Platform: x86_64-pc-linux-gnu
+Running under: CentOS Linux 7 (Core)
+
+Matrix products: default
+BLAS:   /usr/lib64/libblas.so.3.4.2 
+LAPACK: /usr/lib64/liblapack.so.3.4.2
+
+locale:
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+
+time zone: America/Phoenix
+tzcode source: system (glibc)
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] MuMIn_1.48.4   glmmTMB_1.1.10 dplyr_1.1.4    readr_2.1.5   
+
+loaded via a namespace (and not attached):
+ [1] bit_4.5.0.1         Matrix_1.7-0        crayon_1.5.3       
+ [4] compiler_4.4.0      tidyselect_1.2.1    Rcpp_1.0.13-1      
+ [7] parallel_4.4.0      splines_4.4.0       boot_1.3-30        
+[10] lattice_0.22-6      R6_2.5.1            generics_0.1.3     
+[13] rbibutils_2.3       MASS_7.3-60.2       tibble_3.2.1       
+[16] nloptr_2.1.1        minqa_1.2.8         pillar_1.9.0       
+[19] tzdb_0.4.0          TMB_1.9.15          rlang_1.1.4        
+[22] utf8_1.2.4          bit64_4.5.2         cli_3.6.3          
+[25] withr_3.0.2         magrittr_2.0.3      mgcv_1.9-1         
+[28] Rdpack_2.6.2        grid_4.4.0          vroom_1.6.5        
+[31] hms_1.1.3           lme4_1.1-35.5       lifecycle_1.0.4    
+[34] nlme_3.1-164        reformulas_0.4.0    vctrs_0.6.5        
+[37] glue_1.8.0          numDeriv_2016.8-1.1 stats4_4.4.0       
+[40] fansi_1.0.6         tools_4.4.0         pkgconfig_2.0.3    

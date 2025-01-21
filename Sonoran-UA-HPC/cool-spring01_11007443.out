@@ -1,0 +1,229 @@
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Rows: 4183 Columns: 25
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (16): Region, Site, Treatment, PlotMix, PlotMix_Climate, CodeOriginal, ...
+dbl   (7): SiteDateID, Plot, SitePlotID, SiteDatePlotID, Count, Height, raw.row
+dttm  (2): Date_Seeded, Date_Monitored
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+Rows: 187 Columns: 14
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (4): Region, Site, Sand_content, Clay_content
+dbl  (8): SiteDateID, Latitude, Longitude, Elevation_ft, MAP, MAT, Cum_preci...
+dttm (2): Date_Seeded, Date_Monitored
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+Rows: 187 Columns: 11
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (2): Region, Site
+dbl  (5): SiteDateID, Since_last_precip, ppt_mm, Perc_deviation, Deviation_mm
+dttm (4): Date_Seeded, Date_Monitored, Seed_estimate, Monitor_estimate
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+Rows: 21 Columns: 5
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (2): Region, Site
+dbl (3): Longitude, Latitude, AridityIndex
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+Rows: 41 Columns: 9
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (3): Region, Site, Monitor_season
+dbl  (3): SiteDateID, Days_elapsed, Days_since_last
+dttm (3): Date_Seeded, Monitored_Previous, Date_Monitored
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+Joining with `by = join_by(Region, Site, Date_Seeded, Date_Monitored,
+SiteDateID)`
+Joining with `by = join_by(Region, Site, Date_Seeded, Date_Monitored,
+SiteDateID)`
+Joining with `by = join_by(Region, Site, Latitude, Longitude)`
+Joining with `by = join_by(Region, Site, Date_Seeded, Date_Monitored,
+SiteDateID)`
+[1] "ConMod"  "Seed"    "Pits"    "Control" "Mulch"  
+[1] "Forb"    "Grass"   "0"       "Shrub"   "Unknown"
+[1] "Perennial" "Annual"    "Unknown"   "0"        
+[1] "Native recruit"      "Introduced/Invasive" "0"                  
+[4] "Recruit"             "Seeded"             
+[1] "Warm"       "Unknown"    "Cool"       "0"          "Year round"
+Fixed terms are "cond((Int))" and "disp((Int))"
+Warning messages:
+1: In finalizeTMB(TMBStruc, obj, fit, h, data.tmb.old) :
+  Model convergence problem; non-positive-definite Hessian matrix. See vignette('troubleshooting')
+2: In finalizeTMB(TMBStruc, obj, fit, h, data.tmb.old) :
+  Model convergence problem; non-positive-definite Hessian matrix. See vignette('troubleshooting')
+Global model call: glmmTMB(formula = Count ~ Perc_dev_since + AridityIndex + Treatment + 
+    PlantSource2 + Duration + Lifeform + Perc_dev_since * Treatment + 
+    Perc_dev_since * PlantSource2 + Perc_dev_since * Duration + 
+    Perc_dev_since * Lifeform + Perc_dev_since * AridityIndex + 
+    AridityIndex * Treatment + AridityIndex * Duration + AridityIndex * 
+    PlantSource2 + (1 | Site/Plot), data = cool.spring, family = nbinom2, 
+    ziformula = ~0, dispformula = ~1)
+---
+Model selection table 
+      cnd((Int)) dsp((Int)) cnd(ArI) cnd(Drt) cnd(Lff) cnd(Prc_dev_snc)
+5504      0.6905          +    5.022        +        +           0.6566
+5632      0.7312          +    4.659        +        +           0.2775
+13824     0.7564          +    4.555        +        +           0.3125
+13696     0.7121          +    4.955        +        +           0.7454
+14336     0.8782          +    3.766        +        +           0.2795
+7552      0.6695          +    5.160        +        +           0.6184
+      cnd(PS2) cnd(Trt) cnd(ArI:Drt) cnd(ArI:Prc_dev_snc) cnd(ArI:PS2)
+5504         +        +            +                                 +
+5632         +        +            +                2.221            +
+13824        +        +            +                2.516            +
+13696        +        +            +                                 +
+14336        +        +            +                2.736            +
+7552         +        +            +                                 +
+      cnd(ArI:Trt) cnd(Drt:Prc_dev_snc) cnd(Lff:Prc_dev_snc)
+5504                                  +                     
+5632                                  +                     
+13824                                 +                     
+13696                                 +                     
+14336            +                    +                     
+7552                                  +                    +
+      cnd(Prc_dev_snc:PS2) cnd(Prc_dev_snc:Trt) df    logLik    AICc delta
+5504                     +                      24 -5607.616 11263.8  0.00
+5632                     +                      25 -5606.674 11264.0  0.17
+13824                    +                    + 29 -5602.583 11264.0  0.21
+13696                    +                    + 28 -5603.787 11264.4  0.56
+14336                    +                    + 33 -5598.817 11264.8  0.94
+7552                     +                      26 -5606.186 11265.1  1.24
+      weight
+5504   0.211
+5632   0.194
+13824  0.190
+13696  0.160
+14336  0.132
+7552   0.113
+Models ranked by AICc(x) 
+Random terms (all models): 
+  cond(1 | Site/Plot)
+
+ Family: nbinom2  ( log )
+Formula:          
+Count ~ AridityIndex + Duration + Lifeform + Perc_dev_since +  
+    PlantSource2 + Treatment + (1 | Site/Plot) + AridityIndex:Duration +  
+    AridityIndex:PlantSource2 + Duration:Perc_dev_since + Perc_dev_since:PlantSource2
+Data: cool.spring
+
+     AIC      BIC   logLik deviance df.resid 
+ 11263.2  11397.7  -5607.6  11215.2     1976 
+
+Random effects:
+
+Conditional model:
+ Groups    Name        Variance Std.Dev.
+ Plot:Site (Intercept) 0.02431  0.1559  
+ Site      (Intercept) 0.01673  0.1293  
+Number of obs: 2000, groups:  Plot:Site, 180; Site, 6
+
+Dispersion parameter for nbinom2 family (): 1.13 
+
+Conditional model:
+                                                Estimate Std. Error z value
+(Intercept)                                      0.69046    0.31949   2.161
+AridityIndex                                     5.02173    1.83790   2.732
+DurationPerennial                                2.45470    1.30594   1.880
+DurationUnknown                                 -0.94488    0.99945  -0.945
+LifeformGrass                                    0.48469    0.06339   7.646
+LifeformShrub                                   -1.29338    1.17302  -1.103
+Perc_dev_since                                   0.65657    0.07701   8.525
+PlantSource2Introduced/Invasive                 -1.19851    0.37791  -3.171
+PlantSource2Seeded                              -1.31989    0.57463  -2.297
+TreatmentConMod                                  0.03749    0.08200   0.457
+TreatmentControl                                 0.01213    0.10516   0.115
+TreatmentMulch                                   0.04039    0.08251   0.490
+TreatmentPits                                    0.27617    0.08146   3.390
+AridityIndex:DurationPerennial                 -19.34417    6.69419  -2.890
+AridityIndex:DurationUnknown                    -0.34696    5.61415  -0.062
+AridityIndex:PlantSource2Introduced/Invasive     9.52136    2.48315   3.834
+AridityIndex:PlantSource2Seeded                  7.52359    3.74719   2.008
+DurationPerennial:Perc_dev_since                -1.27607    0.33726  -3.784
+DurationUnknown:Perc_dev_since                  -0.96478    0.33922  -2.844
+Perc_dev_since:PlantSource2Introduced/Invasive  -1.92807    0.12394 -15.556
+Perc_dev_since:PlantSource2Seeded                0.53775    0.20125   2.672
+                                               Pr(>|z|)    
+(Intercept)                                    0.030684 *  
+AridityIndex                                   0.006289 ** 
+DurationPerennial                              0.060156 .  
+DurationUnknown                                0.344455    
+LifeformGrass                                  2.08e-14 ***
+LifeformShrub                                  0.270199    
+Perc_dev_since                                  < 2e-16 ***
+PlantSource2Introduced/Invasive                0.001517 ** 
+PlantSource2Seeded                             0.021622 *  
+TreatmentConMod                                0.647552    
+TreatmentControl                               0.908131    
+TreatmentMulch                                 0.624467    
+TreatmentPits                                  0.000699 ***
+AridityIndex:DurationPerennial                 0.003856 ** 
+AridityIndex:DurationUnknown                   0.950721    
+AridityIndex:PlantSource2Introduced/Invasive   0.000126 ***
+AridityIndex:PlantSource2Seeded                0.044665 *  
+DurationPerennial:Perc_dev_since               0.000155 ***
+DurationUnknown:Perc_dev_since                 0.004454 ** 
+Perc_dev_since:PlantSource2Introduced/Invasive  < 2e-16 ***
+Perc_dev_since:PlantSource2Seeded              0.007539 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+R version 4.4.0 (2024-04-24)
+Platform: x86_64-pc-linux-gnu
+Running under: CentOS Linux 7 (Core)
+
+Matrix products: default
+BLAS:   /usr/lib64/libblas.so.3.4.2 
+LAPACK: /usr/lib64/liblapack.so.3.4.2
+
+locale:
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+
+time zone: America/Phoenix
+tzcode source: system (glibc)
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] MuMIn_1.48.4   glmmTMB_1.1.10 dplyr_1.1.4    readr_2.1.5   
+
+loaded via a namespace (and not attached):
+ [1] bit_4.5.0.1         Matrix_1.7-0        crayon_1.5.3       
+ [4] compiler_4.4.0      tidyselect_1.2.1    Rcpp_1.0.13-1      
+ [7] parallel_4.4.0      splines_4.4.0       boot_1.3-30        
+[10] lattice_0.22-6      R6_2.5.1            generics_0.1.3     
+[13] rbibutils_2.3       MASS_7.3-60.2       tibble_3.2.1       
+[16] nloptr_2.1.1        minqa_1.2.8         pillar_1.9.0       
+[19] tzdb_0.4.0          TMB_1.9.15          rlang_1.1.4        
+[22] utf8_1.2.4          bit64_4.5.2         cli_3.6.3          
+[25] withr_3.0.2         magrittr_2.0.3      mgcv_1.9-1         
+[28] Rdpack_2.6.2        grid_4.4.0          vroom_1.6.5        
+[31] hms_1.1.3           lme4_1.1-35.5       lifecycle_1.0.4    
+[34] nlme_3.1-164        reformulas_0.4.0    vctrs_0.6.5        
+[37] glue_1.8.0          numDeriv_2016.8-1.1 stats4_4.4.0       
+[40] fansi_1.0.6         tools_4.4.0         pkgconfig_2.0.3    
