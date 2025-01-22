@@ -1,0 +1,11 @@
+Region,Site,Date_Seeded,Date_Monitored,Plot,Treatment,PlotMix,SiteDatePlotID
+Sonoran SE,Patagonia,2019-08-09,2021-03-12,33,`ConMod,Medium,285
+Sonoran SE,SRER,2019-08-09,2022-03-24,12,Seed,Medium,372
+Sonoran Central,Pleasant,2019-12-19,2023-03-24,4,Seed only,Warm,1120
+Sonoran Central,Pleasant,2019-12-19,2023-03-24,8,Seed only,Cool,1124
+Sonoran Central,Pleasant,2019-12-19,2023-03-24,12,Seed only,Warm,1128
+Sonoran Central,Pleasant,2019-12-19,2023-03-24,15,Seed only,Cool,1131
+Sonoran Central,Pleasant,2019-12-19,2023-03-24,22,Seed only,Warm,1138
+Sonoran Central,Pleasant,2019-12-19,2023-03-24,23,Seed only,Cool,1139
+Sonoran Central,Pleasant,2019-12-19,2023-03-24,30,Seed only,Warm,1146
+Sonoran Central,Pleasant,2019-12-19,2023-03-24,32,Seed only,Cool,1148

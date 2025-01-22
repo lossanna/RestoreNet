@@ -640,7 +640,7 @@ p2x2.codes.de %>%
 
 # Combine location-independent and dependent with new codes
 p2x2.codes.missing <- p2x2.codes.missing %>%
-  filter(LocationDependence != "dependent") %>% # remove in correct location-dependent
+  filter(LocationDependence != "dependent") %>% # remove incorrect location-dependent
   bind_rows(p2x2.codes.de) # add correct location-dependent
 
 
