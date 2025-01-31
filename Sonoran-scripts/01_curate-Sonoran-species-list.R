@@ -1,5 +1,5 @@
 # Created: 2025-01-21
-# Last updated: 2025-01-21
+# Last updated: 2025-01-31
 
 # Purpose: Curate a complete species list with Code, Code Original, Name, Native, Duration, Lifeform info
 #   for subplot data only (2x2 data excluded).
@@ -426,6 +426,35 @@ intersect(species.de$Code, species.in$CodeOriginal)
 unique(species.de$Native)
 unique(species.de$Duration)
 unique(species.de$Lifeform)
+
+
+# Reorder rows by Region and Site 
+species.de <- species.de |> 
+  arrange(Site) |> 
+  arrange(Region)
+
+
+# Final manual check ------------------------------------------------------
+
+# Location independent
+# OUTPUT: Final manual check of location-independent species list
+write_csv(species.in,
+          file = "Sonoran-data/data-wrangling-intermediate/01a_output6_location-independent-final-check.csv")
+
+# EDITED: fixed a few codes
+#   Changed codes that did not match USDA Plants code (AMIN3, EUAB, EUME3, STSP3, URLI5)
+species.in <- read_xlsx("Sonoran-data/data-wrangling-intermediate/01b_edited6_location-independent-final-fix.xlsx")
+
+
+
+# Location dependent
+# OUTPUT: Final manual check of location-dependent species list; check Native status
+write_csv(species.de,
+          file = "Sonoran-data/data-wrangling-intermediate/01a_output7_location-dependent-final-check.csv")
+
+# EDITED: Change Native status based on name for unknown grass at SCC
+species.de <- read_xlsx("Sonoran-data/data-wrangling-intermediate/01b_edited7_location-dependent-final-fix.xlsx")
+
 
 
 
