@@ -444,7 +444,7 @@ nrow(monitor.correct) / 36
 
 # Write to csv
 write_csv(monitor.correct,
-          file = "data/cleaned/02_corrected-monitoring-info_clean.csv")
+          file = "Sonoran-data/cleaned/02_corrected-monitoring-info_clean.csv")
 
 
 # Make subplot tables -----------------------------------------------------
