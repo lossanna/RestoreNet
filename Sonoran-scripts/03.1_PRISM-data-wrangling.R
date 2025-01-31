@@ -1,5 +1,5 @@
 # Created: 2025-01-23
-# Last updated: 2025-01-23
+# Last updated: 2025-01-31
 
 # Purpose: Compile climate data gathered from PRISM for Sonoran Desert sites.
 # Used 4km for daily values, and used 800m 1991-2020 normals.
