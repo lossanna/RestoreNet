@@ -1,5 +1,5 @@
 Created: 2025-01-21  
-Last updated: 2025-01-21
+Last updated: 2025-01-31
   
 Notes about `output` and `edited` intermediate data files created in data cleaning for RAMPS RestoreNet project (updated analysis for publication with Sonoran sites only).
 
@@ -122,34 +122,25 @@ Notes about `output` and `edited` intermediate data files created in data cleani
 `02_subplot-wrong-monitor-events-corrected.csv`
 
 
-## From `03.1_monitor-info-comparison.R`
-- No output/edited pair.
-
-### Written out
-#### `03.1_monitoring-events-with-Farrell-climate-data.csv`
-- Table of monitoring information by site and date with climate/abiotic information from Farrell (2023) *Ecological Applications* data added. 
-- Used to make `03.2_monitoring-events-with-Farrell-climate-data-and-PRISM-csv-file-name.xlsx`.
-
-
 
 ## From `03.2_PRISM-data-wrangling.R`
 - No output/edited pairs.
 
 ### Read in
-#### `03.2_monitoring-events-with-Farrell-climate-data-and-PRISM-csv-file-name.xlsx`
-- Excel file that I started from the `03.2.R` intermediate csv, and then added the columns `path_beginning`, `cum_file`, and `since_file`. Spreadsheet has two tabs, `daily` (actual precip experienced during the  experiment) and `normals` (30-year normal averages). This is used to connect the correct file path name to the Region/Site/Date_Seeded/Date_Monitored information.
+#### `03.1_monitoring-events-with-Farrell-climate-data-and-PRISM-csv-file-name.xlsx`
+- Excel file with Farrell climate data, with added the columns `path_beginning`, `cum_file`, and `since_file`. Spreadsheet has two tabs, `daily` (actual precip experienced during the  experiment) and `normals` (30-year normal averages). This is used to connect the correct file path name to the Region/Site/Date_Seeded/Date_Monitored information.
 - Two individual PRISM files were downloaded using the Explorer tool and the coordinates Farrell provided for every date monitoring occurred. One file covers the time interval of the previous to current monitoring date (`since_file`), and one file covers the time interval from the time of seeding to the current monitoring date (`cum_file`).
 - See the textbox in the Excel file for more details.
 
 
-## From `03.3_explore-precip-trends`
+## From `03.2_precip-percent-deviation-from-normals.R`
 - No output/edited pair.
 
 ### Read in
-#### `03.3_months-to-include-for-precip-normals-comparison.xlsx`
+#### `03.2_months-to-include-for-precip-normals-comparison.xlsx`
 - Excel file of monitoring information, and which months to include when creating normals of comparable interval to the interval between monitoring events, or since seeding. See `README` tab for more details.
 - Separate tabs for intervals between monitoring events (`since_last`), and since seeding (`cum`).
-- Started out with information from `02_corrected-monitoring-info-by-date-and-site_clean.csv` (Region, Site, Date_Seeded, Date_Monitored, SiteDateID), and then I added columns to "round" the dates to the beginning, middle or end of the month to make comparable intervals, since normals were given at a monthly resolution.
+- Started out with information from `02_corrected-monitoring-info.csv` (Region, Site, Date_Seeded, Date_Monitored, SiteDateID), and then I added columns to "round" the dates to the beginning, middle or end of the month to make comparable intervals, since normals were given at a monthly resolution.
 
 
 ## From `04.1_data-wrangling_subplot.R`
