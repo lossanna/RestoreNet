@@ -7,10 +7,9 @@
 #   Essentially, add corrected metadata from 01.R and 02.R to subplot data,
 #     correct SpeciesSeeded column, and add other grouping columns (PlantSource, PlantSource2, Weedy, PlotMix_Climate).
 
+
 library(readxl)
 library(tidyverse)
-
-
 
 # Load data ---------------------------------------------------------------
 
