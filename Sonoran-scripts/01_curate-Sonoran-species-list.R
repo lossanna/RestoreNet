@@ -386,16 +386,14 @@ species.de |>
 #   Look for UNGRS1 in spring 2022 in subplot data
 subplot |>
   mutate(Date_Monitored = as.character(Date_Monitored)) |>
-  filter(
-    Site == "SRER",
-    str_detect(Date_Monitored, "2022"),
-    str_detect(CodeOriginal, "UNGRS")) # CodeOriginal is actually UNGRS-1
+  filter(Site == "SRER",
+         str_detect(Date_Monitored, "2022"),
+         str_detect(CodeOriginal, "UNGRS")) # CodeOriginal is actually UNGRS-1
 
 #   Look for UNGRS-1 at SRER in species list
 species.de |>
-  filter(
-    Site == "SRER",
-    CodeOriginal == "UNGRS-1")
+  filter(Site == "SRER",
+         CodeOriginal == "UNGRS-1")
 
 #   Change Code & CodeOriginal of UNGRS1 from spring 2022 to UNGRS-1
 species.de |>
@@ -411,9 +409,8 @@ species.de <- species.de |>
 
 #   Check to see it was removed
 species.de |>
-  filter(
-    Site == "SRER",
-    CodeOriginal == "UNGRS-1")
+  filter(Site == "SRER",
+         CodeOriginal == "UNGRS-1")
 
 
 # Check for unique codes with lo-depen and lo-indepen
@@ -452,7 +449,8 @@ species.in <- read_xlsx("Sonoran-data/data-wrangling-intermediate/01b_edited6_lo
 write_csv(species.de,
           file = "Sonoran-data/data-wrangling-intermediate/01a_output7_location-dependent-final-check.csv")
 
-# EDITED: Change Native status based on name for unknown grass at SCC
+# EDITED: Change Native status based on name for unknown grass at SCC,
+#     and switched names for UNFO-1 at SRER & Patagonia (name was specific to site)
 species.de <- read_xlsx("Sonoran-data/data-wrangling-intermediate/01b_edited7_location-dependent-final-fix.xlsx")
 
 

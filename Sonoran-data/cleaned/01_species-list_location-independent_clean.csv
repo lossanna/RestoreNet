@@ -1,5 +1,4 @@
 CodeOriginal,Code,Name,Native,Duration,Lifeform
-CodeOriginal,Code,Name,Native,Duration,Lifeform
 0,0,0,0,0,0
 ABPA3,ABPA3,Abutilon parvulum,Native,Perennial,Forb
 ACHY,ACHY,Achnatherum hymenoides,Native,Perennial,Grass
@@ -11,8 +10,8 @@ AMCH3,AMCH3,Ammocodon chenopodioides,Native,Perennial,Forb
 AMCO3,AMCO3,Ambrosia confertiflora,Native,Perennial,Forb
 AMDE4,AMDE4,Ambrosia deltoidea,Native,Perennial,Shrub
 AMDU2,AMDU2,Ambrosia dumosa,Native,Perennial,Shrub
-AMIN3,AMIN3,Amsinckia intermedia,Native,Annual,Forb
 AMIN3,AMMEI2,Amsinckia menziesii,Native,Annual,Forb
+AMMEI2,AMMEI2,Amsinckia menziesii,Native,Annual,Forb
 AMPA,AMPA,Amaranthus palmeri,Native,Annual,Forb
 AMSIN,AMSIN,Amsinckia,Native,Annual,Forb
 AMTE3,AMTE3,Amsinckia tessellata,Native,Annual,Forb
