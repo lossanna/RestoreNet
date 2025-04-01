@@ -10,8 +10,8 @@ AMCH3,AMCH3,Ammocodon chenopodioides,Native,Perennial,Forb
 AMCO3,AMCO3,Ambrosia confertiflora,Native,Perennial,Forb
 AMDE4,AMDE4,Ambrosia deltoidea,Native,Perennial,Shrub
 AMDU2,AMDU2,Ambrosia dumosa,Native,Perennial,Shrub
-AMIN3,AMMEI2,Amsinckia menziesii,Native,Annual,Forb
-AMMEI2,AMMEI2,Amsinckia intermedia,Native,Annual,Forb
+AMIN3,AMIN3,Amsinckia intermedia,Native,Annual,Forb
+AMMEI2,AMMEI2,Amsinckia menziesii,Native,Annual,Forb
 AMPA,AMPA,Amaranthus palmeri,Native,Annual,Forb
 AMSIN,AMSIN,Amsinckia,Native,Annual,Forb
 AMTE3,AMTE3,Amsinckia tessellata,Native,Annual,Forb
@@ -115,8 +115,8 @@ ERTR8,ERTR8,Eriogonum trichopes,Native,Annual,Forb
 ERVE5,ERVE5,Eruca vesicaria,Introduced,Annual,Forb
 ESCA2,ESCA2,Eschscholzia californica,Native,Unknown,Forb
 ESCAM,ESCAM,Eschscholzia californica ssp. mexicana,Native,Unknown,Forb
-EUAB,CHAB2,Chamaesyce abramsiana,Native,Annual,Forb
-EUME3,CHME5,Chamaesyce melanadenia,Native,Perennial,Forb
+EUAB,EUAB,Chamaesyce abramsiana,Native,Annual,Forb
+EUME3,EUME3,Chamaesyce melanadenia,Native,Perennial,Forb
 EUPO3,CHPO12,Chamaesyce polycarpa,Native,Unknown,Forb
 EVAR,EVAR,Evolvulus arizonicus,Native,Perennial,Forb
 GIST,GIST,Gilia stellata,Native,Annual,Forb
@@ -235,14 +235,14 @@ SPEC2,SPEC2,Spermolepis echinata,Native,Annual,Forb
 SPGR2,SPGR2,Sphaeralcea grossulariifolia,Native,Perennial,Forb
 STGN,STGN,Stylocline gnaphalioides,Native,Annual,Forb
 STMI2,STMI2,Stylocline micropoides,Native,Annual,Forb
-STSP3,ACSP12,Stipa speciosa,Native,Perennial,Grass
+STSP3,STSP3,Stipa speciosa,Native,Perennial,Grass
 TAPO5,TAPO5,Talinum polygaloides,Native,Perennial,Forb
 TILA2,TILA2,Tidestromia lanuginosa,Native,Annual,Forb
 TOIN,TOIN,Townsendia incana,Native,Unknown,Forb
 TRMU,TRMU,Tridens muticus,Native,Perennial,Grass
 TRPI,TRPI,Tradescantia pinetorum,Native,Perennial,Forb
 TRTE,TRTE,Tribulus terrestris,Introduced,Annual,Forb
-URLI5,MILI5,Microseris lindleyi,Native,Annual,Forb
+URLI5,URLI5,Microseris lindleyi,Native,Annual,Forb
 VEEN,VEEN,Verbesina encelioides,Native,Annual,Forb
 VEPEX2,VEPEX2,Veronica peregrina ssp. xalapensis,Native,Annual,Forb
 VUOC,VUOC,Vulpia octoflora,Native,Annual,Grass

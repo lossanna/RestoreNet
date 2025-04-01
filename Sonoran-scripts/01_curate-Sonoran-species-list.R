@@ -1,5 +1,5 @@
 # Created: 2025-01-21
-# Last updated: 2025-01-31
+# Last updated: 2025-04-01
 
 # Purpose: Curate a complete species list with Code, Code Original, Name, Native, Duration, Lifeform info
 #   for subplot data only (2x2 data excluded).
@@ -129,11 +129,11 @@ sub.missing.known <- sub.missing |> # ones missing from original master list (.x
 
 # Location-independent species from master list & subplot data ------------
 
+## Add Lifeform to master list --------------------------------------------
 
-## Add lifeform to master/subplot list ------------------------------------
-
-# Extract lifeform information from subplot data for knowns from Master.xlsx
+# Extract lifeform information from subplot data for knowns
 subplot.in.lifeform <- subplot |>
+  filter(!str_detect(subplot$CodeOriginal, "Unk|unk|spp\\.")) |>
   select(CodeOriginal, Functional_Group) |>
   distinct(.keep_all = TRUE) |>
   rename(Lifeform = Functional_Group) |>
@@ -156,6 +156,7 @@ write_csv(subplot.in.lifeform.inspect,
 #   Standardize spelling of lifeform to Grass, Forb, or Shrub
 subplot.in.duplicate <- read_csv("Sonoran-data/data-wrangling-intermediate/01b_edited2_subplot-lifeform-info-corrected.csv")
 
+# Replace lifeform info for subplot knowns with corrections based on edited csv
 subplot.in.lifeform <- subplot.in.lifeform |>
   filter(!CodeOriginal %in% subplot.in.duplicate$CodeOriginal) |>
   bind_rows(subplot.in.duplicate) |>
@@ -163,16 +164,17 @@ subplot.in.lifeform <- subplot.in.lifeform |>
 length(unique(subplot.in.lifeform$CodeOriginal)) == nrow(subplot.in.lifeform) # check for matching lengths
 
 
-# Add subplot lifeform information to working species list
+# Add subplot lifeform information to master list (working species list)
 species.m.known <- left_join(species.m.known, subplot.in.lifeform)
 
-# Compile list of lifeform information thus far from master
+# Compile list of lifeform information thus far of species from master
 lifeform.known <- species.m.known |>
   filter(!is.na(Lifeform)) |>
   select(CodeOriginal, Name, Lifeform) |>
   arrange(CodeOriginal)
 
-# Add missing lifeform information to working species list
+
+# Add missing lifeform information to master list (working species list)
 # OUTPUT: create list of species without lifeform information
 lifeform.na <- species.m.known |>
   filter(is.na(Lifeform)) |>
@@ -187,10 +189,10 @@ head(lifeform.na)
 lifeform.na.edit <- read_csv("Sonoran-data/data-wrangling-intermediate/01b_edited3_xlsx_lifeform-na.csv")
 head(lifeform.na.edit)
 
-# Add newly edited lifeform data to existing list
+# Add newly edited lifeform data (previously NAs) to existing list
 lifeform.known <- bind_rows(lifeform.known, lifeform.na.edit)
 
-# Add lifeform info to working species list
+# Add lifeform info to master list (working species list)
 species.m.known <- species.m.known |>
   select(-Lifeform) |> # must remove Lifeform col so left_join() does not conflict
   left_join(lifeform.known)
@@ -211,23 +213,25 @@ unique(species.m.known$Lifeform) # Lifeform names have been standardized
 
 
 
-## Add duration to species/subplot list -----------------------------------
+## Add Duration to master list ---------------------------------------------
 
 #   All duration information needed to be added manually from USDA Plants.
 
-# OUTPUT: write output with Native and Lifeform columns
+# OUTPUT: write out current master/subplot list, which has Native and Lifeform columns
 write_csv(species.m.known,
           file = "Sonoran-data/data-wrangling-intermediate/01a_output4_xlsx_native-lifeform.csv")
 head(species.m.known)
 
 # EDITED: edit new file manually to add Duration
-#   Also delete 2 duplicate rows (BOAR & SATR12) with misspelled name/updated name (correct row remains)
-#     and add row of all 0s for empty plots
+#   Also delete 2 duplicate rows (BOAR & SATR12) with misspelled name (B. aristoides)/old name (S. iberica)
+#     so only correct rows remain; and add row of all 0s for empty plots
 species.m.known <- read_csv("Sonoran-data/data-wrangling-intermediate/01b_edited4_xlsx_native-lifeform-duration.csv")
 head(species.m.known)
 
 
-# Add species from subplot data not in master
+## Combine master and subplot codes for complete list ---------------------
+
+# Add species from subplot data not in master to ongoing master list
 #   Combine species.m.known and sub.missing.known
 species.in <- bind_rows(species.m.known, sub.missing.known) |>
   arrange(CodeOriginal)
@@ -237,7 +241,7 @@ apply(species.in, 2, anyNA) # should all be FALSE
 
 
 
-## Standardize codes for lo-indepen species/subplot -----------------------
+## Standardize codes for location-independent species list ----------------
 
 # Add Code col
 species.in$Code <- species.in$CodeOriginal
@@ -289,7 +293,7 @@ names.fix.in # look at master species list for clarification
 #   USDA codes:
 #     ERCI = Eragrostis cilianensis
 #     ERCI2 = Eragrostis ciliaris
-# Sonran Central is correct, ERCI should be Eragrostis cilianensis.
+# Sonoran Central is correct, ERCI should be Eragrostis cilianensis.
 
 # Remove incorrect row from species.in
 species.in <- species.in |> 
@@ -310,25 +314,21 @@ unique(species.in$Lifeform)
 
 # Location-dependent species for subplot ----------------------------------
 
-#   Site information is necessary for unknowns, but only provided for codes in subplot
-#     or 2x2 codes. There might be some codes that were in the master species list
-#     but never used in either the subplot or 2x2 data, and those codes will not be included
-#     because there is no site information (and they aren't necessary).
-
 # Combine location-dependent species
 #   from master species list and from subplot data
 species.de <- bind_rows(species.m.unk, sub.missing.unk) |>
-  filter(CodeOriginal %in% subplot$CodeOriginal)
+  filter(CodeOriginal %in% subplot$CodeOriginal) %>% 
+  arrange(CodeOriginal)
 
-# OUTPUT: write to CSV to fill in information for species.m.unk
+# OUTPUT: write to CSV to fill in information for location-dependent list (species.de)
 write_csv(species.de,
           file = "Sonoran-data/data-wrangling-intermediate/01a_output5.1_location-dependent.csv")
 head(species.de) # contains Name & Native
 
-# OUTPUT: extract Site information for species.m.unk to add to location-dependent list
+# OUTPUT: extract Site information from subplot data to add to location-dependent list
 #   and write to CSV
 sites.m.unk <- subplot |>
-  filter(CodeOriginal %in% species.m.unk$CodeOriginal) |>
+  filter(CodeOriginal %in% c(species.m.unk$CodeOriginal, sub.missing.unk$CodeOriginal)) |>
   select(CodeOriginal, Region, Site) |>
   distinct(.keep_all = TRUE) |>
   arrange(Region) |>
@@ -345,10 +345,8 @@ filter(subplot, CodeOriginal == "NA") |>
 
 # EDITED: manually add/correct Site, Native, Duration, and Lifeform cols
 #   Use 5.1 as skeleton to edit
-#   Delete rows that do not appear in subplot data (don't appear in output5.2.csv)
 #   Create extra rows for unknowns (they are defined by Region but need a row for each Site), as cross-referenced
-#     with output5.2.csv)
-#   Manually add row for NA code that was actually an observation of a plant
+#     with output5.2.csv): ARISPP, CRYPT, MENSPP, SIDSPP, UNGR1, UNGRS1, Unk sp.
 species.de <- read_csv("Sonoran-data/data-wrangling-intermediate/01b_edited5_location-dependent_native-duration-lifeform.csv")
 head(species.de)
 

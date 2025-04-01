@@ -3,13 +3,13 @@ Sonoran Central,Pleasant,CRYPT.Pleasant,CRYPT,"Cryptantha spp., Pleasant",Native
 Sonoran Central,Pleasant,ERIOG.Pleasant,ERIOG,"Eriogonum spp., Pleasant",Native,Unknown,Forb
 Sonoran Central,Pleasant,Unk bunchGrass #1.Pleasant,Unk bunchGrass #1,"Could be BOCU, Pleasant",Unknown,Unknown,Grass
 Sonoran Central,Pleasant,Unk sp..Pleasant,Unk sp.,"Unknown species, Pleasant",Unknown,Unknown,Unknown
-Sonoran Central,Preserve,Unk heart.Preserve,Unk heart,"Unknown forb with heart-shaped cotyledon; possibly MAPA5 (although that species not seen growing there), Preserve",Unknown,Unknown,Forb
 Sonoran Central,Preserve,UNK heart.Preserve,UNK heart,"Unknown forb with heart-shaped cotyledon; possibly MAPA5 (although that species not seen growing there), Preserve",Unknown,Unknown,Forb
+Sonoran Central,Preserve,Unk heart.Preserve,Unk heart,"Unknown forb with heart-shaped cotyledon; possibly MAPA5 (although that species not seen growing there), Preserve",Unknown,Unknown,Forb
 Sonoran Central,Roosevelt,CRYPT.Roosevelt,CRYPT,"Cryptantha spp., Roosevelt",Native,Unknown,Forb
 Sonoran Central,Roosevelt,unk grass 2.Roosevelt,unk grass 2,"Unknown grass 2, Roosevelt",Unknown,Unknown,Grass
+Sonoran Central,SCC,UNK brown.SCC,UNK brown,"Unknown brown, SCC",Unknown,Unknown,Unknown
 Sonoran Central,SCC,Unk grass.SCC,Unk grass,"Unknown likely associated with warm seed mix, SCC",Unknown,Unknown,Grass
 Sonoran Central,SCC,Unk sp..SCC,Unk sp.,"Unknown species, SCC",Unknown,Unknown,Unknown
-Sonoran Central,SCC,UNK brown.SCC,UNK brown,"Unknown brown, SCC",Unknown,Unknown,Unknown
 Sonoran SE,Patagonia,ARISPP.Patagonia,ARISPP,"Aristida spp., Patagonia",Native,Unknown,Grass
 Sonoran SE,Patagonia,CALSPP.Patagonia,CALSPP,"Calandrinia spp., Patagonia",Native,Unknown,Forb
 Sonoran SE,Patagonia,CHESPP.Patagonia,CHESPP,"Chenopodium spp., Patagonia",Unknown,Unknown,Forb
@@ -47,8 +47,14 @@ Sonoran SE,SRER,ASTSPP.SRER,ASTSPP,"Astragalus spp., SRER",Native/Unknown,Unknow
 Sonoran SE,SRER,BOUSPP.SRER,BOUSPP,"Bouteloua spp., SRER",Native,Unknown,Grass
 Sonoran SE,SRER,BRASPP.SRER,BRASPP,"Brassica spp. (likely DEPI), SRER",Native/Unknown,Unknown,Forb
 Sonoran SE,SRER,CRYSPP.SRER,CRYSPP,"Cryptantha spp., SRER",Native,Unknown,Forb
+Sonoran SE,SRER,CRYSPP 1.SRER,CRYSPP 1,"Cryptantha spp. 1, SRER",Native,Unknown,Forb
+Sonoran SE,SRER,CRYSPP 2.SRER,CRYSPP 2,"Cryptantha spp. 2, SRER",Native,Unknown,Forb
+Sonoran SE,SRER,CRYSPP2.SRER,CRYSPP2,"Cryptantha spp. 3, SRER",Native,Unknown,Forb
 Sonoran SE,SRER,ERIASPP.SRER,ERIASPP,"Eriastrum spp., SRER",Native,Unknown,Forb
+Sonoran SE,SRER,FESSPP.SRER,FESSPP,"Fescue spp., SRER",Native,Unknown,Grass
 Sonoran SE,SRER,GILSPP.SRER,GILSPP,"Gilia spp., SRER",Native,Unknown,Forb
+Sonoran SE,SRER,GILSPP 1.SRER,GILSPP 1,"Gilia spp. 1, SRER",Native,Unknown,Forb
+Sonoran SE,SRER,GILSPP 2.SRER,GILSPP 2,"Gilia spp. 2, SRER",Native,Unknown,Forb
 Sonoran SE,SRER,LUPSPP.SRER,LUPSPP,"Lupinus spp., SRER",Unknown,Unknown,Forb
 Sonoran SE,SRER,MENSPP.SRER,MENSPP,"Mentzelia spp., SRER",Native,Unknown,Forb
 Sonoran SE,SRER,PANSPP.SRER,PANSPP,"Panicum spp., SRER",Native,Unknown,Grass
@@ -60,6 +66,7 @@ Sonoran SE,SRER,UNFO-1.SRER,UNFO-1,"Unknown forb (Patagonia); Soft and fuzzy/hai
 Sonoran SE,SRER,UNFO-2.SRER,UNFO-2,"Unknown forb (SRER); Super hairy almost spikey looking with pinately lobed leaves, SRER",Unknown,Unknown,Forb
 Sonoran SE,SRER,UNFO-3.SRER,UNFO-3,"Unknown forb (SRER); Androsace species (or possibly a cynquifoil), small basal leaves typically with a reddish color, with a reddish long thin stem, with artichoke head-like tops, SRER",Unknown,Unknown,Forb
 Sonoran SE,SRER,UNFO-4.SRER,UNFO-4,"Unknown forb (SRER); Possibly a Linum species (Flax), basal rosette, narrow rounded leaves opposite along and close to an upright stem, SRER",Unknown,Unknown,Forb
+Sonoran SE,SRER,UNFO-5.SRER,UNFO-5,"Unknown forb 5, SRER",Unknown,Unknown,Forb
 Sonoran SE,SRER,UNFO1.SRER,UNFO1,"Unknown forb (Patagonia and SRER are same); upright mustard with tiny blueish flower, SRER",Unknown,Unknown,Forb
 Sonoran SE,SRER,UNFO3.SRER,UNFO3,"Unknown forb (SRER); tiny reddish basal leaves, star-like petals, SRER",Unknown,Unknown,Forb
 Sonoran SE,SRER,UNFO4.SRER,UNFO4,"Unknown forb (SRER); very hairy radiating out/up, fuzzy rosettes, SRER",Unknown,Unknown,Forb
@@ -76,10 +83,3 @@ Sonoran SE,SRER,UNGRS-1.SRER,UNGRS-1,"Unknown grass seedling (SRER), but most li
 Sonoran SE,SRER,UNGR_S_1.SRER,UNGR_S_1,"Unknown grass; Grass seedling short erose ligule slight chance ARPU because of 45 degree leaf or possibly a Vulpia sp. like VUOC (Spring 2021), SRER",Native/Unknown,Unknown,Grass
 Sonoran SE,SRER,UNGR_S_2.SRER,UNGR_S_2,"Unknown grass; Possibly a BOCU or another Bouteloua (Spring 2021), SRER",Native,Unknown,Grass
 Sonoran SE,SRER,UNSFF.SRER,UNSFF,"Unknown shrubby fuzzy forb, munched down, SRER",Unknown,Unknown,Forb
-Sonoran SE,SRER,CRYSPP 1.SRER,CRYSPP 1,"Cryptantha spp. 1, SRER",Native,Unknown,Forb
-Sonoran SE,SRER,CRYSPP 2.SRER,CRYSPP 2,"Cryptantha spp. 2, SRER",Native,Unknown,Forb
-Sonoran SE,SRER,CRYSPP2.SRER,CRYSPP2,"Cryptantha spp. 3, SRER",Native,Unknown,Forb
-Sonoran SE,SRER,FESSPP.SRER,FESSPP,"Fescue spp., SRER",Native,Unknown,Grass
-Sonoran SE,SRER,GILSPP 1.SRER,GILSPP 1,"Gilia spp. 1, SRER",Native,Unknown,Forb
-Sonoran SE,SRER,GILSPP 2.SRER,GILSPP 2,"Gilia spp. 2, SRER",Native,Unknown,Forb
-Sonoran SE,SRER,UNFO-5.SRER,UNFO-5,"Unknown forb 5, SRER",Unknown,Unknown,Forb
