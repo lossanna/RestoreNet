@@ -133,9 +133,6 @@ Row length: edited list is the same length as output list.
  - Lastly, a few SiteDatePlotID values were rendered null because they were duplicates of others that had correct monitoring info, but the wrong/old SiteDatePlotID is needed to link the wrong and fixed rows to each other. After all the monitoring info is correct (Region, Site, CodeOriginal, Code, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix), then the SiteDatePlotID can be corrected.
 
 ### Written out
-`02_2x2-wrong-monitor-events.csv`  
-`02_2x2-wrong-monitor-events-corrected.csv`  
-`02_SiteDatePlotID-replacements.csv`
 `02_subplot-wrong-monitor-events.csv`  
 `02_subplot-wrong-monitor-events-corrected.csv`
 

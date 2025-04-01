@@ -244,9 +244,7 @@ fix.sub.SRER <- wrong.sub.SRER |>
 # Begin to compile list of correct monitoring info ------------------------
 
 # Combine corrected conflicting monitoring info
-fix.sub.conflict <- bind_rows(
-  fix.sub.Patagonia,
-  fix.sub.SRER)
+fix.sub.conflict <- bind_rows(fix.sub.Patagonia, fix.sub.SRER)
 
 # Subplot data
 #   Replace monitor info from subplot data with correct info
@@ -255,7 +253,7 @@ monitor.correct <- monitor.sub |>
   bind_rows(fix.sub.conflict) |>
   arrange(SiteDatePlotID)
 
-nrow(monitor.correct) == nrow(monitor.sub)
+nrow(monitor.correct) == nrow(monitor.sub) # check for matching lengths
 
 
 
@@ -270,7 +268,6 @@ nrow(monitor.correct) == nrow(monitor.sub)
 
 # Look for mistakes in currently compiled monitoring info by examining each site
 unique(monitor.correct$Site)
-
 
 
 ## Number of plots by site -------------------------------------------------
@@ -380,9 +377,7 @@ unique(monitor.sub$Treatment) # already fixed `ConMod typo
 unique(monitor.2x2$Treatment)
 
 # Problems
-# Should be "Seed", not "Seed only"
-# (Already fixed `ConMod typo, it conflicted between subplot and 2x2 data and was
-#   fixed in Patagonia section.)
+#   Should be "Seed", not "Seed only"
 
 
 ## Seed only ---------------------------------------------------------------
@@ -404,19 +399,15 @@ fix.seedonly <- wrong.seedonly |>
 # Check to make sure there isn't already a correct version in monitor.correct
 #   Find what already exists in monitor.correct that is correct
 a <- monitor.correct |>
-  filter(
-    Site %in% fix.seedonly$Site,
-    Date_Monitored %in% fix.seedonly$Date_Monitored,
-    Treatment == "Seed only"
-  )
+  filter(Site %in% fix.seedonly$Site,
+         Date_Monitored %in% fix.seedonly$Date_Monitored,
+         Treatment == "Seed only")
 
 #   Find what already exists in monitor.correct that is wrong
 b <- monitor.correct |>
-  filter(
-    Site %in% fix.seedonly$Site,
-    Date_Monitored %in% fix.seedonly$Date_Monitored,
-    Treatment == "Seed"
-  ) # no duplicates
+  filter(Site %in% fix.seedonly$Site,
+         Date_Monitored %in% fix.seedonly$Date_Monitored,
+         Treatment == "Seed") # no duplicates
 
 #   Look for overlap
 intersect(a, b) # no duplicates, correct version does not already exist
@@ -450,17 +441,15 @@ write_csv(monitor.correct,
 # Make subplot tables -----------------------------------------------------
 
 # Compile
-wrong.sub <- bind_rows(
-  wrong.sub.Patagonia,
-  wrong.sub.SRER,
-  wrong.seedonly)
+wrong.sub <- bind_rows(wrong.sub.Patagonia,
+                       wrong.sub.SRER,
+                       wrong.seedonly)
 
-fix.sub <- bind_rows(
-  fix.sub.Patagonia,
-  fix.sub.SRER,
-  fix.seedonly)
+fix.sub <- bind_rows(fix.sub.Patagonia,
+                     fix.sub.SRER,
+                     fix.seedonly)
 
-nrow(wrong.sub) == nrow(fix.sub)
+nrow(wrong.sub) == nrow(fix.sub) # check for matching lengths
 
 
 # Write csv of wrong subplot monitor data for later subplot data wrangling
