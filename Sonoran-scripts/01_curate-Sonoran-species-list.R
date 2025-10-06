@@ -2,7 +2,7 @@
 # Last updated: 2025-04-01
 
 # Purpose: Curate a complete species list with Code, Code Original, Name, Native, Duration, Lifeform info
-#   for subplot data only (2x2 data excluded).
+#   for Sonoran sites, using subplot and 2x2 data.
 #   Two lists must be created, a location-independent version (known species), and a
 #     location-dependent version (unknown species, which includes location information).
 # The species lists are essentially metadata for the codes.
@@ -17,7 +17,10 @@ library(tidyverse)
 
 # Load data ---------------------------------------------------------------
 
-subplot.raw <- read_xlsx("Sonoran-data/raw/2023-09-15_Master 1.0 Germination Data_raw.xlsx", sheet = "AllSubplotData")
+subplot.raw <- read_xlsx("Sonoran-data/raw/2023-09-15_Master 1.0 Germination Data_raw.xlsx", 
+                         sheet = "AllSubplotData")
+plot.2x2.raw <- read_xlsx("Sonoran-data/raw/2023-09-15_Master 1.0 Germination Data_raw.xlsx",
+                          sheet = "AllPlotData")
 species.raw <- read_xlsx("Sonoran-data/raw/from-Master_species-list-with-native-status_LO.xlsx")
 mix <- read_xlsx("Sonoran-data/raw/from-Master_seed-mix_LO_Sonoran.xlsx", sheet = "with-site_R")
 
@@ -34,22 +37,30 @@ mix <- read_xlsx("Sonoran-data/raw/from-Master_seed-mix_LO_Sonoran.xlsx", sheet 
 
 
 
-# Organize subplot data ---------------------------------------------------
+# Organize subplot and 2x2 data -------------------------------------------
 
 # Retain Sonoran Desert sites only
-subplot <- subplot.raw |> 
+subplot <- subplot.raw %>% 
+  filter(Site %in% c("SRER", "Patagonia", "Preserve", "Pleasant", "SCC", "Roosevelt"))
+p2x2 <- plot.2x2.raw %>% 
   filter(Site %in% c("SRER", "Patagonia", "Preserve", "Pleasant", "SCC", "Roosevelt"))
 
 # Add Region column
-subplot <- subplot |>
+subplot <- subplot %>%
   mutate(Region = case_when(
      str_detect(subplot$Site, c("SRER|Patagonia")) ~ "Sonoran SE",
-    str_detect(subplot$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central")) |> 
-  mutate(raw.row = 1:nrow(subplot)) |>
+    str_detect(subplot$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central")) %>% 
+  mutate(raw.row = 1:nrow(subplot)) %>%
   rename(CodeOriginal = Species_Code)
 
-subplot.codes <- subplot |>
-  select(CodeOriginal, Region, Site) |>
+p2x2 <- p2x2 %>% 
+  mutate(Region = case_when(
+    str_detect(subplot$Site, c("SRER|Patagonia")) ~ "Sonoran SE",
+    str_detect(subplot$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central"))
+
+# Get codes
+subplot.codes <- subplot %>%
+  select(CodeOriginal, Region, Site) %>%
   distinct(.keep_all = TRUE)
 
 
@@ -64,11 +75,11 @@ subplot.codes <- subplot |>
 codes.missing.sub <- setdiff(subplot$CodeOriginal, species.raw$CodeOriginal)
 
 # Narrow columns and remove duplicates for missing subplot data
-subplot.missing <- subplot |>
-  filter(CodeOriginal %in% codes.missing.sub) |>
-  select(Region, Site, CodeOriginal) |>
-  distinct(.keep_all = TRUE) |>
-  arrange(CodeOriginal) |>
+subplot.missing <- subplot %>%
+  filter(CodeOriginal %in% codes.missing.sub) %>%
+  select(Region, Site, CodeOriginal) %>%
+  distinct(.keep_all = TRUE) %>%
+  arrange(CodeOriginal) %>%
   filter(!CodeOriginal %in% c("0", "NA"),
          !is.na(CodeOriginal))
 
@@ -90,38 +101,38 @@ head(sub.missing)
 
 # Unknowns (location-dependent)
 #   From original master species list
-species.m.unk <- species.raw |>
-  filter(str_detect(species.raw$Name, "Unk|unk|spp\\.|sp\\.|Could be|Very similar to GIsp 1")) |>
-  filter(CodeOriginal != "VEPEX2") |> # name contains "ssp." but it is a known
-  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
-  arrange(Region) |>
+species.m.unk <- species.raw %>%
+  filter(str_detect(species.raw$Name, "Unk|unk|spp\\.|sp\\.|Could be|Very similar to GIsp 1")) %>%
+  filter(CodeOriginal != "VEPEX2") %>% # name contains "ssp." but it is a known
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) %>% 
+  arrange(Region) %>%
   arrange(CodeOriginal)
 
 #   Ones missing from original master species list
-sub.missing.unk <- sub.missing |>
-  filter(str_detect(sub.missing$Name, "Unk|unk|spp\\.")) |>
-  filter(Region %in% c("Sonoran Central", "Sonoran SE")) |> 
-  arrange(Region) |>
+sub.missing.unk <- sub.missing %>%
+  filter(str_detect(sub.missing$Name, "Unk|unk|spp\\.")) %>%
+  filter(Region %in% c("Sonoran Central", "Sonoran SE")) %>% 
+  arrange(Region) %>%
   arrange(CodeOriginal)
 
 
 # Knowns (location-independent)
 #   From original master species list
-VEPEX2 <- species.raw |>
+VEPEX2 <- species.raw %>%
   filter(CodeOriginal == "VEPEX2") # make separate row because it contains "ssp." but isn't an unknown
 
-species.m.known <- species.raw |>
-  filter(!str_detect(species.raw$Name, "Unk|unk|spp\\.|sp\\.|Could be|Very similar to GIsp 1")) |>
-  bind_rows(VEPEX2) |>
-  select(-Region) |>
-  arrange(CodeOriginal) |>
+species.m.known <- species.raw %>%
+  filter(!str_detect(species.raw$Name, "Unk|unk|spp\\.|sp\\.|Could be|Very similar to GIsp 1")) %>%
+  bind_rows(VEPEX2) %>%
+  select(-Region) %>%
+  arrange(CodeOriginal) %>%
   distinct(.keep_all = TRUE)
 
 #   Ones missing from original master species list
-sub.missing.known <- sub.missing |> # ones missing from original master list (.xlsx)
-  filter(!str_detect(sub.missing$Name, "Unk|unk|spp\\.")) |>
-  select(-Region, -Site) |>
-  distinct(.keep_all = TRUE) |>
+sub.missing.known <- sub.missing %>% # ones missing from original master list (.xlsx)
+  filter(!str_detect(sub.missing$Name, "Unk|unk|spp\\.")) %>%
+  select(-Region, -Site) %>%
+  distinct(.keep_all = TRUE) %>%
   arrange(CodeOriginal)
 
 
@@ -132,19 +143,19 @@ sub.missing.known <- sub.missing |> # ones missing from original master list (.x
 ## Add Lifeform to master list --------------------------------------------
 
 # Extract lifeform information from subplot data for knowns
-subplot.in.lifeform <- subplot |>
-  filter(!str_detect(subplot$CodeOriginal, "Unk|unk|spp\\.")) |>
-  select(CodeOriginal, Functional_Group) |>
-  distinct(.keep_all = TRUE) |>
-  rename(Lifeform = Functional_Group) |>
+subplot.in.lifeform <- subplot %>%
+  filter(!str_detect(subplot$CodeOriginal, "Unk|unk|spp\\.")) %>%
+  select(CodeOriginal, Functional_Group) %>%
+  distinct(.keep_all = TRUE) %>%
+  rename(Lifeform = Functional_Group) %>%
   arrange(CodeOriginal)
 
 # Correct codes with conflicting lifeform info
-sub.in.lifeform.duplicate <- count(subplot.in.lifeform, CodeOriginal) |>
-  filter(n > 1) |>
+sub.in.lifeform.duplicate <- count(subplot.in.lifeform, CodeOriginal) %>%
+  filter(n > 1) %>%
   arrange(CodeOriginal)
-subplot.in.lifeform.inspect <- subplot.in.lifeform |>
-  filter(CodeOriginal %in% sub.in.lifeform.duplicate$CodeOriginal) |>
+subplot.in.lifeform.inspect <- subplot.in.lifeform %>%
+  filter(CodeOriginal %in% sub.in.lifeform.duplicate$CodeOriginal) %>%
   arrange(CodeOriginal)
 
 # OUTPUT: list of lifeform info according to subplot data
@@ -157,9 +168,9 @@ write_csv(subplot.in.lifeform.inspect,
 subplot.in.duplicate <- read_csv("Sonoran-data/data-wrangling-intermediate/01b_edited2_subplot-lifeform-info-corrected.csv")
 
 # Replace lifeform info for subplot knowns with corrections based on edited csv
-subplot.in.lifeform <- subplot.in.lifeform |>
-  filter(!CodeOriginal %in% subplot.in.duplicate$CodeOriginal) |>
-  bind_rows(subplot.in.duplicate) |>
+subplot.in.lifeform <- subplot.in.lifeform %>%
+  filter(!CodeOriginal %in% subplot.in.duplicate$CodeOriginal) %>%
+  bind_rows(subplot.in.duplicate) %>%
   arrange(CodeOriginal)
 length(unique(subplot.in.lifeform$CodeOriginal)) == nrow(subplot.in.lifeform) # check for matching lengths
 
@@ -168,17 +179,17 @@ length(unique(subplot.in.lifeform$CodeOriginal)) == nrow(subplot.in.lifeform) # 
 species.m.known <- left_join(species.m.known, subplot.in.lifeform)
 
 # Compile list of lifeform information thus far of species from master
-lifeform.known <- species.m.known |>
-  filter(!is.na(Lifeform)) |>
-  select(CodeOriginal, Name, Lifeform) |>
+lifeform.known <- species.m.known %>%
+  filter(!is.na(Lifeform)) %>%
+  select(CodeOriginal, Name, Lifeform) %>%
   arrange(CodeOriginal)
 
 
 # Add missing lifeform information to master list (working species list)
 # OUTPUT: create list of species without lifeform information
-lifeform.na <- species.m.known |>
-  filter(is.na(Lifeform)) |>
-  select(CodeOriginal, Name, Lifeform) |>
+lifeform.na <- species.m.known %>%
+  filter(is.na(Lifeform)) %>%
+  select(CodeOriginal, Name, Lifeform) %>%
   arrange(CodeOriginal)
 
 write_csv(lifeform.na,
@@ -193,15 +204,15 @@ head(lifeform.na.edit)
 lifeform.known <- bind_rows(lifeform.known, lifeform.na.edit)
 
 # Add lifeform info to master list (working species list)
-species.m.known <- species.m.known |>
-  select(-Lifeform) |> # must remove Lifeform col so left_join() does not conflict
+species.m.known <- species.m.known %>%
+  select(-Lifeform) %>% # must remove Lifeform col so left_join() does not conflict
   left_join(lifeform.known)
 
 
 # Standardize Lifeform to Grass/Forb/Shrub
 unique(species.m.known$Lifeform)
 
-species.m.known <- species.m.known |>
+species.m.known <- species.m.known %>%
   mutate(Lifeform = case_when(
     str_detect(species.m.known$Lifeform, "shrub") ~ "Shrub",
     str_detect(species.m.known$Lifeform, "forb") ~ "Forb",
@@ -233,7 +244,7 @@ head(species.m.known)
 
 # Add species from subplot data not in master to ongoing master list
 #   Combine species.m.known and sub.missing.known
-species.in <- bind_rows(species.m.known, sub.missing.known) |>
+species.in <- bind_rows(species.m.known, sub.missing.known) %>%
   arrange(CodeOriginal)
 
 # Check for absent information (NAs)
@@ -247,29 +258,29 @@ apply(species.in, 2, anyNA) # should all be FALSE
 species.in$Code <- species.in$CodeOriginal
 
 # Extract species with multiple codes for the same name, retaining all codes
-codes.fix.in <- species.in |>
-  filter(Name %in% filter(species.in, duplicated(Name))$Name) |>
-  distinct(.keep_all = TRUE) |>
+codes.fix.in <- species.in %>%
+  filter(Name %in% filter(species.in, duplicated(Name))$Name) %>%
+  distinct(.keep_all = TRUE) %>%
   arrange(Name)
 print(codes.fix.in, n = 14)
 
 # Compare codes with those from seed mix
-mix.codes <- mix |>
-  filter(CodeOriginal %in% codes.fix.in$CodeOriginal) |>
-  select(Scientific, CodeOriginal) |>
-  distinct(.keep_all = TRUE) |>
+mix.codes <- mix %>%
+  filter(CodeOriginal %in% codes.fix.in$CodeOriginal) %>%
+  select(Scientific, CodeOriginal) %>%
+  distinct(.keep_all = TRUE) %>%
   arrange(CodeOriginal)
 mix.codes # codes need to match ones from seed mix
 
 # Create df standardized codes based on USDA Plants
-codes.standardized.in <- codes.fix.in |>
-  filter(Code %in% c(mix.codes$CodeOriginal, "CHPO12", "SIAL2")) |>
+codes.standardized.in <- codes.fix.in %>%
+  filter(Code %in% c(mix.codes$CodeOriginal, "CHPO12", "SIAL2")) %>%
   mutate(CodeOriginal = c("ARPUP6", "BOER", "EUPO3", "SIAL", "SPAMA"))
 
 # Remove wrong codes from species list and add correct ones
-species.in <- species.in |>
-  filter(!CodeOriginal %in% codes.standardized.in$CodeOriginal) |>
-  bind_rows(codes.standardized.in) |>
+species.in <- species.in %>%
+  filter(!CodeOriginal %in% codes.standardized.in$CodeOriginal) %>%
+  bind_rows(codes.standardized.in) %>%
   arrange(CodeOriginal)
 
 # DRCU/DRCUI and ESCA/ESCAM refer to different varieties, so specificity is retained
@@ -278,14 +289,14 @@ species.in$Name[species.in$CodeOriginal == "DRCUI"] <- "Draba cuneifolia var. in
 species.in$Name[species.in$CodeOriginal == "ESCAM"] <- "Eschscholzia californica ssp. mexicana"
 
 # Reorder cols
-species.in <- species.in |>
+species.in <- species.in %>%
   select(CodeOriginal, Code, Name, Native, Duration, Lifeform)
 
 
 
 # Find codes with multiple species
-names.fix.in <- species.in |>
-  filter(CodeOriginal %in% filter(species.in, duplicated(CodeOriginal))$CodeOriginal) |>
+names.fix.in <- species.in %>%
+  filter(CodeOriginal %in% filter(species.in, duplicated(CodeOriginal))$CodeOriginal) %>%
   arrange(CodeOriginal)
 names.fix.in # look at master species list for clarification
 # Cross-referencing original species list from master shows that ERCI referred to Eragrostis cilianensis
@@ -296,7 +307,7 @@ names.fix.in # look at master species list for clarification
 # Sonoran Central is correct, ERCI should be Eragrostis cilianensis.
 
 # Remove incorrect row from species.in
-species.in <- species.in |> 
+species.in <- species.in %>% 
   filter(Name != "Eragrostis ciliaris")
 
 
@@ -316,7 +327,7 @@ unique(species.in$Lifeform)
 
 # Combine location-dependent species
 #   from master species list and from subplot data
-species.de <- bind_rows(species.m.unk, sub.missing.unk) |>
+species.de <- bind_rows(species.m.unk, sub.missing.unk) %>%
   filter(CodeOriginal %in% subplot$CodeOriginal) %>% 
   arrange(CodeOriginal)
 
@@ -327,20 +338,20 @@ head(species.de) # contains Name & Native
 
 # OUTPUT: extract Site information from subplot data to add to location-dependent list
 #   and write to CSV
-sites.m.unk <- subplot |>
-  filter(CodeOriginal %in% c(species.m.unk$CodeOriginal, sub.missing.unk$CodeOriginal)) |>
-  select(CodeOriginal, Region, Site) |>
-  distinct(.keep_all = TRUE) |>
-  arrange(Region) |>
+sites.m.unk <- subplot %>%
+  filter(CodeOriginal %in% c(species.m.unk$CodeOriginal, sub.missing.unk$CodeOriginal)) %>%
+  select(CodeOriginal, Region, Site) %>%
+  distinct(.keep_all = TRUE) %>%
+  arrange(Region) %>%
   arrange(CodeOriginal)
 write_csv(sites.m.unk,
           file = "Sonoran-data/data-wrangling-intermediate/01a_output5.2_location-dependent_xlsx_sites.csv")
 head(sites.m.unk) # contains Site
 
 # Look for NA codes that had observations (Count or Height) in subplot data
-filter(subplot, is.na(CodeOriginal)) |>
+filter(subplot, is.na(CodeOriginal)) %>%
   select(Site, `Seeded(Yes/No)`, Functional_Group, Seedling_Count, Average_Height_mm, raw.row) # none
-filter(subplot, CodeOriginal == "NA") |>
+filter(subplot, CodeOriginal == "NA") %>%
   select(Site, `Seeded(Yes/No)`, Functional_Group, Seedling_Count, Average_Height_mm, raw.row) # none
 
 # EDITED: manually add/correct Site, Native, Duration, and Lifeform cols
@@ -365,48 +376,48 @@ species.de$Code <- apply(species.de[, c("CodeOriginal", "Site")], 1, paste, coll
 intersect(species.de$CodeOriginal, species.in$CodeOriginal) # should be 0
 
 # Reorder columns
-species.de <- species.de |>
+species.de <- species.de %>%
   select(Region, Site, Code, CodeOriginal, Name, Native, Duration, Lifeform)
 
 
 # Check for duplicate codes in species list
-species.de |>
-  count(Code) |>
-  filter(n > 1) |>
+species.de %>%
+  count(Code) %>%
+  filter(n > 1) %>%
   arrange(desc(n))
 
 # 2 instances of UNGRS1.SRER
 #   but based on name, one applies to spring 2022
-species.de |>
-  filter(Code == "UNGRS1.SRER") |>
+species.de %>%
+  filter(Code == "UNGRS1.SRER") %>%
   select(Code, Name, Native)
 
 #   Look for UNGRS1 in spring 2022 in subplot data
-subplot |>
-  mutate(Date_Monitored = as.character(Date_Monitored)) |>
+subplot %>%
+  mutate(Date_Monitored = as.character(Date_Monitored)) %>%
   filter(Site == "SRER",
          str_detect(Date_Monitored, "2022"),
          str_detect(CodeOriginal, "UNGRS")) # CodeOriginal is actually UNGRS-1
 
 #   Look for UNGRS-1 at SRER in species list
-species.de |>
+species.de %>%
   filter(Site == "SRER",
          CodeOriginal == "UNGRS-1")
 
 #   Change Code & CodeOriginal of UNGRS1 from spring 2022 to UNGRS-1
-species.de |>
-  filter(Code == "UNGRS1.SRER") |>
+species.de %>%
+  filter(Code == "UNGRS1.SRER") %>%
   select(Code, Name, Native, Duration, Lifeform)
 species.de$CodeOriginal[str_detect(species.de$Name, "most likely ERLE, spring 2022")] <- "UNGRS-1"
 species.de$Code[str_detect(species.de$Name, "most likely ERLE, spring 2022")] <- "UNGRS-1.SRER"
 
 
 #   Remove old UNGRS-1 row
-species.de <- species.de |>
+species.de <- species.de %>%
   filter(Name != "Unknown grass 1, SRER")
 
 #   Check to see it was removed
-species.de |>
+species.de %>%
   filter(Site == "SRER",
          CodeOriginal == "UNGRS-1")
 
@@ -424,8 +435,8 @@ unique(species.de$Lifeform)
 
 
 # Reorder rows by Region and Site 
-species.de <- species.de |> 
-  arrange(Site) |> 
+species.de <- species.de %>% 
+  arrange(Site) %>% 
   arrange(Region)
 
 
