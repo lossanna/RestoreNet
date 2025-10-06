@@ -24,9 +24,9 @@ ai <- read_csv("data/cleaned/03.4_aridity-index-values_clean.csv")
 sonoran.monitor <- read_csv("data/cleaned/14.2_Sonoran-Desert_monitoring-events.csv")
 
 # Load RData from UA HPC
-load("UA-HPC/RData/cool-spring01.RData")
-load("UA-HPC/RData/warm-fall01.RData")
-load("UA-HPC/RData/year.all01.RData")
+load("Sonoran-UA-HPC/RData/cool-spring01.RData")
+load("Sonoran-UA-HPC/RData/warm-fall01.RData")
+load("Sonoran-UA-HPC/RData/year.all01.RData")
 
 
 # Data wrangling ----------------------------------------------------------

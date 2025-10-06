@@ -1,7 +1,7 @@
 # Created: 2024-12-12
 # Last updated: 2024-12-13
 
-# Purpose:
+# Purpose: Create draft figures for Sonoran-only analysis with seasonality.
 
 library(tidyverse)
 library(scales)

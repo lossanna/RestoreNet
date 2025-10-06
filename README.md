@@ -1,6 +1,6 @@
 # RestoreNet
 Created: 2022-11-15  
-Last updated: 2025-01-21
+Last updated: 2025-10-06
   
 ## Author
 Contact: Lia Ossanna, lossanna@arizona.edu
@@ -24,7 +24,7 @@ There are two main datasets, referred to in script names by `_subplot` and `_2x2
 - `_subplot` is the data collected from 0.25 x 0.25 m subplots, where seedlings were identified by species, density counted, and height measured.
 - `_2x2` is the data collected from the 2 x 2 m plots, where percent cover of seeded species and percent cover of total vegetation was collected, as well as the names of all species present in the plot.  
 
-To understand more about data wrangling, see folder-specific READMEs.
+To understand more about data wrangling, see folder-specific READMEs (which exist for both original/dissertation and publication analysis folders).
 
 Updated analysis of Sonoran sites only uses the subplot data only.
 
@@ -41,11 +41,12 @@ Located in folders that start with "Sonoran":
 Scripts include date of creation and last update, as well as a purpose statement, and any major takeaways.  
 
 Scripts were numbered approximately according to creation date and workflow of analysis. 
-- Top-level folder has scripts needed for original dissertation analysis.
+- Top-level `scripts/` folder has scripts needed for original dissertation analysis.
 - `scripts/exploratory/` subfolder has scripts not used for final analysis but explain some of the analysis discoveries and decisions along the way.
 - `scripts/not-pursued/` subfolder has scripts whose analysis routes were discontinued and not pursued.
 - `scripts/poster-figs/` subfolder has scripts to make figures for posters.
 
+### Original/dissertation analysis
 The workflow for original/dissertation analysis is:  
 1. Data wrangling: scripts numbered `01`, `02`, `03`, `04`.  
 2. Data screening: scripts numbered `05`.
@@ -53,9 +54,14 @@ The workflow for original/dissertation analysis is:
 4. Examination of frequency and count of individual species: scripts numbered `11`.
 5. Draft figures: scripts numbered `12`.
 6. Generalized linear models: scripts numbered `13`.
-- Scripts numbered `14` through `16` are initial attempts at looking at Sonoran sites only.
 
+Scripts numbered `14` through `16` are initial attempts at looking at Sonoran sites only (this analysis did not end up in dissertation, but I decided I wanted to pursue it for published version).
+
+### Publication analysis
 The workflow for publication (Sonoran sites only) analysis is:
+1. Data wrangling: scripts numbered `01`, `02`, `03`, `04`.
+2. Data screening: script numbered `05`.
+
 
 
 
@@ -134,7 +140,7 @@ The workflow for publication (Sonoran sites only) analysis is:
     - `Table-S3-through-S10.pdf`
     - `Table-S3-through-S10.Rmd`
 - `scripts/`
-    - See "Workflow for original/dissertation analysis" (previous section).
+    - See "Workflow for original/dissertation analysis" (previous section) for list of scripts in top-level folder; subfolders explained below.
     - `exploratory/`
         - Exploratory scripts might not be able to be re-run and reproduced exactly, because cleaned data might have changed slightly (`present_species` table in particular).
         - `03.1_monitor-info-comparison-with-Farrell-2023.R`

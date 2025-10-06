@@ -138,7 +138,7 @@ Row length: edited list is the same length as output list.
 
 
 
-## From `03.2_PRISM-data-wrangling.R`
+## From `03.1_PRISM-data-wrangling.R`
 - No output/edited pairs.
 
 ### Read in
@@ -158,7 +158,7 @@ Row length: edited list is the same length as output list.
 - Started out with information from `02_corrected-monitoring-info.csv` (Region, Site, Date_Seeded, Date_Monitored, SiteDateID), and then I added columns to "round" the dates to the beginning, middle or end of the month to make comparable intervals, since normals were given at a monthly resolution.
 
 
-## From `04.1_data-wrangling_subplot.R`
+## From `04_data-wrangling_Sonoran-subplot.R`
 ### Output
 #### `04.1a_output-seeded1_seeded-not-in-mix_subplot.csv`
 - List of species from `subplot` data originally marked as seeded but do not appear on the seed mix list, as matched by `CodeOriginal`.
