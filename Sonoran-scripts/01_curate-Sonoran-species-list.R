@@ -30,7 +30,7 @@ mix <- read_xlsx("Sonoran-data/raw/from-Master_seed-mix_LO_Sonoran.xlsx", sheet 
 # Files in the format "output_xx.csv" are ones written from R.
 # Files in the format "edited_xx.csv" are manually edited and read back in as new objects,
 #   but then usually used to alter existing objects.
-#   See README_rawdata.md for more details.
+#   See README_Sonoran-intermediate-data.md for more details.
 
 
 

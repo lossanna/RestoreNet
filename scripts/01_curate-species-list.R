@@ -47,7 +47,7 @@ native.fix <- read_csv("data/data-wrangling-intermediate/01-dependency_seeded-sp
 # Files in the format "output_xx.csv" are ones written from R.
 # Files in the format "edited_xx.csv" are manually edited and read back in as new objects,
 #   but then usually used to alter existing objects.
-#   See README_rawdata.md for more details.
+#   See README_intermediate-data.md for more details.
 
 
 
