@@ -1,5 +1,5 @@
 Created: 2025-01-21  
-Last updated: 2025-04-01
+Last updated: 2025-10-06
   
 Notes about `output` and `edited` intermediate data files created in data cleaning for RAMPS RestoreNet project (updated analysis for publication with Sonoran sites only).
 
@@ -20,6 +20,7 @@ Notes about `output` and `edited` intermediate data files created in data cleani
 - Species lists: include columns `Code`, `Name`, and information like `Native` (native/introduced), `Duration` (annual/perennial), and `Lifeform` (grass/forb/shrub). 
 	- Location-dependent (unknowns or plants not identified to species level) codes/species are separate from location-independent (identified to species level) codes/species because known species will have the same information (native status, lifeform, duration) regardless of location, but unknowns can have the same codes across sites, but  refer to different plants.
 - `subplot` data: monitoring observations from the 25 x 25 cm subplots. Measurements are seedling density and average height by species. Raw data from `AllSubplotData` tab of `2023-09-15_Master 1.0 Germination Data_raw.xlsx`.
+- `2x2` data: monitoring observations from the 2 x 2 m plots. Measurements are seeded cover and total vegetation cover, and names of additional species in plot (in addition to what was present in the subplot and already recorded). Raw data from `AllPlotData` tab of `Master.xlsx`.
 
 ## File naming notes
 - First number corresponds to the R script of the same number. `a` and `b` are so `output` files are listed before `edited` ones.
@@ -158,7 +159,7 @@ Row length: edited list is the same length as output list.
 - Started out with information from `02_corrected-monitoring-info.csv` (Region, Site, Date_Seeded, Date_Monitored, SiteDateID), and then I added columns to "round" the dates to the beginning, middle or end of the month to make comparable intervals, since normals were given at a monthly resolution.
 
 
-## From `04_data-wrangling_Sonoran-subplot.R`
+## From `04.1_data-wrangling_Sonoran-subplot.R`
 ### Output
 #### `04.1a_output-seeded1_seeded-not-in-mix_subplot.csv`
 - List of species from `subplot` data originally marked as seeded but do not appear on the seed mix list, as matched by `CodeOriginal`.

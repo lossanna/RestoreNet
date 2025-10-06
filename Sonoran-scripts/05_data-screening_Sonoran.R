@@ -1,5 +1,5 @@
 # Created: 2025-04-01
-# Last updated: 2025-04-01
+# Last updated: 2025-10-06
 
 # Purpose: Examine distributions, outliers, and variable relationships for Count response variable.
 
@@ -10,6 +10,6 @@ library(GGally)
 
 # Load data ---------------------------------------------------------------
 
-subplot.raw <- read_xlsx("Sonoran-data/cleaned/04.1_subplot-data_clean.csv")
+subplot.raw <- read_csv("Sonoran-data/cleaned/04.1_subplot-data_clean.csv")
 prism.data <- read_csv("Sonoran-data/cleaned/03.1_monitoring-events-with-PRISM-climate-data_clean.csv")
-since.pd <- read_csv("Sonoran-data/cleaned/")
+since.pd <- read_csv("Sonoran-data/cleaned/03.2_since-last-precip_percent-deviation-from-norm_clean.csv")
