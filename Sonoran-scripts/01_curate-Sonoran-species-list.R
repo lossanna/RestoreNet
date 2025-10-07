@@ -1,10 +1,12 @@
 # Created: 2025-01-21
-# Last updated: 2025-04-01
+# Last updated: 2025-10-07
 
 # Purpose: Curate a complete species list with Code, Code Original, Name, Native, Duration, Lifeform info
 #   for Sonoran sites, using subplot and 2x2 data.
 #   Two lists must be created, a location-independent version (known species), and a
 #     location-dependent version (unknown species, which includes location information).
+#   For 2x2 data, there is also information about when duplicate rows are needed, because sometimes
+#     a single row refers to multiple species.
 # The species lists are essentially metadata for the codes.
 
 # Dependency script not needed, because no unknowns were marked as native
