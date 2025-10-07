@@ -1,5 +1,5 @@
 Created: 2025-01-21  
-Last updated: 2025-10-06
+Last updated: 2025-10-07
   
 Notes about `output` and `edited` intermediate data files created in data cleaning for RAMPS RestoreNet project (updated analysis for publication with Sonoran sites only).
 
@@ -65,13 +65,18 @@ Notes about `output` and `edited` intermediate data files created in data cleani
 - List of codes from the master species list, with their site and region information. Used in conjunction with `output5.1.csv` to fill in missing site data.
 - Columns: `CodeOriginal`, `Region`, `Site`.
 
-#### `01a_output6_location-independent-final-check.csv`
+#### `01a_output6_location-independent-manual-check.csv`
 - List of location-independent species (knowns), intended for final manual check with USDA Plants info.
 - Columns: `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`.
 
-#### `01a_output7_location-dependent-final-check.csv`
+#### `01a_output7_location-dependent-manual-check.csv`
 - List of location-dependent species (unknowns), intended for final manual check of names.
 - Columns: `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`.
+
+#### `01a_output8_2x2-codes-duplicate-check.csv`
+- List of codes that were in the `2x2` data, but not yet in the `subplot` data or master species list of location-independent (which already have species info generated for them).
+- Most of the codes are unknowns or descriptions.
+- Columns: `Region`, `Site`, `CodeOriginal`.
 
 
 ### Edited
@@ -112,17 +117,42 @@ Notes about `output` and `edited` intermediate data files created in data cleani
 - Row length: edited is longer than either output, because rows needed to be added for species with the same code and name, but at different sites within the same region.
 - Columns: `CodeOriginal`, `Name`, `Native`, `Region`, `Site` (edited), `Duration` (edited), `Lifeform` (edited).
 
-#### `01b_edited6_location-independent-final-fix.xlsx`
+#### `01b_edited6_location-independent-manual-fix.xlsx`
 - Final complete list of location-independent species, standardized with USDA Plants data. 
 - Manually edited a few instances of `Code` and `Name`, where `CodeOriginal` was an old version that had since been updated. Changed cells were highlighted in yellow with comment added to note fix.
 Row length: edited list is the same length as output list.
 - Columns: `CodeOriginal`, `Code` (edited), `Name` (edited), `Native`, `Duration`, `Lifeform`.
 
-#### `01b_edited7_location-dependent-final-fix.xlsx`
+#### `01b_edited7_location-dependent-manual-fix.xlsx`
 - Final complete list of location-dependent species.
 - Manually edited one instance of `Native` status based on additional details in the species name.
 - Manually edited two `Name` values to change the site specified in the name, because it did not match the `Site` column.
 - Columns: `CodeOriginal`, `Code`, `Name` (edited), `Native` (edited), `Duration`, `Lifeform`.
+
+#### `01b_edited8_2x2-codes-duplicate-fix.csv`
+- List of codes that were in the `2x2` plot data, but not yet in the `subplot` data, or the master species list of location-independent species.
+- Most of the codes are unknowns or descriptions; long codes that are basically descriptions and mention multiple species have multiple rows for the same code, and a column marks if there is a duplicate that is needed. All of these codes came from the Sonoran SE sites. Most other sites had a standard USDA code marked in multiple columns all named `Additional_Species_In_Plot` in the original raw `2x2` data.
+	+ The Sonoran SE plots were difficult to identify, so longer explanations were needed.
+	+ `NeedsItsDuplicate` = `Yes`: more than one species mentioned in a single code, so the same code has multiple lines with different species.
+	+ `DuplicateNum` = `1`, `2`, `3`, etc.: row number for duplicate rows when more than one species is mentioned in a single code. Marked `0` when `NeedsItsDuplicate` = `No`.
+	+ `LocationDependence` = `dependent`: Site needs to be added to code to make `Code` column. Unknowns are location-dependent.
+- Unknowns that are also duplicates are technically site-specific, but the `CodeOriginal` is usually long and descriptive and never used at another site, so the `CodeOriginal` is already location-independent just by being unique. Thus, what must be addressed is the fact they are duplicates.
+- Some codes can be cross-referenced with the master species list to see what the name is.
+- Lifeform, native status, and duration are according to USDA Plants.
+- Cross referenced ambiguous codes with master species list and notes from raw `2x2` data.
+- Row length: the edited version is much longer than the output, because of necessary duplicate rows.
+- Columns: `Region`, `Site`, `CodeOriginal`, `NeedsItsDuplicate` (added), `DuplicateNum` (added), `Code` (added), `Name` (added), `Native` (added), `Duration` (added), `Lifeform` (added), `LocationDependence` (added).
+
+
+
+### Written out
+Subplot codes:
+- `01_subplot_species-list_location-independent_clean.csv`
+- `01_subplot_species-list_location-dependent_clean.csv`
+
+2x2 codes:
+- `01_2x2_species-list-with-duplicates_location-independent_clean.csv`
+- `01_2x2_species-list-with-duplicates_location-dependent_clean.csv`
 
 
 
@@ -134,8 +164,8 @@ Row length: edited list is the same length as output list.
  - Lastly, a few SiteDatePlotID values were rendered null because they were duplicates of others that had correct monitoring info, but the wrong/old SiteDatePlotID is needed to link the wrong and fixed rows to each other. After all the monitoring info is correct (Region, Site, CodeOriginal, Code, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix), then the SiteDatePlotID can be corrected.
 
 ### Written out
-`02_subplot-wrong-monitor-events.csv`  
-`02_subplot-wrong-monitor-events-corrected.csv`
+- `02_subplot-wrong-monitor-events.csv`  
+- `02_subplot-wrong-monitor-events-corrected.csv`
 
 
 

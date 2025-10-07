@@ -34,8 +34,7 @@ mix <- read_xlsx("Sonoran-data/raw/from-Master_seed-mix_LO_Sonoran.xlsx", sheet 
 # Files in the format "edited_xx.csv" are manually edited and read back in as new objects,
 #   but then usually used to alter existing objects.
 #   See README_Sonoran-intermediate-data.md for more details.
-
-
+  
 
 # Organize subplot and 2x2 data -------------------------------------------
 
@@ -44,6 +43,7 @@ subplot <- subplot.raw %>%
   filter(Site %in% c("SRER", "Patagonia", "Preserve", "Pleasant", "SCC", "Roosevelt"))
 p2x2 <- plot.2x2.raw %>% 
   filter(Site %in% c("SRER", "Patagonia", "Preserve", "Pleasant", "SCC", "Roosevelt"))
+
 
 # Add Region column
 subplot <- subplot %>%
@@ -55,16 +55,29 @@ subplot <- subplot %>%
 
 p2x2 <- p2x2 %>% 
   mutate(Region = case_when(
-    str_detect(subplot$Site, c("SRER|Patagonia")) ~ "Sonoran SE",
-    str_detect(subplot$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central"))
+    str_detect(p2x2$Site, c("SRER|Patagonia")) ~ "Sonoran SE",
+    str_detect(p2x2$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central"))
+
 
 # Get codes
 subplot.codes <- subplot %>%
-  select(CodeOriginal, Region, Site) %>%
+  select(Region, Site, CodeOriginal) %>%
   distinct(.keep_all = TRUE)
 
+p2x2.codes <- p2x2 %>%
+  select(Region, Site, starts_with("Additional")) %>%
+  mutate(across(everything(), as.character)) %>%
+  pivot_longer(starts_with("Additional"), names_to = "drop", values_to = "CodeOriginal") %>%
+  select(-drop) %>%
+  distinct(.keep_all = TRUE) %>%
+  filter(!is.na(CodeOriginal)) %>% 
+  arrange(CodeOriginal)
 
-# Assign names to codes in subplot data but not species list --------------
+
+
+# Subplot data & master species lists -------------------------------------
+
+## Assign names to codes in subplot data but not species list -------------
 
 #   This is dealing with codes that are present in the subplot data, but not present in
 #     the species list from from-Master_species-list-with-native-status_LO.xlsx
@@ -94,7 +107,7 @@ head(sub.missing)
 
 
 
-# Separate species by location dependence (knowns/unknowns) ---------------
+## Separate species by location dependence (knowns/unknowns) --------------
 
 # Knowns and unknowns must be separated;
 #   plants not defined to species level are location-specific and Site must be retained.
@@ -108,7 +121,7 @@ species.m.unk <- species.raw %>%
   arrange(Region) %>%
   arrange(CodeOriginal)
 
-#   Ones missing from original master species list
+#   Codes in subplot data but missing from original master species list
 sub.missing.unk <- sub.missing %>%
   filter(str_detect(sub.missing$Name, "Unk|unk|spp\\.")) %>%
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) %>% 
@@ -128,7 +141,7 @@ species.m.known <- species.raw %>%
   arrange(CodeOriginal) %>%
   distinct(.keep_all = TRUE)
 
-#   Ones missing from original master species list
+#   Codes in subplot data missing from original master species list
 sub.missing.known <- sub.missing %>% # ones missing from original master list (.xlsx)
   filter(!str_detect(sub.missing$Name, "Unk|unk|spp\\.")) %>%
   select(-Region, -Site) %>%
@@ -137,10 +150,9 @@ sub.missing.known <- sub.missing %>% # ones missing from original master list (.
 
 
 
+## Location-independent species from master list & subplot data -----------
 
-# Location-independent species from master list & subplot data ------------
-
-## Add Lifeform to master list --------------------------------------------
+### Add Lifeform to master list -------------------------------------------
 
 # Extract lifeform information from subplot data for knowns
 subplot.in.lifeform <- subplot %>%
@@ -161,13 +173,15 @@ subplot.in.lifeform.inspect <- subplot.in.lifeform %>%
 # OUTPUT: list of lifeform info according to subplot data
 write_csv(subplot.in.lifeform.inspect,
           file = "Sonoran-data/data-wrangling-intermediate/01a_output2_subplot-lifeform-info.csv")
+head(subplot.in.lifeform.inspect)
 
 # EDITED: delete incorrect rows so there is only one lifeform assignment per code
 #   Fix conflicting lifeform according to USDA Plants
 #   Standardize spelling of lifeform to Grass, Forb, or Shrub
 subplot.in.duplicate <- read_csv("Sonoran-data/data-wrangling-intermediate/01b_edited2_subplot-lifeform-info-corrected.csv")
+head(subplot.in.duplicate)
 
-# Replace lifeform info for subplot knowns with corrections based on edited csv
+# Replace lifeform info for subplot knowns with corrections based on edited CSV
 subplot.in.lifeform <- subplot.in.lifeform %>%
   filter(!CodeOriginal %in% subplot.in.duplicate$CodeOriginal) %>%
   bind_rows(subplot.in.duplicate) %>%
@@ -224,7 +238,7 @@ unique(species.m.known$Lifeform) # Lifeform names have been standardized
 
 
 
-## Add Duration to master list ---------------------------------------------
+### Add Duration to master list --------------------------------------------
 
 #   All duration information needed to be added manually from USDA Plants.
 
@@ -240,7 +254,8 @@ species.m.known <- read_csv("Sonoran-data/data-wrangling-intermediate/01b_edited
 head(species.m.known)
 
 
-## Combine master and subplot codes for complete list ---------------------
+
+### Combine master and subplot codes for complete list --------------------
 
 # Add species from subplot data not in master to ongoing master list
 #   Combine species.m.known and sub.missing.known
@@ -252,7 +267,7 @@ apply(species.in, 2, anyNA) # should all be FALSE
 
 
 
-## Standardize codes for location-independent species list ----------------
+### Standardize codes for location-independent species list ---------------
 
 # Add Code col
 species.in$Code <- species.in$CodeOriginal
@@ -293,7 +308,6 @@ species.in <- species.in %>%
   select(CodeOriginal, Code, Name, Native, Duration, Lifeform)
 
 
-
 # Find codes with multiple species
 names.fix.in <- species.in %>%
   filter(CodeOriginal %in% filter(species.in, duplicated(CodeOriginal))$CodeOriginal) %>%
@@ -323,7 +337,7 @@ unique(species.in$Lifeform)
 
 
 
-# Location-dependent species for subplot ----------------------------------
+## Location-dependent species for subplot ---------------------------------
 
 # Combine location-dependent species
 #   from master species list and from subplot data
@@ -363,7 +377,7 @@ head(species.de)
 
 
 
-## Rename Code & Name for location-dependent ------------------------------
+### Rename Code & Name for location-dependent -----------------------------
 
 # Add Site to Name col for location-dependent
 species.de$Name <- apply(species.de[, c("Name", "Site")], 1, paste, collapse = ", ")
@@ -440,42 +454,159 @@ species.de <- species.de %>%
   arrange(Region)
 
 
-# Final manual check ------------------------------------------------------
+
+## Manual check of master species lists -----------------------------------
 
 # Location independent
-# OUTPUT: Final manual check of location-independent species list
+# OUTPUT: Manual check of location-independent species list 
+#   (includes codes in species list that may not be in subplot data)
 write_csv(species.in,
-          file = "Sonoran-data/data-wrangling-intermediate/01a_output6_location-independent-final-check.csv")
+          file = "Sonoran-data/data-wrangling-intermediate/01a_output6_location-independent-manual-check.csv")
 
 # EDITED: fixed a few codes
 #   Changed codes that did not match USDA Plants code (AMIN3, EUAB, EUME3, STSP3, URLI5)
-species.in <- read_xlsx("Sonoran-data/data-wrangling-intermediate/01b_edited6_location-independent-final-fix.xlsx")
-
+species.in <- read_xlsx("Sonoran-data/data-wrangling-intermediate/01b_edited6_location-independent-manual-fix.xlsx")
 
 
 # Location dependent
-# OUTPUT: Final manual check of location-dependent species list; check Native status
+# OUTPUT: Manual check of location-dependent species list; check Native status
+#   (includes codes in species list that may not be in subplot data)
 write_csv(species.de,
-          file = "Sonoran-data/data-wrangling-intermediate/01a_output7_location-dependent-final-check.csv")
+          file = "Sonoran-data/data-wrangling-intermediate/01a_output7_location-dependent-manual-check.csv")
 
 # EDITED: Change Native status based on name for unknown grass at SCC,
 #     and switched names for UNFO-1 at SRER & Patagonia (name was specific to site)
-species.de <- read_xlsx("Sonoran-data/data-wrangling-intermediate/01b_edited7_location-dependent-final-fix.xlsx")
+species.de <- read_xlsx("Sonoran-data/data-wrangling-intermediate/01b_edited7_location-dependent-manual-fix.xlsx")
 
 
 
+## Write subplot species lists to CSV -------------------------------------
 
-# Write species lists to CSVs ---------------------------------------------
+# Filter out only species found in subplot data
+species.subplot.in <- species.in %>% 
+  filter(CodeOriginal %in% subplot$CodeOriginal)
+
+# Check if all location-dependent species in master list are also in subplot data
+setdiff(species.de$CodeOriginal, subplot$CodeOriginal) # all lo-dependent in species are also in subplot data
+
 
 # Location independent
-write_csv(species.in,
-          file = "Sonoran-data/cleaned/01_species-list_location-independent_clean.csv")
-
+write_csv(species.subplot.in,
+          file = "Sonoran-data/cleaned/01_subplot_species-list_location-independent_clean.csv")
 
 # Location dependent
 write_csv(species.de,
-          file = "Sonoran-data/cleaned/01_species-list_location-dependent_clean.csv")
+          file = "Sonoran-data/cleaned/01_subplot_species-list_location-dependent_clean.csv")
 
+
+
+# 2x2 codes ---------------------------------------------------------------
+
+## Add species from 2x2 plot data -----------------------------------------
+
+#   These are codes from AllPlotData (2x2 m plots) that missing from master species lists.
+#     Codes from these plots are really different and are usually long descriptions.
+
+# Find missing codes (includes both location independent and dependent)
+p2x2.codes.missing <- setdiff(p2x2.codes$CodeOriginal, c(species.de$CodeOriginal, species.in$CodeOriginal))
+p2x2.codes.missing <- p2x2.codes %>%
+  filter(CodeOriginal %in% p2x2.codes.missing)
+
+
+## Address codes that need duplicate rows ---------------------------------
+
+#   Some CodeOriginal values give a description that includes more than one plant;
+#     hence, more than one row is needed for these.
+#   However, these are only codes that aren't in species.in or species.de lists (all of those
+#     refer to only one species).
+
+# OUTPUT: create list of sites and codes that need more info
+write_csv(p2x2.codes.missing,
+          file = "Sonoran-data/data-wrangling-intermediate/01a_output8_2x2-codes-duplicate-check.csv")
+head(p2x2.codes.missing)
+
+# EDITED: add/correct Native, Duration, Lifeform info
+#   Create multiple rows for codes that mention more than one species (happens only at SRER and Patagonia).
+#   Cross reference ambiguous codes with master species list and notes from raw 2x2 data.
+#   For when a CodeOriginal has both independent and dependent species, if there is only
+#     one independent species then NeedsItsDuplicate will be marked No, because the lists will always
+#     be separated by location dependence (DuplicateNum will still be assigned non-zero).
+p2x2.codes.dup.fixed <- read_csv("Sonoran-data/data-wrangling-intermediate/01b_edited8_2x2-codes-duplicate-fixed.csv")
+head(p2x2.codes.dup.fixed)
+
+
+
+## Add site to code and name for 2x2 lo-dependent -------------------------
+
+# Add site to code and name for location-dependent species
+#   for all rows, not just ones that need duplicate
+p2x2.codes.de <- p2x2.codes.dup.fixed %>%
+  filter(LocationDependence == "dependent",
+         NeedsItsDuplicate == "Yes")
+p2x2.codes.de$Code <- apply(p2x2.codes.de[, c("Code", "Site")], 1, paste, collapse = ".")
+p2x2.codes.de$Name <- apply(p2x2.codes.de[, c("Name", "Site")], 1, paste, collapse = ", ")
+
+
+
+## Compile 2x2 species lists with duplicate row info ----------------------
+
+### Location-independent --------------------------------------------------
+
+# Separate out lo-independent and remove unnecessary columns
+species.2x2.in <- p2x2.codes.dup.fixed %>%
+  filter(LocationDependence == "independent") %>%
+  select(-Site, -Region, -LocationDependence)
+
+# Add NeedsItsDuplicate and DuplicateNum columns to non-duplicate 2x2 codes from species.in
+#   (codes in 2x2 data that don't yet have duplicate info)
+p2x2.codes.in.nondup <- species.in %>%
+  filter(CodeOriginal %in% p2x2.codes$CodeOriginal) %>%
+  mutate(NeedsItsDuplicate = "No",
+         DuplicateNum = 0) %>%
+  arrange(Code)
+
+# Check for matching columns
+setdiff(colnames(species.2x2.in), colnames(p2x2.codes.in.nondup)) # columns are the same
+
+# Combine
+species.2x2.in <- bind_rows(species.2x2.in, p2x2.codes.in.nondup) %>%
+  arrange(Name) %>%
+  arrange(CodeOriginal)
+
+
+### Location dependent ----------------------------------------------------
+
+# Separate out lo-dependent and remove unnecessary column
+species.2x2.de <- p2x2.codes.dup.fixed %>%
+  filter(LocationDependence == "dependent") %>%
+  select(-LocationDependence)
+
+# Add NeedsItsDuplicate and DuplicateNum columns to non-duplicate 2x2 codes from species.de
+#   (codes in 2x2 data that don't yet have duplicate info)
+p2x2.codes.de.nondup <- species.de %>%
+  filter(CodeOriginal %in% p2x2.codes$CodeOriginal) %>%
+  mutate(NeedsItsDuplicate = "No",
+         DuplicateNum = 0) %>%
+  arrange(Code)
+
+# Check for matching columns
+setdiff(colnames(species.2x2.de), colnames(p2x2.codes.de.nondup)) # columns are the same
+
+# Combine
+species.2x2.de <- bind_rows(species.2x2.de, p2x2.codes.de.nondup) %>%
+  arrange(Name) %>%
+  arrange(CodeOriginal)
+
+
+## Write 2x2 species lists to CSV -----------------------------------------
+
+# Location independent
+write_csv(species.2x2.in,
+          file = "Sonoran-data/cleaned/01_2x2_species-list-with-duplicates_location-independent_clean.csv")
+
+# Location dependent
+write_csv(species.2x2.de,
+          file = "Sonoran-data/cleaned/01_2x2_species-list-with-duplicates_location-dependent_clean.csv")
 
 
 

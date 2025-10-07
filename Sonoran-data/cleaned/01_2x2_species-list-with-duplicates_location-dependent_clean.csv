@@ -1,0 +1,37 @@
+Region,Site,CodeOriginal,NeedsItsDuplicate,DuplicateNum,Code,Name,Native,Duration,Lifeform
+Sonoran SE,SRER,1 Possible PLJA (1 out of 3 on certainty) on south border as well as some BOCUs (might be BOER but probably BOCU or other BOsp.) Mostly grazed,Yes,2,BOCU/BOER4,"BOCUs, or might be BOER4",Native,Perennial,Grass
+Sonoran SE,SRER,1 Possible PLJA (1 out of 3 on certainty) on south border as well as some BOCUs (might be BOER but probably BOCU or other BOsp.) Mostly grazed,Yes,1,PLJAspp,Possibly Pleuraphis jamesii,Native,Perennial,Grass
+Sonoran SE,Patagonia,ARISPP,No,0,ARISPP.Patagonia,"Aristida spp., Patagonia",Native,Unknown,Grass
+Sonoran SE,SRER,ARISPP,No,0,ARISPP.SRER,"Aristida spp., SRER",Native,Unknown,Grass
+Sonoran SE,SRER,BOCUs up to this point could also possibly be slender grama BORE or purple BORA,No,0,BOCU/BORE/BORA,Bouteloua curtipendula/repens/radicosa (spp.),Native,Perennial,Grass
+Sonoran SE,SRER,BOUSPP,No,0,BOUSPP.SRER,"Bouteloua spp., SRER",Native,Unknown,Grass
+Sonoran SE,SRER,BOsp. a lot of possibly BOCU but could also be BORE or BORA,No,0,BOCU/BORE/BORA,Bouteloua curtipendula/repens/radicosa (spp.),Native,Perennial,Grass
+Sonoran Central,Pleasant,CRYPT,No,0,CRYPT.Pleasant,"Cryptantha spp., Pleasant",Native,Unknown,Forb
+Sonoran Central,Roosevelt,CRYPT,No,0,CRYPT.Roosevelt,"Cryptantha spp., Roosevelt",Native,Unknown,Forb
+Sonoran SE,SRER,"Couple of small possible BOER but no tillers, seeds, or culms yet to be certain if different Bouteloua than 0%",No,0,BOSPP,Bouteloua spp.,Native,Unknown,Grass
+Sonoran SE,SRER,"Couple possible little BOCUs (no seed heads, tiller, culms to verify)",No,0,BOSPP,Bouteloua spp.,Native,Unknown,Grass
+Sonoran Central,Pleasant,ERIOG,No,0,ERIOG.Pleasant,"Eriogonum spp., Pleasant",Native,Unknown,Forb
+Sonoran Central,Pleasant,LEPISP,No,0,LEPISP,Lepidium spp.,Native/Unknown,Unknown,Forb
+Sonoran Central,Pleasant,PHYSR,No,0,PHYSR,Physaria sp.,Native,Unknown,Forb
+Sonoran SE,SRER,Possible Boutelouas not sure if BOER because they've been grazed down,No,0,BOspp,Bouteloua spp.,Native,Unknown,Grass
+Sonoran SE,SRER,Possibly 3 small BOER (1 certainty) or other BOsp.,No,0,BOspp,Bouteloua spp.,Native,Unknown,Grass
+Sonoran SE,Patagonia,Possibly a BOER if not than other BOsp. possibly BOGR,No,0,BOspp,Bouteloua spp.,Native,Unknown,Grass
+Sonoran SE,SRER,Potentially 3 or 4 BOCU (1 certainty) and possibly an ARPU (2) or othe ARsp. hard to be certain because all the grasses have been grazed down to nubs,No,2,ARPUspp,Aristida spp.,Native,Unknown,Grass
+Sonoran Central,Pleasant,SISYM,No,0,SISYM,Sisymbrium sp.,Unknown,Unknown,Forb
+Sonoran SE,SRER,Some possible ARPUs (2 certainty) or ARsp. (ARTE). Mostly dried still or grazed down.,No,0,ARPUspp,Aristida spp.,Native,Unknown,Grass
+Sonoran SE,SRER,Some type of Aristida possibly and ARPU and maybe 1 small maybe BOCU near subplot that's been grazed down,Yes,1,ARPUspp,Aristida spp.,Native,Unknown,Grass
+Sonoran SE,SRER,Some type of Aristida possibly and ARPU and maybe 1 small maybe BOCU near subplot that's been grazed down,Yes,2,BOspp,Bouteloua spp.,Native,Unknown,Grass
+Sonoran SE,SRER,"There are a couple possible small BOERs but no seed, tillers, culms, to help ID but if not BOER and a different bouteloa species than 0%",No,0,BOspp,Bouteloua spp.,Native,Unknown,Grass
+Sonoran SE,SRER,UNDPF,No,0,UNDPF.SRER,"Unknown dead pod forb, SRER",Unknown,Unknown,Forb
+Sonoran SE,SRER,UNGR,No,0,UNGR,Unknown grass,Unknown,Unknown,Grass
+Sonoran SE,SRER,UNGR-2 possibly a Bouteloua (BOCU?) Maybe PLJA? (never seen),No,0,UNGR-2,Unknown grass 2 possibly a Bouteloua (BOCU?) Maybe PLJA? (never seen),Native/Unknown,Unknown,Grass
+Sonoran Central,Preserve,UNK heart,No,0,UNK heart.Preserve,"Unknown forb with heart-shaped cotyledon; possibly MAPA5 (although that species not seen growing there), Preserve",Unknown,Unknown,Forb
+Sonoran Central,Preserve,Unk dark,No,0,Unk dark,Unknown dark,Unknown,Unknown,Forb
+Sonoran Central,Pleasant,Unk forb,No,0,Unk forb,Unknown forb,Unknown,Unknown,Forb
+Sonoran Central,SCC,Unk grass,No,0,Unk grass.SCC,"Unknown likely associated with warm seed mix, SCC",Native,Unknown,Grass
+Sonoran Central,Roosevelt,Unk grass 1,No,0,Unk grass 1,Unknown grass,Unknown,Unknown,Grass
+Sonoran Central,Pleasant,Unk sp.,No,0,Unk sp..Pleasant,"Unknown species, Pleasant",Unknown,Unknown,Unknown
+Sonoran Central,SCC,Unk sp.,No,0,Unk sp..SCC,"Unknown species, SCC",Unknown,Unknown,Unknown
+Sonoran Central,Roosevelt,unk forb,No,0,unk forb,Unknown forb,Unknown,Unknown,Forb
+Sonoran Central,SCC,unk grass,No,0,unk grass,Unknown grass,Unknown,Unknown,Grass
+Sonoran Central,Roosevelt,unk grass 1,No,0,unk grass 1,Unknown grass,Unknown,Unknown,Grass

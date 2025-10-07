@@ -85,7 +85,7 @@ Notes about `output` and `edited` intermediate data files created in data cleani
 - Columns: `Region`, `Site`, `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`.
 
 #### `01a_output9_2x2-location-independent-need-duplicate-number.csv`
-- List of location-independent codes that need duplicate rows from `2x2` with corrected/finalized species info (created in `edited7.csv`). List needs `DuplicateNum` column added, which is easiest to do manually (rather than trying to write a vector in R, which I initially tried to do but it didn't work lol).
+- List of location-independent codes that need duplicate rows from `2x2` with corrected/finalized species info (created in `edited6.csv`). List needs `DuplicateNum` column added, which is easiest to do manually (rather than trying to write a vector in R, which I initially tried to do but it didn't work lol).
 - Duplicate rows needed because a single original code mentions multiple species; hence, the same code will need multiple rows to describe all the information. All duplicate rows needed are included in this table. `subplot` data doesn't need any duplicate rows.
 - Location-dependent rows that needed duplicates were handled solely in R (there were only 4).
 - Columns: `CodeOriginal`, `Code`, `Name`, `Native`, `Duration`, `Lifeform`. `NeedsItsDuplicate`.
