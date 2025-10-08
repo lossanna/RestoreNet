@@ -287,11 +287,10 @@ ps.ss.mix <- ps.ss.na %>%
 
 # OUTPUT: list of species that need SpeciesSeeded assignment
 write_csv(ps.ss.mix,
-          file = "data/data-wrangling-intermediate/04.2a_output1_SpeciesSeeded-in-mix-need-assignment.csv"
-)
+          file = "Sonoran-data/data-wrangling-intermediate/04.2a_output1_SpeciesSeeded-in-mix-need-assignment.csv")
 
 # EDITED: manually check if the species was seeded based on site-specific plot mix
-ps.ss.mix <- read_xlsx("data/data-wrangling-intermediate/04.2b_edited1_SpeciesSeeded-in-mix-assigned.xlsx")
+ps.ss.mix <- read_xlsx("Sonoran-data/data-wrangling-intermediate/04.2b_edited1_SpeciesSeeded-in-mix-assigned.xlsx")
 
 
 ## Compile -----------------------------------------------------------------
@@ -357,8 +356,7 @@ present_species <- present_species %>%
     PlantSource == "Introduced_No" ~ "Introduced/Invasive",
     PlantSource == "Native_Yes" ~ "Seeded",
     PlantSource == "Native/Unknown_No" ~ "Likely native_recruit",
-    PlantSource == "Unknown_Yes" ~ "Seeded"
-  ))
+    PlantSource == "Unknown_Yes" ~ "Seeded"))
 unique(present_species$PlantSource)
 
 # Create PlantSource2 column
@@ -367,8 +365,7 @@ present_species <- present_species %>%
   mutate(PlantSource2 = case_when(
     present_species$PlantSource == "Unknown_recruit" ~ "Recruit",
     str_detect(present_species$PlantSource, "Native_recruit|Likely native_recruit") ~ "Native recruit",
-    TRUE ~ present_species$PlantSource
-  ))
+    TRUE ~ present_species$PlantSource))
 unique(present_species$PlantSource2)
 
 
@@ -382,8 +379,7 @@ present_species <- present_species %>%
   mutate(Weedy = case_when(
     str_detect(present_species$PlantSource, "Unknown_recruit|Introduced/Invasive") ~ "Weedy",
     str_detect(present_species$PlantSource, "Native_recruit|Likely native_recruit|Seeded") ~ "Desirable",
-    TRUE ~ present_species$PlantSource
-  ))
+    TRUE ~ present_species$PlantSource))
 unique(present_species$Weedy)
 
 
@@ -397,31 +393,17 @@ unique(present_species$Weedy)
 # Add PlotMix_Climate col
 present_species <- present_species %>%
   mutate(PlotMix_Climate = case_when(
-    str_detect(present_species$Site, "Creosote|Mesquite|Patagonia|SRER") &
+    str_detect(present_species$Site, "Patagonia|SRER") &
       present_species$PlotMix == "Medium" ~ "Current",
-    str_detect(present_species$Site, "Creosote|Mesquite|Patagonia|SRER") &
+    str_detect(present_species$Site, "Patagonia|SRER") &
       present_species$PlotMix == "Warm" ~ "Projected",
-    str_detect(present_species$Site, "AguaFria|MOWE|PEFO|Spiderweb") &
-      present_species$PlotMix == "Med-Warm" ~ "Current",
-    str_detect(present_species$Site, "AguaFria|MOWE|PEFO|Spiderweb") &
-      present_species$PlotMix == "Warm" ~ "Projected",
-    str_detect(present_species$Site, "BarTBar|FlyingM|CRC|Salt_Desert") &
-      present_species$PlotMix == "Cool-Med" ~ "Current",
-    str_detect(present_species$Site, "BarTBar|FlyingM|CRC|Salt_Desert") &
-      present_species$PlotMix == "Med-Warm" ~ "Projected",
-    str_detect(present_species$Site, "BabbittPJ|UtahPJ") &
+    str_detect(present_species$Site, "Preserve|SCC|Roosevelt|Pleasant") &
       present_species$PlotMix == "Cool" ~ "Current",
-    str_detect(present_species$Site, "BabbittPJ|UtahPJ") &
-      present_species$PlotMix == "Cool-Med" ~ "Projected",
-    str_detect(present_species$Site, "29_Palms|AVRCD|Preserve|SCC|Roosevelt|Pleasant|TLE") &
-      present_species$PlotMix == "Cool" ~ "Current",
-    str_detect(present_species$Site, "29_Palms|AVRCD|Preserve|SCC|Roosevelt|Pleasant|TLE") &
+    str_detect(present_species$Site, "Preserve|SCC|Roosevelt|Pleasant") &
       present_species$PlotMix == "Warm" ~ "Projected",
-    TRUE ~ present_species$PlotMix
-  ))
+    TRUE ~ present_species$PlotMix))
 present_species$PlotMix_Climate <- factor(present_species$PlotMix_Climate,
-                                          levels = c("None", "Current", "Projected")
-)
+                                          levels = c("None", "Current", "Projected"))
 
 
 # Save intermediate
@@ -436,28 +418,10 @@ ps3 <- present_species
 present_species %>%
   filter(is.na(Code)) # should be none
 
-
 # Look for 0 codes
 #   Should not have any 0 CodeOriginal because empty 2x2 plots marked 0 were dropped after pivot_longer().
 present_species %>%
   filter(CodeOriginal == "0")
-
-#   But there are some that have a Code of 0 but not a CodeOriginal of 0.
-code0 <- present_species %>%
-  filter(Code == "0")
-unique(code0$CodeOriginal)
-#   These rows should be removed because for most of them, no actual plant was observed (CodeOriginal describes
-#     plant nearby or other plot conditions), and for "Not recorded" plots weren't measured
-#     so species richness count won't be correct/comparable for 2x2 plots.
-
-present_species <- present_species %>%
-  filter(Code != "0")
-
-
-# Save intermediate
-#   Species info correct for additional p2x2 species only, "0" removed
-ps4 <- present_species
-
 
 
 # Combine with subplot to get all species present -------------------------
@@ -472,7 +436,7 @@ subplot.species <- subplot %>%
 subplot.species$ObsSource <- "subplot"
 
 #   Remove cols so bind_rows() will work
-present_species <- ps4 %>%
+present_species <- ps3 %>%
   select(-raw.row, -source, -NeedsItsDuplicate, -DuplicateNum)
 
 #   Add subplot species to present_species
@@ -486,15 +450,10 @@ present_species <- bind_rows(present_species, subplot.species) %>%
 # Check for SiteDatePlotIDs present
 length(unique(present_species$SiteDatePlotID)) == (nrow(monitor.info))
 setdiff(monitor.info$SiteDatePlotID, present_species$SiteDatePlotID)
-monitor.info %>% 
-  filter(SiteDatePlotID == 4268)
-
-subplot %>% 
-  filter(SiteDatePlotID == 4268) # for some reason this row is missing (but it's from Utah so ultimately I don't really care)
 
 # Save intermediate
 #   All species present in plot with correct species info; 2x2 plots not recorded have been removed
-ps5 <- present_species
+ps4 <- present_species
 
 
 
@@ -526,6 +485,11 @@ empty.plots <- present_species %>%
   filter(ObsSource == "subplot") %>%
   filter(Code == "0")
 
+# Examine 2x2 obs with Code of 0, but non-0 CodeOriginal
+empty.plots.2x2 <- present_species %>% 
+  filter(Code == "0",
+         ObsSource == "2x2") # CodeOriginal isn't 0, but these still describe empty plots
+
 
 
 # Create table of species richness ----------------------------------------
@@ -539,18 +503,18 @@ nonempty.plots <- present_species %>%
 
 # See what 0 Codes remain in non-empty plots
 nonempty.code0 <- nonempty.plots %>%
-  filter(Code == "0")
-unique(nonempty.code0$ObsSource) # this occurs when subplot is empty but 2x2 is not (only "subplot" shows up)
+  filter(Code == "0",
+         ObsSource == "subplot")
+unique(nonempty.code0$ObsSource) # this occurs when subplot is empty but 2x2 is not (only "subplot" shows up),
+#                                     or when 2x2 CodeOriginal is not 0 but it describes an empty plot
 #                                   no fix needed
 
 # Calculate species richness of 2x2 plots for plots that had plants
 nonempty.plots.richness <- nonempty.plots %>%
   filter(Code != "0") %>%
   group_by(Region, Site, Date_Seeded, Date_Monitored, SiteDateID, Plot, Treatment, PlotMix, SiteDatePlotID) %>%
-  summarise(
-    Richness = n_distinct(Code),
-    .groups = "keep"
-  )
+  summarise(Richness = n_distinct(Code),
+            .groups = "keep")
 
 # Assign richness to empty plots
 empty.plots.richness <- empty.plots %>%
@@ -802,14 +766,14 @@ p2x2.richness.cover <- left_join(p2x2.richness.cover, cover) %>%
 
 # List of species present
 write_csv(present_species,
-          file = "data/cleaned/04.2_2x2-species-present_clean.csv"
+          file = "Sonoran-data/cleaned/04.2_2x2-species-present_clean.csv"
 )
 
 
 # Richness and cover
 write_csv(p2x2.richness.cover,
-          file = "data/cleaned/04.2_2x2-richness-cover_clean.csv"
+          file = "Sonoran-data/cleaned/04.2_2x2-richness-cover_clean.csv"
 )
 
 
-save.image("RData/04.2_data-wrangling_2x2.RData")
+save.image("Sonoran-RData/04.2_data-wrangling_Sonoran-2x2.RData")
