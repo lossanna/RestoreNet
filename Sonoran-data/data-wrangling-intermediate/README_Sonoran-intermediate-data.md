@@ -146,11 +146,11 @@ Row length: edited list is the same length as output list.
 
 
 ### Written out
-Subplot codes:
+Subplot species lists:
 - `01_subplot_species-list_location-independent_clean.csv`
 - `01_subplot_species-list_location-dependent_clean.csv`
 
-2x2 codes:
+2x2 species lists:
 - `01_2x2_species-list-with-duplicates_location-independent_clean.csv`
 - `01_2x2_species-list-with-duplicates_location-dependent_clean.csv`
 
@@ -164,6 +164,8 @@ Subplot codes:
  - Lastly, a few SiteDatePlotID values were rendered null because they were duplicates of others that had correct monitoring info, but the wrong/old SiteDatePlotID is needed to link the wrong and fixed rows to each other. After all the monitoring info is correct (Region, Site, CodeOriginal, Code, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix), then the SiteDatePlotID can be corrected.
 
 ### Written out
+- `02_2x2-wrong-monitor-events.csv`  
+- `02_2x2-wrong-monitor-events-corrected.csv`
 - `02_subplot-wrong-monitor-events.csv`  
 - `02_subplot-wrong-monitor-events-corrected.csv`
 
@@ -187,6 +189,7 @@ Subplot codes:
 - Excel file of monitoring information, and which months to include when creating normals of comparable interval to the interval between monitoring events, or since seeding. See `README` tab for more details.
 - Separate tabs for intervals between monitoring events (`since_last`), and since seeding (`cum`).
 - Started out with information from `02_corrected-monitoring-info.csv` (Region, Site, Date_Seeded, Date_Monitored, SiteDateID), and then I added columns to "round" the dates to the beginning, middle or end of the month to make comparable intervals, since normals were given at a monthly resolution.
+
 
 
 ## From `04.1_data-wrangling_Sonoran-subplot.R`

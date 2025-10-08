@@ -311,8 +311,8 @@ Patagonia,Sonoran SE,None,SPCR,SPCR,Sporobolus cryptandrus,Native,Perennial,Gras
 Patagonia,Sonoran SE,Medium,TRPI,TRPI,Tradescantia pinetorum,Native,Perennial,Forb,No
 Patagonia,Sonoran SE,Warm,UNFO1,UNFO1.Patagonia,"Unknown forb (Patagonia and SRER are same); upright mustard with tiny blueish flower, Patagonia",Unknown,Unknown,Forb,No
 Patagonia,Sonoran SE,Warm,UNFO5,UNFO5.Patagonia,"Unknown forb (Patagonia); Similar to dandelion, yellow closed flowers, Patagonia",Unknown,Unknown,Forb,No
-Patagonia,Sonoran SE,Medium,UNFO-1,UNFO-1.Patagonia,"Unknown forb (Patagonia); Soft and fuzzy/hairy, serated leaves with middle vein underneath on bottom side of the leaf, pickle smell, SRER",Unknown,Unknown,Forb,No
-Patagonia,Sonoran SE,Warm,UNFO-1,UNFO-1.Patagonia,"Unknown forb (Patagonia); Soft and fuzzy/hairy, serated leaves with middle vein underneath on bottom side of the leaf, pickle smell, SRER",Unknown,Unknown,Forb,No
+Patagonia,Sonoran SE,Medium,UNFO-1,UNFO-1.Patagonia,"Unknown forb (Patagonia); Umbilliferae family, thin lacey divided leaves with small white flowers in umbels at the top, Patagonia",Unknown,Unknown,Forb,No
+Patagonia,Sonoran SE,Warm,UNFO-1,UNFO-1.Patagonia,"Unknown forb (Patagonia); Umbilliferae family, thin lacey divided leaves with small white flowers in umbels at the top, Patagonia",Unknown,Unknown,Forb,No
 Patagonia,Sonoran SE,Warm,UNFO2,UNFO2.Patagonia,"Unknown forb (Patagonia); low to ground, succulenty, tiny white flowers, similar to purslane, Patagonia",Unknown,Unknown,Forb,No
 Patagonia,Sonoran SE,Medium,UNFO2,UNFO2.Patagonia,"Unknown forb (Patagonia); low to ground, succulenty, tiny white flowers, similar to purslane, Patagonia",Unknown,Unknown,Forb,No
 Patagonia,Sonoran SE,None,UNFO2,UNFO2.Patagonia,"Unknown forb (Patagonia); low to ground, succulenty, tiny white flowers, similar to purslane, Patagonia",Unknown,Unknown,Forb,No
@@ -523,12 +523,12 @@ SRER,Sonoran SE,None,UNFO-3,UNFO-3.SRER,"Unknown forb (SRER); Androsace species 
 SRER,Sonoran SE,Warm,UNFO-4,UNFO-4.SRER,"Unknown forb (SRER); Possibly a Linum species (Flax), basal rosette, narrow rounded leaves opposite along and close to an upright stem, SRER",Unknown,Unknown,Forb,No
 SRER,Sonoran SE,Medium,UNFO-4,UNFO-4.SRER,"Unknown forb (SRER); Possibly a Linum species (Flax), basal rosette, narrow rounded leaves opposite along and close to an upright stem, SRER",Unknown,Unknown,Forb,No
 SRER,Sonoran SE,None,UNFO-4,UNFO-4.SRER,"Unknown forb (SRER); Possibly a Linum species (Flax), basal rosette, narrow rounded leaves opposite along and close to an upright stem, SRER",Unknown,Unknown,Forb,No
+SRER,Sonoran SE,Warm,UNFO-1,UNFO-1.SRER,"Unknown forb (SRER); Soft and fuzzy/hairy, serated leaves with middle vein underneath on bottom side of the leaf, pickle smell, SRER",Unknown,Unknown,Forb,No
+SRER,Sonoran SE,None,UNFO-1,UNFO-1.SRER,"Unknown forb (SRER); Soft and fuzzy/hairy, serated leaves with middle vein underneath on bottom side of the leaf, pickle smell, SRER",Unknown,Unknown,Forb,No
+SRER,Sonoran SE,Medium,UNFO-1,UNFO-1.SRER,"Unknown forb (SRER); Soft and fuzzy/hairy, serated leaves with middle vein underneath on bottom side of the leaf, pickle smell, SRER",Unknown,Unknown,Forb,No
 SRER,Sonoran SE,Warm,UNFO-2,UNFO-2.SRER,"Unknown forb (SRER); Super hairy almost spikey looking with pinately lobed leaves, SRER",Unknown,Unknown,Forb,No
 SRER,Sonoran SE,None,UNFO-2,UNFO-2.SRER,"Unknown forb (SRER); Super hairy almost spikey looking with pinately lobed leaves, SRER",Unknown,Unknown,Forb,No
 SRER,Sonoran SE,Medium,UNFO-2,UNFO-2.SRER,"Unknown forb (SRER); Super hairy almost spikey looking with pinately lobed leaves, SRER",Unknown,Unknown,Forb,No
-SRER,Sonoran SE,Warm,UNFO-1,UNFO-1.SRER,"Unknown forb (SRER); Umbilliferae family, thin lacey divided leaves with small white flowers in umbels at the top, Patagonia",Unknown,Unknown,Forb,No
-SRER,Sonoran SE,None,UNFO-1,UNFO-1.SRER,"Unknown forb (SRER); Umbilliferae family, thin lacey divided leaves with small white flowers in umbels at the top, Patagonia",Unknown,Unknown,Forb,No
-SRER,Sonoran SE,Medium,UNFO-1,UNFO-1.SRER,"Unknown forb (SRER); Umbilliferae family, thin lacey divided leaves with small white flowers in umbels at the top, Patagonia",Unknown,Unknown,Forb,No
 SRER,Sonoran SE,Warm,UNFO6,UNFO6.SRER,"Unknown forb (SRER); Very small, long slender leaves, fuzzy, leaf toothed around margins. Possibly Heterotheca grandiflora, SRER",Unknown,Unknown,Forb,No
 SRER,Sonoran SE,Medium,UNFO6,UNFO6.SRER,"Unknown forb (SRER); Very small, long slender leaves, fuzzy, leaf toothed around margins. Possibly Heterotheca grandiflora, SRER",Unknown,Unknown,Forb,No
 SRER,Sonoran SE,Warm,UNFO3,UNFO3.SRER,"Unknown forb (SRER); tiny reddish basal leaves, star-like petals, SRER",Unknown,Unknown,Forb,No

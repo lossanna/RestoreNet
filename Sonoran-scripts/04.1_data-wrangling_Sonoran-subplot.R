@@ -14,8 +14,8 @@ library(tidyverse)
 # Load data ---------------------------------------------------------------
 
 subplot.raw <- read_xlsx("Sonoran-data/raw/2023-09-15_Master 1.0 Germination Data_raw.xlsx", sheet = "AllSubplotData")
-species.in <- read_csv("Sonoran-data/cleaned/01_species-list_location-independent_clean.csv")
-species.de <- read_csv("Sonoran-data/cleaned/01_species-list_location-dependent_clean.csv")
+species.in <- read_csv("Sonoran-data/cleaned/01_subplot_species-list_location-independent_clean.csv")
+species.de <- read_csv("Sonoran-data/cleaned/01_subplot_species-list_location-dependent_clean.csv")
 mix <- read_xlsx("Sonoran-data/raw/from-Master_seed-mix_LO_Sonoran.xlsx", sheet = "with-site_R") |> 
   filter(Site %in% c("SRER", "Patagonia", "Preserve", "Pleasant", "SCC", "Roosevelt"))
 monitor.info <- read_csv("Sonoran-data/cleaned/02_corrected-monitoring-info_clean.csv")
