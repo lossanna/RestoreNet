@@ -553,8 +553,7 @@ head(p2x2.codes.dup.fixed)
 # Add site to code and name for location-dependent species
 #   for all rows, not just ones that need duplicate
 p2x2.codes.de <- p2x2.codes.dup.fixed %>%
-  filter(LocationDependence == "dependent",
-         NeedsItsDuplicate == "Yes")
+  filter(LocationDependence == "dependent")
 p2x2.codes.de$Code <- apply(p2x2.codes.de[, c("Code", "Site")], 1, paste, collapse = ".")
 p2x2.codes.de$Name <- apply(p2x2.codes.de[, c("Name", "Site")], 1, paste, collapse = ", ")
 
