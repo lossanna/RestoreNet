@@ -1,4 +1,5 @@
 Region,Site,Code,CodeOriginal,Name,Native,Duration,Lifeform
+Sonoran Central,Pleasant,CHSPP.Pleasant,CHSPP,"Chamaesyce spp., Pleasant",Unknown,Unknown,Forb
 Sonoran Central,Pleasant,CRYPT.Pleasant,CRYPT,"Cryptantha spp., Pleasant",Native,Unknown,Forb
 Sonoran Central,Pleasant,ERIOG.Pleasant,ERIOG,"Eriogonum spp., Pleasant",Native,Unknown,Forb
 Sonoran Central,Pleasant,Unk bunchGrass #1.Pleasant,Unk bunchGrass #1,"Could be BOCU, Pleasant",Unknown,Unknown,Grass
@@ -8,7 +9,7 @@ Sonoran Central,Preserve,Unk heart.Preserve,Unk heart,"Unknown forb with heart-s
 Sonoran Central,Roosevelt,CRYPT.Roosevelt,CRYPT,"Cryptantha spp., Roosevelt",Native,Unknown,Forb
 Sonoran Central,Roosevelt,unk grass 2.Roosevelt,unk grass 2,"Unknown grass 2, Roosevelt",Unknown,Unknown,Grass
 Sonoran Central,SCC,UNK brown.SCC,UNK brown,"Unknown brown, SCC",Unknown,Unknown,Unknown
-Sonoran Central,SCC,Unk grass (possibly seeded).SCC,Unk grass (possibly seeded),"Unknown grass (possibly seeded), SCC",Native/Unknown,Unknown,Grass
+Sonoran Central,SCC,Unk grass.SCC,Unk grass,"Unknown likely associated with warm seed mix, SCC",Unknown,Unknown,Grass
 Sonoran Central,SCC,Unk sp..SCC,Unk sp.,"Unknown species, SCC",Unknown,Unknown,Unknown
 Sonoran SE,Patagonia,ARISPP.Patagonia,ARISPP,"Aristida spp., Patagonia",Native,Unknown,Grass
 Sonoran SE,Patagonia,CALSPP.Patagonia,CALSPP,"Calandrinia spp., Patagonia",Native,Unknown,Forb
@@ -17,8 +18,8 @@ Sonoran SE,Patagonia,ERASPP.Patagonia,ERASPP,"Eragrostis spp., ERCU or ERLE, Pat
 Sonoran SE,Patagonia,ERISPP.Patagonia,ERISPP,"Erigeron spp., Patagonia",Native,Unknown,Forb
 Sonoran SE,Patagonia,MENSPP.Patagonia,MENSPP,"Mentzelia spp., Patagonia",Native,Unknown,Forb
 Sonoran SE,Patagonia,PORSPP.Patagonia,PORSPP,"Portulaca spp., Patagonia",Native,Unknown,Forb
-Sonoran SE,Patagonia,PROACASPP.Patagonia,PROACASPP,"Mesquite/Acacia spp., Patagonia",Native/Unknown,Perennial,Shrub
-Sonoran SE,Patagonia,SIDSPP.Patagonia,SIDSPP,"Sida spp., Patagonia",Native/Unknown,Unknown,Forb
+Sonoran SE,Patagonia,PROACASPP.Patagonia,PROACASPP,"Mesquite/Acacia spp., Patagonia",Native,Perennial,Shrub
+Sonoran SE,Patagonia,SIDSPP.Patagonia,SIDSPP,"Sida spp., Patagonia",Native,Unknown,Forb
 Sonoran SE,Patagonia,UNFO-1.Patagonia,UNFO-1,"Unknown forb (SRER); Umbilliferae family, thin lacey divided leaves with small white flowers in umbels at the top, Patagonia",Unknown,Unknown,Forb
 Sonoran SE,Patagonia,UNFO1.Patagonia,UNFO1,"Unknown forb (Patagonia and SRER are same); upright mustard with tiny blueish flower, Patagonia",Unknown,Unknown,Forb
 Sonoran SE,Patagonia,UNFO1A.Patagonia,UNFO1A,"Unknown forb (Patagonia, Nov 2019); Darker Green, 5 petals radiating out, Patagonia",Unknown,Unknown,Forb
@@ -35,17 +36,17 @@ Sonoran SE,Patagonia,UNFO_P_6.Patagonia,UNFO_P_6,"Unknown forb; Super tiny, red 
 Sonoran SE,Patagonia,UNFO_P_7.Patagonia,UNFO_P_7,"Unknown forb; Rosette leaves slightly fuzzy and silvery light green. simple leaves, smells like bandaids (Spring 2021), Patagonia",Unknown,Unknown,Forb
 Sonoran SE,Patagonia,UNFS.Patagonia,UNFS,"Unknown forb seedling, Patagonia",Unknown,Unknown,Forb
 Sonoran SE,Patagonia,UNGR1 (possible ERLE).Patagonia,UNGR1 (possible ERLE),"Unknown grass 1, possibly ERLE, Patagonia",Introduced,Perennial,Grass
-Sonoran SE,Patagonia,UNGRS1.Patagonia,UNGRS1,"Unknown grass (Patagonia);Unk. grass seedling, bunchy, possible lovegrass?, Patagonia",Unknown,Unknown,Grass
-Sonoran SE,Patagonia,UNGRS2.Patagonia,UNGRS2,"Unknown grass (Patagonia); Unk grass seedling, leaf divided early like BOGR, possible lovegrass?, Patagonia",Unknown,Unknown,Grass
+Sonoran SE,Patagonia,UNGRS1.Patagonia,UNGRS1,"Unknown grass (Patagonia);Unk. grass seedling, bunchy, possible lovegrass?, Patagonia",Introduced,Perennial,Grass
+Sonoran SE,Patagonia,UNGRS2.Patagonia,UNGRS2,"Unknown grass (Patagonia); Unk grass seedling, leaf divided early like BOGR, possible lovegrass?, Patagonia",Native,Unknown,Grass
 Sonoran SE,Patagonia,UNGRS3.Patagonia,UNGRS3,"Unknown grass (Patagonia); Lighter green, thin leaves, possible threeawn?, Patagonia",Native,Unknown,Grass
 Sonoran SE,Patagonia,UNGR_P_1.Patagonia,UNGR_P_1,"Unknown grass; Possibly small ARIsp. (Spring 2021), Patagonia",Native,Unknown,Grass
-Sonoran SE,Patagonia,UNSHR-1.Patagonia,UNSHR-1,"Unknown shrub (Patagonia); mesquite or acacia, Patagonia",Native,Unknown,Shrub
+Sonoran SE,Patagonia,UNSHR-1.Patagonia,UNSHR-1,"Unknown shrub (Patagonia); mesquite or acacia, Patagonia",Native,Perennial,Shrub
 Sonoran SE,SRER,ACASPP.SRER,ACASPP,"Acalypha spp., SRER",Native/Unknown,Unknown,Forb
 Sonoran SE,SRER,ANOSPP.SRER,ANOSPP,"Anoda spp., SRER",Native,Annual,Forb
 Sonoran SE,SRER,ARISPP.SRER,ARISPP,"Aristida spp., SRER",Native,Unknown,Grass
-Sonoran SE,SRER,ASTSPP.SRER,ASTSPP,"Astragalus spp., SRER",Native/Unknown,Unknown,Forb
+Sonoran SE,SRER,ASTSPP.SRER,ASTSPP,"Astragalus spp., SRER",Native,Unknown,Forb
 Sonoran SE,SRER,BOUSPP.SRER,BOUSPP,"Bouteloua spp. (BOCH, BOCU, BORE, or BORA), SRER",Native,Perennial,Grass
-Sonoran SE,SRER,BRASPP.SRER,BRASPP,"Brassica spp. (likely DEPI), SRER",Native/Unknown,Unknown,Forb
+Sonoran SE,SRER,BRASPP.SRER,BRASPP,"Brassica spp. (likely DEPI), SRER",Native,Unknown,Forb
 Sonoran SE,SRER,CRYSPP.SRER,CRYSPP,"Cryptantha spp., SRER",Native,Unknown,Forb
 Sonoran SE,SRER,CRYSPP 1.SRER,CRYSPP 1,"Cryptantha spp. 1, SRER",Native,Unknown,Forb
 Sonoran SE,SRER,CRYSPP 2.SRER,CRYSPP 2,"Cryptantha spp. 2, SRER",Native,Unknown,Forb
@@ -55,11 +56,11 @@ Sonoran SE,SRER,FESSPP.SRER,FESSPP,"Fescue spp., SRER",Native,Unknown,Grass
 Sonoran SE,SRER,GILSPP.SRER,GILSPP,"Gilia spp., SRER",Native,Unknown,Forb
 Sonoran SE,SRER,GILSPP 1.SRER,GILSPP 1,"Gilia spp. 1, SRER",Native,Unknown,Forb
 Sonoran SE,SRER,GILSPP 2.SRER,GILSPP 2,"Gilia spp. 2, SRER",Native,Unknown,Forb
-Sonoran SE,SRER,LUPSPP.SRER,LUPSPP,"Lupinus spp., SRER",Unknown,Unknown,Forb
+Sonoran SE,SRER,LUPSPP.SRER,LUPSPP,"Lupinus spp., SRER",Native,Unknown,Forb
 Sonoran SE,SRER,MENSPP.SRER,MENSPP,"Mentzelia spp., SRER",Native,Unknown,Forb
 Sonoran SE,SRER,PANSPP.SRER,PANSPP,"Panicum spp., SRER",Native,Unknown,Grass
-Sonoran SE,SRER,PLASPP.SRER,PLASPP,"Plantago spp., SRER",Unknown,Unknown,Forb
-Sonoran SE,SRER,SIDSPP.SRER,SIDSPP,"Sida spp., SRER",Native/Unknown,Unknown,Forb
+Sonoran SE,SRER,PLASPP.SRER,PLASPP,"Plantago spp., SRER",Native,Unknown,Forb
+Sonoran SE,SRER,SIDSPP.SRER,SIDSPP,"Sida spp., SRER",Native,Unknown,Forb
 Sonoran SE,SRER,UNDPF.SRER,UNDPF,"Unknown dead pod forb, SRER",Unknown,Unknown,Forb
 Sonoran SE,SRER,UNDSF.SRER,UNDSF,"Unknown dead spikey forb, SRER",Unknown,Unknown,Forb
 Sonoran SE,SRER,UNFO-1.SRER,UNFO-1,"Unknown forb (Patagonia); Soft and fuzzy/hairy, serated leaves with middle vein underneath on bottom side of the leaf, pickle smell, SRER",Unknown,Unknown,Forb
@@ -78,9 +79,8 @@ Sonoran SE,SRER,UNFO_S_4.SRER,UNFO_S_4,"Unknown forb; Super tiny, very spikey, p
 Sonoran SE,SRER,UNFO_S_5.SRER,UNFO_S_5,"Unknown forb; Silky hairy fuzzy, straight leaves, no prominent veination, pseudognaphalium? (Spring 2021), SRER",Unknown,Unknown,Forb
 Sonoran SE,SRER,UNFO_S_7.SRER,UNFO_S_7,"Unknown forb; ""artichoke head"", stem leaves alternate, basal rosette, possibly cryptantha? (Spring 2021), SRER",Native/Unknown,Unknown,Forb
 Sonoran SE,SRER,UNGR1 (BOER/Aristida).SRER,UNGR1 (BOER/Aristida),"Unknown grass 1, BOER4 or Aristida, SRER",Native,Unknown,Grass
-Sonoran SE,SRER,UNGRS-1 (likely ERLE).SRER,UNGRS-1 (likely ERLE),"Unknown grass 1, likely ERLE, SRER",Introduced,Perennial,Grass
-Sonoran SE,SRER,UNGRS1.SRER,UNGRS1,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes, SRER",Native/Unknown,Unknown,Grass
-Sonoran SE,SRER,UNGRS-1.SRER,UNGRS-1,"Unknown grass seedling (SRER), but most likely ERLE, spring 2022, SRER",Introduced,Unknown,Grass
-Sonoran SE,SRER,UNGR_S_1.SRER,UNGR_S_1,"Unknown grass; Grass seedling short erose ligule slight chance ARPU because of 45 degree leaf or possibly a Vulpia sp. like VUOC (Spring 2021), SRER",Native/Unknown,Unknown,Grass
-Sonoran SE,SRER,UNGR_S_2.SRER,UNGR_S_2,"Unknown grass; Possibly a BOCU or another Bouteloua (Spring 2021), SRER",Native,Unknown,Grass
+Sonoran SE,SRER,UNGRS1.SRER,UNGRS1,"Unknown grass (SRER); Small tuft grass, bouteloua like growth, heads as nodes, SRER",Native,Unknown,Grass
+Sonoran SE,SRER,UNGRS-1.SRER,UNGRS-1,"Unknown grass seedling (SRER), but most likely ERLE, spring 2022, SRER",Introduced,Perennial,Grass
+Sonoran SE,SRER,UNGR_S_1.SRER,UNGR_S_1,"Unknown grass; Grass seedling short erose ligule slight chance ARPU because of 45 degree leaf or possibly a Vulpia sp. like VUOC (Spring 2021), SRER",Native,Perennial,Grass
+Sonoran SE,SRER,UNGR_S_2.SRER,UNGR_S_2,"Unknown grass; Possibly a BOCU or another Bouteloua (Spring 2021), SRER",Native,Perennial,Grass
 Sonoran SE,SRER,UNSFF.SRER,UNSFF,"Unknown shrubby fuzzy forb, munched down, SRER",Unknown,Unknown,Forb

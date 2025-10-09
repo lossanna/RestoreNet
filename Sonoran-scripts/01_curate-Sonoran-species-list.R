@@ -367,12 +367,6 @@ write_csv(sites.m.unk,
           file = "Sonoran-data/data-wrangling-intermediate/01a_output5.2_location-dependent_xlsx_sites.csv")
 head(sites.m.unk) # contains Site
 
-# Look for NA codes that had observations (Count or Height) in subplot data
-filter(subplot, is.na(CodeOriginal)) %>%
-  select(Site, `Seeded(Yes/No)`, Functional_Group, Seedling_Count, Average_Height_mm, raw.row) # none
-filter(subplot, CodeOriginal == "NA") %>%
-  select(Site, `Seeded(Yes/No)`, Functional_Group, Seedling_Count, Average_Height_mm, raw.row) # none
-
 # EDITED: manually add/correct Site, Native, Duration, and Lifeform cols
 #   Use 5.1 as skeleton to edit
 #   Create extra rows for unknowns (they are defined by Region but need a row for each Site), as cross-referenced

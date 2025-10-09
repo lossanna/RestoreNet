@@ -44,13 +44,14 @@ DAPU7,DAPU7,Dasyochloa pulchella,Native,Perennial,Grass
 DEPI,DEPI,Descurainia pinnata,Native,Unknown,Forb
 DICA14,DICA14,Dichelostemma capitatum,Native,Perennial,Forb
 DICA8,DICA8,Digitaria californica,Native,Perennial,Grass
-DRCUI,DRCUI,Draba cuneifolia var. integrifolia,Native,Annual,Forb
+DRCUI,DRCUI,Draba cuneifolia,Native,Annual,Forb
 DeadStem,DeadStem,Dead stem,Unknown,Unknown,Forb
 ELEL5,ELEL5,Elymus elymoides,Native,Perennial,Grass
 ENFA,ENFA,Encelia farinosa,Native,Perennial,Shrub
 ERAB2,ERAB2,Eriogonum abertianum,Native,Annual,Forb
 ERCI6,ERCI6,Erodium cicutarium,Introduced,Annual,Forb
 ERCU2,ERCU2,Eragrostis curvula,Introduced,Perennial,Grass
+ERCU2/ERLE,ERCU2/ERLE,Eragrostis curvula or lehmanniana,Introduced,Perennial,Grass
 ERDI2,ERDI2,Eriastrum diffusum,Native,Annual,Forb
 ERER2,ERER2,Eriastrum eremicum,Native,Annual,Forb
 ERIAS,ERIAS,Eriastrum,Native,Unknown,Forb
@@ -119,7 +120,7 @@ SIIR,SIIR,Sisymbrium irio,Introduced,Annual,Forb
 SINE,SINE,Sida neomexicana,Native,Perennial,Forb
 SOOL,SOOL,Sonchus oleraceus,Introduced,Annual,Forb
 SORO,SORO,Solanum rostratum,Native,Annual,Forb
-SPAMA,SPAM2,Sphaeralcea ambigua,Native,Perennial,Forb
+SPAMA,SPAMA,Sphaeralcea ambigua,Native,Perennial,Forb
 SPCR,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass
 SPEC2,SPEC2,Spermolepis echinata,Native,Annual,Forb
 STGN,STGN,Stylocline gnaphalioides,Native,Annual,Forb
