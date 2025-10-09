@@ -21,6 +21,8 @@ Sonoran SE,SRER,A few possible ARPUs (2 certainty) or other ARsp. (ARTE),No,0,AR
 Sonoran SE,Patagonia,A few possible small SPCR in/around some of the pits,No,0,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass,independent
 Sonoran SE,Patagonia,A few possible small SPCRs and a couple MATA seedlings all in the pits,Yes,1,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass,independent
 Sonoran SE,Patagonia,A few possible small SPCRs and a couple MATA seedlings all in the pits,Yes,2,MATA2,Machaeranthera tanacetifolia,Native,Annual,Forb,independent
+Sonoran SE,Patagonia,ACHY,No,0,ACHY,Achnatherum hymenoides,Native,Perennial,Grass,independent
+Sonoran SE,SRER,ARISPP (unseeded),No,0,ARISPP (unseeded),Aristida spp. (unseeded),Native,Unknown,Grass,independent
 Sonoran SE,Patagonia,ARPU a few individuals,No,0,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
 Sonoran SE,Patagonia,ARPU a few small tufts and 1 taller,No,0,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
 Sonoran SE,Patagonia,ARPU about 5 individuals and an individual BAMU resprouting at base,Yes,1,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
@@ -43,6 +45,9 @@ Sonoran SE,SRER,BOCUs up to this point could also possibly be slender grama BORE
 Sonoran SE,SRER,"BOCUs with some new growth, green vegetation",No,0,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
 Sonoran SE,Patagonia,BOER (2 certainty) on edge of the southwest pit,No,0,BOER4,Bouteloua eriopoda,Native,Perennial,Grass,independent
 Sonoran SE,Patagonia,BOER in center/near southwest conmod possibly 5-8,No,0,BOER4,Bouteloua eriopoda,Native,Perennial,Grass,independent
+Sonoran SE,SRER,BOGR2,No,0,BOGR2,Bouteloua gracilis,Native,Perennial,Grass,independent
+Sonoran SE,SRER,BORE,No,0,BORE2,Bouteloua repens,Native,Perennial,Grass,independent
+Sonoran SE,SRER,BOUSPP (seeded),No,0,BOUSPP (seeded),Bouteloua spp. (seeded),Native,Perennial,Grass,dependent
 Sonoran SE,SRER,BOsp. a lot of possibly BOCU but could also be BORE or BORA,No,0,BOCU/BORE/BORA,Bouteloua curtipendula/repens/radicosa (spp.),Native,Perennial,Grass,dependent
 Sonoran SE,Patagonia,Blue grama BOGR in the S half of the plot don't confuse with black grama BOER,No,0,BOGR2,Bouteloua gracilis,Native,Perennial,Grass,independent
 Sonoran SE,Patagonia,Bouteloua on W edge but almost positive it's BOGR (blue gramma) not BOER (black gramma),No,0,BOGR2,Bouteloua gracilis,Native,Perennial,Grass,independent
@@ -63,8 +68,10 @@ Sonoran SE,SRER,Extra large BOER in S half and medium sized one next to NE plot 
 Sonoran SE,SRER,Extra large to medium large BOCUs throughout and at least 2 tiny SECO near/in SE pit and NE/subplot pit,Yes,1,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
 Sonoran SE,SRER,Extra large to medium large BOCUs throughout and at least 2 tiny SECO near/in SE pit and NE/subplot pit,Yes,2,SECO10,Senna covesii,Native,Perennial,Forb,independent
 Sonoran SE,Patagonia,Few small to medium ARPUs spaced throughout,No,0,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
+Sonoran Central,Preserve,GUSA2,No,0,GUSA2,Gutierrezia sarothrae,Native,Perennial,Forb,independent
 Sonoran SE,SRER,HEMU,No,0,HEMU,Heliomeris multiflora,Native,Perennial,Forb,independent
-Sonoran Central,Pleasant,LEPISP,No,0,LEPISP,Lepidium spp.,Native/Unknown,Unknown,Forb,dependent
+Sonoran Central,Roosevelt,LEGO,No,0,LEGO,Lesquerella gordonii ,Native,Unknown,Forb,independent
+Sonoran Central,Pleasant,LEPISP,No,0,LEPISP,Lepidium spp.,Native,Unknown,Forb,dependent
 Sonoran SE,Patagonia,Large BOCU in the southeast with a few small ones throughout and about 5 ARPUs small to large in size that're mostly near the conmods,Yes,1,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
 Sonoran SE,Patagonia,Large BOCU in the southeast with a few small ones throughout and about 5 ARPUs small to large in size that're mostly near the conmods,Yes,2,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
 Sonoran SE,SRER,Large and medium BOCUs in plot,No,0,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
@@ -135,6 +142,8 @@ Sonoran SE,Patagonia,"No new growth or green vegetation on SECO in the northwest
 Sonoran SE,Patagonia,"No new growth or green vegetation on SECO in the northwest pit but still there, there's a BAMU in the southwest pit as well, possibly ACHY in the south half of the plot, multiple medium to large sized ARPUs mostly in and/or near pits but not all",Yes,4,ARPU9,Aristida purpurea,Native,Perennial,Grass,independent
 Sonoran SE,Patagonia,None seeded,No,0,0,0,0,0,0,independent
 Sonoran SE,Patagonia,Not in the Med mix but there are a couple young SECOs,No,0,SECO10,Senna covesii,Native,Perennial,Forb,independent
+Sonoran Central,Roosevelt,OPUNT,No,0,OPUNT,Opuntia spp.,Native,Perennial,Shrub,dependent
+Sonoran Central,Roosevelt,PAAR2,No,0,PAAR2,Passiflora arida,Introduced,Perennial,Forb,independent
 Sonoran SE,SRER,PEPA (possibly),No,0,PEPA8,Penstemon palmeri,Native,Perennial,Forb,independent
 Sonoran Central,Pleasant,PHYSR,No,0,PHYSR,Physaria sp.,Native,Unknown,Forb,dependent
 Sonoran SE,Patagonia,Pits are mostly infilled or completely depending on pit anywhere from 80-100%,No,0,0,0,0,0,0,independent
@@ -180,6 +189,7 @@ Sonoran SE,SRER,Potentially 3 or 4 BOCU (1 certainty) and possibly an ARPU (2) o
 Sonoran SE,SRER,Probable BOCUs with apparent grazing,No,0,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
 Sonoran SE,SRER,Quite a few small tp extra large BOCUs throughout along with a possible ASTU,Yes,1,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
 Sonoran SE,SRER,Quite a few small tp extra large BOCUs throughout along with a possible ASTU,Yes,2,ASTU,Asclepias tuberosa,Native,Perennial,Forb,independent
+Sonoran SE,Patagonia,SAIB,No,,SATR12,Salsola tragus,Introduced,Annual,Forb,independent
 Sonoran Central,Pleasant,SISYM,No,0,SISYM,Sisymbrium sp.,Unknown,Unknown,Forb,dependent
 Sonoran SE,Patagonia,SW conmod is overgrown with Blue grama but NO black grama but thee's a possible young PEPA by the NW conmod,Yes,1,BOGR2,Bouteloua gracilis,Native,Perennial,Grass,independent
 Sonoran SE,Patagonia,SW conmod is overgrown with Blue grama but NO black grama but thee's a possible young PEPA by the NW conmod,Yes,2,PEPA8,Penstemon palmeri,Native,Perennial,Forb,independent
@@ -216,15 +226,16 @@ Sonoran SE,SRER,There're multiple BOCUs and a couple possible SECO seedlings,Yes
 Sonoran SE,SRER,There're multiple BOCUs and a couple possible SECO seedlings,Yes,2,SECO10,Senna covesii,Native,Perennial,Forb,independent
 Sonoran SE,SRER,"There's a possible POSE (boat/canoe leaf blades, greener than other grasses currently around, it's very basal and tufted too with a membraneous ligule however if it's not than 0% seeded species cover",No,0,POSE,Poa secunda,Native,Perennial,Grass,independent
 Sonoran SE,SRER,There's a possible SPCR along the north edge and southwest near the center however if neither are SPCRs than seeded species cover would be 0%,No,0,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass,independent
-Sonoran SE,SRER,UNGR,No,0,UNGR,Unknown grass,Unknown,Unknown,Grass,dependent
-Sonoran SE,SRER,UNGR-2 possibly a Bouteloua (BOCU?) Maybe PLJA? (never seen),No,0,UNGR-2 ,Unknown grass 2 possibly a Bouteloua (BOCU?) Maybe PLJA? (never seen),Native/Unknown,Unknown,Grass,dependent
+Sonoran Central,Pleasant,UNGR,No,0,UNGR,Unknown grass,Unknown,Unknown,Grass,dependent
+Sonoran SE,SRER,UNGR (maybe seeded),No,0,UNGR (maybe seeded),"Unknown grass, maybe seeded",Native,Unknown,Grass,dependent
+Sonoran SE,SRER,UNGR-2 possibly a Bouteloua (BOCU?) Maybe PLJA? (never seen),No,0,UNGR-2 ,Unknown grass 2 possibly a Bouteloua (BOCU?) Maybe PLJA? (never seen),Native,Unknown,Grass,dependent
 Sonoran Central,Preserve,Unk dark,No,0,Unk dark,Unknown dark,Unknown,Unknown,Forb,dependent
 Sonoran Central,Pleasant,Unk forb,No,0,Unk forb,Unknown forb,Unknown,Unknown,Forb,dependent
 Sonoran Central,Roosevelt,Unk grass 1,No,0,Unk grass 1,Unknown grass,Unknown,Unknown,Grass,dependent
+Sonoran Central,Pleasant,Unk sp. (Boraginaceae),No,0,Unk sp. (Boraginaceae),Unknown species (Boraginaceae),Unknown,Unknown,Forb,dependent
 Sonoran Central,Roosevelt,VEPE2,No,0,VEPE2,Veronica peregrina,Native,Annual,Forb,independent
 Sonoran SE,Patagonia,none seeded,No,0,0,0,0,0,0,independent
 Sonoran Central,Roosevelt,unk forb,No,0,unk forb,Unknown forb,Unknown,Unknown,Forb,dependent
-Sonoran Central,SCC,unk grass,No,0,unk grass,Unknown grass,Unknown,Unknown,Grass,dependent
 Sonoran Central,Roosevelt,unk grass 1,No,0,unk grass 1,Unknown grass,Unknown,Unknown,Grass,dependent
 Sonoran Central,Preserve,CRYPT,No,0,CRYPT,Cryptantha spp.,Native,Unknown,Forb,dependent
 Sonoran Central,Pleasant,Unk grass,No,0,Unk grass,Unknown grass,Unknown,Unknown,Grass,dependent

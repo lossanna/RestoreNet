@@ -20,13 +20,16 @@ A few possible ARPUs (2 certainty) or other ARsp. (ARTE),No,0,ARPU9,Aristida pur
 A few possible small SPCR in/around some of the pits,No,0,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass
 A few possible small SPCRs and a couple MATA seedlings all in the pits,Yes,2,MATA2,Machaeranthera tanacetifolia,Native,Annual,Forb
 A few possible small SPCRs and a couple MATA seedlings all in the pits,Yes,1,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass
+ACHY,No,0,ACHY,Achnatherum hymenoides,Native,Perennial,Grass
 ACMIS,No,0,ACMIS,Acmispon (Lotus),Native,Annual,Forb
 AMCO3,No,0,AMCO3,Ambrosia confertiflora,Native,Perennial,Forb
 AMDE4,No,0,AMDE4,Ambrosia deltoidea,Native,Perennial,Shrub
 AMMEI2,No,0,AMMEI2,Amsinckia menziesii,Native,Annual,Forb
 AMPA,No,0,AMPA,Amaranthus palmeri,Native,Annual,Forb
 AMSIN,No,0,AMSIN,Amsinckia,Native,Annual,Forb
+ANOC2,No,0,ANOC2,Androsace occidentalis,Native,Annual,Forb
 ARAD,No,0,ARAD,Aristida adscensionis,Native,Annual,Grass
+ARISPP (unseeded),No,0,ARISPP (unseeded),Aristida spp. (unseeded),Native,Unknown,Grass
 ARNE2,No,0,ARNE2,Argythamnia neomexicana,Native,Unknown,Forb
 ARPU a few individuals,No,0,ARPU9,Aristida purpurea,Native,Perennial,Grass
 ARPU a few small tufts and 1 taller,No,0,ARPU9,Aristida purpurea,Native,Perennial,Grass
@@ -43,6 +46,7 @@ ARPU small tufts and a tall individual,No,0,ARPU9,Aristida purpurea,Native,Peren
 ARPU9,No,0,ARPU9,Aristida purpurea,Native,Perennial,Grass
 ARPUP6,No,0,ARPU9,Aristida purpurea,Native,Perennial,Grass
 ASNU4,No,0,ASNU4,Astragalus nuttallianus,Native,Unknown,Forb
+ASTU,No,0,ASTU,Asclepias tuberosa,Native,Perennial,Forb
 Aristida species between the northeast and southeast pits possibly an ARPU if not than seeded species cover would be 0%,No,0,ARPU9,Aristida purpurea,Native,Perennial,Grass
 At least 10 ARPUs throughout small to large in size,No,0,ARPU9,Aristida purpurea,Native,Perennial,Grass
 BAMU,No,0,BAMU,Baileya multiradiata,Native,Unknown,Forb
@@ -58,8 +62,11 @@ BOCUs,No,0,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
 BOER (2 certainty) on edge of the southwest pit,No,0,BOER4,Bouteloua eriopoda,Native,Perennial,Grass
 BOER in center/near southwest conmod possibly 5-8,No,0,BOER4,Bouteloua eriopoda,Native,Perennial,Grass
 BOER4,No,0,BOER4,Bouteloua eriopoda,Native,Perennial,Grass
+BOGR2,No,0,BOGR2,Bouteloua gracilis,Native,Perennial,Grass
 BOIN,No,0,BOIN,Boerhavia intermedia,Native,Annual,Forb
 BOIN3,No,0,BOIN3,Bowlesia incana,Native,Annual,Forb
+BORA,No,0,BORA,Bouteloua radicosa,Native,Perennial,Grass
+BORE,No,0,BORE2,Bouteloua repens,Native,Perennial,Grass
 BORO2,No,0,BORO2,Bouteloua rothrockii,Native,Perennial,Grass
 BRRU2,No,0,BRRU2,Bromus rubens,Introduced,Annual,Grass
 Blue grama BOGR in the S half of the plot don't confuse with black grama BOER,No,0,BOGR2,Bouteloua gracilis,Native,Perennial,Grass
@@ -85,7 +92,7 @@ DAPU7,No,0,DAPU7,Dasyochloa pulchella,Native,Perennial,Grass
 DICA14,No,0,DICA14,Dichelostemma capitatum,Native,Perennial,Forb
 DICA8,No,0,DICA8,Digitaria californica,Native,Perennial,Grass
 DINE2,No,0,DINE2,Argythamnia neomexicana,Native,Unknown,Forb
-DRCUI,No,0,DRCUI,Draba cuneifolia var. integrifolia,Native,Annual,Forb
+DRCUI,No,0,DRCUI,Draba cuneifolia,Native,Annual,Forb
 ELEL5,No,0,ELEL5,Elymus elymoides,Native,Perennial,Grass
 ENFA,No,0,ENFA,Encelia farinosa,Native,Perennial,Shrub
 ERCI,No,0,ERCI,Eragrostis cilianensis,Introduced,Annual,Grass
@@ -106,6 +113,7 @@ Extra large to medium large BOCUs throughout and at least 2 tiny SECO near/in SE
 Extra large to medium large BOCUs throughout and at least 2 tiny SECO near/in SE pit and NE/subplot pit,Yes,2,SECO10,Senna covesii,Native,Perennial,Forb
 Few small to medium ARPUs spaced throughout,No,0,ARPU9,Aristida purpurea,Native,Perennial,Grass
 GNPA,No,0,GNPA,Gnaphalium palustre,Native,Annual,Forb
+GUSA2,No,0,GUSA2,Gutierrezia sarothrae,Native,Perennial,Forb
 HAPAA,No,0,HAPAA,Harpagonella palmeri,Native,Annual,Forb
 HEHIC,No,0,HEHIC,Herniaria hirsuta,Introduced,Annual,Forb
 HEMU,No,0,HEMU,Heliomeris multiflora,Native,Perennial,Forb
@@ -113,6 +121,7 @@ KRLA2,No,0,KRLA2,Krascheninnikovia lanata,Native,Perennial,Shrub
 LACA7,No,0,LACA7,Lasthenia californica,Native,Unknown,Forb
 LAGR10,No,0,LAGR10,Lasthenia gracilis,Native,Annual,Forb
 LATR2,No,0,LATR2,Larrea tridentata,Native,Perennial,Shrub
+LEGO,No,0,LEGO,Lesquerella gordonii,Native,Unknown,Forb
 LELA,No,0,LELA,Lepidium lasiocarpum,Native,Annual,Forb
 LIBI2,No,0,LIBI2,Linanthus bigelovii,Native,Annual,Forb
 LOAR12,No,0,LOAR12,Logfia arizonica,Native,Annual,Forb
@@ -195,6 +204,7 @@ No new growth on the BAMU in the northeast corner yet,No,0,BAMU,Baileya multirad
 None seeded,No,0,0,0,0,0,0
 Not in the Med mix but there are a couple young SECOs,No,0,SECO10,Senna covesii,Native,Perennial,Forb
 ONPI,No,0,ONPI,Oncosiphon piluliferum,Introduced,Annual,Forb
+PAAR2,No,0,PAAR2,Passiflora arida,Introduced,Perennial,Forb
 PAMI5,No,0,PAMI5,Parkinsonia microphylla,Native,Perennial,Shrub
 PECTO,No,0,PECTO,Pectocarya,Native,Annual,Forb
 PEHE,No,0,PEHE,Pectocarya heterocarpa,Native,Annual,Forb
@@ -209,6 +219,7 @@ PLPR3,No,0,PLPR3,Plagiobothrys pringlei,Native,Annual,Forb
 POBI,No,0,POBI,Poa bigelovii,Native,Annual,Grass
 POOL,No,0,POOL,Portulaca oleracea,Unknown,Annual,Forb
 PRVE,No,0,PRVE,Prosopis velutina,Native,Perennial,Shrub
+PSCA11,No,0,PSCA11,Pseudognaphalium canescens,Native,Unknown,Forb
 Pits are mostly infilled or completely depending on pit anywhere from 80-100%,No,0,0,0,0,0,0
 Possible ACHY near southwest corner (2 certainty) and about 10 ARPU small to medium in size with 2 of them next to the subplot but not quite in,Yes,1,ACHY,Achnatherum hymenoides,Native,Perennial,Grass
 Possible ACHY near southwest corner (2 certainty) and about 10 ARPU small to medium in size with 2 of them next to the subplot but not quite in,Yes,2,ARPU9,Aristida purpurea,Native,Perennial,Grass
@@ -249,13 +260,14 @@ Probable BOCUs with apparent grazing,No,0,BOCU,Bouteloua curtipendula,Native,Per
 Quite a few small tp extra large BOCUs throughout along with a possible ASTU,Yes,2,ASTU,Asclepias tuberosa,Native,Perennial,Forb
 Quite a few small tp extra large BOCUs throughout along with a possible ASTU,Yes,1,BOCU,Bouteloua curtipendula,Native,Perennial,Grass
 SACO6,No,0,SACO6,Salvia columbariae,Native,Annual,Forb
+SAIB,No,NA,SATR12,Salsola tragus,Introduced,Annual,Forb
 SATR12,No,0,SATR12,Salsola tragus,Introduced,Annual,Forb
 SCBA,No,0,SCBA,Schismus barbatus,Introduced,Annual,Grass
 SECO10,No,0,SECO10,Senna covesii,Native,Perennial,Forb
 SIAN2,No,0,SIAN2,Silene antirrhina,Native,Annual,Forb
 SIIR,No,0,SIIR,Sisymbrium irio,Introduced,Annual,Forb
 SOOL,No,0,SOOL,Sonchus oleraceus,Introduced,Annual,Forb
-SPAMA,No,0,SPAM2,Sphaeralcea ambigua,Native,Perennial,Forb
+SPAMA,No,0,SPAMA,Sphaeralcea ambigua,Native,Perennial,Forb
 SPCR,No,0,SPCR,Sporobolus cryptandrus,Native,Perennial,Grass
 STGN,No,0,STGN,Stylocline gnaphalioides,Native,Annual,Forb
 STMI2,No,0,STMI2,Stylocline micropoides,Native,Annual,Forb
