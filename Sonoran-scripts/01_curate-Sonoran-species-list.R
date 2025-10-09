@@ -1,5 +1,5 @@
 # Created: 2025-01-21
-# Last updated: 2025-10-07
+# Last updated: 2025-10-09
 
 # Purpose: Curate a complete species list with Code, Code Original, Name, Native, Duration, Lifeform info
 #   for Sonoran sites, using subplot and 2x2 data.
@@ -19,13 +19,16 @@ library(tidyverse)
 
 # Load data ---------------------------------------------------------------
 
-subplot.raw <- read_xlsx("Sonoran-data/raw/2023-09-15_Master 1.0 Germination Data_raw.xlsx", 
-                         sheet = "AllSubplotData")
-plot.2x2.raw <- read_xlsx("Sonoran-data/raw/2023-09-15_Master 1.0 Germination Data_raw.xlsx",
-                          sheet = "AllPlotData")
+subplot.se.raw <- read_xlsx("Sonoran-data/raw/Sonoran_2023-09-15_Master 1.0 Germination Data_LO.xlsx", 
+                         sheet = "SonoranSE_Subplots_LO")
+subplot.cen.raw <- read_xlsx("Sonoran-data/raw/Sonoran_2023-09-15_Master 1.0 Germination Data_LO.xlsx", 
+                            sheet = "SonoranCentral_Subplots_LO")
+plot.2x2.se.raw <- read_xlsx("Sonoran-data/raw/Sonoran_2023-09-15_Master 1.0 Germination Data_LO.xlsx",
+                          sheet = "SonoranSE_Plots_LO")
+plot.2x2.cen.raw <- read_xlsx("Sonoran-data/raw/Sonoran_2023-09-15_Master 1.0 Germination Data_LO.xlsx",
+                             sheet = "SonoranCentral_Plots_LO")
 species.raw <- read_xlsx("Sonoran-data/raw/from-Master_species-list-with-native-status_LO.xlsx")
-mix <- read_xlsx("Sonoran-data/raw/from-Master_seed-mix_LO_Sonoran.xlsx", sheet = "with-site_R")
-
+mix.raw <- read_xlsx("Sonoran-data/raw/from-Master_seed-mix_LO_Sonoran.xlsx", sheet = "with-site_R") 
 
 # Notes about manual edits ------------------------------------------------
 
@@ -40,11 +43,18 @@ mix <- read_xlsx("Sonoran-data/raw/from-Master_seed-mix_LO_Sonoran.xlsx", sheet 
 
 # Organize subplot and 2x2 data -------------------------------------------
 
-# Retain Sonoran Desert sites only
-subplot <- subplot.raw %>% 
-  filter(Site %in% c("SRER", "Patagonia", "Preserve", "Pleasant", "SCC", "Roosevelt"))
-p2x2 <- plot.2x2.raw %>% 
-  filter(Site %in% c("SRER", "Patagonia", "Preserve", "Pleasant", "SCC", "Roosevelt"))
+# Convert cols to character and combine all Sonoran Desert sites 
+subplot.se <- subplot.se.raw %>% 
+  mutate(across(everything(), as.character))
+subplot.cen <- subplot.cen.raw %>% 
+  mutate(across(everything(), as.character))
+subplot <- bind_rows(subplot.se, subplot.cen)
+
+p2x2.se <- plot.2x2.se.raw %>% 
+  mutate(across(everything(), as.character))
+p2x2.cen <- plot.2x2.cen.raw %>% 
+  mutate(across(everything(), as.character))
+p2x2 <- bind_rows(p2x2.cen, p2x2.se)
 
 
 # Add Region column
@@ -68,13 +78,19 @@ subplot.codes <- subplot %>%
 
 p2x2.codes <- p2x2 %>%
   select(Region, Site, starts_with("Additional")) %>%
-  mutate(across(everything(), as.character)) %>%
   pivot_longer(starts_with("Additional"), names_to = "drop", values_to = "CodeOriginal") %>%
   select(-drop) %>%
   distinct(.keep_all = TRUE) %>%
   filter(!is.na(CodeOriginal)) %>% 
   arrange(CodeOriginal)
 
+
+# Organize raw mix & species lists ----------------------------------------
+
+mix <- mix.raw %>% 
+  filter(Site %in% c("SRER", "Patagonia", "Preserve", "Pleasant", "SCC", "Roosevelt"))
+species <- species.raw %>% 
+  filter(Region %in% c("Sonoran SE", "Sonoran Central"))
 
 
 # Subplot data & master species lists -------------------------------------
@@ -87,7 +103,7 @@ p2x2.codes <- p2x2 %>%
 #   Manually adding the missing information (Name, Native, Lifeform, and Duration cols).
 
 # Extract missing codes
-codes.missing.sub <- setdiff(subplot$CodeOriginal, species.raw$CodeOriginal)
+codes.missing.sub <- setdiff(subplot$CodeOriginal, species$CodeOriginal)
 
 # Narrow columns and remove duplicates for missing subplot data
 subplot.missing <- subplot %>%

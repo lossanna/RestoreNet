@@ -1,26 +1,26 @@
 Created: 2025-01-21  
-Last updated: 2025-10-07
+Last updated: 2025-10-09
   
 Notes about `output` and `edited` intermediate data files created in data cleaning for RAMPS RestoreNet project (updated analysis for publication with Sonoran sites only).
 
 # Notes
 
 ## Raw data
-- `2023-09-15_Master 1.0 Germination Data_raw.xlsx`
-	- Shortened name: `Master.xlsx`.
-	- Contains `AllSubplotData` tab (raw `subplot` data).
+- `Sonoran_2023-09-15_Master 1.0 Germination Data_LO.xlsx`
+	- Shortened name: `Sonoran-Master.xlsx`.
+	- Contains all tabs for the `subplot` and `2x2` data.
 - `from-Master_seed-mix_LO_Sonoran.xlsx`
 	- Usually referred to as "seed mix".
-	- Seed mix adapted from `Master.xlsx`. Used in `01.R` to compare codes for standardization and to make sure species marked as seeded were also marked as native.
+	- Seed mix adapted from original `Master.xlsx`. Used in `01.R` to compare codes for standardization and to make sure species marked as seeded were also marked as native.
 - `from-Master_species-list-with-native-status_LO.xlsx` 
 	- Usually referred to as "master species list".
-	- Adapted from `Master.xlsx` and was the starting list in building species lists.
+	- Adapted from original `Master.xlsx` and was the starting list in building species lists.
 
 ## Types of data
 - Species lists: include columns `Code`, `Name`, and information like `Native` (native/introduced), `Duration` (annual/perennial), and `Lifeform` (grass/forb/shrub). 
 	- Location-dependent (unknowns or plants not identified to species level) codes/species are separate from location-independent (identified to species level) codes/species because known species will have the same information (native status, lifeform, duration) regardless of location, but unknowns can have the same codes across sites, but  refer to different plants.
-- `subplot` data: monitoring observations from the 25 x 25 cm subplots. Measurements are seedling density and average height by species. Raw data from `AllSubplotData` tab of `2023-09-15_Master 1.0 Germination Data_raw.xlsx`.
-- `2x2` data: monitoring observations from the 2 x 2 m plots. Measurements are seeded cover and total vegetation cover, and names of additional species in plot (in addition to what was present in the subplot and already recorded). Raw data from `AllPlotData` tab of `Master.xlsx`.
+- `subplot` data: monitoring observations from the 25 x 25 cm subplots. Measurements are seedling density and average height by species.
+- `2x2` data: monitoring observations from the 2 x 2 m plots. Measurements are seeded cover and total vegetation cover, and names of additional species in plot (in addition to what was present in the subplot and already recorded). 
 
 ## File naming notes
 - First number corresponds to the R script of the same number. `a` and `b` are so `output` files are listed before `edited` ones.
@@ -30,7 +30,7 @@ Notes about `output` and `edited` intermediate data files created in data cleani
 
 
 ## `Code` vs. `CodeOriginal`
-- `CodeOriginal` refers to the codes originally used in `Master.xlsx`. However, in `Master.xlsx`, the column is called `Species_Code`, which I change to `CodeOriginal` when reading in the data.
+- `CodeOriginal` refers to the codes originally used in `Sonoran-Master.xlsx`. 
 - `Code` is the code that I assign, which is according to USDA Plants codes, and includes site information for location-dependent species.
 
 

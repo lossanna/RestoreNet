@@ -1,15 +1,21 @@
 Region,Site,CodeOriginal,Name,Native,Duration,Lifeform
 Sonoran Central,Roosevelt,ANOC2,Androsace occidentalis,Native,Annual,Forb
+Sonoran SE,SRER,BOER,Bouteloua eriopoda,Native,Perennial,Grass
 Sonoran SE,SRER,CRYSPP 1,Cryptantha spp. 1,Native,Unknown,Forb
 Sonoran SE,SRER,CRYSPP 2,Cryptantha spp. 2,Native,Unknown,Forb
-Sonoran SE,SRER,CRYSPP2,Cryptantha spp. 3,Native,Unknown,Forb
+Sonoran SE,SRER,CRYSPP2,Cryptantha spp. 2,Native,Unknown,Forb
 Sonoran SE,SRER,DeadStem,Dead stem,Unknown,Unknown,Forb
+Sonoran SE,SRER,ERAB2,Eriogonum abertianum,Native,Annual,Forb
+Sonoran SE,Patagonia,ERCU2/ERLE,Eragrostis curvula or lehmanniana ,Introduced,Perennial,Grass
 Sonoran SE,SRER,FESSPP,Fescue spp.,Native,Unknown,Grass
 Sonoran SE,SRER,GILSPP 1,Gilia spp. 1,Native,Unknown,Forb
 Sonoran SE,SRER,GILSPP 2,Gilia spp. 2,Native,Unknown,Forb
 Sonoran Central,Preserve,STMI2,Stylocline micropoides,Native,Annual,Forb
 Sonoran SE,SRER,UNFO-5,Unknown forb 5,Unknown,Unknown,Forb
-Sonoran SE,SRER,UNGRS-1,Unknown grass 1,Unknown,Unknown,Grass
+Sonoran SE,SRER,UNGR1 (BOER/Aristida),"Unknown grass 1, BOER4 or Aristida",Native,Perennial,Grass
+Sonoran SE,Patagonia,UNGR1 (possible ERLE),"Unknown grass 1, possibly ERLE",Introduced,Perennial,Grass
+Sonoran SE,SRER,UNGRS-1 (likely ERLE),"Unknown grass 1, likely ERLE",Introduced,Perennial,Grass
 Sonoran Central,SCC,UNK brown,Unknown brown,Unknown,Unknown,Unknown
 Sonoran Central,Preserve,UNK heart,Unknown forb with heart-shaped cotyledon; possibly MAPA5 (although that species not seen growing there),Unknown,Unknown,Forb
+Sonoran Central,SCC,Unk grass (possibly seeded),Unknown grass (possibly seeded),Native,Unknown,Grass
 Sonoran Central,Roosevelt,unk grass 2,Unknown grass 2,Unknown,Unknown,Grass
