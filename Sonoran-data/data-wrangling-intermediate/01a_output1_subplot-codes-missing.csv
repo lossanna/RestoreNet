@@ -1,15 +1,20 @@
 Region,Site,CodeOriginal
 Sonoran Central,Roosevelt,ANOC2
+Sonoran SE,SRER,BOER
 Sonoran SE,SRER,CRYSPP 1
 Sonoran SE,SRER,CRYSPP 2
 Sonoran SE,SRER,CRYSPP2
 Sonoran SE,SRER,DeadStem
+Sonoran SE,SRER,ERAB2
+Sonoran SE,Patagonia,ERCU2/ERLE
 Sonoran SE,SRER,FESSPP
 Sonoran SE,SRER,GILSPP 1
 Sonoran SE,SRER,GILSPP 2
 Sonoran Central,Preserve,STMI2
 Sonoran SE,SRER,UNFO-5
-Sonoran SE,SRER,UNGRS-1
+Sonoran SE,SRER,UNGR1 (BOER/Aristida)
+Sonoran SE,Patagonia,UNGR1 (possible ERLE)
+Sonoran SE,SRER,UNGRS-1 (likely ERLE)
 Sonoran Central,SCC,UNK brown
 Sonoran Central,Preserve,UNK heart
 Sonoran Central,Roosevelt,unk grass 2

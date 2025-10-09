@@ -30,6 +30,7 @@ plot.2x2.cen.raw <- read_xlsx("Sonoran-data/raw/Sonoran_2023-09-15_Master 1.0 Ge
 species.raw <- read_xlsx("Sonoran-data/raw/from-Master_species-list-with-native-status_LO.xlsx")
 mix.raw <- read_xlsx("Sonoran-data/raw/from-Master_seed-mix_LO_Sonoran.xlsx", sheet = "with-site_R") 
 
+
 # Notes about manual edits ------------------------------------------------
 
 # For manual edits to CSVs, the CSV is written from R, copied and named a new name, edited,
@@ -132,8 +133,8 @@ head(sub.missing)
 
 # Unknowns (location-dependent)
 #   From original master species list
-species.m.unk <- species.raw %>%
-  filter(str_detect(species.raw$Name, "Unk|unk|spp\\.|sp\\.|Could be|Very similar to GIsp 1")) %>%
+species.m.unk <- species %>%
+  filter(str_detect(species$Name, "Unk|unk|spp\\.|sp\\.|Could be|Very similar to GIsp 1")) %>%
   filter(CodeOriginal != "VEPEX2") %>% # name contains "ssp." but it is a known
   filter(Region %in% c("Sonoran Central", "Sonoran SE")) %>% 
   arrange(Region) %>%
@@ -149,11 +150,11 @@ sub.missing.unk <- sub.missing %>%
 
 # Knowns (location-independent)
 #   From original master species list
-VEPEX2 <- species.raw %>%
+VEPEX2 <- species %>%
   filter(CodeOriginal == "VEPEX2") # make separate row because it contains "ssp." but isn't an unknown
 
-species.m.known <- species.raw %>%
-  filter(!str_detect(species.raw$Name, "Unk|unk|spp\\.|sp\\.|Could be|Very similar to GIsp 1")) %>%
+species.m.known <- species %>%
+  filter(!str_detect(species$Name, "Unk|unk|spp\\.|sp\\.|Could be|Very similar to GIsp 1")) %>%
   bind_rows(VEPEX2) %>%
   select(-Region) %>%
   arrange(CodeOriginal) %>%
@@ -249,7 +250,6 @@ species.m.known <- species.m.known %>%
     str_detect(species.m.known$Lifeform, "shrub") ~ "Shrub",
     str_detect(species.m.known$Lifeform, "forb") ~ "Forb",
     str_detect(species.m.known$Lifeform, "grass") ~ "Grass",
-    species.m.known$Lifeform == "NA" ~ NA,
     TRUE ~ species.m.known$Lifeform))
 
 unique(species.m.known$Lifeform) # Lifeform names have been standardized
@@ -295,7 +295,7 @@ codes.fix.in <- species.in %>%
   filter(Name %in% filter(species.in, duplicated(Name))$Name) %>%
   distinct(.keep_all = TRUE) %>%
   arrange(Name)
-print(codes.fix.in, n = 14)
+print(codes.fix.in)
 
 # Compare codes with those from seed mix
 mix.codes <- mix %>%
@@ -305,10 +305,11 @@ mix.codes <- mix %>%
   arrange(CodeOriginal)
 mix.codes # codes need to match ones from seed mix
 
+
 # Create df standardized codes based on USDA Plants
 codes.standardized.in <- codes.fix.in %>%
-  filter(Code %in% c(mix.codes$CodeOriginal, "CHPO12", "SIAL2")) %>%
-  mutate(CodeOriginal = c("ARPUP6", "BOER", "EUPO3", "SIAL", "SPAMA"))
+  filter(Code %in% c("ARPU9", "BOER4", "CHPO12")) %>%
+  mutate(CodeOriginal = c("ARPUP6", "BOER", "EUPO3"))
 
 # Remove wrong codes from species list and add correct ones
 species.in <- species.in %>%
@@ -318,7 +319,6 @@ species.in <- species.in %>%
 
 # DRCU/DRCUI and ESCA/ESCAM refer to different varieties, so specificity is retained
 #   change name for DRCUI & ESCAM
-species.in$Name[species.in$CodeOriginal == "DRCUI"] <- "Draba cuneifolia var. integrifolia"
 species.in$Name[species.in$CodeOriginal == "ESCAM"] <- "Eschscholzia californica ssp. mexicana"
 
 # Reorder cols
@@ -327,21 +327,8 @@ species.in <- species.in %>%
 
 
 # Find codes with multiple species
-names.fix.in <- species.in %>%
-  filter(CodeOriginal %in% filter(species.in, duplicated(CodeOriginal))$CodeOriginal) %>%
-  arrange(CodeOriginal)
-names.fix.in # look at master species list for clarification
-# Cross-referencing original species list from master shows that ERCI referred to Eragrostis cilianensis
-#   at Sonoran Central and Co Plateau, but referred to E. ciliaris at Chihuahuan
-#   USDA codes:
-#     ERCI = Eragrostis cilianensis
-#     ERCI2 = Eragrostis ciliaris
-# Sonoran Central is correct, ERCI should be Eragrostis cilianensis.
-
-# Remove incorrect row from species.in
-species.in <- species.in %>% 
-  filter(Name != "Eragrostis ciliaris")
-
+species.in %>%
+  filter(CodeOriginal %in% filter(species.in, duplicated(CodeOriginal))$CodeOriginal) # none present
 
 # Unique codes
 length(unique(species.in$CodeOriginal)) == nrow(species.in) # TRUE, all codes in species list are unique
@@ -482,7 +469,7 @@ write_csv(species.in,
           file = "Sonoran-data/data-wrangling-intermediate/01a_output6_location-independent-manual-check.csv")
 
 # EDITED: fixed a few codes
-#   Changed codes that did not match USDA Plants code (AMIN3, EUAB, EUME3, STSP3, URLI5)
+#   Changed codes that did not match USDA Plants code (EUAB, EUME3, URLI5)
 species.in <- read_xlsx("Sonoran-data/data-wrangling-intermediate/01b_edited6_location-independent-manual-fix.xlsx")
 
 

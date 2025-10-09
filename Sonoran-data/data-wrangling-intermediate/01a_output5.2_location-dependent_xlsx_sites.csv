@@ -8,6 +8,7 @@ BOUSPP,Sonoran SE,SRER
 BRASPP,Sonoran SE,SRER
 CALSPP,Sonoran SE,Patagonia
 CHESPP,Sonoran SE,Patagonia
+CHSPP,Sonoran Central,Pleasant
 CRYPT,Sonoran Central,Roosevelt
 CRYPT,Sonoran Central,Pleasant
 CRYSPP,Sonoran SE,SRER
@@ -62,9 +63,9 @@ UNFO_S_4,Sonoran SE,SRER
 UNFO_S_5,Sonoran SE,SRER
 UNFO_S_7,Sonoran SE,SRER
 UNFS,Sonoran SE,Patagonia
-UNGR1,Sonoran SE,Patagonia
-UNGR1,Sonoran SE,SRER
-UNGRS-1,Sonoran SE,SRER
+UNGR1 (BOER/Aristida),Sonoran SE,SRER
+UNGR1 (possible ERLE),Sonoran SE,Patagonia
+UNGRS-1 (likely ERLE),Sonoran SE,SRER
 UNGRS1,Sonoran SE,SRER
 UNGRS1,Sonoran SE,Patagonia
 UNGRS2,Sonoran SE,Patagonia
@@ -77,7 +78,7 @@ UNK heart,Sonoran Central,Preserve
 UNSFF,Sonoran SE,SRER
 UNSHR-1,Sonoran SE,Patagonia
 Unk bunchGrass #1,Sonoran Central,Pleasant
-Unk grass,Sonoran Central,SCC
+Unk grass (possibly seeded),Sonoran Central,SCC
 Unk heart,Sonoran Central,Preserve
 Unk sp.,Sonoran Central,Pleasant
 Unk sp.,Sonoran Central,SCC
