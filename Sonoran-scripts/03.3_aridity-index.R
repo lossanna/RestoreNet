@@ -1,5 +1,5 @@
 # Created: 2025-01-31
-# Last updated: 2025-01-31
+# Last updated: 2025-10-10
 
 # Purpose: Extract aridity index values (based on annual averages) from the Global Aridity Index
 #   and Potential Evapotranspiration Database for each site.
@@ -25,7 +25,7 @@ prism.dat <- read.csv("Sonoran-data/cleaned/03.1_monitoring-events-with-PRISM-cl
 
 # Import raster for Aridity Index data (file is called ai_v3_yr.tif)
 #   Set working directory to where database is located
-ai_raster <- raster(x = "C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/04_RAMPS RestoreNet/RestoreNet/Sonoran-data/Global-AI_ET0_annual_v3/ai_v3_yr.tif")
+ai_raster <- raster(x = "C:/Users/lossanna/OneDrive - New Mexico State University/Documents/02_RestoreNet/RestoreNet/Sonoran-data/Global-AI_ET0_annual_v3/ai_v3_yr.tif")
 
 
 # Create table of GPS coordinates -----------------------------------------

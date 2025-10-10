@@ -23,12 +23,12 @@ monitor.site <- read_csv("Sonoran-data/cleaned/02_SiteDateID_clean.csv")
 # Add complete path to prism.daily columns --------------------------------
 
 # Add complete path to file names
-prism.daily <- prism.daily.raw |> 
+prism.daily <- prism.daily.raw %>% 
   mutate(cum_file = paste0(path_beginning, "/", cum_file),
          since_last_file = paste0(path_beginning, "/", since_last_file))
 
 # Add complete path for normals
-prism.normals <- prism.normals.raw |> 
+prism.normals <- prism.normals.raw %>% 
   mutate(normals_file = paste0(path_beginning, "/", normals_file))
 
 
@@ -64,9 +64,9 @@ prism.daily <- prism.daily %>%
 
 # Compare precip values ---------------------------------------------------
 
-compare.ppt <- prism.daily |> 
+compare.ppt <- prism.daily %>% 
   select(Region, Site, Date_Seeded, Date_Monitored, SiteDateID, Farrell_cum_precip,
-         Cum_precip, Farrell_precip_since_monitor, Since_last_precip) |> 
+         Cum_precip, Farrell_precip_since_monitor, Since_last_precip) %>% 
   mutate(Cum_difference = Farrell_cum_precip - Cum_precip,
          Since_difference = Farrell_precip_since_monitor - Since_last_precip)
 
@@ -74,13 +74,13 @@ compare.ppt <- prism.daily |>
 summary(compare.ppt$Cum_difference)
 summary(compare.ppt$Since_difference)
 
-compare.ppt.inspect <- compare.ppt |> 
+compare.ppt.inspect <- compare.ppt %>% 
   filter(abs(Cum_difference) > 20 | abs(Since_difference) > 20)
 #   There are only 22 instances where my PRISM data differs by more than 20 mm of precip
 #     when compared with Hannah's.
 #   They overall seem similar, so I will proceed with my values.
 
-compare.ppt.inspect2 <- compare.ppt |> 
+compare.ppt.inspect2 <- compare.ppt %>% 
   filter(abs(Cum_difference) > 40 | abs(Since_difference) > 40)
 
 
@@ -126,8 +126,8 @@ prism.normals <- prism.normals %>%
 
 # Compare normals ---------------------------------------------------------
 
-compare.normals <- prism.normals |> 
-  select(Region, Site, Farrell_MAP, MAP, Farrell_MAT, MAT) |> 
+compare.normals <- prism.normals %>% 
+  select(Region, Site, Farrell_MAP, MAP, Farrell_MAT, MAT) %>% 
   mutate(MAP_difference = Farrell_MAP - MAP,
          MAT_difference = Farrell_MAT - MAT)
 #   1991-2020 normals (mine) are slightly hotter than 1981-2010 (Hannah's),
@@ -179,8 +179,8 @@ month.normal.SRER$Region <- "Sonoran SE"
 # Combine all sites
 month.normal <- bind_rows(month.normal.Pleasant, month.normal.Preserve,
                           month.normal.Roosevelt, month.normal.SCC, 
-                          month.normal.Patagonia, month.normal.SRER) |> 
-  arrange(Site) |> 
+                          month.normal.Patagonia, month.normal.SRER) %>% 
+  arrange(Site) %>% 
   arrange(Region)
 
 
@@ -188,14 +188,14 @@ month.normal <- bind_rows(month.normal.Pleasant, month.normal.Preserve,
 # Compile PRISM ppt, MAP, MAT with monitor events -------------------------
 
 # Narrow columns
-monitor.site.info <- prism.daily |> 
+monitor.site.info <- prism.daily %>% 
   select(Region, Site, Date_Seeded, Date_Monitored, SiteDateID,
-         Cum_precip, Since_last_precip) |> 
+         Cum_precip, Since_last_precip) %>% 
   filter(!is.na(SiteDateID)) # remove last line which is not actual event but contains path to cumulative 29 Palms precip
 
 # Site-specific info, independent of date 
-site.info <- prism.normals |> 
-  select(-path_beginning, -normals_file, -Farrell_MAP, -Farrell_MAT) |> 
+site.info <- prism.normals %>% 
+  select(-path_beginning, -normals_file, -Farrell_MAP, -Farrell_MAT) %>% 
   rename(Latitude = Farrell_lat,
          Longitude = Farrell_long,
          Elevation_ft = Farrell_elev,
@@ -203,15 +203,15 @@ site.info <- prism.normals |>
          Clay_content = Farrell_clay)
 
 # Add site-specific info to list with dates
-monitor.site.info <- monitor.site.info |> 
-  left_join(site.info) |> 
+monitor.site.info <- monitor.site.info %>% 
+  left_join(site.info) %>% 
   select(Region, Site, Date_Seeded, Date_Monitored, SiteDateID, Latitude,
          Longitude, Elevation_ft, Sand_content, Clay_content,
          MAP, MAT, Cum_precip, Since_last_precip)
 
 # Test to make sure monitoring events are not conflicting
-monitor.info |> 
-  left_join(monitor.site.info) |> 
+monitor.info %>% 
+  left_join(monitor.site.info) %>% 
   filter(is.na(SiteDatePlotID)) # no conflicts
 
 
@@ -266,8 +266,8 @@ daily.SRER$Region <- "Sonoran SE"
 # Combine all sites
 daily <- bind_rows(daily.Pleasant, daily.Preserve,
                    daily.Roosevelt, daily.SCC, 
-                   daily.Patagonia, daily.SRER) |> 
-  arrange(Site) |> 
+                   daily.Patagonia, daily.SRER) %>% 
+  arrange(Site) %>% 
   arrange(Region)
 
 
@@ -292,3 +292,4 @@ write_csv(daily,
 
 
 save.image("Sonoran-RData/03.1_PRISM-data-wrangling.RData")
+

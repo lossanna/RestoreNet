@@ -34,16 +34,16 @@ normals.cum.raw <- read_xlsx("Sonoran-data/data-wrangling-intermediate/03.2_mont
 # Explore monthly normals -------------------------------------------------
 
 # Order months
-month.normal.graph <- month.normal |> 
-  filter(Date != "Annual") |> 
+month.normal.graph <- month.normal %>% 
+  filter(Date != "Annual") %>% 
   mutate(Date = factor(Date, levels = c("January", "February", "March", "April", "May",
                                         "June", "July", "August", "September", "October",
                                         "November", "December")))
 
 # Sonoran Central
 #   Bimodal: July-Sept, Dec-March (summer and winter rains roughly equal)
-month.normal.graph |> 
-  filter(Region == "Sonoran Central") |> 
+month.normal.graph %>% 
+  filter(Region == "Sonoran Central") %>% 
   ggplot(aes(x = Date, y = ppt_mm, color = Site, group = Site)) +
   geom_point() +
   geom_line() +
@@ -53,8 +53,8 @@ month.normal.graph |>
 
 # Sonoran SE
 #   Slightly bimodal: most rain July-Sept, some rain Dec-March
-month.normal.graph |> 
-  filter(Region == "Sonoran SE") |> 
+month.normal.graph %>% 
+  filter(Region == "Sonoran SE") %>% 
   ggplot(aes(x = Date, y = ppt_mm, color = Site, group = Site)) +
   geom_point() +
   geom_line() +
@@ -69,8 +69,8 @@ month.normal.graph |>
 ## Since_last data wrangling -----------------------------------------------
 
 # pivot_longer() and convert NAs to 0 (blank cells are 0)
-normals.since <- normals.since.raw |> 
-  select(-Seed_month_estimate, -Monitor_month_estimate) |> 
+normals.since <- normals.since.raw %>% 
+  select(-Seed_month_estimate, -Monitor_month_estimate) %>% 
   pivot_longer(cols = c("Annual", "January", "February", "March", "April", "May",
                         "June", "July", "August", "September", "October",
                         "November", "December"),
@@ -79,42 +79,42 @@ normals.since <- normals.since.raw |>
 normals.since$include[is.na(normals.since$include)] <- 0
 
 # Add normals values
-normals.since <- normals.since |> 
-  left_join(month.normal) |> 
+normals.since <- normals.since %>% 
+  left_join(month.normal) %>% 
   select(-tmin, -tmax, -tmean) 
 
 # Multiply include * ppt_mm for new ppt_mm value
 #   "include" column is the amount of times that month/annual should be included
-normals.since <- normals.since |> 
-  mutate(ppt_mm = include * ppt_mm) |> 
+normals.since <- normals.since %>% 
+  mutate(ppt_mm = include * ppt_mm) %>% 
   select(-include)
 
 # Sum normals precip
-normals.since <- normals.since |> 
-  select(-Date_Seeded, -Date_Monitored) |> 
-  mutate(SiteDateID = as.character(SiteDateID)) |> 
-  group_by(Region, Site, SiteDateID, Seed_estimate, Monitor_estimate) |> 
+normals.since <- normals.since %>% 
+  select(-Date_Seeded, -Date_Monitored) %>% 
+  mutate(SiteDateID = as.character(SiteDateID)) %>% 
+  group_by(Region, Site, SiteDateID, Seed_estimate, Monitor_estimate) %>% 
   summarise(ppt_mm = sum(ppt_mm),
-            .groups = "keep") |> 
+            .groups = "keep") %>% 
   mutate(SiteDateID = as.numeric(SiteDateID)) 
 
 # Add normals to actual precip values (Since_last_precip from ppt) to graph together
 #   Rename normals columns to match and add "source" col to note they are normals
-normals.since.bind <- normals.since |> 
+normals.since.bind <- normals.since %>% 
   rename(Date_Seeded = Seed_estimate,
-         Date_Monitored = Monitor_estimate) |> 
+         Date_Monitored = Monitor_estimate) %>% 
   mutate(source = "normals")
-since.long <- ppt |> 
-  select(Region, Site, Date_Seeded, Date_Monitored, SiteDateID, Since_last_precip) |> 
-  rename(ppt_mm = Since_last_precip) |> 
-  mutate(source = "actual") |> 
+since.long <- ppt %>% 
+  select(Region, Site, Date_Seeded, Date_Monitored, SiteDateID, Since_last_precip) %>% 
+  rename(ppt_mm = Since_last_precip) %>% 
+  mutate(source = "actual") %>% 
   bind_rows(normals.since.bind)
 
 
 # Find percent deviation from normals
-since.pd <- ppt |> 
-  select(Region, Site, SiteDateID, Date_Seeded, Date_Monitored, Since_last_precip) |> 
-  left_join(normals.since) |> 
+since.pd <- ppt %>% 
+  select(Region, Site, SiteDateID, Date_Seeded, Date_Monitored, Since_last_precip) %>% 
+  left_join(normals.since) %>% 
   mutate(Perc_deviation = (Since_last_precip - ppt_mm) / ppt_mm,
          Deviation_mm = ppt_mm - Since_last_precip)
 
@@ -123,7 +123,7 @@ since.pd <- ppt |>
 ## Since_last graph --------------------------------------------------------
 
 # All sites
-since.long |> 
+since.long %>% 
   ggplot(aes(x = Date_Monitored, y = ppt_mm, color = source)) +
   geom_point() +
   geom_line() +
@@ -132,7 +132,7 @@ since.long |>
   theme_bw() +
   theme(legend.position = "bottom") 
 
-since.pd |> 
+since.pd %>% 
   ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
   geom_point() +
   geom_line() +
@@ -152,8 +152,8 @@ since.pd |>
 ## Cumulative data wrangling -----------------------------------------------
 
 # pivot_longer() and convert NAs to 0 (blank cells are 0)
-normals.cum <- normals.cum.raw |> 
-  select(-Seed_month_estimate, -Monitor_month_estimate) |> 
+normals.cum <- normals.cum.raw %>% 
+  select(-Seed_month_estimate, -Monitor_month_estimate) %>% 
   pivot_longer(cols = c("Annual", "January", "February", "March", "April", "May",
                         "June", "July", "August", "September", "October",
                         "November", "December"),
@@ -162,41 +162,41 @@ normals.cum <- normals.cum.raw |>
 normals.cum$include[is.na(normals.cum$include)] <- 0
 
 # Add normals values
-normals.cum <- normals.cum |> 
-  left_join(month.normal) |> 
+normals.cum <- normals.cum %>% 
+  left_join(month.normal) %>% 
   select(-tmin, -tmax, -tmean) 
 
 # Multiply include * ppt_mm for new ppt_mm value
 #   "include" column is the amount of times that month/annual should be included
-normals.cum <- normals.cum |> 
-  mutate(ppt_mm = include * ppt_mm) |> 
+normals.cum <- normals.cum %>% 
+  mutate(ppt_mm = include * ppt_mm) %>% 
   select(-include)
 
 # Sum normals precip
-normals.cum <- normals.cum |> 
-  select(-Date_Seeded, -Date_Monitored) |> 
-  mutate(SiteDateID = as.character(SiteDateID)) |> 
-  group_by(Region, Site, SiteDateID, Seed_estimate, Monitor_estimate) |> 
+normals.cum <- normals.cum %>% 
+  select(-Date_Seeded, -Date_Monitored) %>% 
+  mutate(SiteDateID = as.character(SiteDateID)) %>% 
+  group_by(Region, Site, SiteDateID, Seed_estimate, Monitor_estimate) %>% 
   summarise(ppt_mm = sum(ppt_mm),
-            .groups = "keep") |> 
+            .groups = "keep") %>% 
   mutate(SiteDateID = as.numeric(SiteDateID)) 
 
 # Add normals to actual precip values (Cum_precip from ppt) to graph together
 #   Rename normals columns to match and add "source" col to note they are normals
-normals.cum.bind <- normals.cum |> 
+normals.cum.bind <- normals.cum %>% 
   rename(Date_Seeded = Seed_estimate,
-         Date_Monitored = Monitor_estimate) |> 
+         Date_Monitored = Monitor_estimate) %>% 
   mutate(source = "normals")
-cum.long <- ppt |> 
-  select(Region, Site, Date_Seeded, Date_Monitored, SiteDateID, Cum_precip) |> 
-  rename(ppt_mm = Cum_precip) |> 
-  mutate(source = "actual") |> 
+cum.long <- ppt %>% 
+  select(Region, Site, Date_Seeded, Date_Monitored, SiteDateID, Cum_precip) %>% 
+  rename(ppt_mm = Cum_precip) %>% 
+  mutate(source = "actual") %>% 
   bind_rows(normals.cum.bind)
 
 # Find percent change (deviation from normals)
-cum.pd <- ppt |> 
-  select(Region, Site, SiteDateID, Date_Seeded, Date_Monitored, Cum_precip) |> 
-  left_join(normals.cum) |> 
+cum.pd <- ppt %>% 
+  select(Region, Site, SiteDateID, Date_Seeded, Date_Monitored, Cum_precip) %>% 
+  left_join(normals.cum) %>% 
   mutate(Perc_deviation = (Cum_precip - ppt_mm) / ppt_mm,
          Deviation_mm = ppt_mm - Cum_precip)
 
@@ -206,7 +206,7 @@ cum.pd <- ppt |>
 
 # All sites
 #   Actuals vs normals (mm of precip)
-cum.long |> 
+cum.long %>% 
   ggplot(aes(x = Date_Monitored, y = ppt_mm, color = source)) +
   geom_point() +
   geom_line() +
@@ -216,7 +216,7 @@ cum.long |>
   theme(legend.position = "bottom") 
 
 #   Percent deviation
-cum.pd |> 
+cum.pd %>% 
   ggplot(aes(x = Date_Monitored, y = Perc_deviation)) +
   geom_point() +
   geom_line() +
@@ -242,4 +242,5 @@ write_csv(cum.pd,
 
 
 save.image("Sonoran-RData/03.2_explore-precip-trends.RData")
+
 
