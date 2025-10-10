@@ -434,7 +434,7 @@ nrow(filter(monitor.2x2, Treatment == "Seed only")) ==
   nrow(filter(monitor.sub, Treatment == "Seed only")) # different issues between monitor.2x2 and monitor.sub
 
 # Create wrong row for subplot & monitor.correct
-wrong.seedonly.sub <- monitor.sub %>% 
+wrong.seedonly <- monitor.sub %>% 
   filter(Treatment == "Seed only")
 #   monitor.correct and monitor.sub are wrong in the same places (everything is TRUE);
 #     same fix needs to be applied to both in 48 instances
@@ -442,13 +442,25 @@ wrong.seedonly.sub <- monitor.sub %>%
 # Create wrong row for 2x2
 wrong.seedonly.2x2 <- monitor.2x2 %>% 
   filter(Treatment == "Seed only")
-setdiff(wrong.seedonly.2x2$SiteDatePlotID, wrong.seedonly.sub$SiteDatePlotID)
-setdiff(wrong.seedonly.sub$SiteDatePlotID, wrong.seedonly.2x2$SiteDatePlotID)
+setdiff(wrong.seedonly.2x2$SiteDatePlotID, wrong.seedonly$SiteDatePlotID)
+setdiff(wrong.seedonly$SiteDatePlotID, wrong.seedonly.2x2$SiteDatePlotID)
 #   There are an additional 48 rows in monitor.2x2 that need to be corrected (have NA for SiteDatePlotID)
+
+#   Get SiteDatePlotID for additional 48
+wrong.seedonly.2x2.extra <- wrong.seedonly.2x2 %>% 
+  filter(is.na(SiteDatePlotID)) %>% 
+  select(-SiteDatePlotID, -Treatment) %>% # remove Treatment so left_join() monitor.sub will work
+  left_join(monitor.sub) %>% 
+  mutate(Treatment = "Seed only") # add back Treatment
+
+#   Combine
+wrong.seedonly.2x2 <- wrong.seedonly.2x2 %>% 
+  filter(!is.na(SiteDatePlotID)) %>% 
+  bind_rows(wrong.seedonly.2x2.extra)
 
 
 # Create correct row for subplot & monitor.correct
-fix.seedonly.sub <- wrong.seedonly.sub %>%
+fix.seedonly <- wrong.seedonly %>%
   mutate(Treatment = "Seed")
 
 # Create correct row for 2x2
@@ -476,10 +488,10 @@ intersect(a, b) # no duplicates, correct version does not already exist
 ## Make correction ---------------------------------------------------------
 
 # Replace rows in monitor.correct with corrected info (all must be replaced)
-wrong.spelling.id <- wrong.seedonly.sub$SiteDatePlotID
+wrong.spelling.id <- wrong.seedonly$SiteDatePlotID
 monitor.correct <- monitor.correct %>%
   filter(!SiteDatePlotID %in% wrong.spelling.id) %>%
-  bind_rows(fix.seedonly.sub) %>%
+  bind_rows(fix.seedonly) %>%
   arrange(SiteDatePlotID)
 
 
@@ -502,10 +514,10 @@ write_csv(monitor.correct,
 
 # Compile
 wrong.sub <- bind_rows(wrong.sub.SRER,
-                       wrong.seedonly.sub)
+                       wrong.seedonly)
 
 fix.sub <- bind_rows(fix.sub.SRER,
-                     fix.seedonly.sub)
+                     fix.seedonly)
 
 nrow(wrong.sub) == nrow(fix.sub) # check for matching lengths
 
