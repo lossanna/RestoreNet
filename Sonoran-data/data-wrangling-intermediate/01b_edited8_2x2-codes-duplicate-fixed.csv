@@ -189,7 +189,7 @@ Sonoran SE,SRER,Potentially 3 or 4 BOCU (1 certainty) and possibly an ARPU (2) o
 Sonoran SE,SRER,Probable BOCUs with apparent grazing,No,0,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
 Sonoran SE,SRER,Quite a few small tp extra large BOCUs throughout along with a possible ASTU,Yes,1,BOCU,Bouteloua curtipendula,Native,Perennial,Grass,independent
 Sonoran SE,SRER,Quite a few small tp extra large BOCUs throughout along with a possible ASTU,Yes,2,ASTU,Asclepias tuberosa,Native,Perennial,Forb,independent
-Sonoran SE,Patagonia,SAIB,No,,SATR12,Salsola tragus,Introduced,Annual,Forb,independent
+Sonoran SE,Patagonia,SAIB,No,0,SATR12,Salsola tragus,Introduced,Annual,Forb,independent
 Sonoran Central,Pleasant,SISYM,No,0,SISYM,Sisymbrium sp.,Unknown,Unknown,Forb,dependent
 Sonoran SE,Patagonia,SW conmod is overgrown with Blue grama but NO black grama but thee's a possible young PEPA by the NW conmod,Yes,1,BOGR2,Bouteloua gracilis,Native,Perennial,Grass,independent
 Sonoran SE,Patagonia,SW conmod is overgrown with Blue grama but NO black grama but thee's a possible young PEPA by the NW conmod,Yes,2,PEPA8,Penstemon palmeri,Native,Perennial,Forb,independent
@@ -239,3 +239,4 @@ Sonoran Central,Roosevelt,unk forb,No,0,unk forb,Unknown forb,Unknown,Unknown,Fo
 Sonoran Central,Roosevelt,unk grass 1,No,0,unk grass 1,Unknown grass,Unknown,Unknown,Grass,dependent
 Sonoran Central,Preserve,CRYPT,No,0,CRYPT,Cryptantha spp.,Native,Unknown,Forb,dependent
 Sonoran Central,Pleasant,Unk grass,No,0,Unk grass,Unknown grass,Unknown,Unknown,Grass,dependent
+Sonoran SE,Patagonia,BOUSPP,No,0,BOUSPP,Bouteloua spp.,Native,Unknown,Grass,dependent

@@ -511,12 +511,12 @@ p2x2.codes.missing <- setdiff(p2x2.codes$CodeOriginal, c(species.de$CodeOriginal
 p2x2.codes.missing <- p2x2.codes %>%
   filter(CodeOriginal %in% p2x2.codes.missing)
 
-# Manually add in CRYPT and Unk grass
+# Manually add in CRYPT, BOUSPP and Unk grass
 #   these were present at additional sites not included in subplot data, but
 #     using setdiff() will not capture them
-p2x2.codes.missing.add <- data.frame(Region = "Sonoran Central",
-                                     Site = c("Preserve", "Pleasant"),
-                                     CodeOriginal = c("CRYPT", "Unk grass"))
+p2x2.codes.missing.add <- data.frame(Region = c(rep("Sonoran Central", 2), "Sonoran SE"),
+                                     Site = c("Preserve", "Pleasant", "Patagonia"),
+                                     CodeOriginal = c("CRYPT", "Unk grass", "BOUSPP"))
 
 p2x2.codes.missing <- p2x2.codes.missing %>% 
   bind_rows(p2x2.codes.missing.add)
