@@ -479,6 +479,8 @@ na.count.0.fix <- na.count.0 %>%
 
 # Replace fixed rows in subplot data for 0 Codes
 subplot <- subplot %>%
+  mutate(Count = as.numeric(Count),
+         Height = as.numeric(Height)) %>% 
   filter(!raw.row %in% na.count.0.fix$raw.row) %>%
   bind_rows(na.count.0.fix)
 
@@ -487,7 +489,7 @@ subplot <- subplot %>%
 na.count.non0 <- na.count %>%
   filter(Code != "0")
 
-# Original scanned data sheets are not available for this one, so this row will have to be removed
+# Original scanned data sheets are not available for this one, so these rows will have to be removed
 subplot <- subplot %>%
   filter(!is.na(Count))
 
@@ -501,13 +503,6 @@ subplot <- subplot %>%
 empty.subplot <- subplot %>%
   filter(Code == "0")
 length(unique(empty.subplot$SiteDatePlotID)) == nrow(empty.subplot) # all have only one row (no fix needed)
-
-
-
-# Check for non-integer Count values --------------------------------------
-
-# Check if all the Count values are integers
-all(subplot$Count == floor(subplot$Count)) # TRUE (no fix needed)
 
 
 
