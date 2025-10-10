@@ -1,5 +1,5 @@
 # Created: 2025-10-08
-# Last updated: 2025-10-08
+# Last updated: 2025-10-10
 
 # Purpose: Create 2 clean data tables for 2x2 plot data: one with cover, species richness,
 #   and grouping cols (one row for each monitoring event/SiteDatePlotID), and one with
@@ -14,8 +14,10 @@ library(tidyverse)
 
 # Load data ---------------------------------------------------------------
 
-p2x2.raw <- read_xlsx("Sonoran-data/raw/2023-09-15_Master 1.0 Germination Data_raw.xlsx", sheet = "AllPlotData") %>% 
-  filter(Site %in% c("SRER", "Patagonia", "Preserve", "Pleasant", "SCC", "Roosevelt"))
+plot.2x2.se.raw <- read_xlsx("Sonoran-data/raw/Sonoran_2023-09-15_Master 1.0 Germination Data_LO.xlsx",
+                             sheet = "SonoranSE_Plots_LO")
+plot.2x2.cen.raw <- read_xlsx("Sonoran-data/raw/Sonoran_2023-09-15_Master 1.0 Germination Data_LO.xlsx",
+                              sheet = "SonoranCentral_Plots_LO")
 species.in <- read_csv("Sonoran-data/cleaned/01_2x2_species-list-with-duplicates_location-independent_clean.csv")
 species.de <- read_csv("Sonoran-data/cleaned/01_2x2_species-list-with-duplicates_location-dependent_clean.csv")
 mix <- read_xlsx("Sonoran-data/raw/from-Master_seed-mix_LO_Sonoran.xlsx", sheet = "with-site_R") %>% 
@@ -30,14 +32,35 @@ subplot <- read_csv("Sonoran-data/cleaned/04.1_subplot-data_clean.csv")
 
 # Organize columns --------------------------------------------------------
 
+# Convert cols to character and combine all Sonoran Desert sites 
+p2x2.se <- plot.2x2.se.raw %>% 
+  mutate(across(everything(), as.character))
+p2x2.cen <- plot.2x2.cen.raw %>% 
+  filter(!is.na(Site)) %>% 
+  select(-...31, -...32, -...33) %>% 
+  mutate(across(everything(), as.character))
+p2x2 <- bind_rows(p2x2.cen, p2x2.se)
+
 # Add raw.row and Region cols
-p2x2.wide <- p2x2.raw %>%
+p2x2.wide <- p2x2 %>%
   select(-Recorder_Initials, -`%_mulch_remaining_in_plot`, -`%_mulch_remaining_in_subplot`, -Notes) %>%
-  mutate(raw.row = 1:nrow(p2x2.raw)) %>% # row number is to be able to easily refer back to the raw data and excluded columns if needed
+  mutate(raw.row = 1:nrow(p2x2)) %>% # row number is to be able to easily refer back to the raw data and excluded columns if needed
   rename(PlotMix = Seed_Mix) %>%
   mutate(Region = case_when(
-    str_detect(p2x2.raw$Site, c("SRER|Patagonia")) ~ "Sonoran SE",
-    str_detect(p2x2.raw$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central"))
+    str_detect(p2x2$Site, c("SRER|Patagonia")) ~ "Sonoran SE",
+    str_detect(p2x2$Site, c("Preserve|SCC|Roosevelt|Pleasant")) ~ "Sonoran Central"))
+
+# Remove incomplete monitoring events 
+#   2022-10-06 at Pleasant and 2022-10-05 at Roosevelt (not all subplots were sampled)
+p2x2.wide <- p2x2.wide %>% 
+  filter(!Date_Monitored %in% c("2022-10-06", "2022-10-05"))
+
+# Convert Date_Seeded and Date_Monitored to date cols, and Plot to numeric
+p2x2.wide <- p2x2.wide %>%
+  mutate(Date_Seeded = as.Date(Date_Seeded),
+         Date_Monitored = as.Date(Date_Monitored),
+         Plot = as.numeric(Plot)) 
+
 
 
 # Correct monitoring info -------------------------------------------------
@@ -46,7 +69,7 @@ p2x2.wide <- p2x2.raw %>%
 
 # Separate out monitoring info
 p2x2.monitor <- p2x2.wide %>%
-  select(Region, Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix, raw.row)
+  select(Region, Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix, raw.row) 
 
 # Find raw.row number of events that need to be fixed
 wrong.raw.row <- left_join(monitor.wrong, p2x2.monitor)
@@ -70,7 +93,7 @@ p2x2.monitor <- bind_rows(p2x2.monitor, monitor.assign) %>%
   arrange(SiteDatePlotID)
 
 # Check for matching lengths
-nrow(p2x2.monitor) == nrow(p2x2.raw)
+nrow(p2x2.monitor) == nrow(p2x2.wide)
 
 # Attach correct monitoring info to p2x2 data
 p2x2.wide <- p2x2.wide[, -c(1:6)]
@@ -98,56 +121,28 @@ nrow(monitor.info) == nrow(p2x2.wide)
 
 # Goal: create table and pivot to long so each Code is a row.
 
-# Inspect Additional_species_in_plot cols
-unique(p2x2.wide$Additional_Species_In_Plot...28)
-unique(p2x2.wide$Additional_Species_In_Plot...27)
-unique(p2x2.wide$Additional_Species_In_Plot...26)
-unique(p2x2.wide$Additional_Species_In_Plot...25)
-unique(p2x2.wide$Additional_Species_In_Plot...24)
-unique(p2x2.wide$Additional_Species_In_Plot...23)
-unique(p2x2.wide$Additional_Species_In_Plot...22)
-unique(p2x2.wide$Additional_Species_In_Plot...21)
-unique(p2x2.wide$Additional_Species_In_Plot...20)
-unique(p2x2.wide$Additional_Species_In_Plot...19) # observations in 19 and smaller
-
-# Drop empty Additional_Species_In_Plot cols
-p2x2.wide <- p2x2.wide %>%
-  select(-Additional_Species_In_Plot...28,
-         -Additional_Species_In_Plot...27,
-         -Additional_Species_In_Plot...26,
-         -Additional_Species_In_Plot...25,
-         -Additional_Species_In_Plot...24,
-         -Additional_Species_In_Plot...23,
-         -Additional_Species_In_Plot...22,
-         -Additional_Species_In_Plot...21,
-         -Additional_Species_In_Plot...20)
-
-
 # Remove cover cols to create present_species table
 present_species <- p2x2.wide %>%
   select(-Total_Veg_Cover, -Seeded_Cover)
 
 # Check all cols for NAs
-apply(present_species, 2, anyNA) # NAs in Additional_Species 13, 14, 16, 17, 18
+apply(present_species, 2, anyNA) # NAs in Additional_Species 13, 16, 17, 18, 21
 
 # Inspect instances of NAs in Additional_Species cols
 add.spec.na <- present_species %>%
-  filter(is.na(Additional_Species_In_Plot...12) |
-           is.na(Additional_Species_In_Plot...13) |
-           is.na(Additional_Species_In_Plot...14) |
-           is.na(Additional_Species_In_Plot...15) |
+  filter(is.na(Additional_Species_In_Plot...13) |
            is.na(Additional_Species_In_Plot...16) |
            is.na(Additional_Species_In_Plot...17) |
            is.na(Additional_Species_In_Plot...18) |
-           is.na(Additional_Species_In_Plot...19))
+           is.na(Additional_Species_In_Plot...21))
 #   Manually check and see that any NAs in Addition_Species_In_Plot cols should be 0s
 
 # Change NAs to 0
 present_species$Additional_Species_In_Plot...13[is.na(present_species$Additional_Species_In_Plot...13)] <- "0"
-present_species$Additional_Species_In_Plot...14[is.na(present_species$Additional_Species_In_Plot...14)] <- "0"
 present_species$Additional_Species_In_Plot...16[is.na(present_species$Additional_Species_In_Plot...16)] <- "0"
 present_species$Additional_Species_In_Plot...17[is.na(present_species$Additional_Species_In_Plot...17)] <- "0"
 present_species$Additional_Species_In_Plot...18[is.na(present_species$Additional_Species_In_Plot...18)] <- "0"
+present_species$Additional_Species_In_Plot...21[is.na(present_species$Additional_Species_In_Plot...21)] <- "0"
 
 # Check all cols for NAs
 apply(present_species, 2, anyNA)
@@ -218,6 +213,7 @@ species.de.dup <- species.de %>%
 ps.de.dup <- ps0 %>%
   filter(CodeOriginal %in% species.de.dup$CodeOriginal)
 ps.de.dup <- left_join(ps.de.dup, species.de.dup)
+
 
 # Combine all four categories
 present_species <- bind_rows(ps.in.unq, ps.de.unq, ps.in.dup, ps.de.dup) %>%
@@ -293,26 +289,27 @@ write_csv(ps.ss.mix,
 ps.ss.mix <- read_xlsx("Sonoran-data/data-wrangling-intermediate/04.2b_edited1_SpeciesSeeded-in-mix-assigned.xlsx")
 
 
+
 ## Compile -----------------------------------------------------------------
 
 # Combine those not in mix with ones in mix
 ps.ss.assigned <- bind_rows(ps.ss.not.in.mix, ps.ss.mix)
 nrow(ps.ss.assigned) == nrow(ps.ss.na)
-unique(ps.ss.assigned$SpeciesSeeded) # all assigned
+unique(ps.ss.assigned$SpeciesSeeded) # all assigned (no NAs)
 
 # Assign SpeciesSeeded to present_species
 ps.ss <- present_species %>%
   filter(is.na(SpeciesSeeded)) %>%
   select(-SpeciesSeeded)
 ps.ss <- left_join(ps.ss, ps.ss.assigned)
-unique(ps.ss$SpeciesSeeded)
+unique(ps.ss$SpeciesSeeded) # all assigned (no NAs)
 
 # Compile all with correct SeededSpecies
 present_species <- present_species %>%
   filter(!is.na(SpeciesSeeded)) %>%
   bind_rows(ps.ss) %>%
   arrange(raw.row)
-unique(present_species$SpeciesSeeded) # all assigned
+unique(present_species$SpeciesSeeded) # all assigned (no NAs)
 
 
 # Add column to denote where observation is coming from
@@ -451,8 +448,35 @@ present_species <- bind_rows(present_species, subplot.species) %>%
 length(unique(present_species$SiteDatePlotID)) == (nrow(monitor.info))
 setdiff(monitor.info$SiteDatePlotID, present_species$SiteDatePlotID)
 
+# Check for duplicate 2x2 codes (species should only be listed once)
+ps.dup.test <- present_species %>% 
+  select(-ObsSource)
+ps.dup <- ps.dup.test %>% 
+  group_by(across(everything())) %>%  
+  filter(n() > 1) %>%
+  ungroup() %>% 
+  mutate(Code_SDPID = paste0(Code, ", ", SiteDatePlotID)) # Create Code_SDPID to check duplicates specific to SiteDatePlotID
+
+# Inspect duplicate rows
+ps.dup.inspect <- present_species %>% 
+  mutate(Code_SDPID = paste0(Code, ", ", SiteDatePlotID)) %>% 
+  filter(Code_SDPID %in% ps.dup$Code_SDPID)
+#   see that they are all duplicates with one from subplot and one from 2x2
+
+# Create df of duplicate rows to remove with new Code_SDPID_Obs col to identify rows to remove
+ps.dup.rm <- ps.dup.inspect %>% 
+  filter(ObsSource == "2x2") %>% 
+  mutate(Code_SDPID_Obs = paste0(Code_SDPID, ", ", ObsSource))
+
+# Remove from present_species
+present_species <- present_species %>% 
+  mutate(Code_SDPID_Obs = paste0(Code, ", ", SiteDatePlotID, ", ", ObsSource)) %>% 
+  filter(!Code_SDPID_Obs %in% ps.dup.rm$Code_SDPID_Obs) %>% 
+  select(-Code_SDPID_Obs)
+
+
 # Save intermediate
-#   All species present in plot with correct species info; 2x2 plots not recorded have been removed
+#   All species present in plot with correct species info
 ps4 <- present_species
 
 

@@ -11,6 +11,7 @@ Sonoran Central,Preserve,Warm,SACO6,SACO6,Salvia columbariae,NA
 Sonoran Central,Preserve,Cool,SPCR,SPCR,Sporobolus cryptandrus,NA
 Sonoran Central,Roosevelt,Cool,AMDE4,AMDE4,Ambrosia deltoidea,NA
 Sonoran Central,Roosevelt,Warm,BAMU,BAMU,Baileya multiradiata,NA
+Sonoran Central,Roosevelt,Cool,BOCU,BOCU,Bouteloua curtipendula,NA
 Sonoran Central,Roosevelt,Cool,DICA8,DICA8,Digitaria californica,NA
 Sonoran Central,Roosevelt,Warm,ENFA,ENFA,Encelia farinosa,NA
 Sonoran Central,Roosevelt,None,SACO6,SACO6,Salvia columbariae,NA
@@ -37,6 +38,7 @@ Sonoran SE,Patagonia,Warm,ARPU small tufts and a tall individual,ARPU9,Aristida 
 Sonoran SE,Patagonia,Warm,ARPU many small tufts and some with seed,ARPU9,Aristida purpurea,NA
 Sonoran SE,Patagonia,Warm,Possible ACHY near southwest corner (2 certainty) and about 10 ARPU small to medium in size with 2 of them next to the subplot but not quite in,ARPU9,Aristida purpurea,NA
 Sonoran SE,Patagonia,Warm,"ARPU many individuals, BAMU 1 individual, PLMU (2) 1 individual, ACHY (2) 1 individual",ARPU9,Aristida purpurea,NA
+Sonoran SE,Patagonia,Medium,ARPU9,ARPU9,Aristida purpurea,NA
 Sonoran SE,Patagonia,Warm,Multiple medium to large ARPU and small/medium BOCU near the NE corner and a couple tiny SECOs,ARPU9,Aristida purpurea,NA
 Sonoran SE,Patagonia,Warm,Small/medium to large ARPUs and small to large BOCU throughout,ARPU9,Aristida purpurea,NA
 Sonoran SE,Patagonia,Warm,Multiple small to medium ARPUs and BOCUs along with a possible PLMU (rough feeling leaves and similar seeds) with a couple small/medium BAMU that are in or near the N half of the pits and a couple small SECO seedlings sprinkled throughout,ARPU9,Aristida purpurea,NA
@@ -183,6 +185,7 @@ Sonoran SE,SRER,Warm,There're multiple BOCUs and a couple possible SECO seedling
 Sonoran SE,SRER,Warm,A couple BOCUs and a possible ARPU,BOCU,Bouteloua curtipendula,NA
 Sonoran SE,SRER,Warm,BOCU partially in/on the west edge of the plot and a possible ARPU,BOCU,Bouteloua curtipendula,NA
 Sonoran SE,SRER,Warm,Multiple BOCUS and a couple possible ARPUs throughout,BOCU,Bouteloua curtipendula,NA
+Sonoran SE,SRER,Medium,BOGR2,BOGR2,Bouteloua gracilis,NA
 Sonoran SE,SRER,Medium,There're a couple possible tiny MATA seedlings in some of the pits if not MATA than 0% (too small to ID for sure),MATA2,Machaeranthera tanacetifolia,NA
 Sonoran SE,SRER,Medium,Possible MATA seedling species in suplot and in the NW pit if not than 0% seeded species cover,MATA2,Machaeranthera tanacetifolia,NA
 Sonoran SE,SRER,Medium,PEPA (possibly),PEPA8,Penstemon palmeri,NA
