@@ -2,7 +2,7 @@ Site,Region,PlotMix,CodeOriginal,Code,Name,Native,Duration,Lifeform,SpeciesSeede
 Pleasant,Sonoran Central,Cool,0,0,0,0,0,0,NA
 Pleasant,Sonoran Central,Warm,0,0,0,0,0,0,NA
 Pleasant,Sonoran Central,None,0,0,0,0,0,0,NA
-Pleasant,Sonoran Central,Warm,Unk bunchGrass #1,Unk bunchGrass #1.Pleasant,"Could be BOCU, Pleasant",Unknown,Unknown,Grass,NA
+Pleasant,Sonoran Central,Warm,Unk bunchGrass #1,Unk bunchGrass #1.Pleasant,"Could be BOCU, Pleasant",Native,Unknown,Grass,NA
 Pleasant,Sonoran Central,Warm,Unk sp.,Unk sp..Pleasant,"Unknown species, Pleasant",Unknown,Unknown,Unknown,NA
 Preserve,Sonoran Central,None,0,0,0,0,0,0,NA
 Preserve,Sonoran Central,Warm,0,0,0,0,0,0,NA
@@ -26,7 +26,7 @@ Patagonia,Sonoran SE,None,CHHY3,CHHY3,Chamaesyce hyssopifolia,Native,Unknown,For
 Patagonia,Sonoran SE,None,ERLE,ERLE,Eragrostis lehmanniana,Introduced,Perennial,Grass,NA
 Patagonia,Sonoran SE,None,ESCA2,ESCA2,Eschscholzia californica,Native,Unknown,Forb,NA
 Patagonia,Sonoran SE,None,MENSPP,MENSPP.Patagonia,"Mentzelia spp., Patagonia",Native,Unknown,Forb,NA
-Patagonia,Sonoran SE,None,PROACASPP,PROACASPP.Patagonia,"Mesquite/Acacia spp., Patagonia",Native/Unknown,Perennial,Shrub,NA
+Patagonia,Sonoran SE,None,PROACASPP,PROACASPP.Patagonia,"Mesquite/Acacia spp., Patagonia",Native,Perennial,Shrub,NA
 Patagonia,Sonoran SE,None,MOVE,MOVE,Mollugo verticillata,Native,Annual,Forb,NA
 Patagonia,Sonoran SE,None,PSCA11,PSCA11,Pseudognaphalium canescens,Native,Unknown,Forb,NA
 Patagonia,Sonoran SE,None,SATR12,SATR12,Salsola tragus,Introduced,Annual,Forb,NA
@@ -42,8 +42,8 @@ SRER,Sonoran SE,Warm,0,0,0,0,0,0,NA
 SRER,Sonoran SE,None,ARAD,ARAD,Aristida adscensionis,Native,Annual,Grass,NA
 SRER,Sonoran SE,Medium,ARTE3,ARTE3,Aristida ternipes,Native,Perennial,Grass,NA
 SRER,Sonoran SE,None,BOCO,BOCO,Boerhavia coccinea,Native,Perennial,Forb,NA
-SRER,Sonoran SE,None,BRASPP,BRASPP.SRER,"Brassica spp. (likely DEPI), SRER",Native/Unknown,Unknown,Forb,NA
-SRER,Sonoran SE,Warm,BRASPP,BRASPP.SRER,"Brassica spp. (likely DEPI), SRER",Native/Unknown,Unknown,Forb,NA
+SRER,Sonoran SE,None,BRASPP,BRASPP.SRER,"Brassica spp. (likely DEPI), SRER",Native,Unknown,Forb,NA
+SRER,Sonoran SE,Warm,BRASPP,BRASPP.SRER,"Brassica spp. (likely DEPI), SRER",Native,Unknown,Forb,NA
 SRER,Sonoran SE,None,CHFR3,CHFR3,Chenopodium fremontii,Native,Annual,Forb,NA
 SRER,Sonoran SE,Warm,CHFR3,CHFR3,Chenopodium fremontii,Native,Annual,Forb,NA
 SRER,Sonoran SE,Medium,CHFR3,CHFR3,Chenopodium fremontii,Native,Annual,Forb,NA
@@ -58,16 +58,16 @@ SRER,Sonoran SE,Medium,DeadStem,DeadStem,Dead stem,Unknown,Unknown,Forb,NA
 SRER,Sonoran SE,Warm,DICA14,DICA14,Dichelostemma capitatum,Native,Perennial,Forb,NA
 SRER,Sonoran SE,None,ERLE,ERLE,Eragrostis lehmanniana,Introduced,Perennial,Grass,NA
 SRER,Sonoran SE,Medium,FESSPP,FESSPP.SRER,"Fescue spp., SRER",Native,Unknown,Grass,NA
-SRER,Sonoran SE,Warm,LUPSPP,LUPSPP.SRER,"Lupinus spp., SRER",Unknown,Unknown,Forb,NA
-SRER,Sonoran SE,Medium,LUPSPP,LUPSPP.SRER,"Lupinus spp., SRER",Unknown,Unknown,Forb,NA
-SRER,Sonoran SE,None,LUPSPP,LUPSPP.SRER,"Lupinus spp., SRER",Unknown,Unknown,Forb,NA
+SRER,Sonoran SE,Warm,LUPSPP,LUPSPP.SRER,"Lupinus spp., SRER",Native,Unknown,Forb,NA
+SRER,Sonoran SE,Medium,LUPSPP,LUPSPP.SRER,"Lupinus spp., SRER",Native,Unknown,Forb,NA
+SRER,Sonoran SE,None,LUPSPP,LUPSPP.SRER,"Lupinus spp., SRER",Native,Unknown,Forb,NA
 SRER,Sonoran SE,Warm,MENSPP,MENSPP.SRER,"Mentzelia spp., SRER",Native,Unknown,Forb,NA
 SRER,Sonoran SE,Medium,MENSPP,MENSPP.SRER,"Mentzelia spp., SRER",Native,Unknown,Forb,NA
 SRER,Sonoran SE,None,MENSPP,MENSPP.SRER,"Mentzelia spp., SRER",Native,Unknown,Forb,NA
 SRER,Sonoran SE,None,PLAR,PLAR,Plagiobothrys arizonicus,Native,Annual,Forb,NA
 SRER,Sonoran SE,Warm,PLAR,PLAR,Plagiobothrys arizonicus,Native,Annual,Forb,NA
 SRER,Sonoran SE,Medium,PLAR,PLAR,Plagiobothrys arizonicus,Native,Annual,Forb,NA
-SRER,Sonoran SE,Medium,PLASPP,PLASPP.SRER,"Plantago spp., SRER",Unknown,Unknown,Forb,NA
+SRER,Sonoran SE,Medium,PLASPP,PLASPP.SRER,"Plantago spp., SRER",Native,Unknown,Forb,NA
 SRER,Sonoran SE,Medium,SATR12,SATR12,Salsola tragus,Introduced,Annual,Forb,NA
 SRER,Sonoran SE,None,TRMU,TRMU,Tridens muticus,Native,Perennial,Grass,NA
 SRER,Sonoran SE,Medium,UNDPF,UNDPF.SRER,"Unknown dead pod forb, SRER",Unknown,Unknown,Forb,NA
@@ -79,7 +79,7 @@ SRER,Sonoran SE,None,UNFO_S_7,UNFO_S_7.SRER,"Unknown forb; ""artichoke head"", s
 SRER,Sonoran SE,Warm,UNFO_S_3,UNFO_S_3.SRER,"Unknown forb; Fuzzy green penately arranged leaflets, partially pinated lobes ""thick poppy"" possibly an ambrosia (Spring 2021), SRER",Native/Unknown,Unknown,Forb,NA
 SRER,Sonoran SE,Medium,UNFO_S_3,UNFO_S_3.SRER,"Unknown forb; Fuzzy green penately arranged leaflets, partially pinated lobes ""thick poppy"" possibly an ambrosia (Spring 2021), SRER",Native/Unknown,Unknown,Forb,NA
 SRER,Sonoran SE,None,UNFO_S_3,UNFO_S_3.SRER,"Unknown forb; Fuzzy green penately arranged leaflets, partially pinated lobes ""thick poppy"" possibly an ambrosia (Spring 2021), SRER",Native/Unknown,Unknown,Forb,NA
-SRER,Sonoran SE,Medium,UNGR1,UNGR1.SRER,"Unknown grass (SantaRita); Possibly BOER or Aristida spp (so likely unseeded), SRER",Native,Unknown,Grass,NA
-SRER,Sonoran SE,Warm,UNGR_S_1,UNGR_S_1.SRER,"Unknown grass; Grass seedling short erose ligule slight chance ARPU because of 45 degree leaf or possibly a Vulpia sp. like VUOC (Spring 2021), SRER",Native/Unknown,Unknown,Grass,NA
+SRER,Sonoran SE,Medium,UNGR1 (BOER/Aristida),UNGR1 (BOER/Aristida).SRER,"Unknown grass 1, BOER4 or Aristida, SRER",Native,Unknown,Grass,NA
+SRER,Sonoran SE,Warm,UNGR_S_1,UNGR_S_1.SRER,"Unknown grass; Grass seedling short erose ligule slight chance ARPU because of 45 degree leaf or possibly a Vulpia sp. like VUOC (Spring 2021), SRER",Native,Unknown,Grass,NA
 SRER,Sonoran SE,Medium,UNSFF,UNSFF.SRER,"Unknown shrubby fuzzy forb, munched down, SRER",Unknown,Unknown,Forb,NA
 SRER,Sonoran SE,Medium,VUOC,VUOC,Vulpia octoflora,Native,Annual,Grass,NA
