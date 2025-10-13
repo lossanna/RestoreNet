@@ -1,0 +1,17 @@
+Region,Site,Date_Seeded,Date_Monitored,Plot,Treatment,PlotMix,SiteDatePlotID,SiteDateID,SitePlotID,CodeOriginal,Code,Name,Native,Duration,Lifeform,SpeciesSeeded,ObsSource,PlantSource,PlantSource2,Weedy,PlotMix_Climate,raw.row,Seeded_Cover,Total_Veg_Cover
+Sonoran SE,Patagonia,2019-08-09,2019-11-12,5,Seed,Medium,41,21,41,0,0,0,0,0,0,0,subplot,0,0,0,Current,833,0,5
+Sonoran SE,Patagonia,2019-08-09,2019-11-12,9,Control,None,45,21,45,0,0,0,0,0,0,0,subplot,0,0,0,None,837,0,7
+Sonoran SE,Patagonia,2019-08-09,2019-11-12,12,Control,None,48,21,48,0,0,0,0,0,0,0,subplot,0,0,0,None,840,0,10
+Sonoran SE,Patagonia,2019-08-09,2019-11-12,17,Mulch,Medium,53,21,53,0,0,0,0,0,0,0,subplot,0,0,0,Current,845,0,40
+Sonoran SE,Patagonia,2019-08-09,2019-11-12,18,ConMod,Medium,54,21,54,0,0,0,0,0,0,0,subplot,0,0,0,Current,846,0,12
+Sonoran SE,Patagonia,2019-08-09,2019-11-12,27,Control,None,63,21,63,0,0,0,0,0,0,0,subplot,0,0,0,None,855,0,5
+Sonoran SE,Patagonia,2019-08-09,2019-11-12,29,Mulch,Medium,65,21,65,0,0,0,0,0,0,0,subplot,0,0,0,Current,857,0,3
+Sonoran SE,Patagonia,2019-08-09,2019-11-12,33,ConMod,Medium,69,21,69,0,0,0,0,0,0,0,subplot,0,0,0,Current,861,0,5
+Sonoran SE,Patagonia,2019-08-09,2019-11-12,34,Pits,Medium,70,21,70,0,0,0,0,0,0,0,subplot,0,0,0,Current,862,0,3
+Sonoran SE,Patagonia,2019-08-09,2019-11-12,36,Seed,Medium,72,21,72,0,0,0,0,0,0,0,subplot,0,0,0,Current,864,0,3
+Sonoran SE,Patagonia,2019-08-09,2020-10-01,17,Mulch,Medium,197,23,53,0,0,0,0,0,0,0,subplot,0,0,0,Current,989,0,17
+Sonoran SE,Patagonia,2019-08-09,2020-10-04,30,ConMod,Warm,210,24,66,0,0,0,0,0,0,0,subplot,0,0,0,Projected,1002,2,7
+Sonoran SE,Patagonia,2019-08-09,2020-10-04,36,Seed,Medium,216,24,72,0,0,0,0,0,0,0,subplot,0,0,0,Current,1008,0,4
+Sonoran SE,Patagonia,2019-08-09,2021-03-12,17,Mulch,Medium,269,25,53,0,0,0,0,0,0,0,subplot,0,0,0,Current,1061,0,15
+Sonoran SE,SRER,2019-08-09,2019-11-07,13,Pits,Medium,13,30,13,0,0,0,0,0,0,0,subplot,0,0,0,Current,805,0,12
+Sonoran SE,SRER,2019-08-09,2019-11-07,20,ConMod,Warm,20,30,20,0,0,0,0,0,0,0,subplot,0,0,0,Projected,812,0,7

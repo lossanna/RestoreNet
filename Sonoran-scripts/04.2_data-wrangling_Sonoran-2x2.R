@@ -1,5 +1,5 @@
 # Created: 2025-10-08
-# Last updated: 2025-10-10
+# Last updated: 2025-10-13
 
 # Purpose: Create 2 clean data tables for 2x2 plot data: one with cover, species richness,
 #   and grouping cols (one row for each monitoring event/SiteDatePlotID), and one with
@@ -7,6 +7,11 @@
 
 #  Ensure corrected and standardized species information, and monitoring and plot information,
 #   and SpeciesSeeded column based on site-specific seed mixes and plot.
+
+# Note: I had to sort of jump around with things, because first I had to make the present_species table so 
+#   I could determine which plots were empty, which was needed to construct the cover table. 
+# But then in looking at cover data, there were some plots that had no species but had a non-0
+#   value for cover, so I had to end up adding those back in as unknown species to present_species.  
 
 
 library(readxl)
@@ -170,7 +175,7 @@ ps0 <- present_species
 
 
 
-# Attach species info to present_species table ----------------------------
+## Attach species info to present_species table ---------------------------
 
 # Goal: connect CodeOriginal to species info from species lists.
 
@@ -228,12 +233,12 @@ ps1 <- present_species
 
 
 
-# Create SpeciesSeeded column ---------------------------------------------
+## Create SpeciesSeeded column --------------------------------------------
 
 # Goal: create corrected SpeciesSeeded column based on site-specific and
 #   plot-specific (cool/warm/none) seed mixes.
 
-## Subplot SpeciesSeeded info ----------------------------------------------
+### Subplot SpeciesSeeded info ---------------------------------------------
 
 # Extract info from subplot data
 seeded.subplot <- subplot %>%
@@ -254,7 +259,7 @@ ps.ss.na <- present_species %>%
   arrange(Region)
 
 
-## Species not in a seed mix -----------------------------------------------
+### Species not in a seed mix ----------------------------------------------
 
 # Species not included in any seed mix were not seeded regardless of site or plot
 #   Separate out species not in any mix by Code
@@ -275,7 +280,7 @@ ps.ss.not.in.mix <- ps.ss.not.in.mix %>%
   mutate(SpeciesSeeded = "No")
 
 
-## Species in any seed mix -------------------------------------------------
+### Species in any seed mix ------------------------------------------------
 
 # Manually inspect species that exist in (a) seed mix
 ps.ss.mix <- ps.ss.na %>%
@@ -290,7 +295,7 @@ ps.ss.mix <- read_xlsx("Sonoran-data/data-wrangling-intermediate/04.2b_edited1_S
 
 
 
-## Compile -----------------------------------------------------------------
+### Compile ----------------------------------------------------------------
 
 # Combine those not in mix with ones in mix
 ps.ss.assigned <- bind_rows(ps.ss.not.in.mix, ps.ss.mix)
@@ -324,7 +329,7 @@ ps2 <- present_species
 
 
 
-# Add additional grouping columns -----------------------------------------
+## Add additional grouping columns ----------------------------------------
 
 # PlantSource: Unknown_recruit, Native_recruit, Introduced/Invasive, Seeded, Likely native_recruit, 0
 # Weedy: Weedy, Desirable, 0
@@ -332,7 +337,7 @@ ps2 <- present_species
 # PlotMix_Climate: None, Current, Projected, 0
 
 
-## Add PlantSource & PlantSource2 columns ---------------------------------
+### Add PlantSource & PlantSource2 columns --------------------------------
 
 # Because plants couldn't always be identified to the species level, H. Farrell
 #   grouped them by Native_Recruited, Invasive, and Seeded.
@@ -366,7 +371,7 @@ present_species <- present_species %>%
 unique(present_species$PlantSource2)
 
 
-## Add Weedy column -------------------------------------------------------
+### Add Weedy column ------------------------------------------------------
 
 # To further simplify weedy vs. desirable species
 
@@ -380,7 +385,7 @@ present_species <- present_species %>%
 unique(present_species$Weedy)
 
 
-## Add PlotMix_Climate column ---------------------------------------------
+### Add PlotMix_Climate column --------------------------------------------
 
 # PlotMix names alone cannot be used to group what is climate-adapted and what is current-adapted
 #   because mixes are site-specific, and some mixes that are current-adapted are climate-adapted at other sites
@@ -409,7 +414,7 @@ ps3 <- present_species
 
 
 
-# Examine NA and 0 codes --------------------------------------------------
+## Examine NA and 0 codes -------------------------------------------------
 
 # Look for NA codes
 present_species %>%
@@ -420,8 +425,18 @@ present_species %>%
 present_species %>%
   filter(CodeOriginal == "0")
 
+# Check when Code is 0, but CodeOriginal is non-0 
+non0.codeoriginal <- present_species %>% 
+  filter(CodeOriginal != "0" & Code == "0")
+non0.codeoriginal$CodeOriginal
 
-# Combine with subplot to get all species present -------------------------
+#   These rows just describe empty plots and no species, so they should be removed
+present_species <- present_species %>% 
+  filter(!CodeOriginal %in% non0.codeoriginal$CodeOriginal)
+
+
+
+## Combine with subplot to get all species present ------------------------
 
 # Currently present_species is only the additional species in 2x2 plot but not subplot;
 #   add subplot observations, which already have correct plant species info.
@@ -433,7 +448,7 @@ subplot.species <- subplot %>%
 subplot.species$ObsSource <- "subplot"
 
 #   Remove cols so bind_rows() will work
-present_species <- ps3 %>%
+present_species <- present_species %>%
   select(-raw.row, -source, -NeedsItsDuplicate, -DuplicateNum)
 
 #   Add subplot species to present_species
@@ -481,14 +496,7 @@ ps4 <- present_species
 
 
 
-
-# Create table of species richness ----------------------------------------
-
-#   This is the number of species present at each plot during each monitoring event,
-#     without taking the species themselves or their abundance into account.
-
-
-## Separate out completely empty plots -------------------------------------
+# Separate out completely empty plots --------------------------------------
 
 # Empty subplots have Code 0 and only one row (one SiteDatePlotID observation).
 # Empty 2x2 plots do not have a row in present_species,
@@ -509,17 +517,8 @@ empty.plots <- present_species %>%
   filter(ObsSource == "subplot") %>%
   filter(Code == "0")
 
-# Examine 2x2 obs with Code of 0, but non-0 CodeOriginal
-empty.plots.2x2 <- present_species %>% 
-  filter(Code == "0",
-         ObsSource == "2x2") # CodeOriginal isn't 0, but these still describe empty plots
 
-
-
-# Create table of species richness ----------------------------------------
-
-#   This is the number of species present at each plot during each monitoring event,
-#     without taking the species themselves or their abundance into account.
+## Examine non-empty plots ------------------------------------------------
 
 # Separate non-empty plots
 nonempty.plots <- present_species %>%
@@ -527,98 +526,16 @@ nonempty.plots <- present_species %>%
 
 # See what 0 Codes remain in non-empty plots
 nonempty.code0 <- nonempty.plots %>%
-  filter(Code == "0",
-         ObsSource == "subplot")
-unique(nonempty.code0$ObsSource) # this occurs when subplot is empty but 2x2 is not (only "subplot" shows up),
-#                                     or when 2x2 CodeOriginal is not 0 but it describes an empty plot
-#                                   no fix needed
+  filter(Code == "0")
+unique(nonempty.code0$ObsSource) # this occurs when subplot is empty but 2x2 is not (only "subplot" shows up)
 
-# Calculate species richness of 2x2 plots for plots that had plants
-nonempty.plots.richness <- nonempty.plots %>%
-  filter(Code != "0") %>%
-  group_by(Region, Site, Date_Seeded, Date_Monitored, SiteDateID, Plot, Treatment, PlotMix, SiteDatePlotID) %>%
-  summarise(Richness = n_distinct(Code),
-            .groups = "keep")
-
-# Assign richness to empty plots
-empty.plots.richness <- empty.plots %>%
-  select(Region, Site, Date_Seeded, Date_Monitored, SiteDateID, Plot, Treatment, PlotMix, SiteDatePlotID) %>%
-  mutate(Richness = 0)
-
-# Combine empty and non-empty plots
-richness <- bind_rows(nonempty.plots.richness, empty.plots.richness)
-
-# Check that all SiteDatePlotIDs are present
-#   2x2 plots that weren't observed have been removed
-length(unique(richness$SiteDatePlotID)) == nrow(monitor.info)
-setdiff(monitor.info$SiteDatePlotID, richness$SiteDatePlotID) # I seriously don't know what happened to 4268
-
-
-
-# Create table of PlantSource counts --------------------------------------
-
-# Calculate number of species in each PlantSource category per plot
-nonempty.plots.plantsource <- nonempty.plots %>%
-  filter(Code != "0") %>%
-  group_by(Region, Site, Date_Seeded, Date_Monitored, SiteDateID, Plot, Treatment, PlotMix, SiteDatePlotID) %>%
-  count(PlantSource)
-#   rows missing indicate no species of that PlantSource was present
-
-# pivot_wider so each PlantSource category is its own column
-#   replace NAs (equivalent of missing rows) with 0 using values_fill
-unique(nonempty.plots.plantsource$PlantSource)
-nonempty.plots.plantsource <- nonempty.plots.plantsource %>%
-  pivot_wider(
-    names_from = PlantSource,
-    values_from = n,
-    values_fill = 0
-  )
-nonempty.plots.plantsource <- nonempty.plots.plantsource %>%
-  rename(
-    LikelyNative_recruit = `Likely native_recruit`,
-    Invasive = `Introduced/Invasive`
-  )
-
-# Add Weedy and Desirable_recruit cols
-#   Weedy = Unknown_recruit + Invasive
-#   Desirable_recruit = Native_recruit + LikelyNative_recruit
-#   Desirable = Seeded + Native_recruit + LikelyNative_recruit
-nonempty.plots.plantsource <- nonempty.plots.plantsource %>%
-  mutate(
-    Weedy = Unknown_recruit + Invasive,
-    Desirable_recruit = Native_recruit + LikelyNative_recruit,
-    Desirable = Seeded + Native_recruit + LikelyNative_recruit
-  )
-
-# Create equivalent table for empty plots (all 0s)
-empty.plots.plantsource <- empty.plots %>%
-  select(Region, Site, Date_Seeded, Date_Monitored, SiteDateID, Plot, Treatment, PlotMix, SiteDatePlotID) %>%
-  mutate(
-    Native_recruit = 0,
-    Unknown_recruit = 0,
-    LikelyNative_recruit = 0,
-    Seeded = 0,
-    Invasive = 0,
-    Weedy = 0,
-    Desirable_recruit = 0,
-    Desirable = 0
-  )
-
-# Combine empty and non-empty plots
-plantsource <- bind_rows(nonempty.plots.plantsource, empty.plots.plantsource)
-
-# Check that all SiteDatePlotIDs are present
-#   2x2 plots that weren't observed have been removed
-length(unique(plantsource$SiteDatePlotID)) == nrow(monitor.info)
-setdiff(monitor.info$SiteDatePlotID, plantsource$SiteDatePlotID) # 4268 is just gone forever
 
 
 # Create cover table ------------------------------------------------------
 
-# Remove species columns and 2x2 plots that weren't fully observed
+# Remove species columns
 cover <- p2x2.wide %>%
-  select(-starts_with("Additional")) %>%
-  filter(SiteDatePlotID %in% richness$SiteDatePlotID)
+  select(-starts_with("Additional")) 
 
 
 ## Change Seeded_Cover to numeric ------------------------------------------
@@ -655,57 +572,6 @@ cover$Total_Veg_Cover[cover$Total_Veg_Cover == "NA"] <- NA
 cover$Total_Veg_Cover <- as.numeric(cover$Total_Veg_Cover)
 
 
-## Add "Not_Seeded_Cover" column -------------------------------------------
-
-cover$Not_Seeded_Cover <- cover$Total_Veg_Cover - cover$Seeded_Cover
-summary(cover$Not_Seeded_Cover) # creates negative values
-
-# Examine negative values
-cover.neg.notseed <- cover %>%
-  filter(Not_Seeded_Cover < 0)
-cover.neg.notseed %>%
-  select(Site, SiteDatePlotID, Seeded_Cover, Total_Veg_Cover, Not_Seeded_Cover)
-#   Mostly it is small discrepancy, except for one which is -44;
-#     SiteDatePlotID of 6241, at Roosevelt
-
-
-# Create small fixes for all but 6241
-#   Add Seeded_cover to Total_Veg_Cover
-cover.neg.notseed.fix <- cover.neg.notseed %>%
-  filter(SiteDatePlotID != 6241) %>%
-  mutate(Total_Veg_Cover = Seeded_Cover + Total_Veg_Cover) %>%
-  select(-Not_Seeded_Cover)
-cover.neg.notseed.fix <- cover.neg.notseed.fix %>%
-  mutate(Not_Seeded_Cover = Total_Veg_Cover - Seeded_Cover)
-
-
-# Figure out what is going on with 6241
-#   Plot 8 from Roosevelt, Seed treatment with Med-Warm mix
-cover %>%
-  filter(
-    Site == "Roosevelt",
-    Plot == 8
-  ) %>%
-  select(Site, Date_Seeded, Date_Monitored, Seeded_Cover, Total_Veg_Cover)
-#   99 for Seeded_Cover is definitely a typo; am going to assume it was supposed to be 9
-
-cover.neg.notseed.fix6241 <- cover.neg.notseed %>%
-  filter(SiteDatePlotID == 6241) %>%
-  mutate(Seeded_Cover = 9) %>%
-  select(-Not_Seeded_Cover)
-cover.neg.notseed.fix6241 <- cover.neg.notseed.fix6241 %>%
-  mutate(Not_Seeded_Cover = Total_Veg_Cover - Seeded_Cover)
-
-
-# Combine all fixes
-cover.neg.notseed.fix <- bind_rows(cover.neg.notseed.fix, cover.neg.notseed.fix6241)
-
-# Replace fixes in cover table
-cover <- cover %>%
-  filter(!SiteDatePlotID %in% cover.neg.notseed.fix$SiteDatePlotID) %>%
-  bind_rows(cover.neg.notseed.fix)
-
-
 
 ## Examine cover of empty plots --------------------------------------------
 
@@ -713,28 +579,24 @@ empty.plots.cover <- left_join(empty.plots, cover)
 unique(empty.plots.cover$Total_Veg_Cover)
 unique(empty.plots.cover$Seeded_Cover)
 
-empty.plots.not0total <- empty.plots.cover %>%
+# Non-0 Total_Veg_Cover
+empty.plots.non0total <- empty.plots.cover %>%
   filter(Total_Veg_Cover > 0)
 
-empty.plots.not0seeded <- empty.plots.cover %>%
-  filter(Seeded_Cover > 0)
-summary(empty.plots.not0seeded$Seeded_Cover) # only ranges from 0.5 to 5%
-#   I think it was just trace amounts of cover but the species couldn't be identified
-#     I will make a fix for 2x2 data, but just leave subplot data how it is
-#     present_species isn't changed and Code is still 0, but that's fine
+# Non-0 Seeded_Cover
+empty.plots.non0seeded <- empty.plots.cover %>%
+  filter(Seeded_Cover > 0) # same as one of the non-0 Total_Veg_Cover plots
 
-# label non-empty plots with "Unknown seeded" to fix for plantsource (assume there was just 1 species)
-empty.plots.not0seeded.fix <- plantsource %>% 
-  filter(SiteDatePlotID %in% empty.plots.not0seeded$SiteDatePlotID) %>% 
-  mutate(Native_recruit = 1,
-         Seeded = 1,
-         Desirable = 1)
+# OUTPUT: plots with no species recorded but >0 Total_Veg_Cover or Seeded_Cover
+write_csv(empty.plots.non0total,
+          file = "Sonoran-data/data-wrangling-intermediate/04.2a_output2_empty-plots_non-0-total-veg-cover.csv")
 
-#   Add back in fix to plantsource data
-plantsource <- plantsource %>%
-  filter(!SiteDatePlotID %in% empty.plots.not0seeded.fix$SiteDatePlotID) %>%
-  bind_rows(empty.plots.not0seeded.fix) %>%
-  arrange(SiteDatePlotID)
+# EDITED: add "Unknown species" to note there was at least one species present 
+#   (will adjust richness table later)
+empty.plots.non0 <- read_xlsx("Sonoran-data/data-wrangling-intermediate/04.2b_edited2_empty-plots_non-0-cover_species-added.xlsx")
+
+# No fix needed for cover tables, as cover values did not change;
+#   will fix present_species later
 
 
 
@@ -749,10 +611,7 @@ cover.seeded.na <- cover %>%
 
 #   SRER and Patagonia are probably 0 because they are all Control plots
 cover.seeded.na.fix <- cover.seeded.na %>%
-  filter(Region != "Colorado Plateau") %>%
   mutate(Seeded_Cover = 0)
-cover.seeded.na.fix <- cover.seeded.na.fix %>%
-  mutate(Not_Seeded_Cover = Total_Veg_Cover - Seeded_Cover)
 
 #   Add back in fix to cover data
 cover <- cover %>%
@@ -760,10 +619,131 @@ cover <- cover %>%
   bind_rows(cover.seeded.na.fix) %>%
   arrange(SiteDatePlotID)
 
-
 # Total veg cover
 cover.total.na <- cover %>%
-  filter(is.na(Total_Veg_Cover)) # not sure how to fix any of these yet, need raw data sheets
+  filter(is.na(Total_Veg_Cover)) 
+
+# Create fixes
+#   1. For Patagonia, total veg cover = seeded, because no other species were listed in 2x2 plot than seeded ones
+#   2. For SRER, total veg cover = seeded = 0.5 (TR) because no other species were listed in 2x2 plot
+#   3 & 4. Not sure because non-seeded species were also found in plot; will just do total veg = seeded
+cover.total.na.fix <- cover.total.na %>% 
+  mutate(Total_Veg_Cover = Seeded_Cover)
+
+#   Add back in fix to cover data
+cover <- cover %>%
+  filter(!SiteDatePlotID %in% cover.total.na.fix$SiteDatePlotID) %>%
+  bind_rows(cover.total.na.fix) %>%
+  arrange(SiteDatePlotID)
+
+
+
+# Create table of species richness ----------------------------------------
+
+#   This is the number of species present at each plot during each monitoring event,
+#     without taking the species themselves or their abundance into account.
+
+
+## Add in species from non-0 cover to present_species ---------------------
+
+# Create non-0 cover species fix
+empty.plots.non0.sp.fix <- empty.plots.non0 %>% 
+  select(-Total_Veg_Cover, -Seeded_Cover, -raw.row) %>% 
+  mutate(CodeOriginal = as.character(CodeOriginal))
+
+# Check for matching columns
+setdiff(colnames(empty.plots.non0.sp.fix), colnames(present_species))
+
+# Add in fix
+present_species <- present_species %>% 
+  filter(!SiteDatePlotID %in% empty.plots.non0.sp.fix$SiteDatePlotID) %>% 
+  bind_rows(empty.plots.non0.sp.fix) %>% 
+  select(Region, Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix, PlotMix_Climate,
+         SiteDateID, SitePlotID, SiteDatePlotID, CodeOriginal, Code, Name, Native, Duration, Lifeform,
+         SpeciesSeeded, ObsSource, PlantSource, PlantSource2, Weedy) %>%
+  arrange(SiteDatePlotID)
+
+# Edit empty plot list
+empty.plots <- empty.plots %>% 
+  filter(!SiteDatePlotID %in% empty.plots.non0.sp.fix$SiteDatePlotID)
+
+# Edit non-empty plot list
+nonempty.plots <- nonempty.plots %>% 
+  bind_rows(empty.plots.non0.sp.fix) %>% 
+  arrange(SiteDatePlotID)
+
+
+
+## Calculate richness ----------------------------------------------------
+
+# Calculate species richness of 2x2 plots for plots that had plants
+nonempty.plots.richness <- nonempty.plots %>%
+  filter(Code != "0") %>%
+  group_by(Region, Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix, PlotMix_Climate,
+           SiteDateID, SitePlotID, SiteDatePlotID) %>%
+  summarise(Richness = n_distinct(Code),
+            .groups = "keep")
+
+# Assign richness to empty plots
+empty.plots.richness <- empty.plots %>%
+  select(Region, Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix, PlotMix_Climate,
+         SiteDateID, SitePlotID, SiteDatePlotID) %>%
+  mutate(Richness = 0)
+
+# Combine empty and non-empty plots
+richness <- bind_rows(nonempty.plots.richness, empty.plots.richness)
+
+# Check that all SiteDatePlotIDs are present
+length(unique(richness$SiteDatePlotID)) == nrow(monitor.info)
+setdiff(monitor.info$SiteDatePlotID, richness$SiteDatePlotID) 
+
+
+
+## Create table of PlantSource counts -------------------------------------
+
+# Calculate number of species in each PlantSource category per plot
+nonempty.plots.plantsource <- nonempty.plots %>%
+  filter(Code != "0") %>%
+  group_by(Region, Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix, PlotMix_Climate,
+           SiteDateID, SitePlotID, SiteDatePlotID) %>%
+  count(PlantSource)
+#   rows missing indicate no species of that PlantSource was present
+
+# pivot_wider so each plantsource category is its own column
+#   replace NAs (equivalent of missing rows) with 0 using values_fill
+unique(nonempty.plots.plantsource$PlantSource)
+nonempty.plots.plantsource <- nonempty.plots.plantsource %>%
+  pivot_wider(names_from = PlantSource,
+              values_from = n,
+              values_fill = 0) %>% 
+  rename(Invasive = `Introduced/Invasive`,
+         LikelyNative_recruit = `Likely native_recruit`)
+
+# Add Weedy, Desirable_recruit, and Desirable cols
+nonempty.plots.plantsource <- nonempty.plots.plantsource %>%
+  mutate(Weedy = Unknown_recruit + Invasive,
+         Desirable_recruit = Native_recruit + LikelyNative_recruit,
+         Desirable = Seeded + Native_recruit + LikelyNative_recruit)
+
+# Create equivalent table for empty plots (all 0s)
+empty.plots.plantsource <- empty.plots %>%
+  select(Region, Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix, PlotMix_Climate,
+         SiteDateID, SitePlotID, SiteDatePlotID) %>%
+  mutate(Native_recruit = 0,
+         Unknown_recruit = 0,
+         LikelyNative_recruit = 0,
+         Seeded = 0,
+         Invasive = 0,
+         Weedy = 0,
+         Desirable_recruit = 0,
+         Desirable = 0)
+
+# Combine empty and non-empty plots
+plantsource <- bind_rows(nonempty.plots.plantsource, empty.plots.plantsource)
+
+# Check that all SiteDatePlotIDs are present
+length(unique(plantsource$SiteDatePlotID)) == nrow(monitor.info)
+setdiff(monitor.info$SiteDatePlotID, plantsource$SiteDatePlotID) 
 
 
 
@@ -771,17 +751,15 @@ cover.total.na <- cover %>%
 
 # Check for matching row number
 nrow(richness) == nrow(plantsource)
-nrow(plantsource) == (nrow(cover) + nrow(id.missing))
+nrow(plantsource) == nrow(cover)
 
 # Combine
 p2x2.richness.cover <- left_join(richness, plantsource)
 p2x2.richness.cover <- left_join(p2x2.richness.cover, cover) %>%
-  select(
-    Region, Site, Date_Seeded, Date_Monitored, SiteDateID, Plot, Treatment, PlotMix,
-    SiteDatePlotID, raw.row, Richness, Seeded, Native_recruit, LikelyNative_recruit,
-    Unknown_recruit, Invasive, Desirable_recruit, Weedy, Desirable,
-    Seeded_Cover, Total_Veg_Cover, Not_Seeded_Cover
-  ) %>%
+  select(Region, Site, Date_Seeded, Date_Monitored, Plot, Treatment, PlotMix, PlotMix_Climate,
+         SiteDateID, SitePlotID, SiteDatePlotID, raw.row, Richness, Seeded, Native_recruit, 
+         LikelyNative_recruit, Unknown_recruit, Invasive, Desirable_recruit, Weedy, Desirable,
+         Seeded_Cover, Total_Veg_Cover) %>%
   arrange(SiteDatePlotID)
 
 
@@ -790,14 +768,12 @@ p2x2.richness.cover <- left_join(p2x2.richness.cover, cover) %>%
 
 # List of species present
 write_csv(present_species,
-          file = "Sonoran-data/cleaned/04.2_2x2-species-present_clean.csv"
-)
+          file = "Sonoran-data/cleaned/04.2_2x2-species-present_clean.csv")
 
 
 # Richness and cover
 write_csv(p2x2.richness.cover,
-          file = "Sonoran-data/cleaned/04.2_2x2-richness-cover_clean.csv"
-)
+          file = "Sonoran-data/cleaned/04.2_2x2-richness-cover_clean.csv")
 
 
 save.image("Sonoran-RData/04.2_data-wrangling_Sonoran-2x2.RData")
