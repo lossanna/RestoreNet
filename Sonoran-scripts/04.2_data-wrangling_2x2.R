@@ -776,4 +776,4 @@ write_csv(p2x2.richness.cover,
           file = "Sonoran-data/cleaned/04.2_2x2-richness-cover_clean.csv")
 
 
-save.image("Sonoran-RData/04.2_data-wrangling_Sonoran-2x2.RData")
+save.image("Sonoran-RData/04.2_data-wrangling_2x2.RData")
